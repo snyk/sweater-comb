@@ -1,0 +1,44 @@
+version: 2.1
+
+defaults: &defaults
+  resource_class: small
+  docker:
+    - image: circleci/node:14-buster
+  working_directory: ~/snyk-api-rules
+
+private_cicd_repo_auth: &private_cicd_repo_auth
+  auth:
+    username: _json_key
+    password: $GCLOUD_GCR_BUILDER
+
+commands:
+  gcr_auth:
+    description: Auth GCR
+    steps:
+      - setup_remote_docker
+      - run:
+          name: GCR auth
+          command: echo $GCLOUD_GCR_BUILDER | docker login -u _json_key --password-stdin https://gcr.io/snyk-main
+
+jobs:
+  test:
+    <<: *defaults
+    docker:
+      - image: circleci/node:14-buster
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/snyk-api-rules
+      - run:
+          name: Install
+          command: npm ci
+      - run:
+          name: Test
+          command: npm test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test:
+          name: Test
