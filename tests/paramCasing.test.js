@@ -10,12 +10,12 @@ beforeAll(async () => {
 it('fails on camel case violation', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(await loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
-        code: 'parameter-names-are-camel-cased',
+        code: 'parameter-names-camel-case',
         path: [
           'paths',
           '/examples/hello_world/HelloWorld/hello-world/{hello-id}',
@@ -32,6 +32,6 @@ it('fails on camel case violation', async () => {
 it('passes with camel case params', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(await loadSpec('hello-world.yaml'));
+  const result = await spectral.run(loadSpec('hello-world.yaml'));
   expect(result).toHaveLength(0);
 });

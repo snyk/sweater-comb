@@ -10,28 +10,28 @@ beforeAll(async () => {
 it('fails on component case violation', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(await loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
-        code: 'component-names-are-pascal-cased',
+        code: 'component-names-pascal-case',
         path: ['components', 'headers', 'RequestIDResponseHeader'],
       }),
       expect.objectContaining({
-        code: 'component-names-are-pascal-cased',
+        code: 'component-names-pascal-case',
         path: ['components', 'parameters', 'ending_before'],
       }),
       expect.objectContaining({
-        code: 'component-names-are-pascal-cased',
+        code: 'component-names-pascal-case',
         path: ['components', 'parameters', 'limit'],
       }),
       expect.objectContaining({
-        code: 'component-names-are-pascal-cased',
+        code: 'component-names-pascal-case',
         path: ['components', 'parameters', 'starting_after'],
       }),
       expect.objectContaining({
-        code: 'response-component-names-pascal-cased-or-numeric',
+        code: 'component-response-names',
         path: ['components', 'responses', 'bad_things'],
       }),
     ]),
@@ -41,6 +41,6 @@ it('fails on component case violation', async () => {
 it('passes with component case', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(await loadSpec('hello-world.yaml'));
+  const result = await spectral.run(loadSpec('hello-world.yaml'));
   expect(result).toHaveLength(0);
 });

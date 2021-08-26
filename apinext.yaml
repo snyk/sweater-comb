@@ -1,0 +1,170 @@
+extends: [[spectral:oas, all]]
+
+functions:
+  - pathCasing
+  - arrayObjectPattern
+
+rules:
+  openapi-tags: off
+  operation-tags: off
+  info-contact: off
+  info-description: off
+  info-license: off
+  license-url: off
+
+  # Services must provide an OpenAPI specification
+
+  openapi-get-versions:
+    description: APIs must list the available versioned OpenAPI specifications.
+    severity: error
+    given: $.paths[/openapi]
+    then:
+      field: get
+      function: truthy
+
+  openapi-get-version:
+    description: APIs must provide versioned OpenAPI specifications.
+    severity: error
+    given: $.paths[/openapi/{version}]
+    then:
+      field: get
+      function: truthy
+
+  # Naming conventions
+
+  paths-camel-case:
+    description: Path elements must be camelCase.
+    message: '{{error}}'
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pathCasing
+
+  parameter-names-camel-case:
+    description: Parameter names must be camelCase.
+    message: '{{description}}'
+    severity: error
+    # TODO: Migrate pagination and remove exception for v3 projects, which was
+    # released 2021-08-20~beta.
+    given: $..parameters[?(@.name && !@.name.match(/^(ending_before|starting_after)$/))].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+
+  component-names-pascal-case:
+    description: Component names must be PascalCase (except responses).
+    message: '{{description}}'
+    severity: error
+    given: $..components[?(@property !== 'responses')][*]~
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+
+  component-response-names:
+    description: Response names must be PascalCase or a status code.
+    message: '{{description}}'
+    severity: error
+    given: $..components[?(@property === 'responses')][?(!@property.match(/^\d+$/))]~
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+
+  # Versioning
+
+  ## Version query parameter
+
+  requests-declare-parameters:
+    description: Requests must declare parameters
+    message: 'Missing request parameters'
+    severity: error
+    given: $.paths[*][*]
+    then:
+      field: parameters
+      function: truthy
+
+  version-request:
+    description: Requests must declare an API version query parameter
+    message: 'Missing request parameter "version"'
+    severity: error
+    given: $.paths[*][*].parameters
+    then:
+      function: arrayObjectPattern
+      functionOptions:
+        field: name
+        match: "^version$"
+
+  ## Version response headers
+
+  responses-declare-headers:
+    description: Responses must declare headers
+    message: 'Missing response headers'
+    severity: error
+    given: $.paths[*][*].responses[*]
+    then:
+      field: headers
+      function: truthy
+
+  version-response-deprecation:
+    description: Responses must provide deprecation header
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'deprecation'
+      function: truthy
+
+  version-response-lifecycle-stage:
+    description: Responses must provide snyk-version-lifecycle-stage header
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'snyk-version-lifecycle-stage'
+      function: truthy
+
+  version-response-requested:
+    description: Responses must provide snyk-version-requested header
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'snyk-version-requested'
+      function: truthy
+
+  version-response-served:
+    description: Responses must provide snyk-version-served header
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'snyk-version-served'
+      function: truthy
+
+  version-response-sunset:
+    description: Responses must provide sunset header
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'sunset'
+      function: truthy
+
+# JSON:API
+
+## Content type
+
+  jsonapi-response-content-type:
+    description: Responses must provide a JSON:API content type
+    message: 'JSON:API requires "Content-Type: application/vnd.api+json"'
+    severity: error
+    given: $.paths[*][*].responses[*].content
+    then:
+      field: 'application/vnd.api+json'
+      function: truthy
+
+## Structure of responses

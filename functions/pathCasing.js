@@ -9,9 +9,7 @@ module.exports = (targetVal, _opts, context) => {
   if (invalid.length > 0) {
     return [
       {
-        message: `Path elements in "${targetVal}" are not camelCased: ${invalid.join(
-          ', ',
-        )}`,
+        message: `Path elements were not camel case: ${invalid.join(', ')}`,
       },
     ];
   }
