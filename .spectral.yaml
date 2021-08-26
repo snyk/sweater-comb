@@ -1,2 +1,2 @@
 extends:
-  - './ruleset.yaml'
+  - 'apinext.yaml'

@@ -3,8 +3,11 @@ const fs = require('fs');
 const Module = require('module');
 const { migrateRuleset } = require('@stoplight/spectral-ruleset-migrator');
 
-const loadRules = async () => {
-  const rulesetFile = path.join(__dirname, '..', 'ruleset.yaml');
+const loadRules = async (ruleFile) => {
+  if (!ruleFile) {
+    ruleFile = 'apinext.yaml';
+  }
+  const rulesetFile = path.join(__dirname, '..', ruleFile);
   const rulesetSrc = await migrateRuleset(rulesetFile, {
     format: 'commonjs',
     fs,

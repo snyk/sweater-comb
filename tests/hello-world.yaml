@@ -334,6 +334,8 @@ paths:
               $ref: '#/components/headers/SunsetHeader'
             x-envoy-to-remove-normalized-request-path:
               $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+        "default":
+          $ref: '#/components/responses/400'
         "400":
           $ref: '#/components/responses/400'
         "401":

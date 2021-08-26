@@ -291,6 +291,28 @@ info:
   version: 3.0.0
 openapi: 3.0.3
 paths:
+  /goof/no-params-no-headers:
+    get:
+      operationId: goof
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /goof/no-version:
+    get:
+      parameters: []
+      operationId: goof
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          headers: {}
+
   /examples/hello_world/HelloWorld/hello-world/{hello-id}:
     get:
       description: Get a single result from the hello-world example

@@ -1,8 +1,8 @@
 {
-  "name": "@snyk/api-rules",
+  "name": "@snyk/sweater-comb",
   "version": "0.0.0",
   "description": "Snyk API linting rules",
-  "main": "ruleset.yaml",
+  "main": "apinext.yaml",
   "scripts": {
     "test": "jest",
     "test-lint": "spectral lint --fail-severity=warn tests/**/*.yaml",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snyk/api-rules.git"
+    "url": "git+https://github.com/snyk/sweater-comb.git"
   },
   "author": "snyk.io",
   "private": true,
   "bugs": {
-    "url": "https://github.com/snyk/api-rules/issues"
+    "url": "https://github.com/snyk/sweater-comb/issues"
   },
-  "homepage": "https://github.com/snyk/api-rules#readme",
+  "homepage": "https://github.com/snyk/sweater-comb#readme",
   "devDependencies": {
     "@stoplight/spectral-cli": "^6.0.0",
     "@stoplight/spectral-core": "^1.4.0",
