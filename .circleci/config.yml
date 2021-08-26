@@ -1,0 +1,30 @@
+version: 2.1
+
+defaults: &defaults
+  resource_class: small
+  docker:
+    - image: circleci/node:14-buster
+  working_directory: ~/sweater-comb
+
+jobs:
+  test:
+    <<: *defaults
+    docker:
+      - image: circleci/node:14-buster
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/sweater-comb
+      - run:
+          name: Install
+          command: npm ci
+      - run:
+          name: Test
+          command: npm test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test:
+          name: Test
