@@ -21,10 +21,3 @@ it('fails on camel case violation', async () => {
     ]),
   );
 });
-
-it('passes with camel case paths', async () => {
-  const spectral = new Spectral();
-  spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.yaml'));
-  expect(result).toHaveLength(0);
-});

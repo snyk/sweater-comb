@@ -37,10 +37,3 @@ it('fails on component case violation', async () => {
     ]),
   );
 });
-
-it('passes with component case', async () => {
-  const spectral = new Spectral();
-  spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.yaml'));
-  expect(result).toHaveLength(0);
-});
