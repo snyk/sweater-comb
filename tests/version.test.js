@@ -112,10 +112,3 @@ it('fails on no request parameters or response headers', async () => {
     ]),
   );
 });
-
-it('passes with versioning', async () => {
-  const spectral = new Spectral();
-  spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.yaml'));
-  expect(result).toHaveLength(0);
-});
