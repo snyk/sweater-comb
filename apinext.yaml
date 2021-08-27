@@ -3,6 +3,7 @@ extends: [[spectral:oas, all]]
 functions:
   - pathCasing
   - arrayObjectPattern
+  - assertObjectPath
 
 rules:
   openapi-tags: off
@@ -96,7 +97,7 @@ rules:
       function: arrayObjectPattern
       functionOptions:
         field: name
-        match: "^version$"
+        match: '^version$'
 
   ## Version response headers
 
@@ -154,9 +155,20 @@ rules:
       field: 'sunset'
       function: truthy
 
-# JSON:API
+  # Request ID
 
-## Content type
+  response-request-id:
+    description: Responses must provide snyk-request-id
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[*].headers
+    then:
+      field: 'snyk-request-id'
+      function: truthy
+
+  # JSON:API
+
+  ## Content type
 
   jsonapi-response-content-type:
     description: Responses must provide a JSON:API content type
@@ -167,4 +179,92 @@ rules:
       field: 'application/vnd.api+json'
       function: truthy
 
-## Structure of responses
+  ## Response schema
+
+  ### Structure of 200 responses
+
+  jsonapi-response-data:
+    description: JSON:API response schema requires data property
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
+    then:
+      function: assertObjectPath
+      functionOptions:
+        path: [schema, properties, data, properties]
+
+  jsonapi-response-jsonapi:
+    description: JSON:API response schema requires JsonApi property
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
+    then:
+      function: assertObjectPath
+      functionOptions:
+        path: [schema, properties, JsonApi, properties]
+
+  jsonapi-response-links:
+    description: JSON:API response schema requires links property
+    message: '{{description}}'
+    severity: error
+    given: $.paths[*][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
+    then:
+      function: assertObjectPath
+      functionOptions:
+        path: [schema, properties, links, properties]
+
+  jsonapi-response-data-schema:
+    description: JSON:API response data schema
+    message: "{{error}}"
+    severity: error
+    given: $.paths[*][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json'].schema.properties
+    then:
+      field: data
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            properties:
+              type: object
+              properties:
+                id:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [string]
+                    format:
+                      type: string
+                      enum: [uuid]
+                  required: [type, format]
+                attributes:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [object]
+                    properties:
+                      type: object
+                  required: [type, properties]
+                type:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [string]
+                  required: [type]
+              required: [id, attributes, type]
+          required: [properties]
+  
+  ### JsonApi schema
+
+  ### Links schema
+
+  ### Structure of error responses
+
+  ### Error schema
+
+  ### Info message about references (warn without warning)
+
+  ### No includes

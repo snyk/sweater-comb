@@ -293,7 +293,7 @@ openapi: 3.0.3
 paths:
   /goof/no-params-no-headers:
     get:
-      operationId: goof
+      operationId: goofNoParamsNoHeaders
       responses:
         "200":
           content:
@@ -304,7 +304,7 @@ paths:
   /goof/no-version:
     get:
       parameters: []
-      operationId: goof
+      operationId: goofNoVersion
       responses:
         "200":
           content:
@@ -312,6 +312,80 @@ paths:
               schema:
                 type: object
           headers: {}
+
+  /goof/badJsonApi/badResponseSchemaType:
+    get:
+      operationId: badResponseSchemaType
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                type: string
+
+  /goof/badJsonApi/missingDataId:
+    get:
+      operationId: missingDataId
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      wtf:
+                        type: string
+
+  /goof/badJsonApi/dataIdNotUuid:
+    get:
+      operationId: dataIdNotUuid
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+
+  /goof/badJsonApi/dataMissingAttributes:
+    get:
+      operationId: dataMissingAttributes
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  type:
+                    type: string
+
+  /goof/badJsonApi/dataMissingType:
+    get:
+      operationId: dataMissingAttributes
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  attributes:
+                    type: object
+                    properties:
+                      foo:
+                        type: string
 
   /examples/hello_world/HelloWorld/hello-world/{hello-id}:
     get:
