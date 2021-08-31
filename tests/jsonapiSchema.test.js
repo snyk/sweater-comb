@@ -64,7 +64,7 @@ it('fails on version schema rules', async () => {
       }),
       expect.objectContaining({
         code: 'jsonapi-response-jsonapi',
-        message: 'JSON:API response schema requires JsonApi property',
+        message: 'JSON:API response schema requires jsonapi property',
         path: [
           'paths',
           '/goof/badJsonApi/dataMissingType',
