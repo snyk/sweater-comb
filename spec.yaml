@@ -1,23 +1,6 @@
-# Linting rules for compiled API.next OpenAPI documents.
-
-extends:
-  - - spectral:oas
-    - all
-  - './jsonapi.yaml'
-  - './naming.yaml'
-  - './responses.yaml'
-  - './spec.yaml'
-  - './versioning.yaml'
+# API.next requires services to provide their own OpenAPI specification
 
 rules:
-  openapi-tags: off
-  operation-tags: off
-  info-contact: off
-  info-description: off
-  info-license: off
-  license-url: off
-
-  # Compiled specs must provide their own OpenAPI specification
 
   openapi-get-versions:
     description: APIs must list the available versioned OpenAPI specifications.
