@@ -5,7 +5,7 @@ const { migrateRuleset } = require('@stoplight/spectral-ruleset-migrator');
 
 const loadRules = async (ruleFile) => {
   if (!ruleFile) {
-    ruleFile = 'apinext.yaml';
+    ruleFile = '.spectral.yaml';
   }
   const rulesetFile = path.join(__dirname, '..', ruleFile);
   const rulesetSrc = await migrateRuleset(rulesetFile, {

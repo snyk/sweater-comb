@@ -193,10 +193,10 @@ components:
             $ref: '#/components/schemas/Error'
           minItems: 1
           type: array
-        JsonApi:
+        jsonapi:
           $ref: '#/components/schemas/JsonApi'
       required:
-      - JsonApi
+      - jsonapi
       - errors
       type: object
     HelloWorld:
@@ -309,12 +309,12 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/HelloWorld'
-                  JsonApi:
+                  jsonapi:
                     $ref: '#/components/schemas/JsonApi'
                   links:
                     $ref: '#/components/schemas/Links'
                 required:
-                - JsonApi
+                - jsonapi
                 - data
                 - links
                 type: object
