@@ -16,7 +16,6 @@
     "url": "git+https://github.com/snyk/sweater-comb.git"
   },
   "author": "snyk.io",
-  "private": true,
   "bugs": {
     "url": "https://github.com/snyk/sweater-comb/issues"
   },
