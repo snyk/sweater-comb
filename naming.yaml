@@ -1,0 +1,48 @@
+# API.Next naming conventions
+
+functions:
+  - pathCasing
+
+rules:
+
+  paths-camel-case:
+    description: Path elements must be camelCase.
+    message: '{{error}}'
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pathCasing
+
+  parameter-names-camel-case:
+    description: Parameter names must be camelCase.
+    message: '{{description}}'
+    severity: error
+    # TODO: Migrate pagination and remove exception for v3 projects, which was
+    # released 2021-08-20~beta.
+    given: $..parameters[?(@.name && !@.name.match(/^(ending_before|starting_after)$/))].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+
+  component-names-pascal-case:
+    description: Component names must be PascalCase (except responses).
+    message: '{{description}}'
+    severity: error
+    given: $..components[?(@property !== 'responses')][*]~
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+
+  component-response-names:
+    description: Response names must be PascalCase or a status code.
+    message: '{{description}}'
+    severity: error
+    given: $..components[?(@property === 'responses')][?(!@property.match(/^\d+$/))]~
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
