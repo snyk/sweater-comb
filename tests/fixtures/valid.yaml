@@ -344,6 +344,51 @@ paths:
           $ref: '#/components/responses/404'
         "500":
           $ref: '#/components/responses/500'
+  /org/{org_id}/sarif:
+    get:
+      description: Get a SARIF document for the org
+      operationId: getOrgSARIF
+      parameters:
+      - $ref: '#/components/parameters/Version'
+      - description: The org id
+        in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/sarif+json:
+              schema:
+                type: object
+                description: SARIF document
+          description: A SARIF document is returned
+          headers:
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+        "default":
+          $ref: '#/components/responses/400'
+        "400":
+          $ref: '#/components/responses/400'
+        "401":
+          $ref: '#/components/responses/401'
+        "404":
+          $ref: '#/components/responses/404'
+        "500":
+          $ref: '#/components/responses/500'
     x-snyk-api-version: "2021-06-01"
 servers:
 - description: Snyk Registry
