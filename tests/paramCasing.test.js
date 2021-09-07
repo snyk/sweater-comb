@@ -4,21 +4,29 @@ const { loadRules, loadSpec } = require('./utils');
 let rules;
 
 beforeAll(async () => {
-  rules = await loadRules();
+  rules = await loadRules('naming.yaml');
 });
 
-it('fails on camel case violation', async () => {
+it('fails on snake case violation', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
-  expect(result).not.toHaveLength(0);
+  const result = await spectral.run(loadSpec('fixtures/paramCasing.fail.yaml'));
+  expect(result).not.toHaveLength(3);
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
-        code: 'parameter-names-camel-case',
+        code: 'parameter-names-snake-case',
+        path: ['components', 'parameters', 'EndingBefore', 'name'],
+      }),
+      expect.objectContaining({
+        code: 'parameter-names-snake-case',
+        path: ['components', 'parameters', 'StartingAfter', 'name'],
+      }),
+      expect.objectContaining({
+        code: 'parameter-names-snake-case',
         path: [
           'paths',
-          '/examples/hello_world/HelloWorld/hello-world/{hello-id}',
+          '/examples/hello_world/{hello-id}',
           'get',
           'parameters',
           '4',

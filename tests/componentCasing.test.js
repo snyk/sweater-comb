@@ -4,13 +4,15 @@ const { loadRules, loadSpec } = require('./utils');
 let rules;
 
 beforeAll(async () => {
-  rules = await loadRules();
+  rules = await loadRules('naming.yaml');
 });
 
 it('fails on component case violation', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(
+    loadSpec('fixtures/componentCasing.fail.yaml'),
+  );
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
@@ -24,11 +26,15 @@ it('fails on component case violation', async () => {
       }),
       expect.objectContaining({
         code: 'component-names-pascal-case',
-        path: ['components', 'parameters', 'limit'],
+        path: ['components', 'parameters', 'startingAfter'],
       }),
       expect.objectContaining({
         code: 'component-names-pascal-case',
-        path: ['components', 'parameters', 'starting_after'],
+        path: ['components', 'schemas', 'hello-world'],
+      }),
+      expect.objectContaining({
+        code: 'component-names-pascal-case',
+        path: ['components', 'schemas', 'JSON-API'],
       }),
       expect.objectContaining({
         code: 'component-response-names',

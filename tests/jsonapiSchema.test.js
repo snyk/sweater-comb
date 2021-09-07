@@ -4,13 +4,15 @@ const { loadRules, loadSpec } = require('./utils');
 let rules;
 
 beforeAll(async () => {
-  rules = await loadRules();
+  rules = await loadRules('jsonapi.yaml');
 });
 
 it('fails on version schema rules', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(
+    loadSpec('fixtures/jsonapiSchema.fail.yaml'),
+  );
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
