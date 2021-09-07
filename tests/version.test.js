@@ -4,13 +4,13 @@ const { loadRules, loadSpec } = require('./utils');
 let rules;
 
 beforeAll(async () => {
-  rules = await loadRules();
+  rules = await loadRules('versioning.yaml');
 });
 
 it('fails on version response header rules', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('fixtures/version.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
@@ -76,7 +76,7 @@ it('fails on version response header rules', async () => {
 it('fails on version request parameter rules', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('fixtures/version.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
@@ -91,7 +91,7 @@ it('fails on version request parameter rules', async () => {
 it('fails on no request parameters or response headers', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('fixtures/version.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([

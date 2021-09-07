@@ -10,6 +10,6 @@ beforeAll(async () => {
 it('passes with valid spec', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.yaml'));
+  const result = await spectral.run(loadSpec('fixtures/valid.yaml'));
   expect(result).toHaveLength(0);
 });

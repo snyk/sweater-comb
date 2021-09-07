@@ -4,19 +4,35 @@ const { loadRules, loadSpec } = require('./utils');
 let rules;
 
 beforeAll(async () => {
-  rules = await loadRules();
+  rules = await loadRules('naming.yaml');
 });
 
-it('fails on camel case violation', async () => {
+it('fails on snake case violation', async () => {
   const spectral = new Spectral();
   spectral.setRuleset(rules);
-  const result = await spectral.run(loadSpec('hello-world.fail.yaml'));
+  const result = await spectral.run(loadSpec('fixtures/pathCasing.fail.yaml'));
   expect(result).not.toHaveLength(0);
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
-        code: 'paths-camel-case',
-        message: `Path elements were not camel case: hello_world, HelloWorld, hello-world`,
+        code: 'paths-snake-case',
+        message: `Path elements were not snake case: HelloWorld`,
+      }),
+      expect.objectContaining({
+        code: 'paths-snake-case',
+        message: `Path elements were not snake case: helloWorld`,
+      }),
+      expect.objectContaining({
+        code: 'paths-snake-case',
+        message: `Path elements were not snake case: hello-world`,
+      }),
+      expect.objectContaining({
+        code: 'paths-snake-case',
+        message: `Path elements were not snake case: HELLO-WORLD`,
+      }),
+      expect.objectContaining({
+        code: 'paths-snake-case',
+        message: `Path elements were not snake case: HELLO_WORLD`,
       }),
     ]),
   );
