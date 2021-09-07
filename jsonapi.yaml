@@ -13,7 +13,7 @@ rules:
     description: Responses must provide a JSON:API content type
     message: 'JSON:API requires "Content-Type: application/vnd.api+json"'
     severity: error
-    given: $.paths[?(!@property.match(/\/openapi/))][*].responses[*].content
+    given: $.paths[?(!@property.match(/\/(openapi|sarif)(\/.*)?$/))][*].responses[*].content
     then:
       field: 'application/vnd.api+json'
       function: truthy
