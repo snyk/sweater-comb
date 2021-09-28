@@ -22,11 +22,11 @@ rules:
 
   ### Structure of 200 responses
 
-  jsonapi-response-data:
+  jsonapi-get-post-response-data:
     description: JSON:API response schema requires data property
     message: '{{description}}'
     severity: error
-    given: $.paths[?(!@property.match(/\/openapi/))][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
+    given: $.paths[?(!@property.match(/\/openapi/))][?(@property.match(/get|post/))].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
     then:
       function: assertObjectPath
       functionOptions:
@@ -42,11 +42,11 @@ rules:
       functionOptions:
         path: [schema, properties, jsonapi, type]
 
-  jsonapi-response-data-schema:
+  jsonapi-get-post-response-data-schema:
     description: JSON:API response data schema
     message: "{{error}}"
     severity: error
-    given: $.paths[?(!@property.match(/\/openapi/))][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json'].schema.properties
+    given: $.paths[?(!@property.match(/\/openapi/))][?(@property.match(/get|post/))].responses[?(@property.match(/200|201/))].content['application/vnd.api+json'].schema.properties
     then:
       field: data
       function: schema
