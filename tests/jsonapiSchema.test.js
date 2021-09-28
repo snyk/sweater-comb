@@ -17,7 +17,7 @@ it('fails on version schema rules', async () => {
   expect(result).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
-        code: 'jsonapi-response-data-schema',
+        code: 'jsonapi-get-post-response-data-schema',
         message: '"properties" property must have required property "id"',
         path: [
           'paths',
@@ -34,7 +34,7 @@ it('fails on version schema rules', async () => {
         ],
       }),
       expect.objectContaining({
-        code: 'jsonapi-response-data-schema',
+        code: 'jsonapi-get-post-response-data-schema',
         message: '"data" property must have required property "properties"',
         path: [
           'paths',
@@ -50,7 +50,7 @@ it('fails on version schema rules', async () => {
         ],
       }),
       expect.objectContaining({
-        code: 'jsonapi-response-data-schema',
+        code: 'jsonapi-get-post-response-data-schema',
         message: '"properties.data" property must exist',
         path: [
           'paths',
@@ -78,7 +78,7 @@ it('fails on version schema rules', async () => {
         ],
       }),
       expect.objectContaining({
-        code: 'jsonapi-response-data',
+        code: 'jsonapi-get-post-response-data',
         message: 'JSON:API response schema requires data property',
         path: [
           'paths',
