@@ -18,7 +18,7 @@ Sweater Comb helps provide some of those guardrails with automation, initially b
 
 [JSON API](https://jsonapi.org/) is a standard for representing resources as JSON data.
 
-Generally, our API adheres closely to the [JSON API specification](https://jsonapi.org/format/), with some caveats noted in the following section ["The Rough Parts"](#the-rough-parts).
+Generally, our API adheres closely to the [JSON API specification](https://jsonapi.org/format/). [JSON API: The Good Parts](docs/jsonapi.md) describes how we adapted JSON API into our API standards.
 
 ## Why build on JSON API?
 
