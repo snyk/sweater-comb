@@ -344,6 +344,58 @@ paths:
           $ref: '#/components/responses/404'
         "500":
           $ref: '#/components/responses/500'
+    delete:
+      description: Delete a result from the hello-world example
+      operationId: helloWorldDelete
+      parameters:
+      - $ref: '#/components/parameters/Version'
+      - description: The id of the hello-world example entity to be deleted.
+        in: path
+        name: hello_id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/vnd.api+json:
+              schema:
+                additionalProperties: false
+                properties:
+                  jsonapi:
+                    $ref: '#/components/schemas/JsonApi'
+                  links:
+                    $ref: '#/components/schemas/Links'
+                required:
+                - jsonapi
+                - links
+                type: object
+          description: A hello world entity was deleted
+          headers:
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+        "default":
+          $ref: '#/components/responses/400'
+        "400":
+          $ref: '#/components/responses/400'
+        "401":
+          $ref: '#/components/responses/401'
+        "404":
+          $ref: '#/components/responses/404'
+        "500":
+          $ref: '#/components/responses/500'
   /org/{org_id}/sarif:
     get:
       description: Get a SARIF document for the org
