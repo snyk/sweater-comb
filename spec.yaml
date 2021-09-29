@@ -1,7 +1,6 @@
 # API.next requires services to provide their own OpenAPI specification
 
 rules:
-
   openapi-get-versions:
     description: APIs must list the available versioned OpenAPI specifications.
     severity: error
@@ -16,4 +15,12 @@ rules:
     given: $.paths[/openapi/{version}]
     then:
       field: get
+      function: truthy
+
+  openapi-arrays-types:
+    description: Array items must have a "type" field.
+    severity: error
+    given: $..[?(@.type === "array")].items
+    then:
+      field: type
       function: truthy
