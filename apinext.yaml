@@ -34,3 +34,24 @@ rules:
     then:
       field: get
       function: truthy
+
+  # Here for now. Probably a better place to put it
+  openapi-route-tenant-uuids:
+    description: APIs must use UUIDs where org or group tenants are specified
+    severity: error
+    given: $.paths[*][*].parameters[?(@.name.match(/org_id|group_id/))].schema
+    then:
+      - field: type
+        function: enumeration
+        functionOptions:
+          values:
+            - string
+
+      - field: format
+        function: truthy
+
+      - field: format
+        function: enumeration
+        functionOptions:
+          values:
+            - uuid
