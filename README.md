@@ -1,5 +1,7 @@
 # @snyk/sweater-comb
 
+[test]
+
 Sweats the small stuff, so you don't have to. OpenAPI linting rules for Snyk APIs.
 
 # [Intro](docs/intro.md)
