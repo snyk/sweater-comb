@@ -4,7 +4,6 @@ functions:
   - assertObjectPath
 
 rules:
-
   # JSON:API
 
   ## Content type
@@ -44,7 +43,7 @@ rules:
 
   jsonapi-get-post-response-data-schema:
     description: JSON:API response data schema
-    message: "{{error}}"
+    message: '{{error}}'
     severity: error
     given: $.paths[?(!@property.match(/\/openapi/))][?(@property.match(/get|post/))].responses[?(@property.match(/200|201/))].content['application/vnd.api+json'].schema.properties
     then:
@@ -107,7 +106,17 @@ rules:
                       required: [type]
                   required: [id, type]
               required: [properties]
-  
+
+  jsonapi-post-response-201:
+    description: 'Post responses must respond with a 201 status code on success'
+    severity: error
+    given: $.paths[*].post.responses
+    then:
+      - field: '@key'
+        function: pattern
+        functionOptions:
+          match: '^201|[3-5][0-9]{2}$'
+
   ### JsonApi schema
 
   ### Links schema
