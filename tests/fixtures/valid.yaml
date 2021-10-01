@@ -8,6 +8,8 @@ tags:
     description: A hello world example
   - name: Hello World delete
     description: A hello world example
+  - name: Hello World post
+    description: A hello world example
   - name: Issue Summaries
     description: aaa
   - name: SARIF
@@ -403,6 +405,72 @@ paths:
           $ref: '#/components/responses/404'
         '500':
           $ref: '#/components/responses/500'
+
+    post:
+      description: Create a single result from the hello_world example
+      operationId: helloWorldCreate
+      tags:
+        - Hello World post
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - name: hello_id
+          in: path
+          description: The id of the hello-world example entity to be retrieved.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                attributes:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    betaField:
+                      type: string
+                  additionalProperties: false
+                  required: ['message', 'betaField']
+              additionalProperties: false
+              required: ['attributes']
+      responses:
+        '201':
+          description: A hello world entity being requested is returned
+          headers:
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+          content:
+            application/vnd.api+json:
+              schema:
+                additionalProperties: false
+                properties:
+                  data:
+                    $ref: '#/components/schemas/HelloWorld'
+                  jsonapi:
+                    $ref: '#/components/schemas/JsonApi'
+                  links:
+                    $ref: '#/components/schemas/Links'
+                required:
+                  - jsonapi
+                  - data
+                  - links
+                type: object
+
     delete:
       description: Delete a result from the hello-world example
       operationId: helloWorldDelete
