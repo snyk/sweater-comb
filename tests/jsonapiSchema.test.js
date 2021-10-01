@@ -90,6 +90,18 @@ it('fails on version schema rules', async () => {
           'application/vnd.api+json',
         ],
       }),
+      expect.objectContaining({
+        code: 'jsonapi-post-response-201',
+        message:
+          'Post responses must respond with a 201 status code on success',
+        path: [
+          'paths',
+          '/goof/bad_post_status_code',
+          'post',
+          'responses',
+          '200',
+        ],
+      }),
     ]),
   );
 });
