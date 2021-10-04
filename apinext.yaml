@@ -55,3 +55,27 @@ rules:
         functionOptions:
           values:
             - uuid
+
+  # Require Examples for user defined response objects - in an array
+  apinext-operation-response-array-examples:
+    description: Responses must have an enum or examples field and be non-empty
+    severity: error
+    given: $.paths[*][*].responses[*].content[*].schema.properties.data.items.properties.attributes..[properties][?(@.type !== 'object')]
+    then:
+      function: xor
+      functionOptions:
+        properties:
+          - enum
+          - example
+
+  # Require Examples for user defined response objects - single objects
+  apinext-operation-response-single-examples:
+    description: Responses must have an enum or examples field and be non-empty
+    severity: error
+    given: $.paths[*][*].responses[*].content[*].schema.properties.data.properties.attributes..[properties][?(@.type !== 'object')]
+    then:
+      function: xor
+      functionOptions:
+        properties:
+          - enum
+          - example

@@ -229,23 +229,28 @@ components:
           properties:
             deprecatedField:
               type: string
+              example: test
             message:
               type: string
+              example: my message
             requestSubject:
+              type: object
               additionalProperties: false
               properties:
                 clientId:
                   format: uuid
                   type: string
+                  example: '2bcd80a9-e343-4601-9393-f820d51ab713'
                 publicId:
                   format: uuid
                   type: string
+                  example: '2bcd80a9-e343-4601-9393-f820d51ab713'
                 type:
                   type: string
+                  example: my_type
               required:
                 - publicId
                 - type
-              type: object
           required:
             - message
             - deprecatedField
@@ -254,8 +259,10 @@ components:
         id:
           format: uuid
           type: string
+          example: '2bcd80a9-e343-4601-9393-f820d51ab713'
         type:
           type: string
+          example: hello_world
       required:
         - type
         - id
@@ -286,6 +293,7 @@ components:
             title:
               type: string
               description: The name of the issue
+              example: a title
             severity:
               type: string
               description: Severity of an issue
@@ -297,6 +305,7 @@ components:
             ignored:
               type: boolean
               description: Whether the issue has been ignored
+              example: true
           required: ['issueType', 'title', 'severity', 'ignored']
         links:
           $ref: '#/components/schemas/Links'
@@ -316,6 +325,7 @@ components:
           properties:
             href:
               type: string
+              example: thing
             meta:
               additionalProperties: true
               type: object
