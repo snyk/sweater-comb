@@ -27,7 +27,9 @@
     "@stoplight/spectral-ruleset-migrator": "^1.4.2",
     "@stoplight/spectral-rulesets": "^1.2.2",
     "eslint": "^7.32.0",
+    "immer": "^9.0.6",
     "jest": "^27.0.6",
+    "pac-resolver": "^5.0.0",
     "prettier": "^2.3.2"
   }
 }
