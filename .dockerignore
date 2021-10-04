@@ -1,3 +1,4 @@
 /node_modules
 /tests
-/.git*
+/scripts
+/.[a-z]*
