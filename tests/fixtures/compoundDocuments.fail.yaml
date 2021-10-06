@@ -1,0 +1,122 @@
+info:
+  title: Registry
+  version: 3.0.0
+openapi: 3.0.3
+
+servers:
+  - description: Snyk Registry
+    url: /api/v3
+
+components:
+  schemas:
+    IssueSummary:
+      type: object
+      description: Summary description of an issue.
+      properties:
+        type:
+          type: string
+          description: Content type
+          example: 'issue-summary'
+        id:
+          type: string
+          description: The Issue ID
+          format: uuid
+          example: '2bcd80a9-e343-4601-9393-f820d51ab713'
+        attributes:
+          type: object
+          properties:
+            issueType:
+              type: string
+              description: >
+                Issue type. Implies the existence of a resource
+                /issues/detail/{issue-type}/{id}.
+              example: test
+            title:
+              type: string
+              description: The name of the issue
+              example: a title
+            severity:
+              type: string
+              description: Severity of an issue
+              enum:
+                - low
+                - medium
+                - high
+                - critical
+            ignored:
+              type: boolean
+              description: Whether the issue has been ignored
+              example: true
+          required: ['issueType', 'title', 'severity', 'ignored']
+        links:
+          $ref: '#/components/schemas/Links'
+      required: ['type', 'id', 'attributes', 'links']
+    LinkProperty:
+      oneOf:
+        - type: string
+        - additionalProperties: false
+          properties:
+            href:
+              type: string
+              example: thing
+            meta:
+              additionalProperties: true
+              type: object
+          required:
+            - href
+            - meta
+          type: object
+    Links:
+      additionalProperties: false
+      properties:
+        next:
+          $ref: '#/components/schemas/LinkProperty'
+        prev:
+          $ref: '#/components/schemas/LinkProperty'
+      type: object
+    JsonApi:
+      additionalProperties: false
+      properties:
+        version:
+          type: string
+      required:
+        - version
+      type: object
+
+paths:
+  /orgs/{org_id}/returns_array:
+    get:
+      operationId: returnsArray
+      description: >
+        Get a summary of issues on a project or snapshot. Supports
+        pagination, filtering by severity and issue type.
+        ProjectID must be specified.
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          description: The id of the group to return a list of issues for
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A hello world entity being requested is returned
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/IssueSummary' }
+                  included:
+                    type: array
+                    items: { $ref: '#/components/schemas/IssueSummary' }
+                  jsonapi:
+                    $ref: '#/components/schemas/JsonApi'
+                  links:
+                    $ref: '#/components/schemas/Links'
+                required: ['jsonapi', 'data', 'links']
+          headers:
