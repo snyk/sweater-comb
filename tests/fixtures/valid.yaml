@@ -306,6 +306,10 @@ components:
               type: boolean
               description: Whether the issue has been ignored
               example: true
+            created:
+              type: string
+              format: date-time
+              example: 2021-10-05T17:08:09Z
           required: ['issueType', 'title', 'severity', 'ignored']
         links:
           $ref: '#/components/schemas/Links'
