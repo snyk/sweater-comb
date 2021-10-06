@@ -9,6 +9,9 @@ extends:
   - './spec.yaml'
   - './versioning.yaml'
 
+functions:
+  - equals
+
 rules:
   openapi-tags: off
   operation-tags: off
@@ -79,3 +82,13 @@ rules:
         properties:
           - enum
           - example
+
+  apinext-date-property-formatting:
+    description: Date-time properties require correct date-time format
+    severity: error
+    given: $.paths[*][*].responses[*].content[*].schema..properties[?(@property.match(/created|updated|deleted/))]
+    then:
+      - field: format
+        function: equals
+        functionOptions:
+          value: date-time
