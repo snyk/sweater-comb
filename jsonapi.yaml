@@ -128,3 +128,11 @@ rules:
   ### Info message about references (warn without warning)
 
   ### No includes
+
+  jsonapi-no-compound-documents:
+    description: Compound documents are not allowed
+    severity: error
+    given: $.paths.*.*.responses[?(@property.match(/200|201/))].content['application/vnd.api+json'].schema.properties
+    then:
+      field: included
+      function: falsy
