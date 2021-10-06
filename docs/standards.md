@@ -36,16 +36,24 @@ the existence of the resource.
 
 Casing conventions referenced below are defined in [Spectral's casing function documentation](https://meta.stoplight.io/docs/spectral/ZG9jOjExNg-core-functions#casing).
 
+### Resource collections are plural
+
+API paths locate resources and collections of resources. These are always nouns. Collections should use the plural form of the noun. For example:
+
+* `/things` (collection of things)
+* `/things/{thing_id}` (a specific thing, located in a collection of them)
+* `/orgs/{org_id}/other_things` (a collection located in a specific org, located in a collection of orgs)
+
 ### Mixed case and acronyms
 
 When using camel or pascal case, acronyms are treated as any other concatenated word. For example, `OrgId`, not `OrgID`. This avoids ambiguity and information loss that would otherwise interfere with automated processing of the API schema. For example, a camel case name following these acronym rules can be translated into snake case to produce more conventional Python symbol names.
 
 ### Parameter names and path components
 
-Parameter and path variables must use **snake case** names.
+Resource collection names, parameters and path variables must use **snake case** names.
 
 ```json
-/resource/{resource_id}?foo_param=foo&bar_param=bar
+/some_resource/{resource_id}?foo_param=foo&bar_param=bar
 ```
 
 Because these variables are represented in URLs, uppercase letters may cause problems on some client platforms; RFCs recommend that URLs are treated as case-sensitive, but it is a "should", not a "must". Dashes might cause problems for some code generators, ruling out kebab case.
