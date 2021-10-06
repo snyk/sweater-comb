@@ -10,6 +10,28 @@ Resources addressed by Organization begin with `/v3/orgs/{org_id}/...`.
 
 Resources addressed by Group begin with `/v3/groups/{group_id}/...`.
 
+## Standard property conventions
+
+Additional resource properties that must be used in resource attributes, where applicable.
+
+### Resource lifecycle timestamps
+
+These properties are optional on a resource, but should be used when applicable. These properties must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
+
+#### `created`
+
+When the resource was created (POST).
+
+#### `updated`
+
+When the resource was last updated (PATCH).
+
+#### `deleted`
+
+When the resource was deleted (DELETE), if the DELETE operation marks the
+resource for deletion, or removes part of its content without actually removing
+the existence of the resource.
+
 ## Naming Conventions
 
 Casing conventions referenced below are defined in [Spectral's casing function documentation](https://meta.stoplight.io/docs/spectral/ZG9jOjExNg-core-functions#casing).
