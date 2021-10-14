@@ -133,12 +133,14 @@ With the concept of versioning established, requests and responses must support 
 
 ## `version` query parameter
 
-All requests must support a `?version=YYYY-mm-dd~stability` parameter:
+All requests must provide a `?version=YYYY-mm-dd~stability` parameter:
 
 - `~stability` may be omitted when the date is provided, to assume GA stability
 - `YYYY-mm-dd~` may be omitted when the stability is provided, to assume "today"
 
 Services are responsible for routing requests at the given `version` to the appropriate matching resource version implementation — or response with `HTTP 404` if no version of the resource exists.
+
+If a request does not provide a version query parameter or the format of the parameter is misformed a 400 Bad Request *must* be returned. This is to prevent our customer's implementations from breaking as we release new versions of a resource.
 
 ## <a id="response-headers"></a>Versioning response headers
 
