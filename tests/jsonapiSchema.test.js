@@ -102,6 +102,104 @@ it('fails on version schema rules', async () => {
           '200',
         ],
       }),
+
+      expect.objectContaining({
+        code: 'jsonapi-patch-response-data',
+        message: 'JSON:API patch 200 response requires a schema',
+        path: [
+          'paths',
+          '/goof/patch_missing_content',
+          'patch',
+          'responses',
+          '200',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-patch-response-200-schema',
+        message: 'Property "anotherField" is not expected to be here',
+        path: [
+          'paths',
+          '/goof/patch_no_meta_only',
+          'patch',
+          'responses',
+          '200',
+          'content',
+          'application/vnd.api+json',
+          'schema',
+          'properties',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-patch-response-200-schema',
+        message: '"properties" property must have required property "meta"',
+        path: [
+          'paths',
+          '/goof/patch_no_data',
+          'patch',
+          'responses',
+          '200',
+          'content',
+          'application/vnd.api+json',
+          'schema',
+          'properties',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-patch-response-204-schema',
+        message: '"content" property must be falsy',
+        path: [
+          'paths',
+          '/goof/patch_no_content',
+          'patch',
+          'responses',
+          '204',
+          'content',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-delete-response-statuses',
+        message: 'Delete endpoints can only use 200 or 204 status codes',
+        path: [
+          'paths',
+          '/goof/delete_invalid_status',
+          'delete',
+          'responses',
+          '203',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-delete-response-200',
+        message: '"properties" property must have required property "meta"',
+        path: [
+          'paths',
+          '/goof/delete_with_meta',
+          'delete',
+          'responses',
+          '200',
+          'content',
+          'application/vnd.api+json',
+          'schema',
+          'properties',
+        ],
+      }),
+
+      expect.objectContaining({
+        code: 'jsonapi-delete-response-204',
+        message: '"content" property must be falsy',
+        path: [
+          'paths',
+          '/goof/delete_no_content',
+          'delete',
+          'responses',
+          '204',
+          'content',
+        ],
+      }),
     ]),
   );
 });
