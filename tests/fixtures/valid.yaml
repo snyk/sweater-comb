@@ -9,12 +9,18 @@ servers:
     url: /api/v3
 tags:
   - name: Group Organizations
-    description: A hello world example
+    description: Group orgs
+  - name: Invites
+    description: Invites
   - name: Projects
     description: Projects
 
 components:
   headers:
+    Location:
+      description: A header containing a location of a resource
+      schema:
+        type: string
     VersionRequestedResponseHeader:
       description:
         A header containing the version of the endpoint requested by the
@@ -398,6 +404,41 @@ components:
       required: [key, value]
       additionalProperties: false
 
+    OrgInvitation:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+          format: uuid
+        attributes: { $ref: '#/components/schemas/OrgInvitationAttributes' }
+        links: { $ref: '#/components/schemas/Links' }
+      required: [type, id, attributes]
+      additionalProperties: false
+
+    OrgInvitationAttributes:
+      type: object
+      properties:
+        email:
+          description: The email address of the invitee.
+          type: string
+          example: 'example@email.com'
+        isActive:
+          description: The active status of the invitation.
+          type: boolean
+        role:
+          description: The role assigned to the invitee on acceptance.
+          type: string
+          example: 'Developer'
+        org:
+          description: The organization the invite was created for.
+          type: string
+          example: 'Example org'
+      required: [email, isActive, role, org]
+      additionalProperties: false
+
+
     Org:
       type: object
       properties:
@@ -422,6 +463,10 @@ components:
       additionalProperties: false
 
 paths:
+  # Org tenant with:
+  #   get - multiple responses
+  #   patch - 200 with only meta (update successful, applied as request PATCHed it).
+  #         - (assuming we can patch straight to a collection provided the ID is in the body? Is that a pattern we want to allow?)
   /orgs/{org_id}/projects:
     get:
       description: Get a list of an organization's projects.
@@ -562,7 +607,7 @@ paths:
                 required: ['jsonapi', 'data', 'links' ]
                 additionalProperties: false
 
-    put:
+    patch:
       description: Update an organization’s project.
       operationId: putOrgsProject
       tags:
@@ -623,12 +668,19 @@ paths:
               schema:
                 type: object
                 properties:
-                  data: { $ref: '#/components/schemas/Project' }
-                  jsonapi: { $ref: '#/components/schemas/JsonApi' }
-                  links: { $ref: '#/components/schemas/Links' }
-                required: ['jsonapi', 'data', 'links' ]
+                  meta:
+                    type: object
+                    properties:
+                      customField:
+                        type: string
+                        example: 'I have updated!'
+                required: [meta]
                 additionalProperties: false
 
+  # Org tenant with:
+  #   get - single response
+  #   patch - 200 response with data (update successful, server PATCHed things not given in the request)
+  #   delete - 200 with only a meta property
   /orgs/{org_id}/projects/{id}:
     get:
       description: Get an organization’s project.
@@ -648,91 +700,6 @@ paths:
           in: path
           required: true
           description: The id of the project to return
-          schema:
-            type: string
-            format: uuid
-        - in: query
-          name: name
-          description: Return projects that prefix-match the provided name
-          schema:
-            type: string
-        - in: query
-          name: origin
-          description: Return projects that match the provided origin
-          schema:
-            type: string
-        - in: query
-          description: Return projects that match the provided type
-          name: type
-          schema:
-            type: string
-        - in: query
-          name: status
-          description: Return projects that match the provided status
-          schema:
-            type: string
-            enum:
-              - active
-              - inactive
-        - in: query
-          name: 'tags'
-          description: Return projects that match all provided tags
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-              pattern: ^[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+$
-        - in: query
-          name: 'business_criticality'
-          description: Return projects that have at least 1 option
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - critical
-                - high
-                - medium
-                - low
-        - in: query
-          name: 'environment'
-          description: Return projects that have at least 1 option
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - frontend
-                - backend
-                - internal
-                - external
-                - mobile
-                - saas
-                - onprem
-                - hosted
-                - distributed
-        - in: query
-          name: 'lifecycle'
-          description: Return projects that have at least 1 option
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - production
-                - development
-                - sandbox
-        - in: query
-          description: Return projects that belong to the provided target
-          name: target_id
           schema:
             type: string
             format: uuid
@@ -767,8 +734,76 @@ paths:
                 properties:
                   data: { $ref: '#/components/schemas/Project' }
                   jsonapi: { $ref: '#/components/schemas/JsonApi' }
-                  links: { $ref: '#/components/schemas/Links' }
                 required: ['jsonapi', 'data', 'links' ]
+                additionalProperties: false
+
+    patch:
+      description: Update an organization’s project, but with ID in the path.
+      operationId: patchOrgsProjectId
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - name: org_id
+          in: path
+          required: true
+          description: The id of the org of the project
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          required: true
+          description: The id of the project to return
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                attributes:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  additionalProperties: false
+              additionalProperties: false
+              required: ['attributes']
+      responses:
+        '400': { $ref: '#/components/responses/400' }
+        '401': { $ref: '#/components/responses/401' }
+        '403': { $ref: '#/components/responses/403' }
+        '404': { $ref: '#/components/responses/404' }
+        '500': { $ref: '#/components/responses/500' }
+        '200':
+          description: 'A list of projects is returned for the targeted org'
+          headers:
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+            x-envoy-to-remove-org-public-id: { $ref: '#/components/headers/InternalGlooOrgIdHeader' }
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: '#/components/schemas/Project' }
+                  jsonapi: { $ref: '#/components/schemas/JsonApi' }
+                required: ['jsonapi', 'data' ]
                 additionalProperties: false
 
     delete:
@@ -797,7 +832,7 @@ paths:
         '401': { $ref: '#/components/responses/401' }
         '404': { $ref: '#/components/responses/404' }
         '500': { $ref: '#/components/responses/500' }
-        '204':
+        '200':
           description: 'A list of projects is returned for the targeted org'
           headers:
             snyk-version-requested:
@@ -819,13 +854,177 @@ paths:
             application/vnd.api+json:
               schema:
                 type: object
-                additionalProperties: false
                 properties:
-                  jsonapi:
-                    $ref: '#/components/schemas/JsonApi'
-                required:
-                  - jsonapi
-  
+                  meta:
+                    type: object
+                    properties:
+                      customField:
+                        type: string
+                        example: 'I have updated!'
+                required: [meta]
+                additionalProperties: false
+
+  # Org tenant with:
+  #   post
+  #   patch - 204 no content
+  #   delete - 204 no content
+  /orgs/{org_id}/invites:
+    post:
+      description: Invite a user to an organization.
+      operationId: inviteUserToOrg
+      tags:
+        - Invites
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - name: org_id
+          in: path
+          required: true
+          description: The id of the org the user is being invited to
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The invitee email address.
+                role:
+                  type: string
+                  description: The role public ID that will be granted to to invitee on acceptance.
+                  format: uuid
+              additionalProperties: false
+              required: [email, role]
+      responses:
+        '400': { $ref: '#/components/responses/400' }
+        '401': { $ref: '#/components/responses/401' }
+        '404': { $ref: '#/components/responses/404' }
+        '500': { $ref: '#/components/responses/500' }
+        '201':
+          description: A new organization invitation has been created
+          headers:
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+            location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  jsonapi: { $ref: '#/components/schemas/JsonApi' }
+                  data: { $ref: '#/components/schemas/OrgInvitation' }
+                required: [jsonapi, data]
+                additionalProperties: false
+    
+    patch:
+      description: Update an org invite
+      operationId: patchOrgInvite
+      tags:
+        - Invites
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - name: org_id
+          in: path
+          required: true
+          description: The id of the org the user is being invited to
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The invitee email address.
+                role:
+                  type: string
+                  description: The role public ID that will be granted to to invitee on acceptance.
+                  format: uuid
+              additionalProperties: false
+              required: [email, role]
+      responses:
+        '400': { $ref: '#/components/responses/400' }
+        '401': { $ref: '#/components/responses/401' }
+        '404': { $ref: '#/components/responses/404' }
+        '500': { $ref: '#/components/responses/500' }
+        '204':
+          description: A new organization invitation has been created
+          headers:
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+            location:
+              $ref: '#/components/headers/Location'
+
+    delete:
+      description: Update an org invite
+      operationId: deleteOrgInvite
+      tags:
+        - Invites
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - name: org_id
+          in: path
+          required: true
+          description: The id of the org the user is being invited to
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '400': { $ref: '#/components/responses/400' }
+        '401': { $ref: '#/components/responses/401' }
+        '404': { $ref: '#/components/responses/404' }
+        '500': { $ref: '#/components/responses/500' }
+        '204':
+          description: A new organization invitation has been created
+          headers:
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+            x-envoy-to-remove-normalized-request-path:
+              $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
+            location:
+              $ref: '#/components/headers/Location'
+
   # Group tenant example
   /groups/{group_id}/orgs:
     get:
@@ -835,6 +1034,9 @@ paths:
         - Group Organizations
       parameters:
         - $ref: '#/components/parameters/Version'
+        - $ref: '#/components/parameters/StartingAfter'
+        - $ref: '#/components/parameters/EndingBefore'
+        - $ref: '#/components/parameters/Limit'
         - name: group_id
           in: path
           required: true
@@ -843,21 +1045,17 @@ paths:
             type: string
             format: uuid
       responses:
+        'default':
+          $ref: '#/components/responses/400'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
         '200':
-          content:
-            application/vnd.api+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Org'
-                  jsonapi:
-                    $ref: '#/components/schemas/JsonApi'
-                  links:
-                    $ref: '#/components/schemas/Links'
-                required: ['jsonapi', 'data', 'links']
           description: A list of orgs is returned
           headers:
             deprecation:
@@ -874,13 +1072,15 @@ paths:
               $ref: '#/components/headers/SunsetHeader'
             x-envoy-to-remove-normalized-request-path:
               $ref: '#/components/headers/InternalGlooNormalizedPathHeader'
-        'default':
-          $ref: '#/components/responses/400'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Org'
+                  jsonapi: { $ref: '#/components/schemas/JsonApi' }
+                  links: { $ref: '#/components/schemas/Links' }
+                required: ['jsonapi', 'data', 'links']
