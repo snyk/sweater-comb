@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: Registry
+  version: 3.0.0
+tags:
+  - name: Hello World
+  - name: Hello World Again
+    description: Another hello world example
+
+servers:
+  - description: Snyk Registry
+    url: /api/v3
+
+components:
+  parameters:
+    Version:
+      description: The requested version of the endpoint to process the request
+      in: query
+      name: version
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    JSONAPI:
+      additionalProperties: false
+      properties:
+        version:
+          type: string
+      required:
+        - version
+      type: object
+
+paths:
+  /goof/no-params-no-headers:
+    get:
+      operationId: goofNoParamsNoHeaders
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
