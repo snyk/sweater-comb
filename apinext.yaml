@@ -92,3 +92,14 @@ rules:
         function: equals
         functionOptions:
           value: date-time
+
+  apinext-tags-name-description:
+    description: Tags must have a name and description
+    severity: error
+    given: $.tags[*]
+    then:
+      - field: name
+        function: truthy
+      - field: description
+        function: truthy
+
