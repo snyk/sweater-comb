@@ -35,7 +35,7 @@ rules:
     description: JSON:API response schema requires jsonapi property
     message: '{{description}}'
     severity: error
-    given: $.paths[?(!@property.match(/\/openapi/))][*].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
+    given: $.paths[?(!@property.match(/\/openapi/))][?(!@property.match(/patch|delete/))].responses[?(@property.match(/200|201/))].content['application/vnd.api+json']
     then:
       function: assertObjectPath
       functionOptions:
@@ -107,15 +107,115 @@ rules:
                   required: [id, type]
               required: [properties]
 
+  jsonapi-patch-response-data:
+    description: JSON:API patch 200 response requires a schema
+    message: '{{description}}'
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].patch.responses.200
+    then:
+      function: assertObjectPath
+      functionOptions:
+        path: [content, 'application/vnd.api+json', schema, properties]
+
+
+  jsonapi-patch-response-200-schema:
+    description: JSON:API patch response data schema
+    message: '{{error}}'
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].patch.responses.200.content['application/vnd.api+json'].schema
+    then:
+      field: properties
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - type: object
+              properties:
+                meta:
+                  type: object
+              required: [meta]
+              additionalProperties: false
+            - type: object
+              properties:
+                data:
+                  type: object
+                jsonapi:
+                  type: object
+              required: [data, jsonapi]
+              additionalProperties: false
+  
+  jsonapi-patch-response-204-schema:
+    description: JSON:API patch 204 response should not have content
+    message: '{{error}}'
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].patch.responses.204
+    then:
+      field: content
+      function: falsy
+
   jsonapi-post-response-201:
     description: 'Post responses must respond with a 201 status code on success'
     severity: error
     given: $.paths[*].post.responses
     then:
-      - field: '@key'
-        function: pattern
-        functionOptions:
-          match: '^201|[3-5][0-9]{2}$'
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^201|[3-5][0-9]{2}$'
+
+  jsonapi-created-response-location:
+    description: Post responses must include a location header for the created resource
+    severity: error
+    given: $.paths[*].post.responses.'201'.headers
+    then:
+      field: location
+      function: truthy
+
+  jsonapi-created-response-self-link:
+    description: Post responses must include a location header for the created resource
+    severity: error
+    given: $.paths[*].post.responses.'201'.content.'application/vnd.api+json'.schema.properties.data.properties.links
+    then:
+      field: self
+      function: truthy
+
+  jsonapi-delete-response-statuses:
+    description: Delete endpoints can only use 200 or 204 status codes
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].delete.responses
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^20[0|4]|[3-5][0-9]{2}$'
+
+  jsonapi-delete-response-200:
+    description: JSON:API delete 200 response data schema
+    message: '{{error}}'
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].delete.responses.200.content['application/vnd.api+json'].schema
+    then:
+      field: properties
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            meta:
+              type: object
+          required: [meta]
+          additionalProperties: false
+
+  jsonapi-delete-response-204:
+    description: JSON:API delete 204 response data schema
+    message: '{{error}}'
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))].delete.responses.204
+    then:
+      field: content
+      function: falsy
+
+  # TODO: Add rule to check location header link matches self link in response body (on response validation, how to test that?) 
 
   ### JsonApi schema
 
