@@ -2,6 +2,8 @@
 
 functions:
   - assertObjectPath
+  - contains
+  - notContains
 
 rules:
   # JSON:API
@@ -166,15 +168,15 @@ rules:
   jsonapi-created-response-location:
     description: Post responses must include a location header for the created resource
     severity: error
-    given: $.paths[*].post.responses.'201'.headers
+    given: $.paths[*].post.responses.201.headers
     then:
       field: location
       function: truthy
 
   jsonapi-created-response-self-link:
-    description: Post responses must include a location header for the created resource
+    description: Post responses must include a self link for the created resource
     severity: error
-    given: $.paths[*].post.responses.'201'.content.'application/vnd.api+json'.schema.properties.data.properties.links
+    given: $.paths[*].post.responses.201.content['application/vnd.api+json'].schema.properties.data.properties.links.properties
     then:
       field: self
       function: truthy
@@ -218,6 +220,36 @@ rules:
   # TODO: Add rule to check location header link matches self link in response body (on response validation, how to test that?) 
 
   ### JsonApi schema
+
+  ### Collections
+
+  jsonapi-pagination-collection-parameters:
+    description: Collection requests must include pagination parameters
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/) && !@property.match(/\{[a-z]*?_?id\}$/))].get.parameters
+    then:
+      function: contains
+      functionOptions:
+        field: name
+        values: [starting_after, ending_before, limit]
+
+  jsonapi-pagination-collection-links:
+    description: Responses for collection requests must include pagination links
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/) && !@property.match(/\{[a-z]*?_?id\}$/))].get.responses.200.content['application/vnd.api+json'].schema.properties
+    then:
+      field: links
+      function: truthy
+
+  jsonapi-no-pagination-parameters:
+    description: Non-GET requests should not allow pagination parameters
+    severity: error
+    given: $.paths[*][?(@property.match(/post|patch|delete/))].parameters
+    then:
+      function: notContains
+      functionOptions:
+        field: name
+        values: [starting_after, ending_before, limit]
 
   ### Links schema
 
