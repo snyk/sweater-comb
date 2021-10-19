@@ -16,6 +16,12 @@ components:
       required: true
       schema:
         type: string
+    StartingAfter:
+      description: Return the page of results immediately after this cursor
+      in: query
+      name: starting_after
+      schema:
+        type: string
 
   schemas:
     JSONAPI:
