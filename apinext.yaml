@@ -39,7 +39,7 @@ rules:
       function: truthy
 
   # Here for now. Probably a better place to put it
-  openapi-route-tenant-uuids:
+  apinext-route-tenant-uuids:
     description: APIs must use UUIDs where org or group tenants are specified
     severity: error
     given: $.paths[*][*].parameters[?(@.name.match(/org_id|group_id/))].schema
@@ -58,6 +58,17 @@ rules:
         functionOptions:
           values:
             - uuid
+
+  apinext-paths-tenants:
+    description: APIs must have an org or group tenant
+    severity: error
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^\/(orgs\/{org_id}|groups\/{group_id})'
+
 
   # Require Examples for user defined response objects - in an array
   apinext-operation-response-array-examples:
