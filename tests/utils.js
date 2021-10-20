@@ -30,7 +30,27 @@ const loadSpec = (filePath) => {
   return fs.readFileSync(path.join(__dirname, filePath)).toString();
 };
 
+const specFactory = ({ paths = {}, components = {}, tags = [] } = {}) => {
+  return {
+    info: {
+      title: 'Registry',
+      version: '3.0.0',
+    },
+    openapi: '3.0.3',
+    servers: [
+      {
+        description: 'Snyk Registry',
+        url: '/api/v3',
+      },
+    ],
+    tags: [...tags],
+    components: { ...components },
+    paths: { ...paths },
+  };
+};
+
 module.exports = {
+  specFactory,
   loadRules,
   loadOneRule,
   loadSpec,
