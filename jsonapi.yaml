@@ -217,7 +217,13 @@ rules:
       field: content
       function: falsy
 
-  # TODO: Add rule to check location header link matches self link in response body (on response validation, how to test that?) 
+  jsonapi-content-non-204:
+    description: Responses from non-204 statuses must have content
+    severity: error
+    given: $.paths[?(!@property.match(/\/openapi/))][*].responses[?(@property !== '204')]
+    then:
+      field: content
+      function: truthy
 
   ### JsonApi schema
 
