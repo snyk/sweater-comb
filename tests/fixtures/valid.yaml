@@ -211,6 +211,7 @@ components:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorDocument'
+
   schemas:
     Error:
       additionalProperties: false
