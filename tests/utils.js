@@ -18,11 +18,20 @@ const loadRules = async (ruleFile) => {
   return m.exports;
 };
 
+const loadOneRule = async (ruleFile, ruleName) => {
+  const rules = await loadRules(ruleFile);
+
+  const { [ruleName]: rule } = rules.rules;
+
+  return rule;
+};
+
 const loadSpec = (filePath) => {
   return fs.readFileSync(path.join(__dirname, filePath)).toString();
 };
 
 module.exports = {
   loadRules,
+  loadOneRule,
   loadSpec,
 };
