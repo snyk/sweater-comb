@@ -1,27 +1,21 @@
 const { Spectral } = require('@stoplight/spectral-core');
 const { loadRules, loadSpec } = require('./utils');
 
-const openApiDocument = `
-info:
-  title: Registry
-  version: 3.0.0
-openapi: 3.0.3
-
-servers:
-  - description: Snyk Registry
-    url: /api/v3
-`;
-const rulesetComponents = `
-components:
-  parameters:
-    Version:
-      description: The requested version of the endpoint to process the request
-      in: query
-      name: version
-      required: true
-      schema:
-        type: string
-`;
+const openApiDocument = {
+  openapi: '3.0.3',
+  info: {
+    title: 'MyService',
+    version: '3.0.0',
+  },
+  servers: [],
+  components: {
+    headers: {},
+    parameters: {},
+    responses: {},
+    schemas: {},
+  },
+  paths: {},
+};
 
 describe('JSON API Schema', () => {
   let spectral;
@@ -227,117 +221,196 @@ describe('JSON API Schema', () => {
     );
   });
 
-  describe('Collection Rules', () => {
-    let ruleSet = '';
-    let validationResults;
+  describe('Schema Rules', () => {
+    let result;
 
-    beforeAll(async () => {
-      ruleSet = `
-${openApiDocument}
-${rulesetComponents}
-    StartingAfter:
-      description: Return the page of results immediately after this cursor
-      in: query
-      name: starting_after
-      schema:
-        type: string
+    it('fails if a non-204 response has no content', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.paths = {
+        '/org/{org_id}/no_content': {
+          get: {
+            responses: {
+              200: {},
+              201: {},
+              204: {},
+            },
+          },
+        },
+      };
 
-paths:
-  /org/{org_id}/collection_pagination_parameters:
-    get:
-      description: 'test'
-      operationId: dataCollectionPaginationParameters
-      parameters:
-        - $ref: '#/components/parameters/Version'
-        - description: Return the page of results immediately after this cursor
-          in: query
-          name: starting_after
-          schema:
-            type: string
+      // Act
+      result = await spectral.run(spec);
 
-  /org/{org_id}/collection_pagination_links:
-    get:
-      description: 'test'
-      parameters:
-        - $ref: '#/components/parameters/Version'
-      responses:
-        '200':
-          content:
-            application/vnd.api+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items: { $ref: '#/components/schemas/Project' }
-                  jsonapi: { $ref: '#/components/schemas/JsonApi' }
+      // Assert
+      const errorArray = getAllErrors(result, 'jsonapi-content-non-204');
+      expect(errorArray).toHaveLength(2);
 
-  /org/{org_id}/non_get_pagination_parameters:
-    post:
-      description: 'test'
-      parameters:
-        - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/StartingAfter'
-
-    patch:
-      description: 'test'
-      parameters:
-        - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/StartingAfter'
-
-    delete:
-      description: 'test'
-      parameters:
-        - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/StartingAfter'
-      `;
-
-      validationResults = await spectral.run(ruleSet);
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'jsonapi-content-non-204',
+            message: 'Responses from non-204 statuses must have content',
+          }),
+        ]),
+      );
     });
+  });
 
-    it('fails on collection pagination rules', () => {
-      expect(validationResults).toEqual(
+  describe('Collection Rules', () => {
+    let result;
+
+    it('fails if collection requests do not include pagination parameters', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.paths = {
+        '/org/{org_id}/collection_pagination_parameters': {
+          get: {
+            parameters: [
+              {
+                description:
+                  'Return the page of results immediately after this cursor',
+                in: 'query',
+                name: 'starting_after',
+                schema: {
+                  type: 'string',
+                },
+              },
+            ],
+          },
+        },
+      };
+
+      // Act
+      result = await spectral.run(spec);
+
+      // Assert
+      expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
             code: 'jsonapi-pagination-collection-parameters',
             message: 'Collection requests must include pagination parameters',
-            path: [
-              'paths',
-              '/org/{org_id}/collection_pagination_parameters',
-              'get',
-              'parameters',
-            ],
           }),
+        ]),
+      );
+    });
 
+    it('fails if collection responses do not include pagination links', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.paths = {
+        '/org/{org_id}/collection_pagination_links': {
+          get: {
+            responses: {
+              200: {
+                content: {
+                  'application/vnd.api+json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        jsonapi: {
+                          $ref: '#/components/schemas/JsonApi',
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      // Act
+      result = await spectral.run(spec);
+
+      // Assert
+      expect(result).toEqual(
+        expect.arrayContaining([
           expect.objectContaining({
             code: 'jsonapi-pagination-collection-links',
             message:
               'Responses for collection requests must include pagination links',
-            path: [
-              'paths',
-              '/org/{org_id}/collection_pagination_links',
-              'get',
-              'responses',
-              '200',
-              'content',
-              'application/vnd.api+json',
-              'schema',
-              'properties',
-            ],
           }),
+        ]),
+      );
+    });
 
+    it('fails if non-GET for collections requests include pagination parameters', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.components.parameters = {
+        StartingAfter: {
+          description:
+            'Return the page of results immediately after this cursor',
+          in: 'query',
+          name: 'starting_after',
+          schema: {
+            type: 'string',
+          },
+        },
+      };
+      spec.paths = {
+        '/org/{org_id}/non_get_pagination_parameters': {
+          post: {
+            parameters: [
+              {
+                $ref: '#/components/parameters/Version',
+              },
+              {
+                $ref: '#/components/parameters/StartingAfter',
+              },
+            ],
+          },
+          patch: {
+            parameters: [
+              {
+                $ref: '#/components/parameters/Version',
+              },
+              {
+                $ref: '#/components/parameters/StartingAfter',
+              },
+            ],
+          },
+          delete: {
+            parameters: [
+              {
+                $ref: '#/components/parameters/Version',
+              },
+              {
+                $ref: '#/components/parameters/StartingAfter',
+              },
+            ],
+          },
+        },
+      };
+
+      // Act
+      result = await spectral.run(spec);
+
+      // Assert
+      expect(result).toEqual(
+        expect.arrayContaining([
           expect.objectContaining({
             code: 'jsonapi-no-pagination-parameters',
             message: 'Non-GET requests should not allow pagination parameters',
-            path: [
-              'paths',
-              '/org/{org_id}/non_get_pagination_parameters',
-              'post',
-              'parameters',
-            ],
           }),
         ]),
       );
     });
   });
 });
+
+function getAllErrors(errors, errorCode = '') {
+  if (!Array.isArray(errors)) return [];
+
+  return errors.filter((item) => item.code && item.code === errorCode);
+}
