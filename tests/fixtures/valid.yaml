@@ -312,8 +312,12 @@ components:
               id:
                 type: string
                 format: uuid
-              links: { $ref: '#/components/schemas/Links' }
             required: ['type', 'id']
+          links:
+            type: object
+            properties:
+              related:
+                type: string
         required: [data]
 
     Project:

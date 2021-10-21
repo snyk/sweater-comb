@@ -259,6 +259,68 @@ rules:
 
   ### Links schema
 
+  ### Relationships
+
+  jsonapi-response-relationship-schema:
+    description: JSON:API response relationship schema
+    message: '{{error}}'
+    severity: error
+    given: $.paths.*.*.responses.*.content['application/vnd.api+json'].schema.properties.data.properties.relationships
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            additionalProperties:
+              type: object
+              properties:
+                properties:
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        properties:
+                          type: object
+                          properties:
+                            type:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum: [string]
+                              required: [type]
+                            id:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum: [string]
+                                format:
+                                  type: string
+                                  enum: [uuid]
+                              required: [type, format]
+                          required: [type, id]
+                      required: [properties]
+                    links:
+                      type: object
+                      properties:
+                        properties:
+                          type: object
+                          properties:
+                            related:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum: [string]
+                          required: [related]
+                      required: [properties]
+                  required: [data, links]
+              required: [properties]
+
+
   ### Structure of error responses
 
   ### Error schema
