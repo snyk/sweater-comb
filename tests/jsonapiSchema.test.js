@@ -407,6 +407,156 @@ describe('JSON API Schema', () => {
       );
     });
   });
+
+  describe('Relationships', () => {
+    let result;
+
+    it('passes with correct relationship schema', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.paths = {
+        '/org/{org_id}/relationship': {
+          get: {
+            responses: {
+              200: {
+                content: {
+                  'application/vnd.api+json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        data: {
+                          type: 'object',
+                          properties: {
+                            type: {
+                              type: 'string',
+                            },
+                            id: {
+                              type: 'string',
+                            },
+                            attributes: {},
+                            relationships: {
+                              type: 'object',
+                              additionalProperties: {
+                                type: 'object',
+                                properties: {
+                                  data: {
+                                    properties: {
+                                      type: {
+                                        type: 'string',
+                                      },
+                                      id: {
+                                        type: 'string',
+                                        format: 'uuid',
+                                      },
+                                    },
+                                    required: ['type', 'id'],
+                                  },
+                                  links: {
+                                    type: 'object',
+                                    properties: {
+                                      related: {
+                                        type: 'string',
+                                      },
+                                    },
+                                  },
+                                },
+                                required: ['data'],
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      // Act
+      result = await spectral.run(spec);
+
+      // Assert
+      const errors = getAllErrors(
+        result,
+        'jsonapi-response-relationship-schema',
+      );
+      expect(errors).toHaveLength(0);
+    });
+
+    it('fails on incorrect relationship schema', async () => {
+      // Arrange
+      const spec = {
+        ...openApiDocument,
+      };
+      spec.paths = {
+        '/org/{org_id}/relationship': {
+          get: {
+            responses: {
+              200: {
+                content: {
+                  'application/vnd.api+json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        data: {
+                          type: 'object',
+                          properties: {
+                            type: {
+                              type: 'string',
+                            },
+                            id: {
+                              type: 'string',
+                            },
+                            attributes: {},
+                            relationships: {
+                              type: 'object',
+                              additionalProperties: {
+                                type: 'object',
+                                properties: {
+                                  data: {
+                                    properties: {
+                                      type: {
+                                        type: 'string',
+                                      },
+                                      id: {
+                                        type: 'string',
+                                        format: 'uuid',
+                                      },
+                                    },
+                                    required: ['type', 'id'],
+                                  },
+                                },
+                                required: ['data'],
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      // Act
+      result = await spectral.run(spec);
+
+      // Assert
+      const errors = getAllErrors(
+        result,
+        'jsonapi-response-relationship-schema',
+      );
+      expect(errors).toHaveLength(1);
+    });
+  });
 });
 
 function getAllErrors(errors, errorCode = '') {
