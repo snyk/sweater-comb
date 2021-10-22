@@ -180,6 +180,10 @@ paths:
                       customField:
                         type: string
                         example: 'I have updated!'
+                  links:
+                    type: object
+                    properties:
+                      self: { $ref: '#/components/schemas/LinkProperty' }
                   anotherField:
                     type: object
                 required: [meta]

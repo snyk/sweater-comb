@@ -679,6 +679,10 @@ paths:
                       customField:
                         type: string
                         example: 'I have updated!'
+                  links:
+                    type: object
+                    properties:
+                      self: { $ref: '#/components/schemas/LinkProperty' }
                 required: [meta]
                 additionalProperties: false
 
@@ -739,6 +743,10 @@ paths:
                 properties:
                   data: { $ref: '#/components/schemas/Project' }
                   jsonapi: { $ref: '#/components/schemas/JsonApi' }
+                  links:
+                    type: object
+                    properties:
+                      self: { $ref: '#/components/schemas/LinkProperty' }
                 required: ['jsonapi', 'data', 'links' ]
                 additionalProperties: false
 
@@ -808,6 +816,10 @@ paths:
                 properties:
                   data: { $ref: '#/components/schemas/Project' }
                   jsonapi: { $ref: '#/components/schemas/JsonApi' }
+                  links:
+                    type: object
+                    properties:
+                      self: { $ref: '#/components/schemas/LinkProperty' }
                 required: ['jsonapi', 'data' ]
                 additionalProperties: false
 
@@ -934,7 +946,12 @@ paths:
                 properties:
                   jsonapi: { $ref: '#/components/schemas/JsonApi' }
                   data: { $ref: '#/components/schemas/OrgInvitation' }
-                required: [jsonapi, data]
+                  links:
+                    type: object
+                    properties:
+                      self: { $ref: '#/components/schemas/LinkProperty' }
+                    required: [self]
+                required: [jsonapi, data, links]
                 additionalProperties: false
     
     patch:

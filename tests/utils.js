@@ -22,7 +22,14 @@ const loadSpec = (filePath) => {
   return fs.readFileSync(path.join(__dirname, filePath)).toString();
 };
 
+function getAllErrors(errors, errorCode = '') {
+  if (!Array.isArray(errors)) return [];
+
+  return errors.filter((item) => item.code && item.code === errorCode);
+}
+
 module.exports = {
   loadRules,
   loadSpec,
+  getAllErrors,
 };
