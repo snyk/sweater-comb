@@ -6,20 +6,6 @@ defaults: &defaults
     - image: circleci/node:14-buster
   working_directory: ~/snyk-api-rules
 
-private_cicd_repo_auth: &private_cicd_repo_auth
-  auth:
-    username: _json_key
-    password: $GCLOUD_GCR_BUILDER
-
-commands:
-  gcr_auth:
-    description: Auth GCR
-    steps:
-      - setup_remote_docker
-      - run:
-          name: GCR auth
-          command: echo $GCLOUD_GCR_BUILDER | docker login -u _json_key --password-stdin https://gcr.io/snyk-main
-
 jobs:
   test:
     <<: *defaults
