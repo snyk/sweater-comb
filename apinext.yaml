@@ -114,3 +114,19 @@ rules:
       - field: description
         function: truthy
 
+  apinext-operation-summary:
+      description: Path operations must include a summary
+      severity: error
+      given: $.paths[*][*]
+      then:
+        field: summary
+        function: truthy
+
+  apinext-operation-tags:
+      description: Path operations must include tags
+      severity: error
+      given: $.paths[*][*]
+      then:
+        field: tags
+        function: truthy
+

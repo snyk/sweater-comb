@@ -475,6 +475,7 @@ paths:
   /orgs/{org_id}/projects:
     get:
       description: Get a list of an organization's projects.
+      summary: Find projects by organization
       operationId: getOrgsProjects
       tags:
         - Projects
@@ -614,6 +615,7 @@ paths:
 
     patch:
       description: Update an organization’s project.
+      summary: Update an existing project
       operationId: putOrgsProject
       tags:
         - Projects
@@ -693,6 +695,7 @@ paths:
   /orgs/{org_id}/projects/{id}:
     get:
       description: Get an organization’s project.
+      summary: Find a project by organization
       operationId: getOrgsProject
       tags:
         - Projects
@@ -752,6 +755,7 @@ paths:
 
     patch:
       description: Update an organization’s project, but with ID in the path.
+      summary: Update an existing project
       operationId: patchOrgsProjectId
       tags:
         - Projects
@@ -825,6 +829,7 @@ paths:
 
     delete:
       description: Delete an organization’s project.
+      summary: Delete an existing project
       operationId: deleteOrgsProject
       tags:
         - Projects
@@ -888,6 +893,7 @@ paths:
   /orgs/{org_id}/invites:
     post:
       description: Invite a user to an organization.
+      summary: Create an organization invite
       operationId: inviteUserToOrg
       tags:
         - Invites
@@ -956,6 +962,7 @@ paths:
     
     patch:
       description: Update an org invite
+      summary: Update an existing org invite
       operationId: patchOrgInvite
       tags:
         - Invites
@@ -1009,7 +1016,8 @@ paths:
               $ref: '#/components/headers/Location'
 
     delete:
-      description: Update an org invite
+      description: Delete an org invite
+      summary: Delete an existing org invite
       operationId: deleteOrgInvite
       tags:
         - Invites
@@ -1051,6 +1059,7 @@ paths:
   /groups/{group_id}/orgs:
     get:
       description: Get a list of orgs within a group
+      summary: Find organizations by group
       operationId: getIssuesSummary
       tags:
         - Group Organizations
