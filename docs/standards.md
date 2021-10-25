@@ -115,7 +115,7 @@ headers:
     snyk-resolved-version: 2021-08-12~beta
 ```
 
-[Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency.
+[Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
 
 ## <a id="response-headers"></a>Response Headers
 
@@ -123,6 +123,36 @@ Certain headers are required in all v3 API responses.
 
 - `snyk-request-id` - Relays a provided request UUID, or generates a new one, which is used to correlate the request to logs and downstream requests to other services.
 - [Versioning response headers](version.md#response-headers).
+
+## <a id="status-codes"></a>Status Codes
+
+In addition to the status codes specified in [JSON-API#Responses](https://jsonapi.org/format/#fetching-resources-responses), we have standardized on additional situations across our surface area, specifically, for dealing with error cases.
+
+All status codes must be listed in this section or as a part of the [JSON-API Specification](https://jsonapi.org). As a general guiding principle, we strive to limit the number of status codes we return into large categorically distinct areas to make working with the Snyk API easier for end-users.
+
+### 400 - Bad Request
+
+A bad request status code & error response must be returned when the user provided an syntactically invalid request header, query parameters, path parameters, or request body. For example, if an `Authorization` header was malformed, then we'd return a `400 Bad Request` where as if we were provided an expired credential (e.g. JWT), we'd want to return a `401 Unauthorized`.
+
+### 401 - Unauthorized
+
+An unauthorized status code & error response must be returned when the requester provides an invalid (e.g. a bad signature) or expired credential. For example, if a requester were to provide a credential (e.g. a JSONWebToken) that was not signed by Snyk, we'd return a `401 Unauthorized`.
+
+### 403 - Forbidden
+
+A forbidden status code & error response must be returned if the requester has provided a valid credential but the identity (e.g. user, service account, app) does not have the required permissions to perform the action. For example, if a user attempts to add a user to an organization but does not have the appropriate permissions to do so. A forbidden should only occur on _write_ actions such as a create, update, or delete. If the requester does not have read access they should receive a `404 Not Found`.
+
+### 404 - Not Found
+
+A not found status code & error response must be returned if the requested resource does not exist _or_ if the requester *does not* have access to the underlying resource. For example, if an org named `pineapple` exists but the user `joe` is not a member of the organization, then Joe should receive a `404 Not Found` when requesting any information related to the `pineapple` organization.
+
+### 409 - Conflict
+
+A conflict status code & error response must be returned if a requested _write_ action cannot be performed because it collides with some constraint (e.g. a unique constraint violation). This status code is also useful when processing idempotent requests which currently are not supported as a part of the Snyk API.
+
+### 429 - Too Many Requests
+
+A too many requests status code & error response must be returned if the requester has exceeded their request quota for some given time period.
 
 ## API Documentation
 
@@ -152,7 +182,7 @@ Enums make for great self-documenting APIs.
 
 ## Examples
 
-Request parameters and data attributes in response data [schema objects](https://swagger.io/specification/#schema-object) need the `example` field set in order to provide useful documentation. These are 
+Request parameters and data attributes in response data [schema objects](https://swagger.io/specification/#schema-object) need the `example` field set in order to provide useful documentation. These are
 
 ![Documentation with examples](media/docs_demo_with_examples.png)
 

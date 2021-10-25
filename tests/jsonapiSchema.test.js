@@ -224,6 +224,20 @@ describe('JSON API Schema', () => {
       );
     });
 
+    it('fails if 4xx is not 400,401,403,404,409, or 429', async () => {
+      const result = await spectral.run(spec);
+
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'jsonapi-4xx-response-codes',
+            message:
+              'Only 400, 401, 403, 404, 409, and 429 status codes can be returned in the 4xx.',
+          }),
+        ]),
+      );
+    });
+
     it('fails if 200 delete response does not have meta', async () => {
       // Act
       const result = await spectral.run(spec);
