@@ -1,0 +1,16 @@
+{
+  "branches": "main",
+  "verifyConditions": [
+    "@semantic-release/github"
+  ],
+  "prepare": [],
+  "publish": [
+    "@semantic-release/github"
+  ],
+  "success": [
+    "@semantic-release/github"
+  ],
+  "fail": [
+    "@semantic-release/github"
+  ]
+}

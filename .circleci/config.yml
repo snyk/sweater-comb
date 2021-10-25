@@ -9,8 +9,6 @@ defaults: &defaults
 jobs:
   test:
     <<: *defaults
-    docker:
-      - image: circleci/node:14-buster
     steps:
       - checkout
       - attach_workspace:
@@ -24,10 +22,31 @@ jobs:
       - run:
           name: Test
           command: npm test
+  
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install deps
+          command: npm install
+      - run:
+          name: Release
+          command: npx semantic-release
 
 workflows:
   version: 2
-  test:
+  test_and_publish:
     jobs:
       - test:
           name: Test
+
+      - release:
+          name: Release
+          context: nodejs-lib-release
+          requires:
+            - Test
+          filters:
+            branches:
+              only:
+                - main
