@@ -26,7 +26,7 @@ We found JSON API to be an excellent starting point for a resource-based API, fo
 
 ## Our JSON API implementation, by example
 
-What does JSON API look like? What do I need to know to get started building a resource in 5 minutes? Let's cover the basics first; you can always refer to the JSON API specification for a deeper understanding of specific details.
+What does JSON API look like? What do I need to know to get started building a resource in 5 minutes? Let’s cover the basics first; you can always refer to the JSON API specification for a deeper understanding of specific details.
 
 [Read more about our experiences with JSON API here](docs/jsonapi.md).
 
