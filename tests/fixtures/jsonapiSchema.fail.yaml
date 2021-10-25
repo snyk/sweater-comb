@@ -44,6 +44,7 @@ paths:
               schema:
                 type: object
 
+
   /goof/no-version:
     get:
       parameters: []
@@ -238,6 +239,23 @@ paths:
         '203':
           content:
             application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+
+  /goof/invalid_4xx_status:
+    get:
+      description: 'test'
+      operationId: invalidStatusCode
+      parameters:
+        - $ref: '#/components/parameters/Version'
+      responses:
+        '419':
+          content:
+            application/vnd+api.json:
               schema:
                 type: object
                 properties:

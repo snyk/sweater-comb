@@ -368,7 +368,7 @@ components:
               type: array
               example:
                 - critical
-                - high 
+                - high
               items:
                 type: string
             lifecycle:
@@ -959,7 +959,7 @@ paths:
                     required: [self]
                 required: [jsonapi, data, links]
                 additionalProperties: false
-    
+
     patch:
       description: Update an org invite
       summary: Update an existing org invite
@@ -1076,8 +1076,6 @@ paths:
             type: string
             format: uuid
       responses:
-        'default':
-          $ref: '#/components/responses/400'
         '400':
           $ref: '#/components/responses/400'
         '401':
