@@ -54,7 +54,7 @@ In increasing order of stability, from least to most stable, these are:
 - `experimental`
     - The resource version is a functional implementation of its OpenAPI spec.
     - It will be available for at least **30 days** after a subsequent resource version *of equal or greater stability* is published, after which it may be removed.
-    - During its availability, it may be revised with incompatible and breaking changes.
+    - During its availability, it must not be revised with incompatible and breaking changes.
     - May be distributed as a limited tech preview.
 - `beta`
     - The resource version may be regarded as a candidate for general availability.
