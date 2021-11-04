@@ -18,11 +18,7 @@ A new version of a resource is required if a **[breaking change](https://github.
 
 We never make a change to an existing version of an endpoint that could result in our customer’s or partner’s production code-breaking. Instead, we evolve our endpoints by introducing new versions and provide our customers ample time & warning to upgrade.
 
-### Releases can only increase in stability (or sunset by newer releases)
-
-A resource version can be "promoted" to greater stability. For example, you may decide that you're ready to commit an experimental version to beta-quality, or what was in beta, is now ready for general availability.
-
-However, you "can't go back". If you find that it's "back to the drawing board" with a resource version, then a new version needs to be created at that later point in time — you can't lower the stability of an already-released version!
+A change in stability also requires a new resource version date. Retroactive releases suddenly showing up at a higher stability can introduce unexpected breaking changes in the API.
 
 ## Versioning resources
 
@@ -37,7 +33,7 @@ A version consists of:
 - A **date** (*YYYY-mm-dd*)
 - A **stability level**, one of: `wip`, `experimental`, `beta`, or `ga`
 
-The version date must be the day that the resource version was originally introduced.
+The version date must be the day that the resource version is made available.
 
 Versions must not be released or requested at a future date.
 
@@ -67,17 +63,35 @@ In increasing order of stability, from least to most stable, these are:
     - During its availability, it must not be revised with incompatible and breaking changes.
     - It may be revised with backwards-compatible, additive changes.
 
-### Increasing stability of a release
+### Promoting stability of a resource over time
 
-A release version may be promoted to a greater stability, retroactively. For example:
+To promote a more stable version of a resource, release a new version with the desired stability commitment, on the date it is made available.
 
-- Resource version `2021-06-04~wip` is first introduced into a service on June 4, 2021.
-- It is shortly promoted to `2021-06-04~experimental`. The stability level is updated in-place.
-- Several weeks later, it is considered stable enough to promote to `2021-06-04~beta`.
+Other versions of the resource must continue to remain available through [deprecation and sunset](#deprecation-sunset).
 
-### Deprecation and Sunset
+These resource versions may share some common implementation. However, requests and responses at each version must conform to each respective OpenAPI specification.
 
-When a new version of a resource is released, it deprecates any existing version of the resource at the same stability level. A version is considered **deprecated** until it is past the mandatory duration of availability for its stability level (as defined above), after which, it may be **sunset** — removed and no longer available.
+#### Don't rewrite version history
+
+Resource versions MUST NOT be modified in-place retroactively with a stability increase. Instead, release a new version with the higher stability, dated according to its availability.
+
+A version's stability cannot be modified in-place because this effectively rewrites API history. If a past API version suddenly becomes more stable, this can change the resolved version consumers interact with, with unexpected results.
+
+An example of how this can cause problems:
+
+- A version is released at 2021-06-04~experimental
+- It gets modified in-place to increase stability, eventually becoming 2021-06-04~ga.
+- Another version starts at 2021-08-12~experimental.
+- A client evaluates the API at version 2021-10-01~ga. This resolves to
+  2021-06-04~ga. It works well so the client pins on this version (2021-10-01).
+- 2021-08-12~experimental gets modified in-place to 2021-08-12~ga on 2021-10-15.
+- The above client requests for 2021-10-01~ga now suddenly resolve to a surprise GA version that wasn't there before: 2021-08-12~ga. Unfortunately, it's a breaking change...
+
+If the 2021-08-12~experimental promotion to GA was dated when it actually took place (2021-10-15), the client would not have been broken by the newer change.
+
+### <a id="deprecation-sunset"></a>Deprecation and Sunset
+
+When a new version of a resource is released, it deprecates any prior versions of the resource at equal or lower stability. A version is considered to be in this **deprecated** state until it is past the mandatory duration of availability for its stability level (as defined above), after which, it may be **sunset** — removed and no longer available.
 
 ## Resource versioning in projects
 
