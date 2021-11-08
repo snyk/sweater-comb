@@ -24,6 +24,16 @@ rules:
       functionOptions:
         type: snake
 
+  property-names-snake-case:
+    description: Property names must be snake_case.
+    message: '{{description}}'
+    severity: error
+    given: $..properties[*]~
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+
   component-names-pascal-case:
     description: Component names must be PascalCase (except responses).
     message: '{{description}}'
