@@ -1,10 +1,10 @@
-# @snyk/sweater-comb
+# @snyk/sweater-comb (wip: next)
 
 Sweats the small stuff, so you don't have to. OpenAPI linting rules for Snyk APIs.
 
 # [Intro](docs/intro.md)
 
-At Snyk, we're starting an API program that aims to maximize the value we provide to developers and the extensibility of our platform through our APIs. 
+At Snyk, we're starting an API program that aims to maximize the value we provide to developers and the extensibility of our platform through our APIs.
 
 Such an API needs some guardrails to stay cohesive, consistent and "unsurprising" to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
 

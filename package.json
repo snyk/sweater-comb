@@ -1,16 +1,12 @@
 {
   "name": "@snyk/sweater-comb",
+  "packageManager": "yarn@3.0.2",
   "version": "0.0.0",
-  "description": "Snyk API linting rules",
-  "main": "apinext.yaml",
-  "scripts": {
-    "test": "jest",
-    "test-lint": "spectral lint --fail-severity=warn tests/**/*.yaml",
-    "format": "prettier --write **/*.js",
-    "lint": "npm run lint:format && npm run lint:js",
-    "lint:format": "prettier --check **/*.js",
-    "lint:js": "eslint --quiet --color tests/*.js"
-  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "/build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/snyk/sweater-comb.git"
@@ -20,19 +16,34 @@
     "url": "https://github.com/snyk/sweater-comb/issues"
   },
   "homepage": "https://github.com/snyk/sweater-comb#readme",
-  "devDependencies": {
-    "@stoplight/spectral-cli": "^6.0.0",
-    "@stoplight/spectral-core": "^1.4.0",
-    "@stoplight/spectral-functions": "^1.1.2",
-    "@stoplight/spectral-ruleset-migrator": "^1.4.2",
-    "@stoplight/spectral-rulesets": "^1.2.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^24.5.2",
-    "immer": "^9.0.6",
-    "jest": "^27.0.6",
-    "pac-resolver": "^5.0.0",
-    "prettier": "^2.3.2"
+  "scripts": {
+    "build": "yarn tsc --build --verbose",
+    "clean": "rm -rf build",
+    "test": "jest --colors"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^26.0.24",
+    "@types/json-stable-stringify": "^1.0.33",
+    "@types/chai": "^4.2.22",
+    "babel-jest": "26.6.0",
+    "chai": "^4.3.4",
+    "jest": "^26.6.0",
+    "json-stable-stringify": "^1.0.1",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4",
+    "ts-node": "^10.4.0"
+  },
+  "dependencies": {
+    "@useoptic/api-checks": "^0.3.1",
+    "fs-extra": "^10.0.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "build"
+    ]
+  }
 }
