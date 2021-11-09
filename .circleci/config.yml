@@ -15,21 +15,18 @@ jobs:
           at: ~/sweater-comb
       - run:
           name: Install
-          command: npm ci
-      - run:
-          name: Lint
-          command: npm run lint
+          command: yarn install
       - run:
           name: Test
-          command: npm test
-  
+          command: yarn test
+
   release:
     <<: *defaults
     steps:
       - checkout
       - run:
           name: Install deps
-          command: npm install
+          command: yarn install
       - run:
           name: Release
           command: npx semantic-release
