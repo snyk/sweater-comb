@@ -66,7 +66,7 @@ Entities will be commonly represented as types or classes when generating code. 
 
 ### Schema properties
 
-Schema properties use **camel case** names.
+Schema properties use **snake case** names.
 
 ### Operation IDs
 

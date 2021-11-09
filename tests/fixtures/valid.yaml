@@ -360,11 +360,11 @@ components:
               nullable: true
               description: The hostname for a CLI project, null if not set
               example: example.com
-            targetReference:
+            target_reference:
               type: string
               nullable: true
               example: name
-            businessCriticality:
+            business_criticality:
               type: array
               example:
                 - critical
@@ -429,7 +429,7 @@ components:
           description: The email address of the invitee.
           type: string
           example: 'example@email.com'
-        isActive:
+        is_active:
           description: The active status of the invitation.
           type: boolean
         role:
@@ -678,7 +678,7 @@ paths:
                   meta:
                     type: object
                     properties:
-                      customField:
+                      custom_field:
                         type: string
                         example: 'I have updated!'
                   links:
@@ -880,7 +880,7 @@ paths:
                   meta:
                     type: object
                     properties:
-                      customField:
+                      custom_field:
                         type: string
                         example: 'I have updated!'
                 required: [meta]
