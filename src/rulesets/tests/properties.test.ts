@@ -1,19 +1,9 @@
 import { rules } from "../properties";
-import { createTestDslFixture } from "@useoptic/api-checks";
 import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
 
-// todo: fix copy/paste
-const { compare } = createTestDslFixture<SnykApiCheckDsl, SynkApiCheckContext>(
-  (input) => {
-    return new SnykApiCheckDsl(
-      input.nextFacts,
-      input.changelog,
-      input.nextJsonLike,
-      input.context
-    );
-  }
-);
+import { createSnykTestFixture } from "./fixtures";
 
+const { compare } = createSnykTestFixture();
 // todo: fix copy/paste
 const emptyContext: SynkApiCheckContext = {
   changeDate: "2021-10-10",
@@ -39,7 +29,7 @@ describe("body properties", () => {
   };
 
   describe("key", () => {
-    it("passes when camel case", async () => {
+    it("passes when snake case", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
           spec.paths!["/example"]!.get!.responses = {
@@ -50,7 +40,7 @@ describe("body properties", () => {
                   schema: {
                     type: "object",
                     properties: {
-                      isCamelCase: { type: "string" },
+                      is_snake_case: { type: "string" },
                     },
                   },
                 },
@@ -65,7 +55,7 @@ describe("body properties", () => {
       expect(result).toMatchSnapshot();
     });
 
-    it("fails when not camel case", async () => {
+    it("fails when not snake case", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
           spec.paths!["/example"]!.get!.responses = {
@@ -76,7 +66,7 @@ describe("body properties", () => {
                   schema: {
                     type: "object",
                     properties: {
-                      "not-camel-case": { type: "string" },
+                      "not-snake-case": { type: "string" },
                     },
                   },
                 },
@@ -197,6 +187,82 @@ describe("body properties", () => {
         .withRule(rules.propertyFormat, emptyContext);
 
       expect(result.results[0].isShould).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe("breaking changes", () => {
+    it("fails if a property is removed", async () => {
+      const base = JSON.parse(JSON.stringify(baseOpenAPI));
+      base.paths!["/example"]!.get!.responses = {
+        "200": {
+          description: "",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  count: { type: "number" },
+                },
+              },
+            },
+          },
+        },
+      };
+      const result = await compare(base)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {},
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.preventRemoval, emptyContext);
+
+      expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+    it("fails if a required property is added", async () => {
+      const base = JSON.parse(JSON.stringify(baseOpenAPI));
+      base.paths!["/example"]!.get!.requestBody = {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {},
+            },
+          },
+        },
+      };
+      const result = await compare(base)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.requestBody = {
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    count: { type: "number" },
+                  },
+                  required: ["count"],
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.preventAddingRequiredRequestProperties, emptyContext);
+
+      expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
     });
   });
