@@ -209,4 +209,5 @@ components:
         strangeness:
           type: number
           description: The amount of strangeness this thing adds or removes from the situation.
+          example: 42
       additionalProperties: false
