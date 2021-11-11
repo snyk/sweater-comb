@@ -12,6 +12,7 @@ tags:
 paths:
   /thing:
     post:
+      summary: Create a new thing
       description: Create a new thing
       operationId: createThing
       tags:
@@ -38,6 +39,7 @@ paths:
         '409': { $ref: '../../../components/responses/409.yaml#/409' }
         '500': { $ref: '../../../components/responses/500.yaml#/500' }
     get:
+      summary: List instances of thing
       description: List instances of thing
       operationId: listThing
       tags:
@@ -64,6 +66,7 @@ paths:
         '500': { $ref: '../../../components/responses/500.yaml#/500' }
   /thing/{thing_id}:
     get:
+      summary: Get an instance of thing
       description: Get an instance of thing
       operationId: getThing
       tags:
@@ -90,6 +93,7 @@ paths:
         '404': { $ref: '../../../components/responses/404.yaml#/404' }
         '500': { $ref: '../../../components/responses/500.yaml#/500' }
     patch:
+      summary: Update an instance of thing
       description: Update an instance of thing
       operationId: updateThing
       tags:
@@ -118,6 +122,7 @@ paths:
         '409': { $ref: '../../../components/responses/409.yaml#/409' }
         '500': { $ref: '../../../components/responses/500.yaml#/500' }
     delete:
+      summary: Delete an instance of thing
       description: Delete an instance of thing
       operationId: deleteThing
       tags:
