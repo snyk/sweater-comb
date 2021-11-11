@@ -1319,12 +1319,12 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.3.3.tgz#d4664afee9cf79f1337f407c4c03307b3d4625a7"
-  integrity sha512-4cGsT+c7wlZxlxOpkzr3HUzdvJBdl6mno8AEvUy3/Ed1beAEH8GpmiyDYRzCAMA/ytnN/YEYh14xQf0UgM1FOQ==
+"@useoptic/api-checks@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.4.0.tgz#d036b3ffd5e58802c2b4983c7457ac53bc2ef0c9"
+  integrity sha512-/Z8+siwVySGeBOFEbEx2ol9LvU33o6M5PE7QpFFhAY6xrBJQ7pECgFMR1R21jQKf1cgNzxnVxRMf64Rk9kGMwA==
   dependencies:
-    "@useoptic/openapi-utilities" "0.3.3"
+    "@useoptic/openapi-utilities" "0.4.0"
     commander "^8.3.0"
     fs-extra "^10.0.0"
     ink "^3.2.0"
@@ -1336,10 +1336,10 @@
     react "^17.0.2"
     react-use "^17.3.1"
 
-"@useoptic/openapi-utilities@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.3.3.tgz#b911b9bcb5ca42665ffe7f5e28b6a7dfeeadc694"
-  integrity sha512-WAs+hPIKSwFB3v+nlmXoggdoDJxqdAlQFYs1KJx77iJDOybDgW1dXSYL3QOG4w+8MeTIiDhc1GC27z1EFCH0lA==
+"@useoptic/openapi-utilities@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.4.0.tgz#18a4cc92a37143034f865c2ba8e39fe149c0c3c2"
+  integrity sha512-zsJHpMfJzaodxVjNTvK1N1LYnikJx4txLC5WERnXhIvT55juylJYzBqspTBlZG+xRc3kPTHcpyWBQBfNqO0BeA==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
@@ -1347,7 +1347,6 @@
     fast-deep-equal "^3.1.3"
     fs-extra "^10.0.0"
     json-pointer "^0.6.1"
-    json-ptr "^2.2.0"
     lodash.sortby "^4.7.0"
     micro "^9.3.4"
     micro-cors "^0.1.1"
@@ -3418,13 +3417,6 @@ json-pointer@^0.6.1:
   dependencies:
     foreach "^2.0.4"
 
-json-ptr@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/json-ptr/-/json-ptr-2.2.0.tgz#a4de4ed638cb23ae4cd4b51f8bf972a1c2293f1e"
-  integrity sha512-w9f6/zhz4kykltXMG7MLJWMajxiPj0q+uzQPR1cggNAE/sXoq/C5vjUb/7QNcC3rJsVIIKy37ALTXy1O+3c8QQ==
-  dependencies:
-    tslib "^2.2.0"
-
 json-stable-stringify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
@@ -4862,7 +4854,7 @@ ts-node@^10.4.0:
     make-error "^1.1.1"
     yn "3.1.1"
 
-tslib@^2.1.0, tslib@^2.2.0:
+tslib@^2.1.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==

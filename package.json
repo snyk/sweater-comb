@@ -29,8 +29,8 @@
     "ts-node": "^10.4.0"
   },
   "dependencies": {
-    "@useoptic/api-checks": "0.3.3",
-    "@useoptic/openapi-utilities": "0.3.3",
+    "@useoptic/api-checks": "0.4.0",
+    "@useoptic/openapi-utilities": "0.4.0",
     "fs-extra": "^10.0.0"
   },
   "jest": {
