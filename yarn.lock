@@ -1319,12 +1319,12 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.4.0.tgz#d036b3ffd5e58802c2b4983c7457ac53bc2ef0c9"
-  integrity sha512-/Z8+siwVySGeBOFEbEx2ol9LvU33o6M5PE7QpFFhAY6xrBJQ7pECgFMR1R21jQKf1cgNzxnVxRMf64Rk9kGMwA==
+"@useoptic/api-checks@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.5.0.tgz#d35781eb93e3cf1931fe0c1c457043d8e22b6064"
+  integrity sha512-ThKAoeyYY9NOPVgH1Xn17/fdxrsZYe9VJ5+13NN6BzGcjs5dq8Y5VrjnaREqMTEL1PWZjKCx/rp/581LJtfyZQ==
   dependencies:
-    "@useoptic/openapi-utilities" "0.4.0"
+    "@useoptic/openapi-utilities" "0.5.0"
     commander "^8.3.0"
     fs-extra "^10.0.0"
     ink "^3.2.0"
@@ -1336,10 +1336,10 @@
     react "^17.0.2"
     react-use "^17.3.1"
 
-"@useoptic/openapi-utilities@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.4.0.tgz#18a4cc92a37143034f865c2ba8e39fe149c0c3c2"
-  integrity sha512-zsJHpMfJzaodxVjNTvK1N1LYnikJx4txLC5WERnXhIvT55juylJYzBqspTBlZG+xRc3kPTHcpyWBQBfNqO0BeA==
+"@useoptic/openapi-utilities@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.5.0.tgz#9a3ef9d7bc409c8674a48d2ce8c4eb8d2a0631b7"
+  integrity sha512-IDimc75CZnUNVJmDxYHpu6tjzo8QmUUq8jWpr4IqNUHUyBWy44MCUBwjgkEpIcHeALgVkiTFlJ47wmjE4CXu0g==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
