@@ -3,8 +3,13 @@ JsonApi:
   properties:
     version:
       type: string
+      format: semver
+      description: Version of the JSON API specification this server supports.
+      example: "1.0"
   required: ['version']
   additionalProperties: false
+  example:
+    version: "1.0"
 
 Links:
   type: object
@@ -41,30 +46,56 @@ PaginatedLinks:
 LinkProperty:
   oneOf:
     - type: string
+      description: A string containing the link’s URL.
+      example: "https://example.com/api/resource"
     - type: object
       properties:
         href:
           type: string
+          format: url
+          description: A string containing the link’s URL.
+          example: "https://example.com/api/resource"
         meta: { $ref: '#/Meta' }
       required: [ 'href' ]
       additionalProperties: false
+      example:
+        href: "https://example.com/api/resource"
+  example: "https://example.com/api/resource"
 
 Meta:
   type: object
+  description: Free-form object that may contain non-standard information.
+  example:
+    key1: value1
+    key2:
+      sub_key: sub_value
+    key3: [array_value1, array_value2]
   additionalProperties: true
 
 Relationship:
   type: object
   properties:
     data:
+      type: object
       properties:
         type:
           type: string
+          format: resource-type
+          description: Type of the related resource
+          example: resource
         id:
           type: string
           format: uuid
+          example: 4a72d1db-b465-4764-99e1-ecedad03b06a
       required: ['type', 'id']
       additionalProperties: false
     links: { $ref: '#/RelatedLink' }
     meta: { $ref: '#/Meta' }
-  required: [data, links]
+  required: [data, link]
+  example:
+    data:
+      type: resource
+      id: 4a72d1db-b465-4764-99e1-ecedad03b06a
+    link:
+      related:
+        href: https://example.com/api/resource/4a72d1db-b465-4764-99e1-ecedad03b06a
