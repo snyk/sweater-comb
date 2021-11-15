@@ -1,3 +1,5 @@
 Types:
   type: string
+  format: resource-type
+  example: resource
   # TODO: enum, generated from all known resources

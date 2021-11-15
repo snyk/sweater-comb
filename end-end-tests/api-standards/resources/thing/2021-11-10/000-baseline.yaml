@@ -193,6 +193,7 @@ components:
       properties:
         name:
           type: string
+          format: user-text
           description: Name of this instance of thing.
           example: thing
         created:
@@ -207,6 +208,7 @@ components:
           example: '2021-10-05T13:25:29Z'
         description:
           type: string
+          format: user-text
           description: User-friendly description of this instance of thing.
           example: "This is a thing named thing."
       additionalProperties: false

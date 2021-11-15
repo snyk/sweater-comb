@@ -1,5 +1,24 @@
 import { SnykApiCheckDsl } from "../dsl";
 const { expect } = require("chai");
+
+const oas3Formats = [
+  "date",
+  "date-time",
+  "password",
+  "byte",
+  "binary",
+];
+
+const allowedFormats = Array.prototype.concat(oas3Formats, [
+  "uuid",
+  "semver",
+  "url",
+  "parameter",
+  "path",
+  "user-text",
+  "resource-type",
+]);
+
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.requirement.must("have camel case keys", ({ key }) => {
@@ -9,7 +28,9 @@ export const rules = {
   },
   propertyExample: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.requirement.must("have an example", ({ flatSchema }) => {
-      expect(flatSchema.example).to.exist;
+      if (flatSchema?.type !== "object" && flatSchema?.type !== "array") {
+        expect(flatSchema.example).to.exist;
+      }
     });
   },
   propertyFormat: ({ bodyProperties }: SnykApiCheckDsl) => {
@@ -17,7 +38,11 @@ export const rules = {
       "have a format when a string",
       ({ flatSchema }) => {
         if (flatSchema.type === "string") {
-          expect(flatSchema.format).to.exist;
+          if (flatSchema.format) {
+            expect(flatSchema.format).to.be.oneOf(allowedFormats);
+          } else {
+            expect(flatSchema.pattern).to.exist;
+          }
         }
       }
     );
