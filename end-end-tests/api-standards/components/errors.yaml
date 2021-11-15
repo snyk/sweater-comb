@@ -6,8 +6,17 @@ ErrorDocument:
       type: array
       items: { $ref: '#/Error' }
       minItems: 1
+      example:
+        - status: "403"
+          detail: Permission denied for this resource
   additionalProperties: false
   required: [ 'jsonapi', 'errors']
+  example:
+    jsonapi:
+      version: "1.0"
+    errors:
+      - status: "403"
+        detail: Permission denied for this resource
 
 Error:
   type: object
@@ -15,20 +24,41 @@ Error:
     id:
       type: string
       format: uuid
+      description: "A unique identifier for this particular occurrence of the problem."
+      example: f16c31b5-6129-4571-add8-d589da9be524
     status:
       type: string
+      pattern: '^[45]\d\d$'
+      description: "The HTTP status code applicable to this problem, expressed as a string value."
+      example: "400"
     detail:
       type: string
+      format: user-text
+      description: "A human-readable explanation specific to this occurrence of the problem."
+      example: "The request was missing these required fields: ..."
     source:
       type: object
       properties:
         pointer:
           type: string
+          format: path
+          description: "A JSON Pointer [RFC6901] to the associated entity in the request document."
+          example: /data/attributes
         parameter:
           type: string
+          format: parameter
+          description: "A string indicating which URI query parameter caused the error."
+          example: "param1"
       additionalProperties: false
+      example:
+        pointer: /data/attributes
     meta:
       type: object
       additionalProperties: true
+      example:
+        key: value
   required: ['status', 'detail']
   additionalProperties: false
+  example:
+    status: "404"
+    detail: "Not Found"

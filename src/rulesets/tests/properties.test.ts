@@ -108,7 +108,7 @@ describe("body properties", () => {
   });
 
   describe("example", () => {
-    it("passes if exists", async () => {
+    it("passes if exists on a string", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
           spec.paths!["/example"]!.get!.responses = {
@@ -212,6 +212,58 @@ describe("body properties", () => {
         .withRule(rules.propertyFormat, emptyContext);
 
       expect(result.results[0].isShould).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });
+
+    it("passes if pattern is used instead", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      count: { type: "string", pattern: "^d+$" },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyFormat, emptyContext);
+
+      expect(result.results[0].isShould).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });
+
+    it("fails if format is not valid", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      name: { type: "string", format: "no-such-format" },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyExample, emptyContext);
+
+      expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
     });
   });
