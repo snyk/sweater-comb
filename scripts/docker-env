@@ -1,2 +1,3 @@
-export TAG=$(git describe --tags --abbrev=0)
+export RELEASE_TAG=optic-$(jq -r .version $(dirname ${BASH_SOURCE[0]})/../package.json)
+export LATEST_TAG=optic-latest
 export IMAGE=${IMAGE:-snyk/sweater-comb}
