@@ -1,13 +1,7 @@
 import { SnykApiCheckDsl } from "../dsl";
 const { expect } = require("chai");
 
-const oas3Formats = [
-  "date",
-  "date-time",
-  "password",
-  "byte",
-  "binary",
-];
+const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
 const allowedFormats = Array.prototype.concat(oas3Formats, [
   "uuid",
@@ -44,12 +38,21 @@ export const rules = {
             expect(flatSchema.pattern).to.exist;
           }
         }
-      }
+      },
     );
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.removed.must("not be removed", (property) => {
-      expect(false, `expected ${property.key} to be present`).to.be.ok;
+    bodyProperties.removed.must("not be removed", (property, context) => {
+      const propertyPath = context.inResponse
+        ? `response body ${context.inResponse.statusCode} ${
+            context.inResponse.body?.contentType
+          } ${context.jsonSchemaTrail?.join(".")}`
+        : `request body ${
+            context.inRequest?.body?.contentType
+          } ${context.jsonSchemaTrail?.join(".")}`;
+      expect.fail(
+        `expected ${context.method} ${context.path} ${propertyPath} to be present`,
+      );
     });
   },
   preventAddingRequiredRequestProperties: ({

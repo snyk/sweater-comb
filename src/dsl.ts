@@ -18,16 +18,14 @@ import {
   IChange,
   IFact,
   OpenApiFieldFact,
-  jsonPointerHelper,
   ILocation,
+  OpenApiRequestParameterFact,
+  OpenApiResponseFact,
   OpenAPIV3,
 } from "@useoptic/openapi-utilities";
 import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-entity-rule-impl";
 import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";
-import {
-  OpenApiRequestParameterFact,
-  OpenApiResponseFact,
-} from "@useoptic/openapi-utilities/build/openapi3/implementations/openapi3/openapi-traverser";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 type SnykStablity = "wip" | "experimental" | "beta" | "ga";
 type DateString = string; // YYYY-mm-dd
@@ -78,7 +76,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     private changelog: IChange<any>[],
     private currentJsonLike: OpenAPIV3.Document,
     private nextJsonLike: OpenAPIV3.Document,
-    private providedContext: SynkApiCheckContext
+    private providedContext: SynkApiCheckContext,
   ) {}
 
   checkPromises() {
@@ -94,17 +92,17 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 
   get operations() {
     const operations = this.changelog.filter(
-      (i) => i.location.kind === OpenApiKind.Operation
+      (i) => i.location.kind === OpenApiKind.Operation,
     );
 
     const added = operations.filter((i) =>
-      Boolean(i.added)
+      Boolean(i.added),
     ) as IChange<OpenApiOperationFact>[];
     const removed = operations.filter((i) =>
-      Boolean(i.removed)
+      Boolean(i.removed),
     ) as IChange<OpenApiOperationFact>[];
     const changes = operations.filter((i) =>
-      Boolean(i.changed)
+      Boolean(i.changed),
     ) as IChange<OpenApiOperationFact>[];
 
     const locations = [
@@ -118,11 +116,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         conceptualLocation: i.conceptualLocation,
         current:
           niceTry(() =>
-            jsonPointerHelper.get(this.currentJsonLike, i.jsonPath)
+            jsonPointerHelpers.get(this.currentJsonLike, i.jsonPath),
           ) || {},
         next:
-          niceTry(() => jsonPointerHelper.get(this.nextJsonLike, i.jsonPath)) ||
-          {},
+          niceTry(() =>
+            jsonPointerHelpers.get(this.nextJsonLike, i.jsonPath),
+          ) || {},
       };
     });
 
@@ -142,7 +141,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (opFact) => `${opFact.method.toUpperCase()} ${opFact.pathPattern}`,
         (location) => this.getContext(location),
         (...items) => this.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(this.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(this.nextJsonLike, pointer),
       ),
     };
   }
@@ -160,7 +159,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     const value: ShouldOrMust<
       (
         context: SynkApiCheckContext,
-        docs: DocsLinkHelper
+        docs: DocsLinkHelper,
       ) => Promise<void> | void
     > = {
       must: (statement, handler) => {
@@ -171,7 +170,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
           "this specification: ",
           statement,
           true,
-          () => handler(this.providedContext, docsHelper)
+          () => handler(this.providedContext, docsHelper),
         );
       },
       should: (statement, handler) => {
@@ -182,7 +181,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
           "this specification: ",
           statement,
           false,
-          () => handler(this.providedContext, docsHelper)
+          () => handler(this.providedContext, docsHelper),
         );
       },
     };
@@ -206,7 +205,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (query) => `${query.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       pathParameter: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
@@ -220,7 +219,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (path) => `${path.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       header: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
@@ -234,7 +233,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (header) => `${header.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
     };
   }
@@ -255,7 +254,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (response) => `${response.statusCode}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       headers: genericEntityRuleImpl<
         OpenApiHeaderFact,
@@ -269,7 +268,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (header) => `${header.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
     };
   }
@@ -299,7 +298,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
             "api lifeycle: ",
             statement,
             must,
-            () => handler(this.providedContext, docsHelper)
+            () => handler(this.providedContext, docsHelper),
           );
         };
       };
@@ -327,7 +326,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (field) => `${field.key}`,
       (location) => dsl.getContext(location),
       (...items) => dsl.checks.push(...items),
-      (pointer: string) => jsonPointerHelper.get(dsl.nextJsonLike, pointer)
+      (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
     );
   }
 }

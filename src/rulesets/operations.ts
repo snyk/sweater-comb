@@ -1,6 +1,6 @@
 import { SnykApiCheckDsl } from "../dsl";
-import {camelCase, snakeCase} from 'change-case';
-import {OpenAPIV3} from '@useoptic/api-checks';
+import { camelCase, snakeCase } from "change-case";
+import { OpenAPIV3 } from "@useoptic/api-checks";
 
 const { expect } = require("chai");
 
@@ -15,11 +15,12 @@ export const rules = {
         if (operation.operationId !== undefined) {
           const normalized = camelCase(operation.operationId);
           expect(
-            normalized === operation.operationId && prefixRegex.test(operation.operationId),
-            `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`
+            normalized === operation.operationId &&
+              prefixRegex.test(operation.operationId),
+            `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
           ).to.be.ok;
         }
-      }
+      },
     );
   },
   tags: ({ operations }: SnykApiCheckDsl) => {
@@ -38,40 +39,40 @@ export const rules = {
       "have consistent operation IDs",
       (current, next) => {
         expect(current.operationId).to.equal(next.operationId);
-      }
+      },
     );
   },
   parameterCase: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must(
       "use the correct case",
       (operation, context, docs, specItem) => {
-
-        for (const p  of specItem.parameters || []) {
+        for (const p of specItem.parameters || []) {
           const parameter = p as OpenAPIV3.ParameterObject;
           if (["path", "query"].includes(parameter.in)) {
             const normalized = snakeCase(parameter.name);
 
             expect(
-               normalized === parameter.name,
-              `expected parameter name "${parameter.name}" to be snake_case (${normalized})`
+              normalized === parameter.name,
+              `expected parameter name "${parameter.name}" to be snake_case (${normalized})`,
             ).to.be.ok;
           }
         }
-      }
+      },
     );
   },
   versionParameter: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must(
       "include a version parameter",
       (operation, context, docs, specItem) => {
-        const parameters = (specItem.parameters || []) as OpenAPIV3.ParameterObject[];
+        const parameters = (specItem.parameters ||
+          []) as OpenAPIV3.ParameterObject[];
         const parameterNames = parameters
           .filter((parameter) => parameter.in === "query")
           .map((parameter) => {
             return parameter.name;
           });
         expect(parameterNames).to.include("version");
-      }
+      },
     );
   },
   preventAddingRequiredQueryParameters: ({ request }: SnykApiCheckDsl) => {
@@ -88,22 +89,26 @@ export const rules = {
         if (!queryParameterBefore.required) {
           expect(queryParameterAfter.required).to.not.be.true;
         }
-      }
+      },
     );
   },
   preventRemovingStatusCodes: ({ responses }: SnykApiCheckDsl) => {
-    responses.removed.must("not be removed", (response) => {
-      expect(false, `expected ${response.statusCode} to be present`).to.be.true;
+    responses.removed.must("not be removed", (response, context) => {
+      expect.fail(
+        `expected ${context.method} ${context.path} ${context.inResponse?.statusCode} to be present`,
+      );
     });
   },
   preventChangingParameterDefaultValue: ({ request }: SnykApiCheckDsl) => {
     request.queryParameter.changed.must(
       "not change the default value",
       (parameterBefore, parameterAfter) => {
-        let beforeSchema = (parameterBefore.schema || {}) as OpenAPIV3.SchemaObject;
-        let afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
+        let beforeSchema = (parameterBefore.schema ||
+          {}) as OpenAPIV3.SchemaObject;
+        let afterSchema = (parameterAfter.schema ||
+          {}) as OpenAPIV3.SchemaObject;
         expect(beforeSchema.default).to.equal(afterSchema.default);
-      }
+      },
     );
   },
 };

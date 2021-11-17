@@ -3,14 +3,14 @@ import fs from "fs-extra";
 import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
 import { newSnykApiCheckService } from "../../service";
 import { specFromInputToResults } from "@useoptic/api-checks";
-import { sourcemapReader } from "@useoptic/openapi-utilities";
+import { sourcemapReader } from "@useoptic/openapi-io";
 import { ResultWithSourcemap } from "@useoptic/api-checks/build/sdk/types";
 import { parseSpecVersion } from "@useoptic/api-checks/build/ci-cli/input-helpers/compare-input-parser";
 import { defaultEmptySpec } from "@useoptic/api-checks/build/ci-cli/constants";
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(
-    path.join(__dirname, "../../../end-end-tests/api-standards")
+    path.join(__dirname, "../../../end-end-tests/api-standards"),
   );
 
   const resourceDate = (resource: string, date: string) =>
@@ -31,8 +31,8 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        false
-      )
+        false,
+      ),
     ).toMatchSnapshot();
   });
 
@@ -51,8 +51,8 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        true
-      )
+        true,
+      ),
     ).toMatchSnapshot();
   });
 
@@ -71,8 +71,8 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        true
-      )
+        true,
+      ),
     ).toMatchSnapshot();
   });
 
@@ -90,7 +90,7 @@ describe("end-end-tests", () => {
         },
         resourceVersions: {},
       },
-      true
+      true,
     );
 
     // expect(results.filter((i) => !i.passed)).toHaveLength(0);
@@ -102,7 +102,7 @@ describe("end-end-tests", () => {
     to: string | undefined,
     workingDir: string,
     context: SynkApiCheckContext,
-    shouldPass: boolean
+    shouldPass: boolean,
   ) {
     const fromSpecSig = parseSpecVersion(from, defaultEmptySpec);
     const fromSpec = await specFromInputToResults(fromSpecSig, workingDir);
@@ -113,14 +113,14 @@ describe("end-end-tests", () => {
     const checkResults = await checkService.runRules(
       fromSpec.jsonLike,
       toSpec.jsonLike,
-      context
+      context,
     );
 
     const { findFileAndLines } = sourcemapReader(toSpec.sourcemap);
     const result: ResultWithSourcemap[] = await Promise.all(
       checkResults.map(async (checkResult) => {
         const sourcemap = await findFileAndLines(
-          checkResult.change.location.jsonPath
+          checkResult.change.location.jsonPath,
         );
 
         const filePath = sourcemap?.filePath.split("end-end-tests")[1];
@@ -139,7 +139,7 @@ describe("end-end-tests", () => {
           },
           change: null as any,
         } as ResultWithSourcemap;
-      })
+      }),
     );
     return result;
   }
