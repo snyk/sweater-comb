@@ -1,10 +1,12 @@
 VersionRequestedResponseHeader:
   description: A header containing the version of the endpoint requested by the caller.
-  schema: { $ref: '../version.yaml#/Version' }
+  schema: { $ref: '../version.yaml#/QueryVersion' }
+  example: "2021-06-04"
 
 VersionServedResponseHeader:
   description: A header containing the version of the endpoint that was served by the API.
-  schema: { $ref: '../version.yaml#/Version' }
+  schema: { $ref: '../version.yaml#/ActualVersion' }
+  example: "2021-06-04"
 
 VersionStageResponseHeader:
   description: >
@@ -19,6 +21,7 @@ VersionStageResponseHeader:
       - ga
       - deprecated
       - sunset
+    example: "ga"
 
 DeprecationHeader:
   description: >
@@ -29,6 +32,7 @@ DeprecationHeader:
   schema:
     type: string
     format: date-time
+  example: "2021-07-01T00:00:00Z"
 
 SunsetHeader:
   description: >
@@ -40,6 +44,7 @@ SunsetHeader:
   schema:
     type: string
     format: date-time
+  example: "2021-08-02T00:00:00Z"
 
 RequestIdResponseHeader:
   description: >
@@ -48,14 +53,17 @@ RequestIdResponseHeader:
   schema:
     type: string
     format: uuid
+  example: 4b58e274-ec62-4fab-917b-1d2c48d6bdef
 
 InternalGlooNormalizedPathHeader:
+  x-snyk-internal: true
   description: >
     An internal header used by Snyk's API-Gateway for analytics.
   schema:
     type: string
 
 InternalGlooOrgIdHeader:
+  x-snyk-internal: true
   description: >
     An internal header used by Snyk's API-Gateway for analytics.
   schema:

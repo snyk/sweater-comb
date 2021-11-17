@@ -1,5 +1,5 @@
 Types:
   type: string
-  format: resource-type
+  pattern: '^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$'
   example: resource
   # TODO: enum, generated from all known resources

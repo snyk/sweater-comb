@@ -3,18 +3,21 @@ parameters:
     name: starting_after
     in: query
     description: Return the page of results immediately after this cursor
+    example: "v1.eyJpZCI6IjEwMDAifQo="
     schema:
       type: string
   EndingBefore:
     name: ending_before
     in: query
     description: Return the page of results immediately before this cursor
+    example: "v1.eyJpZCI6IjExMDAifQo="
     schema:
       type: string
   Limit:
     name: limit
     in: query
     description: Number of results to return per page
+    example: 10
     schema:
       type: integer
       minimum: 10

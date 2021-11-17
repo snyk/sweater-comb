@@ -33,7 +33,6 @@ Error:
       example: "400"
     detail:
       type: string
-      format: user-text
       description: "A human-readable explanation specific to this occurrence of the problem."
       example: "The request was missing these required fields: ..."
     source:
@@ -41,12 +40,10 @@ Error:
       properties:
         pointer:
           type: string
-          format: path
           description: "A JSON Pointer [RFC6901] to the associated entity in the request document."
           example: /data/attributes
         parameter:
           type: string
-          format: parameter
           description: "A string indicating which URI query parameter caused the error."
           example: "param1"
       additionalProperties: false

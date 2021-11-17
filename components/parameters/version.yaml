@@ -3,5 +3,5 @@ Version:
   in: query
   required: true
   description: The requested version of the endpoint to process the request
-  schema:
-    type: string
+  example: 2021-06-04
+  schema: { $ref: "../version.yaml#/QueryVersion" }
