@@ -27,7 +27,7 @@ import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-en
 import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
-type SnykStablity = "wip" | "experimental" | "beta" | "ga";
+type SnykStablity = "wip" | "experimental" | "beta" | "ga" | "deprecated";
 type DateString = string; // YYYY-mm-dd
 type ResourceName = string;
 
@@ -149,7 +149,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   get context() {
     const change: IChange<SnykApiCheckDsl> = {
       location: {
-        conceptualLocation: { path: "This Specification", method: "" },
+        conceptualLocation: { path: "Resource Document", method: "" },
         jsonPath: "/",
         conceptualPath: [],
         kind: "API",
@@ -164,29 +164,105 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     > = {
       must: (statement, handler) => {
         const docsHelper = newDocsLinkHelper();
-        return runCheck(
-          change,
-          docsHelper,
-          "this specification: ",
-          statement,
-          true,
-          () => handler(this.providedContext, docsHelper),
+        this.checks.push(
+          runCheck(
+            change,
+            docsHelper,
+            "this specification: ",
+            statement,
+            true,
+            () => handler(this.providedContext, docsHelper),
+          ),
         );
       },
       should: (statement, handler) => {
         const docsHelper = newDocsLinkHelper();
-        return runCheck(
-          change,
-          docsHelper,
-          "this specification: ",
-          statement,
-          false,
-          () => handler(this.providedContext, docsHelper),
+        this.checks.push(
+          runCheck(
+            change,
+            docsHelper,
+            "this specification: ",
+            statement,
+            false,
+            () => handler(this.providedContext, docsHelper),
+          ),
         );
       },
     };
 
     return value;
+  }
+
+  get stability() {
+    const stabilityExtensionName = "x-snyk-api-stability";
+    this.currentJsonLike[stabilityExtensionName] || undefined;
+
+    const changed: IChange<SnykStablity | undefined> = {
+      changed: {
+        before: this.currentJsonLike[stabilityExtensionName] || undefined,
+        after: this.nextJsonLike[stabilityExtensionName] || undefined,
+      },
+      location: {
+        jsonPath: jsonPointerHelpers.compile([stabilityExtensionName]),
+        conceptualPath: [stabilityExtensionName],
+        kind: "SnykStability",
+        conceptualLocation: {
+          // this is temp hack until optic-ci supports more grouping
+          path: "Resource Document",
+          method: "",
+        },
+      },
+    };
+
+    const handlers: ShouldOrMust<
+      (
+        from: SnykStablity | undefined,
+        to: SnykStablity | undefined,
+        context: SynkApiCheckContext,
+        docs: DocsLinkHelper,
+      ) => Promise<void> | void
+    > = {
+      must: (statement, handler) => {
+        const docsHelper = newDocsLinkHelper();
+        this.checks.push(
+          runCheck(
+            changed as any,
+            docsHelper,
+            `published stability: `,
+            statement,
+            true,
+            () =>
+              handler(
+                changed.changed!.before,
+                changed.changed!.after,
+                this.providedContext,
+                docsHelper,
+              ),
+          ),
+        );
+      },
+      should: (statement, handler) => {
+        const docsHelper = newDocsLinkHelper();
+        this.checks.push(
+          runCheck(
+            changed as any,
+            docsHelper,
+            `published stability: `,
+            statement,
+            false,
+            () =>
+              handler(
+                changed.changed!.before,
+                changed.changed!.after,
+                this.providedContext,
+                docsHelper,
+              ),
+          ),
+        );
+      },
+    };
+
+    return handlers;
   }
 
   get request() {

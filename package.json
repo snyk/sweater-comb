@@ -33,9 +33,9 @@
     "ts-node": "^10.4.0"
   },
   "dependencies": {
-    "@useoptic/api-checks": "^0.7.1",
-    "@useoptic/json-pointer-helpers": "^0.7.1",
-    "@useoptic/openapi-utilities": "^0.7.1",
+    "@useoptic/api-checks": "0.8.0",
+    "@useoptic/json-pointer-helpers": "0.8.0",
+    "@useoptic/openapi-utilities": "0.8.0",
     "@useoptic/openapi-io": "^0.7.1",
     "fs-extra": "^10.0.0",
     "change-case": "^4.1.2"
