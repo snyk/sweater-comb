@@ -21,20 +21,6 @@ export const rules = {
       }
     });
   },
-  propertyFormat: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.should(
-      "have a format when a string",
-      ({ flatSchema }) => {
-        if (flatSchema.type === "string") {
-          if (flatSchema.format) {
-            expect(flatSchema.format).to.be.oneOf(allowedFormats);
-          } else {
-            expect(flatSchema.pattern).to.exist;
-          }
-        }
-      },
-    );
-  },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.removed.must("not be removed", (property, context) => {
       const propertyPath = context.inResponse
