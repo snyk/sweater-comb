@@ -6,7 +6,7 @@ export async function rulesFixture(
   before: OpenAPIV3.Document,
   after: OpenAPIV3.Document,
   context: SynkApiCheckContext,
-  rules: (dsl: SnykApiCheckDsl) => void
+  rules: (dsl: SnykApiCheckDsl) => void,
 ) {
   const checker = new ApiCheckService<SynkApiCheckContext>();
   checker.useDsl<SnykApiCheckDsl>((input) => {
@@ -15,7 +15,7 @@ export async function rulesFixture(
       input.changelog,
       input.currentJsonLike,
       input.nextJsonLike,
-      input.context
+      input.context,
     );
   }, rules);
   const results = await checker.runRules(before, after, context);
@@ -34,7 +34,7 @@ export function createSnykTestFixture() {
       input.changelog,
       input.currentJsonLike,
       input.nextJsonLike,
-      input.context
+      input.context,
     );
   });
 }
