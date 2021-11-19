@@ -27,6 +27,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Build Docker image
           command: ./scripts/build-docker.bash
