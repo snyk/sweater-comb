@@ -44,7 +44,6 @@ Error:
           example: /data/attributes
         parameter:
           type: string
-          pattern: '^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$'
           description: "A string indicating which URI query parameter caused the error."
           example: "param1"
       additionalProperties: false

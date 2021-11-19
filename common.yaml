@@ -98,7 +98,7 @@ Relationship:
       additionalProperties: false
     links: { $ref: '#/RelatedLink' }
     meta: { $ref: '#/Meta' }
-  required: [data, link]
+  required: [data, links]
   example:
     data:
       type: resource
