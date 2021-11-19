@@ -23,12 +23,25 @@ jobs:
           name: Test
           command: yarn test
 
-  release:
+  docker-main-release:
     <<: *defaults
     steps:
       - checkout
       - run:
-          name: Install deps
+          name: Build Docker image
+          command: ./scripts/build-docker.bash
+      - run:
+          name: Push Docker image
+          command: |-
+            echo ${GITHUB_TOKEN} | docker login ghcr.io -u snyk --password-stdin
+            docker push ghcr.io/snyk/sweater-comb:latest
+
+  npm-main-release:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install
           command: yarn install
       - run:
           name: Release
@@ -40,13 +53,11 @@ workflows:
     jobs:
       - test:
           name: Test
-
-      - release:
-          name: Release
-          context: nodejs-lib-release
+      - docker-main-release:
+          name: Docker Image Release - Main
           requires:
             - Test
           filters:
             branches:
               only:
-                - main
+                - optic-main

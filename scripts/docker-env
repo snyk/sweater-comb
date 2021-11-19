@@ -1,3 +1,2 @@
-export RELEASE_TAG=optic-$(jq -r .version $(dirname ${BASH_SOURCE[0]})/../package.json)
-export LATEST_TAG=optic-latest
-export IMAGE=${IMAGE:-snyk/sweater-comb}
+export TAG=${TAG:-optic-main}
+export IMAGE=${IMAGE:-ghcr.io/snyk/sweater-comb}
