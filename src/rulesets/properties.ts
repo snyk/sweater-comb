@@ -3,9 +3,7 @@ const { expect } = require("chai");
 
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
-const allowedFormats = Array.prototype.concat(oas3Formats, [
-  "uuid",
-]);
+const allowedFormats = Array.prototype.concat(oas3Formats, ["uuid"]);
 
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {

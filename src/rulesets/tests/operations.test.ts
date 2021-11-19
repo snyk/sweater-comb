@@ -94,7 +94,7 @@ describe("operationId", () => {
   it("passes when camel case and has a hump", async () => {
     const result = await compare(baseForOperationIdTests)
       .to((spec) => {
-        spec.paths!["/example"]!.get!.operationId = 'getYesHump';
+        spec.paths!["/example"]!.get!.operationId = "getYesHump";
         return spec;
       })
       .withRule(rules.operationId, emptyContext);
@@ -288,7 +288,7 @@ describe("operation parameters", () => {
         })
         .withRule(
           rules.preventChangingOptionalToRequiredQueryParameters,
-          emptyContext
+          emptyContext,
         );
 
       expect(result.results[0].passed).toBeFalsy();
