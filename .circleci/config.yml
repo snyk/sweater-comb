@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Push Docker image
           command: |-
-            echo "${GH_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
+            echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
             docker push ghcr.io/snyk/sweater-comb:optic-main
 
   npm-main-release:
@@ -57,7 +57,6 @@ workflows:
           name: Test
       - docker-main-release:
           name: Docker Image Release - Main
-          context: nodejs-app-release
           requires:
             - Test
           filters:
