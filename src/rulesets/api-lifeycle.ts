@@ -16,7 +16,7 @@ export const rules = {
     stability.must(
       "be provided for every resource document",
       (before, after, context, docs) => {
-        const allowed = ["wip", "experimental", "beta", "ga", "deprecated"];
+        const allowed = ["wip", "experimental", "beta", "ga"];
         const wasValid = allowed.includes(after || "");
 
         expect(wasValid, `${after} must be one of allowed values ${allowed}`).to

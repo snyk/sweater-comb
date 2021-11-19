@@ -27,7 +27,7 @@ import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-en
 import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
-type SnykStablity = "wip" | "experimental" | "beta" | "ga" | "deprecated";
+type SnykStablity = "wip" | "experimental" | "beta" | "ga";
 type DateString = string; // YYYY-mm-dd
 type ResourceName = string;
 
