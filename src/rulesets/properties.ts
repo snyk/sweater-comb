@@ -5,12 +5,6 @@ const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
 const allowedFormats = Array.prototype.concat(oas3Formats, [
   "uuid",
-  "semver",
-  "url",
-  "parameter",
-  "path",
-  "user-text",
-  "resource-type",
 ]);
 
 export const rules = {

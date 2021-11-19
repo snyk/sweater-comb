@@ -3,7 +3,7 @@ JsonApi:
   properties:
     version:
       type: string
-      format: semver
+      pattern: '^(0|[1-9]\d*)\.(0|[1-9]\d*)$'
       description: Version of the JSON API specification this server supports.
       example: "1.0"
   required: ['version']
@@ -27,12 +27,16 @@ SelfLink:
   properties:
     self: { $ref: '#/LinkProperty' }
   additionalProperties: false
+  example:
+    self: "https://example.com/api/this_resource"
 
 RelatedLink:
   type: object
   properties:
     related: { $ref: '#/LinkProperty' }
   additionalProperties: false
+  example:
+    related: "https://example.com/api/other_resource"
 
 PaginatedLinks:
   type: object
@@ -42,6 +46,10 @@ PaginatedLinks:
     prev: { $ref: '#/LinkProperty' }
     next: { $ref: '#/LinkProperty' }
   additionalProperties: false
+  example:
+    first: "https://example.com/api/resource?ending_before=v1.eyJpZCI6IjExIn0K"
+    last: "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjMwIn0K"
+    next: "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjEwIn0K"
 
 LinkProperty:
   oneOf:
@@ -52,7 +60,6 @@ LinkProperty:
       properties:
         href:
           type: string
-          format: url
           description: A string containing the link’s URL.
           example: "https://example.com/api/resource"
         meta: { $ref: '#/Meta' }
@@ -80,7 +87,7 @@ Relationship:
       properties:
         type:
           type: string
-          format: resource-type
+          pattern: '^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$'
           description: Type of the related resource
           example: resource
         id:
@@ -91,7 +98,7 @@ Relationship:
       additionalProperties: false
     links: { $ref: '#/RelatedLink' }
     meta: { $ref: '#/Meta' }
-  required: [data, link]
+  required: [data, links]
   example:
     data:
       type: resource
