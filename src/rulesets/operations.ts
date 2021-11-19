@@ -92,6 +92,11 @@ export const rules = {
       },
     );
   },
+  preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
+    operations.removed.must("not be allowed", (operation, context) => {
+      expect.fail("expected operation to be present");
+    });
+  },
   preventRemovingStatusCodes: ({ responses }: SnykApiCheckDsl) => {
     responses.removed.must("not be removed", (response, context) => {
       expect.fail(

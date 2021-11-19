@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lifecycle stability can not change from any stability but wip 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+    "x-snyk-api-stability": "ga",
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+    "x-snyk-api-stability": "beta",
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "changed": Object {
+          "after": "beta",
+          "before": "ga",
+        },
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "Resource Document",
+          },
+          "conceptualPath": Array [
+            "x-snyk-api-stability",
+          ],
+          "jsonPath": "/x-snyk-api-stability",
+          "kind": "SnykStability",
+        },
+      },
+      "condition": "not change unless it was wip",
+      "docsLink": undefined,
+      "error": "expected 'ga' to equal 'beta'",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "published stability: ",
+    },
+  ],
+}
+`;
+
+exports[`lifecycle stability must be one of the allowed values 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+    "x-snyk-api-stability": "published",
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "changed": Object {
+          "after": "published",
+          "before": undefined,
+        },
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "Resource Document",
+          },
+          "conceptualPath": Array [
+            "x-snyk-api-stability",
+          ],
+          "jsonPath": "/x-snyk-api-stability",
+          "kind": "SnykStability",
+        },
+      },
+      "condition": "be provided for every resource document",
+      "docsLink": undefined,
+      "error": "published must be one of allowed values wip,experimental,beta,ga: expected false to be truthy",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "published stability: ",
+    },
+  ],
+}
+`;
+
+exports[`lifecycle stability must be provided 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "changed": Object {
+          "after": undefined,
+          "before": undefined,
+        },
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "Resource Document",
+          },
+          "conceptualPath": Array [
+            "x-snyk-api-stability",
+          ],
+          "jsonPath": "/x-snyk-api-stability",
+          "kind": "SnykStability",
+        },
+      },
+      "condition": "be provided for every resource document",
+      "docsLink": undefined,
+      "error": "undefined must be one of allowed values wip,experimental,beta,ga: expected false to be truthy",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "published stability: ",
+    },
+  ],
+}
+`;
+
+exports[`lifecycle stability wip can change to another maturity 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+    "x-snyk-api-stability": "wip",
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+    "x-snyk-api-stability": "beta",
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "changed": Object {
+          "after": "beta",
+          "before": "wip",
+        },
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "Resource Document",
+          },
+          "conceptualPath": Array [
+            "x-snyk-api-stability",
+          ],
+          "jsonPath": "/x-snyk-api-stability",
+          "kind": "SnykStability",
+        },
+      },
+      "condition": "not change unless it was wip",
+      "docsLink": undefined,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "published stability: ",
+    },
+  ],
+}
+`;
