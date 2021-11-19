@@ -167,7 +167,6 @@ components:
         name:
           type: string
           description: Name of this instance of thing.
-          format: user-text
           example: thing
         created:
           type: string
@@ -182,6 +181,5 @@ components:
         description:
           type: string
           description: User-friendly description of this instance of thing.
-          format: user-text
           example: "This is a thing named thing."
       additionalProperties: false
