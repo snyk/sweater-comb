@@ -27,7 +27,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: '20.10.7'
       - run:
           name: Build Docker image
           command: ./scripts/build-docker.bash
