@@ -139,6 +139,7 @@ export const rules = {
   },
   preventRemovingStatusCodes: ({ responses }: SnykApiCheckDsl) => {
     responses.removed.must("not be removed", (response, context) => {
+      if (!("inResponse" in context)) return;
       expect.fail(
         `expected ${context.method} ${context.path} ${context.inResponse?.statusCode} to be present`,
       );

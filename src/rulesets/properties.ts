@@ -36,23 +36,34 @@ export const rules = {
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.removed.must("not be removed", (property, context) => {
-      const propertyPath = context.inResponse
-        ? `response body ${context.inResponse.statusCode} ${
-            context.inResponse.body?.contentType
-          } ${context.jsonSchemaTrail?.join(".")}`
-        : `request body ${
-            context.inRequest?.body?.contentType
-          } ${context.jsonSchemaTrail?.join(".")}`;
-      expect.fail(
-        `expected ${context.method} ${context.path} ${propertyPath} to be present`,
-      );
+      if ("inResponse" in context && "jsonSchemaTrail" in context) {
+        const propertyPath = `response body ${
+          context.inResponse.statusCode
+        } ${context.jsonSchemaTrail.join(".")}`;
+        expect.fail(
+          `expected ${context.method} ${context.path} ${propertyPath} to be present`,
+        );
+      }
+
+      if (
+        "inRequest" in context &&
+        "body" in context.inRequest &&
+        "jsonSchemaTrail" in context
+      ) {
+        const propertyPath = `request body ${
+          context.inRequest?.body?.contentType
+        } ${context.jsonSchemaTrail?.join(".")}`;
+        expect.fail(
+          `expected ${context.method} ${context.path} ${propertyPath} to be present`,
+        );
+      }
     });
   },
   preventAddingRequiredRequestProperties: ({
     bodyProperties,
   }: SnykApiCheckDsl) => {
     bodyProperties.added.must("not be required", (property, context) => {
-      if (!context.inRequest) return;
+      if (!("inRequest" in context)) return;
       expect(property.required).to.not.be.true;
     });
   },
