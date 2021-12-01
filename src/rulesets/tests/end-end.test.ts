@@ -97,6 +97,8 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  const rootOfRepo = path.resolve(path.join(__dirname, "../../../"));
+
   async function snapshotScenario(
     from: string | undefined,
     to: string | undefined,
@@ -123,7 +125,7 @@ describe("end-end-tests", () => {
           checkResult.change.location.jsonPath,
         );
 
-        const filePath = sourcemap?.filePath.split("end-end-tests")[1];
+        const filePath = sourcemap?.filePath.split(rootOfRepo)[1];
 
         // if (!filePath) {
         //   console.log(checkResult.change.location.jsonPath);
