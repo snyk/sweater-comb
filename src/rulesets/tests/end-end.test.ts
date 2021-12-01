@@ -6,7 +6,7 @@ import { specFromInputToResults } from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
 import { ResultWithSourcemap } from "@useoptic/api-checks/build/sdk/types";
 import { parseSpecVersion } from "@useoptic/api-checks/build/ci-cli/input-helpers/compare-input-parser";
-import { defaultEmptySpec } from "@useoptic/api-checks/build/ci-cli/constants";
+import { defaultEmptySpec } from "@useoptic/openapi-utilities";
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(

@@ -19,9 +19,11 @@ import {
   IFact,
   OpenApiFieldFact,
   ILocation,
+  OpenAPIV3,
   OpenApiRequestParameterFact,
   OpenApiResponseFact,
-  OpenAPIV3,
+  OpenApiFact,
+  ChangeType,
 } from "@useoptic/openapi-utilities";
 import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-entity-rule-impl";
 import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";
@@ -72,8 +74,8 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   private checks: Promise<Result>[] = [];
 
   constructor(
-    private nextFacts: IFact<any>[],
-    private changelog: IChange<any>[],
+    private nextFacts: IFact<OpenApiFact>[],
+    private changelog: IChange<OpenApiFact>[],
     private currentJsonLike: OpenAPIV3.Document,
     private nextJsonLike: OpenAPIV3.Document,
     private providedContext: SynkApiCheckContext,
@@ -154,7 +156,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         conceptualPath: [],
         kind: "API",
       },
-    };
+    } as any;
 
     const value: ShouldOrMust<
       (
@@ -212,7 +214,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
           method: "",
         },
       },
-    };
+    } as any;
 
     const handlers: ShouldOrMust<
       (
@@ -263,6 +265,56 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     };
 
     return handlers;
+  }
+
+  get specification() {
+    const change: IChange<SnykApiCheckDsl> = {
+      location: {
+        conceptualLocation: { path: "This Specification", method: "" },
+        jsonPath: "/",
+        conceptualPath: [],
+        kind: "API",
+      },
+    } as any;
+
+    const value: ShouldOrMust<
+      (
+        document: OpenAPIV3.Document,
+        context: SynkApiCheckContext,
+        docs: DocsLinkHelper,
+      ) => Promise<void> | void
+    > = {
+      must: (statement, handler) => {
+        const docsHelper = newDocsLinkHelper();
+        this.checks.push(
+          runCheck(
+            change,
+            docsHelper,
+            "this specification: ",
+            statement,
+            true,
+            () => handler(this.nextJsonLike, this.providedContext, docsHelper),
+          ),
+        );
+      },
+      should: (statement, handler) => {
+        const docsHelper = newDocsLinkHelper();
+        this.checks.push(
+          runCheck(
+            change,
+            docsHelper,
+            "this specification: ",
+            statement,
+            false,
+            () => handler(this.nextJsonLike, this.providedContext, docsHelper),
+          ),
+        );
+      },
+    };
+
+    return {
+      requirement: value,
+    };
   }
 
   get request() {
@@ -356,8 +408,9 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (must: boolean) => {
         return (statement, handler) => {
           const docsHelper = newDocsLinkHelper();
-          const syntheticChange = {
+          const syntheticChange: IChange<any> = {
             added: this.providedContext,
+            changeType: ChangeType.Added,
             location: {
               jsonPath: "/",
               conceptualPath: [],
@@ -366,7 +419,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
                 method: "",
               },
               kind: "ContextRule",
-            },
+            } as any,
           };
           return runCheck(
             syntheticChange,
