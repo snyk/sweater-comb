@@ -1,8 +1,7 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { camelCase, snakeCase } from "change-case";
 import { OpenAPIV3 } from "@useoptic/api-checks";
-
-const { expect } = require("chai");
+import { expect } from "chai";
 
 const prefixRegex = /^(get|create|list|update|delete)[A-Z]+.*/; // alternatively we could split at camelCase boundaries and assert on the first item
 
@@ -60,6 +59,11 @@ export const rules = {
       },
     );
   },
+  preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
+    operations.removed.must("not be allowed", (operation, context) => {
+      expect.fail("expected operation to be present");
+    });
+  },
   versionParameter: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must(
       "include a version parameter",
@@ -72,6 +76,47 @@ export const rules = {
             return parameter.name;
           });
         expect(parameterNames).to.include("version");
+      },
+    );
+  },
+  tenantFormatting: ({ operations }: SnykApiCheckDsl) => {
+    operations.requirement.must(
+      "use UUID for org_id or group_id",
+      (operation, context, docs, specItem) => {
+        for (const parameter of specItem.parameters || []) {
+          if ("$ref" in parameter) continue;
+          if (parameter.name === "group_id" || parameter.name === "org_id") {
+            if (!parameter.schema) {
+              expect.fail(
+                `expected operation ${operation.pathPattern} ${operation.method} parameter ${parameter.name} to have a schema`,
+              );
+              continue;
+            }
+            if (!("$ref" in parameter.schema)) {
+              expect(
+                parameter.schema.format,
+                `expected operation ${operation.pathPattern} ${operation.method} parameter ${parameter.name} to use format UUID`,
+              ).to.equal("uuid");
+            }
+          }
+        }
+      },
+    );
+  },
+  pathElementsCasing: ({ specification }: SnykApiCheckDsl) => {
+    specification.requirement.must(
+      "use the right casing for path elements",
+      (spec) => {
+        const pathUrls = Object.keys(spec.paths);
+        for (const pathUrl of pathUrls) {
+          const parts = pathUrl.replace(/[?].*/, "").split(/[/]/);
+          const invalid = parts
+            // Filter out empty string (leading path) and params (different rule)
+            .filter((part) => part.length > 0 && !part.match(/^[{].*[}]/))
+            .filter((part) => snakeCase(part) !== part);
+          expect(invalid, `expected ${pathUrl} to support correct casing`).to.be
+            .empty;
+        }
       },
     );
   },
@@ -91,11 +136,6 @@ export const rules = {
         }
       },
     );
-  },
-  preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
-    operations.removed.must("not be allowed", (operation, context) => {
-      expect.fail("expected operation to be present");
-    });
   },
   preventRemovingStatusCodes: ({ responses }: SnykApiCheckDsl) => {
     responses.removed.must("not be removed", (response, context) => {
