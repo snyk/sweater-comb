@@ -16,6 +16,7 @@
     "clean": "rm -rf build",
     "compare": "yarn ts-node src/index.ts compare",
     "bulk-compare": "yarn ts-node src/index.ts bulk-compare",
+    "changelog": "yarn ts-node src/changelog.ts",
     "lint": "run-p lint:*",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
     "format": "prettier --write 'src/**/*.{js,ts}'"
@@ -46,7 +47,8 @@
     "chai": "^4.3.4",
     "change-case": "^4.1.2",
     "fs-extra": "^10.0.0",
-    "nice-try": "^3.0.0"
+    "nice-try": "^3.0.0",
+    "yargs": "^17.3.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
