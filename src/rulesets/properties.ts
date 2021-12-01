@@ -7,12 +7,21 @@ const allowedFormats = Array.prototype.concat(oas3Formats, ["uuid"]);
 
 // TODO: make sure this works for data.items.properties.attributes and data.properties.attributes
 function withinAttributes(context) {
-  // @ts-ignore
+  if (!("jsonSchemaTrail" in context)) return false;
   const { jsonSchemaTrail } = context;
-  // We don't want to check [data, attributes] so we return false for anything
-  // that isn't nested deeper.
-  if (jsonSchemaTrail.length < 3) return false;
-  if (!(jsonSchemaTrail[0] === "data" && jsonSchemaTrail[1] === "attributes"))
+  // We don't want to check [data, attributes] or [data, items, attributes]
+  // so we return false for anything that isn't nested deeper.
+  if (
+    !(
+      (jsonSchemaTrail[0] === "data" &&
+        jsonSchemaTrail[1] === "attributes" &&
+        jsonSchemaTrail.length > 2) ||
+      (jsonSchemaTrail[0] === "data" &&
+        jsonSchemaTrail[1] === "items" &&
+        jsonSchemaTrail[2] === "attributes" &&
+        jsonSchemaTrail.length > 3)
+    )
+  )
     return false;
   return true;
 }
