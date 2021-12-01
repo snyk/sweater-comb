@@ -107,60 +107,6 @@ describe("body properties", () => {
     });
   });
 
-  describe("example", () => {
-    it("passes if exists on a string", async () => {
-      const result = await compare(baseOpenAPI)
-        .to((spec) => {
-          spec.paths!["/example"]!.get!.responses = {
-            "200": {
-              description: "",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      name: { type: "string", example: "Jane Doe" },
-                    },
-                  },
-                },
-              },
-            },
-          };
-          return spec;
-        })
-        .withRule(rules.propertyExample, emptyContext);
-
-      expect(result.results[0].passed).toBeTruthy();
-      expect(result).toMatchSnapshot();
-    });
-
-    it("fails if doesn't exist", async () => {
-      const result = await compare(baseOpenAPI)
-        .to((spec) => {
-          spec.paths!["/example"]!.get!.responses = {
-            "200": {
-              description: "",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      name: { type: "string" },
-                    },
-                  },
-                },
-              },
-            },
-          };
-          return spec;
-        })
-        .withRule(rules.propertyExample, emptyContext);
-
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
-  });
-
   describe("format", () => {
     it("fails if format is not valid", async () => {
       const result = await compare(baseOpenAPI)
@@ -182,7 +128,7 @@ describe("body properties", () => {
           };
           return spec;
         })
-        .withRule(rules.propertyExample, emptyContext);
+        .withRule(rules.propertyFormat, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();

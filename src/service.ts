@@ -27,10 +27,13 @@ export function newSnykApiCheckService() {
     dslConstructor,
     require("./rulesets/properties").rules,
   );
-
   snykRulesService.useDslWithNamedRules(
     dslConstructor,
     require("./rulesets/api-lifeycle").rules,
+  );
+  snykRulesService.useDslWithNamedRules(
+    dslConstructor,
+    require("./rulesets/specification").rules,
   );
 
   snykRulesService.useSpectralRuleset({
