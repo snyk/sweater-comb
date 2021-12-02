@@ -250,7 +250,8 @@ components:
           description: User-friendly description of this instance of thing.
           example: "This is a thing named thing."
         strangeness:
-          type: number
+          # Should fail: changing the type of a property is a breaking change
+          type: string
           description: The amount of strangeness this thing adds or removes from the situation.
-          example: 42
+          example: "42"
       additionalProperties: false
