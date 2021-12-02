@@ -1,5 +1,5 @@
 import { SnykApiCheckDsl } from "../dsl";
-import { expect } from 'chai';
+import { expect } from "chai";
 import { paramCase } from "change-case";
 
 export const rules = {

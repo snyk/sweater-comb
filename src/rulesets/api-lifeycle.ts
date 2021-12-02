@@ -1,5 +1,5 @@
 import { SnykApiCheckDsl } from "../dsl";
-import { expect } from 'chai';
+import { expect } from "chai";
 
 export const rules = {
   example: ({ checkApiContext, responses }: SnykApiCheckDsl) => {
