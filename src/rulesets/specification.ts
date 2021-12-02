@@ -23,8 +23,11 @@ export const rules = {
     specification.requirement.must(
       "list the available versioned OpenAPI specifications",
       (spec) => {
-        const pathUrls = Object.keys(spec.paths);
-        expect(pathUrls).to.include("/openapi");
+        if (spec["x-snyk-api-stability"] === undefined) {
+          // Only applicable to compiled OAS; resource versions do not need to declare this
+          const pathUrls = Object.keys(spec.paths);
+          expect(pathUrls).to.include("/openapi");
+        }
       },
     );
   },
@@ -32,8 +35,11 @@ export const rules = {
     specification.requirement.must(
       "provide versioned OpenAPI specifications",
       (spec) => {
-        const pathUrls = Object.keys(spec.paths);
-        expect(pathUrls).to.include("/openapi/{version}");
+        if (spec["x-snyk-api-stability"] === undefined) {
+          // Only applicable to compiled OAS; resource versions do not need to declare this
+          const pathUrls = Object.keys(spec.paths);
+          expect(pathUrls).to.include("/openapi/{version}");
+        }
       },
     );
   },

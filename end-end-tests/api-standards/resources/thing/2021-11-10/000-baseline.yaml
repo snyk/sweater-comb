@@ -10,7 +10,7 @@ tags:
   - name: Thing
     description: Short description of what Thing represents
 paths:
-  /thing:
+  /orgs/{org_id}/thing:
     post:
       summary: Create a new thing
       description: Create a new thing
@@ -19,6 +19,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
       responses:
         "201":
           description: Created thing successfully
@@ -62,6 +63,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
       responses:
         "200":
           description: Returns a list of thing instances
@@ -96,7 +98,7 @@ paths:
         "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
         "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
         "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
-  /thing/{thing_id}:
+  /orgs/{org_id}/thing/{thing_id}:
     get:
       summary: Get an instance of thing
       description: Get an instance of thing
@@ -105,6 +107,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -148,6 +151,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -193,6 +197,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "204": { $ref: "../../../../../components/responses/204.yaml#/204" }
@@ -204,6 +209,14 @@ paths:
         "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
 components:
   parameters:
+    OrgId:
+      name: org_id
+      in: path
+      required: true
+      description: Org ID
+      schema:
+        type: string
+        format: uuid
     ThingId:
       name: thing_id
       in: path
