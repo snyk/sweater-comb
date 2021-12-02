@@ -3,4 +3,4 @@
 set -eu
 cd $(dirname $0)/..
 
-docker run --rm -it -v $(pwd):$(pwd) docker.io/snyk/sweater-comb:optic-latest "$@"
+docker run --rm -v $(pwd):$(pwd) ghcr.io/snyk/sweater-comb:optic-main "$@"
