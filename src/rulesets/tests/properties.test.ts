@@ -107,34 +107,6 @@ describe("body properties", () => {
     });
   });
 
-  describe("format", () => {
-    it("fails if format is not valid", async () => {
-      const result = await compare(baseOpenAPI)
-        .to((spec) => {
-          spec.paths!["/example"]!.get!.responses = {
-            "200": {
-              description: "",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      name: { type: "string", format: "no-such-format" },
-                    },
-                  },
-                },
-              },
-            },
-          };
-          return spec;
-        })
-        .withRule(rules.propertyFormat, emptyContext);
-
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
-  });
-
   describe("breaking changes", () => {
     it("fails if a property is removed", async () => {
       const base = JSON.parse(JSON.stringify(baseOpenAPI));

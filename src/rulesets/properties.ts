@@ -30,16 +30,6 @@ export const rules = {
       expect(snakeCase.test(key)).to.be.ok;
     });
   },
-  propertyFormat: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.should(
-      "have a format when a string",
-      ({ flatSchema }, context) => {
-        if (flatSchema.type !== "string") return;
-        if (!withinAttributes(context)) return;
-        expect(flatSchema.format).to.exist;
-      },
-    );
-  },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.removed.must("not be removed", (property, context) => {
       if ("inResponse" in context && "jsonSchemaTrail" in context) {
