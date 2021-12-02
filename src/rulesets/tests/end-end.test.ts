@@ -6,7 +6,7 @@ import { specFromInputToResults } from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
 import { ResultWithSourcemap } from "@useoptic/api-checks/build/sdk/types";
 import { parseSpecVersion } from "@useoptic/api-checks/build/ci-cli/input-helpers/compare-input-parser";
-import { defaultEmptySpec } from "@useoptic/api-checks/build/ci-cli/constants";
+import { defaultEmptySpec } from "@useoptic/openapi-utilities";
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(
@@ -97,6 +97,8 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  const rootOfRepo = path.resolve(path.join(__dirname, "../../../"));
+
   async function snapshotScenario(
     from: string | undefined,
     to: string | undefined,
@@ -123,7 +125,7 @@ describe("end-end-tests", () => {
           checkResult.change.location.jsonPath,
         );
 
-        const filePath = sourcemap?.filePath.split("end-end-tests")[1];
+        const filePath = sourcemap?.filePath.split(rootOfRepo)[1];
 
         // if (!filePath) {
         //   console.log(checkResult.change.location.jsonPath);
