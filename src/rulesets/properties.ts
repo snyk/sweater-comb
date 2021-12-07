@@ -134,4 +134,10 @@ export const rules = {
       preventChange("pattern"),
     );
   },
+  preventChangingType: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property type",
+      preventChange("type"),
+    );
+  },
 };

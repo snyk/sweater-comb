@@ -173,7 +173,7 @@ export const rules = {
       },
     );
   },
-  preventChangingParameterFormat: ({ request }: SnykApiCheckDsl) => {
+  preventChangingParameterSchemaFormat: ({ request }: SnykApiCheckDsl) => {
     request.pathParameter.changed.must(
       "not change the path parameter format",
       preventParameterChange("format"),
@@ -187,7 +187,7 @@ export const rules = {
       preventParameterChange("format"),
     );
   },
-  preventChangingParameterPattern: ({ request }: SnykApiCheckDsl) => {
+  preventChangingParameterSchemaPattern: ({ request }: SnykApiCheckDsl) => {
     request.pathParameter.changed.must(
       "not change the path parameter pattern",
       preventParameterChange("pattern"),
@@ -199,6 +199,20 @@ export const rules = {
     request.header.changed.must(
       "not change the header pattern",
       preventParameterChange("pattern"),
+    );
+  },
+  preventChangingParameterSchemaType: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter pattern",
+      preventParameterChange("type"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter pattern",
+      preventParameterChange("type"),
+    );
+    request.header.changed.must(
+      "not change the header pattern",
+      preventParameterChange("type"),
     );
   },
 };
