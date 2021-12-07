@@ -36,17 +36,24 @@ function bodyPropertyName(context) {
     : `${prefix} property`;
 }
 
-const preventChange = (property: string) => {
+/**
+ * Expectation to make sure a specific schema property does not change
+ * @example
+ * // Returns a function that's a rule for making sure
+ * // the format schema property doesn't change
+ * preventChange("format")
+ * */
+const preventChange = (schemaProperty: string) => {
   return (parameterBefore, parameterAfter, context) => {
     let beforeSchema = (parameterBefore.flatSchema ||
       {}) as OpenAPIV3.SchemaObject;
     let afterSchema = (parameterAfter.flatSchema ||
       {}) as OpenAPIV3.SchemaObject;
-    if (!beforeSchema[property] && !afterSchema[property]) return;
+    if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
     expect(
-      beforeSchema[property],
-      `expected ${bodyPropertyName(context)} ${property} to not change`,
-    ).to.equal(afterSchema[property]);
+      beforeSchema[schemaProperty],
+      `expected ${bodyPropertyName(context)} ${schemaProperty} to not change`,
+    ).to.equal(afterSchema[schemaProperty]);
   };
 };
 
