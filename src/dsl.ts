@@ -402,7 +402,10 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get checkApiContext(): ShouldOrMust<
-    (context: SynkApiCheckContext, docs: DocsLinkHelper) => void
+    (
+      context: SynkApiCheckContext & { wasDeleted: boolean },
+      docs: DocsLinkHelper,
+    ) => void
   > {
     const contextChangedHandler: (must: boolean) => ContextChangedRule["must"] =
       (must: boolean) => {
@@ -421,13 +424,22 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
               kind: "ContextRule",
             } as any,
           };
-          return runCheck(
-            syntheticChange,
-            docsHelper,
-            "api lifeycle: ",
-            statement,
-            must,
-            () => handler(this.providedContext, docsHelper),
+          this.checks.push(
+            runCheck(
+              syntheticChange,
+              docsHelper,
+              "api lifeycle: ",
+              statement,
+              must,
+              () =>
+                handler(
+                  {
+                    ...this.providedContext,
+                    wasDeleted: this.nextJsonLike?.info?.title === "Empty",
+                  },
+                  docsHelper,
+                ),
+            ),
           );
         };
       };
@@ -461,5 +473,8 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 }
 
 type ContextChangedRule = ShouldOrMust<
-  (context: SynkApiCheckContext, docs: DocsLinkHelper) => void
+  (
+    context: SynkApiCheckContext & { wasDeleted: boolean },
+    docs: DocsLinkHelper,
+  ) => void
 >;
