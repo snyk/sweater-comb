@@ -39,7 +39,7 @@ export const rules = {
     checkApiContext.must("follow sunset rules", (context) => {
       if (!context.wasDeleted) return;
       const deprecatedBy =
-        context.resourceVersions[context.changeResource]?.[
+        context.resourceVersions?.[context.changeResource]?.[
           context.changeVersion.date
         ]?.[context.changeVersion.stability]?.deprecatedBy;
 
