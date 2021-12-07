@@ -46,7 +46,9 @@ export const rules = {
   orgOrGroupTenant: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must("have an org or group tenant", (spec) => {
       const tenantUrls = Object.keys(spec.paths).filter(
-        (url) => url === "/orgs/{org_id}" || url === "/groups/{group_id}",
+        (url) =>
+          url.startsWith("/orgs/{org_id}") ||
+          url.startsWith("/groups/{group_id}"),
       );
       expect(
         tenantUrls,
