@@ -30,6 +30,9 @@ export const rules = {
       "not change unless it was wip",
       (before, after, context, docs) => {
         if (!before && !after) return;
+        // Allow for creating new resource versions with any stability.
+        // No `before` means this is a new resource
+        if (!before) return;
         if (before === "wip") return;
         expect(before).to.equal(after);
       },
