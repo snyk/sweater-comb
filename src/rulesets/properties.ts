@@ -1,5 +1,6 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
+import { links } from "../docs";
 
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
@@ -26,12 +27,14 @@ function withinAttributes(context) {
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.requirement.must("have camel case keys", ({ key }) => {
+      // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
       expect(snakeCase.test(key)).to.be.ok;
     });
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.removed.must("not be removed", (property, context) => {
+    bodyProperties.removed.must("not be removed", (property, context, docs) => {
+      docs.includeDocsLink(links.versioning.breakingChanges);
       if ("inResponse" in context && "jsonSchemaTrail" in context) {
         const propertyPath = `response body ${
           context.inResponse.statusCode
@@ -58,7 +61,8 @@ export const rules = {
   preventAddingRequiredRequestProperties: ({
     bodyProperties,
   }: SnykApiCheckDsl) => {
-    bodyProperties.added.must("not be required", (property, context) => {
+    bodyProperties.added.must("not be required", (property, context, docs) => {
+      docs.includeDocsLink(links.versioning.breakingChanges);
       if (!("inRequest" in context)) return;
       expect(property.required).to.not.be.true;
     });
@@ -67,6 +71,7 @@ export const rules = {
     bodyProperties.requirement.must(
       "have enum or example",
       (property, context, docs, specItem) => {
+        docs.includeDocsLink(links.standards.formats);
         if (!("inResponse" in context)) return;
         if (!withinAttributes(context)) return;
         if (specItem.type === "object" || specItem.type === "boolean") return;
@@ -77,7 +82,8 @@ export const rules = {
   dateFormatting: ({ bodyProperties, operations }: SnykApiCheckDsl) => {
     bodyProperties.requirement.must(
       "use date-time for dates",
-      (property, context) => {
+      (property, context, docs) => {
+        docs.includeDocsLink(links.standards.formats);
         if (!("inResponse" in context)) return;
         if (["created", "updated", "deleted"].includes(property.key)) {
           expect(property.flatSchema.format).to.equal("date-time");
@@ -89,6 +95,7 @@ export const rules = {
     bodyProperties.requirement.must(
       "have type for array items",
       (property, context, docs, specItem) => {
+        // TODO: did not find a doc link for this
         if (specItem.type === "array") {
           expect(specItem.items).to.have.property("type");
         }
