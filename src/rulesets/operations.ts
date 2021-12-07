@@ -2,8 +2,24 @@ import { SnykApiCheckDsl } from "../dsl";
 import { camelCase, snakeCase } from "change-case";
 import { OpenAPIV3 } from "@useoptic/api-checks";
 import { expect } from "chai";
+import { OpenApiRequestParameterFact } from "@useoptic/openapi-utilities";
 
 const prefixRegex = /^(get|create|list|update|delete)[A-Z]+.*/; // alternatively we could split at camelCase boundaries and assert on the first item
+
+const preventParameterChange = (property: string) => {
+  return (
+    parameterBefore: OpenApiRequestParameterFact,
+    parameterAfter: OpenApiRequestParameterFact,
+  ) => {
+    let beforeSchema = (parameterBefore.schema || {}) as OpenAPIV3.SchemaObject;
+    let afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
+    if (!beforeSchema[property] && !afterSchema[property]) return;
+    expect(
+      beforeSchema[property],
+      `expected ${parameterAfter.name} parameter ${property} to not change`,
+    ).to.equal(afterSchema[property]);
+  };
+};
 
 export const rules = {
   operationId: ({ operations }: SnykApiCheckDsl) => {
@@ -155,6 +171,34 @@ export const rules = {
           {}) as OpenAPIV3.SchemaObject;
         expect(beforeSchema.default).to.equal(afterSchema.default);
       },
+    );
+  },
+  preventChangingParameterFormat: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter format",
+      preventParameterChange("format"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter format",
+      preventParameterChange("format"),
+    );
+    request.header.changed.must(
+      "not change the header format",
+      preventParameterChange("format"),
+    );
+  },
+  preventChangingParameterPattern: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter pattern",
+      preventParameterChange("pattern"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter pattern",
+      preventParameterChange("pattern"),
+    );
+    request.header.changed.must(
+      "not change the header pattern",
+      preventParameterChange("pattern"),
     );
   },
 };

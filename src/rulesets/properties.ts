@@ -1,5 +1,6 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
+import { OpenAPIV3 } from "@useoptic/api-checks";
 
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
@@ -22,6 +23,32 @@ function withinAttributes(context) {
     return true;
   return false;
 }
+
+function bodyPropertyName(context) {
+  const prefix =
+    "inRequest" in context
+      ? "request"
+      : "inResponse" in context
+      ? "response"
+      : "";
+  return "jsonSchemaTrail" in context
+    ? `${prefix} property ${context.jsonSchemaTrail.join(".")}`
+    : `${prefix} property`;
+}
+
+const preventChange = (property: string) => {
+  return (parameterBefore, parameterAfter, context) => {
+    let beforeSchema = (parameterBefore.flatSchema ||
+      {}) as OpenAPIV3.SchemaObject;
+    let afterSchema = (parameterAfter.flatSchema ||
+      {}) as OpenAPIV3.SchemaObject;
+    if (!beforeSchema[property] && !afterSchema[property]) return;
+    expect(
+      beforeSchema[property],
+      `expected ${bodyPropertyName(context)} ${property} to not change`,
+    ).to.equal(afterSchema[property]);
+  };
+};
 
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
@@ -93,6 +120,18 @@ export const rules = {
           expect(specItem.items).to.have.property("type");
         }
       },
+    );
+  },
+  preventChangingFormat: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property format",
+      preventChange("format"),
+    );
+  },
+  preventChangingPattern: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property pattern",
+      preventChange("pattern"),
     );
   },
 };
