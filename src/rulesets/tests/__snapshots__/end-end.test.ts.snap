@@ -90,7 +90,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -107,7 +107,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -124,7 +124,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -141,7 +141,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -158,7 +158,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -175,7 +175,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -192,7 +192,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -209,7 +209,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -226,7 +226,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -243,7 +243,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -260,7 +260,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -277,7 +277,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -294,7 +294,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -311,7 +311,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -328,7 +328,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29627,7 +29627,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29644,7 +29644,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29661,7 +29661,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29678,7 +29678,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29695,7 +29695,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29712,7 +29712,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29729,7 +29729,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29746,7 +29746,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29763,7 +29763,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29780,7 +29780,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29797,7 +29797,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -29814,7 +29814,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52682,7 +52682,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52699,7 +52699,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52716,7 +52716,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52733,7 +52733,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52750,7 +52750,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52767,7 +52767,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52784,7 +52784,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52801,7 +52801,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52818,7 +52818,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52835,7 +52835,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52852,7 +52852,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52869,7 +52869,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52886,7 +52886,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52903,7 +52903,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52920,7 +52920,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82557,7 +82557,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82574,7 +82574,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82591,7 +82591,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82608,7 +82608,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82625,7 +82625,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82642,7 +82642,7 @@ Array [
   Object {
     "change": null,
     "condition": "have tags",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82659,7 +82659,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82676,7 +82676,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82693,7 +82693,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82710,7 +82710,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82727,7 +82727,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82744,7 +82744,7 @@ Array [
   Object {
     "change": null,
     "condition": "have a summary",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82761,7 +82761,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82778,7 +82778,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82795,7 +82795,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82812,7 +82812,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82829,7 +82829,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -82846,7 +82846,7 @@ Array [
   Object {
     "change": null,
     "condition": "use the correct case",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
     "isMust": true,
     "isShould": false,
     "passed": true,

@@ -25,17 +25,20 @@ export const rules = {
     );
   },
   tags: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must("have tags", (operation) => {
-      // TODO: did not find a doc link for this
+    operations.requirement.must("have tags", (operation, context, docs) => {
+      docs.includeDocsLink(links.standards.tags);
       expect(operation.tags).to.exist;
       expect(operation.tags).to.have.lengthOf.above(0, "with at least one tag");
     });
   },
   summary: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must("have a summary", (operation) => {
-      // TODO: did not find a doc link for this
-      expect(operation.summary).to.exist;
-    });
+    operations.requirement.must(
+      "have a summary",
+      (operation, context, docs) => {
+        docs.includeDocsLink(links.standards.operationSummary);
+        expect(operation.summary).to.exist;
+      },
+    );
   },
   removingOperationId: ({ operations }: SnykApiCheckDsl) => {
     operations.changed.must(
@@ -50,7 +53,7 @@ export const rules = {
     operations.requirement.must(
       "use the correct case",
       (operation, context, docs, specItem) => {
-        // TODO: did not find a doc link for this
+        docs.includeDocsLink(links.standards.parameterNamesPathComponents);
         for (const p of specItem.parameters || []) {
           const parameter = p as OpenAPIV3.ParameterObject;
           if (["path", "query"].includes(parameter.in)) {

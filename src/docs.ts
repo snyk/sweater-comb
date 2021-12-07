@@ -29,6 +29,8 @@ export const links = {
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
     operationIds:
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    operationSummary:
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
     parameterNamesPathComponents:
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
   },
