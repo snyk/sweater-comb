@@ -25,7 +25,7 @@ function withinAttributes(context) {
 
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.must("have camel case keys", ({ key }) => {
+    bodyProperties.requirement.must("have snake case keys", ({ key }) => {
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
       expect(snakeCase.test(key)).to.be.ok;
     });
