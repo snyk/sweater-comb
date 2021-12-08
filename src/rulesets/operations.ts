@@ -6,18 +6,25 @@ import { OpenApiRequestParameterFact } from "@useoptic/openapi-utilities";
 
 const prefixRegex = /^(get|create|list|update|delete)[A-Z]+.*/; // alternatively we could split at camelCase boundaries and assert on the first item
 
-const preventParameterChange = (property: string) => {
+/**
+ * Expectation to make sure a specific schema property does not change
+ * @example
+ * // Returns a function that's a rule for making sure
+ * // the format schema property doesn't change
+ * preventParameterChange("format")
+ * */
+const preventParameterChange = (schemaProperty: string) => {
   return (
     parameterBefore: OpenApiRequestParameterFact,
     parameterAfter: OpenApiRequestParameterFact,
   ) => {
     let beforeSchema = (parameterBefore.schema || {}) as OpenAPIV3.SchemaObject;
     let afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
-    if (!beforeSchema[property] && !afterSchema[property]) return;
+    if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
     expect(
-      beforeSchema[property],
-      `expected ${parameterAfter.name} parameter ${property} to not change`,
-    ).to.equal(afterSchema[property]);
+      beforeSchema[schemaProperty],
+      `expected ${parameterAfter.name} parameter ${schemaProperty} to not change`,
+    ).to.equal(afterSchema[schemaProperty]);
   };
 };
 
