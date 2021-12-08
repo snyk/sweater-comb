@@ -1,5 +1,6 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
+import { OpenAPIV3 } from "@useoptic/api-checks";
 import { links } from "../docs";
 
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
@@ -24,9 +25,42 @@ function withinAttributes(context) {
   return false;
 }
 
+function bodyPropertyName(context) {
+  const prefix =
+    "inRequest" in context
+      ? "request"
+      : "inResponse" in context
+      ? "response"
+      : "";
+  return "jsonSchemaTrail" in context
+    ? `${prefix} property ${context.jsonSchemaTrail.join(".")}`
+    : `${prefix} property`;
+}
+
+/**
+ * Expectation to make sure a specific schema property does not change
+ * @example
+ * // Returns a function that's a rule for making sure
+ * // the format schema property doesn't change
+ * preventChange("format")
+ * */
+const preventChange = (schemaProperty: string) => {
+  return (parameterBefore, parameterAfter, context) => {
+    let beforeSchema = (parameterBefore.flatSchema ||
+      {}) as OpenAPIV3.SchemaObject;
+    let afterSchema = (parameterAfter.flatSchema ||
+      {}) as OpenAPIV3.SchemaObject;
+    if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
+    expect(
+      beforeSchema[schemaProperty],
+      `expected ${bodyPropertyName(context)} ${schemaProperty} to not change`,
+    ).to.equal(afterSchema[schemaProperty]);
+  };
+};
+
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.must("have camel case keys", ({ key }) => {
+    bodyProperties.requirement.must("have snake case keys", ({ key }) => {
       // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
       expect(snakeCase.test(key)).to.be.ok;
@@ -100,6 +134,24 @@ export const rules = {
           expect(specItem.items).to.have.property("type");
         }
       },
+    );
+  },
+  preventChangingFormat: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property format",
+      preventChange("format"),
+    );
+  },
+  preventChangingPattern: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property pattern",
+      preventChange("pattern"),
+    );
+  },
+  preventChangingType: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.changed.must(
+      "not change the property type",
+      preventChange("type"),
     );
   },
 };

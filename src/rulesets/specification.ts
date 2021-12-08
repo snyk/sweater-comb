@@ -53,7 +53,9 @@ export const rules = {
       (spec, context, docs) => {
         docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
         const tenantUrls = Object.keys(spec.paths).filter(
-          (url) => url === "/orgs/{org_id}" || url === "/groups/{group_id}",
+          (url) =>
+            url.startsWith("/orgs/{org_id}") ||
+            url.startsWith("/groups/{group_id}"),
         );
         expect(
           tenantUrls,

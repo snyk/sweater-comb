@@ -2,9 +2,32 @@ import { SnykApiCheckDsl } from "../dsl";
 import { camelCase, snakeCase } from "change-case";
 import { OpenAPIV3 } from "@useoptic/api-checks";
 import { expect } from "chai";
+import { OpenApiRequestParameterFact } from "@useoptic/openapi-utilities";
 import { links } from "../docs";
 
 const prefixRegex = /^(get|create|list|update|delete)[A-Z]+.*/; // alternatively we could split at camelCase boundaries and assert on the first item
+
+/**
+ * Expectation to make sure a specific schema property does not change
+ * @example
+ * // Returns a function that's a rule for making sure
+ * // the format schema property doesn't change
+ * preventParameterChange("format")
+ * */
+const preventParameterChange = (schemaProperty: string) => {
+  return (
+    parameterBefore: OpenApiRequestParameterFact,
+    parameterAfter: OpenApiRequestParameterFact,
+  ) => {
+    let beforeSchema = (parameterBefore.schema || {}) as OpenAPIV3.SchemaObject;
+    let afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
+    if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
+    expect(
+      beforeSchema[schemaProperty],
+      `expected ${parameterAfter.name} parameter ${schemaProperty} to not change`,
+    ).to.equal(afterSchema[schemaProperty]);
+  };
+};
 
 export const rules = {
   operationId: ({ operations }: SnykApiCheckDsl) => {
@@ -175,6 +198,48 @@ export const rules = {
           {}) as OpenAPIV3.SchemaObject;
         expect(beforeSchema.default).to.equal(afterSchema.default);
       },
+    );
+  },
+  preventChangingParameterSchemaFormat: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter format",
+      preventParameterChange("format"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter format",
+      preventParameterChange("format"),
+    );
+    request.header.changed.must(
+      "not change the header format",
+      preventParameterChange("format"),
+    );
+  },
+  preventChangingParameterSchemaPattern: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter pattern",
+      preventParameterChange("pattern"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter pattern",
+      preventParameterChange("pattern"),
+    );
+    request.header.changed.must(
+      "not change the header pattern",
+      preventParameterChange("pattern"),
+    );
+  },
+  preventChangingParameterSchemaType: ({ request }: SnykApiCheckDsl) => {
+    request.pathParameter.changed.must(
+      "not change the path parameter pattern",
+      preventParameterChange("type"),
+    );
+    request.queryParameter.changed.must(
+      "not change the query parameter pattern",
+      preventParameterChange("type"),
+    );
+    request.header.changed.must(
+      "not change the header pattern",
+      preventParameterChange("type"),
     );
   },
 };
