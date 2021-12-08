@@ -31,6 +31,7 @@ export const rules = {
     stability.must(
       "not change unless it was wip",
       (before, after, context, docs) => {
+        docs.includeDocsLink(links.versioning.promotingStability);
         // When there is no `before`, it means it's a new file. Any stability is allowed.
         // When there is no `after`, it means it's been deleted and sunset rules should apply in another rule.
         if (!before || !after) return;

@@ -29298,7 +29298,7 @@ Array [
   Object {
     "change": null,
     "condition": "not change unless it was wip",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -52216,7 +52216,7 @@ Array [
   Object {
     "change": null,
     "condition": "not change unless it was wip",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -81937,7 +81937,7 @@ Array [
   Object {
     "change": null,
     "condition": "not change unless it was wip",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -116673,7 +116673,7 @@ Array [
   Object {
     "change": null,
     "condition": "not change unless it was wip",
-    "docsLink": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
     "isMust": true,
     "isShould": false,
     "passed": true,
