@@ -1,17 +1,23 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
 import { paramCase } from "change-case";
+import { links } from "../docs";
 
 export const rules = {
   headerNameCase: ({ responses }: SnykApiCheckDsl) => {
-    responses.headers.requirement.must("be kebab-case", ({ name }) => {
-      expect(paramCase(name)).to.equal(name);
-    });
+    responses.headers.requirement.must(
+      "be kebab-case",
+      ({ name }, context, docs) => {
+        docs.includeDocsLink(links.standards.headers.case);
+        expect(paramCase(name)).to.equal(name);
+      },
+    );
   },
   responseHeaders: ({ responses }: SnykApiCheckDsl) => {
     responses.requirement.must(
       "have all headers",
       (response, context, docs, specItem) => {
+        docs.includeDocsLink(links.versioning.responseHeaders);
         const requiredHeaders = [
           "snyk-request-id",
           "deprecation",

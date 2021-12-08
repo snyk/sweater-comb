@@ -1,12 +1,14 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
 import { pascalCase } from "change-case";
+import { links } from "../docs";
 
 export const rules = {
   componentNameCase: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "use pascal case for component names",
-      (spec) => {
+      (spec, context, docs) => {
+        docs.includeDocsLink(links.standards.referencedEntities);
         const componentTypes = Object.keys(spec.components || {});
         for (const componentType of componentTypes) {
           const componentNames = Object.keys(
@@ -22,7 +24,8 @@ export const rules = {
   listOpenApiVersions: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "list the available versioned OpenAPI specifications",
-      (spec) => {
+      (spec, context, docs) => {
+        docs.includeDocsLink(links.standards.openApiVersions);
         if (spec["x-snyk-api-stability"] === undefined) {
           // Only applicable to compiled OAS; resource versions do not need to declare this
           const pathUrls = Object.keys(spec.paths);
@@ -34,7 +37,8 @@ export const rules = {
   getOpenApiVersions: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "provide versioned OpenAPI specifications",
-      (spec) => {
+      (spec, context, docs) => {
+        docs.includeDocsLink(links.standards.openApiVersions);
         if (spec["x-snyk-api-stability"] === undefined) {
           // Only applicable to compiled OAS; resource versions do not need to declare this
           const pathUrls = Object.keys(spec.paths);
@@ -44,22 +48,27 @@ export const rules = {
     );
   },
   orgOrGroupTenant: ({ specification }: SnykApiCheckDsl) => {
-    specification.requirement.must("have an org or group tenant", (spec) => {
-      const tenantUrls = Object.keys(spec.paths).filter(
-        (url) =>
-          url.startsWith("/orgs/{org_id}") ||
-          url.startsWith("/groups/{group_id}"),
-      );
-      expect(
-        tenantUrls,
-        `expected support for org or group tenant`,
-      ).to.have.lengthOf.gt(0);
-    });
+    specification.requirement.must(
+      "have an org or group tenant",
+      (spec, context, docs) => {
+        docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
+        const tenantUrls = Object.keys(spec.paths).filter(
+          (url) =>
+            url.startsWith("/orgs/{org_id}") ||
+            url.startsWith("/groups/{group_id}"),
+        );
+        expect(
+          tenantUrls,
+          `expected support for org or group tenant`,
+        ).to.have.lengthOf.gt(0);
+      },
+    );
   },
   tags: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "have name and description for tags",
-      (spec) => {
+      (spec, context, docs) => {
+        docs.includeDocsLink(links.standards.tags);
         const tags = spec.tags || [];
         for (const tag of tags) {
           expect(tag).to.have.property("name");
