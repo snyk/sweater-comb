@@ -435,7 +435,9 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
                 handler(
                   {
                     ...this.providedContext,
-                    wasDeleted: this.nextJsonLike?.info?.title === "Empty",
+                    wasDeleted: Boolean(
+                      this.nextJsonLike["x-optic-ci-empty-spec"],
+                    ),
                   },
                   docsHelper,
                 ),
