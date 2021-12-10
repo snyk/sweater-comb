@@ -5,6 +5,7 @@ import { SnykApiCheckDsl } from "../dsl";
 import { OpenAPIV3 } from "openapi-types";
 import Ajv from "ajv";
 import { expect } from "chai";
+import { links } from "../docs";
 
 const ajv = new Ajv();
 
@@ -30,8 +31,8 @@ export const rules = {
     operations.requirement.must(
       "support the correct status codes",
       (operation, context, docs, specItem) => {
+        docs.includeDocsLink(links.standards.statusCodes);
         if (isOpenApiPath(context.path)) return;
-
         const operationName = getOperationName(operation);
         const statusCodes = Object.keys(specItem.responses);
 
@@ -86,6 +87,7 @@ export const rules = {
     responses.requirement.must(
       "use the JSON:API content type",
       (response, context, docs, specItem) => {
+        docs.includeDocsLink(links.jsonApi.contentType);
         if (isOpenApiPath(context.path) || response.statusCode === 204) return;
         const contentTypes = Object.keys(specItem.content);
         expect(
@@ -102,6 +104,7 @@ export const rules = {
     responses.requirement.must(
       "use the correct JSON:API response data",
       (response, context, docs, specItem) => {
+        docs.includeDocsLink(links.jsonApi.resourceObjects);
         if (isOpenApiPath(context.path)) return;
 
         const responseName = getResponseName(response, context);
@@ -176,6 +179,7 @@ export const rules = {
     responses.requirement.must(
       "include self links",
       (response, context, docs, specItem) => {
+        docs.includeDocsLink(links.jsonApi.resourceObjectLinks);
         if (isOpenApiPath(context.path)) return;
 
         // Top-level self links
@@ -200,6 +204,7 @@ export const rules = {
     operations.requirement.must(
       "correctly support pagination",
       (operation, context, docs, specItem) => {
+        docs.includeDocsLink(links.jsonApi.pagination);
         if (isOpenApiPath(context.path)) return;
 
         const operationName = getOperationName(operation);
@@ -253,6 +258,7 @@ export const rules = {
     responses.requirement.must(
       "not allow compound documents",
       (response, context, docs, specItem) => {
+        docs.includeDocsLink(links.jsonApi.compoundDocuments);
         if (isOpenApiPath(context.path)) return;
         if ([200, 201].includes(response.statusCode)) {
           expect(
@@ -271,6 +277,8 @@ export const rules = {
     responses.requirement.must(
       "have valid JSON:API schemas",
       (response, context, docs, specItem) => {
+        // TODO: this isn't a great link for this
+        docs.includeDocsLink(links.jsonApi.resourceObjects);
         if (isOpenApiPath(context.path)) return;
 
         // Response data

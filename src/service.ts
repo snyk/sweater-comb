@@ -45,6 +45,7 @@ export function newSnykApiCheckService() {
       "info-description": "off",
       "info-license": "off",
       "license-url": "off",
+      "oas3-unused-component": "off",
     },
   });
 
