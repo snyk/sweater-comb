@@ -4,6 +4,7 @@ HERE=$(cd $(dirname $0); pwd)
 cd $HERE/../..
 
 CONTEXT=$(awk NF=NF RS= OFS= <$HERE/context.json)
+echo $CONTEXT
 
 COMPARE=${COMPARE:-yarn run compare}
 
@@ -20,15 +21,23 @@ ${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/001-ok-add-property-field.yaml \
     --to $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
     --context "${CONTEXT}"
+${COMPARE} \
+    --to $HERE/resources/thing/2021-11-10/000-fail-naming.yaml \
+    --context "${CONTEXT}"
 
-# This should fail
+# These should fail
+
+${COMPARE} \
+    --to $HERE/resources/thing/2021-11-10/000-fail-naming.yaml \
+    --context "${CONTEXT}" \
+    && (exit 1) || true
+
 ${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
     --to $HERE/resources/thing/2021-11-10/003-fail-type-change.yaml \
     --context "${CONTEXT}" \
-    && false || true
+    && (exit 1) || true
 
-# These should fail
 FAILING_CHANGES="\
     $HERE/resources/thing/2021-11-10/001-fail-stability-change.yaml \
     $HERE/resources/thing/2021-11-10/001-fail-breaking-param-change.yaml \
@@ -41,5 +50,5 @@ for fc in ${FAILING_CHANGES}; do
         --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \
         --to ${fc} \
         --context "${CONTEXT}" \
-        && false || true
+        && (exit 1) || true
 done

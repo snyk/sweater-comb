@@ -81,9 +81,11 @@ paths:
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: '#/components/parameters/ThingId' }
         - in: query
+          description: Org ID
           name: org_id
           schema:
             type: string
+            format: uuid
           required: true
       responses:
         '200':

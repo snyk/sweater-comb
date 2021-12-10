@@ -22,6 +22,9 @@ jobs:
       - run:
           name: Test
           command: yarn test
+      - run:
+          name: E2E Test
+          command: ./end-end-tests/api-standards/test-bulk.bash
 
   docker-main-release:
     <<: *defaults
