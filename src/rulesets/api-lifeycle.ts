@@ -43,6 +43,7 @@ export const rules = {
   },
   followSunsetRules: ({ checkApiContext }: SnykApiCheckDsl) => {
     checkApiContext.must("follow sunset rules", (context) => {
+      if (context.changeVersion.stability === "wip") return;
       if (!context.wasDeleted) return;
       const deprecatedBy =
         context.resourceVersions?.[context.changeResource]?.[
