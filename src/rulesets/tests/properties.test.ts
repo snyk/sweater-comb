@@ -25,7 +25,7 @@ describe("body properties", () => {
         },
       },
     },
-    info: { version: "0.0.0", title: "Empty" },
+    info: { version: "0.0.0", title: "OpenAPI" },
   };
 
   describe("key", () => {

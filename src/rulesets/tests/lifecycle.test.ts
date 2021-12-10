@@ -25,7 +25,7 @@ describe("lifecycle", () => {
         },
       },
     },
-    info: { version: "0.0.0", title: "Empty" },
+    info: { version: "0.0.0", title: "OpenAPI" },
   };
 
   const withWip = {
@@ -38,7 +38,7 @@ describe("lifecycle", () => {
         },
       },
     },
-    info: { version: "0.0.0", title: "Empty" },
+    info: { version: "0.0.0", title: "OpenAPI" },
   };
   const withGa = {
     openapi: "3.0.1",
@@ -50,7 +50,7 @@ describe("lifecycle", () => {
         },
       },
     },
-    info: { version: "0.0.0", title: "Empty" },
+    info: { version: "0.0.0", title: "OpenAPI" },
   };
 
   describe("stability", () => {
@@ -99,6 +99,67 @@ describe("lifecycle", () => {
 
       expect(result.results.every((i) => i.passed)).toBeFalsy();
       expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe("sunset", () => {
+    it("fails when the file was removed and not deprecated", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.info.title = "Empty";
+          return spec;
+        })
+        .withRule(rules.followSunsetRules, emptyContext);
+      expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+
+    describe("sunset schedule", () => {
+      const context: SynkApiCheckContext = {
+        changeDate: "2021-10-20",
+        changeResource: "Example",
+        changeVersion: {
+          date: "2021-10-10",
+          stability: "experimental",
+        },
+        resourceVersions: {
+          Example: {
+            "2021-10-10": {
+              experimental: {
+                deprecatedBy: {
+                  date: "2021-10-20",
+                  stability: "ga",
+                },
+              },
+            },
+          },
+        },
+      };
+
+      it("fails when the schedule isn't met", async () => {
+        const result = await compare(baseOpenAPI)
+          .to((spec) => {
+            spec.info.title = "Empty";
+            return spec;
+          })
+          .withRule(rules.followSunsetRules, context);
+        expect(result.results[0].passed).toBeFalsy();
+        expect(result).toMatchSnapshot();
+      });
+
+      it("passes when the schedule is met", async () => {
+        const result = await compare(baseOpenAPI)
+          .to((spec) => {
+            spec.info.title = "Empty";
+            return spec;
+          })
+          .withRule(rules.followSunsetRules, {
+            ...context,
+            changeDate: "2021-12-01",
+          });
+        expect(result.results[0].passed).toBeTruthy();
+        expect(result).toMatchSnapshot();
+      });
     });
   });
 });

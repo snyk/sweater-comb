@@ -24,7 +24,7 @@ describe("operationId", () => {
         },
       },
     },
-    info: { version: "0.0.0", title: "Empty" },
+    info: { version: "0.0.0", title: "OpenAPI" },
   };
 
   describe("missing", () => {
@@ -145,7 +145,7 @@ const baseForOperationMetadataTests = {
       },
     },
   },
-  info: { version: "0.0.0", title: "Empty" },
+  info: { version: "0.0.0", title: "OpenAPI" },
 };
 
 describe("operation metadata", () => {
