@@ -18,12 +18,21 @@ ${COMPARE} \
     --to $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
     --context "${CONTEXT}"
 
+# This should fail
+${COMPARE} \
+    --from $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
+    --to $HERE/resources/thing/2021-11-10/003-fail-type-change.yaml \
+    --context "${CONTEXT}" \
+    && false || true
+
 # These should fail
 FAILING_CHANGES="\
     $HERE/resources/thing/2021-11-10/001-fail-stability-change.yaml \
     $HERE/resources/thing/2021-11-10/001-fail-breaking-param-change.yaml \
     $HERE/resources/thing/2021-11-10/001-fail-operationid-change.yaml \
-    $HERE/resources/thing/2021-11-10/001-fail-operation-removed.yaml"
+    $HERE/resources/thing/2021-11-10/001-fail-operation-removed.yaml \
+    $HERE/resources/thing/2021-11-10/001-fail-format-change.yaml \
+    "
 for fc in ${FAILING_CHANGES}; do
     ${COMPARE} \
         --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \

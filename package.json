@@ -15,6 +15,7 @@
     "build": "yarn tsc --build --verbose",
     "clean": "rm -rf build",
     "compare": "yarn ts-node src/index.ts compare",
+    "bulk-compare": "yarn ts-node src/index.ts bulk-compare",
     "lint": "run-p lint:*",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
     "format": "prettier --write 'src/**/*.{js,ts}'"
