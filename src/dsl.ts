@@ -74,6 +74,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   private checks: Promise<Result>[] = [];
 
   constructor(
+    private currentFacts: IFact<OpenApiFact>[],
     private nextFacts: IFact<OpenApiFact>[],
     private changelog: IChange<OpenApiFact>[],
     private currentJsonLike: OpenAPIV3.Document,
@@ -139,11 +140,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.Operation,
         this.changelog,
+        this.currentFacts,
         this.nextFacts,
         (opFact) => `${opFact.method.toUpperCase()} ${opFact.pathPattern}`,
         (location) => this.getContext(location),
         (...items) => this.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(this.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(this.nextJsonLike, this.currentJsonLike),
       ),
     };
   }
@@ -329,11 +331,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.QueryParameter,
         dsl.changelog,
+        dsl.currentFacts,
         dsl.nextFacts,
         (query) => `${query.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
       ),
       pathParameter: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
@@ -343,11 +346,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.PathParameter,
         dsl.changelog,
+        dsl.currentFacts,
         dsl.nextFacts,
         (path) => `${path.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
       ),
       header: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
@@ -357,11 +361,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.HeaderParameter,
         dsl.changelog,
+        dsl.currentFacts,
         dsl.nextFacts,
         (header) => `${header.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
       ),
     };
   }
@@ -378,11 +383,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.Response,
         dsl.changelog,
+        dsl.currentFacts,
         dsl.nextFacts,
         (response) => `${response.statusCode}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
       ),
       headers: genericEntityRuleImpl<
         OpenApiHeaderFact,
@@ -392,11 +398,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       >(
         OpenApiKind.ResponseHeader,
         dsl.changelog,
+        dsl.currentFacts,
         dsl.nextFacts,
         (header) => `${header.name}`,
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
-        (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+        nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
       ),
     };
   }
@@ -465,11 +472,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     >(
       OpenApiKind.Field,
       dsl.changelog,
+      dsl.currentFacts,
       dsl.nextFacts,
       (field) => `${field.key}`,
       (location) => dsl.getContext(location),
       (...items) => dsl.checks.push(...items),
-      (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+      nextOrPreviousSpecItem(dsl.nextJsonLike, dsl.currentJsonLike),
     );
   }
 }
@@ -480,3 +488,14 @@ type ContextChangedRule = ShouldOrMust<
     docs: DocsLinkHelper,
   ) => void
 >;
+
+function nextOrPreviousSpecItem(
+  nextJsonLike: OpenAPIV3.Document,
+  currentJsonLike: OpenAPIV3.Document,
+) {
+  return (pointer: string, spec: "next" | "current") =>
+    jsonPointerHelpers.get(
+      spec === "next" ? nextJsonLike : currentJsonLike,
+      pointer,
+    );
+}

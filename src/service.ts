@@ -7,6 +7,7 @@ export function newSnykApiCheckService() {
 
   const dslConstructor = (input: DslConstructorInput<SynkApiCheckContext>) => {
     return new SnykApiCheckDsl(
+      input.currentFacts,
       input.nextFacts,
       input.changelog,
       input.currentJsonLike,

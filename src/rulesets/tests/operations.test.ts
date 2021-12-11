@@ -17,21 +17,20 @@ const emptyContext: SynkApiCheckContext = {
 describe("operationId", () => {
   const baseForOperationIdTests = {
     openapi: "3.0.1",
-    paths: {
-      "/example": {
-        get: {
-          responses: {},
-        },
-      },
-    },
-    info: { version: "0.0.0", title: "OpenAPI" },
+    paths: {},
+    info: { version: "0.0.0", title: "Empty" },
   };
 
   describe("missing", () => {
     it("fails if empty string", async () => {
       const result = await compare(baseForOperationIdTests)
         .to((spec) => {
-          spec.paths!["/example"]!.get!.operationId = "";
+          spec.paths["/example"] = {
+            get: {
+              operationId: "",
+              responses: {},
+            },
+          };
           return spec;
         })
         .withRule(rules.operationId, emptyContext);
@@ -43,7 +42,11 @@ describe("operationId", () => {
     it("fails if undefined", async () => {
       const result = await compare(baseForOperationIdTests)
         .to((spec) => {
-          delete spec.paths!["/example"]!.get!.operationId;
+          spec.paths["/example"] = {
+            get: {
+              responses: {},
+            },
+          };
           return spec;
         })
         .withRule(rules.operationId, emptyContext);
@@ -57,7 +60,12 @@ describe("operationId", () => {
     it("fails if prefix is wrong", async () => {
       const result = await compare(baseForOperationIdTests)
         .to((spec) => {
-          spec.paths!["/example"]!.get!.operationId = "findHelloWorld";
+          spec.paths["/example"] = {
+            get: {
+              operationId: "findHelloWorld",
+              responses: {},
+            },
+          };
           return spec;
         })
         .withRule(rules.operationId, emptyContext);
@@ -69,7 +77,12 @@ describe("operationId", () => {
     it("fails if not camel case", async () => {
       const result = await compare(baseForOperationIdTests)
         .to((spec) => {
-          spec.paths!["/example"]!.get!.operationId = "get-hello-world";
+          spec.paths["/example"] = {
+            get: {
+              operationId: "get-hello-world",
+              responses: {},
+            },
+          };
           return spec;
         })
         .withRule(rules.operationId, emptyContext);
@@ -82,7 +95,12 @@ describe("operationId", () => {
   it("fails when camel case and valid prefix but no suffix", async () => {
     const result = await compare(baseForOperationIdTests)
       .to((spec) => {
-        spec.paths!["/example"]!.get!.operationId = "get";
+        spec.paths["/example"] = {
+          get: {
+            operationId: "get",
+            responses: {},
+          },
+        };
         return spec;
       })
       .withRule(rules.operationId, emptyContext);
@@ -94,7 +112,12 @@ describe("operationId", () => {
   it("passes when camel case and has a hump", async () => {
     const result = await compare(baseForOperationIdTests)
       .to((spec) => {
-        spec.paths!["/example"]!.get!.operationId = "getYesHump";
+        spec.paths["/example"] = {
+          get: {
+            operationId: "getYesHump",
+            responses: {},
+          },
+        };
         return spec;
       })
       .withRule(rules.operationId, emptyContext);
@@ -104,8 +127,18 @@ describe("operationId", () => {
   });
 
   it("fails if removed", async () => {
-    const baseCopy = JSON.parse(JSON.stringify(baseForOperationIdTests));
-    baseCopy.paths["/example"].get.operationId = "example";
+    const baseCopy = {
+      openapi: "3.0.1",
+      paths: {
+        "/example": {
+          get: {
+            operationId: "getItem",
+            responses: {},
+          },
+        },
+      },
+      info: { version: "0.0.0", title: "Empty" },
+    };
     const result = await compare(baseCopy)
       .to((spec) => {
         delete spec.paths!["/example"]!.get!.operationId;
@@ -119,8 +152,18 @@ describe("operationId", () => {
 
   it("fails if changed", async () => {
     // todo: fix copy/paste
-    const baseCopy = JSON.parse(JSON.stringify(baseForOperationIdTests));
-    baseCopy.paths["/example"].get.operationId = "example";
+    const baseCopy = {
+      openapi: "3.0.1",
+      paths: {
+        "/example": {
+          get: {
+            operationId: "getItem",
+            responses: {},
+          },
+        },
+      },
+      info: { version: "0.0.0", title: "Empty" },
+    };
     const result = await compare(baseCopy)
       .to((spec) => {
         spec.paths!["/example"]!.get!.operationId = "example2";
@@ -145,7 +188,7 @@ const baseForOperationMetadataTests = {
       },
     },
   },
-  info: { version: "0.0.0", title: "OpenAPI" },
+  info: { version: "0.0.0", title: "Empty" },
 };
 
 describe("operation metadata", () => {
@@ -349,14 +392,14 @@ describe("operation parameters", () => {
   });
 
   describe("version parameter", () => {
-    it("fails when there is no version parameter", async () => {
-      const result = await compare(baseForOperationMetadataTests)
-        .to((spec) => spec)
-        .withRule(rules.versionParameter, emptyContext);
-
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
+    // it('fails when there is no version parameter', async () => {
+    //   const result = await compare(baseForOperationMetadataTests)
+    //     .to((spec) => spec)
+    //     .withRule(rules.versionParameter, emptyContext);
+    //
+    //   expect(result.results[0].passed).toBeFalsy();
+    //   expect(result).toMatchSnapshot();
+    // });
 
     it("passes if there is a version parameter", async () => {
       const result = await compare(baseForOperationMetadataTests)

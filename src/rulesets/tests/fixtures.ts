@@ -11,6 +11,7 @@ export async function rulesFixture(
   const checker = new ApiCheckService<SynkApiCheckContext>();
   checker.useDsl<SnykApiCheckDsl>((input) => {
     return new SnykApiCheckDsl(
+      input.currentFacts,
       input.nextFacts,
       input.changelog,
       input.currentJsonLike,
@@ -30,6 +31,7 @@ export async function inputFrom(dir: string, name: string) {
 export function createSnykTestFixture() {
   return createTestDslFixture<SnykApiCheckDsl, SynkApiCheckContext>((input) => {
     return new SnykApiCheckDsl(
+      input.currentFacts,
       input.nextFacts,
       input.changelog,
       input.currentJsonLike,
