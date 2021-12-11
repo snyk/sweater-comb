@@ -60,7 +60,7 @@ const preventChange = (schemaProperty: string) => {
 
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.must("have snake case keys", ({ key }) => {
+    bodyProperties.added.must("have snake case keys", ({ key }) => {
       // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
       expect(snakeCase.test(key)).to.be.ok;
@@ -114,7 +114,7 @@ export const rules = {
     );
   },
   dateFormatting: ({ bodyProperties, operations }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.must(
+    bodyProperties.added.must(
       "use date-time for dates",
       (property, context, docs) => {
         docs.includeDocsLink(links.standards.formats);
