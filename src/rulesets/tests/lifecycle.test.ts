@@ -106,7 +106,7 @@ describe("lifecycle", () => {
     it("fails when the file was removed and not deprecated", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
-          spec.info.title = "Empty";
+          spec["x-optic-ci-empty-spec"] = true;
           return spec;
         })
         .withRule(rules.followSunsetRules, emptyContext);
@@ -139,7 +139,7 @@ describe("lifecycle", () => {
       it("fails when the schedule isn't met", async () => {
         const result = await compare(baseOpenAPI)
           .to((spec) => {
-            spec.info.title = "Empty";
+            spec["x-optic-ci-empty-spec"] = true;
             return spec;
           })
           .withRule(rules.followSunsetRules, context);
@@ -150,7 +150,7 @@ describe("lifecycle", () => {
       it("passes when the schedule is met", async () => {
         const result = await compare(baseOpenAPI)
           .to((spec) => {
-            spec.info.title = "Empty";
+            spec["x-optic-ci-empty-spec"] = true;
             return spec;
           })
           .withRule(rules.followSunsetRules, {
