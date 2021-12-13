@@ -39,6 +39,18 @@ describe("operationId", () => {
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
     });
+
+    it("fails if undefined", async () => {
+      const result = await compare(baseForOperationIdTests)
+        .to((spec) => {
+          delete spec.paths!["/example"]!.get!.operationId;
+          return spec;
+        })
+        .withRule(rules.operationIdSet, emptyContext);
+
+      expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
   });
 
   describe("when set", () => {

@@ -47,6 +47,15 @@ export const rules = {
       },
     );
   },
+  operationIdSet: ({ operations }: SnykApiCheckDsl) => {
+    operations.requirement.must(
+      "have operationId",
+      (operation, context, docs) => {
+        docs.includeDocsLink(links.standards.operationIds);
+        expect(operation.operationId).to.be.ok;
+      },
+    );
+  },
   tags: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must("have tags", (operation, context, docs) => {
       docs.includeDocsLink(links.standards.tags);
