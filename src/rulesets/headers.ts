@@ -5,7 +5,7 @@ import { links } from "../docs";
 
 export const rules = {
   headerNameCase: ({ responses }: SnykApiCheckDsl) => {
-    responses.headers.requirement.must(
+    responses.headers.requirementOnChange.must(
       "be kebab-case",
       ({ name }, context, docs) => {
         docs.includeDocsLink(links.standards.headers.case);

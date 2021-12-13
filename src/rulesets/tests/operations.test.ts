@@ -46,7 +46,7 @@ describe("operationId", () => {
           delete spec.paths!["/example"]!.get!.operationId;
           return spec;
         })
-        .withRule(rules.operationId, emptyContext);
+        .withRule(rules.operationIdSet, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
@@ -355,23 +355,6 @@ describe("operation parameters", () => {
         .withRule(rules.versionParameter, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
-
-    it("passes if there is a version parameter", async () => {
-      const result = await compare(baseForOperationMetadataTests)
-        .to((spec) => {
-          spec.paths!["/example"]!.get!.parameters = [
-            {
-              in: "query",
-              name: "version",
-            },
-          ];
-          return spec;
-        })
-        .withRule(rules.parameterCase, emptyContext);
-
-      expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
   });

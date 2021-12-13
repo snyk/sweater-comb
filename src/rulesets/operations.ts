@@ -31,7 +31,7 @@ const preventParameterChange = (schemaProperty: string) => {
 
 export const rules = {
   operationId: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "have the correct operationId format",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationIds);
@@ -44,6 +44,15 @@ export const rules = {
             `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
           ).to.be.ok;
         }
+      },
+    );
+  },
+  operationIdSet: ({ operations }: SnykApiCheckDsl) => {
+    operations.requirement.must(
+      "have operationId",
+      (operation, context, docs) => {
+        docs.includeDocsLink(links.standards.operationIds);
+        expect(operation.operationId).to.be.ok;
       },
     );
   },
@@ -73,7 +82,7 @@ export const rules = {
     );
   },
   parameterCase: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "use the correct case",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);

@@ -485,6 +485,14 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "added": Object {
+          "flatSchema": Object {
+            "type": "string",
+          },
+          "key": "not-snake-case",
+          "required": false,
+        },
+        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "inResponse": Object {
@@ -511,13 +519,6 @@ Object {
           "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
           "kind": "field",
         },
-        "value": Object {
-          "flatSchema": Object {
-            "type": "string",
-          },
-          "key": "not-snake-case",
-          "required": false,
-        },
       },
       "condition": "have snake case keys",
       "docsLink": undefined,
@@ -525,7 +526,7 @@ Object {
       "isMust": true,
       "isShould": false,
       "passed": false,
-      "where": "requirement for field: not-snake-case",
+      "where": "added field: not-snake-case",
     },
   ],
 }
@@ -674,6 +675,14 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "added": Object {
+          "flatSchema": Object {
+            "type": "string",
+          },
+          "key": "is_snake_case",
+          "required": false,
+        },
+        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "inResponse": Object {
@@ -700,20 +709,13 @@ Object {
           "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
           "kind": "field",
         },
-        "value": Object {
-          "flatSchema": Object {
-            "type": "string",
-          },
-          "key": "is_snake_case",
-          "required": false,
-        },
       },
       "condition": "have snake case keys",
       "docsLink": undefined,
       "isMust": true,
       "isShould": false,
       "passed": true,
-      "where": "requirement for field: is_snake_case",
+      "where": "added field: is_snake_case",
     },
   ],
 }
@@ -862,6 +864,14 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "added": Object {
+          "flatSchema": Object {
+            "type": "string",
+          },
+          "key": "technicallysnakecase",
+          "required": false,
+        },
+        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "inResponse": Object {
@@ -888,20 +898,13 @@ Object {
           "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
           "kind": "field",
         },
-        "value": Object {
-          "flatSchema": Object {
-            "type": "string",
-          },
-          "key": "technicallysnakecase",
-          "required": false,
-        },
       },
       "condition": "have snake case keys",
       "docsLink": undefined,
       "isMust": true,
       "isShould": false,
       "passed": true,
-      "where": "requirement for field: technicallysnakecase",
+      "where": "added field: technicallysnakecase",
     },
   ],
 }
