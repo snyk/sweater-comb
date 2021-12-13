@@ -31,7 +31,7 @@ const preventParameterChange = (schemaProperty: string) => {
 
 export const rules = {
   operationId: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "have the correct operationId format",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationIds);
@@ -73,7 +73,7 @@ export const rules = {
     );
   },
   parameterCase: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "use the correct case",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);

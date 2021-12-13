@@ -102,7 +102,7 @@ export const rules = {
     });
   },
   enumOrExample: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.requirement.must(
+    bodyProperties.added.must(
       "have enum or example",
       (property, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.formats);

@@ -101,6 +101,13 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "added": Object {
+          "name": "badHeader",
+          "schema": Object {
+            "type": "string",
+          },
+        },
+        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "inResponse": Object {
@@ -122,12 +129,6 @@ Object {
           "jsonPath": "/paths/~1example/get/responses/200/headers/badHeader",
           "kind": "response-header",
         },
-        "value": Object {
-          "name": "badHeader",
-          "schema": Object {
-            "type": "string",
-          },
-        },
       },
       "condition": "be kebab-case",
       "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#header-field-names",
@@ -135,7 +136,7 @@ Object {
       "isMust": true,
       "isShould": false,
       "passed": false,
-      "where": "requirement for response-header: badHeader",
+      "where": "added response-header: badHeader",
     },
   ],
 }
@@ -242,6 +243,13 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "added": Object {
+          "name": "good-header",
+          "schema": Object {
+            "type": "string",
+          },
+        },
+        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "inResponse": Object {
@@ -263,19 +271,13 @@ Object {
           "jsonPath": "/paths/~1example/get/responses/200/headers/good-header",
           "kind": "response-header",
         },
-        "value": Object {
-          "name": "good-header",
-          "schema": Object {
-            "type": "string",
-          },
-        },
       },
       "condition": "be kebab-case",
       "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#header-field-names",
       "isMust": true,
       "isShould": false,
       "passed": true,
-      "where": "requirement for response-header: good-header",
+      "where": "added response-header: good-header",
     },
   ],
 }

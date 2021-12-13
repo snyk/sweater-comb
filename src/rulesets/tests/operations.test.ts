@@ -39,18 +39,6 @@ describe("operationId", () => {
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
     });
-
-    it("fails if undefined", async () => {
-      const result = await compare(baseForOperationIdTests)
-        .to((spec) => {
-          delete spec.paths!["/example"]!.get!.operationId;
-          return spec;
-        })
-        .withRule(rules.operationId, emptyContext);
-
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
   });
 
   describe("when set", () => {
@@ -355,23 +343,6 @@ describe("operation parameters", () => {
         .withRule(rules.versionParameter, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
-
-    it("passes if there is a version parameter", async () => {
-      const result = await compare(baseForOperationMetadataTests)
-        .to((spec) => {
-          spec.paths!["/example"]!.get!.parameters = [
-            {
-              in: "query",
-              name: "version",
-            },
-          ];
-          return spec;
-        })
-        .withRule(rules.parameterCase, emptyContext);
-
-      expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
   });
