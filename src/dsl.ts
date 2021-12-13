@@ -473,11 +473,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (location) => dsl.getContext(location),
       (...items) => dsl.checks.push(...items),
       (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
-      (parent) =>
-        !(
-          parent.location.kind === OpenApiKind.Body ||
-          parent.location.kind === OpenApiKind.Field
-        ),
+      (parent) => true,
     );
   }
 }
