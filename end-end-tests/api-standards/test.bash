@@ -10,6 +10,9 @@ COMPARE=${COMPARE:-yarn run compare}
 # These should pass
 
 ${COMPARE} \
+    --to $HERE/resources/thing/2021-11-10/000-baseline.yaml \
+    --context "${CONTEXT}"
+${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \
     --to $HERE/resources/thing/2021-11-10/001-ok-add-property-field.yaml \
     --context "${CONTEXT}"
