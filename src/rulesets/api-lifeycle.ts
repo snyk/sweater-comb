@@ -3,16 +3,6 @@ import { expect } from "chai";
 import { links } from "../docs";
 
 export const rules = {
-  example: ({ checkApiContext, responses }: SnykApiCheckDsl) => {
-    checkApiContext.must(
-      "lifeycle rules have to be followed",
-      (context, docs) => {
-        docs.includeDocsLink(links.versioning.main);
-        context.changeVersion.date;
-      },
-    );
-  },
-
   stabilityRequirement: ({ stability }: SnykApiCheckDsl) => {
     stability.must(
       "be provided for every resource document",
