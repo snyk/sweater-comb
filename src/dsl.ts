@@ -1,29 +1,29 @@
 import {
   ApiCheckDsl,
-  EntityRule,
-  Result,
-  DocsLinkHelper,
-  newDocsLinkHelper,
-  runCheck,
   createSelectJsonPathHelper,
+  DocsLinkHelper,
+  EntityRule,
+  newDocsLinkHelper,
+  Result,
+  runCheck,
 } from "@useoptic/api-checks";
 
 import niceTry from "nice-try";
 
 import {
+  ChangeType,
   ConceptualLocation,
+  IChange,
+  IFact,
+  ILocation,
+  OpenApiFact,
+  OpenApiFieldFact,
   OpenApiHeaderFact,
   OpenApiKind,
   OpenApiOperationFact,
-  IChange,
-  IFact,
-  OpenApiFieldFact,
-  ILocation,
-  OpenAPIV3,
   OpenApiRequestParameterFact,
   OpenApiResponseFact,
-  OpenApiFact,
-  ChangeType,
+  OpenAPIV3,
 } from "@useoptic/openapi-utilities";
 import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-entity-rule-impl";
 import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";

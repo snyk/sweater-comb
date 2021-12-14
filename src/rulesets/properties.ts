@@ -60,7 +60,7 @@ const preventChange = (schemaProperty: string) => {
 
 export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
-    bodyProperties.added.must("have snake case keys", ({ key }) => {
+    bodyProperties.added.must("have snake case keys", ({ key }, context) => {
       // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
       expect(snakeCase.test(key)).to.be.ok;
@@ -96,6 +96,7 @@ export const rules = {
     bodyProperties,
   }: SnykApiCheckDsl) => {
     bodyProperties.added.must("not be required", (property, context, docs) => {
+      if (context.bodyAdded) return;
       docs.includeDocsLink(links.versioning.breakingChanges);
       if (!("inRequest" in context)) return;
       expect(property.required).to.not.be.true;

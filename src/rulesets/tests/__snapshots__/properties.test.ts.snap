@@ -1,5 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`body properties allows non-snake case if already in spec 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {
+            "200": Object {
+              "content": Object {
+                "application/json": Object {
+                  "schema": Object {
+                    "properties": Object {
+                      "notSnakeCase": Object {
+                        "type": "string",
+                      },
+                    },
+                    "type": "object",
+                  },
+                },
+              },
+              "description": "",
+            },
+          },
+        },
+      },
+    },
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {
+            "200": Object {
+              "content": Object {
+                "application/json": Object {
+                  "schema": Object {
+                    "properties": Object {
+                      "notSnakeCase": Object {
+                        "type": "string",
+                      },
+                    },
+                    "type": "object",
+                  },
+                },
+              },
+              "description": "",
+            },
+          },
+        },
+      },
+    },
+  },
+  "results": Array [],
+}
+`;
+
 exports[`body properties breaking changes fails if a property is removed 1`] = `
 Object {
   "base": Object {
@@ -527,6 +594,285 @@ Object {
       "isShould": false,
       "passed": false,
       "where": "added field: not-snake-case",
+    },
+  ],
+}
+`;
+
+exports[`body properties key fails when not snake case in nested field 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "changelog": Array [
+    Object {
+      "added": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+    },
+    Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+    },
+    Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+    },
+    Object {
+      "added": Object {
+        "description": "",
+        "statusCode": 200,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200",
+        "kind": "response",
+      },
+    },
+  ],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {
+            "200": Object {
+              "content": Object {
+                "application/json": Object {
+                  "schema": Object {
+                    "properties": Object {
+                      "snake_case": Object {
+                        "properties": Object {
+                          "notSNAKEcase": Object {
+                            "type": "string",
+                          },
+                        },
+                        "type": "object",
+                      },
+                    },
+                    "type": "object",
+                  },
+                },
+              },
+              "description": "",
+            },
+          },
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "added": Object {
+          "flatSchema": Object {
+            "type": "object",
+          },
+          "key": "snake_case",
+          "required": false,
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "inResponse": Object {
+              "body": Object {
+                "contentType": "application/json",
+              },
+              "statusCode": "200",
+            },
+            "jsonSchemaTrail": Array [
+              "snake_case",
+            ],
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+            "responses",
+            "200",
+            "application/json",
+            "snake_case",
+          ],
+          "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+          "kind": "field",
+        },
+      },
+      "condition": "have snake case keys",
+      "docsLink": undefined,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "added field: snake_case",
+    },
+    Object {
+      "change": Object {
+        "added": Object {
+          "flatSchema": Object {
+            "type": "string",
+          },
+          "key": "notSNAKEcase",
+          "required": false,
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "inResponse": Object {
+              "body": Object {
+                "contentType": "application/json",
+              },
+              "statusCode": "200",
+            },
+            "jsonSchemaTrail": Array [
+              "snake_case",
+              "notSNAKEcase",
+            ],
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+            "responses",
+            "200",
+            "application/json",
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+          "kind": "field",
+        },
+      },
+      "condition": "have snake case keys",
+      "docsLink": undefined,
+      "error": "expected false to be truthy",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "added field: notSNAKEcase",
     },
   ],
 }

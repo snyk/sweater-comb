@@ -169,6 +169,7 @@ export const rules = {
     request.queryParameter.added.must(
       "not be required",
       (queryParameter, context, docs) => {
+        if (context.operationAdded) return;
         docs.includeDocsLink(links.versioning.breakingChanges);
         expect(queryParameter.required).to.not.be.true;
       },

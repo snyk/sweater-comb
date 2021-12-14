@@ -7214,23 +7214,6 @@ Array [
   },
   Object {
     "change": null,
-    "condition": "lifeycle rules have to be followed",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md",
-    "isMust": true,
-    "isShould": false,
-    "passed": true,
-    "sourcemap": Object {
-      "endLine": 234,
-      "endPosition": 10813,
-      "filePath": "/end-end-tests/api-standards/resources/thing/2021-11-10/001-fail-breaking-param-change.yaml",
-      "preview": "",
-      "startLine": 4,
-      "startPosition": 125,
-    },
-    "where": "api lifeycle: ",
-  },
-  Object {
-    "change": null,
     "condition": "be provided for every resource document",
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#stability-levels",
     "isMust": true,
@@ -13010,23 +12993,6 @@ Array [
       "startPosition": 1528,
     },
     "where": "requirement for field: meta",
-  },
-  Object {
-    "change": null,
-    "condition": "lifeycle rules have to be followed",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md",
-    "isMust": true,
-    "isShould": false,
-    "passed": true,
-    "sourcemap": Object {
-      "endLine": 198,
-      "endPosition": 8866,
-      "filePath": "/end-end-tests/api-standards/resources/thing/2021-11-10/001-fail-operation-removed.yaml",
-      "preview": "",
-      "startLine": 3,
-      "startPosition": 117,
-    },
-    "where": "api lifeycle: ",
   },
   Object {
     "change": null,
@@ -20702,23 +20668,6 @@ Array [
   },
   Object {
     "change": null,
-    "condition": "lifeycle rules have to be followed",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md",
-    "isMust": true,
-    "isShould": false,
-    "passed": true,
-    "sourcemap": Object {
-      "endLine": 232,
-      "endPosition": 10859,
-      "filePath": "/end-end-tests/api-standards/resources/thing/2021-11-10/001-ok-add-property-field.yaml",
-      "preview": "",
-      "startLine": 3,
-      "startPosition": 120,
-    },
-    "where": "api lifeycle: ",
-  },
-  Object {
-    "change": null,
     "condition": "be provided for every resource document",
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#stability-levels",
     "isMust": true,
@@ -21422,11 +21371,10 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
-    "error": "expected true to be false",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
-    "passed": false,
+    "passed": true,
     "sourcemap": Object {
       "endLine": 7,
       "endPosition": 205,
@@ -21440,11 +21388,10 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
-    "error": "expected true to be false",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
-    "passed": false,
+    "passed": true,
     "sourcemap": Object {
       "endLine": 87,
       "endPosition": 4212,
@@ -23991,7 +23938,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24008,7 +23955,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24025,7 +23972,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24042,7 +23989,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24059,7 +24006,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24076,7 +24023,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24093,7 +24040,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24110,7 +24057,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24127,7 +24074,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24144,7 +24091,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24161,7 +24108,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24178,7 +24125,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24195,7 +24142,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24212,7 +24159,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24229,7 +24176,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24246,7 +24193,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24263,7 +24210,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24280,7 +24227,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24297,7 +24244,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24314,7 +24261,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24331,7 +24278,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24348,7 +24295,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24365,7 +24312,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24382,7 +24329,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24399,7 +24346,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24416,7 +24363,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24433,7 +24380,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24450,7 +24397,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24467,7 +24414,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24484,7 +24431,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24501,7 +24448,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24518,7 +24465,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24535,7 +24482,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24552,7 +24499,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24569,7 +24516,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24586,7 +24533,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24603,7 +24550,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24620,7 +24567,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24637,7 +24584,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24654,7 +24601,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24671,7 +24618,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24688,7 +24635,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24705,7 +24652,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24722,7 +24669,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24739,7 +24686,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24756,7 +24703,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24773,7 +24720,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24790,7 +24737,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24807,7 +24754,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24824,7 +24771,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24841,7 +24788,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24858,7 +24805,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24875,7 +24822,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24892,7 +24839,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24909,7 +24856,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24926,7 +24873,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24943,7 +24890,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24960,7 +24907,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24977,7 +24924,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -24994,7 +24941,7 @@ Array [
   Object {
     "change": null,
     "condition": "not be required",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "docsLink": undefined,
     "isMust": true,
     "isShould": false,
     "passed": true,
@@ -34476,23 +34423,6 @@ Array [
       "startPosition": 1528,
     },
     "where": "requirement for field: meta",
-  },
-  Object {
-    "change": null,
-    "condition": "lifeycle rules have to be followed",
-    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md",
-    "isMust": true,
-    "isShould": false,
-    "passed": true,
-    "sourcemap": Object {
-      "endLine": 257,
-      "endPosition": 11947,
-      "filePath": "/end-end-tests/api-standards/resources/thing/2021-11-10/002-ok-add-operation.yaml",
-      "preview": "",
-      "startLine": 3,
-      "startPosition": 93,
-    },
-    "where": "api lifeycle: ",
   },
   Object {
     "change": null,
