@@ -2,6 +2,7 @@ import { rules } from "../operations";
 import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
 
 import { createSnykTestFixture } from "./fixtures";
+import { defaultEmptySpec } from "@useoptic/openapi-utilities";
 const { compare } = createSnykTestFixture();
 
 const emptyContext: SynkApiCheckContext = {
@@ -264,6 +265,31 @@ describe("operation parameters", () => {
         .withRule(rules.preventAddingRequiredQueryParameters, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+
+    it("allows adding a required query parameter to a new operation", async () => {
+      // const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
+      // base.paths!["/example"]!.get!.parameters = [];
+      const result = await compare(defaultEmptySpec)
+        .to((spec) => {
+          spec.paths["/example"] = {
+            get: {
+              parameters: [
+                {
+                  in: "query",
+                  name: "query_parameter",
+                  required: true,
+                },
+              ],
+              responses: {},
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.preventAddingRequiredQueryParameters, emptyContext);
+
+      expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
 

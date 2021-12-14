@@ -2,6 +2,7 @@ import { rules } from "../properties";
 import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
 
 import { createSnykTestFixture } from "./fixtures";
+import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
 const { compare } = createSnykTestFixture();
 // todo: fix copy/paste
@@ -54,6 +55,7 @@ describe("body properties", () => {
       expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
+
     it("passes when snake case with one component", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
@@ -105,6 +107,74 @@ describe("body properties", () => {
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
     });
+
+    it("fails when not snake case in nested field", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      snake_case: {
+                        type: "object",
+                        properties: {
+                          notSNAKEcase: { type: "string" },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyKey, emptyContext);
+
+      expect(result.results[1].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  const baseOpenApiWithResponse: OpenAPIV3.Document = {
+    openapi: "3.0.1",
+    paths: {
+      "/example": {
+        get: {
+          responses: {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      notSnakeCase: { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    info: { version: "0.0.0", title: "OpenAPI" },
+  };
+
+  it("allows non-snake case if already in spec", async () => {
+    const result = await compare(baseOpenApiWithResponse)
+      .to((spec) => {
+        return spec;
+      })
+      .withRule(rules.propertyKey, emptyContext);
+
+    expect(result.results).toHaveLength(0);
+    expect(result).toMatchSnapshot();
   });
 
   describe("breaking changes", () => {
