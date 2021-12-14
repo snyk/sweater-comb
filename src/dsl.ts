@@ -334,7 +334,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
-        (parent) => parent.location.kind === OpenApiKind.Operation,
       ),
       pathParameter: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
@@ -363,7 +362,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
-        (parent) => parent.location.kind === OpenApiKind.Operation,
       ),
     };
   }
@@ -399,7 +397,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (location) => dsl.getContext(location),
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
-        (parent) => parent.location.kind === OpenApiKind.Response,
       ),
     };
   }
@@ -473,7 +470,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (location) => dsl.getContext(location),
       (...items) => dsl.checks.push(...items),
       (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
-      (parent) => true,
     );
   }
 }
