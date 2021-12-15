@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "bin": {
-    "sweater-comb": "bin/sweater-comb"
+    "sweater-comb": "build/index.js"
   },
   "files": [
     "/build"

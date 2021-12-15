@@ -6,4 +6,6 @@ cd $(dirname $0)/..
 scripts/build-docker.bash
 
 docker push ${IMAGE}:${TAG}
-docker push ${IMAGE}:latest
+if [[ "${TAG}" == "${LATEST_GIT_TAG}" ]]; then
+  docker push ${IMAGE}:latest
+fi
