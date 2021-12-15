@@ -5,6 +5,8 @@ defaults: &defaults
   docker:
     - image: circleci/node:14-buster
   working_directory: ~/sweater-comb
+  environment:
+    IMAGE: ghcr.io/snyk/sweater-comb
 
 jobs:
   test:
@@ -26,7 +28,7 @@ jobs:
           name: E2E Test
           command: ./end-end-tests/api-standards/test-bulk.bash
 
-  docker-main-release:
+  docker-release:
     <<: *defaults
     steps:
       - checkout
@@ -34,14 +36,27 @@ jobs:
           version: '20.10.7'
       - run:
           name: Build Docker image
-          command: IMAGE=ghcr.io/snyk/sweater-comb TAG=optic-main ./scripts/build-docker.bash
+          environment:
+            GIT_BRANCH: << pipeline.git.branch >>
+            GIT_TAG: << pipeline.git.tag >>
+          command: |-
+            export TAG=${GIT_TAG:-${GIT_BRANCH}}
+            [ -n "$IMAGE" ] || exit 1
+            [ -n "$TAG" ] || exit 1
+            ./scripts/build-docker.bash'
       - run:
           name: Push Docker image
+          environment:
+            GIT_BRANCH: << pipeline.git.branch >>
+            GIT_TAG: << pipeline.git.tag >>
           command: |-
+            [ -n "$IMAGE" ] || exit 1
+            export TAG=${GIT_TAG:-${GIT_BRANCH}}
+            [ -n "$TAG" ] || exit 1
             echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
-            docker push ghcr.io/snyk/sweater-comb:optic-main
+            docker push ${IMAGE}:${TAG}
 
-  npm-main-release:
+  npm-release:
     <<: *defaults
     steps:
       - checkout
@@ -58,11 +73,21 @@ workflows:
     jobs:
       - test:
           name: Test
-      - docker-main-release:
-          name: Docker Image Release - Main
+      - docker-release:
+          name: Docker Image Release
           requires:
             - Test
           filters:
             branches:
+              only: 'main'
+            tags:
               only:
-                - optic-main
+                - /^v.*/
+      - npm-release:
+          name: NPM Release - Tag
+          requires:
+            - Test
+          filters:
+            tags:
+              only:
+                - /^v.*/
