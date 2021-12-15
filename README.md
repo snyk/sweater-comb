@@ -42,15 +42,4 @@ How we version our API, and more to the point, API requirements necessary in ord
 
 # Installation
 
-## NPM
-
-`npm install @snyk/sweater-comb` in your project.
-
-Then configure Spectral in your project to extend these rules.
-
-Example `.spectral.yaml`:
-
-```
-extends:
-  - "@snyk/sweater-comb"
-```
+TODO

@@ -1,0 +1,11 @@
+Tag:
+  type: object
+  properties:
+    key:
+      type: string
+      example: key
+    value:
+      type: string
+      example: value
+  required: [key, value]
+  additionalProperties: false

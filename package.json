@@ -1,38 +1,63 @@
 {
   "name": "@snyk/sweater-comb",
-  "version": "0.0.0",
-  "description": "Snyk API linting rules",
-  "main": "apinext.yaml",
+  "packageManager": "yarn@3.0.2",
+  "version": "1.0.0-alpha.0",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "bin": {
+    "sweater-comb": "bin/sweater-comb"
+  },
+  "files": [
+    "/build"
+  ],
   "scripts": {
-    "test": "jest",
-    "test-lint": "spectral lint --fail-severity=warn tests/**/*.yaml",
-    "format": "prettier --write **/*.js",
-    "lint": "npm run lint:format && npm run lint:js",
-    "lint:format": "prettier --check **/*.js",
-    "lint:js": "eslint --quiet --color tests/*.js"
+    "test": "jest --colors",
+    "build": "yarn tsc --build --verbose",
+    "clean": "rm -rf build",
+    "compare": "yarn ts-node src/index.ts compare",
+    "bulk-compare": "yarn ts-node src/index.ts bulk-compare",
+    "changelog": "yarn ts-node src/changelog.ts",
+    "lint": "run-p lint:*",
+    "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
+    "format": "prettier --write 'src/**/*.{js,ts}'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/snyk/sweater-comb.git"
-  },
-  "author": "snyk.io",
-  "bugs": {
-    "url": "https://github.com/snyk/sweater-comb/issues"
-  },
-  "homepage": "https://github.com/snyk/sweater-comb#readme",
   "devDependencies": {
-    "@stoplight/spectral-cli": "^6.0.0",
-    "@stoplight/spectral-core": "^1.4.0",
-    "@stoplight/spectral-functions": "^1.1.2",
-    "@stoplight/spectral-ruleset-migrator": "^1.4.2",
-    "@stoplight/spectral-rulesets": "^1.2.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^24.5.2",
-    "immer": "^9.0.6",
-    "jest": "^27.0.6",
-    "pac-resolver": "^5.0.0",
-    "prettier": "^2.3.2"
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^26.0.24",
+    "@types/json-stable-stringify": "^1.0.33",
+    "babel-jest": "26.6.0",
+    "jest": "^26.6.0",
+    "json-stable-stringify": "^1.0.1",
+    "node-fetch": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@stoplight/spectral-rulesets": "^1.3.0",
+    "@useoptic/api-checks": "0.15.9",
+    "@useoptic/json-pointer-helpers": "0.15.9",
+    "@useoptic/openapi-io": "0.15.9",
+    "@useoptic/openapi-utilities": "0.15.9",
+    "ajv": "^8.8.2",
+    "chai": "^4.3.4",
+    "change-case": "^4.1.2",
+    "fs-extra": "^10.0.0",
+    "json-schema": "0.4.0",
+    "nice-try": "^3.0.0",
+    "yargs": "^17.3.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "build"
+    ],
+    "moduleNameMapper": {
+      "^nimma/fallbacks$": "<rootDir>/node_modules/nimma/dist/cjs/fallbacks/index.js",
+      "^nimma/legacy$": "<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js"
+    }
+  }
 }

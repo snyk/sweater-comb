@@ -1,2 +1,2 @@
-export TAG=$(git describe --tags --abbrev=0)
-export IMAGE=${IMAGE:-gcr.io/snyk-main/sweater-comb}
+export TAG=${TAG:-optic-main}
+export IMAGE=${IMAGE:-ghcr.io/snyk/sweater-comb}

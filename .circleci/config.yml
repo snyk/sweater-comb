@@ -15,21 +15,39 @@ jobs:
           at: ~/sweater-comb
       - run:
           name: Install
-          command: npm ci
+          command: yarn install
       - run:
           name: Lint
-          command: npm run lint
+          command: yarn lint
       - run:
           name: Test
-          command: npm test
-  
-  release:
+          command: yarn test
+      - run:
+          name: E2E Test
+          command: ./end-end-tests/api-standards/test-bulk.bash
+
+  docker-main-release:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: '20.10.7'
+      - run:
+          name: Build Docker image
+          command: IMAGE=ghcr.io/snyk/sweater-comb TAG=optic-main ./scripts/build-docker.bash
+      - run:
+          name: Push Docker image
+          command: |-
+            echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
+            docker push ghcr.io/snyk/sweater-comb:optic-main
+
+  npm-main-release:
     <<: *defaults
     steps:
       - checkout
       - run:
-          name: Install deps
-          command: npm install
+          name: Install
+          command: yarn install
       - run:
           name: Release
           command: npx semantic-release
@@ -40,13 +58,11 @@ workflows:
     jobs:
       - test:
           name: Test
-
-      - release:
-          name: Release
-          context: nodejs-lib-release
+      - docker-main-release:
+          name: Docker Image Release - Main
           requires:
             - Test
           filters:
             branches:
               only:
-                - main
+                - optic-main

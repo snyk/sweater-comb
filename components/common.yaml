@@ -1,0 +1,108 @@
+JsonApi:
+  type: object
+  properties:
+    version:
+      type: string
+      pattern: '^(0|[1-9]\d*)\.(0|[1-9]\d*)$'
+      description: Version of the JSON API specification this server supports.
+      example: "1.0"
+  required: ['version']
+  additionalProperties: false
+  example:
+    version: "1.0"
+
+Links:
+  type: object
+  properties:
+    self: { $ref: '#/LinkProperty' }
+    related: { $ref: '#/LinkProperty' }
+    first: { $ref: '#/LinkProperty' }
+    last: { $ref: '#/LinkProperty' }
+    prev: { $ref: '#/LinkProperty' }
+    next: { $ref: '#/LinkProperty' }
+  additionalProperties: false
+
+SelfLink:
+  type: object
+  properties:
+    self: { $ref: '#/LinkProperty' }
+  additionalProperties: false
+  example:
+    self: "https://example.com/api/this_resource"
+
+RelatedLink:
+  type: object
+  properties:
+    related: { $ref: '#/LinkProperty' }
+  additionalProperties: false
+  example:
+    related: "https://example.com/api/other_resource"
+
+PaginatedLinks:
+  type: object
+  properties:
+    first: { $ref: '#/LinkProperty' }
+    last: { $ref: '#/LinkProperty' }
+    prev: { $ref: '#/LinkProperty' }
+    next: { $ref: '#/LinkProperty' }
+  additionalProperties: false
+  example:
+    first: "https://example.com/api/resource?ending_before=v1.eyJpZCI6IjExIn0K"
+    last: "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjMwIn0K"
+    next: "https://example.com/api/resource?starting_after=v1.eyJpZCI6IjEwIn0K"
+
+LinkProperty:
+  oneOf:
+    - type: string
+      description: A string containing the link’s URL.
+      example: "https://example.com/api/resource"
+    - type: object
+      properties:
+        href:
+          type: string
+          description: A string containing the link’s URL.
+          example: "https://example.com/api/resource"
+        meta: { $ref: '#/Meta' }
+      required: [ 'href' ]
+      additionalProperties: false
+      example:
+        href: "https://example.com/api/resource"
+  example: "https://example.com/api/resource"
+
+Meta:
+  type: object
+  description: Free-form object that may contain non-standard information.
+  example:
+    key1: value1
+    key2:
+      sub_key: sub_value
+    key3: [array_value1, array_value2]
+  additionalProperties: true
+
+Relationship:
+  type: object
+  properties:
+    data:
+      type: object
+      properties:
+        type:
+          type: string
+          pattern: '^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$'
+          description: Type of the related resource
+          example: resource
+        id:
+          type: string
+          format: uuid
+          example: 4a72d1db-b465-4764-99e1-ecedad03b06a
+      required: ['type', 'id']
+      additionalProperties: false
+    links: { $ref: '#/RelatedLink' }
+    meta: { $ref: '#/Meta' }
+  required: [data, links]
+  example:
+    data:
+      type: resource
+      id: 4a72d1db-b465-4764-99e1-ecedad03b06a
+    links:
+      related:
+        href: https://example.com/api/resource/4a72d1db-b465-4764-99e1-ecedad03b06a
