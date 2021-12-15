@@ -40,8 +40,8 @@ jobs:
             GIT_BRANCH: << pipeline.git.branch >>
             GIT_TAG: << pipeline.git.tag >>
           command: |-
-            export TAG=${GIT_TAG:-${GIT_BRANCH}}
             [ -n "$IMAGE" ] || exit 1
+            export TAG=${GIT_TAG:-${GIT_BRANCH}}
             [ -n "$TAG" ] || exit 1
             ./scripts/build-docker.bash
       - run:
@@ -54,6 +54,7 @@ jobs:
             export TAG=${GIT_TAG:-${GIT_BRANCH}}
             [ -n "$TAG" ] || exit 1
             echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
+            set -x
             docker push ${IMAGE}:${TAG}
 
   npm-release:
