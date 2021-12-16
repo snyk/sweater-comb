@@ -40,16 +40,14 @@ jobs:
             GIT_BRANCH: << pipeline.git.branch >>
             GIT_TAG: << pipeline.git.tag >>
           command: |-
-            # Build the image
             [ -n "$IMAGE" ] || exit 1
             export TAG=${GIT_TAG:-${GIT_BRANCH}}
             [ -n "$TAG" ] || exit 1
-            ./scripts/build-docker.bash
             # Authenticate to OCI image repository
-            echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
-            # Push the just-built image
+            echo "${GITHUB_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
+            # Build and push the just-built image
             set -x
-            docker push ${IMAGE}:${TAG}
+            ./scripts/release-docker.bash
 
   npm-release:
     <<: *defaults
