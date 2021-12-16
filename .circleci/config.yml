@@ -66,24 +66,18 @@ workflows:
     jobs:
       - test:
           name: Test
-          filters:
-            # In CircleCI, branches are on by default and do not need to be specified.
-            # However tags are off by default and need to be specified.
-            tags:
-              only: '/^v.*$/'
-      - docker-release:
-          name: Docker Image Release
-          requires:
-            - Test
-          filters:
-            branches:
-              only: 'main'
-            tags:
-              only: '/^v.*$/'
       - npm-release:
           name: NPM Release - Tag
           requires:
             - Test
+          context: nodejs-app-release
+          filters:
+            branches:
+              only: 'main'
+  docker_publish:
+    jobs:
+      - docker-release:
+          name: Docker Image Release
           filters:
             branches:
               ignore: '/.*/'
