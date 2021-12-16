@@ -7,5 +7,6 @@ scripts/build-docker.bash
 
 docker push ${IMAGE}:${TAG}
 if [[ "${TAG}" == "${LATEST_GIT_TAG}" ]]; then
+  docker tag ${IMAGE}:${TAG} ${IMAGE}:latest
   docker push ${IMAGE}:latest
 fi
