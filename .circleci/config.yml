@@ -35,25 +35,19 @@ jobs:
       - setup_remote_docker:
           version: '20.10.7'
       - run:
-          name: Build Docker image
+          name: Build and push Docker image
           environment:
             GIT_BRANCH: << pipeline.git.branch >>
             GIT_TAG: << pipeline.git.tag >>
           command: |-
+            # Build the image
             [ -n "$IMAGE" ] || exit 1
             export TAG=${GIT_TAG:-${GIT_BRANCH}}
             [ -n "$TAG" ] || exit 1
             ./scripts/build-docker.bash
-      - run:
-          name: Push Docker image
-          environment:
-            GIT_BRANCH: << pipeline.git.branch >>
-            GIT_TAG: << pipeline.git.tag >>
-          command: |-
-            [ -n "$IMAGE" ] || exit 1
-            export TAG=${GIT_TAG:-${GIT_BRANCH}}
-            [ -n "$TAG" ] || exit 1
+            # Authenticate to OCI image repository
             echo "${GHCR_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
+            # Push the just-built image
             set -x
             docker push ${IMAGE}:${TAG}
 
