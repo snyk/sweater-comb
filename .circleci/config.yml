@@ -54,14 +54,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install
-          command: yarn install
-      - run:
-          name: Build
-          command: yarn build
-      - run:
-          name: Release
-          command: yarn semantic-release
+          name: Build and release
+          command: ./scripts/build-npm.bash
 
 workflows:
   version: 2
