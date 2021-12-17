@@ -58,7 +58,7 @@ jobs:
           command: yarn install
       - run:
           name: Release
-          command: npx semantic-release
+          command: yarn semantic-release
 
 workflows:
   version: 2
