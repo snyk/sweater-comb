@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { makeCiCliWithNamedRules } from "@useoptic/api-checks/build/ci-cli/make-cli";
 import { v3Rules } from "./v3-rules";
 // import { internalApiRules } from './internal-api-rules';

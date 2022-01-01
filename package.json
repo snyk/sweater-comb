@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "bin": {
-    "sweater-comb": "scripts/sweater-comb.js"
+    "sweater-comb": "build/index.js"
   },
   "files": [
     "/build"
@@ -50,6 +50,13 @@
     "nice-try": "^3.0.0",
     "yargs": "^17.3.0"
   },
+  "bundledDependencies": [
+    "@stoplight/spectral-rulesets",
+    "@useoptic/api-checks",
+    "@useoptic/json-pointer-helpers",
+    "@useoptic/openapi-io",
+    "@useoptic/openapi-utilities"
+  ],
   "jest": {
     "testPathIgnorePatterns": [
       "build"
