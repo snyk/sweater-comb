@@ -2,7 +2,7 @@ import { SnykApiCheckDsl, SynkApiCheckContext } from "./dsl";
 import { ApiCheckService, DslConstructorInput } from "@useoptic/api-checks";
 import { oas } from "@stoplight/spectral-rulesets";
 
-export function newSnykApiCheckService() {
+export function v3Rules() {
   const snykRulesService = new ApiCheckService<SynkApiCheckContext>();
 
   const dslConstructor = (input: DslConstructorInput<SynkApiCheckContext>) => {
