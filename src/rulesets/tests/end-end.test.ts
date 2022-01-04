@@ -1,6 +1,10 @@
 import path from "path";
 import { SynkApiCheckContext } from "../../dsl";
-import { parseSpecVersion, specFromInputToResults, ResultWithSourcemap } from "@useoptic/api-checks";
+import {
+  parseSpecVersion,
+  specFromInputToResults,
+  ResultWithSourcemap,
+} from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
 import { defaultEmptySpec } from "@useoptic/openapi-utilities";
 import { newSnykApiCheckService } from "../../service";
@@ -73,9 +77,6 @@ describe("end-end-tests", () => {
     ).toMatchSnapshot();
   });
 
-
-
-  
   it("passes when property operation added", async () => {
     const results = await snapshotScenario(
       "000-baseline.yaml",
