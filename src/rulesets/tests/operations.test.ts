@@ -35,7 +35,7 @@ describe("operationId", () => {
           spec.paths!["/example"]!.get!.operationId = "";
           return spec;
         })
-        .withRule(rules.operationId, emptyContext);
+        .withRule(rules.operationIdSet, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
@@ -61,7 +61,7 @@ describe("operationId", () => {
           spec.paths!["/example"]!.get!.operationId = "findHelloWorld";
           return spec;
         })
-        .withRule(rules.operationId, emptyContext);
+        .withRule(rules.operationIdAdded, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
@@ -73,7 +73,7 @@ describe("operationId", () => {
           spec.paths!["/example"]!.get!.operationId = "get-hello-world";
           return spec;
         })
-        .withRule(rules.operationId, emptyContext);
+        .withRule(rules.operationIdSet, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
       expect(result).toMatchSnapshot();
@@ -86,7 +86,7 @@ describe("operationId", () => {
         spec.paths!["/example"]!.get!.operationId = "get";
         return spec;
       })
-      .withRule(rules.operationId, emptyContext);
+      .withRule(rules.operationIdAdded, emptyContext);
 
     expect(result.results[0].passed).toBeFalsy();
     expect(result).toMatchSnapshot();
@@ -98,7 +98,7 @@ describe("operationId", () => {
         spec.paths!["/example"]!.get!.operationId = "getYesHump";
         return spec;
       })
-      .withRule(rules.operationId, emptyContext);
+      .withRule(rules.operationIdAdded, emptyContext);
 
     expect(result.results[0].passed).toBeTruthy();
     expect(result).toMatchSnapshot();

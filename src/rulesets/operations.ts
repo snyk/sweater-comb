@@ -30,19 +30,48 @@ const preventParameterChange = (schemaProperty: string) => {
 };
 
 export const rules = {
-  operationId: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirementOnChange.must(
+  operationIdAdded: ({ operations }: SnykApiCheckDsl) => {
+    operations.added.must(
       "have the correct operationId format",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationIds);
-        expect(operation.operationId).to.be.ok;
         if (operation.operationId !== undefined) {
           const normalized = camelCase(operation.operationId);
-          expect(
-            normalized === operation.operationId &&
-              prefixRegex.test(operation.operationId),
-            `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
-          ).to.be.ok;
+          if (
+            !(
+              normalized === operation.operationId &&
+              prefixRegex.test(operation.operationId)
+            )
+          ) {
+            expect.fail(
+              `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
+            );
+          }
+        }
+      },
+    );
+  },
+  operationIdChanged: ({ operations }: SnykApiCheckDsl) => {
+    operations.changed.must(
+      "have the correct operationId format",
+      (before, after, context, docs) => {
+        docs.includeDocsLink(links.standards.operationIds);
+        if (
+          before.operationId &&
+          after.operationId &&
+          before.operationId !== after.operationId
+        ) {
+          const normalized = camelCase(after.operationId);
+          if (
+            !(
+              normalized === after.operationId &&
+              prefixRegex.test(after.operationId)
+            )
+          ) {
+            expect.fail(
+              `operationId "${after.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
+            );
+          }
         }
       },
     );

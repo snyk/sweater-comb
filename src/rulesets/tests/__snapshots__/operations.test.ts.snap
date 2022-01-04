@@ -1802,18 +1802,6 @@ Object {
   "results": Array [
     Object {
       "change": Object {
-        "changeType": "changed",
-        "changed": Object {
-          "after": Object {
-            "method": "get",
-            "operationId": "",
-            "pathPattern": "/example",
-          },
-          "before": Object {
-            "method": "get",
-            "pathPattern": "/example",
-          },
-        },
         "location": Object {
           "conceptualLocation": Object {
             "method": "get",
@@ -1827,14 +1815,19 @@ Object {
           "jsonPath": "/paths/~1example/get",
           "kind": "operation",
         },
+        "value": Object {
+          "method": "get",
+          "operationId": "",
+          "pathPattern": "/example",
+        },
       },
-      "condition": "have the correct operationId format",
+      "condition": "have operationId",
       "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
       "error": "expected '' to be truthy",
       "isMust": true,
       "isShould": false,
       "passed": false,
-      "where": "updated operation: GET /example",
+      "where": "requirement for operation: GET /example",
     },
   ],
 }
