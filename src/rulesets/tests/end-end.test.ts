@@ -1,12 +1,13 @@
 import path from "path";
-import fs from "fs-extra";
-import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
-import { specFromInputToResults } from "@useoptic/api-checks";
+import { SynkApiCheckContext } from "../../dsl";
+import {
+  parseSpecVersion,
+  specFromInputToResults,
+  ResultWithSourcemap,
+} from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
-import { ResultWithSourcemap } from "@useoptic/api-checks/build/sdk/types";
-import { parseSpecVersion } from "@useoptic/api-checks";
 import { defaultEmptySpec } from "@useoptic/openapi-utilities";
-import { v3Rules } from "../../v3-rules";
+import { newSnykApiCheckService } from "../../v3-rules";
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(
@@ -111,7 +112,7 @@ describe("end-end-tests", () => {
     const toSpecSig = parseSpecVersion(to, defaultEmptySpec);
     const toSpec = await specFromInputToResults(toSpecSig, workingDir);
 
-    const checkService = v3Rules();
+    const checkService = newSnykApiCheckService();
     const checkResults = await checkService.runRules(
       fromSpec.jsonLike,
       toSpec.jsonLike,

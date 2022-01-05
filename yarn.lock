@@ -1723,17 +1723,17 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.17.4.tgz#5481a50afd73fa2afe6b11c30442e75f2a5831dd"
-  integrity sha512-8/nd+HA8aIov1MrOEevzPB4hSs9fpu5EqcYrIT39ErhboKzRWgongPvcp0/SFlwFFPI5bRNkuYXvLXeDYNDUdw==
+"@useoptic/api-checks@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.18.1.tgz#b3436c027f314ab460491ccbb895f89a84c81673"
+  integrity sha512-XPojZLMhzyj241ln/u5LJRoqldOTQAlgz5kx6zX+G6fC4gvf+5yzuQY70lcbaaQtE8ujPwhz4dkquIbkTIi2fA==
   dependencies:
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
     "@stoplight/spectral-core" "^1.6.1"
-    "@useoptic/json-pointer-helpers" "0.17.4"
-    "@useoptic/openapi-io" "0.17.4"
-    "@useoptic/openapi-utilities" "0.17.4"
+    "@useoptic/json-pointer-helpers" "0.18.1"
+    "@useoptic/openapi-io" "0.18.1"
+    "@useoptic/openapi-utilities" "0.18.1"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
@@ -1751,21 +1751,21 @@
     react-use "^17.3.1"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.17.4.tgz#7bf7f462817e4f0f65372a36229f42302068d85f"
-  integrity sha512-JmA3KQ1pFCmQ1HCD+vy55T7VSDqYIVOjCbpptTvA3eMhlJiErs6YBa5hsvr3GJAnOqFraBBKibkvgSDvPetKVQ==
+"@useoptic/json-pointer-helpers@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.18.1.tgz#fcb0aa4aa072a2ea8b4b9f20c4ddd38edac22912"
+  integrity sha512-1FwMMGscxqKDLVp5QXOkUF31D5EOia7DTOelcSqa0H3/yH3LhIe4bOxgg9881GSAgWMES7gEnp6GWxwordYH2g==
   dependencies:
     json-pointer "^0.6.1"
 
-"@useoptic/openapi-io@0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.17.4.tgz#55bccb7adfd4754ea5a6f26d273fe96eed2bef1d"
-  integrity sha512-SkopBQ8Clusb//kNDhAgKyqahWZb4QMeopQSm3IAvro1o5STCh27p6nXIaHcO+isEqEwTGlXYNGkvmr/+R3w+w==
+"@useoptic/openapi-io@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.18.1.tgz#b1ce280803c1f935a681d2711749bbe1cb30cad8"
+  integrity sha512-ylyzC2nC/bCckadnaaqT1zCe9fR7PCC3zs9QCBFmsRVd9WSbULlUrDoxoiCZgFetwiqrB6KvZFV/AtuBBXFYHw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.17.4"
+    "@useoptic/json-pointer-helpers" "0.18.1"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -1780,12 +1780,12 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.17.4":
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.17.4.tgz#07ec183e50cd04930ad62a02bb740da460c3ed54"
-  integrity sha512-wPd6qeFOnIALQD3rD/1BuKjv1YJ2GkMK6XbgcrPAYYOBcryUsrtYo3nqVqhiAh5Z6ocdm3oVwIc/8Cbjcwgb/Q==
+"@useoptic/openapi-utilities@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.18.1.tgz#9878cbdc6d5e1df239a80a53ce405cf0f8f2e009"
+  integrity sha512-PYTuSXOU6edyszQ1qFfFZIGtldVdG2dVI1hkJpL8IovZadPL/Ndk41iNeQKK/tqQ5ffdXRmgzHPs5ay8XHz5tw==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.17.4"
+    "@useoptic/json-pointer-helpers" "0.18.1"
     fast-deep-equal "^3.1.3"
     lodash.sortby "^4.7.0"
     openapi-schema-validator "^10.0.0"
@@ -1861,7 +1861,7 @@ ajv-formats@^2.0.2, ajv-formats@~2.1.0:
   dependencies:
     ajv "^8.0.0"
 
-ajv@^8.0.0, ajv@^8.1.0, ajv@^8.8.2:
+ajv@^8.0.0, ajv@^8.1.0:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.2.tgz#01b4fef2007a28bf75f0b7fc009f62679de4abbb"
   integrity sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw==
