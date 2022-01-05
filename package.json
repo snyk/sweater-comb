@@ -1,7 +1,7 @@
 {
   "name": "@snyk/sweater-comb",
   "packageManager": "yarn@3.0.2",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "bin": {
