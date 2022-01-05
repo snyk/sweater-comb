@@ -52,6 +52,7 @@ export const rules = {
       "have an org or group tenant",
       (spec, context, docs) => {
         docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
+        docs.becomesEffectiveOn(new Date("2021-07-01"));
         const tenantUrls = Object.keys(spec.paths).filter(
           (url) =>
             url.startsWith("/orgs/{org_id}") ||

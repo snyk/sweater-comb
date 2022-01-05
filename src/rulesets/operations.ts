@@ -35,6 +35,7 @@ export const rules = {
       "have the correct operationId format",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationIds);
+        docs.becomesEffectiveOn(new Date("2021-07-01"));
         expect(operation.operationId).to.be.ok;
         if (operation.operationId !== undefined) {
           const normalized = camelCase(operation.operationId);

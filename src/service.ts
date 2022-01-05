@@ -5,7 +5,7 @@ import { oas } from "@stoplight/spectral-rulesets";
 export function newSnykApiCheckService() {
   const snykRulesService = new ApiCheckService<SynkApiCheckContext>(
     (context) => {
-      return new Date(context.changeDate);
+      return new Date(context.changeVersion.date);
     },
   );
 
