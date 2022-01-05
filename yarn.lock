@@ -1723,17 +1723,17 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.17.5.tgz#869db7ab6cbfae6760e8e5047c125dca3cf42e01"
-  integrity sha512-e1Vf934s/qfskLFtp7+SZjEqOW3QFE8vpEIgocB4i1vlNZiDDgjvEIv43Nzl96q9JivOcpvkFykYiplH3XrUuQ==
+"@useoptic/api-checks@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.18.1.tgz#b3436c027f314ab460491ccbb895f89a84c81673"
+  integrity sha512-XPojZLMhzyj241ln/u5LJRoqldOTQAlgz5kx6zX+G6fC4gvf+5yzuQY70lcbaaQtE8ujPwhz4dkquIbkTIi2fA==
   dependencies:
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
     "@stoplight/spectral-core" "^1.6.1"
-    "@useoptic/json-pointer-helpers" "0.17.5"
-    "@useoptic/openapi-io" "0.17.5"
-    "@useoptic/openapi-utilities" "0.17.5"
+    "@useoptic/json-pointer-helpers" "0.18.1"
+    "@useoptic/openapi-io" "0.18.1"
+    "@useoptic/openapi-utilities" "0.18.1"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
@@ -1751,21 +1751,21 @@
     react-use "^17.3.1"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.17.5", "@useoptic/json-pointer-helpers@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.17.5.tgz#f4fa48b6e027614a501cb6307e7716e6701bd6ba"
-  integrity sha512-YlMd7v7azvOcC7bNTqJv6khqfR6ZP+uEMfbTmLYEYzOO9yAry5rz2FMnZRQdplxbB8NL+3eR2oFPwwIdSmq7aQ==
+"@useoptic/json-pointer-helpers@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.18.1.tgz#fcb0aa4aa072a2ea8b4b9f20c4ddd38edac22912"
+  integrity sha512-1FwMMGscxqKDLVp5QXOkUF31D5EOia7DTOelcSqa0H3/yH3LhIe4bOxgg9881GSAgWMES7gEnp6GWxwordYH2g==
   dependencies:
     json-pointer "^0.6.1"
 
-"@useoptic/openapi-io@0.17.5", "@useoptic/openapi-io@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.17.5.tgz#6ddf231b3ee2b672e01c3f296bf8980ef9c2e289"
-  integrity sha512-sUqWGbgOC+j+OVjG1HnNuimriAHT8qEl1JJd6Eqkn9kylV8uYfLEtItm00f1lKLyvmDkJs9TOSfzN/N/PU/X4Q==
+"@useoptic/openapi-io@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.18.1.tgz#b1ce280803c1f935a681d2711749bbe1cb30cad8"
+  integrity sha512-ylyzC2nC/bCckadnaaqT1zCe9fR7PCC3zs9QCBFmsRVd9WSbULlUrDoxoiCZgFetwiqrB6KvZFV/AtuBBXFYHw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.17.5"
+    "@useoptic/json-pointer-helpers" "0.18.1"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -1780,12 +1780,12 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.17.5", "@useoptic/openapi-utilities@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.17.5.tgz#6ad791e4898fc6d58eae567dd6e4177e6626b738"
-  integrity sha512-hJnO9PJxIdxP26CT/TpmB9VULOtN9tC26PzBhSW2kNJJuPDn0Io62YD+CBRQyCUmZvM5qf7Wv6/QnAOAYB1oBQ==
+"@useoptic/openapi-utilities@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.18.1.tgz#9878cbdc6d5e1df239a80a53ce405cf0f8f2e009"
+  integrity sha512-PYTuSXOU6edyszQ1qFfFZIGtldVdG2dVI1hkJpL8IovZadPL/Ndk41iNeQKK/tqQ5ffdXRmgzHPs5ay8XHz5tw==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.17.5"
+    "@useoptic/json-pointer-helpers" "0.18.1"
     fast-deep-equal "^3.1.3"
     lodash.sortby "^4.7.0"
     openapi-schema-validator "^10.0.0"
