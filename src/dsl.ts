@@ -177,19 +177,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
           ),
         );
       },
-      should: (statement, handler) => {
-        const docsHelper = newDocsLinkHelper();
-        this.checks.push(
-          runCheck(
-            change,
-            docsHelper,
-            "this specification: ",
-            statement,
-            false,
-            () => handler(this.providedContext, docsHelper),
-          ),
-        );
-      },
     };
 
     return value;
@@ -243,25 +230,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
           ),
         );
       },
-      should: (statement, handler) => {
-        const docsHelper = newDocsLinkHelper();
-        this.checks.push(
-          runCheck(
-            changed as any,
-            docsHelper,
-            `published stability: `,
-            statement,
-            false,
-            () =>
-              handler(
-                changed.changed!.before,
-                changed.changed!.after,
-                this.providedContext,
-                docsHelper,
-              ),
-          ),
-        );
-      },
     };
 
     return handlers;
@@ -293,19 +261,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
             "this specification: ",
             statement,
             true,
-            () => handler(this.nextJsonLike, this.providedContext, docsHelper),
-          ),
-        );
-      },
-      should: (statement, handler) => {
-        const docsHelper = newDocsLinkHelper();
-        this.checks.push(
-          runCheck(
-            change,
-            docsHelper,
-            "this specification: ",
-            statement,
-            false,
             () => handler(this.nextJsonLike, this.providedContext, docsHelper),
           ),
         );
@@ -449,7 +404,6 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 
     return {
       must: contextChangedHandler(true),
-      should: contextChangedHandler(false),
     };
   }
 
