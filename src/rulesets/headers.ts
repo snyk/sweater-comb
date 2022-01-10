@@ -5,13 +5,12 @@ import { links } from "../docs";
 
 export const rules = {
   headerNameCase: ({ responses }: SnykApiCheckDsl) => {
-    responses.headers.requirementOnChange.must(
-      "be kebab-case",
-      ({ name }, context, docs) => {
+    responses.headers.requirementOnChange
+      .attributes("name")
+      .must("be kebab-case", ({ name }, context, docs) => {
         docs.includeDocsLink(links.standards.headers.case);
         expect(paramCase(name)).to.equal(name);
-      },
-    );
+      });
   },
   responseHeaders: ({ responses }: SnykApiCheckDsl) => {
     responses.requirement.must(

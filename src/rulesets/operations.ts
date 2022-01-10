@@ -31,22 +31,24 @@ const preventParameterChange = (schemaProperty: string) => {
 
 export const rules = {
   operationId: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirementOnChange.must(
-      "have the correct operationId format",
-      (operation, context, docs) => {
-        docs.includeDocsLink(links.standards.operationIds);
-        docs.becomesEffectiveOn(new Date("2021-07-01"));
-        expect(operation.operationId).to.be.ok;
-        if (operation.operationId !== undefined) {
-          const normalized = camelCase(operation.operationId);
-          expect(
-            normalized === operation.operationId &&
-              prefixRegex.test(operation.operationId),
-            `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
-          ).to.be.ok;
-        }
-      },
-    );
+    operations.requirementOnChange
+      .attributes("operationId")
+      .must(
+        "have the correct operationId format",
+        (operation, context, docs) => {
+          docs.includeDocsLink(links.standards.operationIds);
+          docs.becomesEffectiveOn(new Date("2021-07-01"));
+          expect(operation.operationId).to.be.ok;
+          if (operation.operationId !== undefined) {
+            const normalized = camelCase(operation.operationId);
+            expect(
+              normalized === operation.operationId &&
+                prefixRegex.test(operation.operationId),
+              `operationId "${operation.operationId}" must be camelCase (${normalized}) and start with get|create|list|update|delete`,
+            ).to.be.ok;
+          }
+        },
+      );
   },
   operationIdSet: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must(
@@ -74,18 +76,17 @@ export const rules = {
     );
   },
   removingOperationId: ({ operations }: SnykApiCheckDsl) => {
-    operations.changed.must(
-      "have consistent operation IDs",
-      (current, next) => {
+    operations.changed
+      .attributes("operationId")
+      .must("have consistent operation IDs", (current, next) => {
         // TODO: did not find a doc link for this
         expect(current.operationId).to.equal(next.operationId);
-      },
-    );
+      });
   },
   parameterCase: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirementOnChange.must(
-      "use the correct case",
-      (operation, context, docs, specItem) => {
+    operations.requirementOnChange
+      .attributes("name")
+      .must("use the correct case", (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);
         for (const p of specItem.parameters || []) {
           const parameter = p as OpenAPIV3.ParameterObject;
@@ -98,8 +99,7 @@ export const rules = {
             ).to.be.ok;
           }
         }
-      },
-    );
+      });
   },
   preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
     operations.removed.must("not be allowed", (operation, context, docs) => {
