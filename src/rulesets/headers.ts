@@ -9,7 +9,7 @@ export const rules = {
       "be kebab-case",
       ({ name }, context, docs) => {
         docs.includeDocsLink(links.standards.headers.case);
-        expect(paramCase(name)).to.equal(name);
+        if (paramCase(name) !== name) expect.fail(`${name} is not kebab-case`);
       },
     );
   },

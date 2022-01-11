@@ -53,7 +53,7 @@ export const rules = {
       "have operationId",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationIds);
-        expect(operation.operationId).to.be.ok;
+        if (!operation.operationId) expect.fail("no operationId provided");
       },
     );
   },
@@ -61,6 +61,7 @@ export const rules = {
     operations.requirement.must("have tags", (operation, context, docs) => {
       docs.includeDocsLink(links.standards.tags);
       expect(operation.tags).to.exist;
+      if (!operation.tags) expect.fail("tags must exist");
       expect(operation.tags).to.have.lengthOf.above(0, "with at least one tag");
     });
   },
@@ -69,7 +70,7 @@ export const rules = {
       "have a summary",
       (operation, context, docs) => {
         docs.includeDocsLink(links.standards.operationSummary);
-        expect(operation.summary).to.exist;
+        if (!operation.summary) expect.fail("must have a summary");
       },
     );
   },

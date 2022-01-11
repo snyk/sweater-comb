@@ -11,8 +11,8 @@ export const rules = {
         const allowed = ["wip", "experimental", "beta", "ga"];
         const wasValid = allowed.includes(after || "");
 
-        expect(wasValid, `${after} must be one of allowed values ${allowed}`).to
-          .be.ok;
+        if (!wasValid)
+          expect.fail(`${after} must be one of allowed values ${allowed}`);
       },
     );
   },
@@ -27,7 +27,11 @@ export const rules = {
         if (!before || !after) return;
         // A resource can go from wip to anything, so no need to check.
         if (before === "wip") return;
-        expect(before).to.equal(after);
+
+        if (before !== after)
+          expect.fail(
+            `stability transition from '${before}' to '${after}' not allowed`,
+          );
       },
     );
   },

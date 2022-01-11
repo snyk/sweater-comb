@@ -133,7 +133,7 @@ Object {
       "condition": "be kebab-case",
       "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#header-field-names",
       "effectiveOnDate": undefined,
-      "error": "expected 'bad-header' to equal 'badHeader'",
+      "error": "badHeader is not kebab-case",
       "isMust": true,
       "isShould": false,
       "passed": false,
