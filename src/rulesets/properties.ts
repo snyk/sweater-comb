@@ -63,7 +63,7 @@ export const rules = {
     bodyProperties.added.must("have snake case keys", ({ key }, context) => {
       // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
-      expect(snakeCase.test(key)).to.be.ok;
+      if (!snakeCase.test(key)) expect.fail(`${key} is not snake-case`);
     });
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
