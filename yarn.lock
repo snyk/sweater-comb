@@ -1723,17 +1723,17 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.18.1.tgz#b3436c027f314ab460491ccbb895f89a84c81673"
-  integrity sha512-XPojZLMhzyj241ln/u5LJRoqldOTQAlgz5kx6zX+G6fC4gvf+5yzuQY70lcbaaQtE8ujPwhz4dkquIbkTIi2fA==
+"@useoptic/api-checks@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.19.0.tgz#31d50787c7b006e370b133c79785a2792dbefcbe"
+  integrity sha512-58zpR8KmzyB5Cw+IAfV8yAZIAaURs1c3LQmdonvJ4akyonB7LYEQ0WqLlUXVnDa3dQ+84cJfR2Ot7j6XPYSt9Q==
   dependencies:
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
     "@stoplight/spectral-core" "^1.6.1"
-    "@useoptic/json-pointer-helpers" "0.18.1"
-    "@useoptic/openapi-io" "0.18.1"
-    "@useoptic/openapi-utilities" "0.18.1"
+    "@useoptic/json-pointer-helpers" "0.19.0"
+    "@useoptic/openapi-io" "0.19.0"
+    "@useoptic/openapi-utilities" "0.19.0"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
@@ -1749,23 +1749,24 @@
     node-fetch "^2"
     react "^17.0.2"
     react-use "^17.3.1"
+    ts-invariant "^0.9.4"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.18.1.tgz#fcb0aa4aa072a2ea8b4b9f20c4ddd38edac22912"
-  integrity sha512-1FwMMGscxqKDLVp5QXOkUF31D5EOia7DTOelcSqa0H3/yH3LhIe4bOxgg9881GSAgWMES7gEnp6GWxwordYH2g==
+"@useoptic/json-pointer-helpers@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.19.0.tgz#3852bf4f652df557eac28533f0f9098e06f71a71"
+  integrity sha512-c7+dwo2tTTvY9nUKb1XMkz8SXYAUAb56WgirNV3pqcrJY6MYPAy8a93XxG670d6ZtYWh07kSVcdAaxoQoIorNQ==
   dependencies:
     json-pointer "^0.6.1"
 
-"@useoptic/openapi-io@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.18.1.tgz#b1ce280803c1f935a681d2711749bbe1cb30cad8"
-  integrity sha512-ylyzC2nC/bCckadnaaqT1zCe9fR7PCC3zs9QCBFmsRVd9WSbULlUrDoxoiCZgFetwiqrB6KvZFV/AtuBBXFYHw==
+"@useoptic/openapi-io@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.19.0.tgz#fc6b9d8302bbd57fb662e5a780164ca3a8dce8cd"
+  integrity sha512-Y4O+wGeb34dhDztuqQctWbSY9/ikpsBPJTpo+hu5RXv3p1oaWs4Ry3zTxvdmOb+J96qtFhMNVA1Tat9sNFdrqg==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.18.1"
+    "@useoptic/json-pointer-helpers" "0.19.0"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -1780,17 +1781,19 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.18.1.tgz#9878cbdc6d5e1df239a80a53ce405cf0f8f2e009"
-  integrity sha512-PYTuSXOU6edyszQ1qFfFZIGtldVdG2dVI1hkJpL8IovZadPL/Ndk41iNeQKK/tqQ5ffdXRmgzHPs5ay8XHz5tw==
+"@useoptic/openapi-utilities@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.19.0.tgz#eddf73391c627937ba2684190d6c8e7faf267fa8"
+  integrity sha512-pH2kLKgzt5M85W/UBVqyrf035j4ncni7bftgJ+vxB/PkjwF1S7UYyYe7AqQ2DFie0gKiSSBYKH00HboeIY0Vrg==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.18.1"
+    "@useoptic/json-pointer-helpers" "0.19.0"
     fast-deep-equal "^3.1.3"
+    js-yaml "^4.1.0"
     lodash.sortby "^4.7.0"
     openapi-schema-validator "^10.0.0"
     openapi-types "^9.3.0"
     ts-invariant "^0.9.3"
+    yaml-ast-parser "^0.0.43"
 
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
@@ -5892,6 +5895,13 @@ ts-invariant@^0.9.3:
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.9.3.tgz#4b41e0a80c2530a56ce4b8fd4e14183aaac0efa8"
   integrity sha512-HinBlTbFslQI0OHP07JLsSXPibSegec6r9ai5xxq/qHYCsIQbzpymLpDhAUsnXcSrDEcd0L62L8vsOEdzM0qlA==
+  dependencies:
+    tslib "^2.1.0"
+
+ts-invariant@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.9.4.tgz#42ac6c791aade267dd9dc65276549df5c5d71cac"
+  integrity sha512-63jtX/ZSwnUNi/WhXjnK8kz4cHHpYS60AnmA6ixz17l7E12a5puCWFlNpkne5Rl0J8TBPVHpGjsj4fxs8ObVLQ==
   dependencies:
     tslib "^2.1.0"
 
