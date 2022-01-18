@@ -475,7 +475,7 @@ Array [
     "condition": "not be required",
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
     "effectiveOnDate": undefined,
-    "error": "expected true to be false",
+    "error": "expected request query parameter org_id to not be required",
     "isMust": true,
     "isShould": false,
     "passed": false,

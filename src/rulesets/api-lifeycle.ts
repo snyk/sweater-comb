@@ -70,10 +70,9 @@ export const rules = {
       };
       const requiredDays = sunsetSchedule[stability];
       if (diffDays < requiredDays) {
-        expect(
-          diffDays,
+        expect.fail(
           `expected ${stability} resource ${resourceName} to be deprecated ${requiredDays} days`,
-        ).to.be.gt(requiredDays);
+        );
       }
     });
   },

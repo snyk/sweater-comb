@@ -2,6 +2,7 @@ import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
 import { OpenAPIV3 } from "@useoptic/api-checks";
 import { links } from "../docs";
+import { getBodyPropertyName } from "../names";
 
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
@@ -25,18 +26,6 @@ function withinAttributes(context) {
   return false;
 }
 
-function bodyPropertyName(context) {
-  const prefix =
-    "inRequest" in context
-      ? "request"
-      : "inResponse" in context
-      ? "response"
-      : "";
-  return "jsonSchemaTrail" in context
-    ? `${prefix} property ${context.jsonSchemaTrail.join(".")}`
-    : `${prefix} property`;
-}
-
 /**
  * Expectation to make sure a specific schema property does not change
  * @example
@@ -53,7 +42,9 @@ const preventChange = (schemaProperty: string) => {
     if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
     expect(
       beforeSchema[schemaProperty],
-      `expected ${bodyPropertyName(context)} ${schemaProperty} to not change`,
+      `expected ${getBodyPropertyName(
+        context,
+      )} ${schemaProperty} to not change`,
     ).to.equal(afterSchema[schemaProperty]);
   };
 };
@@ -63,7 +54,10 @@ export const rules = {
     bodyProperties.added.must("have snake case keys", ({ key }, context) => {
       // TODO: did not find a doc link for this
       const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
-      if (!snakeCase.test(key)) expect.fail(`${key} is not snake-case`);
+      if (!snakeCase.test(key))
+        expect.fail(
+          `expected ${getBodyPropertyName(context)} is be snake case`,
+        );
     });
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
@@ -99,7 +93,11 @@ export const rules = {
       if (context.bodyAdded) return;
       docs.includeDocsLink(links.versioning.breakingChanges);
       if (!("inRequest" in context)) return;
-      expect(property.required).to.not.be.true;
+      if (property.required) {
+        expect.fail(
+          `expected ${getBodyPropertyName(context)} to not be required`,
+        );
+      }
     });
   },
   enumOrExample: ({ bodyProperties }: SnykApiCheckDsl) => {

@@ -2,6 +2,7 @@ import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
 import { paramCase } from "change-case";
 import { links } from "../docs";
+import { getResponseName } from "../names";
 
 export const rules = {
   headerNameCase: ({ responses }: SnykApiCheckDsl) => {
@@ -9,7 +10,8 @@ export const rules = {
       .attributes("name")
       .must("be kebab-case", ({ name }, context, docs) => {
         docs.includeDocsLink(links.standards.headers.case);
-        if (paramCase(name) !== name) expect.fail(`${name} is not kebab-case`);
+        if (paramCase(name) !== name)
+          expect.fail(`header name ${name} is not kebab case`);
       });
   },
   responseHeaders: ({ responses }: SnykApiCheckDsl) => {
@@ -29,7 +31,13 @@ export const rules = {
 
         // Note: this allows for including headers that aren't required
         for (const requiredHeader of requiredHeaders) {
-          expect(specHeaders).to.include(requiredHeader);
+          if (!specHeaders.includes(requiredHeader))
+            expect.fail(
+              `expected ${getResponseName(
+                response,
+                context,
+              )} to include required header ${requiredHeader}`,
+            );
         }
       },
     );
