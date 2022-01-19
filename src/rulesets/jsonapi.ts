@@ -6,16 +6,9 @@ import { OpenAPIV3 } from "openapi-types";
 import Ajv from "ajv";
 import { expect } from "chai";
 import { links } from "../docs";
+import { getOperationName, getResponseName } from "../names";
 
 const ajv = new Ajv();
-
-function getOperationName(operation) {
-  return `operation ${operation.pathPattern} ${operation.method}`;
-}
-
-function getResponseName(response, context) {
-  return `response ${context.path} ${context.method} ${response.statusCode}`;
-}
 
 function isOpenApiPath(path) {
   return path.match(/\/openapi/);

@@ -173,7 +173,11 @@ export const rules = {
       (queryParameter, context, docs) => {
         if (context.operationAdded) return;
         docs.includeDocsLink(links.versioning.breakingChanges);
-        expect(queryParameter.required).to.not.be.true;
+        if (queryParameter.required) {
+          expect.fail(
+            `expected request query parameter ${queryParameter.name} to not be required`,
+          );
+        }
       },
     );
   },
@@ -184,8 +188,10 @@ export const rules = {
       "not be optional then required",
       (queryParameterBefore, queryParameterAfter, context, docs) => {
         docs.includeDocsLink(links.versioning.breakingChanges);
-        if (!queryParameterBefore.required) {
-          expect(queryParameterAfter.required).to.not.be.true;
+        if (!queryParameterBefore.required && queryParameterAfter.required) {
+          expect.fail(
+            `expected request query parameter ${queryParameterAfter.name} to not change from optional to required`,
+          );
         }
       },
     );
