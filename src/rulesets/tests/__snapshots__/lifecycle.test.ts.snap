@@ -629,7 +629,7 @@ Object {
       "condition": "follow sunset rules",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected experimental resource Example to be deprecated 30 days: expected 10 to be above 30",
+      "error": "expected experimental resource Example to be deprecated 30 days",
       "isMust": true,
       "isShould": false,
       "passed": false,
