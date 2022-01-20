@@ -1355,12 +1355,12 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stoplight/better-ajv-errors@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/better-ajv-errors/-/better-ajv-errors-0.2.0.tgz#86aa8072dece24e2aa7e132f889390c18ca1ca6d"
-  integrity sha512-3vBbXBDplfeOGS2rT4PyOwJ1K0A7/NqlVXI6sJ/XchQlrMXFMKtj4qExBLxr4M9ZiiESu48uhbdS3Nx8A0S+ZA==
+"@stoplight/better-ajv-errors@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/better-ajv-errors/-/better-ajv-errors-1.0.1.tgz#b2756fabc951e85fc6e047edbcae2e72d900d4cb"
+  integrity sha512-rgxT+ZMeZbYRiOLNk6Oy6e/Ig1iQKo0IL8v/Y9E/0FewzgtkGs/p5dMeUpIFZXWj3RZaEPmfL9yh0oUEmNXZjg==
   dependencies:
-    jsonpointer "^4.0.1"
+    jsonpointer "^5.0.0"
     leven "^3.1.0"
 
 "@stoplight/json-ref-readers@1.2.2":
@@ -1388,17 +1388,6 @@
     tslib "^2.3.1"
     urijs "^1.19.6"
 
-"@stoplight/json@3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/json/-/json-3.15.0.tgz#e7c2919aaa12dc4dafb43d4da71e29d101106f34"
-  integrity sha512-FxdmBaZyt6FZVN8F/GaGzevLxjkW1gLHC5cPeb4slMM8BIXCxKluIkGLzmb4bnkk2+4gPaYj75V28U6s0WNrbQ==
-  dependencies:
-    "@stoplight/ordered-object-literal" "^1.0.1"
-    "@stoplight/types" "^12.2.0"
-    jsonc-parser "~2.2.1"
-    lodash "^4.17.15"
-    safe-stable-stringify "^1.1"
-
 "@stoplight/json@3.17.0":
   version "3.17.0"
   resolved "https://registry.yarnpkg.com/@stoplight/json/-/json-3.17.0.tgz#9d864b63b9c6398c7cecae1340225b15953cac74"
@@ -1410,7 +1399,7 @@
     lodash "^4.17.21"
     safe-stable-stringify "^1.1"
 
-"@stoplight/json@^3.15.0", "@stoplight/json@^3.17.0":
+"@stoplight/json@^3.15.0", "@stoplight/json@^3.17.0", "@stoplight/json@~3.17.1":
   version "3.17.1"
   resolved "https://registry.yarnpkg.com/@stoplight/json/-/json-3.17.1.tgz#17aa8f17c58678649cd0d345fb184e0bea16f8df"
   integrity sha512-OQbjaPU9/VPQYa3zEfN82vjXu3vWv/537Ei7TX/xYLMPdpdBI/mCyThdZAG4SN1t3iho2dxIKpTVObuCTTgBvA==
@@ -1438,54 +1427,54 @@
   resolved "https://registry.yarnpkg.com/@stoplight/path/-/path-1.3.2.tgz#96e591496b72fde0f0cdae01a61d64f065bd9ede"
   integrity sha512-lyIc6JUlUA8Ve5ELywPC8I2Sdnh1zc1zmbYgVarhXIp9YeAB0ReeqmGEOWNtlHkbP2DAA1AL65Wfn2ncjK/jtQ==
 
-"@stoplight/spectral-core@^1.1.0", "@stoplight/spectral-core@^1.3.0", "@stoplight/spectral-core@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-core/-/spectral-core-1.6.1.tgz#2a56061b103e426c656d66bd46dd9281c22396d9"
-  integrity sha512-3oLmUMJyK4rzs5HDkMD3Y+WK62+M/29hadYjpsnObhzKwSzZqdbFxhmPVCmMutnrZCpSLxC2un6eLeqc21miTQ==
+"@stoplight/spectral-core@^1.7.0", "@stoplight/spectral-core@^1.8.0", "@stoplight/spectral-core@^1.8.1":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-core/-/spectral-core-1.9.0.tgz#7e8357d409e7f2f21cbb6ef0fe39208878db3839"
+  integrity sha512-mj6Z2PJB9MKY3M+/pGd/Lyr4IredliAGT+0EK8NB2mD7eCrsztXdTtm1C8dEgdMPruMCKZ+rYJdSb8tqG5l/eA==
   dependencies:
-    "@stoplight/better-ajv-errors" "0.2.0"
-    "@stoplight/json" "3.17.0"
+    "@stoplight/better-ajv-errors" "1.0.1"
+    "@stoplight/json" "~3.17.1"
     "@stoplight/lifecycle" "2.3.2"
     "@stoplight/path" "1.3.2"
     "@stoplight/spectral-parsers" "^1.0.0"
     "@stoplight/spectral-ref-resolver" "^1.0.0"
     "@stoplight/spectral-runtime" "^1.0.0"
     "@stoplight/types" "12.3.0"
-    ajv "~8.6.0"
+    ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
     blueimp-md5 "2.18.0"
-    json-schema "0.3.0"
+    json-schema "0.4.0"
     jsonpath-plus "6.0.1"
     lodash "~4.17.21"
     lodash.topath "^4.5.2"
     minimatch "3.0.4"
-    nimma "0.1.6"
+    nimma "0.1.7"
     simple-eval "1.0.0"
     tslib "^2.3.0"
 
-"@stoplight/spectral-formats@^1.0.0", "@stoplight/spectral-formats@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-formats/-/spectral-formats-1.0.1.tgz#eb25728464db224fed2d031dcae944ff5e7446de"
-  integrity sha512-l4cZ6imTqdCmNI8eexvWMoSSptx2lmdFRXSiX7P9ZDdKeRjQkJ49U5OttRr69IBaWdiHEP8Gw/cfnZDYOJKD5A==
+"@stoplight/spectral-formats@^1.0.0", "@stoplight/spectral-formats@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-formats/-/spectral-formats-1.0.2.tgz#86ea3768fbbfbffb82ae5e43df7cce9beac86afc"
+  integrity sha512-jMIlMTSCJzFKq3kXnHv+YC0TTnwli/DuZY4JxObyaBwdiG1LnSAJLL7R857PpJpQ1uoiZULov8clxudSMeKL+Q==
   dependencies:
-    "@stoplight/json" "3.15.0"
-    "@stoplight/spectral-core" "^1.1.0"
-    "@stoplight/types" "12.3.0"
+    "@stoplight/json" "^3.17.0"
+    "@stoplight/spectral-core" "^1.8.0"
     "@types/json-schema" "^7.0.7"
+    tslib "^2.3.1"
 
-"@stoplight/spectral-functions@^1.1.2":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-functions/-/spectral-functions-1.4.0.tgz#f26c474414590011b32d3d6e66a07850d112e17b"
-  integrity sha512-uSubCy1hpY3hWlJnYtH43NJoe2sTA0O12slRz++KQ6cMJUf3w0x9X4nLKkJ+paJoYJaDmhdWTrR2Gg41ji44yg==
+"@stoplight/spectral-functions@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-functions/-/spectral-functions-1.5.1.tgz#4a15c9973d2166d1d83fd6bceb5e7f940e86ab13"
+  integrity sha512-KHMprX4OwjgVtzUulVPfqkZTNCAP4JbZqTQ5/UTCfrQ1nO4vcr+3CJgU74ggSP6rH3UuJIIFVZN+9wU7HP1bEA==
   dependencies:
-    "@stoplight/better-ajv-errors" "0.2.0"
-    "@stoplight/json" "3.17.0"
-    "@stoplight/spectral-core" "^1.1.0"
+    "@stoplight/better-ajv-errors" "1.0.1"
+    "@stoplight/json" "~3.17.1"
+    "@stoplight/spectral-core" "^1.7.0"
     "@stoplight/spectral-formats" "^1.0.0"
-    "@stoplight/spectral-runtime" "*"
+    "@stoplight/spectral-runtime" "^1.1.0"
     "@stoplight/types" "12.3.0"
-    ajv "~8.6.3"
+    ajv "^8.6.3"
     ajv-draft-04 "~1.0.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -1513,26 +1502,26 @@
     dependency-graph "0.11.0"
     tslib "^2.3.1"
 
-"@stoplight/spectral-rulesets@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-rulesets/-/spectral-rulesets-1.3.0.tgz#e8d76db7833acf8ad75c23fc4214dfd0e90d49ec"
-  integrity sha512-HxgSfSSTI/iyEwheNz4pltQQWEc12smxJIEALCDCkHSsJGs7ID2uhthGUJEK0Tdvw0FqnBi4EnuKJ4srDuCJew==
+"@stoplight/spectral-rulesets@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-rulesets/-/spectral-rulesets-1.3.2.tgz#8579b63989ae95ab922b051c2281fb3700baf846"
+  integrity sha512-xAJgtHO2X2tMFEwiSH1Zg+4Dp8ybT2DM0scg93z2rLqAOdHUJmJxX3qSLEABe5RNG9zcPvHq1ppWXLCQKXvsJw==
   dependencies:
-    "@stoplight/better-ajv-errors" "0.2.0"
-    "@stoplight/json" "3.17.0"
-    "@stoplight/spectral-core" "^1.3.0"
-    "@stoplight/spectral-formats" "^1.0.1"
-    "@stoplight/spectral-functions" "^1.1.2"
-    "@stoplight/spectral-runtime" "^1.0.0"
+    "@stoplight/better-ajv-errors" "1.0.1"
+    "@stoplight/json" "^3.17.0"
+    "@stoplight/spectral-core" "^1.8.1"
+    "@stoplight/spectral-formats" "^1.0.2"
+    "@stoplight/spectral-functions" "^1.5.1"
+    "@stoplight/spectral-runtime" "^1.1.1"
     "@stoplight/types" "^12.3.0"
     "@types/json-schema" "^7.0.7"
-    ajv "~8.6.0"
+    ajv "^8.8.2"
     ajv-formats "~2.1.0"
     json-schema-traverse "^1.0.0"
     lodash "~4.17.21"
     tslib "^2.3.0"
 
-"@stoplight/spectral-runtime@*", "@stoplight/spectral-runtime@^1.0.0":
+"@stoplight/spectral-runtime@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@stoplight/spectral-runtime/-/spectral-runtime-1.1.0.tgz#693fb1ca7ff078f4b60afed5227666d12361d280"
   integrity sha512-/9gjGFRNf+h8iJ5OOUASMI+SNNovVcjcRzdiCMzOMQGnhc9GR77rqL7U7E5zoJymuwIXkvvvPt1Ka0QiSH/5zA==
@@ -1544,7 +1533,20 @@
     lodash "^4.17.21"
     node-fetch "^2.6.1"
 
-"@stoplight/types@12.3.0", "@stoplight/types@^12.0.0", "@stoplight/types@^12.2.0", "@stoplight/types@^12.3.0":
+"@stoplight/spectral-runtime@^1.1.0", "@stoplight/spectral-runtime@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-runtime/-/spectral-runtime-1.1.1.tgz#c792f609c1fcc479a539def0475a61f446c26ac4"
+  integrity sha512-sOradfNLO6wOjCasMEM9fm5hykZe2E4gqAY1WCcGueDoq4VlDFbTb7X4aO5jKbFqF+V+ctWlaXTftlhElG9pcQ==
+  dependencies:
+    "@stoplight/json" "^3.17.0"
+    "@stoplight/path" "^1.3.2"
+    "@stoplight/types" "^12.3.0"
+    abort-controller "^3.0.0"
+    lodash "^4.17.21"
+    node-fetch "^2.6.1"
+    tslib "^2.3.1"
+
+"@stoplight/types@12.3.0", "@stoplight/types@^12.0.0", "@stoplight/types@^12.3.0":
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/@stoplight/types/-/types-12.3.0.tgz#ac71d295319f26abb279e3d89d1c1774857d20b4"
   integrity sha512-hgzUR1z5BlYvIzUeFK5pjs5JXSvEutA9Pww31+dVicBlunsG1iXopDx/cvfBY7rHOrgtZDuvyeK4seqkwAZ6Cg==
@@ -1723,17 +1725,18 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.19.0.tgz#31d50787c7b006e370b133c79785a2792dbefcbe"
-  integrity sha512-58zpR8KmzyB5Cw+IAfV8yAZIAaURs1c3LQmdonvJ4akyonB7LYEQ0WqLlUXVnDa3dQ+84cJfR2Ot7j6XPYSt9Q==
+"@useoptic/api-checks@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.21.3.tgz#f19a2428b625c4bf4dfd3c4d71e045de8f328443"
+  integrity sha512-5tnOCT9WYVWocV2OkV+LXd3RELit+NYiVZ3+BVj3S/tUyrJXVZJyC3xZU1cmF/K92TUebw4TM3ok40pPdP6vug==
   dependencies:
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
-    "@stoplight/spectral-core" "^1.6.1"
-    "@useoptic/json-pointer-helpers" "0.19.0"
-    "@useoptic/openapi-io" "0.19.0"
-    "@useoptic/openapi-utilities" "0.19.0"
+    "@stoplight/spectral-core" "^1.8.1"
+    "@stoplight/spectral-rulesets" "^1.3.2"
+    "@useoptic/json-pointer-helpers" "0.21.3"
+    "@useoptic/openapi-io" "0.21.3"
+    "@useoptic/openapi-utilities" "0.21.3"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
@@ -1752,21 +1755,22 @@
     ts-invariant "^0.9.4"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.19.0.tgz#3852bf4f652df557eac28533f0f9098e06f71a71"
-  integrity sha512-c7+dwo2tTTvY9nUKb1XMkz8SXYAUAb56WgirNV3pqcrJY6MYPAy8a93XxG670d6ZtYWh07kSVcdAaxoQoIorNQ==
+"@useoptic/json-pointer-helpers@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.21.3.tgz#e934d6af18906d39dcb1fbe1abae0f0c469a9f5d"
+  integrity sha512-/EXjzsenAERraUnNGtrbFfD/f8QcS7i6TDkwT4ViPG5n9BMpb/sPo0hQr2uX3aTXSAjDjYCi2u3VmLJga63mFw==
   dependencies:
     json-pointer "^0.6.1"
 
-"@useoptic/openapi-io@0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.19.0.tgz#fc6b9d8302bbd57fb662e5a780164ca3a8dce8cd"
-  integrity sha512-Y4O+wGeb34dhDztuqQctWbSY9/ikpsBPJTpo+hu5RXv3p1oaWs4Ry3zTxvdmOb+J96qtFhMNVA1Tat9sNFdrqg==
+"@useoptic/openapi-io@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.21.3.tgz#1550e58f1fe43ee26083fd14423c0b59acb001b7"
+  integrity sha512-6PX9pzRNFIZeFaUUj3H0O2PAAYu8HgjTj4zbaTHF4kGnNpENVYCGWS5CN1rmtGzlD6/tmhtR04Hhqpil+P8EvA==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.19.0"
+    "@useoptic/json-pointer-helpers" "0.21.3"
+    "@useoptic/openapi-utilities" "0.21.3"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -1781,12 +1785,12 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.19.0.tgz#eddf73391c627937ba2684190d6c8e7faf267fa8"
-  integrity sha512-pH2kLKgzt5M85W/UBVqyrf035j4ncni7bftgJ+vxB/PkjwF1S7UYyYe7AqQ2DFie0gKiSSBYKH00HboeIY0Vrg==
+"@useoptic/openapi-utilities@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.21.3.tgz#c18bd06419752ad7bf359a9577d89095e920262d"
+  integrity sha512-qwEJ0uW5xgZrpOdUSMrIoo9hk+ek8H40VA3CdhVyx3Cb5/qxq79pgjOwHyWQhMjafo1Sk8j1VksU5FZxQ+kUaQ==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.19.0"
+    "@useoptic/json-pointer-helpers" "0.21.3"
     fast-deep-equal "^3.1.3"
     js-yaml "^4.1.0"
     lodash.sortby "^4.7.0"
@@ -1874,10 +1878,10 @@ ajv@^8.0.0, ajv@^8.1.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-ajv@~8.6.0, ajv@~8.6.3:
-  version "8.6.3"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.6.3.tgz#11a66527761dc3e9a3845ea775d2d3c0414e8764"
-  integrity sha512-SMJOdDP6LqTkD0Uq8qLi+gMwSt0imXLSV080qFVwJCpH9U6Mb+SUGHAXM0KNbcBPguytWyvFxcHgMLe2D2XSpw==
+ajv@^8.6.0, ajv@^8.6.3, ajv@^8.8.2:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.9.0.tgz#738019146638824dea25edcf299dcba1b0e7eb18"
+  integrity sha512-qOKJyNj/h+OWx7s5DePL6Zu1KeM9jPZhwBqs+7DzP6bGOvqzVCSf0xueYmVuaC/oQ/VtS2zLMLHdQFbkka+XDQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -1992,7 +1996,7 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
-astring@^1.7.5:
+astring@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.1.tgz#a91c4afd4af3523e11f31242a3d5d9af62bb6cc6"
   integrity sha512-Aj3mbwVzj7Vve4I/v2JYOPFkCGM2YS7OqQTNSxmUR+LECRpokuPgAYghePgr6SALDo5bD5DlfbSaYjOzGJZOLQ==
@@ -4173,7 +4177,7 @@ jsdom@^16.4.0:
     ws "^7.4.6"
     xml-name-validator "^3.0.0"
 
-jsep@^1.1.2:
+jsep@^1.1.2, jsep@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/jsep/-/jsep-1.2.0.tgz#bf6195f8334a713af393cfb0d8bad2adcf5a8246"
   integrity sha512-ex4YB352GD74qLjjAtjYm33LcHDBAwhY01BgZbXU56eLWOM1JvKYX4lz4PYkqw0OVfAQYl7CRt0JBRuAUt7mqA==
@@ -4210,10 +4214,10 @@ json-schema-traverse@^1.0.0:
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz#ae7bcb3656ab77a73ba5c49bf654f38e6b6860e2"
   integrity sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
 
-json-schema@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.3.0.tgz#90a9c5054bd065422c00241851ce8d59475b701b"
-  integrity sha512-TYfxx36xfl52Rf1LU9HyWSLGPdYLL+SQ8/E/0yVyKG8wCCDaSrhPap0vEdlsZWRaS6tnKKLPGiEJGiREVC8kxQ==
+json-schema@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.4.0.tgz#f7de4cf6efab838ebaeb3236474cbba5a1930ab5"
+  integrity sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==
 
 json-stable-stringify@^1.0.1:
   version "1.0.1"
@@ -4262,10 +4266,10 @@ jsonpath@^1.1.1:
     static-eval "2.0.2"
     underscore "1.12.1"
 
-jsonpointer@^4.0.1:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.1.0.tgz#501fb89986a2389765ba09e6053299ceb4f2c2cc"
-  integrity sha512-CXcRvMyTlnR53xMcKnuMzfCA5i/nfblTnnr74CZb6C4vG39eu6w51t7nKmU5MfLfbTgGItliNyjO/ciNPDqClg==
+jsonpointer@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-5.0.0.tgz#f802669a524ec4805fa7389eadbc9921d5dc8072"
+  integrity sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -4381,7 +4385,7 @@ lodash.topath@^4.5.2:
   resolved "https://registry.yarnpkg.com/lodash.topath/-/lodash.topath-4.5.2.tgz#3616351f3bba61994a0931989660bd03254fd009"
   integrity sha1-NhY1Hzu6YZlKCTGYlmC9AyVP0Ak=
 
-lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0, lodash@~4.17.21:
+lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0, lodash@~4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4597,15 +4601,15 @@ nice-try@^3.0.0:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-3.0.0.tgz#38f7584ae0d3703cde8317bb78fdbc4ef6dffe40"
   integrity sha512-JVAWBFZ6kFO/c6jtbcYAM4aAJK5XnAOyWAgBZ53V1HUNTfIjJdjXa96oWhDpegeQSRhTQXpOwU5bpYbzkkrcSA==
 
-nimma@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/nimma/-/nimma-0.1.6.tgz#2d39018fc08035dc85bb173c7d9f23b364cc65e6"
-  integrity sha512-e5sD2lr975iRQg08pr0p0lx7ISYojJSQFMSn6hI6W6ylmM+TLKLwM3l0lVsBAIUNOmOPCAlQzn70gFcJaWy3mg==
+nimma@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/nimma/-/nimma-0.1.7.tgz#d67504d28e046b938705e8b92481f5d1a1f168a8"
+  integrity sha512-0FIra4ogMHhOjn4fd2UiBuuaxM1nHzwhCEPvaFmCbwsR6qzHyJUG3dLW3tAIQji42wIij8OA/HB0+Gldg3OX4A==
   dependencies:
     "@jsep-plugin/regex" "^1.0.1"
     "@jsep-plugin/ternary" "^1.0.2"
-    astring "^1.7.5"
-    jsep "^1.1.2"
+    astring "^1.8.1"
+    jsep "^1.2.0"
   optionalDependencies:
     jsonpath-plus "^6.0.1"
     lodash.topath "^4.5.2"
