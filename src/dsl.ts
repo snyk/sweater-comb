@@ -6,6 +6,7 @@ import {
   newDocsLinkHelper,
   Result,
   runCheck,
+  genericEntityRuleImpl,
 } from "@useoptic/api-checks";
 
 import niceTry from "nice-try";
@@ -24,9 +25,8 @@ import {
   OpenApiRequestParameterFact,
   OpenApiResponseFact,
   OpenAPIV3,
+  ShouldOrMust,
 } from "@useoptic/openapi-utilities";
-import { genericEntityRuleImpl } from "@useoptic/api-checks/build/sdk/generic-entity-rule-impl";
-import { ShouldOrMust } from "@useoptic/api-checks/build/sdk/types";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 type SnykStablity = "wip" | "experimental" | "beta" | "ga";
@@ -149,7 +149,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get context() {
-    const change: IChange<SnykApiCheckDsl> = {
+    const change: IChange<OpenApiFact> = {
       location: {
         conceptualLocation: { path: "Resource Document", method: "" },
         jsonPath: "/",
@@ -236,7 +236,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get specification() {
-    const change: IChange<SnykApiCheckDsl> = {
+    const change: IChange<OpenApiFact> = {
       location: {
         conceptualLocation: { path: "This Specification", method: "" },
         jsonPath: "/",
