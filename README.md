@@ -8,7 +8,7 @@ At Snyk, we're starting an API program that aims to maximize the value we provid
 
 Such an API needs some guardrails to stay cohesive, consistent and "unsurprising" to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
 
-Sweater Comb helps provide some of those guardrails with automation, initially by applying custom [Spectral](https://stoplight.io/open-source/spectral/) linter rules to our OpenAPI specifications.
+Sweater Comb helps provide some of those guardrails with automation, initially by applying custom [Optic CI](https://useoptic.com) rules to our OpenAPI specifications.
 
 [Read more about our API program here](docs/intro.md).
 
