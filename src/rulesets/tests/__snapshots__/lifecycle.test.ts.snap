@@ -827,6 +827,73 @@ Object {
 }
 `;
 
+exports[`lifecycle resource names must be plural 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "added": Object {
+          "changeDate": "2021-10-10",
+          "changeResource": "Dog",
+          "changeVersion": Object {
+            "date": "2021-10-10",
+            "stability": "ga",
+          },
+          "resourceVersions": Object {},
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "Entire Resource",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "ContextRule",
+        },
+      },
+      "condition": "resource names must be plural",
+      "docsLink": undefined,
+      "effectiveOnDate": undefined,
+      "error": "\\"Dog\\" is not plural. Try using \\"Dogs\\"",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "api lifeycle: ",
+    },
+  ],
+}
+`;
+
 exports[`lifecycle stability can not change from any stability but wip 1`] = `
 Object {
   "base": Object {
@@ -1120,7 +1187,7 @@ Object {
       "change": Object {
         "added": Object {
           "changeDate": "2021-10-10",
-          "changeResource": "Example",
+          "changeResource": "Examples",
           "changeVersion": Object {
             "date": "2021-10-10",
             "stability": "ga",
@@ -1141,7 +1208,7 @@ Object {
       "condition": "follow sunset rules",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected Example to be deprecated before removing",
+      "error": "expected Examples to be deprecated before removing",
       "isMust": true,
       "isShould": false,
       "passed": false,
@@ -1188,7 +1255,7 @@ Object {
       "change": Object {
         "added": Object {
           "changeDate": "2021-10-20",
-          "changeResource": "Example",
+          "changeResource": "Examples",
           "changeVersion": Object {
             "date": "2021-10-10",
             "stability": "experimental",
@@ -1220,7 +1287,7 @@ Object {
       "condition": "follow sunset rules",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected experimental resource Example to be deprecated 30 days",
+      "error": "expected Examples to be deprecated before removing",
       "isMust": true,
       "isShould": false,
       "passed": false,
@@ -1267,13 +1334,13 @@ Object {
       "change": Object {
         "added": Object {
           "changeDate": "2021-12-01",
-          "changeResource": "Example",
+          "changeResource": "Examples",
           "changeVersion": Object {
             "date": "2021-10-10",
             "stability": "experimental",
           },
           "resourceVersions": Object {
-            "Example": Object {
+            "Examples": Object {
               "2021-10-10": Object {
                 "experimental": Object {
                   "deprecatedBy": Object {

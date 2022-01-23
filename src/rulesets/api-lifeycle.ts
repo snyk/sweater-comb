@@ -1,6 +1,7 @@
 import { SnykApiCheckDsl } from "../dsl";
 import { expect } from "chai";
 import { links } from "../docs";
+import { isPluralResourceName } from "./resource-names";
 
 export const rules = {
   stabilityRequirement: ({ stability }: SnykApiCheckDsl) => {
@@ -34,6 +35,15 @@ export const rules = {
           );
       },
     );
+  },
+  pluralResourceNames: ({ checkApiContext }: SnykApiCheckDsl) => {
+    checkApiContext.must("resource names must be plural", (context) => {
+      const result = isPluralResourceName(context.changeResource);
+      if (!result.passes)
+        expect.fail(
+          `"${context.changeResource}" is not plural. Try using "${result.plural}"`,
+        );
+    });
   },
   followSunsetRules: ({ checkApiContext }: SnykApiCheckDsl) => {
     checkApiContext.must("follow sunset rules", (context) => {
