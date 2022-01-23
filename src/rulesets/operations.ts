@@ -102,6 +102,12 @@ export const rules = {
         }
       });
   },
+  noPutHttpMethod: ({ operations }: SnykApiCheckDsl) => {
+    operations.added.must("not use put method", (operation) => {
+      if (operation.method === "put")
+        expect.fail("put is not allowed in JSON:API");
+    });
+  },
   preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
     operations.removed.must("not be allowed", (operation, context, docs) => {
       docs.includeDocsLink(links.versioning.breakingChanges);
