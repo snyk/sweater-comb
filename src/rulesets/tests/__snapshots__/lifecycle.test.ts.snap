@@ -1261,7 +1261,7 @@ Object {
             "stability": "experimental",
           },
           "resourceVersions": Object {
-            "Example": Object {
+            "Examples": Object {
               "2021-10-10": Object {
                 "experimental": Object {
                   "deprecatedBy": Object {
@@ -1287,7 +1287,7 @@ Object {
       "condition": "follow sunset rules",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected Examples to be deprecated before removing",
+      "error": "expected experimental resource Examples to be deprecated 30 days",
       "isMust": true,
       "isShould": false,
       "passed": false,
