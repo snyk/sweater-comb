@@ -1,6 +1,6 @@
 {
   "changeDate": "2021-11-11",
-  "changeResource": "thing",
+  "changeResource": "things",
   "changeVersion": {
     "date": "2021-11-10",
     "stability": "experimental"
