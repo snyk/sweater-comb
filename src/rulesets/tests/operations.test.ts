@@ -384,4 +384,22 @@ describe("operation parameters", () => {
       expect(result).toMatchSnapshot();
     });
   });
+
+  it("fails adding put method", async () => {
+    const result = await compare(defaultEmptySpec)
+      .to({
+        openapi: "3.0.1",
+        paths: {
+          "/example": {
+            put: {
+              responses: {},
+            },
+          },
+        },
+        info: { version: "0.0.0", title: "OpenAPI" },
+      })
+      .withRule(rules.noPutHttpMethod, emptyContext);
+    expect(result.results[0].passed).toBeFalsy();
+    expect(result).toMatchSnapshot();
+  });
 });
