@@ -53,16 +53,15 @@ export const rules = {
       (spec, context, docs) => {
         docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
         docs.becomesEffectiveOn(new Date("2021-07-01"));
-        const paths = Object.keys(spec.paths);
-        const tenantUrls = paths.filter(
+        const untenantedUrls = Object.keys(spec.paths).filter(
           (url) =>
-            url.startsWith("/orgs/{org_id}") ||
-            url.startsWith("/groups/{group_id}"),
+            !url.startsWith("/orgs/{org_id}") &&
+            !url.startsWith("/groups/{group_id}"),
         );
         expect(
-          tenantUrls,
+          untenantedUrls,
           `expected support for org or group tenant`,
-        ).to.have.lengthOf(paths.length);
+        ).to.have.lengthOf(0);
       },
     );
   },
