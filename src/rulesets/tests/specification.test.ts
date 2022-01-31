@@ -26,11 +26,13 @@ describe("orgOrGroupTenant", () => {
     valid    | path
     ${false} | ${''}
     ${false} | ${'/thing'}
-    ${false} | ${'/orgs/thing'}
-    ${false} | ${'/groups/thing'}
     ${false} | ${'/org/{org_id}'}
     ${false} | ${'/group/{group_id}'}
+    ${true}  | ${'/orgs'}
+    ${false} | ${'/orgs/thing'}
     ${true}  | ${'/orgs/{org_id}/thing'}
+    ${true}  | ${'/groups'}
+    ${false} | ${'/groups/thing'}
     ${true}  | ${'/groups/{group_id}/thing'}
   `(`path '$path' is valid: $valid`, async ({valid, path}) => {
     const result = await compare(baseForSpecificationTests)

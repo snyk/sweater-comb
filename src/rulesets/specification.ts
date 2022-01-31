@@ -55,6 +55,8 @@ export const rules = {
         docs.becomesEffectiveOn(new Date("2021-07-01"));
         const untenantedUrls = Object.keys(spec.paths).filter(
           (url) =>
+            url != "/orgs" &&
+            url != "/groups" &&
             !url.startsWith("/orgs/{org_id}") &&
             !url.startsWith("/groups/{group_id}"),
         );
