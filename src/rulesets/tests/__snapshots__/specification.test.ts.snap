@@ -1,0 +1,471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`orgOrGroupTenant fails with both valid and invalid group tenants 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/bad-tenant": Object {},
+      "/groups/{group_id}/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [ '/groups/{group_id}/thing' ] to have a length of 2 but got 1",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant fails with both valid and invalid org tenants 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/bad-tenant": Object {},
+      "/orgs/{org_id}/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [ '/orgs/{org_id}/thing' ] to have a length of 2 but got 1",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/group/{group_id}' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/group/{group_id}": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/groups/{group_id}/thing' is valid: true 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/groups/{group_id}/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/groups/thing' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/groups/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/org/{org_id}' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/org/{org_id}": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/orgs/{org_id}/thing' is valid: true 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/orgs/{org_id}/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/orgs/thing' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/orgs/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/thing' is valid: false 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/thing": Object {},
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "",
+            "path": "This Specification",
+          },
+          "conceptualPath": Array [],
+          "jsonPath": "/",
+          "kind": "API",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+      "error": "expected support for org or group tenant: expected [] to have a length of 1 but got +0",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "this specification: ",
+    },
+  ],
+}
+`;

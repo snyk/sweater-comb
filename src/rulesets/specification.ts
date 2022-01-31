@@ -53,7 +53,8 @@ export const rules = {
       (spec, context, docs) => {
         docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
         docs.becomesEffectiveOn(new Date("2021-07-01"));
-        const tenantUrls = Object.keys(spec.paths).filter(
+        const paths = Object.keys(spec.paths);
+        const tenantUrls = paths.filter(
           (url) =>
             url.startsWith("/orgs/{org_id}") ||
             url.startsWith("/groups/{group_id}"),
@@ -61,7 +62,7 @@ export const rules = {
         expect(
           tenantUrls,
           `expected support for org or group tenant`,
-        ).to.have.lengthOf.gt(0);
+        ).to.have.lengthOf(paths.length);
       },
     );
   },
