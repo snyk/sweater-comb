@@ -6,7 +6,7 @@ const { compare } = createSnykTestFixture();
 
 const emptyContext: SynkApiCheckContext = {
   changeDate: "2021-10-10",
-  changeResource: "Example",
+  changeResource: "Examples",
   changeVersion: {
     date: "2021-10-10",
     stability: "ga",
@@ -52,6 +52,25 @@ describe("lifecycle", () => {
     },
     info: { version: "0.0.0", title: "OpenAPI" },
   };
+
+  it("resource names must be plural", async () => {
+    const result = await compare(baseOpenAPI)
+      .to((spec) => {
+        return spec;
+      })
+      .withRule(rules.pluralResourceNames, {
+        changeDate: "2021-10-10",
+        changeResource: "Dog", // singular
+        changeVersion: {
+          date: "2021-10-10",
+          stability: "ga",
+        },
+        resourceVersions: {},
+      });
+
+    expect(result.results.every((i) => i.passed)).toBeFalsy();
+    expect(result).toMatchSnapshot();
+  });
 
   describe("stability", () => {
     it("must be provided", async () => {
@@ -117,13 +136,13 @@ describe("lifecycle", () => {
     describe("sunset schedule", () => {
       const context: SynkApiCheckContext = {
         changeDate: "2021-10-20",
-        changeResource: "Example",
+        changeResource: "Examples",
         changeVersion: {
           date: "2021-10-10",
           stability: "experimental",
         },
         resourceVersions: {
-          Example: {
+          Examples: {
             "2021-10-10": {
               experimental: {
                 deprecatedBy: {
