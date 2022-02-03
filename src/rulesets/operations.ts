@@ -155,6 +155,25 @@ export const rules = {
       },
     );
   },
+  orgOrGroupTenant: ({ operations }: SnykApiCheckDsl) => {
+    operations.added.must(
+      "have an org or group tenant",
+      (operation, context, docs) => {
+        docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
+        const url = operation.pathPattern;
+        if (
+          !(
+            url.startsWith("/orgs/{org_id}") ||
+            url.startsWith("/groups/{group_id}") ||
+            url === "/orgs" ||
+            url === "/groups"
+          )
+        ) {
+          expect.fail(`expected support for org or group tenant in ${url}`);
+        }
+      },
+    );
+  },
   pathElementsCasing: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "use the right casing for path elements",

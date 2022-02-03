@@ -47,26 +47,6 @@ export const rules = {
       },
     );
   },
-  orgOrGroupTenant: ({ specification }: SnykApiCheckDsl) => {
-    specification.requirement.must(
-      "have an org or group tenant",
-      (spec, context, docs) => {
-        docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
-        docs.becomesEffectiveOn(new Date("2021-07-01"));
-        const untenantedUrls = Object.keys(spec.paths).filter(
-          (url) =>
-            url != "/orgs" &&
-            url != "/groups" &&
-            !url.startsWith("/orgs/{org_id}") &&
-            !url.startsWith("/groups/{group_id}"),
-        );
-        expect(
-          untenantedUrls,
-          `expected support for org or group tenant`,
-        ).to.have.lengthOf(0);
-      },
-    );
-  },
   tags: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "have name and description for tags",
