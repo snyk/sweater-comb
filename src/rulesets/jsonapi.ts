@@ -81,7 +81,8 @@ export const rules = {
       "use the JSON:API content type",
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.contentType);
-        if (isOpenApiPath(context.path) || response.statusCode === 204) return;
+        if (isOpenApiPath(context.path) || response.statusCode === "204")
+          return;
         const contentTypes = Object.keys(specItem.content);
         expect(
           contentTypes,
@@ -103,7 +104,7 @@ export const rules = {
         const responseName = getResponseName(response, context);
 
         // Patch response requires schema
-        if (context.method === "patch" && response.statusCode === 200) {
+        if (context.method === "patch" && response.statusCode === "200") {
           expect(
             specItem.content["application/vnd.api+json"]?.schema?.properties,
             `expected ${responseName} to have a schema`,
@@ -113,7 +114,7 @@ export const rules = {
         // Empty patch 204 content
         if (
           ["delete", "patch"].includes(context.method) &&
-          response.statusCode === 204
+          response.statusCode === "204"
         ) {
           expect(
             specItem.content,
@@ -122,7 +123,7 @@ export const rules = {
         }
 
         // Non-204 status codes must have content
-        if (response.statusCode !== 204) {
+        if (response.statusCode !== "204") {
           expect(specItem.content, `expected ${responseName} to have content`)
             .to.not.exist;
         }
@@ -130,7 +131,7 @@ export const rules = {
         // JSON:API data property
         if (
           ["get", "post"].includes(context.method) &&
-          [200, 201].includes(response.statusCode)
+          ["200", "201"].includes(response.statusCode)
         ) {
           expect(
             specItem.content["application/vnd.api+json"]?.schema?.properties
@@ -142,7 +143,7 @@ export const rules = {
         // JSON:API jsonapi property
         if (
           !["patch", "delete"].includes(context.method) &&
-          [200, 201].includes(response.statusCode)
+          ["200", "201"].includes(response.statusCode)
         ) {
           expect(
             specItem.content["application/vnd.api+json"]?.schema?.properties
@@ -152,7 +153,7 @@ export const rules = {
         }
 
         // Success post responses
-        if (context.method === "post" && response.statusCode === 201) {
+        if (context.method === "post" && response.statusCode === "201") {
           // Location header
           expect(
             specItem.headers,
@@ -178,8 +179,8 @@ export const rules = {
         // Top-level self links
         if (
           (["get", "patch"].includes(context.method) &&
-            response.statusCode === 200) ||
-          (context.method === "post" && response.statusCode === 201)
+            response.statusCode === "200") ||
+          (context.method === "post" && response.statusCode === "201")
         ) {
           expect(
             specItem.content["application/vnd.api+json"]?.schema?.properties
@@ -253,7 +254,7 @@ export const rules = {
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.compoundDocuments);
         if (isOpenApiPath(context.path)) return;
-        if ([200, 201].includes(response.statusCode)) {
+        if (["200", "201"].includes(response.statusCode)) {
           expect(
             specItem.content["application/vnd.api+json"]?.schema?.properties
               ?.included,
@@ -277,7 +278,7 @@ export const rules = {
         // Response data
         if (
           ["get", "post"].includes(context.method) &&
-          [200, 201].includes(response.statusCode)
+          ["200", "201"].includes(response.statusCode)
         ) {
           const responseSchema =
             specItem.content?.["application/vnd.api+json"]?.schema;
@@ -293,7 +294,7 @@ export const rules = {
         }
 
         // Patch response data
-        if (context.method === "patch" && response.statusCode === 200) {
+        if (context.method === "patch" && response.statusCode === "200") {
           const responseSchema =
             specItem.content?.["application/vnd.api+json"]?.schema;
           const schema: any = loadSchemaFromFile("patch-response-data.yaml");
@@ -308,7 +309,7 @@ export const rules = {
         }
 
         // Delete response data
-        if (context.method === "delete" && response.statusCode === 200) {
+        if (context.method === "delete" && response.statusCode === "200") {
           const responseSchema =
             specItem.content?.["application/vnd.api+json"]?.schema;
           const schema: any = loadSchemaFromFile("delete-response-data.yaml");

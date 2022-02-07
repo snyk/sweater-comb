@@ -445,7 +445,7 @@ Object {
     Object {
       "added": Object {
         "description": "",
-        "statusCode": 200,
+        "statusCode": "200",
       },
       "changeType": "added",
       "location": Object {
@@ -674,7 +674,7 @@ Object {
     Object {
       "added": Object {
         "description": "",
-        "statusCode": 200,
+        "statusCode": "200",
       },
       "changeType": "added",
       "location": Object {
@@ -917,7 +917,7 @@ Object {
     Object {
       "added": Object {
         "description": "",
-        "statusCode": 200,
+        "statusCode": "200",
       },
       "changeType": "added",
       "location": Object {
@@ -1107,7 +1107,7 @@ Object {
     Object {
       "added": Object {
         "description": "",
-        "statusCode": 200,
+        "statusCode": "200",
       },
       "changeType": "added",
       "location": Object {
@@ -2020,7 +2020,7 @@ Object {
         "removed": Object {
           "before": Object {
             "description": "",
-            "statusCode": 200,
+            "statusCode": "200",
           },
         },
       },
