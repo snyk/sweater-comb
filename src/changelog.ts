@@ -29,11 +29,11 @@ export async function changeLogBetween(
 ): Promise<IChange<OpenApiFact>[]> {
   const currentTraverser = new OpenAPITraverser();
   currentTraverser.traverse(from);
-  const currentFacts = [...(currentTraverser.facts())];
+  const currentFacts = [...currentTraverser.facts()];
 
   const nextTraverser = new OpenAPITraverser();
   nextTraverser.traverse(to);
-  const nextFacts = [...(nextTraverser.facts())];
+  const nextFacts = [...nextTraverser.facts()];
 
   return factsToChangelog(currentFacts, nextFacts);
 }

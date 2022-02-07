@@ -38862,7 +38862,7 @@ Object {
         "removed": Object {
           "before": Object {
             "description": "",
-            "statusCode": 200,
+            "statusCode": "200",
           },
         },
       },
