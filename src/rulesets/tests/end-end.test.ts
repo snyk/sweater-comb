@@ -6,7 +6,10 @@ import {
   ResultWithSourcemap,
 } from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
-import { defaultEmptySpec } from "@useoptic/openapi-utilities";
+import {
+  defaultEmptySpec,
+  factsToChangelog,
+} from "@useoptic/openapi-utilities";
 import { newSnykApiCheckService } from "../../service";
 
 describe("end-end-tests", () => {
@@ -113,11 +116,18 @@ describe("end-end-tests", () => {
     const toSpec = await specFromInputToResults(toSpecSig, workingDir);
 
     const checkService = newSnykApiCheckService();
-    const checkResults = await checkService.runRules(
+    const { currentFacts, nextFacts } = checkService.generateFacts(
       fromSpec.jsonLike,
       toSpec.jsonLike,
-      context,
     );
+    const checkResults = await checkService.runRulesWithFacts({
+      context,
+      nextFacts,
+      currentFacts,
+      changelog: factsToChangelog(currentFacts, nextFacts),
+      nextJsonLike: toSpec.jsonLike,
+      currentJsonLike: fromSpec.jsonLike,
+    });
 
     const { findFileAndLines } = sourcemapReader(toSpec.sourcemap);
     const result: ResultWithSourcemap[] = await Promise.all(

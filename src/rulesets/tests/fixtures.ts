@@ -1,6 +1,6 @@
 import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
 import { ApiCheckService, createTestDslFixture } from "@useoptic/api-checks";
-import { OpenAPIV3 } from "@useoptic/openapi-utilities";
+import { OpenAPIV3, factsToChangelog } from "@useoptic/openapi-utilities";
 import path from "path";
 export async function rulesFixture(
   before: OpenAPIV3.Document,
@@ -18,7 +18,15 @@ export async function rulesFixture(
       input.context,
     );
   }, rules);
-  const results = await checker.runRules(before, after, context);
+  const { currentFacts, nextFacts } = checker.generateFacts(before, after);
+  const results = await checker.runRulesWithFacts({
+    context,
+    nextFacts,
+    currentFacts,
+    changelog: factsToChangelog(currentFacts, nextFacts),
+    nextJsonLike: after,
+    currentJsonLike: before,
+  });
   return results;
 }
 
