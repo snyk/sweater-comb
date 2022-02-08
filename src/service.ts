@@ -38,6 +38,10 @@ export function newSnykApiCheckService() {
     dslConstructor,
     require("./rulesets/specification").rules,
   );
+  snykRulesService.useDslWithNamedRules(
+    dslConstructor,
+    require("./rulesets/jsonapi").rules,
+  );
 
   snykRulesService.useSpectralOasRuleset({
     "openapi-tags": "off",
