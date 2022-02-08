@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    circleci.com/project-slug: github/snyk/sweater-comb
+    github.com/project-slug: snyk/sweater-comb
+  description: Sweats the small stuff, so you don't have to. OpenAPI linting rules for Snyk APIs.
+  labels:
+    snyk.io/visibility: public
+  name: sweater-comb
+spec:
+  lifecycle: production
+  owner: '@snyk/elk'
+  type: tool
