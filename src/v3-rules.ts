@@ -35,6 +35,10 @@ export function v3Rules() {
     dslConstructor,
     require("./rulesets/specification").rules,
   );
+  snykRulesService.useDslWithNamedRules(
+    dslConstructor,
+    require("./rulesets/jsonapi").rules,
+  );
 
   snykRulesService.useSpectralRuleset({
     extends: [[oas, "all"]],

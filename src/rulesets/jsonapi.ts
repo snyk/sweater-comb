@@ -28,7 +28,7 @@ function loadSchemaFromFile(filename) {
 
 export const rules = {
   statusCodes: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "support the correct status codes",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.statusCodes);
