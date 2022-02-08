@@ -1,0 +1,9 @@
+nav:
+- API standards:
+  - 'Intro': intro.md
+  - 'JSON API: The Good Parts': jsonapi.md
+  - 'Versioning': version.md
+  - 'Snyk REST API standards': standards.md
+plugins:
+- techdocs-core
+site_name: sweater-comb
