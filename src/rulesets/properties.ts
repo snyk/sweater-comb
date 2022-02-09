@@ -155,7 +155,7 @@ export const rules = {
   },
   collectionTypeValid: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.requirementOnChange.must(
-      "arrays have items",
+      "have 'items'",
       (item, context, docs, specItem) => {
         docs.includeDocsLink(
           "https://json-schema.org/understanding-json-schema/reference/array.html",
@@ -168,7 +168,7 @@ export const rules = {
       },
     );
     bodyProperties.requirementOnChange.must(
-      "objects have properties",
+      "have 'properties'",
       (item, context, docs, specItem) => {
         docs.includeDocsLink(
           "https://json-schema.org/understanding-json-schema/reference/object.html",
