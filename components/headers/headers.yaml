@@ -69,3 +69,11 @@ InternalGlooOrgIdHeader:
   schema:
     type: string
     format: uuid
+
+LocationHeader:
+  description: >
+    A header providing a URL for the location of a resource
+  schema:
+    type: string
+    format: url
+  example: https://example.com/resource/4
