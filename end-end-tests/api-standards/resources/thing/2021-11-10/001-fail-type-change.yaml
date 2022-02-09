@@ -18,7 +18,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/parameters/version.yaml#/Version" }
+        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
       responses:
         "201":
@@ -26,35 +26,35 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
               }
             sunset:
-              { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/400.yaml#/400" }
-        "401": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/401.yaml#/401" }
-        "403": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/403.yaml#/403" }
-        "404": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/404.yaml#/404" }
-        "409": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/409.yaml#/409" }
-        "500": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/500.yaml#/500" }
+        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
+        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
+        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
+        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
+        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
+        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
     get:
       summary: List instances of thing
       description: List instances of thing
@@ -62,7 +62,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/parameters/version.yaml#/Version" }
+        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
       responses:
         "200":
@@ -70,34 +70,34 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
               }
             sunset:
-              { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingCollectionResponse" }
-        "400": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/400.yaml#/400" }
-        "401": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/401.yaml#/401" }
-        "403": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/403.yaml#/403" }
-        "404": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/404.yaml#/404" }
-        "500": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/500.yaml#/500" }
+        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
+        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
+        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
+        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
+        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
   /orgs/{org_id}/thing/{thing_id}:
     get:
       summary: Get an instance of thing
@@ -106,7 +106,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/parameters/version.yaml#/Version" }
+        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
@@ -115,34 +115,34 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
               }
             sunset:
-              { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/400.yaml#/400" }
-        "401": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/401.yaml#/401" }
-        "403": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/403.yaml#/403" }
-        "404": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/404.yaml#/404" }
-        "500": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/500.yaml#/500" }
+        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
+        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
+        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
+        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
+        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
     patch:
       summary: Update an instance of thing
       description: Update an instance of thing
@@ -150,7 +150,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/parameters/version.yaml#/Version" }
+        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
@@ -159,36 +159,36 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
               }
             sunset:
-              { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "204": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/204.yaml#/204" }
-        "400": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/400.yaml#/400" }
-        "401": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/401.yaml#/401" }
-        "403": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/403.yaml#/403" }
-        "404": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/404.yaml#/404" }
-        "409": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/409.yaml#/409" }
-        "500": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/500.yaml#/500" }
+        "204": { $ref: "../../../../../components/responses/204.yaml#/204" }
+        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
+        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
+        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
+        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
+        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
+        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
     delete:
       summary: Delete an instance of thing
       description: Delete an instance of thing
@@ -196,17 +196,17 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/parameters/version.yaml#/Version" }
+        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
-        "204": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/204.yaml#/204" }
-        "400": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/400.yaml#/400" }
-        "401": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/401.yaml#/401" }
-        "403": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/403.yaml#/403" }
-        "404": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/404.yaml#/404" }
-        "409": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/409.yaml#/409" }
-        "500": { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/responses/500.yaml#/500" }
+        "204": { $ref: "../../../../../components/responses/204.yaml#/204" }
+        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
+        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
+        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
+        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
+        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
+        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
 components:
   parameters:
     OrgId:
@@ -230,17 +230,17 @@ components:
       type: object
       description: Response containing a single thing resource object
       properties:
-        jsonapi: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/common.yaml#/JsonApi" }
+        jsonapi: { $ref: "../../../../../components/common.yaml#/JsonApi" }
         data: { $ref: "#/components/schemas/ThingResource" }
-        links: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/common.yaml#/SelfLink" }
+        links: { $ref: "../../../../../components/common.yaml#/SelfLink" }
 
     ThingCollectionResponse:
       type: object
       description: Response containing a collection of thing resource objects
       properties:
-        jsonapi: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/common.yaml#/JsonApi" }
+        jsonapi: { $ref: "../../../../../components/common.yaml#/JsonApi" }
         data: { $ref: "#/components/schemas/ThingCollection" }
-        links: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/common.yaml#/PaginatedLinks" }
+        links: { $ref: "../../../../../components/common.yaml#/PaginatedLinks" }
 
     ThingResource:
       type: object
@@ -250,7 +250,7 @@ components:
           type: string
           format: uuid
           example: d5b640e5-d88c-4c17-9bf0-93597b7a1ce2
-        type: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/types.yaml#/Types" }
+        type: { $ref: "../../../../../components/types.yaml#/Types" }
         attributes: { $ref: "#/components/schemas/ThingAttributes" }
         relationships: { $ref: "#/components/schemas/ThingRelationships" }
       additionalProperties: false
@@ -258,7 +258,7 @@ components:
     ThingRelationships:
       type: object
       properties:
-        example: { $ref: "https://raw.githubusercontent.com/snyk/sweater-comb/v1.2.0/components/common.yaml#/Relationship" }
+        example: { $ref: "../../../../../components/common.yaml#/Relationship" }
       additionalProperties: false
 
     ThingCollection:
