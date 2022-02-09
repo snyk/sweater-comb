@@ -101,6 +101,26 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  it("fails when it doesn't meet JSON:API rules", async () => {
+    expect(
+      await snapshotScenario(
+        "000-baseline.yaml",
+        "003-jsonapi.yaml",
+        resourceDate("thing", "2021-11-10"),
+        {
+          changeDate: "2021-11-11",
+          changeResource: "thing",
+          changeVersion: {
+            date: "2021-11-10",
+            stability: "beta",
+          },
+          resourceVersions: {},
+        },
+        true,
+      ),
+    ).toMatchSnapshot();
+  });
+
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../"));
 
   async function snapshotScenario(

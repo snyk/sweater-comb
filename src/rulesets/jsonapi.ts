@@ -61,7 +61,7 @@ export const rules = {
           }
         }
 
-        // Ensure delete supports correct 2xx status codes
+        // Ensure post supports correct 2xx status codes
         if (operation.method === "post") {
           const statusCodes2xx = statusCodes.filter((statusCode) =>
             statusCode.startsWith("2"),
