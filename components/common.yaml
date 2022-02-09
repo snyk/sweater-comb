@@ -78,6 +78,16 @@ Meta:
       sub_key: sub_value
     key3: [array_value1, array_value2]
   additionalProperties: true
+  properties:
+    key1: string
+    key2:
+      type: object
+      properties:
+        sub_key: string
+    key3:
+      type: array
+      items:
+        - type: string
 
 Relationship:
   type: object
