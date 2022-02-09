@@ -153,4 +153,33 @@ export const rules = {
       preventChange("type"),
     );
   },
+  collectionTypeValid: ({ bodyProperties }: SnykApiCheckDsl) => {
+    bodyProperties.requirementOnChange.must(
+      "arrays have items",
+      (item, context, docs, specItem) => {
+        docs.includeDocsLink(
+          "https://json-schema.org/understanding-json-schema/reference/array.html",
+        );
+        if (specItem.type === "array") {
+          if (!specItem.items) expect.fail("array schema is missing 'items'");
+          if (specItem.properties)
+            expect.fail("array schema can not have 'properties'");
+        }
+      },
+    );
+    bodyProperties.requirementOnChange.must(
+      "objects have properties",
+      (item, context, docs, specItem) => {
+        docs.includeDocsLink(
+          "https://json-schema.org/understanding-json-schema/reference/object.html",
+        );
+        if (specItem.type === "object") {
+          if (!specItem.properties)
+            expect.fail("object schema is missing 'properties'");
+          if (specItem.hasOwnProperty("items"))
+            expect.fail("object schema can not have 'items'");
+        }
+      },
+    );
+  },
 };
