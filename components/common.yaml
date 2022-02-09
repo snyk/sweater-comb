@@ -79,11 +79,13 @@ Meta:
     key3: [array_value1, array_value2]
   additionalProperties: true
   properties:
-    key1: string
+    key1:
+      type: string
     key2:
       type: object
       properties:
-        sub_key: string
+        sub_key:
+          type: string
     key3:
       type: array
       items:
