@@ -54,6 +54,7 @@ Error:
       additionalProperties: true
       example:
         key: value
+      properties: {}
   required: ['status', 'detail']
   additionalProperties: false
   example:
