@@ -21,7 +21,7 @@ function loadSchemaFromFile(filename) {
 
 export const rules = {
   statusCodes: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "support the correct status codes",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.statusCodes);
@@ -77,7 +77,7 @@ export const rules = {
     );
   },
   contentType: ({ responses }: SnykApiCheckDsl) => {
-    responses.requirement.must(
+    responses.requirementOnChange.must(
       "use the JSON:API content type",
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.contentType);
@@ -95,7 +95,7 @@ export const rules = {
     );
   },
   responseData: ({ responses }: SnykApiCheckDsl) => {
-    responses.requirement.must(
+    responses.requirementOnChange.must(
       "use the correct JSON:API response data",
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.resourceObjects);
@@ -170,7 +170,7 @@ export const rules = {
     );
   },
   selfLinks: ({ responses }: SnykApiCheckDsl) => {
-    responses.requirement.must(
+    responses.requirementOnChange.must(
       "include self links",
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.resourceObjectLinks);
@@ -195,7 +195,7 @@ export const rules = {
     );
   },
   pagination: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirement.must(
+    operations.requirementOnChange.must(
       "correctly support pagination",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.pagination);
@@ -249,7 +249,7 @@ export const rules = {
     );
   },
   compoundDocuments: ({ responses }: SnykApiCheckDsl) => {
-    responses.requirement.must(
+    responses.requirementOnChange.must(
       "not allow compound documents",
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.compoundDocuments);
@@ -268,7 +268,7 @@ export const rules = {
     );
   },
   schemas: ({ responses }: SnykApiCheckDsl) => {
-    responses.requirement.must(
+    responses.requirementOnChange.must(
       "have valid JSON:API schemas",
       (response, context, docs, specItem) => {
         // TODO: this isn't a great link for this
