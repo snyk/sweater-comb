@@ -8,7 +8,8 @@
     "sweater-comb": "build/index.js"
   },
   "files": [
-    "/build"
+    "/build",
+    "/schemas"
   ],
   "scripts": {
     "test": "jest --colors",
