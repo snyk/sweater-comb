@@ -33,6 +33,7 @@ paths:
             snyk-version-lifecycle-stage: { $ref: '../../../../../components/headers/headers.yaml#/VersionStageResponseHeader' }
             deprecation: { $ref: '../../../../../components/headers/headers.yaml#/DeprecationHeader' }
             sunset: { $ref: '../../../../../components/headers/headers.yaml#/SunsetHeader' }
+            location: { $ref: '../../../../../components/headers/headers.yaml#/LocationHeader' }
           content:
             application/vnd.api+json:
               schema: { $ref: '#/components/schemas/ThingResourceResponse' }
@@ -51,6 +52,9 @@ paths:
       parameters:
         - { $ref: '../../../../../components/parameters/version.yaml#/Version' }
         - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/StartingAfter" }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/EndingBefore" }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/Limit" }
       responses:
         '200':
           description: Returns a list of thing instances

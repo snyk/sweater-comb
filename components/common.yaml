@@ -45,6 +45,7 @@ PaginatedLinks:
     last: { $ref: '#/LinkProperty' }
     prev: { $ref: '#/LinkProperty' }
     next: { $ref: '#/LinkProperty' }
+    self: { $ref: '#/LinkProperty' }
   additionalProperties: false
   example:
     first: "https://example.com/api/resource?ending_before=v1.eyJpZCI6IjExIn0K"

@@ -46,6 +46,8 @@ paths:
               }
             sunset:
               { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+            location:
+              { $ref: '../../../../../components/headers/headers.yaml#/LocationHeader' }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -64,6 +66,9 @@ paths:
       parameters:
         - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
         - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/StartingAfter" }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/EndingBefore" }
+        - { $ref: "../../../../../components/parameters/pagination.yaml#/parameters/Limit" }
       responses:
         "200":
           description: Returns a list of thing instances
@@ -98,7 +103,7 @@ paths:
         "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
         "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
         "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
-  /orgs/{org_id}/thing/{thingId}:
+  /orgs/{org_id}/thing/{thing_id}:
     get:
       summary: Get an instance of thing
       description: Get an instance of thing
@@ -218,7 +223,7 @@ components:
         type: string
         format: uuid
     ThingId:
-      name: thingId
+      name: thing_id
       in: path
       required: true
       description: Unique identifier for thing instances
