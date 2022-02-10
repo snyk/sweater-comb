@@ -6,14 +6,16 @@ COPY . .
 RUN yarn build
 
 FROM node:14-alpine AS clean-env
-COPY --from=build-env /sweater-comb/build /sweater-comb
+COPY --from=build-env /sweater-comb/build/ /sweater-comb/
+COPY --from=build-env /sweater-comb/babel.config.js /sweater-comb/
 COPY --from=build-env /sweater-comb/package*.json /sweater-comb/
 WORKDIR /sweater-comb
 RUN yarn install --production
 
-FROM gcr.io/distroless/nodejs:14
+FROM node:14-alpine
 ENV NODE_ENV production
-COPY --from=clean-env /sweater-comb /sweater-comb
+COPY --from=clean-env /sweater-comb/ /sweater-comb/
+COPY --from=build-env /sweater-comb/schemas/ /schemas/
 WORKDIR /sweater-comb
 USER 1000
-ENTRYPOINT ["/nodejs/bin/node", "index.js"]
+ENTRYPOINT ["/usr/local/bin/node", "index.js"]
