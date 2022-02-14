@@ -39,7 +39,7 @@ export const links = {
     resourceObjects: "https://jsonapi.org/format/#document-resource-objects",
     resourceObjectLinks:
       "https://jsonapi.org/format/#document-resource-object-links",
-    pagination: "https://jsonapi.org/format/#fetching-pagination",
+    pagination: "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     compoundDocuments:
       "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#compound-documents",
   },
