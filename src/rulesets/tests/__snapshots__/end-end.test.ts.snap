@@ -74418,7 +74418,7 @@ Array [
     "condition": "correctly support pagination",
     "docsLink": "https://jsonapi.org/format/#fetching-pagination",
     "effectiveOnDate": undefined,
-    "error": "expected operation /orgs/{org_id}/thing2 get to include starting_after parameter",
+    "error": "expected operation /orgs/{org_id}/thing2 get to support pagination parameters, missing: starting_after, ending_before, limit",
     "isMust": true,
     "isShould": false,
     "passed": false,

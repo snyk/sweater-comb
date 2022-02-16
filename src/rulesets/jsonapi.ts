@@ -41,12 +41,18 @@ export const rules = {
         const statusCodes4xx = statusCodes.filter((statusCode) =>
           statusCode.startsWith("4"),
         );
+        const unsupportedStatusCodes: string[] = [];
         for (const statusCode4xx of statusCodes4xx) {
           if (!allowed4xxStatusCodes.includes(statusCode4xx)) {
-            expect.fail(
-              `expected ${operationName} to not support ${statusCode4xx}`,
-            );
+            unsupportedStatusCodes.push(statusCode4xx);
           }
+        }
+        if (unsupportedStatusCodes.length) {
+          expect.fail(
+            `expected ${operationName} to not support status codes: ${unsupportedStatusCodes.join(
+              ", ",
+            )}`,
+          );
         }
 
         // Ensure delete supports correct 2xx status codes
@@ -54,12 +60,18 @@ export const rules = {
           const statusCodes2xx = statusCodes.filter((statusCode) =>
             statusCode.startsWith("2"),
           );
+          const unsupportedStatusCodes: string[] = [];
           for (const statusCode2xx of statusCodes2xx) {
             if (!["200", "204"].includes(statusCode2xx)) {
-              expect.fail(
-                `expected ${operationName} to only support 200 or 204, not ${statusCode2xx}`,
-              );
+              unsupportedStatusCodes.push(statusCode2xx);
             }
+          }
+          if (unsupportedStatusCodes.length) {
+            expect.fail(
+              `expected ${operationName} to only support 200 or 204, not: ${unsupportedStatusCodes.join(
+                ", ",
+              )}`,
+            );
           }
         }
 
@@ -68,12 +80,18 @@ export const rules = {
           const statusCodes2xx = statusCodes.filter((statusCode) =>
             statusCode.startsWith("2"),
           );
+          const unsupportedStatusCodes: string[] = [];
           for (const statusCode2xx of statusCodes2xx) {
             if (statusCode2xx !== "201") {
-              expect.fail(
-                `expected ${operationName} to only support 201, not ${statusCode2xx}`,
-              );
+              unsupportedStatusCodes.push(statusCode2xx);
             }
+          }
+          if (unsupportedStatusCodes.length) {
+            expect.fail(
+              `expected ${operationName} to only support 201, not: ${unsupportedStatusCodes.join(
+                ", ",
+              )}`,
+            );
           }
         }
       },
@@ -214,13 +232,20 @@ export const rules = {
         if (!operation.pathPattern.match(/\{[a-z]*?_?id\}$/)) {
           if (operation.method === "get") {
             // Require pagination parameters
+            const missingPaginationParameters: string[] = [];
             for (const paginationParameterName of paginationParameters) {
               if (!parameterNames.includes(paginationParameterName)) {
-                expect.fail(
-                  `expected ${operationName} to include ${paginationParameterName} parameter`,
-                );
+                missingPaginationParameters.push(paginationParameterName);
               }
             }
+            if (missingPaginationParameters.length) {
+              expect.fail(
+                `expected ${operationName} to support pagination parameters, missing: ${missingPaginationParameters.join(
+                  ", ",
+                )}`,
+              );
+            }
+
             // Require pagination links
             const response = specItem.responses["200"];
             if (!("$ref" in response)) {
