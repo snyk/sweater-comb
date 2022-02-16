@@ -42,10 +42,11 @@ export const rules = {
           statusCode.startsWith("4"),
         );
         for (const statusCode4xx of statusCodes4xx) {
-          expect(
-            allowed4xxStatusCodes,
-            `expected ${operationName} to not support ${statusCode4xx}`,
-          ).to.include(statusCode4xx);
+          if (!allowed4xxStatusCodes.includes(statusCode4xx)) {
+            expect.fail(
+              `expected ${operationName} to not support ${statusCode4xx}`,
+            );
+          }
         }
 
         // Ensure delete supports correct 2xx status codes
@@ -54,10 +55,11 @@ export const rules = {
             statusCode.startsWith("2"),
           );
           for (const statusCode2xx of statusCodes2xx) {
-            expect(
-              ["200", "204"],
-              `expected ${operationName} to not support ${statusCode2xx}`,
-            ).to.include(statusCode2xx);
+            if (!["200", "204"].includes(statusCode2xx)) {
+              expect.fail(
+                `expected ${operationName} to only support 200 or 204, not ${statusCode2xx}`,
+              );
+            }
           }
         }
 
@@ -67,10 +69,11 @@ export const rules = {
             statusCode.startsWith("2"),
           );
           for (const statusCode2xx of statusCodes2xx) {
-            expect(
-              ["201"],
-              `expected ${operationName} to not support ${statusCode2xx}`,
-            ).to.include(statusCode2xx);
+            if (statusCode2xx !== "201") {
+              expect.fail(
+                `expected ${operationName} to only support 201, not ${statusCode2xx}`,
+              );
+            }
           }
         }
       },
@@ -83,14 +86,15 @@ export const rules = {
         docs.includeDocsLink(links.jsonApi.contentType);
         if (isOpenApiPath(context.path) || response.statusCode === "204")
           return;
-        const contentTypes = Object.keys(specItem.content);
-        expect(
-          contentTypes,
-          `expected ${getResponseName(
-            response,
-            context,
-          )} to support application/vnd.api+json`,
-        ).to.include("application/vnd.api+json");
+        const contentTypes = Object.keys(specItem.content || {});
+        if (!contentTypes.includes("application/vnd.api+json")) {
+          expect.fail(
+            `expected ${getResponseName(
+              response,
+              context,
+            )} to support application/vnd.api+json`,
+          );
+        }
       },
     );
   },
@@ -105,66 +109,60 @@ export const rules = {
 
         // Patch response requires schema
         if (context.method === "patch" && response.statusCode === "200") {
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties,
-            `expected ${responseName} to have a schema`,
-          ).to.exist;
+          if (
+            !specItem.content["application/vnd.api+json"]?.schema?.properties
+          ) {
+            expect.fail(`expected ${responseName} to have a schema`);
+          }
         }
 
         // Empty patch 204 content
         if (
           ["delete", "patch"].includes(context.method) &&
-          response.statusCode === "204"
+          response.statusCode === "204" &&
+          specItem.content
         ) {
-          expect(
-            specItem.content,
-            `expected ${responseName} to not have content`,
-          ).to.not.exist;
+          expect.fail(`expected ${responseName} to not have content`);
         }
 
         // Non-204 status codes must have content
-        if (response.statusCode !== "204") {
-          expect(specItem.content, `expected ${responseName} to have content`)
-            .to.exist;
+        if (response.statusCode !== "204" && !specItem.content) {
+          expect.fail(`expected ${responseName} to have content`);
         }
 
         // JSON:API data property
         if (
           ["get", "post"].includes(context.method) &&
-          ["200", "201"].includes(response.statusCode)
+          ["200", "201"].includes(response.statusCode) &&
+          !specItem.content["application/vnd.api+json"]?.schema?.properties
+            ?.data?.type
         ) {
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties
-              ?.data?.type,
-            `expected ${responseName} to have data property`,
-          ).to.exist;
+          expect.fail(`expected ${responseName} to have data property`);
         }
 
         // JSON:API jsonapi property
         if (
           !["patch", "delete"].includes(context.method) &&
-          ["200", "201"].includes(response.statusCode)
+          ["200", "201"].includes(response.statusCode) &&
+          !specItem.content["application/vnd.api+json"]?.schema?.properties
+            ?.jsonapi?.type
         ) {
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties
-              ?.jsonapi?.type,
-            `expected ${responseName} to have a JSON:API property`,
-          ).to.exist;
+          expect.fail(`expected ${responseName} to have a JSON:API property`);
         }
 
         // Success post responses
         if (context.method === "post" && response.statusCode === "201") {
           // Location header
-          expect(
-            specItem.headers,
-            `expected ${responseName} to have a location header`,
-          ).to.have.property("location");
+          if (!specItem.headers["location"]) {
+            expect.fail(`expected ${responseName} to have a location header`);
+          }
           // Self link
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties
-              ?.links?.properties?.self,
-            `expected ${responseName} to have a self link`,
-          ).to.exist;
+          if (
+            !specItem.content["application/vnd.api+json"]?.schema?.properties
+              ?.links?.properties?.self
+          ) {
+            expect.fail(`expected ${responseName} to have a self link`);
+          }
         }
       },
     );
@@ -178,18 +176,18 @@ export const rules = {
 
         // Top-level self links
         if (
-          (["get", "patch"].includes(context.method) &&
+          ((["get", "patch"].includes(context.method) &&
             response.statusCode === "200") ||
-          (context.method === "post" && response.statusCode === "201")
+            (context.method === "post" && response.statusCode === "201")) &&
+          !specItem.content?.["application/vnd.api+json"]?.schema?.properties
+            ?.links?.properties?.self
         ) {
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties
-              ?.links?.properties?.self,
+          expect.fail(
             `expected ${getResponseName(
               response,
               context,
             )} to have a self link`,
-          ).to.exist;
+          );
         }
       },
     );
@@ -217,10 +215,11 @@ export const rules = {
           if (operation.method === "get") {
             // Require pagination parameters
             for (const paginationParameterName of paginationParameters) {
-              expect(
-                parameterNames,
-                `expected ${operationName} to include ${paginationParameterName} parameter`,
-              ).to.include(paginationParameterName);
+              if (!parameterNames.includes(paginationParameterName)) {
+                expect.fail(
+                  `expected ${operationName} to include ${paginationParameterName} parameter`,
+                );
+              }
             }
             // Require pagination links
             const response = specItem.responses["200"];
@@ -238,10 +237,11 @@ export const rules = {
         } else {
           if (operation.method !== "get") {
             for (const paginationParameterName of paginationParameters) {
-              expect(
-                parameterNames,
-                `expected ${operationName} to not include ${paginationParameterName} parameter`,
-              ).to.not.include(paginationParameterName);
+              if (parameterNames.includes(paginationParameterName)) {
+                expect.fail(
+                  `expected ${operationName} to not include ${paginationParameterName} parameter`,
+                );
+              }
             }
           }
         }
@@ -254,15 +254,17 @@ export const rules = {
       (response, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.compoundDocuments);
         if (isOpenApiPath(context.path)) return;
-        if (["200", "201"].includes(response.statusCode)) {
-          expect(
-            specItem.content["application/vnd.api+json"]?.schema?.properties
-              ?.included,
+        if (
+          ["200", "201"].includes(response.statusCode) &&
+          specItem.content?.["application/vnd.api+json"]?.schema?.properties
+            ?.included
+        ) {
+          expect.fail(
             `expected ${getResponseName(
               response,
               context,
             )} to not support compound documents`,
-          ).to.not.exist;
+          );
         }
       },
     );
@@ -285,13 +287,15 @@ export const rules = {
               ?.data;
           const schema: any = loadSchemaFromFile("get-post-response-data.yaml");
           const validate = ajv.compile(schema);
-          expect(
-            validate(responseSchema),
-            `expected ${getResponseName(
-              response,
-              context,
-            )} schema to be valid response data`,
-          ).to.be.true;
+          const isValid = validate(responseSchema);
+          if (!isValid) {
+            expect.fail(
+              `expected ${getResponseName(
+                response,
+                context,
+              )} schema to be valid response data`,
+            );
+          }
         }
 
         // Patch response data
@@ -300,14 +304,15 @@ export const rules = {
             specItem.content?.["application/vnd.api+json"]?.schema?.properties;
           const schema: any = loadSchemaFromFile("patch-response-data.yaml");
           const validate = ajv.compile(schema);
-          const results = validate(responseSchema);
-          expect(
-            results,
-            `expected ${getResponseName(
-              response,
-              context,
-            )} schema to be valid response data`,
-          ).to.be.true;
+          const isValid = validate(responseSchema);
+          if (!isValid) {
+            expect.fail(
+              `expected ${getResponseName(
+                response,
+                context,
+              )} schema to be valid response data`,
+            );
+          }
         }
 
         // Delete response data
@@ -316,13 +321,15 @@ export const rules = {
             specItem.content?.["application/vnd.api+json"]?.schema;
           const schema: any = loadSchemaFromFile("delete-response-data.yaml");
           const validate = ajv.compile(schema);
-          expect(
-            validate(responseSchema),
-            `expected ${getResponseName(
-              response,
-              context,
-            )} schema to be valid response data`,
-          ).to.be.true;
+          const isValid = validate(responseSchema);
+          if (!isValid) {
+            expect.fail(
+              `expected ${getResponseName(
+                response,
+                context,
+              )} schema to be valid response data`,
+            );
+          }
         }
 
         // TODO: this is a schema checking a schema. It's currently failing, so removing for now.
