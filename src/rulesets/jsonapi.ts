@@ -20,14 +20,12 @@ function loadSchemaFromFile(filename) {
 }
 
 export const rules = {
-  statusCodes: ({ operations }: SnykApiCheckDsl) => {
-    operations.requirementOnChange.must(
+  statusCodes: ({ responses }: SnykApiCheckDsl) => {
+    responses.requirementOnChange.must(
       "support the correct status codes",
-      (operation, context, docs, specItem) => {
+      (response, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.statusCodes);
         if (isOpenApiPath(context.path)) return;
-        const operationName = getOperationName(operation);
-        const statusCodes = Object.keys(specItem.responses);
 
         // Ensure only supported 4xx are used
         const allowed4xxStatusCodes = [
@@ -38,59 +36,35 @@ export const rules = {
           "409",
           "429",
         ];
-        const statusCodes4xx = statusCodes.filter((statusCode) =>
-          statusCode.startsWith("4"),
-        );
-        const unsupportedStatusCodes: string[] = [];
-        for (const statusCode4xx of statusCodes4xx) {
-          if (!allowed4xxStatusCodes.includes(statusCode4xx)) {
-            unsupportedStatusCodes.push(statusCode4xx);
-          }
-        }
-        if (unsupportedStatusCodes.length) {
+        if (
+          response.statusCode.startsWith("4") &&
+          !allowed4xxStatusCodes.includes(response.statusCode)
+        ) {
           expect.fail(
-            `expected ${operationName} to not support status codes: ${unsupportedStatusCodes.join(
-              ", ",
-            )}`,
+            `expected response to not support status code ${response.statusCode}`,
           );
         }
 
         // Ensure delete supports correct 2xx status codes
-        if (operation.method === "delete") {
-          const statusCodes2xx = statusCodes.filter((statusCode) =>
-            statusCode.startsWith("2"),
-          );
-          const unsupportedStatusCodes: string[] = [];
-          for (const statusCode2xx of statusCodes2xx) {
-            if (!["200", "204"].includes(statusCode2xx)) {
-              unsupportedStatusCodes.push(statusCode2xx);
-            }
-          }
-          if (unsupportedStatusCodes.length) {
+        if (context.method === "delete") {
+          if (
+            response.statusCode.startsWith("2") &&
+            !["200", "204"].includes(response.statusCode)
+          ) {
             expect.fail(
-              `expected ${operationName} to only support 200 or 204, not: ${unsupportedStatusCodes.join(
-                ", ",
-              )}`,
+              `expected response to only support 200 or 204, not ${response.statusCode}`,
             );
           }
         }
 
         // Ensure post supports correct 2xx status codes
-        if (operation.method === "post") {
-          const statusCodes2xx = statusCodes.filter((statusCode) =>
-            statusCode.startsWith("2"),
-          );
-          const unsupportedStatusCodes: string[] = [];
-          for (const statusCode2xx of statusCodes2xx) {
-            if (statusCode2xx !== "201") {
-              unsupportedStatusCodes.push(statusCode2xx);
-            }
-          }
-          if (unsupportedStatusCodes.length) {
+        if (context.method === "post") {
+          if (
+            response.statusCode.startsWith("2") &&
+            response.statusCode !== "201"
+          ) {
             expect.fail(
-              `expected ${operationName} to only support 201, not: ${unsupportedStatusCodes.join(
-                ", ",
-              )}`,
+              `expected response to only support 201, not ${response.statusCode}`,
             );
           }
         }
