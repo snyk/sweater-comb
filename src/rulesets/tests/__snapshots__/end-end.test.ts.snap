@@ -74887,7 +74887,7 @@ Array [
   Object {
     "change": null,
     "condition": "correctly support pagination",
-    "docsLink": "https://jsonapi.org/format/#fetching-pagination",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     "effectiveOnDate": undefined,
     "error": "expected operation /orgs/{org_id}/thing2 get to support pagination parameters, missing: starting_after, ending_before, limit",
     "isMust": true,
@@ -74906,7 +74906,7 @@ Array [
   Object {
     "change": null,
     "condition": "correctly support pagination",
-    "docsLink": "https://jsonapi.org/format/#fetching-pagination",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     "effectiveOnDate": undefined,
     "isMust": true,
     "isShould": false,
@@ -74924,7 +74924,7 @@ Array [
   Object {
     "change": null,
     "condition": "correctly support pagination",
-    "docsLink": "https://jsonapi.org/format/#fetching-pagination",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     "effectiveOnDate": undefined,
     "isMust": true,
     "isShould": false,
@@ -74942,7 +74942,7 @@ Array [
   Object {
     "change": null,
     "condition": "correctly support pagination",
-    "docsLink": "https://jsonapi.org/format/#fetching-pagination",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     "effectiveOnDate": undefined,
     "isMust": true,
     "isShould": false,
@@ -113369,7 +113369,7 @@ Array [
   Object {
     "change": null,
     "condition": "correctly support pagination",
-    "docsLink": "https://jsonapi.org/format/#fetching-pagination",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
     "effectiveOnDate": undefined,
     "isMust": true,
     "isShould": false,
