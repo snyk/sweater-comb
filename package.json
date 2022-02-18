@@ -24,6 +24,7 @@
     "format": "prettier --write 'src/**/*.{js,ts}'"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.5",
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
@@ -42,10 +43,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.2",
-    "@useoptic/api-checks": "0.22.8",
-    "@useoptic/json-pointer-helpers": "0.22.8",
-    "@useoptic/openapi-io": "0.22.8",
-    "@useoptic/openapi-utilities": "0.22.8",
+    "@useoptic/api-checks": "0.22.9",
+    "@useoptic/json-pointer-helpers": "0.22.9",
+    "@useoptic/openapi-io": "0.22.9",
+    "@useoptic/openapi-utilities": "0.22.9",
     "chai": "^4.3.4",
     "change-case": "^4.1.2",
     "fs-extra": "^10.0.0",
