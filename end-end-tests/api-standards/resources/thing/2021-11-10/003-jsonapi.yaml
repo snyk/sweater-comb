@@ -523,8 +523,9 @@ components:
         # jsonapi: {}
         data: { $ref: "#/components/schemas/ThingResource" }
         links: { $ref: "../../../../../components/common.yaml#/SelfLink" }
-        includes:
+        included:
           type: object
+          properties: {}
 
     ThingCollectionResponse:
       type: object
