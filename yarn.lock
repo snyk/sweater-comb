@@ -2089,10 +2089,10 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.22.9":
-  version "0.22.9"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.22.9.tgz#e763673232c85c28fa0df75cf6d5c3341296c48c"
-  integrity sha512-971F+03dgPNFaaCQGfl8MYoIY7Dx1SD0pDmzacLTQojuShs/+aSW0ayOk8RvBsLTO9UCf8Hf2cF2ZDLcTi4rMw==
+"@useoptic/api-checks@0.22.15":
+  version "0.22.15"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.22.15.tgz#f9b77ea9141c5edeb532696114dcc22aae236014"
+  integrity sha512-sPtfRp0Khz+V/sSShSyoiLXyhKBnMXqN1d07ABeKny97x3W9XTpJcW1FwSBBVb5sunwcDbCxhp0/dvGO26vsKQ==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@octokit/rest" "^18.12.0"
@@ -2100,9 +2100,9 @@
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.3.2"
     "@types/prop-types" "^15.7.4"
-    "@useoptic/json-pointer-helpers" "0.22.9"
-    "@useoptic/openapi-io" "0.22.9"
-    "@useoptic/openapi-utilities" "0.22.9"
+    "@useoptic/json-pointer-helpers" "0.22.15"
+    "@useoptic/openapi-io" "0.22.15"
+    "@useoptic/openapi-utilities" "0.22.15"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
@@ -2125,22 +2125,22 @@
     ts-invariant "^0.9.4"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.22.9":
-  version "0.22.9"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.22.9.tgz#f4ecba573b7c87222d37744275ee8097aa5d3aa6"
-  integrity sha512-yD0Uv9vT7lgYT7vQKmtssqSoFfUDdwWUY8TuTDddaYEvDL0hA6scTWjOF+/FHSMMTvO6zsXP490PHCcxkRuGUA==
+"@useoptic/json-pointer-helpers@0.22.15":
+  version "0.22.15"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.22.15.tgz#7b871e3fae4080511111059db7483dd73468252f"
+  integrity sha512-xYyG3H4Vgj6j2T83VL2JN5hNdfLw55wClEh/LaN//KPCGYeGBcrQLSZSrcirgbQKaK1wWftoW2k/0ZubE2T9xw==
   dependencies:
     jsonpointer "^5.0.0"
 
-"@useoptic/openapi-io@0.22.9":
-  version "0.22.9"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.22.9.tgz#2460fb61014c0c1b3cf8a38e8e071aa8db892238"
-  integrity sha512-/WcmyQprOqGK1Z+TcQFJSOsZAxOTZpACLWxV6w0hAwYamcH0m3J3To4HzCOJ9UNnSmjvAx0QtaQN1+o8vqfDMw==
+"@useoptic/openapi-io@0.22.15":
+  version "0.22.15"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.22.15.tgz#ce19a035a1c693ccfce44c1b0e36e10cadaa5f97"
+  integrity sha512-vNSDhscDE4s7IX90YcXvcNgf/bzhMxS2zi+zxjKaz1yc2bO6dFlCJ9aFK1ppFHuAtcjWeQGpSjfKMxdBc5QDlA==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.22.9"
-    "@useoptic/openapi-utilities" "0.22.9"
+    "@useoptic/json-pointer-helpers" "0.22.15"
+    "@useoptic/openapi-utilities" "0.22.15"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -2151,16 +2151,15 @@
     json-stable-stringify "^1.0.1"
     lodash.sortby "^4.7.0"
     node-fetch "^2.6.7"
-    prettier "2.5.0"
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.22.9":
-  version "0.22.9"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.22.9.tgz#c6fc5bb74beb0be633339700adaf0203075fa263"
-  integrity sha512-goTYOHqdC7BlVMDWaKmSfumq8QBWfGqT2OFG4ffyx6V9qvsGEkT8q9HQW4l8q2IaCvKgahh+FfZfW4y96h8Z/A==
+"@useoptic/openapi-utilities@0.22.15":
+  version "0.22.15"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.22.15.tgz#93e88b8f8156332f0990ec70faec65df7fe30486"
+  integrity sha512-A5qyAJJ9zBNkdHWpN/vapJERv2+aIEiEr/ccgW0qvF/u9RdifpJiefjkZhjGegkjZzaoLwvV8oMJgb+LecfaEw==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.22.9"
+    "@useoptic/json-pointer-helpers" "0.22.15"
     fast-deep-equal "^3.1.3"
     js-yaml "^4.1.0"
     lodash.sortby "^4.7.0"
@@ -5576,7 +5575,7 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@2.5.0, prettier@^2.4.1:
+prettier@^2.4.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.0.tgz#a6370e2d4594e093270419d9cc47f7670488f893"
   integrity sha512-FM/zAKgWTxj40rH03VxzIPdXmj39SwSjwG0heUcNFwI+EMZJnY93yAiKXM3dObIKAM5TA88werc8T/EwhB45eg==
