@@ -158,6 +158,8 @@ describe("orgOrGroupTenant", () => {
     ${true}  | ${"/groups"}
     ${false} | ${"/groups/thing"}
     ${true}  | ${"/groups/{group_id}/thing"}
+    ${true}  | ${"/current_user"}
+    ${false} | ${"/current_user/thing"}
   `(`path '$path' is valid: $valid`, async ({ valid, path }) => {
     const result = await compare(baseForSpecificationTests)
       .to((spec) => {
