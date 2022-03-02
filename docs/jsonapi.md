@@ -160,6 +160,30 @@ The error ID should uniquely identify this occurance of the problem. A server-ge
     - `PATCH /things/:id` to modify one
     - `DELETE /things/:id` to remove one
 
+### Resource Aggregation
+
+#### Singleton
+
+The resource at .../resource is a single object, rather than a collection.
+
+.../resource/{id} paths are not allowed.
+
+Singletons do not have an ID specified. This breaks slightly with JSON API, intended.
+
+#### Collection
+
+These are "normal" resources that may be individually addressed at .../resource/{id} or as a collection at .../resource. 
+
+#### Bulk
+
+Bulk resources cannot be individually addressed by path. .../resource/{id} paths are not allowed.
+
+POST creates many, and may respond 204 (no content). POST `.data` must be an array.
+
+GET, PATCH, and DELETE all operate on collections.
+
+Self links are links to the bulk GET.
+
 ### Query parameters and JSON API
 
 JSON API is highly prescriptive with query parameters, though they are only SHOULD suggestions, not MUST requirements. In particular, it suggests:

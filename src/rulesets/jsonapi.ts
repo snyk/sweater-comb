@@ -7,6 +7,8 @@ import Ajv from "ajv";
 import { expect } from "chai";
 import { links } from "../docs";
 import { getOperationName, getResponseName } from "../names";
+import { OpenApiOperationFact } from "@useoptic/openapi-utilities";
+import { resolveConfig } from "prettier";
 
 const ajv = new Ajv();
 
@@ -16,6 +18,16 @@ function isOpenApiPath(path) {
 
 function isItemOperation(operation) {
   return operation.pathPattern.match(/\{[a-z]*?_?id\}$/);
+}
+
+// TODO: add singleton extension...
+// Proposal: `x-snyk-resource-aggregation: singleton` on the path item
+// See 001-ok-add-singleton.yaml for an example...
+
+function isSingletonResponse(operation: OpenApiOperationFact, specItem: { tags?: string[] | undefined; summary?: string | undefined; description?: string | undefined; externalDocs?: OpenAPIV3.ExternalDocumentationObject | undefined; operationId?: string | undefined; parameters?: (OpenAPIV3.ReferenceObject | OpenAPIV3.ParameterObject)[] | undefined; requestBody?: OpenAPIV3.ReferenceObject | OpenAPIV3.RequestBodyObject | undefined; responses: any; callbacks?: { [callback: string]: OpenAPIV3.ReferenceObject | OpenAPIV3.CallbackObject; } | undefined; deprecated?: boolean | undefined; security?: OpenAPIV3.SecurityRequirementObject[] | undefined; servers?: OpenAPIV3.ServerObject[] | undefined; }): boolean {
+  const resp = specItem.responses["200"];
+  const dataType = resp.content?.["application/vnd.api+json"]?.schema?.properties?.data?.type;
+  return dataType === 'object';
 }
 
 function getParameterNames(parameters) {
@@ -246,9 +258,14 @@ export const rules = {
       "correctly support pagination parameters",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.pagination);
+        // /openapi is not paginated
         if (isOpenApiPath(context.path)) return;
+        // Single resource operations are not paginated
         if (isItemOperation(operation)) return;
+        // Methods other than GET are not paginated
         if (operation.method !== "get") return;
+        // Singleton resources are not paginated
+        if (isSingletonResponse(operation, specItem)) return;
         const operationName = getOperationName(operation);
         const parameterNames = getParameterNames(specItem.parameters);
         const missingPaginationParameters: string[] = [];
@@ -272,9 +289,12 @@ export const rules = {
       "not use pagination parameters for non-GET operations",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.pagination);
+        // /openapi is not paginated
         if (isOpenApiPath(context.path)) return;
+        // Single resource operations are not paginated
         if (isItemOperation(operation)) return;
-        if (operation.method === "get") return;
+        // Methods other than GET and singletons are not paginated
+        if (operation.method === "get" && !isSingletonResponse(operation, specItem)) return;
         const operationName = getOperationName(operation);
         const parameterNames = getParameterNames(specItem.parameters);
         const unsupportedPaginationParameters: string[] = [];
@@ -301,6 +321,7 @@ export const rules = {
         if (isOpenApiPath(context.path)) return;
         if (isItemOperation(operation)) return;
         if (operation.method !== "get") return;
+        if (isSingletonResponse(operation, specItem)) return;
         const operationName = getOperationName(operation);
         const response = specItem.responses["200"];
         if (!("$ref" in response)) {
