@@ -31,6 +31,8 @@ cat >$tempdir/passes <<EOF
         "from": "$HERE/resources/thing/2021-11-10/000-fail-naming.yaml", "to": "$HERE/resources/thing/2021-11-10/000-fail-naming.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }, {
         "from": "$HERE/resources/thing/2021-11-10/000-baseline-in-reform.yaml", "to": "$HERE/resources/thing/2021-11-10/002-fail-tenancy.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
+    }, {
+        "from": "$HERE/resources/thing/2021-11-10/000-baseline.yaml", "to": "$HERE/resources/thing/2021-11-10/001-ok-add-singleton.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }]
 }
 EOF
