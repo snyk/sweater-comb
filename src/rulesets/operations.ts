@@ -167,7 +167,7 @@ export const rules = {
             url.startsWith("/groups/{group_id}") ||
             url === "/orgs" ||
             url === "/groups" ||
-            url === "/current_user"
+            url === "/self"
           )
         ) {
           expect.fail(`expected support for org or group tenant in ${url}`);
