@@ -11,6 +11,9 @@ export const rules = {
         docs.includeDocsLink(links.standards.referencedEntities);
         const componentTypes = Object.keys(spec.components || {});
         for (const componentType of componentTypes) {
+          if (componentType.startsWith("x-")) {
+            continue;
+          }
           const componentNames = Object.keys(
             spec.components?.[componentType] || {},
           );

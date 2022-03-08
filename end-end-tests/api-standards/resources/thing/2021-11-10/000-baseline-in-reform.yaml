@@ -20,42 +20,42 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
       responses:
         "201":
           description: Created thing successfully
           headers:
             snyk-version-requested:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
               }
             sunset:
-              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "409": { $ref: "#/components/x-rest-common/responses/409" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
   /orgs/{org_id}/thing:
     post:
       summary: Create a new thing
@@ -64,7 +64,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
       responses:
         "201":
@@ -72,35 +72,35 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
               }
             sunset:
-              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "409": { $ref: "#/components/x-rest-common/responses/409" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
     get:
       summary: List instances of thing
       description: List instances of thing
@@ -108,7 +108,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
       responses:
         "200":
@@ -116,34 +116,34 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
               }
             sunset:
-              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingCollectionResponse" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
   /orgs/{org_id}/thing/{thing_id}:
     get:
       summary: Get an instance of thing
@@ -152,7 +152,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
@@ -161,34 +161,34 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
               }
             sunset:
-              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
     patch:
       summary: Update an instance of thing
       description: Update an instance of thing
@@ -196,7 +196,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
@@ -205,36 +205,36 @@ paths:
           headers:
             snyk-version-requested:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionRequestedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
               }
             snyk-version-served:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionServedResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
               }
             snyk-request-id:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/RequestIdResponseHeader",
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
               }
             snyk-version-lifecycle-stage:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/VersionStageResponseHeader",
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
               {
-                $ref: "../../../../../components/headers/headers.yaml#/DeprecationHeader",
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
               }
             sunset:
-              { $ref: "../../../../../components/headers/headers.yaml#/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "204": { $ref: "../../../../../components/responses/204.yaml#/204" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "204": { $ref: "#/components/x-rest-common/responses/204" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "409": { $ref: "#/components/x-rest-common/responses/409" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
     delete:
       summary: Delete an instance of thing
       description: Delete an instance of thing
@@ -242,18 +242,20 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
-        "204": { $ref: "../../../../../components/responses/204.yaml#/204" }
-        "400": { $ref: "../../../../../components/responses/400.yaml#/400" }
-        "401": { $ref: "../../../../../components/responses/401.yaml#/401" }
-        "403": { $ref: "../../../../../components/responses/403.yaml#/403" }
-        "404": { $ref: "../../../../../components/responses/404.yaml#/404" }
-        "409": { $ref: "../../../../../components/responses/409.yaml#/409" }
-        "500": { $ref: "../../../../../components/responses/500.yaml#/500" }
+        "204": { $ref: "#/components/x-rest-common/responses/204" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "409": { $ref: "#/components/x-rest-common/responses/409" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
 components:
+  x-rest-common:
+    $ref: '../../../../../components/common.yaml'
   parameters:
     OrgId:
       name: org_id
@@ -276,17 +278,17 @@ components:
       type: object
       description: Response containing a single thing resource object
       properties:
-        jsonapi: { $ref: "../../../../../components/common.yaml#/JsonApi" }
+        jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingResource" }
-        links: { $ref: "../../../../../components/common.yaml#/SelfLink" }
+        links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
 
     ThingCollectionResponse:
       type: object
       description: Response containing a collection of thing resource objects
       properties:
-        jsonapi: { $ref: "../../../../../components/common.yaml#/JsonApi" }
+        jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingCollection" }
-        links: { $ref: "../../../../../components/common.yaml#/PaginatedLinks" }
+        links: { $ref: "#/components/x-rest-common/schemas/PaginatedLinks" }
 
     ThingResource:
       type: object
@@ -296,7 +298,7 @@ components:
           type: string
           format: uuid
           example: d5b640e5-d88c-4c17-9bf0-93597b7a1ce2
-        type: { $ref: "../../../../../components/types.yaml#/Types" }
+        type: { $ref: "#/components/x-rest-common/schemas/Types" }
         attributes: { $ref: "#/components/schemas/ThingAttributes" }
         relationships: { $ref: "#/components/schemas/ThingRelationships" }
       additionalProperties: false
@@ -304,7 +306,7 @@ components:
     ThingRelationships:
       type: object
       properties:
-        example: { $ref: "../../../../../components/common.yaml#/Relationship" }
+        example: { $ref: "#/components/x-rest-common/schemas/Relationship" }
       additionalProperties: false
 
     ThingCollection:
