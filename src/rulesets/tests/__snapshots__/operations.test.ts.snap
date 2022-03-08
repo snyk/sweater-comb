@@ -3485,7 +3485,7 @@ Object {
 }
 `;
 
-exports[`orgOrGroupTenant path '/current_user' is valid: true 1`] = `
+exports[`orgOrGroupTenant path '/self' is valid: true 1`] = `
 Object {
   "base": Object {
     "info": Object {
@@ -3499,20 +3499,20 @@ Object {
     Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/current_user",
+        "pathPattern": "/self",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/current_user",
+          "path": "/self",
         },
         "conceptualPath": Array [
           "operations",
-          "/current_user",
+          "/self",
           "get",
         ],
-        "jsonPath": "/paths/~1current_user/get",
+        "jsonPath": "/paths/~1self/get",
         "kind": "operation",
       },
     },
@@ -3524,7 +3524,7 @@ Object {
     },
     "openapi": "3.0.1",
     "paths": Object {
-      "/current_user": Object {
+      "/self": Object {
         "get": Object {
           "responses": Object {},
         },
@@ -3536,20 +3536,20 @@ Object {
       "change": Object {
         "added": Object {
           "method": "get",
-          "pathPattern": "/current_user",
+          "pathPattern": "/self",
         },
         "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "method": "get",
-            "path": "/current_user",
+            "path": "/self",
           },
           "conceptualPath": Array [
             "operations",
-            "/current_user",
+            "/self",
             "get",
           ],
-          "jsonPath": "/paths/~1current_user/get",
+          "jsonPath": "/paths/~1self/get",
           "kind": "operation",
         },
       },
@@ -3559,13 +3559,13 @@ Object {
       "isMust": true,
       "isShould": false,
       "passed": true,
-      "where": "added operation: GET /current_user",
+      "where": "added operation: GET /self",
     },
   ],
 }
 `;
 
-exports[`orgOrGroupTenant path '/current_user/thing' is valid: false 1`] = `
+exports[`orgOrGroupTenant path '/self/thing' is valid: false 1`] = `
 Object {
   "base": Object {
     "info": Object {
@@ -3579,20 +3579,20 @@ Object {
     Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/current_user/thing",
+        "pathPattern": "/self/thing",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/current_user/thing",
+          "path": "/self/thing",
         },
         "conceptualPath": Array [
           "operations",
-          "/current_user/thing",
+          "/self/thing",
           "get",
         ],
-        "jsonPath": "/paths/~1current_user~1thing/get",
+        "jsonPath": "/paths/~1self~1thing/get",
         "kind": "operation",
       },
     },
@@ -3604,7 +3604,7 @@ Object {
     },
     "openapi": "3.0.1",
     "paths": Object {
-      "/current_user/thing": Object {
+      "/self/thing": Object {
         "get": Object {
           "responses": Object {},
         },
@@ -3616,31 +3616,31 @@ Object {
       "change": Object {
         "added": Object {
           "method": "get",
-          "pathPattern": "/current_user/thing",
+          "pathPattern": "/self/thing",
         },
         "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
             "method": "get",
-            "path": "/current_user/thing",
+            "path": "/self/thing",
           },
           "conceptualPath": Array [
             "operations",
-            "/current_user/thing",
+            "/self/thing",
             "get",
           ],
-          "jsonPath": "/paths/~1current_user~1thing/get",
+          "jsonPath": "/paths/~1self~1thing/get",
           "kind": "operation",
         },
       },
       "condition": "have an org or group tenant",
       "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
       "effectiveOnDate": undefined,
-      "error": "expected support for org or group tenant in /current_user/thing",
+      "error": "expected support for org or group tenant in /self/thing",
       "isMust": true,
       "isShould": false,
       "passed": false,
-      "where": "added operation: GET /current_user/thing",
+      "where": "added operation: GET /self/thing",
     },
   ],
 }
