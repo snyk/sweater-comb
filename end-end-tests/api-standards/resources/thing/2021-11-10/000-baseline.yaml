@@ -9,6 +9,9 @@ servers:
 tags:
   - name: Thing
     description: Short description of what Thing represents
+x-v3-schemas:
+  $ref: https://raw.githubusercontent.com/snyk/sweater-comb/v1.5.0/components/parameters/version.yaml
+  #                                                         ^ tag 
 paths:
   /orgs/{org_id}/thing:
     post:
@@ -18,7 +21,7 @@ paths:
       tags:
         - Thing
       parameters:
-        - { $ref: "../../../../../components/parameters/version.yaml#/Version" }
+        - { $ref: '#/x-v3-schemas/Version' }
         - { $ref: '#/components/parameters/OrgId' }
       responses:
         "201":
