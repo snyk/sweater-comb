@@ -1,48 +1,49 @@
-import { commonHeaders, commonResponses, refs } from '../common';
-import { OpenAPIV3 } from 'openapi-types';
+import { commonHeaders, commonResponses, refs } from "../common";
+import { OpenAPIV3 } from "openapi-types";
 import {
   buildCreateRequestSchema,
   buildItemResponseSchema,
   ensureRelationSchema,
-} from '../schemas';
-import { SpecTemplate } from '@useoptic/openapi-cli';
+} from "../schemas";
+import { SpecTemplate } from "@useoptic/openapi-cli";
 
 export const addCreateOperation = SpecTemplate.create(
-  'add-create-operation',
-  function addCreateOperation(
-    spec: OpenAPIV3.Document,
-    options: {
-      collectionPath: string;
-      resourceName: string;
-      titleResourceName: string;
-    }
-  ): void {
-    const { collectionPath, resourceName, titleResourceName } = options;
-    if (!spec.paths) spec.paths = {};
-    if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
-    if (!spec.components) spec.components = {};
-    if (!spec.components.schemas) spec.components.schemas = {};
-    spec.paths[collectionPath]!.post = buildCreateOperation(
-      resourceName,
-      titleResourceName
-    );
-    const attributes =
-      spec.components?.schemas?.[`${titleResourceName}Attributes`];
-    if (!attributes)
-      throw new Error(`Could not find ${titleResourceName}Attributes schema`);
-    spec.components.schemas[`${titleResourceName}CreateAttributes`] =
-      attributes;
-    ensureRelationSchema(spec, titleResourceName);
-  }
+  "add-create-operation",
+  addCreateOperationTemplate,
 );
+
+export function addCreateOperationTemplate(
+  spec: OpenAPIV3.Document,
+  options: {
+    collectionPath: string;
+    resourceName: string;
+    titleResourceName: string;
+  },
+): void {
+  const { collectionPath, resourceName, titleResourceName } = options;
+  if (!spec.paths) spec.paths = {};
+  if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
+  if (!spec.components) spec.components = {};
+  if (!spec.components.schemas) spec.components.schemas = {};
+  spec.paths[collectionPath]!.post = buildCreateOperation(
+    resourceName,
+    titleResourceName,
+  );
+  const attributes =
+    spec.components?.schemas?.[`${titleResourceName}Attributes`];
+  if (!attributes)
+    throw new Error(`Could not find ${titleResourceName}Attributes schema`);
+  spec.components.schemas[`${titleResourceName}CreateAttributes`] = attributes;
+  ensureRelationSchema(spec, titleResourceName);
+}
 
 function buildCreateOperation(
   resourceName: string,
-  titleResourceName: string
+  titleResourceName: string,
 ): OpenAPIV3.OperationObject {
   const itemResponseSchema = buildItemResponseSchema(
     resourceName,
-    titleResourceName
+    titleResourceName,
   );
   const createRequestSchema = buildCreateRequestSchema(titleResourceName);
   return {
@@ -53,17 +54,17 @@ function buildCreateOperation(
     parameters: [refs.parameters.version],
     requestBody: {
       content: {
-        'application/json': {
+        "application/json": {
           schema: createRequestSchema,
         },
       },
     },
     responses: {
-      '201': {
+      "201": {
         description: `Created ${resourceName} successfully`,
         headers: commonHeaders,
         content: {
-          'application/vnd.api+json': {
+          "application/vnd.api+json": {
             schema: itemResponseSchema,
           },
         },

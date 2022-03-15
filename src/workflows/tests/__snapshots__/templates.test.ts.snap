@@ -1,0 +1,1753 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`workflow templates operations create creates a valid spec 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "have the correct operationId format",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "effectiveOnDate": 2021-07-01T00:00:00.000Z,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+    },
+    "condition": "have operationId",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+    },
+    "condition": "have tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+    },
+    "condition": "have a summary",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+    },
+    "condition": "include a version parameter",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "effectiveOnDate": undefined,
+    "error": "expected [] to include 'version'",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "requirement for operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+    },
+    "condition": "use UUID for org_id or group_id",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "have an org or group tenant",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+    "effectiveOnDate": undefined,
+    "error": "expected support for org or group tenant in /users/{user_id}",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "API",
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "this specification: ",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+      "value": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+    },
+    "condition": "have all headers",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#versioning-response-headers",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "not be required",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "not be required",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "have enum or example",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "have enum or example",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for field: id",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "requirement for field: type",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "have 'items'",
+    "docsLink": "https://json-schema.org/understanding-json-schema/reference/array.html",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "have 'items'",
+    "docsLink": "https://json-schema.org/understanding-json-schema/reference/array.html",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "format": "uuid",
+          "type": "string",
+        },
+        "key": "id",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "id",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "id",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/id",
+        "kind": "field",
+      },
+    },
+    "condition": "have 'properties'",
+    "docsLink": "https://json-schema.org/understanding-json-schema/reference/object.html",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: id",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {},
+        "key": "type",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "type",
+          ],
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "application/json",
+          "type",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/requestBody/content/application~1json/schema/properties/type",
+        "kind": "field",
+      },
+    },
+    "condition": "have 'properties'",
+    "docsLink": "https://json-schema.org/understanding-json-schema/reference/object.html",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added field: type",
+  },
+  Object {
+    "change": Object {
+      "changed": Object {
+        "after": undefined,
+        "before": undefined,
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "Resource Document",
+        },
+        "conceptualPath": Array [
+          "x-snyk-api-stability",
+        ],
+        "jsonPath": "/x-snyk-api-stability",
+        "kind": "SnykStability",
+      },
+    },
+    "condition": "be provided for every resource document",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#stability-levels",
+    "effectiveOnDate": undefined,
+    "error": "undefined must be one of allowed values wip,experimental,beta,ga",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "published stability: ",
+  },
+  Object {
+    "change": Object {
+      "changed": Object {
+        "after": undefined,
+        "before": undefined,
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "Resource Document",
+        },
+        "conceptualPath": Array [
+          "x-snyk-api-stability",
+        ],
+        "jsonPath": "/x-snyk-api-stability",
+        "kind": "SnykStability",
+      },
+    },
+    "condition": "not change unless it was wip",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "published stability: ",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "changeDate": "2021-11-11",
+        "changeResource": "user",
+        "changeVersion": Object {
+          "date": "2021-11-10",
+          "stability": "beta",
+        },
+        "resourceVersions": Object {},
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "Entire Resource",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "ContextRule",
+      },
+    },
+    "condition": "follow sunset rules",
+    "docsLink": undefined,
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "api lifeycle: ",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "API",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "this specification: ",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "API",
+      },
+    },
+    "condition": "list the available versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "effectiveOnDate": undefined,
+    "error": "expected [ '/users/{user_id}' ] to include '/openapi'",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "this specification: ",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "API",
+      },
+    },
+    "condition": "provide versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "effectiveOnDate": undefined,
+    "error": "expected [ '/users/{user_id}' ] to include '/openapi/{version}'",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "this specification: ",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/",
+        "kind": "API",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "this specification: ",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 4xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes for DELETE",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes for POST",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "use the JSON:API content type",
+    "docsLink": "https://jsonapi.org/format/#content-negotiation-clients",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "use the correct JSON:API response data for PATCH",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "not include content for 204 status codes",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include content for 2xx status codes other than 204",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include a JSON:API data property for 2xx status codes",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include a JSON:API type property for 2xx status codes",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "error": "expected response /users/{user_id} post 201 to have a JSON:API type property",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include a location header",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "error": "expected response /users/{user_id} post 201 to have a location header",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include self links",
+    "docsLink": "https://jsonapi.org/format/#document-resource-object-links",
+    "effectiveOnDate": undefined,
+    "error": "expected response /users/{user_id} post 201 to have a self link",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "correctly support pagination parameters",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use pagination parameters for non-GET operations",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Create a new user",
+        "method": "post",
+        "operationId": "createUser",
+        "pathPattern": "/users/{user_id}",
+        "summary": "Create a new user",
+        "tags": Array [
+          "User",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "operation",
+      },
+    },
+    "condition": "correctly support pagination links",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added operation: POST /users/{user_id}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "not support compound documents",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#compound-documents",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "have valid JSON:API schemas for GET/POST response data",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "error": "expected response /users/{user_id} post 201 schema to be valid response data",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "have valid JSON:API schemas for PATCH response data",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "Created user successfully",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/users/{}",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1users~1{user_id}/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "have valid JSON:API schemas for DELETE response data",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "effectiveOnDate": undefined,
+    "isMust": true,
+    "isShould": false,
+    "passed": true,
+    "where": "added response: 201",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "",
+          "path": "This Specification",
+        },
+        "conceptualPath": Array [],
+        "jsonPath": "/paths/~1users~1{user_id}/post",
+        "kind": "API",
+      },
+    },
+    "condition": "path-params",
+    "error": "Operation must define parameter \\"{user_id}\\" as expected by path \\"/users/{user_id}\\".",
+    "isMust": true,
+    "isShould": false,
+    "passed": false,
+    "where": "requirement ",
+  },
+]
+`;
