@@ -165,6 +165,7 @@ export const rules = {
           !(
             url.startsWith("/orgs/{org_id}") ||
             url.startsWith("/groups/{group_id}") ||
+            url.startsWith("/test") ||
             url === "/orgs" ||
             url === "/groups" ||
             url === "/self"
