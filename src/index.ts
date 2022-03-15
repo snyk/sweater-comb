@@ -2,6 +2,11 @@
 
 import { makeCiCli } from "@useoptic/api-checks/build/ci-cli/make-cli";
 import { newSnykApiCheckService } from "./service";
+import { Command } from "commander";
+import {
+  addOperationCommand,
+  createResourceCommand,
+} from "./workflows/commands";
 
 const apiCheckService = newSnykApiCheckService();
 const cli = makeCiCli("sweater-comb", apiCheckService, {
@@ -12,5 +17,12 @@ const cli = makeCiCli("sweater-comb", apiCheckService, {
   },
   ciProvider: "circleci",
 });
+
+const workflowCommand = new Command("workflow").description(
+  "workflows for designing and building APIs",
+);
+workflowCommand.addCommand(createResourceCommand());
+workflowCommand.addCommand(addOperationCommand());
+cli.addCommand(workflowCommand);
 
 cli.parse(process.argv);
