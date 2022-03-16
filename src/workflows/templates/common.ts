@@ -24,7 +24,7 @@ export const refs = {
     version: parameter("Version"),
     startingAfter: parameter("StartingAfter"),
     endingBefore: parameter("EndingBefore"),
-    limit: parameter("limit"),
+    limit: parameter("Limit"),
     orgId: asRef("#/components/parameters/OrgId"),
   },
   schemas: {

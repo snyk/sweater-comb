@@ -1,5 +1,13 @@
-import { commonHeaders, commonResponses, refs } from "../common";
-import { ensureIdParameterComponent } from "../parameters";
+import {
+  commonHeaders,
+  commonParameters,
+  commonResponses,
+  refs,
+} from "../common";
+import {
+  ensureIdParameterComponent,
+  ensureOrgIdComponent,
+} from "../parameters";
 import {
   buildItemResponseSchema,
   buildUpdateRequestSchema,
@@ -7,36 +15,40 @@ import {
 } from "../schemas";
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
+import { buildItemPath } from "../paths";
 
 export const addUpdateOperation = SpecTemplate.create(
   "add-update-operation",
-  function addUpdateOperation(
-    spec: OpenAPIV3.Document,
-    options: {
-      itemPath: string;
-      resourceName: string;
-      titleResourceName: string;
-    },
-  ): void {
-    const { itemPath, resourceName, titleResourceName } = options;
-    if (!spec.paths) spec.paths = {};
-    if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
-    if (!spec.components) spec.components = {};
-    if (!spec.components.schemas) spec.components.schemas = {};
-    spec.paths[itemPath]!.patch = buildUpdateOperation(
-      resourceName,
-      titleResourceName,
-    );
-    const attributes =
-      spec.components?.schemas?.[`${titleResourceName}Attributes`];
-    if (!attributes)
-      throw new Error(`Could not find ${titleResourceName}Attributes schema`);
-    spec.components.schemas[`${titleResourceName}UpdateAttributes`] =
-      attributes;
-    ensureIdParameterComponent(spec, resourceName, titleResourceName);
-    ensureRelationSchemaComponent(spec, titleResourceName);
-  },
+  addUpdateOperationTemplate,
 );
+
+export function addUpdateOperationTemplate(
+  spec: OpenAPIV3.Document,
+  options: {
+    resourceName: string;
+    titleResourceName: string;
+    pluralResourceName: string;
+  },
+): void {
+  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const itemPath = buildItemPath(resourceName, pluralResourceName);
+  if (!spec.paths) spec.paths = {};
+  if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
+  if (!spec.components) spec.components = {};
+  if (!spec.components.schemas) spec.components.schemas = {};
+  spec.paths[itemPath]!.patch = buildUpdateOperation(
+    resourceName,
+    titleResourceName,
+  );
+  const attributes =
+    spec.components?.schemas?.[`${titleResourceName}Attributes`];
+  if (!attributes)
+    throw new Error(`Could not find ${titleResourceName}Attributes schema`);
+  spec.components.schemas[`${titleResourceName}UpdateAttributes`] = attributes;
+  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureRelationSchemaComponent(spec, titleResourceName);
+  ensureOrgIdComponent(spec);
+}
 
 function buildUpdateOperation(
   resourceName: string,
@@ -53,7 +65,7 @@ function buildUpdateOperation(
     operationId: `update${titleResourceName}`,
     tags: [titleResourceName],
     parameters: [
-      refs.parameters.version,
+      ...commonParameters,
       { $ref: `#/components/parameters/${titleResourceName}Id` },
     ],
     requestBody: {

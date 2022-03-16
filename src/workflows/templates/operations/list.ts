@@ -5,32 +5,39 @@ import {
 } from "../schemas";
 import {
   commonHeaders,
+  commonParameters,
   commonResponses,
   paginationParameters,
   refs,
 } from "../common";
 import { SpecTemplate } from "@useoptic/openapi-cli";
+import { ensureOrgIdComponent } from "../parameters";
+import { buildCollectionPath } from "../paths";
 
 export const addListOperation = SpecTemplate.create(
   "add-list-operation",
-  function addListOperation(
-    spec: OpenAPIV3.Document,
-    options: {
-      collectionPath: string;
-      resourceName: string;
-      titleResourceName: string;
-    },
-  ): void {
-    const { collectionPath, resourceName, titleResourceName } = options;
-    if (!spec.paths) spec.paths = {};
-    if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
-    spec.paths[collectionPath]!.get = buildListOperation(
-      resourceName,
-      titleResourceName,
-    );
-    ensureRelationSchemaComponent(spec, titleResourceName);
-  },
+  addListOperationTemplate,
 );
+
+export function addListOperationTemplate(
+  spec: OpenAPIV3.Document,
+  options: {
+    resourceName: string;
+    titleResourceName: string;
+    pluralResourceName: string;
+  },
+): void {
+  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const collectionPath = buildCollectionPath(pluralResourceName);
+  if (!spec.paths) spec.paths = {};
+  if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
+  spec.paths[collectionPath]!.get = buildListOperation(
+    resourceName,
+    titleResourceName,
+  );
+  ensureRelationSchemaComponent(spec, titleResourceName);
+  ensureOrgIdComponent(spec);
+}
 
 function buildListOperation(
   resourceName: string,
@@ -45,7 +52,7 @@ function buildListOperation(
     description: `List instances of ${resourceName}`,
     operationId: `list${titleResourceName}`,
     tags: [titleResourceName],
-    parameters: [refs.parameters.version, ...paginationParameters],
+    parameters: [...commonParameters, ...paginationParameters],
     responses: {
       "200": {
         description: `Returns a list of ${resourceName} instances`,

@@ -4,31 +4,45 @@ import { factsToChangelog, OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { newSnykApiCheckService } from "../../service";
 import { SynkApiCheckContext } from "../../dsl";
 import { parseOpenAPIFromMemory } from "@useoptic/openapi-io";
-// import { parseOpenAPIFromMemory } from "@useoptic/openapi-io";
+import { addUpdateOperationTemplate } from "../templates/operations/update";
+import { addDeleteOperationTemplate } from "../templates/operations/delete";
+import { addGetOperationTemplate } from "../templates/operations/get";
+import { addListOperationTemplate } from "../templates/operations/list";
 
 describe("workflow templates", () => {
   describe("operations", () => {
     describe("create", () => {
-      it("creates a valid spec", async () => {
-        const baseSpec = resourceSpecFactory();
-        let updatedSpec: OpenAPIV3.Document = JSON.parse(
-          JSON.stringify(baseSpec),
-        );
-        addCreateOperationTemplate(updatedSpec, {
-          collectionPath: "/orgs/{org_id}/users/{user_id}",
-          titleResourceName: "User",
-          resourceName: "user",
-        });
-        const results = await check(baseSpec, updatedSpec);
-        expect(results.filter((r) => !r.passed).length).toBe(0);
-        expect(results).toMatchSnapshot();
-      });
+      checkTemplate(addCreateOperationTemplate);
+    });
+    describe("delete", () => {
+      checkTemplate(addDeleteOperationTemplate);
+    });
+    describe("get", () => {
+      checkTemplate(addGetOperationTemplate);
+    });
+    describe("list", () => {
+      checkTemplate(addListOperationTemplate);
+    });
+    describe("update", () => {
+      checkTemplate(addUpdateOperationTemplate);
     });
   });
 });
 
-function resourceSpecFactory() {
-  return buildNewResourceSpec("User");
+function checkTemplate(template) {
+  it("creates a valid spec", async () => {
+    const baseSpec = buildNewResourceSpec("User");
+    let updatedSpec: OpenAPIV3.Document = JSON.parse(JSON.stringify(baseSpec));
+    template(updatedSpec, {
+      titleResourceName: "User",
+      resourceName: "user",
+      pluralResourceName: "users",
+    });
+    const results = await check(baseSpec, updatedSpec);
+    const failedChecks = results.filter((r) => !r.passed);
+    expect(failedChecks.length).toBe(0);
+    expect(results).toMatchSnapshot();
+  });
 }
 
 const context: SynkApiCheckContext = {

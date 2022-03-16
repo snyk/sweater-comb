@@ -1,28 +1,38 @@
-import { commonResponses, refs } from "../common";
-import { ensureIdParameterComponent } from "../parameters";
+import { commonParameters, commonResponses, refs } from "../common";
+import {
+  ensureIdParameterComponent,
+  ensureOrgIdComponent,
+} from "../parameters";
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
+import { ensureRelationSchemaComponent } from "../schemas";
+import { buildItemPath } from "../paths";
 
 export const addDeleteOperation = SpecTemplate.create(
   "add-delete-operation",
-  function addDeleteOperation(
-    spec: OpenAPIV3.Document,
-    options: {
-      itemPath: string;
-      resourceName: string;
-      titleResourceName: string;
-    },
-  ): void {
-    const { itemPath, resourceName, titleResourceName } = options;
-    if (!spec.paths) spec.paths = {};
-    if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
-    spec.paths[itemPath]!.delete = buildDeleteOperation(
-      resourceName,
-      titleResourceName,
-    );
-    ensureIdParameterComponent(spec, resourceName, titleResourceName);
-  },
+  addDeleteOperationTemplate,
 );
+
+export function addDeleteOperationTemplate(
+  spec: OpenAPIV3.Document,
+  options: {
+    resourceName: string;
+    titleResourceName: string;
+    pluralResourceName: string;
+  },
+): void {
+  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const itemPath = buildItemPath(resourceName, pluralResourceName);
+  if (!spec.paths) spec.paths = {};
+  if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
+  spec.paths[itemPath]!.delete = buildDeleteOperation(
+    resourceName,
+    titleResourceName,
+  );
+  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureRelationSchemaComponent(spec, titleResourceName);
+  ensureOrgIdComponent(spec);
+}
 
 function buildDeleteOperation(
   resourceName: string,
@@ -34,7 +44,7 @@ function buildDeleteOperation(
     operationId: `delete${titleResourceName}`,
     tags: [titleResourceName],
     parameters: [
-      { $ref: "../../../components/parameters/version.yaml#/Version" },
+      ...commonParameters,
       { $ref: `#/components/parameters/${titleResourceName}Id` },
     ],
     responses: {

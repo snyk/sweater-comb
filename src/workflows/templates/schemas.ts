@@ -39,6 +39,7 @@ export function buildCollectionResponseSchema(
       data: {
         type: "array",
         items: {
+          type: "object",
           properties: {
             id: idSchema,
             type: refs.schemas.types,
@@ -51,7 +52,7 @@ export function buildCollectionResponseSchema(
           },
         },
       },
-      links: refs.schemas.selfLink,
+      links: refs.schemas.paginationLinks,
     },
   };
 }

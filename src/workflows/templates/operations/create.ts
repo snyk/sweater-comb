@@ -2,7 +2,6 @@ import {
   commonHeaders,
   commonResponses,
   commonParameters,
-  asRef,
   refs,
 } from "../common";
 import { OpenAPIV3 } from "openapi-types";
@@ -16,6 +15,7 @@ import {
   ensureIdParameterComponent,
   ensureOrgIdComponent,
 } from "../parameters";
+import { buildCollectionPath } from "../paths";
 
 export const addCreateOperation = SpecTemplate.create(
   "add-create-operation",
@@ -25,12 +25,13 @@ export const addCreateOperation = SpecTemplate.create(
 export function addCreateOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    collectionPath: string;
     resourceName: string;
     titleResourceName: string;
+    pluralResourceName: string;
   },
 ): void {
-  const { collectionPath, resourceName, titleResourceName } = options;
+  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
   if (!spec.components) spec.components = {};
@@ -63,10 +64,7 @@ function buildCreateOperation(
     description: `Create a new ${resourceName}`,
     operationId: `create${titleResourceName}`,
     tags: [titleResourceName],
-    parameters: [
-      asRef(`#/components/parameters/${titleResourceName}Id`),
-      ...commonParameters,
-    ],
+    parameters: commonParameters,
     requestBody: {
       content: {
         "application/json": {

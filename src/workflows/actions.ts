@@ -9,7 +9,7 @@ import { addUpdateOperation } from "./templates/operations/update";
 import { addDeleteOperation } from "./templates/operations/delete";
 import { buildNewResourceSpec } from "./templates/new-resource-spec";
 
-export async function createResource(resourceName, pluralResourceName) {
+export async function createResourceAction(resourceName, pluralResourceName) {
   // TODO: the SDK should probably help with the generation of new files
   // and allow ergonomic use of a SpecTemplate to do so
   const titleResourceName = titleCase(resourceName);
@@ -30,81 +30,31 @@ export async function createResource(resourceName, pluralResourceName) {
   );
 }
 
-export async function addOperation(
-  specFilePath, // TODO: consider how workflows can provided with more sophisticated context
-  operation,
-  resourceName,
-  pluralResourceName,
-) {
-  const titleResourceName = titleCase(resourceName);
-  const collectionPath = `/${pluralResourceName}`;
-  const itemPath = `${collectionPath}/{${resourceName}_id}`;
-  switch (operation) {
-    case "all":
-      // TODO: consider how this impacts performance (round trip to the FS for each call)
-      // and whether that's something we need to address here
-      await applyTemplate(addCreateOperation, specFilePath, {
-        collectionPath,
-        resourceName,
-        titleResourceName,
-      });
-      await applyTemplate(addListOperation, specFilePath, {
-        collectionPath,
-        resourceName,
-        titleResourceName,
-      });
-      await applyTemplate(addGetOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      await applyTemplate(addUpdateOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      await applyTemplate(addDeleteOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-    case "create":
-      await applyTemplate(addCreateOperation, specFilePath, {
-        collectionPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-    case "get-many":
-      await applyTemplate(addListOperation, specFilePath, {
-        collectionPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-    case "get-one":
-      await applyTemplate(addGetOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-    case "update":
-      await applyTemplate(addUpdateOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-    case "delete":
-      await applyTemplate(addDeleteOperation, specFilePath, {
-        itemPath,
-        resourceName,
-        titleResourceName,
-      });
-      break;
-  }
+export const addCreateOperationAction =
+  buildOperationAction(addCreateOperation);
+export const addDeleteOperationAction =
+  buildOperationAction(addDeleteOperation);
+export const addGetOperationAction = buildOperationAction(addGetOperation);
+export const addListOperationAction = buildOperationAction(addListOperation);
+export const addUpdateOperationAction =
+  buildOperationAction(addUpdateOperation);
+
+function buildOperationAction(template) {
+  // TODO: consider how workflows can provided with more sophisticated context
+  return async (
+    specFilePath: string,
+    resourceName: string,
+    pluralResourceName: string,
+  ) => {
+    const titleResourceName = titleCase(resourceName);
+    // TODO: consider how this impacts performance (round trip to the FS for each call)
+    // and whether that's something we need to address here
+    await applyTemplate(template, specFilePath, {
+      pluralResourceName,
+      resourceName,
+      titleResourceName,
+    });
+  };
 }
 
 //-----

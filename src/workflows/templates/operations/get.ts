@@ -1,33 +1,46 @@
-import { ensureIdParameterComponent } from "../parameters";
+import {
+  ensureIdParameterComponent,
+  ensureOrgIdComponent,
+} from "../parameters";
 import {
   buildItemResponseSchema,
   ensureRelationSchemaComponent,
 } from "../schemas";
-import { commonHeaders, commonResponses, refs } from "../common";
+import {
+  commonHeaders,
+  commonParameters,
+  commonResponses,
+  refs,
+} from "../common";
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
+import { buildItemPath } from "../paths";
 
 export const addGetOperation = SpecTemplate.create(
   "add-get-operation",
-  function addGetOperation(
-    spec: OpenAPIV3.Document,
-    options: {
-      itemPath: string;
-      resourceName: string;
-      titleResourceName: string;
-    },
-  ): void {
-    const { itemPath, resourceName, titleResourceName } = options;
-    if (!spec.paths) spec.paths = {};
-    if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
-    spec.paths[itemPath]!.get = buildGetOperation(
-      resourceName,
-      titleResourceName,
-    );
-    ensureIdParameterComponent(spec, resourceName, titleResourceName);
-    ensureRelationSchemaComponent(spec, titleResourceName);
-  },
+  addGetOperationTemplate,
 );
+
+export function addGetOperationTemplate(
+  spec: OpenAPIV3.Document,
+  options: {
+    resourceName: string;
+    titleResourceName: string;
+    pluralResourceName: string;
+  },
+): void {
+  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const itemPath = buildItemPath(resourceName, pluralResourceName);
+  if (!spec.paths) spec.paths = {};
+  if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
+  spec.paths[itemPath]!.get = buildGetOperation(
+    resourceName,
+    titleResourceName,
+  );
+  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureRelationSchemaComponent(spec, titleResourceName);
+  ensureOrgIdComponent(spec);
+}
 
 function buildGetOperation(
   resourceName: string,
@@ -43,7 +56,7 @@ function buildGetOperation(
     operationId: `get${titleResourceName}`,
     tags: [titleResourceName],
     parameters: [
-      refs.parameters.version,
+      ...commonParameters,
       { $ref: `#/components/parameters/${titleResourceName}Id` },
     ],
     responses: {
