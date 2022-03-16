@@ -1,6 +1,6 @@
 export const refs = {
   restCommon: asRef(
-    "https://raw.githubusercontent.com/snyk/sweater-comb/v1.6.0/components/common.yaml",
+    "https://raw.githubusercontent.com/snyk/sweater-comb/common-model-v1/components/common.yaml",
   ),
   headers: {
     versionRequested: header("VersionRequestedResponseHeader"),
@@ -9,6 +9,7 @@ export const refs = {
     versionStage: header("VersionStageResponseHeader"),
     deprecation: header("DeprecationHeader"),
     sunset: header("SunsetHeader"),
+    location: header("LocationHeader"),
   },
   responses: {
     "204": response("204"),
@@ -24,6 +25,7 @@ export const refs = {
     startingAfter: parameter("StartingAfter"),
     endingBefore: parameter("EndingBefore"),
     limit: parameter("limit"),
+    orgId: asRef("#/components/parameters/OrgId"),
   },
   schemas: {
     paginationLinks: schema("PaginatedLinks"),
@@ -39,6 +41,11 @@ export const paginationParameters = [
   refs.parameters.limit,
 ];
 
+export const commonParameters = [
+  refs.parameters.version,
+  refs.parameters.orgId,
+];
+
 export const commonHeaders = {
   "snyk-version-requested": refs.headers.versionRequested,
   "snyk-version-served": refs.headers.versionServed,
@@ -49,6 +56,12 @@ export const commonHeaders = {
 };
 
 export const { "204": _, ...commonResponses } = refs.responses;
+
+export function asRef(ref: string) {
+  return {
+    $ref: ref,
+  };
+}
 
 function header(name: string) {
   return {
@@ -71,11 +84,5 @@ function parameter(name: string) {
 function schema(name: string) {
   return {
     $ref: `#/components/x-rest-common/schemas/${name}`,
-  };
-}
-
-function asRef(ref: string) {
-  return {
-    $ref: ref,
   };
 }

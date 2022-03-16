@@ -1,13 +1,10 @@
 import { buildNewResourceSpec } from "../templates/new-resource-spec";
 import { addCreateOperationTemplate } from "../templates/operations/create";
-import { parseSpecVersion, specFromInputToResults } from "@useoptic/api-checks";
-import {
-  defaultEmptySpec,
-  factsToChangelog,
-  OpenAPIV3,
-} from "@useoptic/openapi-utilities";
+import { factsToChangelog, OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { newSnykApiCheckService } from "../../service";
 import { SynkApiCheckContext } from "../../dsl";
+import { parseOpenAPIFromMemory } from "@useoptic/openapi-io";
+// import { parseOpenAPIFromMemory } from "@useoptic/openapi-io";
 
 describe("workflow templates", () => {
   describe("operations", () => {
@@ -18,11 +15,12 @@ describe("workflow templates", () => {
           JSON.stringify(baseSpec),
         );
         addCreateOperationTemplate(updatedSpec, {
-          collectionPath: "/users/{user_id}",
+          collectionPath: "/orgs/{org_id}/users/{user_id}",
           titleResourceName: "User",
           resourceName: "user",
         });
         const results = await check(baseSpec, updatedSpec);
+        expect(results.filter((r) => !r.passed).length).toBe(0);
         expect(results).toMatchSnapshot();
       });
     });
@@ -45,7 +43,12 @@ const context: SynkApiCheckContext = {
 
 async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
   const checkService = newSnykApiCheckService();
-  const { currentFacts, nextFacts } = checkService.generateFacts(from, to);
+  const { jsonLike: parsedFrom } = await parseOpenAPIFromMemory(from);
+  const { jsonLike: parsedTo } = await parseOpenAPIFromMemory(to);
+  const { currentFacts, nextFacts } = checkService.generateFacts(
+    parsedFrom,
+    parsedTo,
+  );
   const checkResults = await checkService.runRulesWithFacts({
     context,
     nextFacts,

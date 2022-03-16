@@ -14,6 +14,7 @@ export function buildNewResourceSpec(
   // @ts-ignore
   // Ignoring since `x-rest-common` is not correct according to the types.
   spec.components["x-rest-common"] = refs.restCommon;
+  spec["x-snyk-api-stability"] = "wip";
   return spec;
 }
 

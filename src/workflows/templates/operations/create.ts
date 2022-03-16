@@ -1,11 +1,21 @@
-import { commonHeaders, commonResponses, refs } from "../common";
+import {
+  commonHeaders,
+  commonResponses,
+  commonParameters,
+  asRef,
+  refs,
+} from "../common";
 import { OpenAPIV3 } from "openapi-types";
 import {
   buildCreateRequestSchema,
   buildItemResponseSchema,
-  ensureRelationSchema,
+  ensureRelationSchemaComponent,
 } from "../schemas";
 import { SpecTemplate } from "@useoptic/openapi-cli";
+import {
+  ensureIdParameterComponent,
+  ensureOrgIdComponent,
+} from "../parameters";
 
 export const addCreateOperation = SpecTemplate.create(
   "add-create-operation",
@@ -34,7 +44,9 @@ export function addCreateOperationTemplate(
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}CreateAttributes`] = attributes;
-  ensureRelationSchema(spec, titleResourceName);
+  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureRelationSchemaComponent(spec, titleResourceName);
+  ensureOrgIdComponent(spec);
 }
 
 function buildCreateOperation(
@@ -51,7 +63,10 @@ function buildCreateOperation(
     description: `Create a new ${resourceName}`,
     operationId: `create${titleResourceName}`,
     tags: [titleResourceName],
-    parameters: [refs.parameters.version],
+    parameters: [
+      asRef(`#/components/parameters/${titleResourceName}Id`),
+      ...commonParameters,
+    ],
     requestBody: {
       content: {
         "application/json": {
@@ -62,7 +77,7 @@ function buildCreateOperation(
     responses: {
       "201": {
         description: `Created ${resourceName} successfully`,
-        headers: commonHeaders,
+        headers: { ...commonHeaders, location: refs.headers.location },
         content: {
           "application/vnd.api+json": {
             schema: itemResponseSchema,

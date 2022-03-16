@@ -1,15 +1,15 @@
-import { OpenAPIV3 } from 'openapi-types';
-import { refs } from './common';
+import { OpenAPIV3 } from "openapi-types";
+import { refs } from "./common";
 
 export function buildItemResponseSchema(
   resourceName: string,
-  titleResourceName: string
+  titleResourceName: string,
 ): OpenAPIV3.SchemaObject {
   return {
     properties: {
       jsonapi: refs.schemas.jsonApi,
       data: {
-        type: 'object',
+        type: "object",
         description: `${resourceName} resource object`,
         properties: {
           id: idSchema,
@@ -30,14 +30,14 @@ export function buildItemResponseSchema(
 
 export function buildCollectionResponseSchema(
   resourceName: string,
-  titleResourceName: string
+  titleResourceName: string,
 ): OpenAPIV3.SchemaObject {
   return {
-    type: 'object',
+    type: "object",
     properties: {
       jsonapi: refs.schemas.jsonApi,
       data: {
-        type: 'array',
+        type: "array",
         items: {
           properties: {
             id: idSchema,
@@ -57,14 +57,14 @@ export function buildCollectionResponseSchema(
 }
 
 export function buildCreateRequestSchema(
-  titleResourceName: string
+  titleResourceName: string,
 ): OpenAPIV3.SchemaObject {
   return {
-    type: 'object',
+    type: "object",
     properties: {
       id: {
-        type: 'string',
-        format: 'uuid',
+        type: "string",
+        format: "uuid",
       },
       type: {},
       attributes: {
@@ -79,14 +79,14 @@ export function buildCreateRequestSchema(
 }
 
 export function buildUpdateRequestSchema(
-  titleResourceName: string
+  titleResourceName: string,
 ): OpenAPIV3.SchemaObject {
   return {
-    type: 'object',
+    type: "object",
     properties: {
       id: {
-        type: 'string',
-        format: 'uuid',
+        type: "string",
+        format: "uuid",
       },
       type: {},
       attributes: {
@@ -100,23 +100,23 @@ export function buildUpdateRequestSchema(
   };
 }
 
-export function ensureRelationSchema(
+export function ensureRelationSchemaComponent(
   spec: OpenAPIV3.Document,
-  titleResourceName: string
+  titleResourceName: string,
 ): void {
   const schemaName = `${titleResourceName}Relationships`;
   if (spec.components?.schemas?.[schemaName]) return;
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
   spec.components.schemas[schemaName] = {
-    type: 'object',
+    type: "object",
     properties: {},
     additionalProperties: false,
   };
 }
 
 const idSchema: OpenAPIV3.SchemaObject = {
-  type: 'string',
-  format: 'uuid',
-  example: 'd5b640e5-d88c-4c17-9bf0-93597b7a1ce2',
+  type: "string",
+  format: "uuid",
+  example: "d5b640e5-d88c-4c17-9bf0-93597b7a1ce2",
 };

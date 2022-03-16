@@ -277,7 +277,7 @@ Object {
       "condition": "not be required",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected requst body property to not be required",
+      "error": "expected request body property to not be required",
       "isMust": true,
       "isShould": false,
       "passed": false,
@@ -822,6 +822,50 @@ Object {
       "isShould": false,
       "passed": false,
       "where": "removed response: 200",
+    },
+  ],
+}
+`;
+
+exports[`failing case 2: adding a camelCase when Capital-Param-Case is required 1`] = `
+Object {
+  "passed": false,
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "inRequest": Object {
+              "header": "exampleParam",
+            },
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+            "parameters",
+            "header",
+            "exampleParam",
+          ],
+          "jsonPath": "/paths/~1example/get/parameters/0",
+          "kind": "header-parameter",
+        },
+        "value": Object {
+          "in": "header",
+          "name": "exampleParam",
+          "required": false,
+        },
+      },
+      "condition": "have Capital-Param-Case name",
+      "docsLink": undefined,
+      "effectiveOnDate": undefined,
+      "error": "exampleParam is not Capital-Param-Case",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "requirement for header-parameter: exampleParam",
     },
   ],
 }
@@ -1783,6 +1827,56 @@ Object {
 `;
 
 exports[`passing case 2: wrong case ok if it is already there 5`] = `
+Object {
+  "passed": true,
+  "results": Array [],
+}
+`;
+
+exports[`passing case 3: adding a Capital-Param-Case when Capital-Param-Case is required 1`] = `
+Object {
+  "passed": true,
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "inRequest": Object {
+              "header": "Example-Header",
+            },
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+            "parameters",
+            "header",
+            "Example-Header",
+          ],
+          "jsonPath": "/paths/~1example/get/parameters/0",
+          "kind": "header-parameter",
+        },
+        "value": Object {
+          "in": "header",
+          "name": "Example-Header",
+          "required": false,
+        },
+      },
+      "condition": "have Capital-Param-Case name",
+      "docsLink": undefined,
+      "effectiveOnDate": undefined,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "requirement for header-parameter: Example-Header",
+    },
+  ],
+}
+`;
+
+exports[`passing case 4: wrong case ok if it is already there 1`] = `
 Object {
   "passed": true,
   "results": Array [],
