@@ -160,6 +160,8 @@ describe("orgOrGroupTenant", () => {
     ${true}  | ${"/groups/{group_id}/thing"}
     ${true}  | ${"/self"}
     ${false} | ${"/self/thing"}
+    ${true}  | ${"/test"}
+    ${true}  | ${"/test/docker/golang:1.18"}
   `(`path '$path' is valid: $valid`, async ({ valid, path }) => {
     const result = await compare(baseForSpecificationTests)
       .to((spec) => {

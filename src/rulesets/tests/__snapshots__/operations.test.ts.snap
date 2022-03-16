@@ -4334,6 +4334,166 @@ Object {
 }
 `;
 
+exports[`orgOrGroupTenant path '/test' is valid: true 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [
+    Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/test",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/test",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/test",
+          "get",
+        ],
+        "jsonPath": "/paths/~1test/get",
+        "kind": "operation",
+      },
+    },
+  ],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/test": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "added": Object {
+          "method": "get",
+          "pathPattern": "/test",
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "get",
+            "path": "/test",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/test",
+            "get",
+          ],
+          "jsonPath": "/paths/~1test/get",
+          "kind": "operation",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": undefined,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "added operation: GET /test",
+    },
+  ],
+}
+`;
+
+exports[`orgOrGroupTenant path '/test/docker/golang:1.18' is valid: true 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {},
+  },
+  "changelog": Array [
+    Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/test/docker/golang:1.18",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/test/docker/golang:1.18",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/test/docker/golang:1.18",
+          "get",
+        ],
+        "jsonPath": "/paths/~1test~1docker~1golang:1.18/get",
+        "kind": "operation",
+      },
+    },
+  ],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/test/docker/golang:1.18": Object {
+        "get": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "added": Object {
+          "method": "get",
+          "pathPattern": "/test/docker/golang:1.18",
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "get",
+            "path": "/test/docker/golang:1.18",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/test/docker/golang:1.18",
+            "get",
+          ],
+          "jsonPath": "/paths/~1test~1docker~1golang:1.18/get",
+          "kind": "operation",
+        },
+      },
+      "condition": "have an org or group tenant",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+      "effectiveOnDate": undefined,
+      "isMust": true,
+      "isShould": false,
+      "passed": true,
+      "where": "added operation: GET /test/docker/golang:1.18",
+    },
+  ],
+}
+`;
+
 exports[`orgOrGroupTenant path '/thing' is valid: false 1`] = `
 Object {
   "base": Object {
