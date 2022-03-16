@@ -41,7 +41,6 @@ function checkTemplate(template) {
     const results = await check(baseSpec, updatedSpec);
     const failedChecks = results.filter((r) => !r.passed);
     expect(failedChecks.length).toBe(0);
-    expect(results).toMatchSnapshot();
   });
 }
 
