@@ -2089,10 +2089,10 @@
   resolved "https://registry.yarnpkg.com/@types/yoga-layout/-/yoga-layout-1.9.2.tgz#efaf9e991a7390dc081a0b679185979a83a9639a"
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
-"@useoptic/api-checks@0.22.15":
-  version "0.22.15"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.22.15.tgz#f9b77ea9141c5edeb532696114dcc22aae236014"
-  integrity sha512-sPtfRp0Khz+V/sSShSyoiLXyhKBnMXqN1d07ABeKny97x3W9XTpJcW1FwSBBVb5sunwcDbCxhp0/dvGO26vsKQ==
+"@useoptic/api-checks@0.22.16":
+  version "0.22.16"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.22.16.tgz#c4a72e2c98fe9fdab86b7485a6afa151f0c5933e"
+  integrity sha512-lrh8lDO44+I6C4A4IEUMljGbz1D7dBirqpfPSUDyWX4TbRY8Ba0/FsrcJ0jsQvadeCSKGtvl5UWHxAEOEivYvw==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@octokit/rest" "^18.12.0"
@@ -2100,14 +2100,13 @@
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.3.2"
     "@types/prop-types" "^15.7.4"
-    "@useoptic/json-pointer-helpers" "0.22.15"
-    "@useoptic/openapi-io" "0.22.15"
-    "@useoptic/openapi-utilities" "0.22.15"
+    "@useoptic/json-pointer-helpers" "0.22.16"
+    "@useoptic/openapi-io" "0.22.16"
+    "@useoptic/openapi-utilities" "0.22.16"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     commander "^8.3.0"
     dotenv "^16.0.0"
-    follow-redirects "1.14.7"
     fs-extra "^10.0.0"
     ink "^3.2.0"
     ink-link "^2.0.0"
@@ -2125,22 +2124,22 @@
     ts-invariant "^0.9.4"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.22.15":
-  version "0.22.15"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.22.15.tgz#7b871e3fae4080511111059db7483dd73468252f"
-  integrity sha512-xYyG3H4Vgj6j2T83VL2JN5hNdfLw55wClEh/LaN//KPCGYeGBcrQLSZSrcirgbQKaK1wWftoW2k/0ZubE2T9xw==
+"@useoptic/json-pointer-helpers@0.22.16":
+  version "0.22.16"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.22.16.tgz#c7825c3379c1e32a2dacf90ca1fce957bf864b50"
+  integrity sha512-ij6V01MQPF2JC2cYCvixSUexOxaGIYZt7tCslsGSKRwmLvmrL3lRzjzksv4ua76/ocXAS5M1XVqydkI/zBoeWQ==
   dependencies:
     jsonpointer "^5.0.0"
 
-"@useoptic/openapi-io@0.22.15":
-  version "0.22.15"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.22.15.tgz#ce19a035a1c693ccfce44c1b0e36e10cadaa5f97"
-  integrity sha512-vNSDhscDE4s7IX90YcXvcNgf/bzhMxS2zi+zxjKaz1yc2bO6dFlCJ9aFK1ppFHuAtcjWeQGpSjfKMxdBc5QDlA==
+"@useoptic/openapi-io@0.22.16":
+  version "0.22.16"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.22.16.tgz#87be3e94c754444d21fe88c8780b3033602dc3ea"
+  integrity sha512-x4UZzaOxVImtLyGXY1CDydcFxtfJxy3D62CMhWw46GZWFiUFaEFXX0nNjZJ7LO45srDLswKdibkWdAknwHwALg==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.22.15"
-    "@useoptic/openapi-utilities" "0.22.15"
+    "@useoptic/json-pointer-helpers" "0.22.16"
+    "@useoptic/openapi-utilities" "0.22.16"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -2154,12 +2153,12 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.22.15":
-  version "0.22.15"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.22.15.tgz#93e88b8f8156332f0990ec70faec65df7fe30486"
-  integrity sha512-A5qyAJJ9zBNkdHWpN/vapJERv2+aIEiEr/ccgW0qvF/u9RdifpJiefjkZhjGegkjZzaoLwvV8oMJgb+LecfaEw==
+"@useoptic/openapi-utilities@0.22.16":
+  version "0.22.16"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.22.16.tgz#2b0235fd0f03d2599741c68d517eaed32c49c6a4"
+  integrity sha512-lq1f9PsURoId11LoVrHcIHEyPI9iSXxpQ8Egf4pM6BnYa/+pdVY+rgYIB2t62EgkBFWiFSZg983V6+8gal4IRA==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.22.15"
+    "@useoptic/json-pointer-helpers" "0.22.16"
     fast-deep-equal "^3.1.3"
     js-yaml "^4.1.0"
     lodash.sortby "^4.7.0"
@@ -3520,7 +3519,7 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-follow-redirects@1.14.7, follow-redirects@^1.14.0:
+follow-redirects@^1.14.0:
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
   integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
