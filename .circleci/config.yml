@@ -31,27 +31,6 @@ jobs:
           name: E2E Test
           command: ./end-end-tests/api-standards/test-bulk.bash
 
-  docker-release:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: '20.10.7'
-      - run:
-          name: Build and push Docker image
-          environment:
-            GIT_BRANCH: << pipeline.git.branch >>
-            GIT_TAG: << pipeline.git.tag >>
-          command: |-
-            [ -n "$IMAGE" ] || exit 1
-            export TAG=${GIT_TAG:-${GIT_BRANCH}}
-            [ -n "$TAG" ] || exit 1
-            # Authenticate to OCI image repository
-            echo "${GITHUB_TOKEN}" | docker login ghcr.io -u snyk --password-stdin
-            # Build and push the just-built image
-            set -x
-            ./scripts/release-docker.bash
-
   npm-release:
     <<: *defaults
     steps:
@@ -74,12 +53,3 @@ workflows:
           filters:
             branches:
               only: 'main'
-  docker_publish:
-    jobs:
-      - docker-release:
-          name: Docker Image Release
-          filters:
-            branches:
-              ignore: '/.*/'
-            tags:
-              only: '/^v.*$/'
