@@ -48,7 +48,7 @@
     "@useoptic/openapi-cli": "^0.23.3",
     "@useoptic/openapi-io": "0.23.4",
     "@useoptic/openapi-utilities": "0.23.4",
-    "chai": "^4.3.4",
+    "chai": "^4.3.6",
     "change-case": "^4.1.2",
     "fs-extra": "^10.0.0",
     "lodash.isequal": "^4.5.0",
