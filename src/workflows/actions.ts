@@ -30,7 +30,11 @@ export async function createResourceAction(resourceName, pluralResourceName) {
     },
   );
 
-  const spec = buildNewResourceSpec(titleResourceName);
+  const spec = buildNewResourceSpec(
+    titleResourceName,
+    resourceName,
+    pluralResourceName,
+  );
   const specYaml = writeYaml(spec);
   fs.writeFileSync(
     path.join(resourcesDirectory, lowerCaseResourceName, version, "spec.yaml"),
@@ -49,12 +53,7 @@ export const addUpdateOperationAction =
 
 function buildOperationAction(template) {
   // TODO: consider how workflows can provided with more sophisticated context
-  return async (
-    resourceName: string,
-    pluralResourceName: string,
-    resourceVersion: string,
-  ) => {
-    const titleResourceName = titleCase(resourceName);
+  return async (pluralResourceName: string, resourceVersion: string) => {
     const specFilePath = await resolveResourceVersion(
       process.cwd(),
       pluralResourceName,
@@ -64,8 +63,6 @@ function buildOperationAction(template) {
     // and whether that's something we need to address here
     await applyTemplate(template, specFilePath, {
       pluralResourceName,
-      resourceName,
-      titleResourceName,
     });
   };
 }

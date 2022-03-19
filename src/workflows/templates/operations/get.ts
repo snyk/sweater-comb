@@ -15,6 +15,7 @@ import {
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
 
 export const addGetOperation = SpecTemplate.create(
   "add-get-operation",
@@ -24,20 +25,17 @@ export const addGetOperation = SpecTemplate.create(
 export function addGetOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
-  const itemPath = buildItemPath(resourceName, pluralResourceName);
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
+  const itemPath = buildItemPath(singular, pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
-  spec.paths[itemPath]!.get = buildGetOperation(
-    resourceName,
-    titleResourceName,
-  );
-  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  spec.paths[itemPath]!.get = buildGetOperation(singular, titleResourceName);
+  ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }

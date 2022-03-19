@@ -1,6 +1,7 @@
 import findParentDir from "find-parent-dir";
 import fs from "fs-extra";
 import path from "path";
+import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = process.cwd(),
@@ -51,10 +52,6 @@ function latestDateOfSet(dates: string[]): string | undefined {
   return dates.sort().pop();
 }
 
-function isDate(dateStr) {
-  return !isNaN(new Date(dateStr).getDate());
-}
-
 export function formatResourceVersion(date: Date = new Date()): string {
   return `${date.getFullYear()}-${padWithZero(date.getMonth())}-${padWithZero(
     date.getUTCDay(),
@@ -63,4 +60,20 @@ export function formatResourceVersion(date: Date = new Date()): string {
 
 function padWithZero(value: number): string {
   return ("00" + value).slice(-2);
+}
+
+export function getSingularAndPluralName(openApi: OpenAPIV3.Document) {
+  const singular = openApi.info["x-singular-name"];
+  const plural = openApi.info["x-plural-name"];
+
+  if (!singular || !plural)
+    throw new Error(
+      "info.x-singular-name and info.x-plural-name must be set to use our OpenAPI workflow generators ",
+    );
+
+  return { singular, plural };
+}
+
+export function titleCase(value: string): string {
+  return value[0].toUpperCase() + value.slice(1);
 }

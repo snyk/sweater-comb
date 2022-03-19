@@ -16,6 +16,7 @@ import {
   ensureOrgIdComponent,
 } from "../parameters";
 import { buildCollectionPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
 
 export const addCreateOperation = SpecTemplate.create(
   "add-create-operation",
@@ -25,19 +26,19 @@ export const addCreateOperation = SpecTemplate.create(
 export function addCreateOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
   spec.paths[collectionPath]!.post = buildCreateOperation(
-    resourceName,
+    singular,
     titleResourceName,
   );
   const attributes =
@@ -45,7 +46,7 @@ export function addCreateOperationTemplate(
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}CreateAttributes`] = attributes;
-  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }

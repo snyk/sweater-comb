@@ -55,13 +55,12 @@ export const addUpdateOperationCommand = buildOperationCommand(
 
 function buildOperationCommand(name: string, description: string, action) {
   const command = new Command(name)
-    .addArgument(new Argument("<resource-name>", "[resource-name]"))
     .addArgument(
       new Argument("<plural-resource-name>", "[plural-resource-name]"),
     )
     .addArgument(new Argument("[resource-version]", "version"))
-    .action(async (resourceName, pluralResourceName, resourceVersion) => {
-      return action(resourceName, pluralResourceName, resourceVersion);
+    .action(async (pluralResourceName, resourceVersion) => {
+      return action(pluralResourceName, resourceVersion);
     });
 
   command.description(description);

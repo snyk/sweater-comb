@@ -16,6 +16,7 @@ import {
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
 
 export const addUpdateOperation = SpecTemplate.create(
   "add-update-operation",
@@ -25,19 +26,19 @@ export const addUpdateOperation = SpecTemplate.create(
 export function addUpdateOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
-  const itemPath = buildItemPath(resourceName, pluralResourceName);
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
+  const itemPath = buildItemPath(singular, pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
   spec.paths[itemPath]!.patch = buildUpdateOperation(
-    resourceName,
+    singular,
     titleResourceName,
   );
   const attributes =
@@ -45,7 +46,7 @@ export function addUpdateOperationTemplate(
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}UpdateAttributes`] = attributes;
-  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }

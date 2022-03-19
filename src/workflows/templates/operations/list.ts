@@ -13,6 +13,7 @@ import {
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { ensureOrgIdComponent } from "../parameters";
 import { buildCollectionPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
 
 export const addListOperation = SpecTemplate.create(
   "add-list-operation",
@@ -22,17 +23,17 @@ export const addListOperation = SpecTemplate.create(
 export function addListOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
   spec.paths[collectionPath]!.get = buildListOperation(
-    resourceName,
+    singular,
     titleResourceName,
   );
   ensureRelationSchemaComponent(spec, titleResourceName);
