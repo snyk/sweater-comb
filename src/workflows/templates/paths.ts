@@ -1,8 +1,8 @@
 export function buildCollectionPath(pluralResourceName) {
-  return `/orgs/{org_id}/${pluralResourceName}`;
+  return `/orgs/{org_id}/${pluralResourceName.toLowerCase()}`;
 }
 
 export function buildItemPath(resourceName, pluralResourceName) {
   const collectionPath = buildCollectionPath(pluralResourceName);
-  return `${collectionPath}/{${resourceName}_id}`;
+  return `${collectionPath.toLowerCase()}/{${resourceName.toLowerCase()}_id}`;
 }
