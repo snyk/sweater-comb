@@ -29,13 +29,13 @@ describe("workflow templates", () => {
   });
 });
 
+jest.setTimeout(20000);
+
 function checkTemplate(template) {
   it("creates a valid spec", async () => {
-    const baseSpec = buildNewResourceSpec("User");
+    const baseSpec = buildNewResourceSpec("User", "User", "Users");
     let updatedSpec: OpenAPIV3.Document = JSON.parse(JSON.stringify(baseSpec));
     template(updatedSpec, {
-      titleResourceName: "User",
-      resourceName: "user",
       pluralResourceName: "users",
     });
     const results = await check(baseSpec, updatedSpec);

@@ -35,8 +35,8 @@ function baseOpenApiSpec(
       title: `${titleResourceName} Resource`,
       version: "3.0.0",
       // @ts-ignore
-      "x-plural-name": pluralName,
-      "x-singular-name": name,
+      "x-plural-name": pluralName.toLowerCase(),
+      "x-singular-name": name.toLowerCase(),
     },
     servers: [
       { url: "https://api.snyk.io/v3", description: "Public Snyk API" },

@@ -23,7 +23,7 @@ export function addDeleteOperationTemplate(
   const { pluralResourceName } = options;
   const { singular, plural } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
-  const itemPath = buildItemPath(singular, pluralResourceName);
+  const itemPath = buildItemPath(singular, plural);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
   spec.paths[itemPath]!.delete = buildDeleteOperation(
