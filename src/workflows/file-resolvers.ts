@@ -1,0 +1,66 @@
+import findParentDir from "find-parent-dir";
+import fs from "fs-extra";
+import path from "path";
+
+export async function resolveResourcesDirectory(
+  workingDirectory: string = process.cwd(),
+): Promise<string> {
+  return new Promise((resolve) => {
+    findParentDir(workingDirectory, "resources", function (err, dir) {
+      if (err)
+        throw new Error(
+          "A Vervet resources directory does not exist here. Is your working directory correct?",
+        );
+      resolve(path.join(dir, "resources"));
+    });
+  });
+}
+
+export async function resolveResourceVersion(
+  workingDirectory: string = process.cwd(),
+  resourceName: string,
+  resourceVersion: string = "latest",
+): Promise<string> {
+  const resources = await resolveResourcesDirectory();
+  const resourceNameLowerCase = resourceName.toLowerCase();
+
+  const resourceNames = await fs.readdir(resources);
+
+  if (!resourceNames.includes(resourceNameLowerCase))
+    throw new Error(
+      `No resource ${resourceNameLowerCase} found in directory ${resources}`,
+    );
+
+  const resourceDir = path.join(resources, resourceNameLowerCase);
+  const versions = await fs.readdir(resourceDir);
+
+  const matchingDate =
+    resourceVersion !== "latest"
+      ? versions.find((date) => date === resourceVersion)
+      : latestDateOfSet(versions);
+
+  if (!matchingDate)
+    throw new Error(
+      `No resource version ${resourceVersion} found for ${resourceNameLowerCase}`,
+    );
+
+  return path.join(resources, resourceNameLowerCase, matchingDate, "spec.yaml");
+}
+
+function latestDateOfSet(dates: string[]): string | undefined {
+  return dates.sort().pop();
+}
+
+function isDate(dateStr) {
+  return !isNaN(new Date(dateStr).getDate());
+}
+
+export function formatResourceVersion(date: Date = new Date()): string {
+  return `${date.getFullYear()}-${padWithZero(date.getMonth())}-${padWithZero(
+    date.getUTCDay(),
+  )}`;
+}
+
+function padWithZero(value: number): string {
+  return ("00" + value).slice(-2);
+}
