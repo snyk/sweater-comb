@@ -17,6 +17,8 @@ import {
 } from "../parameters";
 import { buildCollectionPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addCreateOperation = SpecTemplate.create(
   "add-create-operation",
@@ -33,6 +35,10 @@ export function addCreateOperationTemplate(
   const { singular, plural } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
+
+  const alreadySet = Boolean(spec.paths[collectionPath]?.post);
+  if (alreadySet) return AlreadyInSpec("post", collectionPath);
+
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
   if (!spec.components) spec.components = {};
@@ -41,11 +47,23 @@ export function addCreateOperationTemplate(
     singular,
     titleResourceName,
   );
+  LogAddition(
+    "Added Create Operation",
+    jsonPointerHelpers.compile(["paths", collectionPath, "post"]),
+  );
   const attributes =
     spec.components?.schemas?.[`${titleResourceName}Attributes`];
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}CreateAttributes`] = attributes;
+  LogAddition(
+    `Added ${titleResourceName}Attributes Schema`,
+    jsonPointerHelpers.compile([
+      "components",
+      "schemas",
+      `${titleResourceName}Attributes`,
+    ]),
+  );
   ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);

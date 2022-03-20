@@ -14,6 +14,8 @@ import { SpecTemplate } from "@useoptic/openapi-cli";
 import { ensureOrgIdComponent } from "../parameters";
 import { buildCollectionPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addListOperation = SpecTemplate.create(
   "add-list-operation",
@@ -32,10 +34,20 @@ export function addListOperationTemplate(
   const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
+
+  const alreadySet = Boolean(spec.paths[collectionPath]?.get);
+  if (alreadySet) return AlreadyInSpec("get", collectionPath);
+
   spec.paths[collectionPath]!.get = buildListOperation(
     singular,
     titleResourceName,
   );
+
+  LogAddition(
+    "Added List Resource Operation",
+    jsonPointerHelpers.compile(["paths", collectionPath, "get"]),
+  );
+
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }

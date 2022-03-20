@@ -1,5 +1,7 @@
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { refs } from "./common";
+import { LogAddition } from "../cli-ux";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export function buildNewResourceSpec(
   titleResourceName: string,
@@ -19,6 +21,16 @@ export function buildNewResourceSpec(
     properties: {},
     example: {},
   };
+
+  LogAddition(
+    `Added ${`${titleResourceName}Attributes`} schema`,
+    jsonPointerHelpers.compile([
+      "components",
+      "schemas",
+      `${titleResourceName}Attributes`,
+    ]),
+  );
+
   // @ts-ignore
   // Ignoring since `x-rest-common` is not correct according to the types.
   spec.components["x-rest-common"] = refs.restCommon;

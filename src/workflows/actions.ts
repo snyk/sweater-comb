@@ -13,6 +13,7 @@ import {
   resolveResourcesDirectory,
   resolveResourceVersion,
 } from "./file-resolvers";
+import { LogUpdatingSpecification } from "./cli-ux";
 
 export async function createResourceAction(resourceName, pluralResourceName) {
   // TODO: the SDK should probably help with the generation of new files
@@ -30,16 +31,23 @@ export async function createResourceAction(resourceName, pluralResourceName) {
     },
   );
 
+  const initialSpecFilePath = path.join(
+    resourcesDirectory,
+    lowerCaseResourceName,
+    version,
+    "spec.yaml",
+  );
+
+  LogUpdatingSpecification(pluralResourceName, "latest", initialSpecFilePath);
+
   const spec = buildNewResourceSpec(
     titleResourceName,
     resourceName,
     pluralResourceName,
   );
+
   const specYaml = writeYaml(spec);
-  fs.writeFileSync(
-    path.join(resourcesDirectory, lowerCaseResourceName, version, "spec.yaml"),
-    specYaml,
-  );
+  fs.writeFileSync(initialSpecFilePath, specYaml);
 }
 
 export const addCreateOperationAction =

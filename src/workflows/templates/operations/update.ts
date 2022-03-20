@@ -17,6 +17,8 @@ import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addUpdateOperation = SpecTemplate.create(
   "add-update-operation",
@@ -37,15 +39,35 @@ export function addUpdateOperationTemplate(
   if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
+
+  const alreadySet = Boolean(spec.paths[itemPath]?.patch);
+  if (alreadySet) return AlreadyInSpec("patch", itemPath);
+
   spec.paths[itemPath]!.patch = buildUpdateOperation(
     singular,
     titleResourceName,
   );
+
+  LogAddition(
+    "Added Update by ID Operation",
+    jsonPointerHelpers.compile(["paths", itemPath, "patch"]),
+  );
+
   const attributes =
     spec.components?.schemas?.[`${titleResourceName}Attributes`];
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}UpdateAttributes`] = attributes;
+
+  LogAddition(
+    `Added ${titleResourceName}UpdateAttributes Schema`,
+    jsonPointerHelpers.compile([
+      "components",
+      "schemas",
+      `${titleResourceName}UpdateAttributes`,
+    ]),
+  );
+
   ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);

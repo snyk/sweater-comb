@@ -16,6 +16,8 @@ import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addGetOperation = SpecTemplate.create(
   "add-get-operation",
@@ -34,7 +36,17 @@ export function addGetOperationTemplate(
   const itemPath = buildItemPath(singular, pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[itemPath]) spec.paths[itemPath] = {};
+
+  const alreadySet = Boolean(spec.paths[itemPath]?.get);
+  if (alreadySet) return AlreadyInSpec("get", itemPath);
+
   spec.paths[itemPath]!.get = buildGetOperation(singular, titleResourceName);
+
+  LogAddition(
+    "Added Get Resource by ID Operation",
+    jsonPointerHelpers.compile(["paths", itemPath, "get"]),
+  );
+
   ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);

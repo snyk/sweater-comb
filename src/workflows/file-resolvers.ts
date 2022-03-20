@@ -2,6 +2,7 @@ import findParentDir from "find-parent-dir";
 import fs from "fs-extra";
 import path from "path";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
+import { LogUpdatingSpecification } from "./cli-ux";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = process.cwd(),
@@ -45,7 +46,15 @@ export async function resolveResourceVersion(
       `No resource version ${resourceVersion} found for ${resourceNameLowerCase}`,
     );
 
-  return path.join(resources, resourceNameLowerCase, matchingDate, "spec.yaml");
+  const finalPath = path.join(
+    resources,
+    resourceNameLowerCase,
+    matchingDate,
+    "spec.yaml",
+  );
+
+  LogUpdatingSpecification(resourceName, resourceVersion, finalPath);
+  return finalPath;
 }
 
 function latestDateOfSet(dates: string[]): string | undefined {
