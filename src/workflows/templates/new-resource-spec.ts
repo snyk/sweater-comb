@@ -10,17 +10,18 @@ export function buildNewResourceSpec(
     titleResourceName,
     name,
     pluralName,
+    "wip",
   );
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
   spec.components.schemas[`${titleResourceName}Attributes`] = {
     type: "object",
     properties: {},
+    example: {},
   };
   // @ts-ignore
   // Ignoring since `x-rest-common` is not correct according to the types.
   spec.components["x-rest-common"] = refs.restCommon;
-  spec["x-snyk-api-stability"] = "wip";
   return spec;
 }
 
@@ -28,9 +29,11 @@ function baseOpenApiSpec(
   titleResourceName: string,
   name: string,
   pluralName: string,
+  stability: string,
 ): OpenAPIV3.Document {
   return {
     openapi: "3.0.3",
+    "x-snyk-api-stability": stability,
     info: {
       title: `${titleResourceName} Resource`,
       version: "3.0.0",

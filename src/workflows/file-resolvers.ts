@@ -53,9 +53,9 @@ function latestDateOfSet(dates: string[]): string | undefined {
 }
 
 export function formatResourceVersion(date: Date = new Date()): string {
-  return `${date.getFullYear()}-${padWithZero(date.getMonth())}-${padWithZero(
-    date.getUTCDay(),
-  )}`;
+  return `${date.getFullYear()}-${padWithZero(
+    date.getMonth() + 1,
+  )}-${padWithZero(date.getDate())}`;
 }
 
 function padWithZero(value: number): string {
