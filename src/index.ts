@@ -10,6 +10,7 @@ import {
   addDeleteOperationCommand,
   addGetOperationCommand,
   addListOperationCommand,
+  createVersionCommand,
 } from "./workflows/commands";
 
 const apiCheckService = newSnykApiCheckService();
@@ -26,6 +27,8 @@ const workflowCommand = new Command("workflow").description(
   "workflows for designing and building APIs",
 );
 workflowCommand.addCommand(createResourceCommand());
+
+workflowCommand.addCommand(createVersionCommand());
 
 const operationCommand = new Command("operation").description(
   "add common operations to an OpenAPI file",

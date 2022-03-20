@@ -6,6 +6,7 @@ import {
   addListOperationAction,
   addUpdateOperationAction,
   createResourceAction,
+  promoteVersionAction,
 } from "./actions";
 
 export function createResourceCommand() {
@@ -64,6 +65,20 @@ function buildOperationCommand(name: string, description: string, action) {
     });
 
   command.description(description);
+
+  return command;
+}
+
+export function createVersionCommand() {
+  const command = new Command("version")
+    .addArgument(new Argument("<resource-name>", "[resource-name]"))
+    .addArgument(new Argument("<stability>", "stability"))
+
+    .action(async (resourceName, stability) => {
+      return promoteVersionAction(resourceName, stability);
+    });
+
+  command.description("create a new resource");
 
   return command;
 }

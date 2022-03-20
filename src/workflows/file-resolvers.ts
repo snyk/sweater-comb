@@ -22,6 +22,7 @@ export async function resolveResourceVersion(
   workingDirectory: string = process.cwd(),
   resourceName: string,
   resourceVersion: string = "latest",
+  silent: boolean = false,
 ): Promise<string> {
   const resources = await resolveResourcesDirectory();
   const resourceNameLowerCase = resourceName.toLowerCase();
@@ -53,7 +54,8 @@ export async function resolveResourceVersion(
     "spec.yaml",
   );
 
-  LogUpdatingSpecification(resourceName, resourceVersion, finalPath);
+  if (!silent)
+    LogUpdatingSpecification(resourceName, resourceVersion, finalPath);
   return finalPath;
 }
 

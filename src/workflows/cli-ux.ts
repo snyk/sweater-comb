@@ -14,6 +14,21 @@ export function LogUpdatingSpecification(
   );
 }
 
+export function LogNewDateVersionSpecification(
+  resource: string,
+  version: string,
+  stability: string,
+  filePath: string,
+) {
+  console.log(
+    chalk.white(
+      `new version and OpenAPI description for: ${chalk.blue.bold(
+        resource,
+      )} ${chalk.green.bold(version)} ${chalk.green.bold(stability)}`,
+    ) + `\n   at ${filePath}:0:0\n`,
+  );
+}
+
 export function AlreadyInSpec(method: string, path: string) {
   console.log(
     chalk.red(
