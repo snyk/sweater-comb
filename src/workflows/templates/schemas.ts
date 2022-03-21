@@ -11,6 +11,7 @@ export function buildItemResponseSchema(
       data: {
         type: "object",
         description: `${resourceName} resource object`,
+        required: ["id", "type"],
         properties: {
           id: idSchema,
           type: refs.schemas.types,
@@ -40,6 +41,7 @@ export function buildCollectionResponseSchema(
         type: "array",
         items: {
           type: "object",
+          required: ["id", "type"],
           properties: {
             id: idSchema,
             type: refs.schemas.types,
@@ -62,6 +64,7 @@ export function buildCreateRequestSchema(
 ): OpenAPIV3.SchemaObject {
   return {
     type: "object",
+    required: ["id", "type"],
     properties: {
       id: {
         type: "string",
@@ -70,9 +73,6 @@ export function buildCreateRequestSchema(
       type: {},
       attributes: {
         $ref: `#/components/schemas/${titleResourceName}CreateAttributes`,
-      },
-      relationships: {
-        $ref: `#/components/schemas/${titleResourceName}Relationships`,
       },
     },
     additionalProperties: false,
@@ -92,9 +92,6 @@ export function buildUpdateRequestSchema(
       type: {},
       attributes: {
         $ref: `#/components/schemas/${titleResourceName}UpdateAttributes`,
-      },
-      relationships: {
-        $ref: `#/components/schemas/${titleResourceName}Relationships`,
       },
     },
     additionalProperties: false,

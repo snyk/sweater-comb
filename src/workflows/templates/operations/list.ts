@@ -13,6 +13,9 @@ import {
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { ensureOrgIdComponent } from "../parameters";
 import { buildCollectionPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../logs";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addListOperation = SpecTemplate.create(
   "add-list-operation",
@@ -22,19 +25,29 @@ export const addListOperation = SpecTemplate.create(
 export function addListOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
+
+  const alreadySet = Boolean(spec.paths[collectionPath]?.get);
+  if (alreadySet) return AlreadyInSpec("get", collectionPath);
+
   spec.paths[collectionPath]!.get = buildListOperation(
-    resourceName,
+    singular,
     titleResourceName,
   );
+
+  LogAddition(
+    "Added List Resource Operation",
+    jsonPointerHelpers.compile(["paths", collectionPath, "get"]),
+  );
+
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }

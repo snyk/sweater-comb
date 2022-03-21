@@ -4,5 +4,5 @@ export function buildCollectionPath(pluralResourceName) {
 
 export function buildItemPath(resourceName, pluralResourceName) {
   const collectionPath = buildCollectionPath(pluralResourceName);
-  return `${collectionPath}/{${resourceName}_id}`;
+  return `${collectionPath}/{${resourceName.toLowerCase()}_id}`;
 }

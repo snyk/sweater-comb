@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { makeCiCli } from "@useoptic/api-checks/build/ci-cli/make-cli";
+import { updateCommand } from "@useoptic/openapi-cli";
 import { newSnykApiCheckService } from "./service";
 import { Command } from "commander";
 import {
@@ -10,6 +11,7 @@ import {
   addDeleteOperationCommand,
   addGetOperationCommand,
   addListOperationCommand,
+  createVersionCommand,
 } from "./workflows/commands";
 
 const apiCheckService = newSnykApiCheckService();
@@ -22,10 +24,14 @@ const cli = makeCiCli("sweater-comb", apiCheckService, {
   ciProvider: "circleci",
 });
 
+cli.addCommand(updateCommand());
+
 const workflowCommand = new Command("workflow").description(
   "workflows for designing and building APIs",
 );
 workflowCommand.addCommand(createResourceCommand());
+
+workflowCommand.addCommand(createVersionCommand());
 
 const operationCommand = new Command("operation").description(
   "add common operations to an OpenAPI file",

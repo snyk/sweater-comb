@@ -16,6 +16,9 @@ import {
   ensureOrgIdComponent,
 } from "../parameters";
 import { buildCollectionPath } from "../paths";
+import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
+import { AlreadyInSpec, LogAddition } from "../../logs";
+import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addCreateOperation = SpecTemplate.create(
   "add-create-operation",
@@ -25,27 +28,43 @@ export const addCreateOperation = SpecTemplate.create(
 export function addCreateOperationTemplate(
   spec: OpenAPIV3.Document,
   options: {
-    resourceName: string;
-    titleResourceName: string;
     pluralResourceName: string;
   },
 ): void {
-  const { resourceName, titleResourceName, pluralResourceName } = options;
+  const { pluralResourceName } = options;
+  const { singular, plural } = getSingularAndPluralName(spec);
+  const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
+
+  const alreadySet = Boolean(spec.paths[collectionPath]?.post);
+  if (alreadySet) return AlreadyInSpec("post", collectionPath);
+
   if (!spec.paths) spec.paths = {};
   if (!spec.paths[collectionPath]) spec.paths[collectionPath] = {};
   if (!spec.components) spec.components = {};
   if (!spec.components.schemas) spec.components.schemas = {};
   spec.paths[collectionPath]!.post = buildCreateOperation(
-    resourceName,
+    singular,
     titleResourceName,
+  );
+  LogAddition(
+    "Added Create Operation",
+    jsonPointerHelpers.compile(["paths", collectionPath, "post"]),
   );
   const attributes =
     spec.components?.schemas?.[`${titleResourceName}Attributes`];
   if (!attributes)
     throw new Error(`Could not find ${titleResourceName}Attributes schema`);
   spec.components.schemas[`${titleResourceName}CreateAttributes`] = attributes;
-  ensureIdParameterComponent(spec, resourceName, titleResourceName);
+  LogAddition(
+    `Added ${titleResourceName}Attributes Schema`,
+    jsonPointerHelpers.compile([
+      "components",
+      "schemas",
+      `${titleResourceName}Attributes`,
+    ]),
+  );
+  ensureIdParameterComponent(spec, singular, titleResourceName);
   ensureRelationSchemaComponent(spec, titleResourceName);
   ensureOrgIdComponent(spec);
 }
