@@ -3,7 +3,7 @@ import { addCreateOperationTemplate } from "../templates/operations/create";
 import { factsToChangelog, OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { newSnykApiCheckService } from "../../service";
 import { SynkApiCheckContext } from "../../dsl";
-import { parseOpenAPIFromMemory } from "@useoptic/openapi-io";
+import { dereferenceOpenAPI } from "@useoptic/openapi-io";
 import { addUpdateOperationTemplate } from "../templates/operations/update";
 import { addDeleteOperationTemplate } from "../templates/operations/delete";
 import { addGetOperationTemplate } from "../templates/operations/get";
@@ -56,8 +56,8 @@ const context: SynkApiCheckContext = {
 
 async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
   const checkService = newSnykApiCheckService();
-  const { jsonLike: parsedFrom } = await parseOpenAPIFromMemory(from);
-  const { jsonLike: parsedTo } = await parseOpenAPIFromMemory(to);
+  const { jsonLike: parsedFrom } = await dereferenceOpenAPI(from);
+  const { jsonLike: parsedTo } = await dereferenceOpenAPI(to);
   const { currentFacts, nextFacts } = checkService.generateFacts(
     parsedFrom,
     parsedTo,
