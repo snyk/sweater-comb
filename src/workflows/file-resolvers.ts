@@ -5,7 +5,7 @@ import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { LogUpdatingSpecification } from "./logs";
 
 export async function resolveResourcesDirectory(
-  workingDirectory: string = process.cwd(),
+  workingDirectory: string = getSweaterCombWorkingDirectory(),
 ): Promise<string> {
   return new Promise((resolve) => {
     findParentDir(workingDirectory, "resources", function (err, dir) {
@@ -19,7 +19,7 @@ export async function resolveResourcesDirectory(
 }
 
 export async function resolveResourceVersion(
-  workingDirectory: string = process.cwd(),
+  workingDirectory: string = getSweaterCombWorkingDirectory(),
   resourceName: string,
   resourceVersion: string = "latest",
   silent: boolean = false,
@@ -92,4 +92,8 @@ export function getSingularAndPluralName(openApi: OpenAPIV3.Document) {
 
 export function titleCase(value: string): string {
   return value[0].toUpperCase() + value.slice(1);
+}
+
+export function getSweaterCombWorkingDirectory() {
+  return process.env["SWEATER_COMB_WORKING_DIR"] || process.cwd();
 }

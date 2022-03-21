@@ -10,6 +10,7 @@ import { addDeleteOperation } from "./templates/operations/delete";
 import { buildNewResourceSpec } from "./templates/new-resource-spec";
 import {
   formatResourceVersion,
+  getSweaterCombWorkingDirectory,
   resolveResourcesDirectory,
   resolveResourceVersion,
 } from "./file-resolvers";
@@ -66,7 +67,7 @@ export async function promoteVersionAction(
     );
 
   const specFilePath = await resolveResourceVersion(
-    process.cwd(),
+    getSweaterCombWorkingDirectory(),
     resourceName,
     "latest",
     true,
@@ -142,7 +143,7 @@ function buildOperationAction(template) {
   // TODO: consider how workflows can provided with more sophisticated context
   return async (pluralResourceName: string, resourceVersion: string) => {
     const specFilePath = await resolveResourceVersion(
-      process.cwd(),
+      getSweaterCombWorkingDirectory(),
       pluralResourceName,
       resourceVersion,
     );
