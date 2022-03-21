@@ -35,7 +35,12 @@ export async function resolveResourceVersion(
     );
 
   const resourceDir = path.join(resources, resourceNameLowerCase);
-  const versions = await fs.readdir(resourceDir);
+  const isDirectory = (await fs.lstat(resourceDir)).isDirectory();
+  const versions = isDirectory
+    ? (await fs.readdir(resourceDir)).filter((name) =>
+        Boolean(name.match(/\d\d\d\d-\d\d-\d\d/)),
+      )
+    : [];
 
   const matchingDate =
     resourceVersion !== "latest"
