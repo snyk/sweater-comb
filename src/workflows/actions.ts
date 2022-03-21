@@ -16,7 +16,7 @@ import {
 import {
   LogNewDateVersionSpecification,
   LogUpdatingSpecification,
-} from "./cli-ux";
+} from "./logs";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
 export async function createResourceAction(resourceName, pluralResourceName) {

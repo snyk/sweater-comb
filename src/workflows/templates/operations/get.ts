@@ -16,7 +16,7 @@ import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
-import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { AlreadyInSpec, LogAddition } from "../../logs";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addGetOperation = SpecTemplate.create(

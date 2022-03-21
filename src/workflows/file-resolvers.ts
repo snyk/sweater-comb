@@ -2,7 +2,7 @@ import findParentDir from "find-parent-dir";
 import fs from "fs-extra";
 import path from "path";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
-import { LogUpdatingSpecification } from "./cli-ux";
+import { LogUpdatingSpecification } from "./logs";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = process.cwd(),

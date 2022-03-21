@@ -8,7 +8,7 @@ import { SpecTemplate } from "@useoptic/openapi-cli";
 import { ensureRelationSchemaComponent } from "../schemas";
 import { buildItemPath } from "../paths";
 import { getSingularAndPluralName, titleCase } from "../../file-resolvers";
-import { AlreadyInSpec, LogAddition } from "../../cli-ux";
+import { AlreadyInSpec, LogAddition } from "../../logs";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export const addDeleteOperation = SpecTemplate.create(

@@ -1,6 +1,6 @@
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { refs } from "./common";
-import { LogAddition } from "../cli-ux";
+import { LogAddition } from "../logs";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
 
 export function buildNewResourceSpec(
