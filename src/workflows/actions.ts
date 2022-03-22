@@ -15,7 +15,10 @@ import {
   resolveResourceVersion,
 } from "./file-resolvers";
 import {
+  LogDomainError,
   LogNewDateVersionSpecification,
+  LogNoResourceDirectory,
+  LogResourceVersionLookup,
   LogUpdatingSpecification,
 } from "./logs";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
@@ -27,7 +30,25 @@ export async function createResourceAction(resourceName, pluralResourceName) {
   const version = formatResourceVersion();
 
   const resourcesDirectory = await resolveResourcesDirectory();
+
+  if (!resourcesDirectory) return LogNoResourceDirectory();
+
   const lowerCaseResourceName = pluralResourceName.toLowerCase();
+
+  const alreadyExists = Boolean(
+    "succeeded" in
+      (await resolveResourceVersion(
+        getSweaterCombWorkingDirectory(),
+        lowerCaseResourceName,
+        "latest",
+      )),
+  );
+
+  if (alreadyExists) {
+    return LogDomainError(
+      `Resource '${lowerCaseResourceName}' already exists.`,
+    );
+  }
 
   await fs.mkdirSync(
     path.join(resourcesDirectory, lowerCaseResourceName, version),
@@ -62,16 +83,20 @@ export async function promoteVersionAction(
   const stabilityProgression = ["wip", "experimental", "beta", "ga"];
 
   if (!stabilityProgression.includes(targetStability))
-    throw new Error(
+    return LogDomainError(
       `target stability must be one of ${JSON.stringify(stabilityProgression)}`,
     );
 
-  const specFilePath = await resolveResourceVersion(
+  const specFilePathLookup = await resolveResourceVersion(
     getSweaterCombWorkingDirectory(),
     resourceName,
     "latest",
-    true,
   );
+
+  if ("failed" in specFilePathLookup)
+    return LogResourceVersionLookup(specFilePathLookup);
+
+  const specFilePath = specFilePathLookup.succeeded.path;
 
   const currentDateVersion = (() => {
     const components = specFilePath.split("/");
@@ -89,31 +114,33 @@ export async function promoteVersionAction(
     stabilityProgression.indexOf(currentStability) >
     stabilityProgression.indexOf(targetStability)
   )
-    throw new Error(
+    return LogDomainError(
       `stability can not go backwards from ${currentStability} to ${targetStability}`,
     );
 
   if (formatResourceVersion() === currentDateVersion)
-    throw new Error(
+    return LogDomainError(
       `can not promote stability on the same day as the latest version ${currentDateVersion}`,
     );
 
   // advance the stability, while copying everything else over
   openAPI["x-snyk-api-stability"] = targetStability;
 
-  const resourcesDirectory = await resolveResourcesDirectory();
-
   const newDateVersion = formatResourceVersion();
 
   await fs.mkdirSync(
-    path.join(resourcesDirectory, resourceName, newDateVersion),
+    path.join(
+      specFilePathLookup.succeeded.resourcesDirectory,
+      resourceName,
+      newDateVersion,
+    ),
     {
       recursive: true,
     },
   );
 
   const initialSpecFilePath = path.join(
-    resourcesDirectory,
+    specFilePathLookup.succeeded.resourcesDirectory,
     resourceName,
     newDateVersion,
     "spec.yaml",
@@ -142,11 +169,17 @@ export const addUpdateOperationAction =
 function buildOperationAction(template) {
   // TODO: consider how workflows can provided with more sophisticated context
   return async (pluralResourceName: string, resourceVersion: string) => {
-    const specFilePath = await resolveResourceVersion(
+    const specFilePathLookup = await resolveResourceVersion(
       getSweaterCombWorkingDirectory(),
       pluralResourceName,
       resourceVersion,
     );
+
+    if ("failed" in specFilePathLookup)
+      return LogResourceVersionLookup(specFilePathLookup);
+
+    const specFilePath = specFilePathLookup.succeeded.path;
+
     // TODO: consider how this impacts performance (round trip to the FS for each call)
     // and whether that's something we need to address here
     await applyTemplate(template, specFilePath, {

@@ -3,43 +3,73 @@ import fs from "fs-extra";
 import path from "path";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { LogUpdatingSpecification } from "./logs";
+import chalk from "chalk";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = getSweaterCombWorkingDirectory(),
-): Promise<string> {
+): Promise<string | undefined> {
   return new Promise((resolve) => {
     findParentDir(workingDirectory, "resources", function (err, dir) {
-<<<<<<< HEAD
-      if (err)
-=======
-      if (err || !dir)
->>>>>>> 4438739 (feat: test data)
-        throw new Error(
-          "A Vervet resources directory does not exist here. Is your working directory correct?",
-        );
-      resolve(path.join(dir, "resources"));
+      if (err || !dir) {
+        resolve(undefined);
+      } else resolve(path.join(dir, "resources"));
     });
   });
 }
+
+export type ResourceVersionLookupResults =
+  | {
+      succeeded: {
+        path: string;
+        matchedResource: string;
+        matchedVersion: string;
+        resourcesDirectory: string;
+      };
+    }
+  | {
+      failed: {
+        availableResources: string[];
+        availableVersions: string[];
+        resourcesDirectory?: string;
+        matchedResource?: string;
+        matchedVersion?: string;
+      };
+    };
 
 export async function resolveResourceVersion(
   workingDirectory: string = getSweaterCombWorkingDirectory(),
   resourceName: string,
   resourceVersion: string = "latest",
-  silent: boolean = false,
-): Promise<string> {
-  const resources = await resolveResourcesDirectory();
+): Promise<ResourceVersionLookupResults> {
+  const resources = await resolveResourcesDirectory(workingDirectory);
+
+  if (typeof resources === "undefined") {
+    return {
+      failed: {
+        availableResources: [],
+        availableVersions: [],
+      },
+    };
+  }
+
   const resourceNameLowerCase = resourceName.toLowerCase();
 
-  const resourceNames = await fs.readdir(resources);
+  const resourceNames = (await fs.readdir(resources)).filter((maybeResource) =>
+    fs.lstatSync(path.join(resources, maybeResource)).isDirectory(),
+  );
 
-  if (!resourceNames.includes(resourceNameLowerCase))
-    throw new Error(
-      `No resource ${resourceNameLowerCase} found in directory ${resources}`,
-    );
+  if (!resourceNames.includes(resourceNameLowerCase)) {
+    return {
+      failed: {
+        availableResources: resourceNames.sort(),
+        availableVersions: [],
+        resourcesDirectory: resources,
+      },
+    };
+  }
 
   const resourceDir = path.join(resources, resourceNameLowerCase);
-  const isDirectory = (await fs.lstat(resourceDir)).isDirectory();
+  const isDirectory = fs.lstatSync(resourceDir).isDirectory();
   const versions = isDirectory
     ? (await fs.readdir(resourceDir)).filter((name) =>
         Boolean(name.match(/\d\d\d\d-\d\d-\d\d/)),
@@ -51,10 +81,16 @@ export async function resolveResourceVersion(
       ? versions.find((date) => date === resourceVersion)
       : latestDateOfSet(versions);
 
-  if (!matchingDate)
-    throw new Error(
-      `No resource version ${resourceVersion} found for ${resourceNameLowerCase}`,
-    );
+  if (!matchingDate) {
+    return {
+      failed: {
+        availableResources: resourceNames.sort(),
+        availableVersions: versions.sort(),
+        resourcesDirectory: resources,
+        matchedResource: resourceNameLowerCase,
+      },
+    };
+  }
 
   const finalPath = path.join(
     resources,
@@ -63,9 +99,14 @@ export async function resolveResourceVersion(
     "spec.yaml",
   );
 
-  if (!silent)
-    LogUpdatingSpecification(resourceName, resourceVersion, finalPath);
-  return finalPath;
+  return {
+    succeeded: {
+      path: finalPath,
+      matchedResource: resourceName,
+      matchedVersion: matchingDate,
+      resourcesDirectory: resources,
+    },
+  };
 }
 
 function latestDateOfSet(dates: string[]): string | undefined {
