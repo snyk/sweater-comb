@@ -9,7 +9,11 @@ export async function resolveResourcesDirectory(
 ): Promise<string> {
   return new Promise((resolve) => {
     findParentDir(workingDirectory, "resources", function (err, dir) {
+<<<<<<< HEAD
       if (err)
+=======
+      if (err || !dir)
+>>>>>>> 4438739 (feat: test data)
         throw new Error(
           "A Vervet resources directory does not exist here. Is your working directory correct?",
         );

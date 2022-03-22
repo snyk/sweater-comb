@@ -1,0 +1,23 @@
+openapi: 3.0.3
+x-snyk-api-stability: wip
+info:
+  title: Issue Resource
+  version: 3.0.0
+  x-plural-name: issues
+  x-singular-name: issue
+servers:
+  - url: https://api.snyk.io/v3
+    description: Public Snyk API
+tags:
+  - name: Issue
+    description: Short description of what Issue represents
+paths: {}
+components:
+  schemas:
+    IssueAttributes:
+      type: object
+      properties: {}
+      example: {}
+  x-rest-common:
+    $ref: >-
+      https://raw.githubusercontent.com/snyk/sweater-comb/common-model-v1/components/common.yaml

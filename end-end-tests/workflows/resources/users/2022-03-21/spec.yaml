@@ -1,0 +1,23 @@
+openapi: 3.0.3
+x-snyk-api-stability: wip
+info:
+  title: User Resource
+  version: 3.0.0
+  x-plural-name: users
+  x-singular-name: user
+servers:
+  - url: https://api.snyk.io/v3
+    description: Public Snyk API
+tags:
+  - name: User
+    description: Short description of what User represents
+paths: {}
+components:
+  schemas:
+    UserAttributes:
+      type: object
+      properties: {}
+      example: {}
+  x-rest-common:
+    $ref: >-
+      https://raw.githubusercontent.com/snyk/sweater-comb/common-model-v1/components/common.yaml
