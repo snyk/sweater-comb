@@ -20,7 +20,7 @@
     "changelog": "yarn ts-node src/changelog.ts",
     "lint": "run-p lint:*",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
-    "lint:commits": "commitlint --from=HEAD~1",
+    "lint:commits": "commitlint --from=ccbdd18876ab01a2be0801211a13a8609012425e -V",
     "format": "prettier --write 'src/**/*.{js,ts}'"
   },
   "devDependencies": {
