@@ -7,6 +7,7 @@ import {
   addUpdateOperationAction,
   createResourceAction,
   promoteVersionAction,
+  updateResourceAction,
 } from "./actions";
 
 export function createResourceCommand() {
@@ -79,6 +80,21 @@ export function createVersionCommand() {
     });
 
   command.description("create a new resource");
+
+  return command;
+}
+
+export function createUpdateCommand() {
+  const command = new Command("update")
+    .addArgument(
+      new Argument("<plural-resource-name>", "[plural-resource-name]"),
+    )
+    .addArgument(new Argument("[resource-version]", "version"))
+    .action(async (pluralResourceName, resourceVersion) => {
+      return updateResourceAction(pluralResourceName, resourceVersion);
+    });
+
+  command.description("update a resource schema from examples");
 
   return command;
 }
