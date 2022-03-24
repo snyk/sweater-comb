@@ -2079,19 +2079,19 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@useoptic/api-checks@0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.23.5.tgz#9676b5aab29281f679b56465f3dcb717ef99c44a"
-  integrity sha512-6bKCkRpsuZy9ter/uQ7gxVwmV6Ob7YL1I3IG8kLpaXwekmgA/Conz647cIFGaF2+Fhj0nNT1ufrWyUL7YNp2TQ==
+"@useoptic/api-checks@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.24.0.tgz#376c2e0343469ff01eeaf63ce2a3c6001354effd"
+  integrity sha512-CtZU9oFp3dGpya/xCtJIHuDspR4APPTT0q5GFo+1lIaMHynIPrSDlr/e6pl+vDGJV/mxxrGWRZZdyH6NcgGOYA==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.3.2"
-    "@useoptic/json-pointer-helpers" "0.23.5"
-    "@useoptic/openapi-io" "0.23.5"
-    "@useoptic/openapi-utilities" "0.23.5"
+    "@useoptic/json-pointer-helpers" "0.24.0"
+    "@useoptic/openapi-io" "0.24.0"
+    "@useoptic/openapi-utilities" "0.24.0"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     chalk "^4.1.2"
@@ -2108,21 +2108,21 @@
     ts-invariant "^0.9.4"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.23.5.tgz#464e2ff0ffb4eadb0b9335f1f9ba2d4d4cd7c320"
-  integrity sha512-irfsC8JyMb0C1g3Y5ioI16tdKWa0z51lVIAsWQm+XI6MFujsOe9TApaVMV1RoRiug0nOT+50hBUYHPMhB0BjMA==
+"@useoptic/json-pointer-helpers@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.24.0.tgz#985a1282f0f18a682e2656dbbbd360fd2a41595a"
+  integrity sha512-EPP6xaYIGf1AzqbWo2QxK0ZeneMIFueCBleORzQXfHouzfpnlJqutV9wkL3+Ku6odSqqbwrPflyXTASkvKzIAw==
   dependencies:
     jsonpointer "^5.0.0"
 
-"@useoptic/openapi-cli@0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.23.5.tgz#72b84ee0f80689724f774483967b0b3f1bf9f779"
-  integrity sha512-ggBdre+zcToJX7ilBPMLKj9tX3u4a1EKGAGRAa9vZ9mrXJAX10X7RDqFjAJBNp2o4uE7NZlTydDSsggSyfm3dQ==
+"@useoptic/openapi-cli@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.24.0.tgz#c218ca6b741fa9acc551782bc1abcfc7476963fd"
+  integrity sha512-ARwyz4YJfiXbn8hEDSu6xJMpRZGsm54ZJeBcBZ2YwLrWHc0ruSSquKvqlbS/0iq5WL2CYc6MDclCNq7GEhG9Tg==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.23.5"
-    "@useoptic/openapi-io" "0.23.5"
-    "@useoptic/openapi-utilities" "0.23.5"
+    "@useoptic/json-pointer-helpers" "0.24.0"
+    "@useoptic/openapi-io" "0.24.0"
+    "@useoptic/openapi-utilities" "0.24.0"
     analytics-node "^6.0.0"
     axax "^0.2.2"
     commander "^9.0.0"
@@ -2131,15 +2131,15 @@
     json-schema-traverse "^1.0.0"
     ts-invariant "^0.9.4"
 
-"@useoptic/openapi-io@0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.23.5.tgz#82643e344e6fd55d21ec1cd31ec805a545e1f07e"
-  integrity sha512-cYzbvJvKGQhWiBwleuJLuuGZ/3GXqWA3A09trvd0hDXAETJnUuS7A++TTM2ksTeA8NNa5O/2vqvmB1ZmXAuQeA==
+"@useoptic/openapi-io@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.24.0.tgz#795b6d6eaaa0c62797403c38b84a57626b12681f"
+  integrity sha512-U93yKglKKqkAYxLkH1Aan2jz/9vN9nggPNBBqp/Irb0BdUIEt0WmSJuHHoCSGJyu0I4YVMkmJRI2TjApM5UEmQ==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.23.5"
-    "@useoptic/openapi-utilities" "0.23.5"
+    "@useoptic/json-pointer-helpers" "0.24.0"
+    "@useoptic/openapi-utilities" "0.24.0"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -2153,12 +2153,12 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.23.5.tgz#c2a00e536885ef62293a641b2dabe7a05bf1247d"
-  integrity sha512-lv5g+djoLq/ANxP/F6dLwc06eZIYCTuBSrJjZW44IYicZz2JRqh+oQQ1A2Nl4iqYs+51YQsguitU9LNNyC9L3w==
+"@useoptic/openapi-utilities@0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.24.0.tgz#7ddcdcd3fb6f04ad24fb5dc6a5bc7215cd362b49"
+  integrity sha512-KkuF3nVaEDCV+O+4mgRmhCJC+olw7cNfReP6leo88gOvXNat6rD8xUx12gB7MmnubI2uuZrs2wXXgC7txj6VAA==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.23.5"
+    "@useoptic/json-pointer-helpers" "0.24.0"
     fast-deep-equal "^3.1.3"
     js-yaml "^4.1.0"
     lodash.sortby "^4.7.0"
