@@ -14,6 +14,7 @@ import niceTry from "nice-try";
 import {
   ChangeType,
   ConceptualLocation,
+  FieldLocation,
   IChange,
   IFact,
   ILocation,
@@ -25,9 +26,16 @@ import {
   OpenApiRequestParameterFact,
   OpenApiResponseFact,
   OpenAPIV3,
+  OperationLocation,
+  PathParameterLocation,
+  HeaderParameterLocation,
+  ResponseHeaderLocation,
+  ResponseLocation,
+  QueryParameterLocation,
   ShouldOrMust,
 } from "@useoptic/openapi-utilities";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
+import { RequestLocation } from "@useoptic/openapi-utilities/build/openapi3/sdk/types";
 
 type SnykStablity = "wip" | "experimental" | "beta" | "ga";
 type DateString = string; // YYYY-mm-dd
@@ -85,7 +93,13 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     return this.checks;
   }
 
-  getContext(location: ILocation): ConceptualLocation & SynkApiCheckContext {
+  getOperationContext(
+    location: ILocation,
+  ): OperationLocation & SynkApiCheckContext {
+    if (!("path" in location.conceptualLocation))
+      throw new Error(
+        "Can not get operation context from non-operation location",
+      );
     return {
       ...location.conceptualLocation,
       ...this.providedContext,
@@ -133,7 +147,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       selectJsonPath,
       ...genericEntityRuleImpl<
         OpenApiOperationFact,
-        ConceptualLocation,
+        OperationLocation,
         SynkApiCheckContext,
         OpenAPIV3.OperationObject
       >(
@@ -141,7 +155,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         this.changelog,
         this.nextFacts,
         (opFact) => `${opFact.method.toUpperCase()} ${opFact.pathPattern}`,
-        (location) => this.getContext(location),
+        (location) => this.getOperationContext(location),
         (...items) => this.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(this.nextJsonLike, pointer),
       ),
@@ -278,7 +292,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     return {
       queryParameter: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
-        ConceptualLocation,
+        QueryParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
       >(
@@ -286,13 +300,15 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         dsl.changelog,
         dsl.nextFacts,
         (query) => `${query.name}`,
-        (location) => dsl.getContext(location),
+        (location) =>
+          dsl.getOperationContext(location) as QueryParameterLocation &
+            SynkApiCheckContext,
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       pathParameter: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
-        ConceptualLocation,
+        PathParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
       >(
@@ -300,13 +316,15 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         dsl.changelog,
         dsl.nextFacts,
         (path) => `${path.name}`,
-        (location) => dsl.getContext(location),
+        (location) =>
+          dsl.getOperationContext(location) as PathParameterLocation &
+            SynkApiCheckContext,
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       header: genericEntityRuleImpl<
         OpenApiRequestParameterFact,
-        ConceptualLocation,
+        HeaderParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
       >(
@@ -314,7 +332,9 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         dsl.changelog,
         dsl.nextFacts,
         (header) => `${header.name}`,
-        (location) => dsl.getContext(location),
+        (location) =>
+          dsl.getOperationContext(location) as HeaderParameterLocation &
+            SynkApiCheckContext,
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -327,7 +347,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     return {
       ...genericEntityRuleImpl<
         OpenApiResponseFact,
-        ConceptualLocation,
+        ResponseLocation,
         SynkApiCheckContext,
         OpenAPIV3.ResponsesObject
       >(
@@ -335,13 +355,15 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         dsl.changelog,
         dsl.nextFacts,
         (response) => `${response.statusCode}`,
-        (location) => dsl.getContext(location),
+        (location) =>
+          dsl.getOperationContext(location) as ResponseLocation &
+            SynkApiCheckContext,
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       headers: genericEntityRuleImpl<
         OpenApiHeaderFact,
-        ConceptualLocation,
+        ResponseHeaderLocation,
         SynkApiCheckContext,
         OpenAPIV3.HeaderObject
       >(
@@ -349,7 +371,9 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         dsl.changelog,
         dsl.nextFacts,
         (header) => `${header.name}`,
-        (location) => dsl.getContext(location),
+        (location) =>
+          dsl.getOperationContext(location) as ResponseHeaderLocation &
+            SynkApiCheckContext,
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -414,7 +438,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     const dsl = this;
     return genericEntityRuleImpl<
       OpenApiFieldFact,
-      ConceptualLocation,
+      FieldLocation,
       SynkApiCheckContext,
       OpenAPIV3.SchemaObject
     >(
@@ -422,7 +446,9 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       dsl.changelog,
       dsl.nextFacts,
       (field) => `${field.key}`,
-      (location) => dsl.getContext(location),
+      (location) =>
+        dsl.getOperationContext(location) as FieldLocation &
+          SynkApiCheckContext,
       (...items) => dsl.checks.push(...items),
       (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
     );
