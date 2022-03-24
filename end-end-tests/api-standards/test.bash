@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 HERE=$(cd $(dirname $0); pwd)
+export CI=""
 cd $HERE/../..
 
 CONTEXT=$(awk NF=NF RS= OFS= <$HERE/context.json)

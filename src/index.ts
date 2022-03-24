@@ -12,6 +12,7 @@ import {
   addGetOperationCommand,
   addListOperationCommand,
   createVersionCommand,
+  createUpdateCommand,
 } from "./workflows/commands";
 
 const apiCheckService = newSnykApiCheckService();
@@ -24,14 +25,14 @@ const cli = makeCiCli("sweater-comb", apiCheckService, {
   ciProvider: "circleci",
 });
 
-cli.addCommand(updateCommand());
-
 const workflowCommand = new Command("workflow").description(
   "workflows for designing and building APIs",
 );
 workflowCommand.addCommand(createResourceCommand());
 
 workflowCommand.addCommand(createVersionCommand());
+
+workflowCommand.addCommand(createUpdateCommand());
 
 const operationCommand = new Command("operation").description(
   "add common operations to an OpenAPI file",

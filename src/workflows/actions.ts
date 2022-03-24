@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 import { writeYaml, loadYaml } from "@useoptic/openapi-io";
-import { applyTemplate } from "@useoptic/openapi-cli";
+import { applyTemplate, updateCommand } from "@useoptic/openapi-cli";
 import { addCreateOperation } from "./templates/operations/create";
 import { addListOperation } from "./templates/operations/list";
 import { addGetOperation } from "./templates/operations/get";
@@ -186,6 +186,24 @@ function buildOperationAction(template) {
       pluralResourceName,
     });
   };
+}
+
+export async function updateResourceAction(
+  pluralResourceName: string,
+  resourceVersion: string,
+) {
+  const specFilePathLookup = await resolveResourceVersion(
+    getSweaterCombWorkingDirectory(),
+    pluralResourceName,
+    resourceVersion,
+  );
+
+  if ("failed" in specFilePathLookup)
+    return LogResourceVersionLookup(specFilePathLookup);
+
+  const specFilePath = specFilePathLookup.succeeded.path;
+
+  await updateCommand().parseAsync([specFilePath], { from: "user" });
 }
 
 //-----
