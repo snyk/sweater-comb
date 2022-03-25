@@ -38,6 +38,11 @@ function checkTemplate(template) {
     template(updatedSpec, {
       pluralResourceName: "users",
     });
+    expect(updatedSpec.servers).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ url: "https://api.snyk.io/rest" }),
+      ]),
+    );
     const results = await check(baseSpec, updatedSpec);
     const failedChecks = results.filter((r) => !r.passed);
     expect(failedChecks.length).toBe(0);

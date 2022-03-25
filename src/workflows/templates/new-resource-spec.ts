@@ -54,7 +54,7 @@ function baseOpenApiSpec(
       "x-singular-name": name.toLowerCase(),
     },
     servers: [
-      { url: "https://api.snyk.io/v3", description: "Public Snyk API" },
+      { url: "https://api.snyk.io/rest", description: "Snyk REST API" },
     ],
     tags: [
       {
