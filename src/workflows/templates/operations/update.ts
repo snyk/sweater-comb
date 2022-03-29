@@ -93,7 +93,7 @@ function buildUpdateOperation(
     ],
     requestBody: {
       content: {
-        "application/json": {
+        "application/vnd.api+json": {
           schema: updateRequestSchema,
         },
       },
