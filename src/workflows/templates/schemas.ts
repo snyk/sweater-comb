@@ -64,18 +64,20 @@ export function buildCreateRequestSchema(
 ): OpenAPIV3.SchemaObject {
   return {
     type: "object",
-    required: ["id", "type"],
+    required: ["data"],
     properties: {
-      id: {
-        type: "string",
-        format: "uuid",
-      },
-      type: {},
-      attributes: {
-        $ref: `#/components/schemas/${titleResourceName}CreateAttributes`,
+      data: {
+        type: "object",
+        required: ["type"],
+        properties: {
+          type: refs.schemas.types,
+          attributes: {
+            $ref: `#/components/schemas/${titleResourceName}CreateAttributes`,
+          },
+        },
+        additionalProperties: false,
       },
     },
-    additionalProperties: false,
   };
 }
 
@@ -84,17 +86,23 @@ export function buildUpdateRequestSchema(
 ): OpenAPIV3.SchemaObject {
   return {
     type: "object",
+    required: ["data"],
     properties: {
-      id: {
-        type: "string",
-        format: "uuid",
-      },
-      type: {},
-      attributes: {
-        $ref: `#/components/schemas/${titleResourceName}UpdateAttributes`,
+      data: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+            format: "uuid",
+          },
+          type: refs.schemas.types,
+          attributes: {
+            $ref: `#/components/schemas/${titleResourceName}UpdateAttributes`,
+          },
+        },
+        additionalProperties: false,
       },
     },
-    additionalProperties: false,
   };
 }
 

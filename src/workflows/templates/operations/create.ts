@@ -86,7 +86,7 @@ function buildCreateOperation(
     parameters: commonParameters,
     requestBody: {
       content: {
-        "application/json": {
+        "application/vnd.api+json": {
           schema: createRequestSchema,
         },
       },
