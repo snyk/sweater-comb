@@ -18,13 +18,8 @@ import {
   IChange,
   IFact,
   ILocation,
-  OpenApiFact,
   OpenApiFieldFact,
-  OpenApiHeaderFact,
   OpenApiKind,
-  OpenApiOperationFact,
-  OpenApiRequestParameterFact,
-  OpenApiResponseFact,
   OpenAPIV3,
   OperationLocation,
   PathParameterLocation,
@@ -33,9 +28,9 @@ import {
   ResponseLocation,
   QueryParameterLocation,
   ShouldOrMust,
+  ChangeVariant,
 } from "@useoptic/openapi-utilities";
 import { jsonPointerHelpers } from "@useoptic/json-pointer-helpers";
-import { RequestLocation } from "@useoptic/openapi-utilities/build/openapi3/sdk/types";
 
 type SnykStablity = "wip" | "experimental" | "beta" | "ga";
 type DateString = string; // YYYY-mm-dd
@@ -82,8 +77,8 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   private checks: Promise<Result>[] = [];
 
   constructor(
-    private nextFacts: IFact<OpenApiFact>[],
-    private changelog: IChange<OpenApiFact>[],
+    private nextFacts: IFact[],
+    private changelog: IChange[],
     private currentJsonLike: OpenAPIV3.Document,
     private nextJsonLike: OpenAPIV3.Document,
     private providedContext: SynkApiCheckContext,
@@ -109,17 +104,11 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   get operations() {
     const operations = this.changelog.filter(
       (i) => i.location.kind === OpenApiKind.Operation,
-    );
+    ) as ChangeVariant<OpenApiKind.Operation>[];
 
-    const added = operations.filter((i) =>
-      Boolean(i.added),
-    ) as IChange<OpenApiOperationFact>[];
-    const removed = operations.filter((i) =>
-      Boolean(i.removed),
-    ) as IChange<OpenApiOperationFact>[];
-    const changes = operations.filter((i) =>
-      Boolean(i.changed),
-    ) as IChange<OpenApiOperationFact>[];
+    const added = operations.filter((i) => Boolean(i.added));
+    const removed = operations.filter((i) => Boolean(i.removed));
+    const changes = operations.filter((i) => Boolean(i.changed));
 
     const locations = [
       ...added.map((i) => i.location),
@@ -146,7 +135,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     return {
       selectJsonPath,
       ...genericEntityRuleImpl<
-        OpenApiOperationFact,
+        OpenApiKind.Operation,
         OperationLocation,
         SynkApiCheckContext,
         OpenAPIV3.OperationObject
@@ -163,7 +152,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get context() {
-    const change: IChange<OpenApiFact> = {
+    const change: IChange = {
       location: {
         conceptualLocation: { path: "Resource Document", method: "" },
         jsonPath: "/",
@@ -200,7 +189,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     const stabilityExtensionName = "x-snyk-api-stability";
     this.currentJsonLike[stabilityExtensionName] || undefined;
 
-    const changed: IChange<SnykStablity | undefined> = {
+    const changed: IChange = {
       changed: {
         before: this.currentJsonLike[stabilityExtensionName] || undefined,
         after: this.nextJsonLike[stabilityExtensionName] || undefined,
@@ -236,8 +225,8 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
             true,
             () =>
               handler(
-                changed.changed!.before,
-                changed.changed!.after,
+                (changed as any).changed!.before,
+                (changed as any).changed!.after,
                 this.providedContext,
                 docsHelper,
               ),
@@ -250,7 +239,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get specification() {
-    const change: IChange<OpenApiFact> = {
+    const change: IChange = {
       location: {
         conceptualLocation: { path: "This Specification", method: "" },
         jsonPath: "/",
@@ -291,7 +280,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 
     return {
       queryParameter: genericEntityRuleImpl<
-        OpenApiRequestParameterFact,
+        OpenApiKind.QueryParameter,
         QueryParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
@@ -307,7 +296,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       pathParameter: genericEntityRuleImpl<
-        OpenApiRequestParameterFact,
+        OpenApiKind.PathParameter,
         PathParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
@@ -323,7 +312,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       header: genericEntityRuleImpl<
-        OpenApiRequestParameterFact,
+        OpenApiKind.HeaderParameter,
         HeaderParameterLocation,
         SynkApiCheckContext,
         OpenAPIV3.ParameterObject
@@ -346,7 +335,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 
     return {
       ...genericEntityRuleImpl<
-        OpenApiResponseFact,
+        OpenApiKind.Response,
         ResponseLocation,
         SynkApiCheckContext,
         OpenAPIV3.ResponsesObject
@@ -362,7 +351,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       headers: genericEntityRuleImpl<
-        OpenApiHeaderFact,
+        OpenApiKind.ResponseHeader,
         ResponseHeaderLocation,
         SynkApiCheckContext,
         OpenAPIV3.HeaderObject
@@ -391,8 +380,8 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
     ) => ContextChangedRule["must"] = (must: boolean) => {
       return (statement, handler) => {
         const docsHelper = newDocsLinkHelper();
-        const syntheticChange: IChange<any> = {
-          added: this.providedContext,
+        const syntheticChange: IChange = {
+          added: this.providedContext as any,
           changeType: ChangeType.Added,
           location: {
             jsonPath: "/",
@@ -437,7 +426,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   > {
     const dsl = this;
     return genericEntityRuleImpl<
-      OpenApiFieldFact,
+      OpenApiKind.Field,
       FieldLocation,
       SynkApiCheckContext,
       OpenAPIV3.SchemaObject

@@ -1,12 +1,8 @@
-import {
-  parseOpenAPIWithSourcemap,
-  sourcemapReader,
-} from "@useoptic/openapi-io";
+import { parseOpenAPIWithSourcemap } from "@useoptic/openapi-io";
 import type { JsonSchemaSourcemap } from "@useoptic/openapi-io";
 import {
   factsToChangelog,
   IChange,
-  OpenApiFact,
   OpenAPITraverser,
   OpenAPIV3,
 } from "@useoptic/openapi-utilities";
@@ -26,7 +22,7 @@ const parseOpenAPI = async (path: string): Promise<ParseOpenAPIResult> => {
 export async function changeLogBetween(
   from: OpenAPIV3.Document,
   to: OpenAPIV3.Document,
-): Promise<IChange<OpenApiFact>[]> {
+): Promise<IChange[]> {
   const currentTraverser = new OpenAPITraverser();
   currentTraverser.traverse(from);
   const currentFacts = [...currentTraverser.facts()];
