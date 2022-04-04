@@ -39,7 +39,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.17.7",
     "@useoptic/api-checks": "0.24.6",
     "@useoptic/json-pointer-helpers": "0.24.6",
     "@useoptic/openapi-cli": "0.24.6",
