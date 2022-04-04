@@ -1,18 +1,23 @@
-import findParentDir from "find-parent-dir";
 import fs from "fs-extra";
 import path from "path";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
+import { loadVervetResoucePaths } from "./vervet-resolver";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = getSweaterCombWorkingDirectory(),
 ): Promise<string | undefined> {
-  return new Promise((resolve) => {
-    findParentDir(workingDirectory, "resources", function (err, dir) {
-      if (err || !dir) {
-        resolve(undefined);
-      } else resolve(path.join(dir, "resources"));
-    });
-  });
+  const vervetPaths = await loadVervetResoucePaths(workingDirectory);
+  if (!vervetPaths) {
+    return undefined;
+  }
+  const resolvedWorkingDirectory = path.resolve(workingDirectory);
+  for (const rcPath of vervetPaths.resourcesPaths.values()) {
+    const absRcPath = path.resolve(path.join(vervetPaths.projectRoot, rcPath));
+    if (resolvedWorkingDirectory.startsWith(absRcPath)) {
+      return absRcPath;
+    }
+  }
+  return path.join(vervetPaths.projectRoot, vervetPaths.defaultResourcesPath);
 }
 
 export type ResourceVersionLookupResults =
@@ -53,7 +58,7 @@ export async function resolveResourceVersion(
   const resourceNameLowerCase = resourceName.toLowerCase();
 
   const resourceNames = (await fs.readdir(resources)).filter((maybeResource) =>
-    fs.lstatSync(path.join(resources, maybeResource)).isDirectory(),
+    fs.lstatSync(path.join(resources!, maybeResource)).isDirectory(),
   );
 
   if (!resourceNames.includes(resourceNameLowerCase)) {
