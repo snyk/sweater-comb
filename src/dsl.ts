@@ -90,14 +90,21 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
 
   getOperationContext(
     location: ILocation,
-  ): OperationLocation & SynkApiCheckContext {
+  ): OperationLocation & SynkApiCheckContext & { isSingletonPath: boolean } {
     if (!("path" in location.conceptualLocation))
       throw new Error(
         "Can not get operation context from non-operation location",
       );
+
+    const pathSpecItem = jsonPointerHelpers.tryGet(
+      this.nextJsonLike,
+      jsonPointerHelpers.compile(["paths", location.conceptualLocation.path]),
+    );
     return {
       ...location.conceptualLocation,
       ...this.providedContext,
+      isSingletonPath:
+        pathSpecItem.match && pathSpecItem.value["x-snyk-resource-singleton"],
     };
   }
 
@@ -137,7 +144,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       ...genericEntityRuleImpl<
         OpenApiKind.Operation,
         OperationLocation,
-        SynkApiCheckContext,
+        SynkApiCheckContext & { isSingletonPath: boolean },
         OpenAPIV3.OperationObject
       >(
         OpenApiKind.Operation,
@@ -291,7 +298,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (query) => `${query.name}`,
         (location) =>
           dsl.getOperationContext(location) as QueryParameterLocation &
-            SynkApiCheckContext,
+            SynkApiCheckContext & { isSingletonPath: boolean },
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -307,14 +314,14 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (path) => `${path.name}`,
         (location) =>
           dsl.getOperationContext(location) as PathParameterLocation &
-            SynkApiCheckContext,
+            SynkApiCheckContext & { isSingletonPath: boolean },
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
       header: genericEntityRuleImpl<
         OpenApiKind.HeaderParameter,
         HeaderParameterLocation,
-        SynkApiCheckContext,
+        SynkApiCheckContext & { isSingletonPath: boolean },
         OpenAPIV3.ParameterObject
       >(
         OpenApiKind.HeaderParameter,
@@ -323,7 +330,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (header) => `${header.name}`,
         (location) =>
           dsl.getOperationContext(location) as HeaderParameterLocation &
-            SynkApiCheckContext,
+            SynkApiCheckContext & { isSingletonPath: boolean },
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -337,16 +344,40 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       ...genericEntityRuleImpl<
         OpenApiKind.Response,
         ResponseLocation,
-        SynkApiCheckContext,
+        SynkApiCheckContext & {
+          isSingletonPath: boolean;
+          requestDataPropertyIsArray: boolean;
+        },
         OpenAPIV3.ResponsesObject
       >(
         OpenApiKind.Response,
         dsl.changelog,
         dsl.nextFacts,
         (response) => `${response.statusCode}`,
-        (location) =>
-          dsl.getOperationContext(location) as ResponseLocation &
-            SynkApiCheckContext,
+        (location) => {
+          const dataPath = [
+            ...jsonPointerHelpers.decode(location.jsonPath).slice(0, 3),
+            "requestBody",
+            "content",
+            "application/vnd.api+json",
+            "schema",
+            "properties",
+            "data",
+          ];
+
+          const dataProperty = jsonPointerHelpers.tryGet(
+            dsl.nextJsonLike,
+            jsonPointerHelpers.compile(dataPath),
+          );
+
+          const requestDataPropertyIsArray =
+            dataProperty.match && (dataProperty.value as any).type === "array";
+
+          return {
+            ...dsl.getOperationContext(location),
+            requestDataPropertyIsArray,
+          } as any;
+        },
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -362,7 +393,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
         (header) => `${header.name}`,
         (location) =>
           dsl.getOperationContext(location) as ResponseHeaderLocation &
-            SynkApiCheckContext,
+            SynkApiCheckContext & { isSingletonPath: boolean },
         (...items) => dsl.checks.push(...items),
         (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
       ),
@@ -437,7 +468,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (field) => `${field.key}`,
       (location) =>
         dsl.getOperationContext(location) as FieldLocation &
-          SynkApiCheckContext,
+          SynkApiCheckContext & { isSingletonPath: boolean },
       (...items) => dsl.checks.push(...items),
       (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
     );
