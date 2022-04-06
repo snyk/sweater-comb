@@ -16,13 +16,7 @@ export const addDeleteOperation = SpecTemplate.create(
   addDeleteOperationTemplate,
 );
 
-export function addDeleteOperationTemplate(
-  spec: OpenAPIV3.Document,
-  options: {
-    pluralResourceName: string;
-  },
-): void {
-  const { pluralResourceName } = options;
+export function addDeleteOperationTemplate(spec: OpenAPIV3.Document): void {
   const { singular, plural } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
   const itemPath = buildItemPath(singular, plural);

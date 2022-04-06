@@ -8,7 +8,6 @@ import {
   commonParameters,
   commonResponses,
   paginationParameters,
-  refs,
 } from "../common";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { ensureOrgIdComponent } from "../parameters";
@@ -29,7 +28,7 @@ export function addListOperationTemplate(
   },
 ): void {
   const { pluralResourceName } = options;
-  const { singular, plural } = getSingularAndPluralName(spec);
+  const { singular } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
   if (!spec.paths) spec.paths = {};

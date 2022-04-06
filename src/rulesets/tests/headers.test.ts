@@ -1,5 +1,5 @@
 import { rules } from "../headers";
-import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
+import { SynkApiCheckContext } from "../../dsl";
 import { createSnykTestFixture } from "./fixtures";
 
 const { compare } = createSnykTestFixture();

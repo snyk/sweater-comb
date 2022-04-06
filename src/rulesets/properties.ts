@@ -4,9 +4,12 @@ import { OpenAPIV3 } from "@useoptic/api-checks";
 import { links } from "../docs";
 import { getBodyPropertyName } from "../names";
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+//TODO: improve rules to actually check these on string types.
 const oas3Formats = ["date", "date-time", "password", "byte", "binary"];
 
 const allowedFormats = Array.prototype.concat(oas3Formats, ["uuid"]);
+/* eslint-enable */
 
 function withinAttributes(context) {
   if (!("jsonSchemaTrail" in context)) return false;
@@ -35,9 +38,9 @@ function withinAttributes(context) {
  * */
 const preventChange = (schemaProperty: string) => {
   return (parameterBefore, parameterAfter, context) => {
-    let beforeSchema = (parameterBefore.flatSchema ||
+    const beforeSchema = (parameterBefore.flatSchema ||
       {}) as OpenAPIV3.SchemaObject;
-    let afterSchema = (parameterAfter.flatSchema ||
+    const afterSchema = (parameterAfter.flatSchema ||
       {}) as OpenAPIV3.SchemaObject;
     if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
     expect(
@@ -112,7 +115,7 @@ export const rules = {
       },
     );
   },
-  dateFormatting: ({ bodyProperties, operations }: SnykApiCheckDsl) => {
+  dateFormatting: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.added.must(
       "use date-time for dates",
       (property, context, docs) => {
@@ -124,7 +127,7 @@ export const rules = {
       },
     );
   },
-  arrayWithItems: ({ bodyProperties, operations }: SnykApiCheckDsl) => {
+  arrayWithItems: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.requirement.must(
       "have type for array items",
       (property, context, docs, specItem) => {
@@ -176,7 +179,7 @@ export const rules = {
         if (specItem.type === "object") {
           if (!specItem.properties)
             expect.fail("object schema is missing 'properties'");
-          if (specItem.hasOwnProperty("items"))
+          if (Object.prototype.hasOwnProperty.call(specItem, "items"))
             expect.fail("object schema can not have 'items'");
         }
       },

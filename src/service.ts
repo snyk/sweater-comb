@@ -18,6 +18,7 @@ export function newSnykApiCheckService() {
     );
   };
 
+  /* eslint-disable @typescript-eslint/no-var-requires */
   snykRulesService.useDslWithNamedRules(
     dslConstructor,
     require("./rulesets/operations").rules,
@@ -42,6 +43,7 @@ export function newSnykApiCheckService() {
     dslConstructor,
     require("./rulesets/jsonapi").rules,
   );
+  /* eslint-enable */
 
   snykRulesService.useSpectralOasRuleset({
     "openapi-tags": "off",
