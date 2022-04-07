@@ -7,8 +7,11 @@ import {
 const testResourcesExamples = path.resolve(
   path.join(__dirname, "../../../end-end-tests/workflows/resources"),
 );
+const nonVervetProjectPath = path.resolve(
+  path.join(__dirname, "../../../end-end-tests/simple-scenario"),
+);
 
-describe("vervet resolver", () => {
+describe("file resolver", () => {
   it("can resolve when there is a resources dir", async () => {
     const resources = await resolveResourcesDirectory(testResourcesExamples);
     expect(
@@ -42,6 +45,16 @@ describe("vervet resolver", () => {
   it("will not resolve date version that does not exist", async () => {
     const result = await tryLookup("issues", "2020-01-01");
     expect("failed" in result).toBeTruthy();
+  });
+
+  it("will not resolve outside of a vervet project", async () => {
+    const resources = await resolveResourcesDirectory(nonVervetProjectPath);
+    expect(resources).toBeFalsy();
+  });
+
+  it("will not resolve a non-existent path", async () => {
+    const resources = await resolveResourcesDirectory("/no/such/place");
+    expect(resources).toBeFalsy();
   });
 });
 

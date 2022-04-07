@@ -1,0 +1,4 @@
+apis:
+  workflows:
+    resources:
+      - path: 'resources'

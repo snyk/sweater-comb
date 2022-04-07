@@ -66,6 +66,9 @@
     "@useoptic/openapi-io",
     "@useoptic/openapi-utilities"
   ],
+  "resolutions": {
+    "urijs": "^1.19.11"
+  },
   "jest": {
     "testPathIgnorePatterns": [
       "build",
