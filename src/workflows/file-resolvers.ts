@@ -2,8 +2,6 @@ import findParentDir from "find-parent-dir";
 import fs from "fs-extra";
 import path from "path";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
-import { LogUpdatingSpecification } from "./logs";
-import chalk from "chalk";
 
 export async function resolveResourcesDirectory(
   workingDirectory: string = getSweaterCombWorkingDirectory(),
@@ -39,7 +37,7 @@ export type ResourceVersionLookupResults =
 export async function resolveResourceVersion(
   workingDirectory: string = getSweaterCombWorkingDirectory(),
   resourceName: string,
-  resourceVersion: string = "latest",
+  resourceVersion = "latest",
 ): Promise<ResourceVersionLookupResults> {
   const resources = await resolveResourcesDirectory(workingDirectory);
 

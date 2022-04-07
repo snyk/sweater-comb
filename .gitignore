@@ -10,3 +10,5 @@
 /.pnp.*
 build
 .nyc_output
+.eslintcache
+package-lock.json

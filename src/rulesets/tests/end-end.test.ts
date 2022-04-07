@@ -35,7 +35,6 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        false,
       ),
     ).toMatchSnapshot();
   });
@@ -55,7 +54,6 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        true,
       ),
     ).toMatchSnapshot();
   });
@@ -75,7 +73,6 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        true,
       ),
     ).toMatchSnapshot();
   });
@@ -94,7 +91,6 @@ describe("end-end-tests", () => {
         },
         resourceVersions: {},
       },
-      true,
     );
 
     // expect(results.filter((i) => !i.passed)).toHaveLength(0);
@@ -116,7 +112,6 @@ describe("end-end-tests", () => {
           },
           resourceVersions: {},
         },
-        true,
       ),
     ).toMatchSnapshot();
   });
@@ -128,7 +123,6 @@ describe("end-end-tests", () => {
     to: string | undefined,
     workingDir: string,
     context: SynkApiCheckContext,
-    shouldPass: boolean,
   ) {
     const fromSpecSig = parseSpecVersion(from, defaultEmptySpec);
     const fromSpec = await specFromInputToResults(fromSpecSig, workingDir);

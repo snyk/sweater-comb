@@ -6,12 +6,7 @@ import {
   buildItemResponseSchema,
   ensureRelationSchemaComponent,
 } from "../schemas";
-import {
-  commonHeaders,
-  commonParameters,
-  commonResponses,
-  refs,
-} from "../common";
+import { commonHeaders, commonParameters, commonResponses } from "../common";
 import { OpenAPIV3 } from "openapi-types";
 import { SpecTemplate } from "@useoptic/openapi-cli";
 import { buildItemPath } from "../paths";
@@ -31,7 +26,7 @@ export function addGetOperationTemplate(
   },
 ): void {
   const { pluralResourceName } = options;
-  const { singular, plural } = getSingularAndPluralName(spec);
+  const { singular } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
   const itemPath = buildItemPath(singular, pluralResourceName);
   if (!spec.paths) spec.paths = {};

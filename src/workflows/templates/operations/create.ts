@@ -32,7 +32,7 @@ export function addCreateOperationTemplate(
   },
 ): void {
   const { pluralResourceName } = options;
-  const { singular, plural } = getSingularAndPluralName(spec);
+  const { singular } = getSingularAndPluralName(spec);
   const titleResourceName = titleCase(singular);
   const collectionPath = buildCollectionPath(pluralResourceName);
 

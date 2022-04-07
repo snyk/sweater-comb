@@ -7,7 +7,7 @@ import {
   OpenAPIV3,
 } from "@useoptic/openapi-utilities";
 
-const yargs = require("yargs");
+import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 
 export type ParseOpenAPIResult = {
@@ -35,7 +35,7 @@ export async function changeLogBetween(
 }
 
 export const main = async () => {
-  const argv = yargs(hideBin(process.argv)).argv;
+  const argv = yargs(hideBin(process.argv)).argv as { [x: string]: string };
   if (!argv.from || !argv.to) {
     throw new Error("usage: --from <from> --to <to>");
   }

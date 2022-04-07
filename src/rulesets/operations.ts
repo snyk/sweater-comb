@@ -19,8 +19,9 @@ const preventParameterChange = (schemaProperty: string) => {
     parameterBefore: OpenApiRequestParameterFact,
     parameterAfter: OpenApiRequestParameterFact,
   ) => {
-    let beforeSchema = (parameterBefore.schema || {}) as OpenAPIV3.SchemaObject;
-    let afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
+    const beforeSchema = (parameterBefore.schema ||
+      {}) as OpenAPIV3.SchemaObject;
+    const afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
     if (!beforeSchema[schemaProperty] && !afterSchema[schemaProperty]) return;
     expect(
       beforeSchema[schemaProperty],
@@ -216,9 +217,9 @@ export const rules = {
       "not change the default value",
       (parameterBefore, parameterAfter, context, docs) => {
         docs.includeDocsLink(links.versioning.breakingChanges);
-        let beforeSchema = (parameterBefore.schema ||
+        const beforeSchema = (parameterBefore.schema ||
           {}) as OpenAPIV3.SchemaObject;
-        let afterSchema = (parameterAfter.schema ||
+        const afterSchema = (parameterAfter.schema ||
           {}) as OpenAPIV3.SchemaObject;
         expect(beforeSchema.default).to.equal(afterSchema.default);
       },

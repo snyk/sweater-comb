@@ -1,5 +1,5 @@
 import { rules } from "../properties";
-import { SnykApiCheckDsl, SynkApiCheckContext } from "../../dsl";
+import { SynkApiCheckContext } from "../../dsl";
 
 import { createSnykTestFixture } from "./fixtures";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";

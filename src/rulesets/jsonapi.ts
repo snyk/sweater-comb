@@ -39,7 +39,7 @@ export const rules = {
   support4xxStatusCodes: ({ responses }: SnykApiCheckDsl) => {
     responses.requirementOnChange.must(
       "support the correct 4xx status codes",
-      (response, context, docs, specItem) => {
+      (response, context, docs) => {
         docs.includeDocsLink(links.standards.statusCodes);
         if (isOpenApiPath(context.path)) return;
         if (
@@ -56,7 +56,7 @@ export const rules = {
   support2xxStatusCodesForDelete: ({ responses }: SnykApiCheckDsl) => {
     responses.requirementOnChange.must(
       "support the correct 2xx status codes for DELETE",
-      (response, context, docs, specItem) => {
+      (response, context, docs) => {
         docs.includeDocsLink(links.standards.statusCodes);
         if (isOpenApiPath(context.path)) return;
         if (context.method === "delete") {
@@ -75,7 +75,7 @@ export const rules = {
   support2xxStatusCodesForPost: ({ responses }: SnykApiCheckDsl) => {
     responses.requirementOnChange.must(
       "support the correct 2xx status codes for POST",
-      (response, context, docs, specItem) => {
+      (response, context, docs) => {
         docs.includeDocsLink(links.standards.statusCodes);
         if (isOpenApiPath(context.path)) return;
 

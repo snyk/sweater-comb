@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { makeCiCli } from "@useoptic/api-checks/build/ci-cli/make-cli";
-import { updateCommand } from "@useoptic/openapi-cli";
 import { newSnykApiCheckService } from "./service";
 import { Command } from "commander";
 import {
