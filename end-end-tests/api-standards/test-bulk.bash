@@ -33,7 +33,7 @@ cat >$tempdir/passes <<EOF
     }, {
         "from": "$HERE/resources/thing/2021-11-10/000-batch-post.yaml", "to": "$HERE/resources/thing/2021-11-10/000-batch-post.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }, {
-        "from": "$HERE/resources/thing/2021-11-10/001-singleton.yaml", "to": "$HERE/resources/thing/2021-11-10/001-singleton.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
+        "to": "$HERE/resources/thing/2021-11-10/001-singleton.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }, {
         "from": "$HERE/resources/thing/2021-11-10/000-baseline-in-reform.yaml", "to": "$HERE/resources/thing/2021-11-10/002-fail-tenancy.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }]
@@ -78,6 +78,8 @@ cat >$tempdir/failures <<EOF
         "from": "$HERE/resources/thing/2021-11-10/002-fail-batch-post.yaml", "to": "$HERE/resources/thing/2021-11-10/002-fail-batch-post.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }, {
         "from": "$HERE/resources/thing/2021-11-10/000-baseline.yaml", "to": "$HERE/resources/thing/2021-11-10/003-jsonapi.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
+    }, {
+        "to": "$HERE/resources/thing/2021-11-10/002-fail-singleton-no-pagination.yaml", "context": {"changeDate": "2021-11-11", "changeResource": "thing", "changeVersion": {"date": "2021-11-10", "stability": "experimental"}}
     }]
 }
 EOF

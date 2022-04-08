@@ -261,6 +261,9 @@ export const rules = {
       "correctly support pagination parameters",
       (operation, context, docs, specItem) => {
         docs.includeDocsLink(links.jsonApi.pagination);
+        if (context.isSingletonPath) {
+          return;
+        }
         if (isOpenApiPath(context.path)) return;
         if (isItemOperation(operation)) return;
         if (operation.method !== "get") return;
@@ -289,7 +292,7 @@ export const rules = {
         docs.includeDocsLink(links.jsonApi.pagination);
         if (isOpenApiPath(context.path)) return;
         if (isItemOperation(operation)) return;
-        if (operation.method === "get") return;
+        if (operation.method === "get" && !context.isSingletonPath) return;
         const operationName = getOperationName(operation);
         const parameterNames = getParameterNames(specItem.parameters);
         const unsupportedPaginationParameters: string[] = [];
@@ -315,7 +318,7 @@ export const rules = {
         docs.includeDocsLink(links.jsonApi.pagination);
         if (isOpenApiPath(context.path)) return;
         if (isItemOperation(operation)) return;
-        if (operation.method !== "get") return;
+        if (operation.method !== "get" || context.isSingletonPath) return;
         const operationName = getOperationName(operation);
         const response = specItem.responses["200"];
         if (!("$ref" in response)) {
