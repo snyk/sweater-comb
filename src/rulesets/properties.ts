@@ -56,7 +56,7 @@ export const rules = {
   propertyKey: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.added.must("have snake case keys", ({ key }, context) => {
       // TODO: did not find a doc link for this
-      const snakeCase = /^[a-z]+(?:_[a-z]+)*$/g;
+      const snakeCase = /^[a-z]+(?:_[a-z\d]+)*$/g;
       if (!snakeCase.test(key))
         expect.fail(
           `expected ${getBodyPropertyName(context)} is be snake case`,
