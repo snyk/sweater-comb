@@ -28,8 +28,11 @@ jobs:
           name: Test
           command: yarn test
       - run:
-          name: E2E Test
+          name: E2E Test - Bulk Compare
           command: ./end-end-tests/api-standards/test-bulk.bash
+      - run:
+          name: E2E Test - Compare
+          command: ./end-end-tests/api-standards/test.bash
 
   npm-release:
     <<: *defaults

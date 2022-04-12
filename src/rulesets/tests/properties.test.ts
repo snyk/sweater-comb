@@ -108,6 +108,38 @@ describe("body properties", () => {
       expect(result).toMatchSnapshot();
     });
 
+    it("fails when not snake case in experimental", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      "not-snake-case": { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyKey, {
+          ...emptyContext,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        });
+
+      expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+
     it("fails when not snake case in nested field", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
@@ -249,6 +281,91 @@ describe("body properties", () => {
         .withRule(rules.preventAddingRequiredRequestProperties, emptyContext);
 
       expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+    it("passes if a property is removed in experimental", async () => {
+      const base = JSON.parse(JSON.stringify(baseOpenAPI));
+      base.paths!["/example"]!.get!.responses = {
+        "200": {
+          description: "",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  count: { type: "number" },
+                },
+              },
+            },
+          },
+        },
+      };
+      const result = await compare(base)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {},
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.preventRemoval, {
+          ...emptyContext,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        });
+
+      expect(result.results[0].passed).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });
+    it("passes if a required property is added in experimental", async () => {
+      const base = JSON.parse(JSON.stringify(baseOpenAPI));
+      base.paths!["/example"]!.get!.requestBody = {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {},
+            },
+          },
+        },
+      };
+      const result = await compare(base)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.requestBody = {
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    count: { type: "number" },
+                  },
+                  required: ["count"],
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.preventAddingRequiredRequestProperties, {
+          ...emptyContext,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        });
+
+      expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
   });

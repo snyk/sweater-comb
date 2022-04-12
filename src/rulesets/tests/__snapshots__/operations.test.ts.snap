@@ -1288,60 +1288,76 @@ Object {
 }
 `;
 
-exports[`operation parameters fails adding put method 1`] = `
+exports[`operation parameters fails if the default value is changed 1`] = `
 Object {
   "base": Object {
     "info": Object {
-      "title": "Empty",
+      "title": "OpenAPI",
       "version": "0.0.0",
     },
-    "openapi": "3.1.3",
-    "paths": Object {},
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+              "schema": Object {
+                "default": "before",
+                "type": "string",
+              },
+            },
+          ],
+          "responses": Object {},
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+    },
   },
   "changelog": Array [
     Object {
-      "added": Object {
-        "method": "put",
-        "pathPattern": "/example",
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
       },
-      "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
-          "method": "put",
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
           "path": "/example",
         },
         "conceptualPath": Array [
           "operations",
           "/example",
-          "put",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
         ],
-        "jsonPath": "/paths/~1example/put",
-        "kind": "operation",
-      },
-    },
-    Object {
-      "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
-            "title": "OpenAPI",
-            "version": "0.0.0",
-          },
-          "openapi": "3.0.1",
-        },
-        "before": Object {
-          "info": Object {
-            "title": "Empty",
-            "version": "0.0.0",
-          },
-          "openapi": "3.1.3",
-        },
-      },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
-        "jsonPath": "",
-        "kind": "specification",
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
       },
     },
   ],
@@ -1353,8 +1369,23 @@ Object {
     "openapi": "3.0.1",
     "paths": Object {
       "/example": Object {
-        "put": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+              "schema": Object {
+                "default": "after",
+                "type": "string",
+              },
+            },
+          ],
           "responses": Object {},
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
         },
       },
     },
@@ -1362,33 +1393,53 @@ Object {
   "results": Array [
     Object {
       "change": Object {
-        "added": Object {
-          "method": "put",
-          "pathPattern": "/example",
+        "changeType": "changed",
+        "changed": Object {
+          "after": Object {
+            "in": "query",
+            "name": "query_parameter",
+            "schema": Object {
+              "default": "after",
+              "type": "string",
+            },
+          },
+          "before": Object {
+            "in": "query",
+            "name": "query_parameter",
+            "schema": Object {
+              "default": "before",
+              "type": "string",
+            },
+          },
         },
-        "changeType": "added",
         "location": Object {
           "conceptualLocation": Object {
-            "method": "put",
+            "inRequest": Object {
+              "query": "query_parameter",
+            },
+            "method": "get",
             "path": "/example",
           },
           "conceptualPath": Array [
             "operations",
             "/example",
-            "put",
+            "get",
+            "parameters",
+            "query",
+            "query_parameter",
           ],
-          "jsonPath": "/paths/~1example/put",
-          "kind": "operation",
+          "jsonPath": "/paths/~1example/get/parameters/0",
+          "kind": "query-parameter",
         },
       },
-      "condition": "not use put method",
-      "docsLink": undefined,
+      "condition": "not change the default value",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
       "effectiveOnDate": undefined,
-      "error": "put is not allowed in JSON:API",
+      "error": "expected 'before' to equal 'after'",
       "isMust": true,
       "isShould": false,
       "passed": false,
-      "where": "added operation: PUT /example",
+      "where": "updated query-parameter: query_parameter",
     },
   ],
 }
@@ -1661,163 +1712,6 @@ Object {
       "isShould": false,
       "passed": false,
       "where": "added operation: GET /example/{pathParameter}",
-    },
-  ],
-}
-`;
-
-exports[`operation parameters names fails if the default value is changed 1`] = `
-Object {
-  "base": Object {
-    "info": Object {
-      "title": "OpenAPI",
-      "version": "0.0.0",
-    },
-    "openapi": "3.0.1",
-    "paths": Object {
-      "/example": Object {
-        "get": Object {
-          "operationId": "getExample",
-          "parameters": Array [
-            Object {
-              "in": "query",
-              "name": "query_parameter",
-              "schema": Object {
-                "default": "before",
-                "type": "string",
-              },
-            },
-          ],
-          "responses": Object {},
-          "summary": "Retrieve example",
-          "tags": Array [
-            "Example",
-          ],
-        },
-      },
-    },
-  },
-  "changelog": Array [
-    Object {
-      "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "in": "query",
-          "name": "query_parameter",
-          "schema": Object {
-            "default": "after",
-            "type": "string",
-          },
-        },
-        "before": Object {
-          "in": "query",
-          "name": "query_parameter",
-          "schema": Object {
-            "default": "before",
-            "type": "string",
-          },
-        },
-      },
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "query": "query_parameter",
-          },
-          "method": "get",
-          "path": "/example",
-        },
-        "conceptualPath": Array [
-          "operations",
-          "/example",
-          "get",
-          "parameters",
-          "query",
-          "query_parameter",
-        ],
-        "jsonPath": "/paths/~1example/get/parameters/0",
-        "kind": "query-parameter",
-      },
-    },
-  ],
-  "next": Object {
-    "info": Object {
-      "title": "OpenAPI",
-      "version": "0.0.0",
-    },
-    "openapi": "3.0.1",
-    "paths": Object {
-      "/example": Object {
-        "get": Object {
-          "operationId": "getExample",
-          "parameters": Array [
-            Object {
-              "in": "query",
-              "name": "query_parameter",
-              "schema": Object {
-                "default": "after",
-                "type": "string",
-              },
-            },
-          ],
-          "responses": Object {},
-          "summary": "Retrieve example",
-          "tags": Array [
-            "Example",
-          ],
-        },
-      },
-    },
-  },
-  "results": Array [
-    Object {
-      "change": Object {
-        "changeType": "changed",
-        "changed": Object {
-          "after": Object {
-            "in": "query",
-            "name": "query_parameter",
-            "schema": Object {
-              "default": "after",
-              "type": "string",
-            },
-          },
-          "before": Object {
-            "in": "query",
-            "name": "query_parameter",
-            "schema": Object {
-              "default": "before",
-              "type": "string",
-            },
-          },
-        },
-        "location": Object {
-          "conceptualLocation": Object {
-            "inRequest": Object {
-              "query": "query_parameter",
-            },
-            "method": "get",
-            "path": "/example",
-          },
-          "conceptualPath": Array [
-            "operations",
-            "/example",
-            "get",
-            "parameters",
-            "query",
-            "query_parameter",
-          ],
-          "jsonPath": "/paths/~1example/get/parameters/0",
-          "kind": "query-parameter",
-        },
-      },
-      "condition": "not change the default value",
-      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
-      "effectiveOnDate": undefined,
-      "error": "expected 'before' to equal 'after'",
-      "isMust": true,
-      "isShould": false,
-      "passed": false,
-      "where": "updated query-parameter: query_parameter",
     },
   ],
 }
@@ -2227,7 +2121,7 @@ Object {
 }
 `;
 
-exports[`operation parameters status codes fails when a status codes is removed 1`] = `
+exports[`operation parameters names passes if the default value is changed in experimental 1`] = `
 Object {
   "base": Object {
     "info": Object {
@@ -2239,11 +2133,17 @@ Object {
       "/example": Object {
         "get": Object {
           "operationId": "getExample",
-          "responses": Object {
-            "200": Object {
-              "description": "Example response",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+              "schema": Object {
+                "default": "before",
+                "type": "string",
+              },
             },
-          },
+          ],
+          "responses": Object {},
           "summary": "Retrieve example",
           "tags": Array [
             "Example",
@@ -2254,11 +2154,29 @@ Object {
   },
   "changelog": Array [
     Object {
-      "changeType": "removed",
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
       "location": Object {
         "conceptualLocation": Object {
-          "inResponse": Object {
-            "statusCode": "200",
+          "inRequest": Object {
+            "query": "query_parameter",
           },
           "method": "get",
           "path": "/example",
@@ -2267,17 +2185,12 @@ Object {
           "operations",
           "/example",
           "get",
-          "responses",
-          "200",
+          "parameters",
+          "query",
+          "query_parameter",
         ],
-        "jsonPath": "/paths/~1example/get/responses/200",
-        "kind": "response",
-      },
-      "removed": Object {
-        "before": Object {
-          "description": "Example response",
-          "statusCode": "200",
-        },
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
       },
     },
   ],
@@ -2291,6 +2204,16 @@ Object {
       "/example": Object {
         "get": Object {
           "operationId": "getExample",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+              "schema": Object {
+                "default": "after",
+                "type": "string",
+              },
+            },
+          ],
           "responses": Object {},
           "summary": "Retrieve example",
           "tags": Array [
@@ -2303,11 +2226,29 @@ Object {
   "results": Array [
     Object {
       "change": Object {
-        "changeType": "removed",
+        "changeType": "changed",
+        "changed": Object {
+          "after": Object {
+            "in": "query",
+            "name": "query_parameter",
+            "schema": Object {
+              "default": "after",
+              "type": "string",
+            },
+          },
+          "before": Object {
+            "in": "query",
+            "name": "query_parameter",
+            "schema": Object {
+              "default": "before",
+              "type": "string",
+            },
+          },
+        },
         "location": Object {
           "conceptualLocation": Object {
-            "inResponse": Object {
-              "statusCode": "200",
+            "inRequest": Object {
+              "query": "query_parameter",
             },
             "method": "get",
             "path": "/example",
@@ -2316,33 +2257,27 @@ Object {
             "operations",
             "/example",
             "get",
-            "responses",
-            "200",
+            "parameters",
+            "query",
+            "query_parameter",
           ],
-          "jsonPath": "/paths/~1example/get/responses/200",
-          "kind": "response",
-        },
-        "removed": Object {
-          "before": Object {
-            "description": "Example response",
-            "statusCode": "200",
-          },
+          "jsonPath": "/paths/~1example/get/parameters/0",
+          "kind": "query-parameter",
         },
       },
-      "condition": "not be removed",
-      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+      "condition": "not change the default value",
+      "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected get /example 200 to be present",
       "isMust": true,
       "isShould": false,
-      "passed": false,
-      "where": "removed response: 200",
+      "passed": true,
+      "where": "updated query-parameter: query_parameter",
     },
   ],
 }
 `;
 
-exports[`operation parameters version parameter fails when there is no version parameter 1`] = `
+exports[`operation parameters names passes when changing optional to required query parameter in experimental 1`] = `
 Object {
   "base": Object {
     "info": Object {
@@ -2354,6 +2289,12 @@ Object {
       "/example": Object {
         "get": Object {
           "operationId": "getExample",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+            },
+          ],
           "responses": Object {},
           "summary": "Retrieve example",
           "tags": Array [
@@ -2363,7 +2304,41 @@ Object {
       },
     },
   },
-  "changelog": Array [],
+  "changelog": Array [
+    Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+  ],
   "next": Object {
     "info": Object {
       "title": "OpenAPI",
@@ -2374,6 +2349,13 @@ Object {
       "/example": Object {
         "get": Object {
           "operationId": "getExample",
+          "parameters": Array [
+            Object {
+              "in": "query",
+              "name": "query_parameter",
+              "required": true,
+            },
+          ],
           "responses": Object {},
           "summary": "Retrieve example",
           "tags": Array [
@@ -2386,8 +2368,23 @@ Object {
   "results": Array [
     Object {
       "change": Object {
+        "changeType": "changed",
+        "changed": Object {
+          "after": Object {
+            "in": "query",
+            "name": "query_parameter",
+            "required": true,
+          },
+          "before": Object {
+            "in": "query",
+            "name": "query_parameter",
+          },
+        },
         "location": Object {
           "conceptualLocation": Object {
+            "inRequest": Object {
+              "query": "query_parameter",
+            },
             "method": "get",
             "path": "/example",
           },
@@ -2395,28 +2392,21 @@ Object {
             "operations",
             "/example",
             "get",
+            "parameters",
+            "query",
+            "query_parameter",
           ],
-          "jsonPath": "/paths/~1example/get",
-          "kind": "operation",
-        },
-        "value": Object {
-          "method": "get",
-          "operationId": "getExample",
-          "pathPattern": "/example",
-          "summary": "Retrieve example",
-          "tags": Array [
-            "Example",
-          ],
+          "jsonPath": "/paths/~1example/get/parameters/0",
+          "kind": "query-parameter",
         },
       },
-      "condition": "include a version parameter",
-      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+      "condition": "not be optional then required",
+      "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected [] to include 'version'",
       "isMust": true,
       "isShould": false,
-      "passed": false,
-      "where": "requirement for operation: GET /example",
+      "passed": true,
+      "where": "updated query-parameter: query_parameter",
     },
   ],
 }
@@ -3198,6 +3188,307 @@ Object {
       "isShould": false,
       "passed": false,
       "where": "updated operation: GET /example",
+    },
+  ],
+}
+`;
+
+exports[`put method fails adding put method 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "Empty",
+      "version": "0.0.0",
+    },
+    "openapi": "3.1.3",
+    "paths": Object {},
+  },
+  "changelog": Array [
+    Object {
+      "added": Object {
+        "method": "put",
+        "pathPattern": "/example",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+    },
+    Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "info": Object {
+            "title": "OpenAPI",
+            "version": "0.0.0",
+          },
+          "openapi": "3.0.1",
+        },
+        "before": Object {
+          "info": Object {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.3",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+  ],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "put": Object {
+          "responses": Object {},
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "added": Object {
+          "method": "put",
+          "pathPattern": "/example",
+        },
+        "changeType": "added",
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "put",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "put",
+          ],
+          "jsonPath": "/paths/~1example/put",
+          "kind": "operation",
+        },
+      },
+      "condition": "not use put method",
+      "docsLink": undefined,
+      "effectiveOnDate": undefined,
+      "error": "put is not allowed in JSON:API",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "added operation: PUT /example",
+    },
+  ],
+}
+`;
+
+exports[`status codes fails when a status codes is removed 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "responses": Object {
+            "200": Object {
+              "description": "Example response",
+            },
+          },
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+    },
+  },
+  "changelog": Array [
+    Object {
+      "changeType": "removed",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200",
+        "kind": "response",
+      },
+      "removed": Object {
+        "before": Object {
+          "description": "Example response",
+          "statusCode": "200",
+        },
+      },
+    },
+  ],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "responses": Object {},
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "changeType": "removed",
+        "location": Object {
+          "conceptualLocation": Object {
+            "inResponse": Object {
+              "statusCode": "200",
+            },
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+            "responses",
+            "200",
+          ],
+          "jsonPath": "/paths/~1example/get/responses/200",
+          "kind": "response",
+        },
+        "removed": Object {
+          "before": Object {
+            "description": "Example response",
+            "statusCode": "200",
+          },
+        },
+      },
+      "condition": "not be removed",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+      "effectiveOnDate": undefined,
+      "error": "expected get /example 200 to be present",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "removed response: 200",
+    },
+  ],
+}
+`;
+
+exports[`version parameter fails when there is no version parameter 1`] = `
+Object {
+  "base": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "responses": Object {},
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+    },
+  },
+  "changelog": Array [],
+  "next": Object {
+    "info": Object {
+      "title": "OpenAPI",
+      "version": "0.0.0",
+    },
+    "openapi": "3.0.1",
+    "paths": Object {
+      "/example": Object {
+        "get": Object {
+          "operationId": "getExample",
+          "responses": Object {},
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+    },
+  },
+  "results": Array [
+    Object {
+      "change": Object {
+        "location": Object {
+          "conceptualLocation": Object {
+            "method": "get",
+            "path": "/example",
+          },
+          "conceptualPath": Array [
+            "operations",
+            "/example",
+            "get",
+          ],
+          "jsonPath": "/paths/~1example/get",
+          "kind": "operation",
+        },
+        "value": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "Retrieve example",
+          "tags": Array [
+            "Example",
+          ],
+        },
+      },
+      "condition": "include a version parameter",
+      "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+      "effectiveOnDate": undefined,
+      "error": "expected [] to include 'version'",
+      "isMust": true,
+      "isShould": false,
+      "passed": false,
+      "where": "requirement for operation: GET /example",
     },
   ],
 }

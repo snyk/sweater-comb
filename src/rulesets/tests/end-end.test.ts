@@ -23,8 +23,8 @@ describe("end-end-tests", () => {
   it("fails when operation is removed", async () => {
     expect(
       await snapshotScenario(
-        "000-baseline.yaml",
-        "001-fail-operation-removed.yaml",
+        "000-baseline-beta.yaml",
+        "001-fail-operation-removed-beta.yaml",
         resourceDate("thing", "2021-11-10"),
         {
           changeDate: "2021-11-11",
@@ -42,8 +42,8 @@ describe("end-end-tests", () => {
   it("fails when breaking param change", async () => {
     expect(
       await snapshotScenario(
-        "000-baseline.yaml",
-        "001-fail-breaking-param-change.yaml",
+        "000-baseline-beta.yaml",
+        "001-fail-breaking-param-change-beta.yaml",
         resourceDate("thing", "2021-11-10"),
         {
           changeDate: "2021-11-11",
