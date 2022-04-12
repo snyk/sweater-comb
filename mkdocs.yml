@@ -1,9 +1,13 @@
 nav:
 - API standards:
-  - 'Intro': intro.md
+  - 'Overview': 'index.md'
+  - 'API Program': api_program.md
   - 'JSON API: The Good Parts': jsonapi.md
   - 'Versioning': version.md
   - 'Snyk REST API standards': standards.md
 plugins:
 - techdocs-core
+theme:
+  name: mkdocs
+  nav_style: light
 site_name: sweater-comb

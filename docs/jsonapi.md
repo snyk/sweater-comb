@@ -23,10 +23,10 @@ HTTP 200 OK
 Content-Type: application/vnd.api+json
 
 {
-    "data": <resource or array of resources>,
+    "data": { /* ... */ }, // resource or array of resources,
     "jsonapi": {"version": "1.0"},
     "links": {
-        "self": <path to this resource you just requested>
+        "self": "/path/to/here", // path to this resource you just requested
     }
 }
 ```
@@ -43,10 +43,10 @@ Resource data objects have a certain structure as well.
 
 ```json
 {
-    "id": <unique uuid of this resource>,
-    "type": <resource type, from an enumerated list of our supported types>,
+    "id": "7d1bae82-346a-4f7b-a8cb-37c8f159e415", // unique uuid of this resource,
+    "type": "resource-type", // resource type,
     "attributes": {
-        <actual resource content here>
+        // actual resource content here
     }
 }
 ```
@@ -54,7 +54,7 @@ Resource data objects have a certain structure as well.
 Collections are just arrays of these structured resource data objects.
 
 ```json
-[ {"id": <id>, "type": <type>, "attributes": {...}}, ... ]
+[ {"id": /* some ID */, "type": /* some type */, "attributes": {/* ... */}}, /* ... */ ]
 ```
 
 ### Links
@@ -74,7 +74,7 @@ links: {
     "self": {
         "href": "/path/to/this/resource",
         "meta": {
-            <free form key-value stuff about this link>
+            // free form key-value stuff about this link
         }
     }
 }
@@ -90,17 +90,20 @@ Data objects may declare relationships to other resources — "links with struct
 
 ```json
 {
-    "id": <id>,
-    "type": <type>,
-    "attributes": {...},
+    "id": "7d1bae82-346a-4f7b-a8cb-37c8f159e415", // unique resource uuid
+    "type": "some-resource", // resource type
+    "attributes": { /* ... */ },
     "relationships": {
         "relation-name": {
             "links": {
                 "related": "/path/to/<related resource>/<related-id>?version=<resolved version>&..."
             },
-            "data": {"id": <related id>, "type": <related type>} 
+            "data": {
+                "id": "9f14199e-6330-4b01-a52d-4aaa0ffd29ef", // related entity's ID
+                "type": "other-resource", // related entity's type
+            },
         },
-        ...
+        /* ... */
     }
 }
 ```
@@ -135,17 +138,17 @@ Content-Type: application/vnd.api+json
 {
   "jsonapi": {"version": "1.0"},
 	"errors": [{
-		"id": <unique id for the error itself>,
-		"status": <HTTP status code, as a string>,
-		"detail": <detailed message explaining what went wrong> 
-	},...]
+		"id": "c246c156-870c-4dbb-9cea-60850d6c8686", // unique id for the error itself
+		"status": "500", // HTTP status code, as a string
+		"detail": "something bad happened", // detailed message explaining what went wrong
+	}, /* ... */ ]
 }
 
 ```
 
 The error ID should uniquely identify this occurance of the problem. A server-generated trace or request ID may be used for this ID, so long that the ID is unique. If there are multiple errors in the response, each must have a unique ID.
 
-[A Request ID header is also required in our standard responses](standards.md#response-headers), which should be considered authoritative for correlation purposes.
+A Request ID header is also required in our [standard responses](standards.md#response-headers), which should be considered authoritative for correlation purposes.
 
 ### Request paths
 

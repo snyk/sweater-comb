@@ -1,10 +1,8 @@
-# Sweater Comb
+# API Program
 
 At Snyk, we're starting an API program that aims to maximize the value we provide to developers and the extensibility of our platform through our APIs. 
 
 Such an API needs some guardrails to stay cohesive, consistent and "unsurprising" to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
-
-Sweater Comb helps provide some of those guardrails with automation, initially by applying custom [Spectral](https://stoplight.io/open-source/spectral/) linter rules to our OpenAPI specifications.
 
 ## Why automate?
 
@@ -20,9 +18,11 @@ Automation is most helpful once such designs have been established. At this poin
 
 If you read through this document, you will find a lot of rules! A lot of things to keep track of! [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119)-style DOs and DONTs and MUSTs and SHOULDs. And regardless of your opinion on them — everyone has an opinion — we should all agree that a consistent application of *some* sort of rules are necessary to provide a uniform, cohesive API for our customers.
 
-[Sweater Comb](https://github.com/snyk/sweater-comb) is our rule automation solution to address this specific problem — it "sweats the small stuff, so you don't have to". The rules described here are to give a sense of what our choices are and why, but the execution of these rules is actually performed with [Sweater Comb](https://github.com/snyk/sweater-comb) as an OpenAPI linter — in your individual service projects, but also eventually, as part of a CI/CD service integration pipeline providing API governance.
+[Sweater Comb](https://github.com/snyk/sweater-comb) is our rule automation solution to address this specific problem — it "sweats the small stuff, so you don't have to". The rules described here are to give a sense of what our choices are and why, but the execution of these rules is actually performed with [Sweater Comb](https://github.com/snyk/sweater-comb) as an OpenAPI linter.
 
-These rules are automatically applied by [Vervet](https://github.com/snyk/vervet) when assembling our API from its component resources and services. Longer-term, these rules can be evaluated at the edge in a fully distributed service-oriented architecture, used to alert compliance problems, or even gate CI/CD.
+Use Sweater Comb in your individual service projects to keep your service compatible with API standards and ready to promote to beta and GA stability.
+
+Sweater Comb is also used to track the progress of our API standards goals across many projects, as well as to provide API governance in our service integration and deployment pipeline. We want to make sure that the APIs our customers should be able to depend on meet these standards and stability promises, and keep them through the promised lifecycle.
 
 ## How to read this document
 
@@ -36,7 +36,7 @@ I hope this document is clear, approachable and for the developers building our 
 
 For all others, I hope it is an interesting insight into how we're building APIs at Snyk!
 
-— Casey Marshall, 2021-09-24~beta ;)
+— Casey Marshall, `2021-09-24~beta`
 
 # Resources
 
