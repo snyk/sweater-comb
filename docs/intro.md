@@ -1,14 +1,8 @@
-# Sweater Comb
-
-At Snyk, we're starting an API program that aims to maximize the value we provide to developers and the extensibility of our platform through our APIs. 
-
-Such an API needs some guardrails to stay cohesive, consistent and "unsurprising" to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
-
-Sweater Comb helps provide some of those guardrails with automation, initially by applying custom [Spectral](https://stoplight.io/open-source/spectral/) linter rules to our OpenAPI specifications.
+# Intro
 
 ## Why automate?
 
-Partial automation of our standards yields a tighter feedback loop than a purely manual review of every change.
+Partial automation of ,our standards yields a tighter feedback loop than a purely manual review of every change.
 
 ### Automation is only part of the solution
 
@@ -69,19 +63,19 @@ Direct access to these core models allows customers and partners to utilize Snyk
 
 Snyk can provide higher-level abstractions over this API of data models (resources) such as GraphQL and SARIF. Both provide a rich and powerful interface to query and report on SAST results.
 
-## What a resource-based API is (and isn't)
+## What a resource-based API is (and isn’t)
 
-Snyk's API represents our product's *core data model* as resources, for the purpose of delivering that data model to our customers and partners.
+Snyk’s API represents our product’s *core data model* as resources, for the purpose of delivering that data model to our customers and partners.
 
-### It's not RPC
+### It’s not RPC
 
 To keep it about that data, the only operations allowed in the API are "CRUD"-type operations: Create, Retrieve, Update, Delete.
 
 Contrast this with an RPC API which may offer a rich vocabulary of verbs at the granularity of method and function calls on objects. This approach may be necessary and useful in certain situations — however, these belong in a different sort of API from the one we're building here.
 
-### It's only about Snyk's *core data model*
+### It’s only about Snyk’s *core data model*
 
-There are situations where it makes sense for Snyk to represent other resources with an API. Many of these may relate to Snyk's core data model. However, if they are describing a different interface or paradigm, they do not belong in `/v3`, they should be located elsewhere. Examples of distinctly different models & paradigms:
+There are situations where it makes sense for Snyk to represent other resources with an API. Many of these may relate to Snyk's core data model. However, if they are describing a different interface or paradigm, they do not belong in the REST API, they should be located elsewhere. Examples of distinctly different models & paradigms:
 
 - GraphQL
     - A generalized query interface that merges many models into a unified graph
