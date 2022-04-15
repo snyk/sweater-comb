@@ -120,12 +120,12 @@ describe("lifecycle", () => {
         changeResource: "Example",
         changeVersion: {
           date: "2021-10-10",
-          stability: "experimental",
+          stability: "beta",
         },
         resourceVersions: {
           Example: {
             "2021-10-10": {
-              experimental: {
+              beta: {
                 deprecatedBy: {
                   date: "2021-10-20",
                   stability: "ga",
@@ -155,7 +155,7 @@ describe("lifecycle", () => {
           })
           .withRule(rules.followSunsetRules, {
             ...context,
-            changeDate: "2021-12-01",
+            changeDate: "2022-02-01",
           });
         expect(result.results[0].passed).toBeTruthy();
         expect(result).toMatchSnapshot();

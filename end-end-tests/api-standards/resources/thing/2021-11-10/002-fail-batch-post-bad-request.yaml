@@ -1,0 +1,135 @@
+openapi: 3.0.3
+x-snyk-api-stability: experimental
+info:
+  title: v3
+  version: 3.0.0
+servers:
+  - url: https://api.snyk.io/v3
+    description: Public Snyk API
+tags:
+  - name: Thing
+    description: Short description of what Thing represents
+paths:
+  /orgs/{org_id}/thing:
+    post:
+      summary: Create a new thing
+      description: Create a new thing
+      operationId: createThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: "#/components/x-rest-common/parameters/Version" }
+        - { $ref: '#/components/parameters/OrgId' }
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema: { $ref: "#/components/schemas/ThingResourceRequest" }
+
+      responses:
+        "204":
+          description: Created thing successfully
+          headers:
+            snyk-version-requested:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
+              }
+            snyk-version-served:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
+              }
+            snyk-request-id:
+              {
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
+              }
+            snyk-version-lifecycle-stage:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
+              }
+            deprecation:
+              {
+                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
+              }
+            sunset:
+              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+            location:
+              { $ref: "#/components/x-rest-common/headers/LocationHeader" }
+        "400": { $ref: "#/components/x-rest-common/responses/400" }
+        "401": { $ref: "#/components/x-rest-common/responses/401" }
+        "403": { $ref: "#/components/x-rest-common/responses/403" }
+        "404": { $ref: "#/components/x-rest-common/responses/404" }
+        "409": { $ref: "#/components/x-rest-common/responses/409" }
+        "500": { $ref: "#/components/x-rest-common/responses/500" }
+components:
+  x-rest-common:
+    $ref: '../../../../../components/common.yaml'
+  parameters:
+    OrgId:
+      name: org_id
+      in: path
+      required: true
+      description: Org ID
+      schema:
+        type: string
+        format: uuid
+    ThingId:
+      name: thing_id
+      in: path
+      required: true
+      description: Unique identifier for thing instances
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ThingResourceRequest:
+      type: object
+      description: Request containing a single thing resource object
+      properties:
+        jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
+        data: { $ref: "#/components/schemas/ThingResource" }
+        links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
+    ThingResource:
+      type: object
+      description: thing resource object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d5b640e5-d88c-4c17-9bf0-93597b7a1ce2
+        type: { $ref: "#/components/x-rest-common/schemas/Types" }
+        attributes: { $ref: "#/components/schemas/ThingAttributes" }
+        relationships: { $ref: "#/components/schemas/ThingRelationships" }
+      additionalProperties: false
+
+    ThingRelationships:
+      type: object
+      properties:
+        example: { $ref: "#/components/x-rest-common/schemas/Relationship" }
+      additionalProperties: false
+
+    ThingCollection:
+      type: array
+      items: { $ref: "#/components/schemas/ThingResource" }
+
+    ThingAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of this instance of thing.
+          example: thing
+        created:
+          type: string
+          description: Timestamp when this instance of thing was created.
+          format: date-time
+          example: "2021-10-05T13:23:17Z"
+        updated:
+          type: string
+          description: Timestamp when this instance of thing was last updated.
+          format: date-time
+          example: "2021-10-05T13:25:29Z"
+        description:
+          type: string
+          description: User-friendly description of this instance of thing.
+          example: "This is a thing named thing."
+      additionalProperties: false

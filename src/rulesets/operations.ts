@@ -1,4 +1,8 @@
-import { SnykApiCheckDsl } from "../dsl";
+import {
+  isBreakingChangeAllowed,
+  SnykApiCheckDsl,
+  SynkApiCheckContext,
+} from "../dsl";
 import { camelCase, snakeCase } from "change-case";
 import { OpenAPIV3 } from "@useoptic/api-checks";
 import { expect } from "chai";
@@ -18,7 +22,11 @@ const preventParameterChange = (schemaProperty: string) => {
   return (
     parameterBefore: OpenApiRequestParameterFact,
     parameterAfter: OpenApiRequestParameterFact,
+    context: SynkApiCheckContext,
   ) => {
+    if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+      return;
+    }
     const beforeSchema = (parameterBefore.schema ||
       {}) as OpenAPIV3.SchemaObject;
     const afterSchema = (parameterAfter.schema || {}) as OpenAPIV3.SchemaObject;
@@ -37,6 +45,9 @@ export const rules = {
       .must(
         "have the correct operationId format",
         (operation, context, docs) => {
+          if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+            return;
+          }
           docs.includeDocsLink(links.standards.operationIds);
           docs.becomesEffectiveOn(new Date("2021-07-01"));
           expect(operation.operationId).to.be.ok;
@@ -62,6 +73,9 @@ export const rules = {
   },
   tags: ({ operations }: SnykApiCheckDsl) => {
     operations.requirement.must("have tags", (operation, context, docs) => {
+      if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+        return;
+      }
       docs.includeDocsLink(links.standards.tags);
       expect(operation.tags).to.exist;
       if (!operation.tags) expect.fail("tags must exist");
@@ -72,6 +86,9 @@ export const rules = {
     operations.requirement.must(
       "have a summary",
       (operation, context, docs) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.standards.operationSummary);
         if (!operation.summary) expect.fail("must have a summary");
       },
@@ -89,6 +106,9 @@ export const rules = {
     operations.requirementOnChange
       .attributes("name")
       .must("use the correct case", (operation, context, docs, specItem) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);
         for (const p of specItem.parameters || []) {
           const parameter = p as OpenAPIV3.ParameterObject;
@@ -111,6 +131,9 @@ export const rules = {
   },
   preventRemovingOperation: ({ operations }: SnykApiCheckDsl) => {
     operations.removed.must("not be allowed", (operation, context, docs) => {
+      if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+        return;
+      }
       docs.includeDocsLink(links.versioning.breakingChanges);
       expect.fail("expected operation to be present");
     });
@@ -119,6 +142,9 @@ export const rules = {
     operations.requirement.must(
       "include a version parameter",
       (operation, context, docs, specItem) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.versioning.versionParameter);
         const parameters = (specItem.parameters ||
           []) as OpenAPIV3.ParameterObject[];
@@ -135,6 +161,9 @@ export const rules = {
     operations.requirement.must(
       "use UUID for org_id or group_id",
       (operation, context, docs, specItem) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.standards.orgAndGroupTenantResources);
         for (const parameter of specItem.parameters || []) {
           if ("$ref" in parameter) continue;
@@ -160,6 +189,9 @@ export const rules = {
     specification.requirement.must(
       "use the right casing for path elements",
       (spec, context, docs) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);
         const pathUrls = Object.keys(spec.paths);
         for (const pathUrl of pathUrls) {
@@ -178,6 +210,9 @@ export const rules = {
     request.queryParameter.added.must(
       "not be required",
       (queryParameter, context, docs) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         if (context.operationAdded) return;
         docs.includeDocsLink(links.versioning.breakingChanges);
         if (queryParameter.required) {
@@ -194,6 +229,9 @@ export const rules = {
     request.queryParameter.changed.must(
       "not be optional then required",
       (queryParameterBefore, queryParameterAfter, context, docs) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.versioning.breakingChanges);
         if (!queryParameterBefore.required && queryParameterAfter.required) {
           expect.fail(
@@ -205,6 +243,9 @@ export const rules = {
   },
   preventRemovingStatusCodes: ({ responses }: SnykApiCheckDsl) => {
     responses.removed.must("not be removed", (response, context, docs) => {
+      if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+        return;
+      }
       docs.includeDocsLink(links.versioning.breakingChanges);
       if (!("inResponse" in context)) return;
       expect.fail(
@@ -216,6 +257,9 @@ export const rules = {
     request.queryParameter.changed.must(
       "not change the default value",
       (parameterBefore, parameterAfter, context, docs) => {
+        if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+          return;
+        }
         docs.includeDocsLink(links.versioning.breakingChanges);
         const beforeSchema = (parameterBefore.schema ||
           {}) as OpenAPIV3.SchemaObject;

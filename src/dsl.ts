@@ -36,6 +36,14 @@ type SnykStablity = "wip" | "experimental" | "beta" | "ga";
 type DateString = string; // YYYY-mm-dd
 type ResourceName = string;
 
+/**
+ * isBreakingChangeAllowed returns whether the given version stability level
+ * allows a breaking change to be made to the API.
+ */
+export const isBreakingChangeAllowed = (stability: SnykStablity): boolean => {
+  return stability === "wip" || stability === "experimental";
+};
+
 export interface SynkApiCheckContext {
   // Vervet provides context about the change itself. Since
   // Optic is analyzing two OpenAPI spec files, we need to tell it

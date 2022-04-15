@@ -293,6 +293,37 @@ describe("operation parameters", () => {
       expect(result).toMatchSnapshot();
     });
 
+    it("passes when changing optional to required query parameter in experimental", async () => {
+      const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
+      base.paths!["/example"]!.get!.parameters = [
+        {
+          in: "query",
+          name: "query_parameter",
+        },
+      ];
+      const result = await compare(base)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.parameters = [
+            {
+              in: "query",
+              name: "query_parameter",
+              required: true,
+            },
+          ];
+          return spec;
+        })
+        .withRule(rules.preventChangingOptionalToRequiredQueryParameters, {
+          ...emptyContext,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        });
+
+      expect(result.results[0].passed).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });
+
     it("fails when changing optional to required query parameter", async () => {
       const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
       base.paths!["/example"]!.get!.parameters = [
@@ -321,7 +352,7 @@ describe("operation parameters", () => {
       expect(result).toMatchSnapshot();
     });
 
-    it("fails if the default value is changed", async () => {
+    it("passes if the default value is changed in experimental", async () => {
       const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
       base.paths!["/example"]!.get!.parameters = [
         {
@@ -347,44 +378,84 @@ describe("operation parameters", () => {
           ];
           return spec;
         })
-        .withRule(rules.preventChangingParameterDefaultValue, emptyContext);
+        .withRule(rules.preventChangingParameterDefaultValue, {
+          ...emptyContext,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        });
 
-      expect(result.results[0].passed).toBeFalsy();
+      expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
     });
   });
 
-  describe("status codes", () => {
-    it("fails when a status codes is removed", async () => {
-      const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
-      base.paths["/example"].get.responses = {
-        "200": {
-          description: "Example response",
+  it("fails if the default value is changed", async () => {
+    const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
+    base.paths!["/example"]!.get!.parameters = [
+      {
+        in: "query",
+        name: "query_parameter",
+        schema: {
+          type: "string",
+          default: "before",
         },
-      };
-      const result = await compare(base)
-        .to((spec) => {
-          delete spec.paths!["/example"]!.get!.responses!["200"];
-          return spec;
-        })
-        .withRule(rules.preventRemovingStatusCodes, emptyContext);
+      },
+    ];
+    const result = await compare(base)
+      .to((spec) => {
+        spec.paths!["/example"]!.get!.parameters = [
+          {
+            in: "query",
+            name: "query_parameter",
+            schema: {
+              type: "string",
+              default: "after",
+            },
+          },
+        ];
+        return spec;
+      })
+      .withRule(rules.preventChangingParameterDefaultValue, emptyContext);
 
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
+    expect(result.results[0].passed).toBeFalsy();
+    expect(result).toMatchSnapshot();
   });
+});
 
-  describe("version parameter", () => {
-    it("fails when there is no version parameter", async () => {
-      const result = await compare(baseForOperationMetadataTests)
-        .to((spec) => spec)
-        .withRule(rules.versionParameter, emptyContext);
+describe("status codes", () => {
+  it("fails when a status codes is removed", async () => {
+    const base = JSON.parse(JSON.stringify(baseForOperationMetadataTests));
+    base.paths["/example"].get.responses = {
+      "200": {
+        description: "Example response",
+      },
+    };
+    const result = await compare(base)
+      .to((spec) => {
+        delete spec.paths!["/example"]!.get!.responses!["200"];
+        return spec;
+      })
+      .withRule(rules.preventRemovingStatusCodes, emptyContext);
 
-      expect(result.results[0].passed).toBeFalsy();
-      expect(result).toMatchSnapshot();
-    });
+    expect(result.results[0].passed).toBeFalsy();
+    expect(result).toMatchSnapshot();
   });
+});
 
+describe("version parameter", () => {
+  it("fails when there is no version parameter", async () => {
+    const result = await compare(baseForOperationMetadataTests)
+      .to((spec) => spec)
+      .withRule(rules.versionParameter, emptyContext);
+
+    expect(result.results[0].passed).toBeFalsy();
+    expect(result).toMatchSnapshot();
+  });
+});
+
+describe("put method", () => {
   it("fails adding put method", async () => {
     const result = await compare(defaultEmptySpec)
       .to({

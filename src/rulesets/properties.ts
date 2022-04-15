@@ -1,4 +1,8 @@
-import { SnykApiCheckDsl } from "../dsl";
+import {
+  isBreakingChangeAllowed,
+  SnykApiCheckDsl,
+  SynkApiCheckContext,
+} from "../dsl";
 import { expect } from "chai";
 import { OpenAPIV3 } from "@useoptic/api-checks";
 import { links } from "../docs";
@@ -37,7 +41,10 @@ function withinAttributes(context) {
  * preventChange("format")
  * */
 const preventChange = (schemaProperty: string) => {
-  return (parameterBefore, parameterAfter, context) => {
+  return (parameterBefore, parameterAfter, context: SynkApiCheckContext) => {
+    if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+      return;
+    }
     const beforeSchema = (parameterBefore.flatSchema ||
       {}) as OpenAPIV3.SchemaObject;
     const afterSchema = (parameterAfter.flatSchema ||
@@ -65,6 +72,9 @@ export const rules = {
   },
   preventRemoval: ({ bodyProperties }: SnykApiCheckDsl) => {
     bodyProperties.removed.must("not be removed", (property, context, docs) => {
+      if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+        return;
+      }
       docs.includeDocsLink(links.versioning.breakingChanges);
       if ("inResponse" in context && "jsonSchemaTrail" in context) {
         const propertyPath = `response body ${
@@ -93,6 +103,9 @@ export const rules = {
     bodyProperties,
   }: SnykApiCheckDsl) => {
     bodyProperties.added.must("not be required", (property, context, docs) => {
+      if (isBreakingChangeAllowed(context.changeVersion.stability)) {
+        return;
+      }
       if (context.bodyAdded) return;
       docs.includeDocsLink(links.versioning.breakingChanges);
       if (!("inRequest" in context)) return;

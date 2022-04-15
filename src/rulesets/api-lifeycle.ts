@@ -38,6 +38,7 @@ export const rules = {
   followSunsetRules: ({ checkApiContext }: SnykApiCheckDsl) => {
     checkApiContext.must("follow sunset rules", (context) => {
       if (context.changeVersion.stability === "wip") return;
+      if (context.changeVersion.stability === "experimental") return;
       if (!context.wasDeleted) return;
       const deprecatedBy =
         context.resourceVersions?.[context.changeResource]?.[
@@ -64,11 +65,13 @@ export const rules = {
 
       // Number of days required before a resource can be removed
       const sunsetSchedule = {
-        experimental: 30,
         beta: 90,
         ga: 180,
       };
       const requiredDays = sunsetSchedule[stability];
+      if (!requiredDays) {
+        expect.fail(`unexpected stability ${stability} in ${resourceName}`);
+      }
       if (diffDays < requiredDays) {
         expect.fail(
           `expected ${stability} resource ${resourceName} to be deprecated ${requiredDays} days`,
