@@ -56,6 +56,56 @@ describe("body properties", () => {
       expect(result).toMatchSnapshot();
     });
 
+    it("passes when snake case with a number as an n+1 component ", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      is_allowed_after_30_days: { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyKey, emptyContext);
+
+      expect(result.results[0].passed).toBeTruthy();
+      expect(result).toMatchSnapshot();
+    });    it("fails when number in n=1 snake case component ", async () => {
+      const result = await compare(baseOpenAPI)
+        .to((spec) => {
+          spec.paths!["/example"]!.get!.responses = {
+            "200": {
+              description: "",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      "30_days": { type: "string" },
+                    },
+                  },
+                },
+              },
+            },
+          };
+          return spec;
+        })
+        .withRule(rules.propertyKey, emptyContext);
+
+      expect(result.results[0].passed).toBeFalsy();
+      expect(result).toMatchSnapshot();
+    });
+
     it("passes when snake case with one component", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
