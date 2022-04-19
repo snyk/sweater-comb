@@ -80,7 +80,8 @@ describe("body properties", () => {
 
       expect(result.results[0].passed).toBeTruthy();
       expect(result).toMatchSnapshot();
-    });    it("fails when number in n=1 snake case component ", async () => {
+    });
+    it("fails when number in n=1 snake case component ", async () => {
       const result = await compare(baseOpenAPI)
         .to((spec) => {
           spec.paths!["/example"]!.get!.responses = {
