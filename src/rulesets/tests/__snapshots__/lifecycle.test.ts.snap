@@ -1372,12 +1372,12 @@ Object {
           "changeResource": "Example",
           "changeVersion": Object {
             "date": "2021-10-10",
-            "stability": "experimental",
+            "stability": "beta",
           },
           "resourceVersions": Object {
             "Example": Object {
               "2021-10-10": Object {
-                "experimental": Object {
+                "beta": Object {
                   "deprecatedBy": Object {
                     "date": "2021-10-20",
                     "stability": "ga",
@@ -1401,7 +1401,7 @@ Object {
       "condition": "follow sunset rules",
       "docsLink": undefined,
       "effectiveOnDate": undefined,
-      "error": "expected experimental resource Example to be deprecated 30 days",
+      "error": "expected beta resource Example to be deprecated 90 days",
       "isMust": true,
       "isShould": false,
       "passed": false,
@@ -1474,16 +1474,16 @@ Object {
     Object {
       "change": Object {
         "added": Object {
-          "changeDate": "2021-12-01",
+          "changeDate": "2022-02-01",
           "changeResource": "Example",
           "changeVersion": Object {
             "date": "2021-10-10",
-            "stability": "experimental",
+            "stability": "beta",
           },
           "resourceVersions": Object {
             "Example": Object {
               "2021-10-10": Object {
-                "experimental": Object {
+                "beta": Object {
                   "deprecatedBy": Object {
                     "date": "2021-10-20",
                     "stability": "ga",

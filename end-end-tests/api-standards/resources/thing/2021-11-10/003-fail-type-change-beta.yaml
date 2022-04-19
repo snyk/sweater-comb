@@ -1,0 +1,263 @@
+# 002-ok-add-operation.yaml
+# Adding a new operation to an existing release is also allowed.
+openapi: 3.0.3
+x-snyk-api-stability: beta
+info:
+  title: v3
+  version: 3.0.0
+servers:
+  - url: https://api.snyk.io/v3
+    description: Public Snyk API
+tags:
+  - name: Thing
+    description: Short description of what Thing represents
+paths:
+  /orgs/{org_id}/thing:
+    post:
+      summary: Create a new thing
+      description: Create a new thing
+      operationId: createThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+      responses:
+        '201':
+          description: Created thing successfully
+          headers:
+            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
+            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
+            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
+            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
+            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
+            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+            location: { $ref: '#/components/x-rest-common/headers/LocationHeader' }
+          content:
+            application/vnd.api+json:
+              schema: { $ref: '#/components/schemas/ThingResourceResponse' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '409': { $ref: '#/components/x-rest-common/responses/409' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+    get:
+      summary: List instances of thing
+      description: List instances of thing
+      operationId: listThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/x-rest-common/parameters/StartingAfter" }
+        - { $ref: "#/components/x-rest-common/parameters/EndingBefore" }
+        - { $ref: "#/components/x-rest-common/parameters/Limit" }
+      responses:
+        '200':
+          description: Returns a list of thing instances
+          headers:
+            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
+            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
+            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
+            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
+            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
+            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+          content:
+            application/vnd.api+json:
+              schema: { $ref: '#/components/schemas/ThingCollectionResponse' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+    delete:
+      summary: Bulk delete a collection of matching things
+      description: Bulk delete a collection of matching things
+      operationId: deleteMatchingThings
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+        - in: query
+          description: Thing IDs to be deleted
+          schema:
+            type: array
+            items:
+              type: string
+          name: thing_ids
+          required: true
+      responses:
+        '204': { $ref: '#/components/x-rest-common/responses/204' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '409': { $ref: '#/components/x-rest-common/responses/409' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+  /orgs/{org_id}/thing/{thing_id}:
+    get:
+      summary: Get an instance of thing
+      description: Get an instance of thing
+      operationId: getThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: '#/components/parameters/ThingId' }
+      responses:
+        '200':
+          description: Returns an instance of thing
+          headers:
+            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
+            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
+            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
+            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
+            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
+            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+          content:
+            application/vnd.api+json:
+              schema: { $ref: '#/components/schemas/ThingResourceResponse' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+    patch:
+      summary: Update an instance of thing
+      description: Update an instance of thing
+      operationId: updateThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: '#/components/parameters/ThingId' }
+      responses:
+        '200':
+          description: Instance of thing is updated.
+          headers:
+            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
+            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
+            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
+            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
+            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
+            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+          content:
+            application/vnd.api+json:
+              schema: { $ref: '#/components/schemas/ThingResourceResponse' }
+        '204': { $ref: '#/components/x-rest-common/responses/204' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '409': { $ref: '#/components/x-rest-common/responses/409' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+    delete:
+      summary: Delete an instance of thing
+      description: Delete an instance of thing
+      operationId: deleteThing
+      tags:
+        - Thing
+      parameters:
+        - { $ref: '#/components/x-rest-common/parameters/Version' }
+        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: '#/components/parameters/ThingId' }
+      responses:
+        '204': { $ref: '#/components/x-rest-common/responses/204' }
+        '400': { $ref: '#/components/x-rest-common/responses/400' }
+        '401': { $ref: '#/components/x-rest-common/responses/401' }
+        '403': { $ref: '#/components/x-rest-common/responses/403' }
+        '404': { $ref: '#/components/x-rest-common/responses/404' }
+        '409': { $ref: '#/components/x-rest-common/responses/409' }
+        '500': { $ref: '#/components/x-rest-common/responses/500' }
+components:
+  x-rest-common:
+    $ref: '../../../../../components/common.yaml'
+  parameters:
+    OrgId:
+      name: org_id
+      in: path
+      required: true
+      description: Org ID
+      schema:
+        type: string
+        format: uuid
+    ThingId:
+      name: thing_id
+      in: path
+      required: true
+      description: Unique identifier for thing instances
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ThingResourceResponse:
+      type: object
+      description: Response containing a single thing resource object
+      properties:
+        jsonapi: { $ref: '#/components/x-rest-common/schemas/JsonApi' }
+        data: { $ref: '#/components/schemas/ThingResource' }
+        links: { $ref: '#/components/x-rest-common/schemas/SelfLink' }
+
+    ThingCollectionResponse:
+      type: object
+      description: Response containing a collection of thing resource objects
+      properties:
+        jsonapi: { $ref: '#/components/x-rest-common/schemas/JsonApi' }
+        data: { $ref: '#/components/schemas/ThingCollection' }
+        links: { $ref: '#/components/x-rest-common/schemas/PaginatedLinks' }
+
+    ThingResource:
+      type: object
+      description: thing resource object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d5b640e5-d88c-4c17-9bf0-93597b7a1ce2
+        type: { $ref: '#/components/x-rest-common/schemas/Types' }
+        attributes: { $ref: '#/components/schemas/ThingAttributes' }
+        relationships: { $ref: '#/components/schemas/ThingRelationships' }
+      additionalProperties: false
+
+    ThingRelationships:
+      type: object
+      properties:
+        example: { $ref: '#/components/x-rest-common/schemas/Relationship' }
+      additionalProperties: false
+
+    ThingCollection:
+      type: array
+      items: { $ref: '#/components/schemas/ThingResource' }
+
+    ThingAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of this instance of thing.
+          example: thing
+        created:
+          type: string
+          description: Timestamp when this instance of thing was created.
+          format: date-time
+          example: '2021-10-05T13:23:17Z'
+        updated:
+          type: string
+          description: Timestamp when this instance of thing was last updated.
+          format: date-time
+          example: '2021-10-05T13:25:29Z'
+        description:
+          type: string
+          description: User-friendly description of this instance of thing.
+          example: "This is a thing named thing."
+        strangeness:
+          # Should fail: changing the type of a property is a breaking change
+          type: string
+          description: The amount of strangeness this thing adds or removes from the situation.
+          example: "42"
+      additionalProperties: false

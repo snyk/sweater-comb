@@ -1,10 +1,8 @@
 openapi: 3.0.3
-x-snyk-api-stability: experimental
+x-snyk-api-stability: beta
 info:
   title: v3
   version: 3.0.0
-  description: |-
-    This is the baseline OpenAPI spec with a non-conforming /thing endpoint.
 servers:
   - url: https://api.snyk.io/v3
     description: Public Snyk API
@@ -12,52 +10,6 @@ tags:
   - name: Thing
     description: Short description of what Thing represents
 paths:
-  /thing:
-    post:
-      summary: Create a new universal thing
-      description: Create a new universal thing
-      operationId: createUniversalThing
-      tags:
-        - Thing
-      parameters:
-        - { $ref: "#/components/x-rest-common/parameters/Version" }
-      responses:
-        "201":
-          description: Created thing successfully
-          headers:
-            snyk-version-requested:
-              {
-                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
-              }
-            snyk-version-served:
-              {
-                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
-              }
-            snyk-request-id:
-              {
-                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
-              }
-            snyk-version-lifecycle-stage:
-              {
-                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
-              }
-            deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
-            location:
-              { $ref: "#/components/x-rest-common/headers/LocationHeader" }
-          content:
-            application/vnd.api+json:
-              schema: { $ref: "#/components/schemas/ThingResourceResponse" }
-        "400": { $ref: "#/components/x-rest-common/responses/400" }
-        "401": { $ref: "#/components/x-rest-common/responses/401" }
-        "403": { $ref: "#/components/x-rest-common/responses/403" }
-        "404": { $ref: "#/components/x-rest-common/responses/404" }
-        "409": { $ref: "#/components/x-rest-common/responses/409" }
-        "500": { $ref: "#/components/x-rest-common/responses/500" }
   /orgs/{org_id}/thing:
     post:
       summary: Create a new thing
