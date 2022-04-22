@@ -48,7 +48,7 @@
     "@useoptic/api-checks": "0.24.6",
     "@useoptic/json-pointer-helpers": "0.24.6",
     "@useoptic/openapi-cli": "0.24.6",
-    "@useoptic/openapi-io": "0.24.6",
+    "@useoptic/openapi-io": "0.24.7",
     "@useoptic/openapi-utilities": "0.24.6",
     "chai": "^4.3.4",
     "chalk": "^4.0.0",
