@@ -19,7 +19,6 @@ const cli = makeCiCli("sweater-comb", apiCheckService, {
   opticToken: process.env.OPTIC_TOKEN || "",
   gitProvider: {
     token: process.env.GITHUB_TOKEN || "",
-    provider: "github",
   },
   ciProvider: "circleci",
 });
