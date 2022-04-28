@@ -356,7 +356,7 @@ responses:
         schema: { $ref: '#/schemas/ErrorDocument' }
   
   '401':
-    description: 'Unauthorized: the request requires an authentication token or a token with more permissions.'
+    description: 'Unauthorized: the request requires an authentication token.'
     headers:
       snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
       snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
@@ -369,7 +369,7 @@ responses:
         schema: { $ref: '#/schemas/ErrorDocument' }
   
   '403':
-    description: 'Unauthorized: the request requires an authentication token or a token with more permissions.'
+    description: 'Forbidden: the request requires an authentication token with more or different permissions.'
     headers:
       snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
       snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
