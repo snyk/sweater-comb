@@ -254,40 +254,26 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
   }
 
   get specification() {
-    const change: IChange = {
-      location: {
-        conceptualLocation: { path: "This Specification", method: "" },
-        jsonPath: "/",
-        conceptualPath: [],
-        kind: "API",
-      },
-    } as any;
+    const dsl = this;
 
-    const value: ShouldOrMust<
-      (
-        document: OpenAPIV3.Document,
-        context: SynkApiCheckContext,
-        docs: DocsLinkHelper,
-      ) => Promise<void> | void
-    > = {
-      must: (statement, handler) => {
-        const docsHelper = newDocsLinkHelper();
-        this.checks.push(
-          runCheck(
-            change,
-            docsHelper,
-            "this specification: ",
-            statement,
-            true,
-            () => handler(this.nextJsonLike, this.providedContext, docsHelper),
-          ),
-        );
-      },
-    };
-
-    return {
-      requirement: value,
-    };
+    return genericEntityRuleImpl<
+      OpenApiKind.Specification,
+      OperationLocation,
+      SynkApiCheckContext,
+      OpenAPIV3.Document
+    >(
+      OpenApiKind.Specification,
+      dsl.changelog,
+      dsl.nextFacts,
+      () => ``,
+      () => ({
+        path: "This Specification",
+        method: "",
+        ...this.providedContext,
+      }),
+      (...items) => dsl.checks.push(...items),
+      (pointer: string) => jsonPointerHelpers.get(dsl.nextJsonLike, pointer),
+    );
   }
 
   get request() {

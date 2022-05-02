@@ -7,15 +7,15 @@ export const rules = {
   componentNameCase: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "use pascal case for component names",
-      (spec, context, docs) => {
+      (spec, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.referencedEntities);
-        const componentTypes = Object.keys(spec.components || {});
+        const componentTypes = Object.keys(specItem.components || {});
         for (const componentType of componentTypes) {
           if (componentType.startsWith("x-")) {
             continue;
           }
           const componentNames = Object.keys(
-            spec.components?.[componentType] || {},
+            specItem.components?.[componentType] || {},
           );
           for (const componentName of componentNames) {
             expect(pascalCase(componentName)).to.equal(componentName);
@@ -27,11 +27,11 @@ export const rules = {
   listOpenApiVersions: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "list the available versioned OpenAPI specifications",
-      (spec, context, docs) => {
+      (spec, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.openApiVersions);
         if (spec["x-snyk-api-stability"] === undefined) {
           // Only applicable to compiled OAS; resource versions do not need to declare this
-          const pathUrls = Object.keys(spec.paths);
+          const pathUrls = Object.keys(specItem.paths);
           expect(pathUrls).to.include("/openapi");
         }
       },
@@ -40,11 +40,11 @@ export const rules = {
   getOpenApiVersions: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "provide versioned OpenAPI specifications",
-      (spec, context, docs) => {
+      (spec, context, docs, specItem) => {
         docs.includeDocsLink(links.standards.openApiVersions);
         if (spec["x-snyk-api-stability"] === undefined) {
           // Only applicable to compiled OAS; resource versions do not need to declare this
-          const pathUrls = Object.keys(spec.paths);
+          const pathUrls = Object.keys(specItem.paths);
           expect(pathUrls).to.include("/openapi/{version}");
         }
       },
