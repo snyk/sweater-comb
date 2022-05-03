@@ -225,7 +225,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (
         from: SnykStablity | undefined,
         to: SnykStablity | undefined,
-        context: SynkApiCheckContext,
+        context: SynkApiCheckContext  & { wasDeleted: boolean },
         docs: DocsLinkHelper,
       ) => Promise<void> | void
     > = {
@@ -242,7 +242,12 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
               handler(
                 (changed as any).changed!.before,
                 (changed as any).changed!.after,
-                this.providedContext,
+                {
+                  ...this.providedContext,
+                  wasDeleted: Boolean(
+                    this.nextJsonLike["x-optic-ci-empty-spec"],
+                  ),
+                },
                 docsHelper,
               ),
           ),
