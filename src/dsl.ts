@@ -225,7 +225,7 @@ export class SnykApiCheckDsl implements ApiCheckDsl {
       (
         from: SnykStablity | undefined,
         to: SnykStablity | undefined,
-        context: SynkApiCheckContext  & { wasDeleted: boolean },
+        context: SynkApiCheckContext & { wasDeleted: boolean },
         docs: DocsLinkHelper,
       ) => Promise<void> | void
     > = {
