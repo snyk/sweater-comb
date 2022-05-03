@@ -7,6 +7,7 @@ export const rules = {
     stability.must(
       "be provided for every resource document",
       (before, after, context, docs) => {
+        if (context.wasDeleted) return;
         docs.includeDocsLink(links.versioning.stabilityLevels);
         const allowed = ["wip", "experimental", "beta", "ga"];
         const wasValid = allowed.includes(after || "");

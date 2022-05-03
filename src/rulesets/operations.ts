@@ -188,12 +188,12 @@ export const rules = {
   pathElementsCasing: ({ specification }: SnykApiCheckDsl) => {
     specification.requirement.must(
       "use the right casing for path elements",
-      (spec, context, docs) => {
+      (spec, context, docs, specItem) => {
         if (isBreakingChangeAllowed(context.changeVersion.stability)) {
           return;
         }
         docs.includeDocsLink(links.standards.parameterNamesPathComponents);
-        const pathUrls = Object.keys(spec.paths);
+        const pathUrls = Object.keys(specItem.paths);
         for (const pathUrl of pathUrls) {
           const parts = pathUrl.replace(/[?].*/, "").split(/[/]/);
           const invalid = parts
