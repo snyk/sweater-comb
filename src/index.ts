@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { makeCiCli } from "@useoptic/api-checks/build/ci-cli/make-cli";
+import { initializeCli } from "@useoptic/optic-ci/build/initialize";
 import { newSnykApiCheckService } from "./service";
 import { Command } from "commander";
 import {
@@ -15,36 +15,45 @@ import {
 } from "./workflows/commands";
 
 const apiCheckService = newSnykApiCheckService();
-const cli = makeCiCli("sweater-comb", apiCheckService, {
-  opticToken: process.env.OPTIC_TOKEN || "",
-  gitProvider: {
-    token: process.env.GITHUB_TOKEN || "",
-  },
-  ciProvider: "circleci",
-});
 
-const workflowCommand = new Command("workflow").description(
-  "workflows for designing and building APIs",
-);
-workflowCommand.addCommand(createResourceCommand());
+(async () => {
+  const cli = await initializeCli({
+    token: process.env.OPTIC_TOKEN || "",
+    gitProvider: {
+      token: process.env.GITHUB_TOKEN || "",
+    },
+    checks: [
+      {
+        name: "snyk-checks",
+        type: "custom",
+        checkService: apiCheckService,
+      },
+    ],
+  });
 
-workflowCommand.addCommand(createVersionCommand());
+  const workflowCommand = new Command("workflow").description(
+    "workflows for designing and building APIs",
+  );
+  workflowCommand.addCommand(createResourceCommand());
 
-workflowCommand.addCommand(createUpdateCommand());
+  workflowCommand.addCommand(createVersionCommand());
 
-const operationCommand = new Command("operation").description(
-  "add common operations to an OpenAPI file",
-);
-const operationCommands = [
-  addCreateOperationCommand,
-  addDeleteOperationCommand,
-  addGetOperationCommand,
-  addListOperationCommand,
-  addUpdateOperationCommand,
-];
-operationCommands.forEach((command) => operationCommand.addCommand(command));
+  workflowCommand.addCommand(createUpdateCommand());
 
-workflowCommand.addCommand(operationCommand);
-cli.addCommand(workflowCommand);
+  const operationCommand = new Command("operation").description(
+    "add common operations to an OpenAPI file",
+  );
+  const operationCommands = [
+    addCreateOperationCommand,
+    addDeleteOperationCommand,
+    addGetOperationCommand,
+    addListOperationCommand,
+    addUpdateOperationCommand,
+  ];
+  operationCommands.forEach((command) => operationCommand.addCommand(command));
 
-cli.parse(process.argv);
+  workflowCommand.addCommand(operationCommand);
+  cli.addCommand(workflowCommand);
+
+  cli.parse(process.argv);
+})();
