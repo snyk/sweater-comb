@@ -44,7 +44,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.17.9",
     "@useoptic/api-checks": "0.25.2",
     "@useoptic/optic-ci": "0.25.2",
     "@useoptic/json-pointer-helpers": "0.25.2",
