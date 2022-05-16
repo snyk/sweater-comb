@@ -22,7 +22,7 @@ describe("lifecycle rules", () => {
         };
         const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-        expect(results.length > 0).toBe(true);
+        expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
       },
@@ -39,7 +39,7 @@ describe("lifecycle rules", () => {
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-      expect(results.length > 0).toBe(true);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
@@ -61,7 +61,7 @@ describe("lifecycle rules", () => {
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-      expect(results.length > 0).toBe(true);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
@@ -83,7 +83,7 @@ describe("lifecycle rules", () => {
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-      expect(results.length > 0).toBe(true);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
@@ -100,7 +100,7 @@ describe("lifecycle rules", () => {
         context,
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length > 0).toBe(true);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
@@ -137,7 +137,7 @@ describe("lifecycle rules", () => {
           context: sunsetContext,
         };
         const results = ruleRunner.runRulesWithFacts(ruleInputs);
-        expect(results.length > 0).toBe(true);
+        expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(false);
         expect(results).toMatchSnapshot();
       });
@@ -152,7 +152,7 @@ describe("lifecycle rules", () => {
           context: { ...sunsetContext, changeDate: "2022-02-01" },
         };
         const results = ruleRunner.runRulesWithFacts(ruleInputs);
-        expect(results.length > 0).toBe(true);
+        expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
       });
