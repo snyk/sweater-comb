@@ -66,7 +66,9 @@
     "@useoptic/json-pointer-helpers",
     "@useoptic/openapi-cli",
     "@useoptic/openapi-io",
-    "@useoptic/openapi-utilities"
+    "@useoptic/optic-ci",
+    "@useoptic/openapi-utilities",
+    "@useoptic/rulesets-base"
   ],
   "resolutions": {
     "urijs": "^1.19.11"
