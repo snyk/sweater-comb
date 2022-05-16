@@ -59,7 +59,7 @@ const empty204Content = new ResponseRule({
 });
 
 const contentFor2xxStatusCodes = new ResponseRule({
-  name: "context for 2xx status codes",
+  name: "content for 2xx status codes",
   matches: (response) => response.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added(

@@ -1,10 +1,5 @@
-import {
-  RuleError,
-  OperationRule,
-} from "@useoptic/rulesets-base";
-import {
-  isSingletonPath,
-} from "../utils";
+import { RuleError, OperationRule } from "@useoptic/rulesets-base";
+import { isSingletonPath } from "../utils";
 
 export const doNotAllowDeleteOrPostIdForSingleton = new OperationRule({
   name: "disallow singletons for delete or post",

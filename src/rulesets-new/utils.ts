@@ -1,6 +1,6 @@
 import { RuleContext } from "@useoptic/rulesets-base";
 
-export const isOpenApiPath = (path: string) => !/\/openapi/.test(path);
+export const isOpenApiPath = (path: string) => /\/openapi/.test(path);
 export const isSingletonPath = (rulesContext: RuleContext) =>
   !!rulesContext.specification.raw.paths[rulesContext.operation.path]?.[
     "x-snyk-resource-singleton"
