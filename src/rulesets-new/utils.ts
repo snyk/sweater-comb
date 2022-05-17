@@ -12,4 +12,7 @@ export const isBatchPostOperation = (requests) => {
   );
 
   return request ? request.value.flatSchema.type === "array" : false;
+
+export const isBreakingChangeAllowed = (stability: string): boolean => {
+  return stability === "wip" || stability === "experimental";
 };
