@@ -6,7 +6,7 @@ import { compoundDocuments } from "../compound-document-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("compoundDocuments", () => {
-  test("does not allow compound documents", () => {
+  test("fails when specifying compound documents", () => {
     const afterJson: OpenAPIV3.Document = {
       ...baseJson,
       paths: {

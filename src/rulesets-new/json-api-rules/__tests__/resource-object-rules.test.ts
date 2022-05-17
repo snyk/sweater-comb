@@ -7,7 +7,7 @@ const baseJson = TestHelpers.createEmptySpec();
 
 describe("resource object rules", () => {
   describe("valid GET responses", () => {
-    test("status code 200", () => {
+    test("passes when status code 200 has the correct JSON body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -64,7 +64,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid post shapes", () => {
-    test("status code 201", () => {
+    test("passes when status code 201 has the correct headers and body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -125,7 +125,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid patch shapes", () => {
-    test("status code 200", () => {
+    test("passes when status code 200 has the correct body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -185,7 +185,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid delete shapes", () => {
-    test("status code 200", () => {
+    test("passes when status code 200 has the correct body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -228,7 +228,7 @@ describe("resource object rules", () => {
     });
   });
 
-  test("empty content for 204 status codes", () => {
+  test("fails when content is specified for 204 status codes", () => {
     const afterJson = {
       ...baseJson,
       paths: {

@@ -6,7 +6,7 @@ import { paginationRules } from "../pagination-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("pagination rules", () => {
-  test("pagination parameters", () => {
+  test("fails when pagination endpoint does not specify all pagination parameters", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -39,7 +39,7 @@ describe("pagination rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("unsupported pagination parameters for non-paginated endpoints", () => {
+  test("fails when non-paginated endpoint specifies any pagination parameter", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -69,7 +69,7 @@ describe("pagination rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("paginated links", () => {
+  test("fails when paginated endpoints do not specify links", () => {
     const afterJson = {
       ...baseJson,
       paths: {

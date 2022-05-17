@@ -6,7 +6,7 @@ import { jsonApiContentTypeRule } from "../content-type-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("content type rules", () => {
-  test("require all responses to have a json:api content type", () => {
+  test("fails when response does not have json:api content type", () => {
     const beforeJson: OpenAPIV3.Document = {
       ...baseJson,
       paths: {

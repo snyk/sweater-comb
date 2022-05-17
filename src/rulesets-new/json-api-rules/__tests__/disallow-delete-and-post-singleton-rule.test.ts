@@ -6,21 +6,24 @@ import { doNotAllowDeleteOrPostIdForSingleton } from "../disallow-delete-and-pos
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("singleton disallowed methods", () => {
-  test.each([["post"], ["delete"]])("disallow %s method", (method) => {
-    const afterJson = {
-      ...baseJson,
-      paths: {
-        "/api/example": {
-          "x-snyk-resource-singleton": true,
-          [method]: {
-            responses: {
-              "200": {
-                description: "",
-                content: {
-                  "application/json": {
-                    schema: {
-                      type: "object",
-                      properties: {},
+  test.each([["post"], ["delete"]])(
+    "fails when adding %s method to singleton",
+    (method) => {
+      const afterJson = {
+        ...baseJson,
+        paths: {
+          "/api/example": {
+            "x-snyk-resource-singleton": true,
+            [method]: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {},
+                      },
                     },
                   },
                 },
@@ -28,17 +31,17 @@ describe("singleton disallowed methods", () => {
             },
           },
         },
-      },
-    } as OpenAPIV3.Document;
+      } as OpenAPIV3.Document;
 
-    const ruleRunner = new RuleRunner([doNotAllowDeleteOrPostIdForSingleton]);
-    const ruleInputs = {
-      ...TestHelpers.createRuleInputs(baseJson, afterJson),
-      context,
-    };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
-    expect(results.length).toBeGreaterThan(0);
-    expect(results.every((result) => result.passed)).toBe(false);
-    expect(results).toMatchSnapshot();
-  });
+      const ruleRunner = new RuleRunner([doNotAllowDeleteOrPostIdForSingleton]);
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseJson, afterJson),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results).toMatchSnapshot();
+    },
+  );
 });

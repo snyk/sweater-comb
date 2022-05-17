@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`content type rules require all responses to have a json:api content type 1`] = `
+exports[`content type rules fails when response does not have json:api content type 1`] = `
 Array [
   Object {
     "change": Object {

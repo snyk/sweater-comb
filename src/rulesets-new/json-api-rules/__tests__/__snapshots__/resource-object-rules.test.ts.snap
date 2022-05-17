@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`resource object rules empty content for 204 status codes 1`] = `
+exports[`resource object rules fails when content is specified for 204 status codes 1`] = `
 Array [
   Object {
     "change": Object {
@@ -42,7 +42,7 @@ Array [
 ]
 `;
 
-exports[`resource object rules valid GET responses status code 200 1`] = `
+exports[`resource object rules valid GET responses passes when status code 200 has the correct JSON body 1`] = `
 Array [
   Object {
     "change": Object {
@@ -213,7 +213,7 @@ Array [
 ]
 `;
 
-exports[`resource object rules valid delete shapes status code 200 1`] = `
+exports[`resource object rules valid delete shapes passes when status code 200 has the correct body 1`] = `
 Array [
   Object {
     "change": Object {
@@ -341,7 +341,7 @@ Array [
 ]
 `;
 
-exports[`resource object rules valid patch shapes status code 200 1`] = `
+exports[`resource object rules valid patch shapes passes when status code 200 has the correct body 1`] = `
 Array [
   Object {
     "change": Object {
@@ -555,7 +555,7 @@ Array [
 ]
 `;
 
-exports[`resource object rules valid post shapes status code 201 1`] = `
+exports[`resource object rules valid post shapes passes when status code 201 has the correct headers and body 1`] = `
 Array [
   Object {
     "change": Object {

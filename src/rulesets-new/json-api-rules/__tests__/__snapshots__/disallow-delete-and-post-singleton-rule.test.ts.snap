@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`singleton disallowed methods disallow delete method 1`] = `
+exports[`singleton disallowed methods fails when adding delete method to singleton 1`] = `
 Array [
   Object {
     "change": Object {
@@ -36,7 +36,7 @@ Array [
 ]
 `;
 
-exports[`singleton disallowed methods disallow post method 1`] = `
+exports[`singleton disallowed methods fails when adding post method to singleton 1`] = `
 Array [
   Object {
     "change": Object {

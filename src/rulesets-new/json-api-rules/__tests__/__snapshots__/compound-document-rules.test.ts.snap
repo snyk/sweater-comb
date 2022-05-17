@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`compoundDocuments does not allow compound documents 1`] = `
+exports[`compoundDocuments fails when specifying compound documents 1`] = `
 Array [
   Object {
     "change": Object {

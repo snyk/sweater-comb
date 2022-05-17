@@ -6,7 +6,7 @@ import { statusCodesRules } from "../status-code-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("status code rules", () => {
-  test("valid 4xx status codes", () => {
+  test("fails when an invalid 4xx status code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -41,7 +41,7 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("valid delete 2xx codes", () => {
+  test("fails when an invalid delete 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -76,7 +76,7 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("valid post 2xx codes", () => {
+  test("fails when an invalid post 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -111,7 +111,7 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("valid batch post 2xx codes", () => {
+  test("fails when an invalid batch post 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {

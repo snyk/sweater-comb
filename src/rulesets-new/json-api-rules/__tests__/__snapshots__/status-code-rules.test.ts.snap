@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`status code rules valid 4xx status codes 1`] = `
+exports[`status code rules fails when an invalid 4xx status code is specified 1`] = `
 Array [
   Object {
     "change": Object {
@@ -42,7 +42,7 @@ Array [
 ]
 `;
 
-exports[`status code rules valid batch post 2xx codes 1`] = `
+exports[`status code rules fails when an invalid batch post 2xx code is specified 1`] = `
 Array [
   Object {
     "change": Object {
@@ -84,7 +84,7 @@ Array [
 ]
 `;
 
-exports[`status code rules valid delete 2xx codes 1`] = `
+exports[`status code rules fails when an invalid delete 2xx code is specified 1`] = `
 Array [
   Object {
     "change": Object {
@@ -126,7 +126,7 @@ Array [
 ]
 `;
 
-exports[`status code rules valid post 2xx codes 1`] = `
+exports[`status code rules fails when an invalid post 2xx code is specified 1`] = `
 Array [
   Object {
     "change": Object {
