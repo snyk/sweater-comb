@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pagination rules fails when non-paginated endpoint specifies any pagination parameter 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use pagination parameters for non-GET operations",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": "expected operation to not support pagination parameter starting_after",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "unsupported pagination parameters",
+    "passed": false,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use pagination parameters for non-GET operations",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "unsupported pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use pagination parameters for non-GET operations",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "unsupported pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+]
+`;
+
+exports[`pagination rules fails when paginated endpoints do not specify links 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {},
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1users/get/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": "Expected a partial match",
+    "expected": "{\\"schema\\":{\\"properties\\":{\\"links\\":{}}}}",
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination links",
+    "passed": false,
+    "received": "{\\"schema\\":{\\"properties\\":{\\"nolinks\\":{\\"type\\":\\"object\\",\\"properties\\":{}}}}}",
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/users",
+  },
+]
+`;
+
+exports[`pagination rules fails when pagination endpoint does not specify all pagination parameters 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/api/users",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "get",
+        ],
+        "jsonPath": "/paths/~1api~1users/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+    "error": "Could not find a partial match in query parameters",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "pagination parameters",
+    "passed": false,
+    "received": undefined,
+    "where": "added operation: GET /api/users",
+  },
+]
+`;
