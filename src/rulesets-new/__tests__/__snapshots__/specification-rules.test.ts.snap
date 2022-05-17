@@ -1,0 +1,410 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`specification rules compiled specs fails when /openapi endpoint isn't specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "provide versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "error": "Expected route /openapi/{version} to be included",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "get open api versions",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "list the available versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "list open api version",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+]
+`;
+
+exports[`specification rules compiled specs fails when /openapi/{versions} endpoint isn't specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "provide versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "error": "Expected route /openapi/{version} to be included",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "get open api versions",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+      },
+    },
+    "condition": "list the available versioned OpenAPI specifications",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+    "error": "Expected route /openapi to be included",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "list open api version",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+]
+`;
+
+exports[`specification rules fails when components are not PascalCase 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "error": "Expected thingResourceResponse to be pascal case",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+]
+`;
+
+exports[`specification rules uncompiled specs passes when /openapi endpoint isn't specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+]
+`;
+
+exports[`specification rules uncompiled specs passes when /openapi/{versions} endpoint isn't specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "use pascal case for component names",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {},
+        "conceptualPath": Array [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": Object {
+        "info": Object {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.3",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": "have name and description for tags",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for specification",
+  },
+]
+`;
