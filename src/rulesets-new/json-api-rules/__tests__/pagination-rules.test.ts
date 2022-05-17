@@ -10,7 +10,7 @@ describe("pagination rules", () => {
     const afterJson = {
       ...baseJson,
       paths: {
-        "/api/users/{user_id}": {
+        "/api/users": {
           get: {
             parameters: [
               {
@@ -43,7 +43,7 @@ describe("pagination rules", () => {
     const afterJson = {
       ...baseJson,
       paths: {
-        "/api/users/{user_id}": {
+        "/api/users": {
           "x-snyk-resource-singleton": true,
           get: {
             parameters: [
@@ -73,7 +73,7 @@ describe("pagination rules", () => {
     const afterJson = {
       ...baseJson,
       paths: {
-        "/api/users/{user_id}": {
+        "/api/users": {
           get: {
             parameters: [
               {

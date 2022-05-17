@@ -6,20 +6,20 @@ Array [
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -32,26 +32,26 @@ Array [
     "name": "pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -64,26 +64,26 @@ Array [
     "name": "pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -96,7 +96,7 @@ Array [
     "name": "pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
@@ -114,17 +114,17 @@ Array [
             "statusCode": "200",
           },
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
           "responses",
           "200",
           "application/vnd.api+json",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get/responses/200/content/application~1vnd.api+json",
+        "jsonPath": "/paths/~1api~1users/get/responses/200/content/application~1vnd.api+json",
         "kind": "body",
       },
     },
@@ -137,7 +137,7 @@ Array [
     "name": "pagination links",
     "passed": false,
     "received": "{\\"schema\\":{\\"properties\\":{\\"nolinks\\":{\\"type\\":\\"object\\",\\"properties\\":{}}}}}",
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/users/{user_id}",
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/users",
   },
 ]
 `;
@@ -148,20 +148,20 @@ Array [
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -174,26 +174,26 @@ Array [
     "name": "pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -206,26 +206,26 @@ Array [
     "name": "pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -238,7 +238,7 @@ Array [
     "name": "pagination parameters",
     "passed": false,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
 ]
 `;
@@ -249,20 +249,20 @@ Array [
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -275,26 +275,26 @@ Array [
     "name": "unsupported pagination parameters",
     "passed": false,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -307,26 +307,26 @@ Array [
     "name": "unsupported pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
   Object {
     "change": Object {
       "added": Object {
         "method": "get",
-        "pathPattern": "/api/users/{user_id}",
+        "pathPattern": "/api/users",
       },
       "changeType": "added",
       "location": Object {
         "conceptualLocation": Object {
           "method": "get",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "get",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/get",
+        "jsonPath": "/paths/~1api~1users/get",
         "kind": "operation",
       },
     },
@@ -339,7 +339,7 @@ Array [
     "name": "unsupported pagination parameters",
     "passed": true,
     "received": undefined,
-    "where": "added operation: GET /api/users/{user_id}",
+    "where": "added operation: GET /api/users",
   },
 ]
 `;

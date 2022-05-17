@@ -146,7 +146,7 @@ const jsonApiProperty = new ResponseBodyRule({
 const locationHeader = new ResponseRule({
   name: "location header",
   matches: (responseBody, rulesContext) =>
-    rulesContext.operation.method === "get" &&
+    rulesContext.operation.method === "post" &&
     responseBody.statusCode === "201",
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});

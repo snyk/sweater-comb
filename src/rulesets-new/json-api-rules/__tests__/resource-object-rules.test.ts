@@ -61,57 +61,6 @@ describe("resource object rules", () => {
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
-
-    test("status code 201", () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example": {
-            get: {
-              responses: {
-                "201": {
-                  description: "",
-                  headers: {
-                    location: {},
-                  },
-                  content: {
-                    "application/vnd.api+json": {
-                      schema: {
-                        type: "object",
-                        properties: {
-                          data: {
-                            type: "object",
-                            properties: {
-                              id: {
-                                type: "string",
-                                format: "uuid",
-                              },
-                              type: {
-                                type: "string",
-                              },
-                            },
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      } as OpenAPIV3.Document;
-
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    });
   });
 
   describe("valid post shapes", () => {
@@ -124,6 +73,9 @@ describe("resource object rules", () => {
               responses: {
                 "201": {
                   description: "",
+                  headers: {
+                    location: {},
+                  },
                   content: {
                     "application/vnd.api+json": {
                       schema: {

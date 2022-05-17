@@ -213,171 +213,6 @@ Array [
 ]
 `;
 
-exports[`resource object rules valid GET responses status code 201 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
-          "type": "object",
-        },
-      },
-      "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
-              "contentType": "application/vnd.api+json",
-            },
-            "statusCode": "201",
-          },
-          "method": "get",
-          "path": "/api/example",
-        },
-        "conceptualPath": Array [
-          "operations",
-          "/api/example",
-          "get",
-          "responses",
-          "201",
-          "application/vnd.api+json",
-        ],
-        "jsonPath": "/paths/~1api~1example/get/responses/201/content/application~1vnd.api+json",
-        "kind": "body",
-      },
-    },
-    "condition": "match expected shape",
-    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
-    "error": undefined,
-    "expected": undefined,
-    "isMust": true,
-    "isShould": false,
-    "name": "include JSON:API data property for 2xx status codes",
-    "passed": true,
-    "received": undefined,
-    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: GET /api/example",
-  },
-  Object {
-    "change": Object {
-      "added": Object {
-        "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
-          "type": "object",
-        },
-      },
-      "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
-              "contentType": "application/vnd.api+json",
-            },
-            "statusCode": "201",
-          },
-          "method": "get",
-          "path": "/api/example",
-        },
-        "conceptualPath": Array [
-          "operations",
-          "/api/example",
-          "get",
-          "responses",
-          "201",
-          "application/vnd.api+json",
-        ],
-        "jsonPath": "/paths/~1api~1example/get/responses/201/content/application~1vnd.api+json",
-        "kind": "body",
-      },
-    },
-    "condition": "match expected shape",
-    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
-    "error": undefined,
-    "expected": undefined,
-    "isMust": true,
-    "isShould": false,
-    "name": "valid get / post response data schema",
-    "passed": true,
-    "received": undefined,
-    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: GET /api/example",
-  },
-  Object {
-    "change": Object {
-      "added": Object {
-        "description": "",
-        "statusCode": "201",
-      },
-      "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "statusCode": "201",
-          },
-          "method": "get",
-          "path": "/api/example",
-        },
-        "conceptualPath": Array [
-          "operations",
-          "/api/example",
-          "get",
-          "responses",
-          "201",
-        ],
-        "jsonPath": "/paths/~1api~1example/get/responses/201",
-        "kind": "response",
-      },
-    },
-    "condition": "include content for 2xx status codes other than 204",
-    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
-    "error": undefined,
-    "expected": undefined,
-    "isMust": true,
-    "isShould": false,
-    "name": "content for 2xx status codes",
-    "passed": true,
-    "received": undefined,
-    "where": "added response status code: 201 in operation: GET /api/example",
-  },
-  Object {
-    "change": Object {
-      "added": Object {
-        "description": "",
-        "statusCode": "201",
-      },
-      "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "statusCode": "201",
-          },
-          "method": "get",
-          "path": "/api/example",
-        },
-        "conceptualPath": Array [
-          "operations",
-          "/api/example",
-          "get",
-          "responses",
-          "201",
-        ],
-        "jsonPath": "/paths/~1api~1example/get/responses/201",
-        "kind": "response",
-      },
-    },
-    "condition": "have response header matching shape",
-    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
-    "error": undefined,
-    "expected": undefined,
-    "isMust": true,
-    "isShould": false,
-    "name": "location header",
-    "passed": true,
-    "received": undefined,
-    "where": "added response status code: 201 in operation: GET /api/example",
-  },
-]
-`;
-
 exports[`resource object rules valid delete shapes status code 200 1`] = `
 Array [
   Object {
@@ -884,6 +719,43 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "content for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 in operation: POST /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "have response header matching shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "location header",
     "passed": true,
     "received": undefined,
     "where": "added response status code: 201 in operation: POST /api/example",

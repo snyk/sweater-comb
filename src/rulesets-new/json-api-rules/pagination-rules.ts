@@ -93,7 +93,7 @@ export const paginationRules = new Ruleset({
   docsLink: links.jsonApi.pagination,
   matches: (ruleContext) =>
     !isOpenApiPath(ruleContext.operation.path) &&
-    isItemOperation(ruleContext.operation.path),
+    !isItemOperation(ruleContext.operation.path),
   rules: [
     paginationParameters,
     unsupportedPaginationParameters,
