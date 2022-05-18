@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`singleton disallowed methods fails when adding delete method to singleton 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "delete",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "delete",
+        ],
+        "jsonPath": "/paths/~1api~1example/delete",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "delete",
+        "pathPattern": "/api/example",
+      },
+    },
+    "condition": "delete and post are not allowed for singletons",
+    "docsLink": undefined,
+    "error": "delete is not allowed in JSON:API singletons",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "disallow singletons for delete or post",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for operation: DELETE /api/example",
+  },
+]
+`;
+
+exports[`singleton disallowed methods fails when adding post method to singleton 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+        ],
+        "jsonPath": "/paths/~1api~1example/post",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "post",
+        "pathPattern": "/api/example",
+      },
+    },
+    "condition": "delete and post are not allowed for singletons",
+    "docsLink": undefined,
+    "error": "post is not allowed in JSON:API singletons",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "disallow singletons for delete or post",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for operation: POST /api/example",
+  },
+]
+`;

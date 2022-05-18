@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`status code rules fails when an invalid 4xx status code is specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "i am not valid",
+        "statusCode": "405",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "405",
+          },
+          "method": "get",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users/{}",
+          "get",
+          "responses",
+          "405",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/get/responses/405",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 4xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": "expected response to not support status code 405",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 4xx status codes",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 405 in operation: GET /api/users/{user_id}",
+  },
+]
+`;
+
+exports[`status code rules fails when an invalid batch post 2xx code is specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "i am not valid",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "post",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users/{}",
+          "post",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": "expected POST response for batches to only support 204, not 200",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for post",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: POST /api/users/{user_id}",
+  },
+]
+`;
+
+exports[`status code rules fails when an invalid delete 2xx code is specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "i am not valid",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "delete",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users/{}",
+          "delete",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/delete/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": "expected response to not support status code 201",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for delete",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 201 in operation: DELETE /api/users/{user_id}",
+  },
+]
+`;
+
+exports[`status code rules fails when an invalid post 2xx code is specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "i am not valid",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "post",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users/{}",
+          "post",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": "expected POST response to only support 201, not 200",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for post",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: POST /api/users/{user_id}",
+  },
+]
+`;

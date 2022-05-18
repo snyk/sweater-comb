@@ -1,0 +1,764 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resource object rules fails when content is specified for 204 status codes 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "204",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "204",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "204",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/204",
+        "kind": "response",
+      },
+    },
+    "condition": "not include content for 204 status codes",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": "expected response to not have content",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "empty content for 204 status codes",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 204 in operation: PATCH /api/example",
+  },
+]
+`;
+
+exports[`resource object rules valid GET responses passes when status code 200 has the correct JSON body 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "get",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/get/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "include JSON:API data property for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "get",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/get/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "self links",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "get",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/get/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid get / post response data schema",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "get",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1example/get/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "include content for 2xx status codes other than 204",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: GET /api/example",
+  },
+]
+`;
+
+exports[`resource object rules valid delete shapes passes when status code 200 has the correct body 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "delete",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "delete",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/delete/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "include JSON:API type property for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: DELETE /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "delete",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "delete",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/delete/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid patch response data schema",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: DELETE /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "delete",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "delete",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1example/delete/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "include content for 2xx status codes other than 204",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: DELETE /api/example",
+  },
+]
+`;
+
+exports[`resource object rules valid patch shapes passes when status code 200 has the correct body 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response data for patch",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "include JSON:API type property for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "self links",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "200",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "200",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/200/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid patch response data schema",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "patch",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "patch",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1example/patch/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "include content for 2xx status codes other than 204",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: PATCH /api/example",
+  },
+]
+`;
+
+exports[`resource object rules valid post shapes passes when status code 201 has the correct headers and body 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "include JSON:API data property for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "self links",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "contentType": "application/vnd.api+json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/vnd.api+json",
+            },
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+          "application/vnd.api+json",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201/content/application~1vnd.api+json",
+        "kind": "body",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid get / post response data schema",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "include content for 2xx status codes other than 204",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content for 2xx status codes",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 in operation: POST /api/example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "201",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "201",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "201",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/201",
+        "kind": "response",
+      },
+    },
+    "condition": "have response header matching shape",
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "location header",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 201 in operation: POST /api/example",
+  },
+]
+`;

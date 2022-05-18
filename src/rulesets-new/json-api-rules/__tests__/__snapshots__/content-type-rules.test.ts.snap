@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content type rules fails when response does not have json:api content type 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/api/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/example",
+          "get",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1example/get/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": "use the JSON:API content type",
+    "docsLink": "https://jsonapi.org/format/#content-negotiation-clients",
+    "error": "expected response to support application/vnd.api+json",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "JSON:API content type",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 200 in operation: GET /api/example",
+  },
+]
+`;
