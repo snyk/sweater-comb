@@ -101,13 +101,13 @@ Our lifecycle version management tooling, [Vervet](https://github.com/snyk/verve
 
 These specs can and generally should be co-located with their code implementation. That implementation may even be generated in-part from the spec.
 
-### Version stability levels
+#### Version stability levels
 
 A version's stability level is expressed in each OpenAPI `spec.yaml` with a top-level extension, `x-snyk-api-stability`.
 
 ![Version stability in resource spec](media/resource_stability_ext.png)
 
-## API versions from individual resources
+### API versions from individual resources
 
 [**Vervet**, an API lifecycle management tool](https://github.com/snyk/vervet), merges all the individual resources and their versions in the directory structure described above, into a collection of OpenAPI specifications for the entire API at each version.
 
@@ -117,7 +117,7 @@ These versions may then be published, used to generate documentation, client SDK
 
 Versions for the entire API are expressed in the form *`{version date}~{stability level}`*, assuming GA was not specified.
 
-## <a id="resolving-versions"></a>How are versions accessed and resolved by consumers?
+### <a id="resolving-versions"></a>How are versions accessed and resolved by consumers?
 
 Consumers of the API can request a version of the API at any point in time, at any stability level. These dates and versions do not need to exactly match the resolved versions — they are resolved by a search. For example a request like:
 
@@ -141,11 +141,11 @@ GET /path/to/resource?version=experimental
 
 Developing against a "floating version" like this would not be recommended, but it can be a useful way to discover new development.
 
-# Versioning in requests and responses
+## Versioning in requests and responses
 
 With the concept of versioning established, requests and responses must support certain parameters and headers related to versioning.
 
-## `version` query parameter
+### `version` query parameter
 
 All requests must provide a `?version=YYYY-mm-dd~stability` parameter:
 
@@ -156,7 +156,7 @@ Services are responsible for routing requests at the given `version` to the appr
 
 If a request does not provide a version query parameter or the format of the parameter is misformed a 400 Bad Request *must* be returned. This is to prevent our customer's implementations from breaking as we release new versions of a resource.
 
-## <a id="response-headers"></a>Versioning response headers
+### <a id="response-headers"></a>Versioning response headers
 
 Responses must inform the requesting client how the version was resolved and the status of the matched version with these headers:
 
@@ -166,7 +166,7 @@ Responses must inform the requesting client how the version was resolved and the
 - `snyk-version-served` - The version that matched the request. Note that the matched version may be of equal or greater stability, and at the most recent version date prior to the date requested.
 - `sunset` - [RFC 8594](https://datatracker.ietf.org/doc/html/rfc8594) standard header reflecting the sunset date of a deprecated resource.
 
-## Consuming the versioned API
+### Consuming the versioned API
 
 Using the `?version=` parameter, clients may choose to interact with any released version of the API.
 

@@ -19,7 +19,8 @@
     "lint:code": "eslint --color --cache 'src/**/*.{js,ts}'",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
     "lint:commits": "commitlint --from=ccbdd18876ab01a2be0801211a13a8609012425e -V",
-    "format": "prettier --write 'src/**/*.{js,ts}'"
+    "format": "prettier --write 'src/**/*.{js,ts}'",
+    "serve:docs": "techdocs-cli serve:mkdocs -v"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -27,6 +28,7 @@
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "@commitlint/cli": "16.0.2",
+    "@techdocs/cli": "^1.1.1",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^26.0.24",
     "@types/json-stable-stringify": "^1.0.33",

@@ -38,11 +38,11 @@ For all others, I hope it is an interesting insight into how we're building APIs
 
 — Casey Marshall, `2021-09-24~beta`
 
-# Resources
+## Resources
 
 Snyk's API is essentially a catalogue of models, represented as *resources*.
 
-## What is a resource?
+### What is a resource?
 
 > The key abstraction of information in REST is a resource. Any information that can be named can be a resource: a document or image, a temporal service (e.g. "today's weather in Los Angeles"), a collection of other resources, a non-virtual object (e.g. a person), and so on. In other words, any concept that might be the target of an author's hypertext reference must fit within the definition of a resource. A resource is a conceptual mapping to a set of entities, not the entity that corresponds to the mapping at any particular point in time.
 >
@@ -59,27 +59,27 @@ Our API presents the core models from which Snyk products and services are built
 
 Object instances of these all relate to each other in a rich graph of associations, which are represented in the API with hypertext references — links.
 
-## Why present an API of resources?
+### Why present an API of resources?
 
-### From product to platform
+#### From product to platform
 
 Direct access to these core models allows customers and partners to utilize Snyk as a platform. Instead of waiting for Snyk to add a custom feature or solution, they can easily compose one from our data model in their own applications.
 
-### Building blocks for greater abstraction
+#### Building blocks for greater abstraction
 
 Snyk can provide higher-level abstractions over this API of data models (resources) such as GraphQL and SARIF. Both provide a rich and powerful interface to query and report on SAST results.
 
-## What a resource-based API is (and isn't)
+### What a resource-based API is (and isn't)
 
 Snyk's API represents our product's *core data model* as resources, for the purpose of delivering that data model to our customers and partners.
 
-### It's not RPC
+#### It's not RPC
 
 To keep it about that data, the only operations allowed in the API are "CRUD"-type operations: Create, Retrieve, Update, Delete.
 
 Contrast this with an RPC API which may offer a rich vocabulary of verbs at the granularity of method and function calls on objects. This approach may be necessary and useful in certain situations — however, these belong in a different sort of API from the one we're building here.
 
-### It's only about Snyk's *core data model*
+#### It's only about Snyk's *core data model*
 
 There are situations where it makes sense for Snyk to represent other resources with an API. Many of these may relate to Snyk's core data model. However, if they are describing a different interface or paradigm, they do not belong in `/v3`, they should be located elsewhere. Examples of distinctly different models & paradigms:
 
@@ -92,21 +92,21 @@ There are situations where it makes sense for Snyk to represent other resources 
 - OAuth
     - Industry-standard authorization flow for third-party integrations
 
-### It represents this core data model with documentation and client SDKs
+#### It represents this core data model with documentation and client SDKs
 
 Our API is assembled from resources that are themselves defined in [OpenAPI](https://www.openapis.org/). OpenAPI presents a model description from which documentation, client SDKs, as well as internal governance mechanisms such as request and response validators, can be automatically generated.
 
 However, the quality of this generated documentation and code depends entirely on the quality of that model's content. Our experience with generating documentation and code from OpenAPI specs informs many of our standards decisions — from requiring certain fields, to restricting OpenAPI schema definitions so that they can be expressed well in all languages we're targeting in our SDKs.
 
-## Our API Program: How we organize APIs
+### Our API Program: How we organize APIs
 
-### Resources define and shape the platform
+#### Resources define and shape the platform
 
 Consider carefully and thoughtfully:
 - What does the resource really represent?
 - How does it relate to other established parts of the platform?
 
-### Resources define _concepts_
+#### Resources define _concepts_
 
 How does the naming of this concept affect the language we use to describe the problems our platform solves?
 
@@ -115,7 +115,7 @@ Consider how this new _concept_ will be represented from different perspectives:
 - API developer experience
 - Partner integration experience
 
-### Avoid mixing models or paradigms
+#### Avoid mixing models or paradigms
 
 Know what models you're working with. When in doubt, ask!
 - Different models == different APIs (see above for examples)

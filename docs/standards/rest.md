@@ -1,6 +1,6 @@
 # Snyk API Standards
 
-In order to provide a consistent [API as a platform](intro.md), Snyk APIs have additional requirements, building on [JSON API](jsonapi.md) and [Versioning](version.md) standards.
+In order to provide a consistent [API as a platform](../principles/api_program.md), Snyk APIs have additional requirements, building on [JSON API](../principles/jsonapi.md) and [Versioning](../principles/version.md) standards.
 
 ## Organization and group tenants for resources
 
@@ -122,7 +122,7 @@ headers:
 Certain headers are required in all v3 API responses.
 
 - `snyk-request-id` - Relays a provided request UUID, or generates a new one, which is used to correlate the request to logs and downstream requests to other services.
-- [Versioning response headers](version.md#response-headers).
+- [Versioning response headers](../principles/version.md#response-headers).
 
 ## <a id="status-codes"></a>Status Codes
 
@@ -204,4 +204,4 @@ Lists the available published versions of the API. Response body is an array of 
 
 ### /openapi/{version}
 
-Provides the OpenAPI 3 spec at `{version}` in JSON format. The version is resolved by [the same rules used to match the requested version](version.md#resolving-versions).
+Provides the OpenAPI 3 spec at `{version}` in JSON format. The version is resolved by [the same rules used to match the requested version](../principles/version.md#resolving-versions).

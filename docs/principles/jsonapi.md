@@ -1,4 +1,4 @@
-# JSON API: The Good Parts
+# JSON API
 
 ## What is JSON API?
 
@@ -148,7 +148,7 @@ Content-Type: application/vnd.api+json
 
 The error ID should uniquely identify this occurance of the problem. A server-generated trace or request ID may be used for this ID, so long that the ID is unique. If there are multiple errors in the response, each must have a unique ID.
 
-A Request ID header is also required in our [standard responses](standards.md#response-headers), which should be considered authoritative for correlation purposes.
+A Request ID header is also required in our [standard responses](../standards/rest.md#response-headers), which should be considered authoritative for correlation purposes.
 
 ### Request paths
 

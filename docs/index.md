@@ -1,49 +1,31 @@
 # Sweater Comb
 
-Sweater Comb defines Snyk's API standards, in executable form.
+The Sweater Comb project is an executable manifestation of Snyk's API standards.
 
-Powered by, and built with [Optic CI](https://www.useoptic.com/docs/).
+Built with and powered by [Optic CI](https://www.useoptic.com/docs/) with 💜.
 
-# [Snyk API Program](api_program.md)
+# API Principles and Guidelines
 
-At Snyk, we're operating an API program that aims to maximize the value we
-provide to developers and the extensibility of our platform through our APIs. 
+## [API Program](principles/api_program.md)
 
-[Read more about our API program here](api_program.md).
+Snyk's API program aims to maximize the value we provide to developers and the extensibility of our platform through our APIs. 
 
-# [JSON API: The Good Parts](jsonapi.md)
+## [JSON API](principles/jsonapi.md)
 
 ## What is JSON API?
 
-[JSON API](https://jsonapi.org/) is an emerging industry standard for
-representing RESTful resources as JSON data. JSON API's innovation is it's
-normalization of how entities are expressed, represented, structured, and how
-these entities relate to each other.
-
-Generally, our API implements a subset of the [JSON API specification](https://jsonapi.org/format/). [JSON API: The Good Parts](docs/jsonapi.md) tells the story of how we are adapting JSON API into the Snyk platform.
-
-## Why build on JSON API?
+[JSON API](https://jsonapi.org/) is an emerging industry standard for representing RESTful resources as JSON data. JSON API's innovation is it's normalization of how entities are expressed, represented, structured, and how these entities relate to each other.
 
 We found JSON API to be an excellent starting point for a resource-based API, formatting and structuring JSON data in requests and responses. Leveraging JSON API's opinionated choices enabled us to focus more on designing and building the actual content of our API.
 
-## Our JSON API implementation, by example
+## [API Versioning](principles/version.md)
 
-What does JSON API look like? What do I need to know to get started building a resource in 5 minutes? Let’s cover the basics first; you can always refer to the JSON API specification for a deeper understanding of specific details.
+How we version our API.
 
-[Read more about our experiences with JSON API here](jsonapi.md).
+# [Snyk REST API Standard](standards/rest.md)
 
-# [Versioning](version.md)
+Our REST API Standard reference documentation.
 
-How we version our API, and more to the point, API requirements necessary in order to implement our versioning scheme.
+# [The Sweater Comb Project](sweater-comb/index.md)
 
-[Read more about how we version here](version.md).
-
-# [Snyk API Standards](standards.md)
-
-[Everything else; other requirements we found necessary to keep our API nice and neat](standards.md).
-
-# Installation
-
-TODO
-
-Sweater Comb 
+How this project is governed, how to contribute, how to use the tools, etc.
