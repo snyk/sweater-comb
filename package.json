@@ -74,6 +74,7 @@
     "urijs": "^1.19.11"
   },
   "jest": {
+    "maxWorkers": 5,
     "testMatch": [
       "<rootDir>/src/**/*.{spec,test}.{js,ts}"
     ],
