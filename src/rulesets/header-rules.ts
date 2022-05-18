@@ -23,6 +23,8 @@ const headerNameCase = new ResponseRule({
 const standardHeaders = new ResponseRule({
   name: "standard headers",
   docsLink: links.versioning.responseHeaders,
+  matches: (response, ruleContext) =>
+    !ruleContext.operation.path.startsWith("/openapi"),
   rule: (responseAssertions) => {
     const requiredHeaders = [
       "snyk-request-id",

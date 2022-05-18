@@ -12,9 +12,9 @@ COPY --from=build-env /sweater-comb/package*.json /sweater-comb/
 WORKDIR /sweater-comb
 RUN yarn install --production
 
-FROM node:14-alpine
+FROM gcr.io/distroless/nodejs-debian11
 ENV NODE_ENV production
 COPY --from=clean-env /sweater-comb/ /sweater-comb/
 WORKDIR /sweater-comb
 USER 1000
-ENTRYPOINT ["/usr/local/bin/node", "index.js"]
+ENTRYPOINT ["/nodejs/bin/node", "woollypully/index.js"]

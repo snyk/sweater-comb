@@ -15,6 +15,9 @@ const componentNameCase = new SpecificationRule({
           if (componentType.startsWith("x-")) {
             continue;
           }
+          if (componentType === "securitySchemes") {
+            continue;
+          }
           const componentNames = Object.keys(
             specification.raw.components?.[componentType] || {},
           );

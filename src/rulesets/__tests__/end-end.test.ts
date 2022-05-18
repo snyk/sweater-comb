@@ -5,7 +5,7 @@ import {
   sourcemapReader,
   parseOpenAPIWithSourcemap,
 } from "@useoptic/openapi-io";
-import { rules } from "../index";
+import { resourceRules as rules } from "../index";
 
 const ruleRunner = new RuleRunner(rules);
 
