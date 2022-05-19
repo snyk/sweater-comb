@@ -1,0 +1,6333 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`operation metadata fails if summary is missing 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": "Expected a partial match",
+    "expected": "{\\"summary\\":\\"Matcher.string\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": false,
+    "received": "{\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"getExample\\",\\"responses\\":{}}",
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operation metadata fails if tags is not supplied 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": "Expected a partial match",
+    "expected": "{\\"tags\\":[\\"Matcher.string\\"]}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"getExample\\",\\"responses\\":{}}",
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters allows adding a required query parameter to a new operation 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "required",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters fails if the default value is changed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not be required",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing optional query parameter to required",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: query_parameter in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the default value",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": "default schema was changed from before to after",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter default value",
+    "passed": false,
+    "received": undefined,
+    "where": "changed query parameter: query_parameter in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema format",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: query_parameter in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema pattern",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: query_parameter in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "after",
+            "type": "string",
+          },
+        },
+        "before": Object {
+          "in": "query",
+          "name": "query_parameter",
+          "schema": Object {
+            "default": "before",
+            "type": "string",
+          },
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "query_parameter",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "query_parameter",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema type",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: query_parameter in operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters fails when adding a required query parameter 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "required",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "required",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not be required",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": "expected request query parameter required to not be required",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent adding required query parameter",
+    "passed": false,
+    "received": undefined,
+    "where": "added query parameter: required in operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters fails when changing optional to required query parameter 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "required",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "required",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not be required",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": "expected request query parameter true to not change from optional to required",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing optional query parameter to required",
+    "passed": false,
+    "received": undefined,
+    "where": "changed query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "required",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "required",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the default value",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter default value",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "required",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "required",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema format",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "required",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "required",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema pattern",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "in": "query",
+          "name": "required",
+          "required": true,
+        },
+        "before": Object {
+          "in": "query",
+          "name": "required",
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "required",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "required",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/1",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "not change the schema format",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent changing parameter schema type",
+    "passed": true,
+    "received": undefined,
+    "where": "changed query parameter: required in operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters names fails if the case is not correct 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "path",
+        "name": "pathParameter",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "path": "pathParameter",
+          },
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "path",
+          "pathParameter",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get/parameters/1",
+        "kind": "path-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": "expected parameter name pathParameter to be snake case",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": false,
+    "received": undefined,
+    "where": "added path parameter: pathParameter in operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "path": "pathParameter",
+          },
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "path",
+          "pathParameter",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get/parameters/1",
+        "kind": "path-parameter",
+      },
+      "value": Object {
+        "in": "path",
+        "name": "pathParameter",
+      },
+    },
+    "condition": "use UUID for org_id or group_id",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "tenant formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for path parameter: pathParameter in operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+]
+`;
+
+exports[`operation parameters names passes if the case is correct 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "path",
+        "name": "path_parameter",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "path": "path_parameter",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "path",
+          "path_parameter",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/1",
+        "kind": "path-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added path parameter: path_parameter in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "path": "path_parameter",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "path",
+          "path_parameter",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/1",
+        "kind": "path-parameter",
+      },
+      "value": Object {
+        "in": "path",
+        "name": "path_parameter",
+      },
+    },
+    "condition": "use UUID for org_id or group_id",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "tenant formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for path parameter: path_parameter in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
+]
+`;
+
+exports[`operation parameters passes if the default value is changed in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operation parameters passes when changing optional to required query parameter in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId missing fails if empty string 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"\\",\\"responses\\":{}}",
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId missing fails if undefined 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"responses\\":{}}",
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.string\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"responses\\":{}}",
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set fails if changed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "method": "get",
+          "operationId": "getExampleButDifferent",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+        "before": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "changed operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "method": "get",
+          "operationId": "getExampleButDifferent",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+        "before": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have consistent operation IDs",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": "operationIds was changed",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "consistent operation ids",
+    "passed": false,
+    "received": undefined,
+    "where": "changed operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set fails if not camel case 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"get-hello-world\\",\\"responses\\":{}}",
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set fails if prefix is wrong 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"findHelloWorld\\",\\"responses\\":{}}",
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set fails if removed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "method": "get",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+        "before": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"responses\\":{}}",
+    "where": "changed operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.string\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"responses\\":{}}",
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "changed",
+      "changed": Object {
+        "after": Object {
+          "method": "get",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+        "before": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+      },
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "have consistent operation IDs",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": "operationIds was changed",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "consistent operation ids",
+    "passed": false,
+    "received": undefined,
+    "where": "changed operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set fails when camel case and valid prefix but no suffix 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": "Expected a partial match",
+    "expected": "{\\"operationId\\":\\"Matcher.camel case and starts with get|create|list|update|delete matcher\\"}",
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": false,
+    "received": "{\\"summary\\":\\"this is an example\\",\\"tags\\":[\\"example\\"],\\"parameters\\":[{\\"name\\":\\"version\\",\\"in\\":\\"query\\"}],\\"operationId\\":\\"get\\",\\"responses\\":{}}",
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`operationId when set passes when camel case and has a hump 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`passes when operation is set correctly 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/get/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`put method fails adding put method 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "version",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "version",
+          },
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+          "parameters",
+          "query",
+          "version",
+        ],
+        "jsonPath": "/paths/~1example/put/parameters/0",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: version in operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": "put is not allowed in JSON:API",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": false,
+    "received": undefined,
+    "where": "added operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
+]
+`;
+
+exports[`status codes fails when status code is removed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "changeType": "removed",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200",
+        "kind": "response",
+      },
+      "removed": Object {
+        "before": Object {
+          "description": "123",
+          "statusCode": "200",
+        },
+      },
+    },
+    "condition": "not be removed",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+    "error": "must not remove response status code",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent removing status codes",
+    "passed": false,
+    "received": undefined,
+    "where": "removed response status code: 200 in operation: GET /example",
+  },
+]
+`;
+
+exports[`version parameter fails when there is no version parameter 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation tags",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation summary",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "have parameter matching shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+    "error": "Could not find a partial match in query parameters",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "require version parameter",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
