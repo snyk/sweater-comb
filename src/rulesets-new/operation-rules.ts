@@ -32,12 +32,24 @@ const operationId = new OperationRule({
         prefixRegex.test(value),
       "camel case and starts with get|create|list|update|delete matcher",
     );
-    operationAssertions.added.matches({
-      operationId: operationIdMatcher,
-    });
-    operationAssertions.changed.matches({
-      operationId: operationIdMatcher,
-    });
+    operationAssertions.added.matches(
+      {
+        operationId: operationIdMatcher,
+      },
+      {
+        errorMessage:
+          "operationId must be camelCase and start with get|create|list|update|delete",
+      },
+    );
+    operationAssertions.changed.matches(
+      {
+        operationId: operationIdMatcher,
+      },
+      {
+        errorMessage:
+          "operationId must be camelCase and start with get|create|list|update|delete",
+      },
+    );
   },
 });
 
@@ -45,9 +57,14 @@ const operationIdSet = new OperationRule({
   name: "operation id set",
   docsLink: links.standards.operationIds,
   rule: (operationAssertions) => {
-    operationAssertions.requirement.matches({
-      operationId: Matchers.string,
-    });
+    operationAssertions.requirement.matches(
+      {
+        operationId: Matchers.string,
+      },
+      {
+        errorMessage: "operationId must be set and a string",
+      },
+    );
   },
 });
 
@@ -57,9 +74,14 @@ const tags = new OperationRule({
   matches: (operation, ruleContext) =>
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
-    operationAssertions.requirement.matches({
-      tags: [Matchers.string], // expects at least 1 tag of string
-    });
+    operationAssertions.requirement.matches(
+      {
+        tags: [Matchers.string], // expects at least 1 tag of string
+      },
+      {
+        errorMessage: "tags must exist and have at least one tag",
+      },
+    );
   },
 });
 
@@ -69,9 +91,14 @@ const summary = new OperationRule({
   matches: (operation, ruleContext) =>
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
-    operationAssertions.requirement.matches({
-      summary: Matchers.string,
-    });
+    operationAssertions.requirement.matches(
+      {
+        summary: Matchers.string,
+      },
+      {
+        errorMessage: "must have a summary",
+      },
+    );
   },
 });
 
