@@ -2221,19 +2221,19 @@
     "@typescript-eslint/types" "5.18.0"
     eslint-visitor-keys "^3.0.0"
 
-"@useoptic/api-checks@0.25.4", "@useoptic/api-checks@^0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.25.4.tgz#d23edc5796e0950d947d986b9bafd28e99270131"
-  integrity sha512-x4kUXJz4I0/wAEpkb0nXc6RWy3dP+sZb9ccnUrbTNRj3SQ3wlbXbC0xPuxR/UpMSHjKYD9jD6SaeU3kacUJd/A==
+"@useoptic/api-checks@0.25.7", "@useoptic/api-checks@^0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/api-checks/-/api-checks-0.25.7.tgz#1ae6092eefcc4f397a23b1fd7291497ae2d8f25e"
+  integrity sha512-CZ3UB60cMfGBCxK/jRXO3Sqo2NGldl/m9FUwlsJdvMf2XtBp/G0s/L7o5ChepjC9rJQqzsUHIDRDbaLhkHqsDw==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.15.0"
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.3.2"
-    "@useoptic/json-pointer-helpers" "0.25.4"
-    "@useoptic/openapi-io" "0.25.4"
-    "@useoptic/openapi-utilities" "0.25.4"
+    "@useoptic/json-pointer-helpers" "0.25.7"
+    "@useoptic/openapi-io" "0.25.7"
+    "@useoptic/openapi-utilities" "0.25.7"
     analytics-node "^6.0.0"
     chai "^4.3.4"
     chalk "^4.1.2"
@@ -2253,21 +2253,21 @@
     url-join "^4.0.1"
     uuid "^8.3.2"
 
-"@useoptic/json-pointer-helpers@0.25.4", "@useoptic/json-pointer-helpers@^0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.25.4.tgz#944fe33783878fdf0a1c7bb3514597165d706ed6"
-  integrity sha512-pRVgjJQNsuJy28hXzznMbQBNeZqC1nEV32uVabQDAfOwaDEg3FRxBe8l05YZjwhEyifxvjXDzO+0HBBtPx+rIw==
+"@useoptic/json-pointer-helpers@0.25.7", "@useoptic/json-pointer-helpers@^0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.25.7.tgz#82e329a7d20bd8f650cf58be9684bb3b6dfed58d"
+  integrity sha512-0DaK/911o/LgXkP/ofqO0BuK9lMbRR6/OzOIX/5vIWPNEjkt2xSiTs1do+8dJbJ7dJ4gRh9zFaX1xC2q6hS3VA==
   dependencies:
     jsonpointer "^5.0.0"
 
-"@useoptic/openapi-cli@0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.25.4.tgz#31e2e811401ef52024cf8605d472427c191c1fc3"
-  integrity sha512-d3XfWUcTPde6+QousNSSUI9JiKLHdfQjA3IFqCuu7MxPjanpWGCZJQp7eyaRV7bM1JTROfDGi/L49XfB3PQlpw==
+"@useoptic/openapi-cli@0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.25.7.tgz#21bc4e2c31c76c9dafd96ef23186303eecb00001"
+  integrity sha512-3MQinrhRGe2yWdeL3UI/NS6B4nqcZr0YoZHMEbRnB2el/SK4kcLbGRS7XUwLpbxpwqE+lpriFao94U/grLxVRg==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.25.4"
-    "@useoptic/openapi-io" "0.25.4"
-    "@useoptic/openapi-utilities" "0.25.4"
+    "@useoptic/json-pointer-helpers" "0.25.7"
+    "@useoptic/openapi-io" "0.25.7"
+    "@useoptic/openapi-utilities" "0.25.7"
     ajv-formats "^2.1.1"
     analytics-node "^6.0.0"
     axax "^0.2.2"
@@ -2277,20 +2277,21 @@
     is-url "^1.2.4"
     json-schema-traverse "^1.0.0"
     node-machine-id "^1.1.12"
+    spinnies "^0.5.1"
     stream-chain "^2.2.5"
     stream-json "^1.7.4"
     ts-invariant "^0.9.4"
     ts-results "^3.3.0"
 
-"@useoptic/openapi-io@0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.25.4.tgz#13100c29822a3747b3e2fa6ad048b48e64792b46"
-  integrity sha512-G2pol/tOCVEDK9PuL2DPvpIwJifA/IbA+g6+s5mTOydGwuyOIsMEXtTta6H/jrZXim8P5oivoyWAryirlruMHA==
+"@useoptic/openapi-io@0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.25.7.tgz#592d2133fb1f8455f11246cb8d48358b99cfbd2d"
+  integrity sha512-Ai6qFzJwD34Hpl8WEkXNUl3oJEe4OL3UULPRgpjEVsMN5Emu6GhPpFDvGh/fuKLfDhWYxCY4i77Qckvt7MOX2g==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.25.4"
-    "@useoptic/openapi-utilities" "0.25.4"
+    "@useoptic/json-pointer-helpers" "0.25.7"
+    "@useoptic/openapi-utilities" "0.25.7"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -2299,18 +2300,19 @@
     is-url "^1.2.4"
     js-yaml "^4.1.0"
     json-stable-stringify "^1.0.1"
+    lodash.clonedeep "^4.5.0"
     lodash.sortby "^4.7.0"
     node-fetch "^2.6.7"
     openapi-types "^11.0.0"
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.25.4", "@useoptic/openapi-utilities@^0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.25.4.tgz#c2e729e7983d9682cf51ad7a5b83c115afbea06e"
-  integrity sha512-YZGjBw5SA8MOxv5VhyjZh3e4qNAX0bQ345QcrkkQ+gaKOyFp6Zu+m2ULyCSlpYs8EWmnh5/WU4GMdU55/Yt20Q==
+"@useoptic/openapi-utilities@0.25.7", "@useoptic/openapi-utilities@^0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.25.7.tgz#1d52d05f21eab94e34c6fc5ab96cd7101a2d4f5c"
+  integrity sha512-r8peN6tRciVTjjS8PwGGODutCH8QjWH2hvYWbXnpX1Mi1D+SAiLjxz3mct7nqukITgk46sZdRD+yQRPyKMyGcA==
   dependencies:
-    "@useoptic/json-pointer-helpers" "0.25.4"
+    "@useoptic/json-pointer-helpers" "0.25.7"
     fast-deep-equal "^3.1.3"
     js-yaml "^4.1.0"
     lodash.isequal "^4.5.0"
@@ -2320,21 +2322,21 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/optic-ci@0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/optic-ci/-/optic-ci-0.25.4.tgz#26f198fe008159b060bf0fdf0d8e2670a0b3a58c"
-  integrity sha512-BZaUlA5AtHxxfx7Js6npptP7E0elKTxEvi9Bl+wyrsKbQzGIvCF8UuPOFa9a7npzR7i1/eOfm9r4E78RGrFYIQ==
+"@useoptic/optic-ci@0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/optic-ci/-/optic-ci-0.25.7.tgz#46373c3b959eca4fa01bc04fc5e061d83438bb68"
+  integrity sha512-r3v+M8nTGux0jLrHO1jk1coQ42YWlA3MIt7K6yDEGvJIIF1IcC78uLzTZP7Yf9YVg+HFvgmnARBif+U5ad0ggA==
   dependencies:
-    "@useoptic/api-checks" "0.25.4"
+    "@useoptic/api-checks" "0.25.7"
 
-"@useoptic/rulesets-base@0.25.4":
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.25.4.tgz#4953336a2a16c6606aa2271e2051fb5f37eb32c3"
-  integrity sha512-WMo7XF9RFWYl3XK+9LKluBD94dxg8+i16YgSgXoZ6y5HGguTYM/+ykpDgiVNnOoXk87yU4OHkfSLXeSDLrvAJQ==
+"@useoptic/rulesets-base@0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.25.7.tgz#465826352796d17f639f20d15b174d51e6c5ddab"
+  integrity sha512-kgXBQsXbMXzk2o2nxxOeMAIHrTKDZcPlXT5wikYWUPtV7SJJPPKlwtJlZksUyOfx8su21WQZbe2HmowTA/9aEA==
   dependencies:
-    "@useoptic/api-checks" "^0.25.4"
-    "@useoptic/json-pointer-helpers" "^0.25.4"
-    "@useoptic/openapi-utilities" "^0.25.4"
+    "@useoptic/api-checks" "^0.25.7"
+    "@useoptic/json-pointer-helpers" "^0.25.7"
+    "@useoptic/openapi-utilities" "^0.25.7"
     lodash.pick "^4.4.0"
 
 JSONStream@^1.0.4:
@@ -2469,6 +2471,11 @@ ansi-escapes@^4.2.1:
   integrity sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==
   dependencies:
     type-fest "^0.21.3"
+
+ansi-regex@^4.1.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-4.1.1.tgz#164daac87ab2d6f6db3a29875e2d1766582dabed"
+  integrity sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==
 
 ansi-regex@^5.0.0, ansi-regex@^5.0.1:
   version "5.0.1"
@@ -2887,7 +2894,7 @@ chai@^4.3.4:
     pathval "^1.1.1"
     type-detect "^4.0.5"
 
-chalk@^2.0.0, chalk@^2.4.1:
+chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -2956,6 +2963,13 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+cli-cursor@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-3.1.0.tgz#264305a7ae490d1d03bf0c9ba7c925d1753af307"
+  integrity sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==
+  dependencies:
+    restore-cursor "^3.1.0"
 
 cliui@^6.0.0:
   version "6.0.0"
@@ -5211,6 +5225,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -6229,6 +6248,14 @@ resolve@^1.10.0, resolve@^1.14.2, resolve@^1.18.1:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
+restore-cursor@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-3.1.0.tgz#39f67c54b3a7a58cea5236d95cf0034239631f7e"
+  integrity sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==
+  dependencies:
+    onetime "^5.1.0"
+    signal-exit "^3.0.2"
+
 ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
@@ -6533,6 +6560,15 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.11.tgz#50c0d8c40a14ec1bf449bae69a0ea4685a9d9f95"
   integrity sha512-Ctl2BrFiM0X3MANYgj3CkygxhRmr9mi6xhejbdO960nF6EDJApTYpn0BQnDKlnNBULKiCN1n3w9EBkHK8ZWg+g==
 
+spinnies@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/spinnies/-/spinnies-0.5.1.tgz#6ac88455d9117c7712d52898a02c969811819a7e"
+  integrity sha512-WpjSXv9NQz0nU3yCT9TFEOfpFrXADY9C5fG6eAJqixLhvTX1jP3w92Y8IE5oafIe42nlF9otjhllnXN/QCaB3A==
+  dependencies:
+    chalk "^2.4.2"
+    cli-cursor "^3.0.0"
+    strip-ansi "^5.2.0"
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -6646,6 +6682,13 @@ string_decoder@~1.1.1:
   integrity sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
   dependencies:
     safe-buffer "~5.1.0"
+
+strip-ansi@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
+  integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
+  dependencies:
+    ansi-regex "^4.1.0"
 
 strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
