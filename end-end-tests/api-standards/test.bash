@@ -63,6 +63,11 @@ ${COMPARE} \
     --context "${CONTEXT}"
 assert_ok
 ${COMPARE} \
+    --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \
+    --to $HERE/resources/thing/2021-11-10/001-fail-operationid-change.yaml \
+    --context "${CONTEXT}"
+assert_ok
+${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
     --to $HERE/resources/thing/2021-11-10/003-ok-type-change.yaml \
     --context "${CONTEXT}"
@@ -104,7 +109,6 @@ assert_err
 
 FAILING_CHANGES="\
     $HERE/resources/thing/2021-11-10/001-fail-stability-change.yaml \
-    $HERE/resources/thing/2021-11-10/001-fail-operationid-change.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-singleton-no-pagination.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-singleton.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-paginated-post.yaml \
