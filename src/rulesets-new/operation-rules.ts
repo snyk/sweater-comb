@@ -105,8 +105,6 @@ const summary = new OperationRule({
 const consistentOperationIds = new OperationRule({
   name: "consistent operation ids",
   docsLink: links.standards.operationSummary,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.changed(
       "have consistent operation IDs",
