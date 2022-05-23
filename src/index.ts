@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
-import { rules } from './rulesets-new'
+import { rules } from "./rulesets-new";
 import { Command } from "commander";
 import {
   createResourceCommand,
@@ -13,7 +13,6 @@ import {
   createVersionCommand,
   createUpdateCommand,
 } from "./workflows/commands";
-
 
 (async () => {
   const cli = await initializeCli({

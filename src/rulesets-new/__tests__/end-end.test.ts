@@ -6,7 +6,7 @@ import {
   ResultWithSourcemap,
 } from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
-import { rules }from '../index';
+import { rules } from "../index";
 
 const ruleRunner = new RuleRunner(rules);
 
@@ -33,13 +33,12 @@ describe("end-end-tests", () => {
         resourceVersions: {},
       },
     );
-    expect(results.every(result => result.passed)).toBe(false);
+    expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
   it("fails when breaking param change", async () => {
-    const results = 
-    await snapshotScenario(
+    const results = await snapshotScenario(
       "000-baseline-beta.yaml",
       "001-fail-breaking-param-change-beta.yaml",
       resourceDate("thing", "2021-11-10"),
@@ -52,11 +51,10 @@ describe("end-end-tests", () => {
         },
         resourceVersions: {},
       },
-    )
-    expect(results.every(result => result.passed)).toBe(false);
+    );
+    expect(results.every((result) => result.passed)).toBe(false);
 
-    expect(results
-    ).toMatchSnapshot();
+    expect(results).toMatchSnapshot();
   });
 
   it("passes when property field added to response", async () => {
@@ -74,11 +72,9 @@ describe("end-end-tests", () => {
         resourceVersions: {},
       },
     );
-    expect(results.every(result => result.passed)).toBe(true);
+    expect(results.every((result) => result.passed)).toBe(true);
 
-    expect(
-      results
-    ).toMatchSnapshot();
+    expect(results).toMatchSnapshot();
   });
 
   it("passes when property operation added", async () => {
@@ -97,7 +93,7 @@ describe("end-end-tests", () => {
       },
     );
 
-    expect(results.every(result => result.passed)).toBe(true);
+    expect(results.every((result) => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();
   });
 
@@ -115,8 +111,8 @@ describe("end-end-tests", () => {
         },
         resourceVersions: {},
       },
-    )
-    expect(results.every(result => result.passed)).toBe(false);
+    );
+    expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
