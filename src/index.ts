@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
-import { newSnykApiCheckService } from "./service";
+import { rules } from './rulesets-new'
 import { Command } from "commander";
 import {
   createResourceCommand,
@@ -14,7 +14,6 @@ import {
   createUpdateCommand,
 } from "./workflows/commands";
 
-const apiCheckService = newSnykApiCheckService();
 
 (async () => {
   const cli = await initializeCli({
@@ -22,13 +21,7 @@ const apiCheckService = newSnykApiCheckService();
     gitProvider: {
       token: process.env.GITHUB_TOKEN || "",
     },
-    checks: [
-      {
-        name: "snyk-checks",
-        type: "custom",
-        checkService: apiCheckService,
-      },
-    ],
+    rules: rules,
   });
 
   const workflowCommand = new Command("workflow").description(
