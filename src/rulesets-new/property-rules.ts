@@ -158,7 +158,7 @@ const arrayWithItemsInRequest = new RequestRule({
         if (property.raw.type === "array") {
           if (!property.raw.items || !("type" in property.raw.items)) {
             throw new RuleError({
-              message: "type was not found array item",
+              message: "type was not found array items",
             });
           }
         }
@@ -176,7 +176,7 @@ const arrayWithItemsInResponse = new ResponseBodyRule({
         if (property.raw.type === "array") {
           if (!property.raw.items || !("type" in property.raw.items)) {
             throw new RuleError({
-              message: "type was not found array item",
+              message: "type was not found array items",
             });
           }
         }
