@@ -176,12 +176,10 @@ const arrayWithItemsInResponse = new ResponseBodyRule({
       "have type for array items",
       (property) => {
         if (property.raw.type === "array") {
-          for (const item of property.raw.items) {
-            if (!("type" in item)) {
-              throw new RuleError({
-                message: "type was not found array item",
-              });
-            }
+          if (!property.raw.items || !("type" in property.raw.items)) {
+            throw new RuleError({
+              message: "type was not found array item",
+            });
           }
         }
       },

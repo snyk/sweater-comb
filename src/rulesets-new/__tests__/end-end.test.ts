@@ -1,16 +1,14 @@
 import path from "path";
-import { SynkApiCheckContext } from "../../dsl";
+import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import {
   parseSpecVersion,
   specFromInputToResults,
   ResultWithSourcemap,
 } from "@useoptic/api-checks";
 import { sourcemapReader } from "@useoptic/openapi-io";
-import {
-  defaultEmptySpec,
-  factsToChangelog,
-} from "@useoptic/openapi-utilities";
-import { newSnykApiCheckService } from "../../service";
+import { rules }from '../index';
+
+const ruleRunner = new RuleRunner(rules);
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(
@@ -21,59 +19,65 @@ describe("end-end-tests", () => {
     path.join(inputsDir, "resources", resource, date);
 
   it("fails when operation is removed", async () => {
-    expect(
-      await snapshotScenario(
-        "000-baseline-beta.yaml",
-        "001-fail-operation-removed-beta.yaml",
-        resourceDate("thing", "2021-11-10"),
-        {
-          changeDate: "2021-11-11",
-          changeResource: "thing",
-          changeVersion: {
-            date: "2021-11-10",
-            stability: "beta",
-          },
-          resourceVersions: {},
+    const results = await snapshotScenario(
+      "000-baseline-beta.yaml",
+      "001-fail-operation-removed-beta.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "beta",
         },
-      ),
-    ).toMatchSnapshot();
+        resourceVersions: {},
+      },
+    );
+    expect(results.every(result => result.passed)).toBe(false);
+    expect(results).toMatchSnapshot();
   });
 
   it("fails when breaking param change", async () => {
-    expect(
-      await snapshotScenario(
-        "000-baseline-beta.yaml",
-        "001-fail-breaking-param-change-beta.yaml",
-        resourceDate("thing", "2021-11-10"),
-        {
-          changeDate: "2021-11-11",
-          changeResource: "thing",
-          changeVersion: {
-            date: "2021-11-10",
-            stability: "beta",
-          },
-          resourceVersions: {},
+    const results = 
+    await snapshotScenario(
+      "000-baseline-beta.yaml",
+      "001-fail-breaking-param-change-beta.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "beta",
         },
-      ),
+        resourceVersions: {},
+      },
+    )
+    expect(results.every(result => result.passed)).toBe(false);
+
+    expect(results
     ).toMatchSnapshot();
   });
 
   it("passes when property field added to response", async () => {
-    expect(
-      await snapshotScenario(
-        "000-baseline.yaml",
-        "001-ok-add-property-field.yaml",
-        resourceDate("thing", "2021-11-10"),
-        {
-          changeDate: "2021-11-11",
-          changeResource: "thing",
-          changeVersion: {
-            date: "2021-11-10",
-            stability: "beta",
-          },
-          resourceVersions: {},
+    const results = await snapshotScenario(
+      "000-baseline.yaml",
+      "001-ok-add-property-field.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "beta",
         },
-      ),
+        resourceVersions: {},
+      },
+    );
+    expect(results.every(result => result.passed)).toBe(true);
+
+    expect(
+      results
     ).toMatchSnapshot();
   });
 
@@ -93,27 +97,27 @@ describe("end-end-tests", () => {
       },
     );
 
-    // expect(results.filter((i) => !i.passed)).toHaveLength(0);
+    expect(results.every(result => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();
   });
 
   it("fails when it doesn't meet JSON:API rules", async () => {
-    expect(
-      await snapshotScenario(
-        "000-baseline.yaml",
-        "003-jsonapi.yaml",
-        resourceDate("thing", "2021-11-10"),
-        {
-          changeDate: "2021-11-11",
-          changeResource: "thing",
-          changeVersion: {
-            date: "2021-11-10",
-            stability: "beta",
-          },
-          resourceVersions: {},
+    const results = await snapshotScenario(
+      "000-baseline.yaml",
+      "003-jsonapi.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "beta",
         },
-      ),
-    ).toMatchSnapshot();
+        resourceVersions: {},
+      },
+    )
+    expect(results.every(result => result.passed)).toBe(false);
+    expect(results).toMatchSnapshot();
   });
 
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../"));
@@ -122,40 +126,27 @@ describe("end-end-tests", () => {
     from: string | undefined,
     to: string | undefined,
     workingDir: string,
-    context: SynkApiCheckContext,
+    context: any,
   ) {
-    const fromSpecSig = parseSpecVersion(from, defaultEmptySpec);
+    const fromSpecSig = parseSpecVersion(from, TestHelpers.createEmptySpec());
     const fromSpec = await specFromInputToResults(fromSpecSig, workingDir);
-    const toSpecSig = parseSpecVersion(to, defaultEmptySpec);
+    const toSpecSig = parseSpecVersion(to, TestHelpers.createEmptySpec());
     const toSpec = await specFromInputToResults(toSpecSig, workingDir);
 
-    const checkService = newSnykApiCheckService();
-    const { currentFacts, nextFacts } = checkService.generateFacts(
-      fromSpec.jsonLike,
-      toSpec.jsonLike,
-    );
-    const checkResults = await checkService.runRulesWithFacts({
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(fromSpec.jsonLike, toSpec.jsonLike),
       context,
-      nextFacts,
-      currentFacts,
-      changelog: factsToChangelog(currentFacts, nextFacts),
-      nextJsonLike: toSpec.jsonLike,
-      currentJsonLike: fromSpec.jsonLike,
-    });
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     const { findFileAndLines } = sourcemapReader(toSpec.sourcemap);
     const result: ResultWithSourcemap[] = await Promise.all(
-      checkResults.map(async (checkResult) => {
+      results.map(async (checkResult) => {
         const sourcemap = await findFileAndLines(
           checkResult.change.location.jsonPath,
         );
 
         const filePath = sourcemap?.filePath.split(rootOfRepo)[1];
-
-        // if (!filePath) {
-        //   console.log(checkResult.change.location.jsonPath);
-        //   console.log("not found");
-        // }
 
         return {
           ...checkResult,
