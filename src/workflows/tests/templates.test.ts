@@ -1,13 +1,13 @@
 import { buildNewResourceSpec } from "../templates/new-resource-spec";
 import { addCreateOperationTemplate } from "../templates/operations/create";
-import { factsToChangelog, OpenAPIV3 } from "@useoptic/openapi-utilities";
-import { newSnykApiCheckService } from "../../service";
-import { SynkApiCheckContext } from "../../dsl";
+import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { dereferenceOpenAPI } from "@useoptic/openapi-io";
+import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { addUpdateOperationTemplate } from "../templates/operations/update";
 import { addDeleteOperationTemplate } from "../templates/operations/delete";
 import { addGetOperationTemplate } from "../templates/operations/get";
 import { addListOperationTemplate } from "../templates/operations/list";
+import { rules } from "../../rulesets";
 
 describe("workflow templates", () => {
   describe("operations", () => {
@@ -51,7 +51,7 @@ function checkTemplate(template) {
   });
 }
 
-const context: SynkApiCheckContext = {
+const context = {
   changeDate: "2021-11-11",
   changeResource: "user",
   changeVersion: {
@@ -62,20 +62,14 @@ const context: SynkApiCheckContext = {
 };
 
 async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
-  const checkService = newSnykApiCheckService();
+  const ruleRunner = new RuleRunner(rules);
+
   const { jsonLike: parsedFrom } = await dereferenceOpenAPI(from);
   const { jsonLike: parsedTo } = await dereferenceOpenAPI(to);
-  const { currentFacts, nextFacts } = checkService.generateFacts(
-    parsedFrom,
-    parsedTo,
-  );
-  const checkResults = await checkService.runRulesWithFacts({
+  const ruleInputs = {
+    ...TestHelpers.createRuleInputs(parsedFrom, parsedTo),
     context,
-    nextFacts,
-    currentFacts,
-    changelog: factsToChangelog(currentFacts, nextFacts),
-    nextJsonLike: to,
-    currentJsonLike: from,
-  });
-  return checkResults;
+  };
+  const results = ruleRunner.runRulesWithFacts(ruleInputs);
+  return results;
 }
