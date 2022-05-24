@@ -21,6 +21,15 @@ import {
       token: process.env.GITHUB_TOKEN || "",
     },
     rules: rules,
+    spectralConfig: {
+      "openapi-tags": "off",
+      "operation-tags": "off",
+      "info-contact": "off",
+      "info-description": "off",
+      "info-license": "off",
+      "license-url": "off",
+      "oas3-unused-component": "off",
+    },
   });
 
   const workflowCommand = new Command("workflow").description(
