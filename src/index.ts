@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
-import { rules } from "./rulesets-new";
+import { rules } from "./rulesets";
 import { Command } from "commander";
 import {
   createResourceCommand,

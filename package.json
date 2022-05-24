@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@useoptic/api-checks": "0.25.10",
     "@useoptic/optic-ci": "0.25.10",
     "@useoptic/json-pointer-helpers": "0.25.10",
     "@useoptic/openapi-cli": "0.25.10",
@@ -62,7 +61,6 @@
     "yargs": "^17.4.1"
   },
   "bundledDependencies": [
-    "@useoptic/api-checks",
     "@useoptic/json-pointer-helpers",
     "@useoptic/openapi-cli",
     "@useoptic/openapi-io",

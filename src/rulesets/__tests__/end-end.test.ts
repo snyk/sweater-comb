@@ -1,11 +1,10 @@
 import path from "path";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
+import { ResultWithSourcemap } from "@useoptic/openapi-utilities";
 import {
-  parseSpecVersion,
-  specFromInputToResults,
-  ResultWithSourcemap,
-} from "@useoptic/api-checks";
-import { sourcemapReader } from "@useoptic/openapi-io";
+  sourcemapReader,
+  parseOpenAPIWithSourcemap,
+} from "@useoptic/openapi-io";
 import { rules } from "../index";
 
 const ruleRunner = new RuleRunner(rules);
@@ -124,18 +123,27 @@ describe("end-end-tests", () => {
     workingDir: string,
     context: any,
   ) {
-    const fromSpecSig = parseSpecVersion(from, TestHelpers.createEmptySpec());
-    const fromSpec = await specFromInputToResults(fromSpecSig, workingDir);
-    const toSpecSig = parseSpecVersion(to, TestHelpers.createEmptySpec());
-    const toSpec = await specFromInputToResults(toSpecSig, workingDir);
+    const parsedFrom = from
+      ? await parseOpenAPIWithSourcemap(path.join(workingDir, from))
+      : undefined;
+    const parsedTo = to
+      ? await parseOpenAPIWithSourcemap(path.join(workingDir, to))
+      : undefined;
 
     const ruleInputs = {
-      ...TestHelpers.createRuleInputs(fromSpec.jsonLike, toSpec.jsonLike),
+      ...TestHelpers.createRuleInputs(
+        parsedFrom?.jsonLike || TestHelpers.createEmptySpec(),
+        parsedTo?.jsonLike || TestHelpers.createEmptySpec(),
+      ),
       context,
     };
     const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-    const { findFileAndLines } = sourcemapReader(toSpec.sourcemap);
+    if (!parsedTo) {
+      return results;
+    }
+
+    const { findFileAndLines } = sourcemapReader(parsedTo.sourcemap);
     const result: ResultWithSourcemap[] = await Promise.all(
       results.map(async (checkResult) => {
         const sourcemap = await findFileAndLines(
