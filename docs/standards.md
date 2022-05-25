@@ -14,6 +14,32 @@ Resources addressed by Group begin with `/v3/groups/{group_id}/...`.
 
 Additional resource properties that must be used in resource attributes, where applicable.
 
+## Handling resource settings
+
+Resource settings are an attribute of the resource and not a resource or relationship. Using Organizations as an example, we would see a response like:
+
+```
+GET /orgs/{orgId}
+{
+    "jsonapi": {
+        "version": "1.0"
+  },
+    "data": {
+        "type": "org",
+        "id": "111-222-333",
+        "attributes": {
+            "name": "Amazing Org",
+            "slug": "amazing-org",
+            "settings": {
+                "requestAccess": {
+                    "enabled": true
+                }
+            }
+        }
+    }
+}
+```
+
 ### Resource lifecycle timestamps
 
 These properties are optional on a resource, but should be used when applicable. These properties must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
@@ -40,9 +66,9 @@ Casing conventions referenced below are defined in [Spectral's casing function d
 
 API paths locate resources and collections of resources. These are always nouns. Collections should use the plural form of the noun. For example:
 
-* `/things` (collection of things)
-* `/things/{thing_id}` (a specific thing, located in a collection of them)
-* `/orgs/{org_id}/other_things` (a collection located in a specific org, located in a collection of orgs)
+- `/things` (collection of things)
+- `/things/{thing_id}` (a specific thing, located in a collection of them)
+- `/orgs/{org_id}/other_things` (a collection located in a specific org, located in a collection of orgs)
 
 ### Mixed case and acronyms
 
@@ -95,6 +121,7 @@ operationId: getFoo
 Use the singular form if the operation operates on a single resource, plural if it operates on a collection operation.
 
 Examples:
+
 - `getFoo` (get one)
 - `listFoos` (get many)
 - `createThing` (create one)
@@ -144,7 +171,7 @@ A forbidden status code & error response must be returned if the requester has p
 
 ### 404 - Not Found
 
-A not found status code & error response must be returned if the requested resource does not exist _or_ if the requester *does not* have access to the underlying resource. For example, if an org named `pineapple` exists but the user `joe` is not a member of the organization, then Joe should receive a `404 Not Found` when requesting any information related to the `pineapple` organization.
+A not found status code & error response must be returned if the requested resource does not exist _or_ if the requester _does not_ have access to the underlying resource. For example, if an org named `pineapple` exists but the user `joe` is not a member of the organization, then Joe should receive a `404 Not Found` when requesting any information related to the `pineapple` organization.
 
 ### 409 - Conflict
 
