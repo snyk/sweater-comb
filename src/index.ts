@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
-import { rules } from "./rulesets";
+import { resourceRules, compiledRules } from "./rulesets";
 import { Command } from "commander";
 import {
   createResourceCommand,
@@ -14,13 +14,18 @@ import {
   createUpdateCommand,
 } from "./workflows/commands";
 
+const rulesets = {
+  resource: resourceRules,
+  compiled: compiledRules,
+};
+
 (async () => {
   const cli = await initializeCli({
     token: process.env.OPTIC_TOKEN || "",
     gitProvider: {
       token: process.env.GITHUB_TOKEN || "",
     },
-    rules: rules,
+    rules: rulesets[process.env.SWEATER_COMB_RULESET || ""] ?? resourceRules,
     spectralConfig: {
       "openapi-tags": "off",
       "operation-tags": "off",
