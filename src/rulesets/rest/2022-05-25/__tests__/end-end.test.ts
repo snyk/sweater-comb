@@ -11,7 +11,7 @@ const ruleRunner = new RuleRunner(rules);
 
 describe("end-end-tests", () => {
   const inputsDir = path.resolve(
-    path.join(__dirname, "../../../end-end-tests/api-standards"),
+    path.join(__dirname, "../../../../../end-end-tests/api-standards"),
   );
 
   const resourceDate = (resource: string, date: string) =>
@@ -115,7 +115,7 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
-  const rootOfRepo = path.resolve(path.join(__dirname, "../../../"));
+  const rootOfRepo = path.resolve(path.join(__dirname, "../../../../../"));
 
   async function snapshotScenario(
     from: string | undefined,

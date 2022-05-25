@@ -2,7 +2,7 @@ import * as axios from "axios";
 
 import { loadSpecFromUrl } from "@useoptic/openapi-io";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
-import { compiledRules } from "../rulesets";
+import { compiledRules } from "../rulesets/rest/2022-05-25";
 import { Config } from "./config";
 
 /**

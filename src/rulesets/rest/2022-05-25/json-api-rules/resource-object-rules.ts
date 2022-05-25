@@ -5,7 +5,7 @@ import {
   ResponseBodyRule,
   Matchers,
 } from "@useoptic/rulesets-base";
-import { links } from "../../docs";
+import { links } from "../../../../docs";
 import { isOpenApiPath, isSingletonPath } from "../utils";
 
 const responseDataForPatch = new ResponseBodyRule({

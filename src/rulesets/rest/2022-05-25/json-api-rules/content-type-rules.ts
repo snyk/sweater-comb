@@ -1,5 +1,5 @@
 import { RuleError, ResponseRule } from "@useoptic/rulesets-base";
-import { links } from "../../docs";
+import { links } from "../../../../docs";
 import { isOpenApiPath } from "../utils";
 
 export const jsonApiContentTypeRule = new ResponseRule({

@@ -24,7 +24,7 @@ app.get("/api-discovery", (req, res) => {
 
 app.get("/rest/openapi", (req, res) => {
   res.set("Content-Type", "application/json");
-  res.send(["2022-05-23~beta"]);
+  res.send(["2022-05-22~beta"]);
 });
 
 app.get("/rest/openapi/:version", (req, res) => {

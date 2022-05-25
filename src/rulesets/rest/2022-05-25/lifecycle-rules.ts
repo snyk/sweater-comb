@@ -1,5 +1,5 @@
 import { RuleError, Ruleset, SpecificationRule } from "@useoptic/rulesets-base";
-import { links } from "../docs";
+import { links } from "../../../docs";
 import { stabilityKey } from "./constants";
 
 const stabilityRequirement = new SpecificationRule({

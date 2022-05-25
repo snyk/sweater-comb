@@ -1,6 +1,6 @@
 import { RuleError, Ruleset, SpecificationRule } from "@useoptic/rulesets-base";
 import { pascalCase } from "change-case";
-import { links } from "../docs";
+import { links } from "../../../docs";
 import { stabilityKey } from "./constants";
 
 const componentNameCase = new SpecificationRule({

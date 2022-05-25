@@ -5,7 +5,7 @@ import {
   RuleError,
   Ruleset,
 } from "@useoptic/rulesets-base";
-import { links } from "../docs";
+import { links } from "../../../docs";
 import { isBreakingChangeAllowed } from "./utils";
 
 const snakeCase = /^[a-z]+(?:_[a-z\d]+)*$/;

@@ -4,7 +4,7 @@ import {
   ResponseBodyRule,
   OperationRule,
 } from "@useoptic/rulesets-base";
-import { links } from "../../docs";
+import { links } from "../../../../docs";
 import { isOpenApiPath, isSingletonPath, isItemOperation } from "../utils";
 
 const paginationQueryParameters = ["starting_after", "ending_before", "limit"];
