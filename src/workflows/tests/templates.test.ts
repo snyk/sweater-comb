@@ -7,7 +7,7 @@ import { addUpdateOperationTemplate } from "../templates/operations/update";
 import { addDeleteOperationTemplate } from "../templates/operations/delete";
 import { addGetOperationTemplate } from "../templates/operations/get";
 import { addListOperationTemplate } from "../templates/operations/list";
-import { resourceRules as rules } from "../../rulesets";
+import { resourceRules as rules } from "../../rulesets/rest/2022-05-25";
 
 describe("workflow templates", () => {
   describe("operations", () => {

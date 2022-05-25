@@ -1,6 +1,6 @@
 import { ResponseRule, RuleError, Ruleset } from "@useoptic/rulesets-base";
 import { paramCase } from "change-case";
-import { links } from "../docs";
+import { links } from "../../../docs";
 
 const headerNameCase = new ResponseRule({
   name: "header case",

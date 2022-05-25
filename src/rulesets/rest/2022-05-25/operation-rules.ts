@@ -8,7 +8,7 @@ import {
   ResponseRule,
 } from "@useoptic/rulesets-base";
 import { camelCase, snakeCase } from "change-case";
-import { links } from "../docs";
+import { links } from "../../../docs";
 import { isBreakingChangeAllowed } from "./utils";
 
 const operationId = new OperationRule({

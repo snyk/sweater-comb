@@ -1,5 +1,5 @@
 import { Ruleset, RuleError, ResponseRule } from "@useoptic/rulesets-base";
-import { links } from "../../docs";
+import { links } from "../../../../docs";
 import { isOpenApiPath, isBatchPostOperation } from "../utils";
 
 const valid4xxCodes = new ResponseRule({
