@@ -1,8 +1,9 @@
 import * as axios from "axios";
+import * as child_process from "child_process";
+import * as fs from "fs/promises";
+import * as os from "os";
+import * as path from "path";
 
-import { loadSpecFromUrl } from "@useoptic/openapi-io";
-import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
-import { compiledRules } from "../rulesets/rest/2022-05-25";
 import { Config } from "./config";
 
 /**
@@ -11,16 +12,18 @@ import { Config } from "./config";
  * applicable.
  */
 export class Checker {
-  private readonly proposedBaseURL: string;
-  private readonly currentBaseURL: string | undefined;
   private readonly proposedClient: axios.AxiosInstance;
+  private readonly currentClient?: axios.AxiosInstance;
 
   constructor(config: Config) {
-    this.proposedBaseURL = config.proposedBaseURL;
-    this.currentBaseURL = config.currentBaseURL;
     this.proposedClient = axios.default.create({
       baseURL: config.proposedBaseURL,
     });
+    if (config.currentBaseURL) {
+      this.currentClient = axios.default.create({
+        baseURL: config.currentBaseURL,
+      });
+    }
   }
 
   /**
@@ -70,40 +73,122 @@ export class Checker {
         continue;
       }
       console.log(`checking api ${api.path} version ${version}`);
-      await this.checkVersion(`${api.path}/openapi/${version}`, version);
+      await this.checkVersion(api, version);
     }
   }
 
-  private readonly ruleRunner = new RuleRunner(compiledRules);
-
-  async checkVersion(url: string, version: string): Promise<void> {
-    const proposedBase = (
-      await loadSpecFromUrl(`${this.proposedBaseURL}${url}`, true)
-    ).flattened!;
-    // TODO: If currentBaseURL 404s, that just means this is a new version
-    const currentBase = this.currentBaseURL
-      ? (await loadSpecFromUrl(`${this.currentBaseURL}${url}`, true)).flattened!
-      : TestHelpers.createEmptySpec();
-    // TODO: Also need to check for sunset versions -- so this isn't quite correct yet!
-    //       This will require a refactoring.
+  async checkVersion(
+    api: {
+      path: string;
+      type: string;
+      visibility: string;
+    },
+    version: string,
+  ): Promise<void> {
     const versionParts = version.split("~");
     const [versionDate, versionStability] = versionParts;
-    const ruleInputs = {
-      ...TestHelpers.createRuleInputs(currentBase, proposedBase),
-      context: {
-        changeVersion: {
-          date: versionDate,
-          stability: versionStability ?? "ga",
-        },
-      },
-    };
-    const results = this.ruleRunner.runRulesWithFacts(ruleInputs);
-
-    if (!results.every((result) => result.passed)) {
-      console.log(results.filter((result) => !result.passed));
-      throw new Error(`${version} failed`);
+    const { tmpdir, currentSpecPath, proposedSpecPath } = await this.fetchSpecs(
+      `${api.path}/openapi/${version}`,
+    );
+    try {
+      const fromArgs = currentSpecPath ? ["--from", currentSpecPath] : [];
+      const args = [
+        "compare",
+        ...fromArgs,
+        "--to",
+        proposedSpecPath,
+        "--context",
+        JSON.stringify({
+          changeVersion: {
+            date: versionDate,
+            stability: versionStability ?? "ga",
+          },
+        }),
+      ];
+      const opticScript = await resolveOpticScript();
+      await new Promise<void>((resolve, reject) => {
+        const child = child_process.spawn(
+          process.argv0,
+          [opticScript, ...args],
+          {
+            env: {
+              ...process.env,
+              SWEATER_COMB_RULESET: "compiled",
+            },
+            stdio: "inherit",
+          },
+        );
+        child.on("error", (err) => {
+          reject(err);
+        });
+        child.on("close", (code) => {
+          if (code === 0) {
+            resolve();
+          } else {
+            reject(new Error(`check ${version} failed with exit code ${code}`));
+          }
+        });
+      });
+    } finally {
+      try {
+        await fs.rm(tmpdir, { force: true, recursive: true });
+      } catch (err) {
+        console.log("failed to clean up", tmpdir);
+      }
     }
+  }
 
-    console.log(`${version} passed`);
+  private async fetchSpecs(versionPath: string): Promise<{
+    tmpdir: string;
+    currentSpecPath?: string;
+    proposedSpecPath: string;
+  }> {
+    const tmpdir = await fs.mkdtemp(path.join(os.tmpdir(), "woollypully"));
+    try {
+      const currentSpecPath = this.currentClient
+        ? await this.fetchSpec(tmpdir, this.currentClient, versionPath)
+        : undefined;
+      const proposedSpecPath = await this.fetchSpec(
+        tmpdir,
+        this.proposedClient,
+        versionPath,
+      );
+      return { tmpdir, currentSpecPath, proposedSpecPath };
+    } catch (err) {
+      try {
+        await fs.rm(tmpdir, { force: true, recursive: true });
+      } catch (err) {
+        console.log("failed to clean up", tmpdir);
+      }
+      throw err;
+    }
+  }
+
+  private async fetchSpec(
+    tmpdir: string,
+    client: axios.AxiosInstance,
+    versionPath: string,
+  ): Promise<string> {
+    const resp = await client.get(versionPath);
+    if (resp.status !== 200) {
+      throw new Error(`failed to get OpenAPI spec: HTTP ${resp.status}`);
+    }
+    const specFile = path.join(tmpdir, "proposed.json");
+    await fs.writeFile(specFile, JSON.stringify(resp.data));
+    return specFile;
   }
 }
+const resolveOpticScript = async (): Promise<string> => {
+  for (const script of [
+    path.join(__dirname, "../../build/index.js"),
+    path.join(__dirname, "../index.js"),
+  ]) {
+    try {
+      await fs.stat(script);
+      return script;
+    } catch (err) {
+      continue;
+    }
+  }
+  throw new Error("failed to locate optic-ci script");
+};

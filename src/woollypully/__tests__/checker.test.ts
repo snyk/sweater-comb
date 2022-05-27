@@ -2,7 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 
 import * as axios from "axios";
-import { loadSpecFromUrl, dereferenceOpenAPI } from "@useoptic/openapi-io";
 
 import { Checker } from "../checker";
 
@@ -21,15 +20,19 @@ const defaultApis = {
   ],
 };
 const defaultVersions = ["2022-05-23~beta"];
-const defaultSpecJson = fs.readFileSync(
-  path.join(
-    __dirname,
-    "static_readiness_ok",
-    "fake-service",
-    "versions",
-    "2022-05-23~beta",
-    "spec.json",
-  ),
+const defaultSpecJson = JSON.parse(
+  fs
+    .readFileSync(
+      path.join(
+        __dirname,
+        "static_readiness_ok",
+        "fake-service",
+        "versions",
+        "2022-05-23~beta",
+        "spec.json",
+      ),
+    )
+    .toString(),
 );
 
 describe("checker", () => {
@@ -38,6 +41,7 @@ describe("checker", () => {
     delete process.env.CURRENT_SERVICE_URL;
     delete process.env.PORT;
     process.env.PROPOSED_SERVICE_URL = "http://example.com";
+    jest.resetAllMocks();
   });
 
   test("can check APIs", async () => {
@@ -49,20 +53,18 @@ describe("checker", () => {
         )
         .mockImplementationOnce(() =>
           Promise.resolve({ data: defaultVersions, status: 200 }),
+        )
+        .mockImplementationOnce(() =>
+          Promise.resolve({ data: defaultSpecJson, status: 200 }),
         ),
     }));
-    (loadSpecFromUrl as jest.Mock).mockImplementation(() =>
-      Promise.resolve({
-        flattened: dereferenceOpenAPI(JSON.parse(defaultSpecJson.toString())),
-      }),
-    );
     const checker = new Checker(new Config());
     try {
       await checker.checkApis();
     } catch (err: any) {
       fail(err.message);
     }
-  });
+  }, 15000);
 
   test("fails if service is unavailable", async () => {
     (axios.default.create as jest.Mock).mockImplementation(() => ({
@@ -131,11 +133,9 @@ describe("checker", () => {
         )
         .mockImplementationOnce(() =>
           Promise.resolve({ data: defaultVersions, status: 200 }),
-        ),
+        )
+        .mockImplementationOnce(() => Promise.reject(new Error("bad wolf"))),
     }));
-    (loadSpecFromUrl as jest.Mock).mockImplementation(() =>
-      Promise.reject(new Error("bad wolf")),
-    );
     const checker = new Checker(new Config());
     try {
       await checker.checkApis();
@@ -154,19 +154,19 @@ describe("checker", () => {
         )
         .mockImplementationOnce(() =>
           Promise.resolve({ data: defaultVersions, status: 200 }),
+        )
+        .mockImplementationOnce(() =>
+          Promise.resolve({ data: 42, status: 200 }),
         ),
     }));
-    (loadSpecFromUrl as jest.Mock).mockImplementation(() =>
-      Promise.resolve({
-        flattened: 42,
-      }),
-    );
     const checker = new Checker(new Config());
     try {
       await checker.checkApis();
       fail("expected error");
     } catch (err: any) {
-      expect(err.message).toBeTruthy();
+      expect(err.message).toMatch(
+        "check 2022-05-23~beta failed with exit code 1",
+      );
     }
   });
 });
