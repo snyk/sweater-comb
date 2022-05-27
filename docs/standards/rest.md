@@ -115,6 +115,55 @@ headers:
 
 [Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
 
+## <a id="request-parameters"></a>Request Parameters
+
+### <a id="formats"></a>Formats
+
+Some resource types may be expressed with a media content-type format other than JSON API. Alternative media content-type formats may be requested using either the format query parameter or the Accept header, as further described below:
+
+#### `format` query parameter
+
+This is a URL query parameter of the form `?format=format_name`, where _format_name_ should be a generally-accepted industry term identifying the media content-type. This parameter's schema must be defined as an enum.
+
+For example, if we offered a SARIF representation of a single resource, the format query parameter might be `sarif`, while the `Content-Type` is `application/sarif+json`.
+
+#### `Accept` request header
+
+This is a request header of the form `Accept: content-type`, where _content-type_ is an IANA assigned or proposed content media type.
+
+Continuing with the above example, `Accept: application/sarif+json`.
+
+#### Response
+
+The response to a requested format may be:
+
+__200 OK__: The `Content-Type` response header indicates the requested format. The response body contains content in the requested format.
+
+Public REST API endpoints must provide a JSON API response, unless another response format is explicitly requested.
+
+The complete contents of the resource should be represented in the `attributes` of the JSON API response, in order to provide API consumers with a consistent and reliable developer experience.
+
+In such cases where this is not possible, a JSON API response must still be provided as the default format, containing these required properties:
+
+- JSON API `data` properties: `id` and `type`.
+- Relationship links to obtain the resource in other formats, using the `?format=` query parameter.
+
+__400 Bad Request__: The error should indicate an unknown or unsupported format, and may indicate which formats are supported.
+
+__406 Not Acceptable__: The format is supported but this particular resource cannot be represented in the requested format for some application-specific reason. This is not common.
+
+#### Constraints
+
+- Formats are only supported on GET operations of an equivalent JSON API single resource.
+- Formats are not allowed on collections because these must be paginated by JSON API links.
+  - Creation of large artifacts (regardless of media type) may require async API techniques (coming soon).
+- If a resource supports alternative formats:
+  - It must support the use of the `?format` query parameter.
+  - It may support the `Accept:` header as long as response caching takes the accept header into account. If this is not possible, `Accept:` must be ignored.
+  - Format is optional, must not be required, and must default to the JSON API representation of the resource when not provided.
+  - Relationship links may be used to advertise supported formats.
+- If both the query parameter and accept header are provided, the query parameter must take precedence. This is due to the limitations of some user agents, which may set a default accept header.
+
 ## <a id="response-headers"></a>Response Headers
 
 Certain headers are required in all v3 API responses.
