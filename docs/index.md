@@ -1,4 +1,6 @@
-# The Sweater Comb Project
+# Overview
+
+## The Sweater Comb Project
 
 The Sweater Comb project is an executable manifestation of Snyk's API standards.
 

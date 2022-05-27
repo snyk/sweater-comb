@@ -1,4 +1,4 @@
-# Snyk API Standards
+# Snyk REST API Standard
 
 In order to provide a consistent [API as a platform](../principles/api_program.md), Snyk APIs have additional requirements, building on [JSON API](../principles/jsonapi.md) and [Versioning](../principles/version.md) standards.
 

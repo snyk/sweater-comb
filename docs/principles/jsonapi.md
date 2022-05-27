@@ -54,7 +54,12 @@ Resource data objects have a certain structure as well.
 Collections are just arrays of these structured resource data objects.
 
 ```json
-[ {"id": /* some ID */, "type": /* some type */, "attributes": {/* ... */}}, /* ... */ ]
+[{
+    "id": /* some ID */,
+    "type": /* some type */,
+    "attributes": {/* ... */}
+ },
+ /* ... */ ]
 ```
 
 ### Links

@@ -1,12 +1,12 @@
-# API Program
+# The API Program at Snyk
 
-At Snyk, we're starting an API program that aims to maximize the value we provide to developers and the extensibility of our platform through our APIs. 
+At Snyk, we’re starting an API Program whose goal it is to create a beautiful garden of repeatable & concise APIs that empower Snyk customers, partners, and Snyk’ers alike to easily and quickly build new experiences and products.
 
-Such an API needs some guardrails to stay cohesive, consistent and "unsurprising" to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
+Such an API needs some guardrails to stay cohesive, consistent and “unsurprising” to its consumers, as the platform scales in the number of concepts it provides and the number of teams delivering them.
 
 ## Why automate?
 
-Partial automation of ,our standards yields a tighter feedback loop than a purely manual review of every change.
+Partial automation of API governance and standards compliance yields a tighter feedback loop than a purely manual review of every change.
 
 ### Automation is only part of the solution
 
@@ -118,8 +118,9 @@ Consider how this new _concept_ will be represented from different perspectives:
 #### Avoid mixing models or paradigms
 
 Know what models you're working with. When in doubt, ask!
-- Different models == different APIs (see above for examples)
-- Are you adding to an existing model appropriately?
+
+- Different sets of models == different APIs (see above for examples)
+- Are you adding to an existing set of models appropriately?
 - Or are you working with different (even if related) sorts of concepts entirely?
 
 RESTful APIs (JSON or otherwise) are about representing models as *resources*. Think of such an API as providing a catalogue of model objects.

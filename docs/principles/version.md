@@ -1,4 +1,4 @@
-# Versioning
+# API Versioning
 
 Fundamental to building an incredible API is the ability to evolve resources over time while giving our customers and partners time to adjust to any changes. This section focuses on how we enable product teams at Snyk to confidently develop endpoints that can evolve over time with versioning.
 
