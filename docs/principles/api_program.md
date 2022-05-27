@@ -6,7 +6,7 @@ Such an API needs some guardrails to stay cohesive, consistent and "unsurprising
 
 ## Why automate?
 
-Partial automation of our standards yields a tighter feedback loop than a purely manual review of every change.
+Partial automation of ,our standards yields a tighter feedback loop than a purely manual review of every change.
 
 ### Automation is only part of the solution
 
@@ -71,7 +71,7 @@ Snyk can provide higher-level abstractions over this API of data models (resourc
 
 ### What a resource-based API is (and isn't)
 
-Snyk's API represents our product's *core data model* as resources, for the purpose of delivering that data model to our customers and partners.
+Snyk’s API represents our product’s *core data model* as resources, for the purpose of delivering that data model to our customers and partners.
 
 #### It's not RPC
 
@@ -79,9 +79,9 @@ To keep it about that data, the only operations allowed in the API are "CRUD"-ty
 
 Contrast this with an RPC API which may offer a rich vocabulary of verbs at the granularity of method and function calls on objects. This approach may be necessary and useful in certain situations — however, these belong in a different sort of API from the one we're building here.
 
-#### It's only about Snyk's *core data model*
+#### It's (only) about Snyk's *core data model*
 
-There are situations where it makes sense for Snyk to represent other resources with an API. Many of these may relate to Snyk's core data model. However, if they are describing a different interface or paradigm, they do not belong in `/v3`, they should be located elsewhere. Examples of distinctly different models & paradigms:
+There are situations where it makes sense for Snyk to represent other resources with an API. Many of these may relate to Snyk's core data model. However, if they are describing a different interface or paradigm, they do not belong in the REST API, they should be located elsewhere. Examples of distinctly different models & paradigms:
 
 - GraphQL
     - A generalized query interface that merges many models into a unified graph

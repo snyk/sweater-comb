@@ -1,10 +1,10 @@
 nav:
+- 'The Sweater Comb Project': sweater-comb/index.md
 - 'API Principles and Guidelines':
   - 'API Program': principles/api_program.md
   - 'JSON API': principles/jsonapi.md
   - 'API Versioning': principles/version.md
 - 'Snyk REST API Standard': standards/rest.md
-- 'The Sweater Comb Project': sweater-comb/index.md
 plugins:
 - techdocs-core
 theme:
