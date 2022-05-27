@@ -11,5 +11,5 @@ metadata:
   name: sweater-comb
 spec:
   lifecycle: production
-  owner: '@snyk/elk'
+  owner: 'elk'
   type: tool
