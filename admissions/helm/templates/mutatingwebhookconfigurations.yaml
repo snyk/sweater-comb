@@ -1,0 +1,33 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: {{ include "sweater-comb-admissions.fullname" . }}
+  labels:
+    {{- include "sweater-comb-admissions.labels" . | nindent 4 }}
+webhooks:
+  - name: {{ include "sweater-comb-admissions.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+    admissionReviewVersions:
+      - v1
+    clientConfig:
+      caBundle: {{ .Values.caBundle }}
+      service:
+        name: {{ include "sweater-comb-admissions.fullname" . }}
+        namespace: {{ .Release.Namespace }}
+        path: "/mutate"
+        port: 443
+    rules:
+      - operations: ["CREATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+    sideEffects: None
+    timeoutSeconds: 5
+    reinvocationPolicy: Never
+    failurePolicy: Ignore
+    namespaceSelector:
+      matchExpressions:
+        # TODO: exclude kube-*, what else? configurable?
+        - key: "helm.sh/chart"
+          operator: "NotIn"
+          values:
+            - {{ include "sweater-comb-admissions.chart" . }}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sweater-comb-admissions.fullname" . }}-test-connection"
+  labels:
+    {{- include "sweater-comb-admissions.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "sweater-comb-admissions.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
