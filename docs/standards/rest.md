@@ -80,9 +80,7 @@ Operation IDs must use **camel case** names. Example:
 operationId: getFoo
 ```
 
-#### How to name operations
-
-##### Prefix the operation ID with the action being performed
+#### Prefix the operation ID with the action being performed
 
 - GET becomes `get` for a single resource (by unique ID)
 - GET becomes `list` for multiple resources (pagination and filtering)
@@ -90,7 +88,7 @@ operationId: getFoo
 - PATCH becomes `update`
 - DELETE becomes `delete`
 
-##### Suffix the operation ID with the resource
+#### Suffix the operation ID with the name of the resource
 
 Use the singular form if the operation operates on a single resource, plural if it operates on a collection operation.
 
@@ -101,9 +99,9 @@ Examples:
 - `updateOtherThing` (update one)
 - `deleteThings` (bulk delete)
 
-##### Optionally, suffix the resource with any tenancy
+#### Suffix the resource with tenancy if needed
 
-If there are multiple ways to address the resource by tenancy, differentiate these as a resource name suffix.
+If there are operations which allow addressing the resource by multiple tenancies (a containing resource), differentiate these as a "by resource" name suffix.
 
 Example: `getFooByOrg`, `deleteProjectByGroup`, etc.
 
@@ -111,8 +109,8 @@ Example: `getFooByOrg`, `deleteProjectByGroup`, etc.
 
 ```json
 headers:
-    snyk-requested-version: 2021-08-21~beta
-    snyk-resolved-version: 2021-08-12~beta
+    snyk-requested-version: "2021-08-21~beta"
+    snyk-resolved-version: "2021-08-12~beta"
 ```
 
 [Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
