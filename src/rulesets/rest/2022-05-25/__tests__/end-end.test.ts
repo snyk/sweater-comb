@@ -115,6 +115,47 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  it("fails for the right reason with invalid parameters", async () => {
+    const results = await snapshotScenario(
+      undefined,
+      "spec.yaml",
+      resourceDate("repos", "2022-04-04"),
+      {
+        changeDate: "2022-05-27",
+        changeResource: "repos",
+        changeVersion: {
+          date: "2022-04-04",
+          stability: "experimental",
+        },
+        resourceVersions: {},
+      },
+    );
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results.filter((result) => !result.passed)).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          error: "expected parameter name orgId to be snake case",
+        }),
+        expect.objectContaining({
+          error: "expected parameter name repoId to be snake case",
+        }),
+        // This is a false positive on a pagination rule triggering. It triggers
+        // because it fails to find a valid trailing path parameter, which it
+        // uses to determine whether the endpoint is a single resource or a
+        // collection. Solving that might be a nice-to-have, but adding special
+        // cases there does not seem appropriate either.
+        //
+        // TODO: The right solution to this might be to make some rules take
+        // precedence over others with a priority score. If a higher scored rule
+        // fails, do not bother showing the lower-scored rules?
+        expect.objectContaining({
+          error: "Could not find a partial match in query parameters",
+        }),
+      ]),
+    );
+    expect(results).toMatchSnapshot();
+  });
+
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../../../"));
 
   async function snapshotScenario(

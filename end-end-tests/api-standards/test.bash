@@ -63,11 +63,6 @@ ${COMPARE} \
     --context "${CONTEXT}"
 assert_ok
 ${COMPARE} \
-    --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \
-    --to $HERE/resources/thing/2021-11-10/001-fail-operationid-change.yaml \
-    --context "${CONTEXT}"
-assert_ok
-${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/002-ok-add-operation.yaml \
     --to $HERE/resources/thing/2021-11-10/003-ok-type-change.yaml \
     --context "${CONTEXT}"
@@ -81,9 +76,19 @@ ${COMPARE} \
     --context "${CONTEXT}"
 assert_err
 
+${COMPARE} \
+    --to $HERE/resources/thing/2021-11-10/001-fail-operationid-change.yaml \
+    --context "${CONTEXT}"
+assert_err
+
 ## breaking changes not allowed at beta
 
 ### cannot make a breaking type change in beta
+${COMPARE} \
+    --from $HERE/resources/thing/2021-11-10/000-baseline-beta.yaml \
+    --to $HERE/resources/thing/2021-11-10/001-fail-operationid-change-beta.yaml \
+    --context "${CONTEXT}"
+assert_err
 ${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/000-baseline-beta.yaml \
     --to $HERE/resources/thing/2021-11-10/001-fail-type-change-beta.yaml \

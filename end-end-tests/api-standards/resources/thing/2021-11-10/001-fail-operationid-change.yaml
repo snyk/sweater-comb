@@ -1,4 +1,4 @@
-# 001-fail-operationid-change.yaml
+# 001-fail-operationid-change-beta.yaml
 # Changing a path request method's operationId is also considered a breaking change
 openapi: 3.0.3
 x-snyk-api-stability: experimental
