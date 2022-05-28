@@ -46,23 +46,24 @@ Stability levels guarantee a certain level of consistency in the API contract, a
 In increasing order of stability, from least to most stable, these are:
 
 - `wip`
-    - The resource is just getting started and may be in a broken or incomplete state with regard to its OpenAPI spec. WIP-versioned resources are not made publicly accessible.
+  - The resource is just getting started and may be in a broken or incomplete state with regard to its OpenAPI spec. WIP-versioned resources are not made publicly accessible.
 - `experimental`
-    - The resource version is a functionally complete implementation of its OpenAPI spec. Experimental versions may be publicly accessible.
-    - There are NO guarantees on the stability or future availability of the API version.
-      - Breaking changes in the API may be introduced at any time.
-      - The API version may sunset at any time.
-    - May be distributed as a limited tech preview.
+  - The resource version is a functionally complete implementation of its OpenAPI spec. Experimental versions may be publicly accessible.
+  - There are NO guarantees on the stability or future availability of the API version.
+    - Breaking changes in the API may be introduced at any time.
+    - The API version may sunset at any time.
+  - May be distributed as a limited tech preview.
+
 - `beta`
-    - The resource version is being evaluated as a candidate for general availability by partners and customers.
-    - It will be available for at least **90 days** after a subsequent resource version *of equal or greater stability* (`beta` or `ga`) is published, after which it may be removed.
-    - During its availability, it must not be revised with incompatible and breaking changes.
-    - It may be revised with backwards-compatible, additive changes.
+  - The resource version is being evaluated as a candidate for general availability by partners and customers.
+  - It will be available for at least **90 days** after a subsequent resource version *of equal or greater stability* (`beta` or `ga`) is published, after which it may be removed.
+  - During its availability, it must not be revised with incompatible and breaking changes.
+  - It may be revised with backwards-compatible, additive changes.
 - `ga`
-    - The resource version is a generally available feature of the API.
-    - It will be available for at least **180 days** after a subsequent `ga` resource version is published, after which it may be removed.
-    - During its availability, it must not be revised with incompatible and breaking changes.
-    - It may be revised with backwards-compatible, additive changes.
+  - The resource version is a generally available feature of the API.
+  - It will be available for at least **180 days** after a subsequent `ga` resource version is published, after which it may be removed.
+  - During its availability, it must not be revised with incompatible and breaking changes.
+  - It may be revised with backwards-compatible, additive changes.
 
 `experimental` is where new API features are incubated. Experiments are unlisted in official product documentation, though they may be publicly routed. They're a place to try new things, stress test, invite early feedback, and iterate. Experiments are a temporary draft of an API, so they are considered deprecated upon release. After 90 days, experimental versions automatically sunset. To keep an experiment going, iterate with a new release version or promote it to `beta`.
 
