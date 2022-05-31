@@ -620,6 +620,60 @@ describe("operation parameters", () => {
   });
 });
 
+describe("path requirements", () => {
+  test("fails if the path root is a parameter", () => {
+    const ruleRunner = new RuleRunner([operationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, {
+        ...baseJson,
+        paths: {
+          "/{anything}/{goes}": {
+            get: {
+              summary: "this is an example",
+              tags: ["example"],
+              parameters: [
+                {
+                  name: "version",
+                  in: "query",
+                },
+                {
+                  name: "anything",
+                  in: "path",
+                },
+                {
+                  name: "goes",
+                  in: "path",
+                },
+              ],
+              operationId: "getAnything",
+              responses: {},
+            },
+          },
+        },
+      } as OpenAPIV3.Document),
+      context: {
+        ...context,
+        changeVersion: {
+          ...context.changeVersion,
+          stability: "experimental",
+        },
+      },
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results.filter((result) => !result.passed)).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          error:
+            "expected /{anything}/{goes} to begin with a resource name, not a parameter",
+        }),
+      ]),
+    );
+    expect(results).toMatchSnapshot();
+  });
+});
+
 describe("status codes", () => {
   test("fails when status code is removed", () => {
     const beforeJson = {

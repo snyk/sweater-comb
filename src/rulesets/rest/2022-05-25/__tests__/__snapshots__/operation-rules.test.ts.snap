@@ -287,6 +287,41 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -566,6 +601,40 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -902,6 +971,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -1351,6 +1456,42 @@ Array [
     "received": undefined,
     "where": "changed query parameter: query_parameter in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -1613,6 +1754,42 @@ Array [
     "passed": false,
     "received": undefined,
     "where": "added query parameter: required in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
   },
 ]
 `;
@@ -2024,6 +2201,42 @@ Array [
     "received": undefined,
     "where": "changed query parameter: required in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -2392,6 +2605,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{pathParameter}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{pathParameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{pathParameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{pathParameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example/{pathParameter}",
@@ -2768,6 +3017,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example/{path_parameter}",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example/{path_parameter}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example/{path_parameter}",
+  },
 ]
 `;
 
@@ -2845,6 +3130,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -2918,6 +3239,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -3219,6 +3576,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -3509,6 +3902,41 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -3786,6 +4214,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExampleButDifferent",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -4087,6 +4551,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get-hello-world",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -4384,6 +4884,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "findHelloWorld",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -4654,6 +5190,41 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -4955,6 +5526,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "get",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
 ]
 `;
 
@@ -5248,6 +5855,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getYesHump",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -5549,6 +6192,192 @@ Array [
     "received": undefined,
     "where": "requirement for operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+]
+`;
+
+exports[`path requirements fails if the path root is a parameter 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/{anything}/{goes}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/{}/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1{anything}~1{goes}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getAnything",
+        "pathPattern": "/{anything}/{goes}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "match expected shape",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation id set",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /{anything}/{goes}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "method": "get",
+        "operationId": "getAnything",
+        "pathPattern": "/{anything}/{goes}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/{anything}/{goes}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/{}/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1{anything}~1{goes}/get",
+        "kind": "operation",
+      },
+    },
+    "condition": "not use put method",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no put method",
+    "passed": true,
+    "received": undefined,
+    "where": "added operation: GET /{anything}/{goes}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/{anything}/{goes}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/{}/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1{anything}~1{goes}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getAnything",
+        "pathPattern": "/{anything}/{goes}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "use the right casing for path elements",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /{anything}/{goes}",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/{anything}/{goes}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/{}/{}",
+          "get",
+        ],
+        "jsonPath": "/paths/~1{anything}~1{goes}/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getAnything",
+        "pathPattern": "/{anything}/{goes}",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": "expected /{anything}/{goes} to begin with a resource name, not a parameter",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": false,
+    "received": undefined,
+    "where": "requirement for operation: GET /{anything}/{goes}",
+  },
 ]
 `;
 
@@ -5846,6 +6675,42 @@ Array [
     "received": undefined,
     "where": "requirement for operation: PUT /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "put",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "put",
+        ],
+        "jsonPath": "/paths/~1example/put",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "put",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: PUT /example",
+  },
 ]
 `;
 
@@ -6027,6 +6892,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",
@@ -6325,6 +7226,42 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "path element casing",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "value": Object {
+        "method": "get",
+        "operationId": "getExample",
+        "pathPattern": "/example",
+        "summary": "this is an example",
+        "tags": Array [
+          "example",
+        ],
+      },
+    },
+    "condition": "declare a resource name at the path root",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource path cannot begin with a parameter",
     "passed": true,
     "received": undefined,
     "where": "requirement for operation: GET /example",

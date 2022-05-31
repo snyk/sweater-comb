@@ -245,6 +245,22 @@ const pathElementCasing = new OperationRule({
   },
 });
 
+const resourceRootParamter = new OperationRule({
+  name: "resource path cannot begin with a parameter",
+  rule: (operationAssertions) => {
+    operationAssertions.requirement(
+      "declare a resource name at the path root",
+      (operation) => {
+        if (operation.path.match(/^\/\{/)) {
+          throw new RuleError({
+            message: `expected ${operation.path} to begin with a resource name, not a parameter`,
+          });
+        }
+      },
+    );
+  },
+});
+
 const preventAddingRequiredQueryParameters = new OperationRule({
   name: "prevent adding required query parameter",
   docsLink: links.versioning.breakingChanges,
@@ -437,5 +453,6 @@ export const operationRules = new Ruleset({
     preventChangingParameterSchemaFormat,
     preventChangingParameterSchemaPattern,
     preventChangingParameterSchemaType,
+    resourceRootParamter,
   ],
 });
