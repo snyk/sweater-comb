@@ -17,10 +17,7 @@ const operationId = new OperationRule({
   matches: (operation, ruleContext) => {
     const changeDate = new Date(ruleContext.custom.changeVersion.date);
     const effectiveOnDate = new Date("2021-07-01");
-    return (
-      !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability) &&
-      changeDate > effectiveOnDate
-    );
+    return changeDate > effectiveOnDate;
   },
   rule: (operationAssertions) => {
     const prefixRegex = /^(get|create|list|update|delete)[A-Z]+.*/; // alternatively we could split at camelCase boundaries and assert on the first item
@@ -71,8 +68,6 @@ const operationIdSet = new OperationRule({
 const tags = new OperationRule({
   name: "operation tags",
   docsLink: links.standards.tags,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.requirement.matches(
       {
@@ -88,8 +83,6 @@ const tags = new OperationRule({
 const summary = new OperationRule({
   name: "operation summary",
   docsLink: links.standards.operationSummary,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.requirement.matches(
       {
@@ -124,8 +117,6 @@ const consistentOperationIds = new OperationRule({
 const parameterCase = new OperationRule({
   name: "operation parameters snake case",
   docsLink: links.standards.parameterNamesPathComponents,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.pathParameter.added(
       "use the correct case",
@@ -183,8 +174,6 @@ const preventOperationRemoval = new OperationRule({
 const requireVersionParameter = new OperationRule({
   name: "require version parameter",
   docsLink: links.versioning.versionParameter,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.requirement.hasQueryParameterMatching({
       name: "version",
@@ -195,8 +184,6 @@ const requireVersionParameter = new OperationRule({
 const tenantFormatting = new OperationRule({
   name: "tenant formatting",
   docsLink: links.standards.orgAndGroupTenantResources,
-  matches: (operation, ruleContext) =>
-    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.pathParameter.requirement(
       "use UUID for org_id or group_id",

@@ -64,7 +64,7 @@ describe("checker", () => {
     } catch (err: any) {
       fail(err.message);
     }
-  }, 15000);
+  }, 30000);
 
   test("fails if service is unavailable", async () => {
     (axios.default.create as jest.Mock).mockImplementation(() => ({

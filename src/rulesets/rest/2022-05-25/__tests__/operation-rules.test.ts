@@ -5,36 +5,46 @@ import { context } from "./fixtures";
 import { operationRules } from "../operation-rules";
 
 const baseJson = TestHelpers.createEmptySpec();
-test("passes when operation is set correctly", () => {
-  const ruleRunner = new RuleRunner([operationRules]);
-  const ruleInputs = {
-    ...TestHelpers.createRuleInputs(baseJson, {
-      ...baseJson,
-      paths: {
-        "/example": {
-          get: {
-            summary: "this is an example",
-            tags: ["example"],
-            parameters: [
-              {
-                name: "version",
-                in: "query",
-              },
-            ],
-            operationId: "getExample",
-            responses: {},
+
+test.each(["experimental", "beta", "ga"])(
+  "passes when operation is set correctly, stability %s",
+  (stability) => {
+    const ruleRunner = new RuleRunner([operationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, {
+        ...baseJson,
+        paths: {
+          "/example": {
+            get: {
+              summary: "this is an example",
+              tags: ["example"],
+              parameters: [
+                {
+                  name: "version",
+                  in: "query",
+                },
+              ],
+              operationId: "getExample",
+              responses: {},
+            },
           },
         },
+      } as OpenAPIV3.Document),
+      context: {
+        ...context,
+        changeVersion: {
+          ...context.changeVersion,
+          stability: stability,
+        },
       },
-    } as OpenAPIV3.Document),
-    context,
-  };
-  const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
-  expect(results.length).toBeGreaterThan(0);
-  expect(results.every((result) => result.passed)).toBe(true);
-  expect(results).toMatchSnapshot();
-});
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  },
+);
 
 describe("operationId", () => {
   describe("missing", () => {
@@ -128,7 +138,13 @@ describe("operationId", () => {
             },
           },
         } as OpenAPIV3.Document),
-        context,
+        context: {
+          ...context,
+          changeVersion: {
+            ...context.changeVersion,
+            stability: "experimental",
+          },
+        },
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
@@ -266,7 +282,13 @@ describe("operation metadata", () => {
           },
         },
       } as OpenAPIV3.Document),
-      context,
+      context: {
+        ...context,
+        changeVersion: {
+          ...context.changeVersion,
+          stability: "experimental",
+        },
+      },
     };
     const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
@@ -311,73 +333,91 @@ describe("operation metadata", () => {
 
 describe("operation parameters", () => {
   describe("names", () => {
-    test("fails if the case is not correct", () => {
-      const ruleRunner = new RuleRunner([operationRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, {
-          ...baseJson,
-          paths: {
-            "/example/{pathParameter}": {
-              get: {
-                summary: "this is an example",
-                tags: ["example"],
-                parameters: [
-                  {
-                    name: "version",
-                    in: "query",
-                  },
-                  {
-                    name: "pathParameter",
-                    in: "path",
-                  },
-                ],
-                operationId: "getExample",
-                responses: {},
+    test.each(["experimental", "beta", "ga"])(
+      "fails if the case is not correct, stability %s",
+      (stability) => {
+        const ruleRunner = new RuleRunner([operationRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, {
+            ...baseJson,
+            paths: {
+              "/example/{pathParameter}": {
+                get: {
+                  summary: "this is an example",
+                  tags: ["example"],
+                  parameters: [
+                    {
+                      name: "version",
+                      in: "query",
+                    },
+                    {
+                      name: "pathParameter",
+                      in: "path",
+                    },
+                  ],
+                  operationId: "getExample",
+                  responses: {},
+                },
               },
             },
+          } as OpenAPIV3.Document),
+          context: {
+            ...context,
+            changeVersion: {
+              ...context.changeVersion,
+              stability: stability,
+            },
           },
-        } as OpenAPIV3.Document),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(false);
-      expect(results).toMatchSnapshot();
-    });
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(false);
+        expect(results).toMatchSnapshot();
+      },
+    );
 
-    test("passes if the case is correct", () => {
-      const ruleRunner = new RuleRunner([operationRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, {
-          ...baseJson,
-          paths: {
-            "/example/{path_parameter}": {
-              get: {
-                summary: "this is an example",
-                tags: ["example"],
-                parameters: [
-                  {
-                    name: "version",
-                    in: "query",
-                  },
-                  {
-                    name: "path_parameter",
-                    in: "path",
-                  },
-                ],
-                operationId: "getExample",
-                responses: {},
+    test.each(["experimental", "beta", "ga"])(
+      "passes if the case is correct, stability %s",
+      (stability) => {
+        const ruleRunner = new RuleRunner([operationRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, {
+            ...baseJson,
+            paths: {
+              "/example/{path_parameter}": {
+                get: {
+                  summary: "this is an example",
+                  tags: ["example"],
+                  parameters: [
+                    {
+                      name: "version",
+                      in: "query",
+                    },
+                    {
+                      name: "path_parameter",
+                      in: "path",
+                    },
+                  ],
+                  operationId: "getExample",
+                  responses: {},
+                },
               },
             },
+          } as OpenAPIV3.Document),
+          context: {
+            ...context,
+            changeVersion: {
+              ...context.changeVersion,
+              stability: stability,
+            },
           },
-        } as OpenAPIV3.Document),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    });
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+        expect(results).toMatchSnapshot();
+      },
+    );
   });
   test("fails when adding a required query parameter", () => {
     const ruleRunner = new RuleRunner([operationRules]);
