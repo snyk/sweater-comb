@@ -36,6 +36,6 @@ spec:
       # TODO: inject woollypully readiness probe with admission webhook
       # Pod is not considered Ready until the probe gets a 200 OK.
       # woollypully doesn't respond 200 OK until governance check on the service container passes.
-      readinessProbe:
-        httpGet:
-          port: 30576
+          readinessProbe:
+            httpGet:
+              port: 30576
