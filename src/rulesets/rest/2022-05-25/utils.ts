@@ -10,8 +10,14 @@ export const isBatchPostOperation = (requests) => {
   const request = requests.find(
     (request) => request.contentType === "application/vnd.api+json",
   );
-
-  return request ? request.value.flatSchema.type === "array" : false;
+  const requestSchema = request?.raw.schema;
+  if (!requestSchema) {
+    return false;
+  }
+  if (requestSchema.type !== "object") {
+    return false;
+  }
+  return requestSchema.properties?.data?.type === "array";
 };
 
 export const isBreakingChangeAllowed = (stability: string): boolean => {
