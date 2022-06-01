@@ -57,16 +57,16 @@ Array [
             "statusCode": "200",
           },
           "method": "post",
-          "path": "/api/users/{user_id}",
+          "path": "/api/users",
         },
         "conceptualPath": Array [
           "operations",
-          "/api/users/{}",
+          "/api/users",
           "post",
           "responses",
           "200",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/200",
+        "jsonPath": "/paths/~1api~1users/post/responses/200",
         "kind": "response",
       },
     },
@@ -79,7 +79,49 @@ Array [
     "name": "valid 2xx status codes for post",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 200 in operation: POST /api/users/{user_id}",
+    "where": "added response status code: 200 in operation: POST /api/users",
+  },
+]
+`;
+
+exports[`status code rules fails when an invalid batch post request is specified 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "i am not valid",
+        "statusCode": "204",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "204",
+          },
+          "method": "post",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users/{}",
+          "post",
+          "responses",
+          "204",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/204",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": "expected POST response to only support 201, not 204",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for post",
+    "passed": false,
+    "received": undefined,
+    "where": "added response status code: 204 in operation: POST /api/users/{user_id}",
   },
 ]
 `;
@@ -164,6 +206,48 @@ Array [
     "passed": false,
     "received": undefined,
     "where": "added response status code: 200 in operation: POST /api/users/{user_id}",
+  },
+]
+`;
+
+exports[`status code rules passes for a valid batch post 204 code 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "description": "got it",
+        "statusCode": "204",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "statusCode": "204",
+          },
+          "method": "post",
+          "path": "/api/users",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/api/users",
+          "post",
+          "responses",
+          "204",
+        ],
+        "jsonPath": "/paths/~1api~1users/post/responses/204",
+        "kind": "response",
+      },
+    },
+    "condition": "support the correct 2xx status codes",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for post",
+    "passed": true,
+    "received": undefined,
+    "where": "added response status code: 204 in operation: POST /api/users",
   },
 ]
 `;

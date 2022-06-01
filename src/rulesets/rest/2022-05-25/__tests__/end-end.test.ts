@@ -156,6 +156,25 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  it("passes valid bulk POST operation", async () => {
+    const results = await snapshotScenario(
+      undefined,
+      "000-batch-post.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "experimental",
+        },
+        resourceVersions: {},
+      },
+    );
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
+
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../../../"));
 
   async function snapshotScenario(

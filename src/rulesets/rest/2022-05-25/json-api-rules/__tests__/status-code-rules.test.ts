@@ -115,14 +115,19 @@ describe("status code rules", () => {
     const afterJson = {
       ...baseJson,
       paths: {
-        "/api/users/{user_id}": {
+        "/api/users": {
           post: {
             requestBody: {
               content: {
                 "application/vnd.api+json": {
                   schema: {
-                    type: "array",
-                    items: {},
+                    type: "object",
+                    properties: {
+                      data: {
+                        type: "array",
+                        items: {},
+                      },
+                    },
                   },
                 },
               },
@@ -153,6 +158,106 @@ describe("status code rules", () => {
     const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
+    expect(results.filter((result) => !result.passed)).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          error:
+            "expected POST response for batches to only support 204, not 200",
+        }),
+      ]),
+    );
+    expect(results).toMatchSnapshot();
+  });
+
+  test("fails when an invalid batch post request is specified", () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users/{user_id}": {
+          post: {
+            requestBody: {
+              content: {
+                "application/vnd.api+json": {
+                  schema: {
+                    type: "array",
+                    items: {},
+                  },
+                },
+              },
+            },
+            responses: {
+              "204": {
+                description: "i am not valid",
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([statusCodesRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results.filter((result) => !result.passed)).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          error: "expected POST response to only support 201, not 204",
+        }),
+      ]),
+    );
+    expect(results).toMatchSnapshot();
+  });
+
+  test("passes for a valid batch post 204 code", () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users": {
+          post: {
+            requestBody: {
+              content: {
+                "application/vnd.api+json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      data: {
+                        type: "array",
+                        items: {
+                          type: "object",
+                          properties: {
+                            id: "some-id",
+                            type: "some-type",
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            responses: {
+              "204": {
+                description: "got it",
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([statusCodesRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();
   });
 });
