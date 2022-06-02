@@ -6,6 +6,7 @@ export function buildItemResponseSchema(
   titleResourceName: string,
 ): OpenAPIV3.SchemaObject {
   return {
+    type: "object",
     properties: {
       jsonapi: refs.schemas.jsonApi,
       data: {
