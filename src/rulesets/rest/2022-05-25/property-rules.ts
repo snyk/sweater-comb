@@ -185,6 +185,54 @@ const arrayWithItemsInResponse = new ResponseBodyRule({
   },
 });
 
+const requiredPropertiesDeclaredInRequestBody = new RequestRule({
+  name: "request schema properties",
+  rule: (requestAssertions) => {
+    requestAssertions.body.requirement(
+      "declare required properties in objects",
+      (body) => {
+        checkRequiredProperties((body.raw as any).schema);
+      },
+    );
+  },
+});
+
+const requiredPropertiesDeclaredInResponse = new ResponseBodyRule({
+  name: "response schema properties",
+  rule: (responseAssertions) => {
+    responseAssertions.body.requirement(
+      "declare required properties in objects",
+      (body) => {
+        checkRequiredProperties(body.raw.schema as OpenAPIV3.SchemaObject);
+      },
+    );
+  },
+});
+
+const checkRequiredProperties = (schema: OpenAPIV3.SchemaObject) => {
+  const schemas = [schema];
+  const path: string[] = [];
+  while (schemas.length > 0) {
+    const schema = schemas.pop();
+    for (const required of schema?.required ?? []) {
+      if (schema?.properties && !schema.properties[required]) {
+        throw new RuleError({
+          message: `missing required property ${[...path, required].join(".")}`,
+        });
+      }
+    }
+    if (schema?.properties) {
+      for (const propName in schema?.properties) {
+        const prop = schema.properties[propName] as OpenAPIV3.SchemaObject;
+        if (prop.type === "object") {
+          path.push(propName);
+          schemas.push(prop);
+        }
+      }
+    }
+  }
+};
+
 const preventChangingRequestFormat = new RequestRule({
   name: "prevent changing format in request property",
   matches: (_, ruleContext) =>
@@ -385,5 +433,7 @@ export const propertyRules = new Ruleset({
     preventChangingResponseType,
     collectionTypeValidRequest,
     collectionTypeValidResponse,
+    requiredPropertiesDeclaredInRequestBody,
+    requiredPropertiesDeclaredInResponse,
   ],
 });

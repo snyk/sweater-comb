@@ -47,6 +47,7 @@ describe("body properties", () => {
         context,
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
@@ -82,6 +83,7 @@ describe("body properties", () => {
         context,
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
@@ -152,6 +154,7 @@ describe("body properties", () => {
         context,
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
@@ -308,8 +311,229 @@ describe("body properties", () => {
         context,
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
+    });
+  });
+
+  describe("required properties", () => {
+    const requiredOk: OpenAPIV3.SchemaObject = {
+      type: "object",
+      properties: {
+        data: {
+          type: "object",
+          properties: {
+            something: {
+              type: "string",
+            },
+            else: {
+              type: "number",
+            },
+          },
+          required: ["something"],
+        },
+        foo: {
+          type: "string",
+        },
+      },
+      required: ["data"],
+    };
+    test("passes when required properties are declared", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: requiredOk,
+                  },
+                },
+              },
+              responses: {
+                "200": {
+                  description: "ok",
+                  content: {
+                    "application/json": {
+                      schema: requiredOk,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    const missingRequiredTopLevel: OpenAPIV3.SchemaObject = {
+      type: "object",
+      properties: {
+        something: {
+          type: "string",
+        },
+      },
+      required: ["something_else"],
+    };
+    const missingRequiredNested: OpenAPIV3.SchemaObject = {
+      type: "object",
+      properties: {
+        data: {
+          type: "object",
+          properties: {
+            something: {
+              type: "string",
+            },
+          },
+          required: ["something_else"],
+        },
+      },
+    };
+    test("fails when required properties are missing in request body, top-level", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: missingRequiredTopLevel,
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "missing required property something_else",
+          }),
+        ]),
+      );
+    });
+    test("fails when required properties are missing in request body, nested", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: missingRequiredNested,
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "missing required property data.something_else",
+          }),
+        ]),
+      );
+    });
+    test("fails when required properties are missing in response, top-level", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: missingRequiredTopLevel,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "missing required property something_else",
+          }),
+        ]),
+      );
+    });
+    test("fails when required properties are missing in response, nested", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: missingRequiredNested,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "missing required property data.something_else",
+          }),
+        ]),
+      );
     });
   });
 
@@ -484,6 +708,7 @@ describe("body properties", () => {
         },
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
@@ -544,6 +769,7 @@ describe("body properties", () => {
         },
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });

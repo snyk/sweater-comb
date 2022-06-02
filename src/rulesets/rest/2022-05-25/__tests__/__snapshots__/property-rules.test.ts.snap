@@ -52,6 +52,48 @@ Array [
     "received": undefined,
     "where": "removed property: count in response status code: 200 with content-type: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
 ]
 `;
 
@@ -326,10 +368,94 @@ Array [
     "received": undefined,
     "where": "added property: count request body: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for request with content-type: application/json in operation: GET /example",
+  },
 ]
 `;
 
-exports[`body properties breaking changes passes if a property is removed in experimental 1`] = `Array []`;
+exports[`body properties breaking changes passes if a property is removed in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
 
 exports[`body properties breaking changes passes if a required property is added in experimental 1`] = `
 Array [
@@ -557,6 +683,45 @@ Array [
     "received": undefined,
     "where": "added property: count request body: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for request with content-type: application/json in operation: GET /example",
+  },
 ]
 `;
 
@@ -657,6 +822,48 @@ Array [
     "passed": true,
     "received": undefined,
     "where": "requirement for property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
   },
 ]
 `;
@@ -806,6 +1013,48 @@ Array [
     "received": undefined,
     "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
 ]
 `;
 
@@ -953,6 +1202,48 @@ Array [
     "passed": true,
     "received": undefined,
     "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
   },
 ]
 `;
@@ -1251,6 +1542,48 @@ Array [
     "received": undefined,
     "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
 ]
 `;
 
@@ -1398,6 +1731,48 @@ Array [
     "passed": true,
     "received": undefined,
     "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
   },
 ]
 `;
@@ -1547,6 +1922,48 @@ Array [
     "received": undefined,
     "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
 ]
 `;
 
@@ -1695,6 +2112,48 @@ Array [
     "received": undefined,
     "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
   },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
 ]
 `;
 
@@ -1842,6 +2301,48 @@ Array [
     "passed": true,
     "received": undefined,
     "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
   },
 ]
 `;
