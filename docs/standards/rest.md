@@ -115,7 +115,18 @@ headers:
 
 [Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
 
-## <a id="request-parameters"></a>Request Parameters
+## <a id="reserved-request-parameters"></a>Reserved Request Parameters
+
+### <a id="filtering-authorized-access"></a>Filtering authorized access
+
+Some resources may allow filtering results based on authorizations granted to the authenticated principal. Some applications of this:
+
+- API applications: "Apply a policy to those resources the caller is an administrator of."
+- User interfaces: "Display editing widgets for those resources the user can edit."
+
+#### `has_permission` query parameter
+
+A URL query parameter `?has_permission=permission_slug` may be used on a collection to filter results by permissions authorized to the authenticated principal. When this parameter is present, the schema for `permission_slug` must be an enum type (`{"type": "string", "enum": [...]}`).
 
 ### <a id="formats"></a>Formats
 
