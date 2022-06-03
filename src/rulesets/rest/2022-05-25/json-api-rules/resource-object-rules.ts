@@ -17,11 +17,13 @@ const responseDataForPatch = new ResponseBodyRule({
   rule: (responseAssertions) => {
     responseAssertions.body.added.matches({
       schema: {
+        type: "object",
         properties: {},
       },
     });
     responseAssertions.body.changed.matches({
       schema: {
+        type: "object",
         properties: {},
       },
     });
