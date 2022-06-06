@@ -5,7 +5,7 @@ import * as axios from "axios";
 
 import { Checker } from "../checker";
 
-import { Config } from "../config";
+import { getConfig } from "../config";
 
 jest.mock("axios");
 jest.mock("@useoptic/openapi-io");
@@ -58,7 +58,7 @@ describe("checker", () => {
           Promise.resolve({ data: defaultSpecJson, status: 200 }),
         ),
     }));
-    const checker = new Checker(new Config());
+    const checker = new Checker(await getConfig());
     try {
       await checker.checkApis();
     } catch (err: any) {
@@ -72,7 +72,7 @@ describe("checker", () => {
         .fn()
         .mockImplementation(() => Promise.reject(new Error("bad wolf"))),
     }));
-    const checker = new Checker(new Config());
+    const checker = new Checker(await getConfig());
     try {
       await checker.checkApis();
       fail();
@@ -91,7 +91,7 @@ describe("checker", () => {
             Promise.resolve({ data: defaultApis, status: status }),
           ),
       }));
-      const checker = new Checker(new Config());
+      const checker = new Checker(await getConfig());
       try {
         await checker.checkApis();
         fail("expected error");
@@ -114,7 +114,7 @@ describe("checker", () => {
             Promise.resolve({ data: defaultVersions, status: status }),
           ),
       }));
-      const checker = new Checker(new Config());
+      const checker = new Checker(await getConfig());
       try {
         await checker.checkApis();
         fail("expected error");
@@ -136,7 +136,7 @@ describe("checker", () => {
         )
         .mockImplementationOnce(() => Promise.reject(new Error("bad wolf"))),
     }));
-    const checker = new Checker(new Config());
+    const checker = new Checker(await getConfig());
     try {
       await checker.checkApis();
       fail("expected error");
@@ -159,7 +159,7 @@ describe("checker", () => {
           Promise.resolve({ data: 42, status: 200 }),
         ),
     }));
-    const checker = new Checker(new Config());
+    const checker = new Checker(await getConfig());
     try {
       await checker.checkApis();
       fail("expected error");

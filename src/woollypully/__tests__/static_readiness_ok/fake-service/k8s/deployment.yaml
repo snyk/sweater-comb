@@ -21,9 +21,9 @@ spec:
           ports:
             - containerPort: 8080
 
-        # TODO: inject woollypully sidecar with admission webhook
+        # Simulate the admission webhook injecting the woollypully sidecar.
         - name: woollypully
-          image: woollypully
+          image: gcr.io/snyk-main/woollypully
           imagePullPolicy: Always
           ports:
             - containerPort: 30576
@@ -33,9 +33,9 @@ spec:
             - name: PORT
               value: "30576"
 
-      # TODO: inject woollypully readiness probe with admission webhook
-      # Pod is not considered Ready until the probe gets a 200 OK.
-      # woollypully doesn't respond 200 OK until governance check on the service container passes.
+          # Simulate the admission webhook injecting the woollypully readiness probe.
+          # Pod is not considered Ready until the probe gets a 200 OK.
+          # woollypully doesn't respond 200 OK until governance check on the service container passes.
           readinessProbe:
             httpGet:
               port: 30576

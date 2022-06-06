@@ -2,16 +2,19 @@
 
 import * as http from "http";
 
-import { Config } from "./config";
+import { getConfig } from "./config";
 import { Checker } from "./checker";
 
-const config = new Config();
-const checker = new Checker(config);
+const main = async (): Promise<number> => {
+  const config = await getConfig();
+  const checker = new Checker(config);
+  await checker.checkApis();
+  return config.listenPort;
+};
 
-// Check APIs on the proposed service container.
-checker
-  .checkApis()
-  .then(() => {
+// Configure & check APIs on the proposed service container.
+main()
+  .then((listenPort: number) => {
     // Then run a simple http server
     // that can answer readiness probes.
     http
@@ -21,7 +24,7 @@ checker
         res.end();
       })
       .on("error", (err) => console.log(err))
-      .listen(config.listenPort, () => {
+      .listen(listenPort, () => {
         console.log("listening for readiness probe");
       });
     console.log("all checks passed");

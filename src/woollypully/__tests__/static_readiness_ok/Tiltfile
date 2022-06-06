@@ -1,3 +1,3 @@
-docker_build('woollypully', '../../../..', dockerfile='../../../../Dockerfile.woollypully')
+docker_build('gcr.io/snyk-main/woollypully', '../../../..', dockerfile='../../../../Dockerfile.woollypully')
 docker_build('fake-service', 'fake-service', dockerfile='fake-service/Dockerfile')
 k8s_yaml(['fake-service/k8s/deployment.yaml'])
