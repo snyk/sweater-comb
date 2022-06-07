@@ -62,7 +62,7 @@
     "lodash.isequal": "^4.5.0",
     "nice-try": "^3.0.0",
     "yaml": "^2.1.1",
-    "yargs": "^17.4.1"
+    "yargs": "^17.5.1"
   },
   "bundledDependencies": [
     "@useoptic/json-pointer-helpers",
