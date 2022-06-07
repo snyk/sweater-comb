@@ -1,12 +1,26 @@
 version: 2.1
 
+orbs:
+  snyk: snyk/snyk@1.1.2
+
 defaults: &defaults
   resource_class: small
   docker:
-    - image: circleci/node:14-buster
+    - image: cimg/node:18.0.0
   working_directory: ~/sweater-comb
-  environment:
-    IMAGE: ghcr.io/snyk/sweater-comb
+
+commands:
+  gcr_auth:
+    description: Auth GCR
+    steps:
+      - run:
+          name: GCR auth
+          command: echo $GCLOUD_GCR_BUILDER | docker login -u _json_key --password-stdin ${GCR_PREFIX}
+  setup_build_remote_docker:
+    steps:
+      - setup_remote_docker:
+          version: 20.10.11
+          docker_layer_caching: true
 
 jobs:
   test:
@@ -42,17 +56,94 @@ jobs:
           name: Build and release
           command: ./scripts/build-npm.bash
 
+  woollypully-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_build_remote_docker
+      - run:
+          name: Build Docker image
+          command: docker build -f Dockerfile.woollypully -t ${WOOLLYPULLY_IMAGE:-woollypully-sidecar}:${CIRCLE_SHA1} .
+      - run:
+          name: Save Docker image to workspace
+          command: |
+            mkdir -p /tmp/workspace/images
+            docker save ${WOOLLYPULLY_IMAGE:-woollypully-sidecar}:${CIRCLE_SHA1} | gzip > /tmp/workspace/images/woollypully.tar.gz
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - images
+
+  woollypully-scan:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Load Docker image
+          command: docker load < /tmp/workspace/images/woollypully.tar.gz
+      - snyk/scan:
+          command: container test
+          organization: snyk-apps
+          fail-on-issues: true
+          severity-threshold: high
+          monitor-on-build: true
+          docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
+
+  woollypully-publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - gcr_auth
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Load Docker image
+          command: docker load < /tmp/workspace/images/woollypully.tar.gz
+      - run:
+          name: Push container to image registry
+          command: docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
+
 workflows:
   version: 2
   test_and_publish:
     jobs:
       - test:
           name: Test
+
       - npm-release:
           name: NPM Release - Tag
           requires:
             - Test
           context: nodejs-app-release
+          filters:
+            branches:
+              only: 'main'
+
+      - woollypully-build:
+          name: Woollypully image build
+          context:
+            - snyk-docker-build
+
+      - woollypully-scan:
+          name: Woollypully image scan
+          requires:
+            - Woollypully image build
+          context:
+            - snyk-apps
+          filters:
+            branches:
+              only: 'main'
+
+      - woollypully-publish:
+          name: Woollypully image release
+          requires:
+            - Woollypully image scan
+            - Test
+          context:
+            - snyk-docker-build
           filters:
             branches:
               only: 'main'
