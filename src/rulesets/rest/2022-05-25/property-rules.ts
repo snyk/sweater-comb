@@ -6,7 +6,10 @@ import {
   Ruleset,
 } from "@useoptic/rulesets-base";
 import { links } from "../../../docs";
-import { isBreakingChangeAllowed } from "./utils";
+import {
+  isBreakingChangeAllowed,
+  isCompiledOperationSunsetAllowed,
+} from "./utils";
 
 const snakeCase = /^[a-z]+(?:_[a-z\d]+)*$/;
 
@@ -36,10 +39,10 @@ const responsePropertyCasing = new ResponseBodyRule({
   },
 });
 
-const requestPropertyRemoval = new RequestRule({
+const requestPropertyRemovalRule = {
   name: "request property removal",
   docsLink: links.versioning.breakingChanges,
-  matches: (_, ruleContext) =>
+  matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (requestAssertions) => {
@@ -49,12 +52,23 @@ const requestPropertyRemoval = new RequestRule({
       });
     });
   },
+};
+
+const requestPropertyRemovalResource = new RequestRule(
+  requestPropertyRemovalRule,
+);
+
+const requestPropertyRemovalCompiled = new RequestRule({
+  ...requestPropertyRemovalRule,
+  matches: (specification, ruleContext) =>
+    requestPropertyRemovalRule.matches(specification, ruleContext) &&
+    !isCompiledOperationSunsetAllowed(ruleContext),
 });
 
-const responsePropertyRemoval = new ResponseBodyRule({
+const responsePropertyRemovalRule = {
   name: "response property removal",
   docsLink: links.versioning.breakingChanges,
-  matches: (_, ruleContext) =>
+  matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (responseAssertions) => {
@@ -64,6 +78,17 @@ const responsePropertyRemoval = new ResponseBodyRule({
       });
     });
   },
+};
+
+const responsePropertyRemovalResource = new ResponseBodyRule(
+  responsePropertyRemovalRule,
+);
+
+const responsePropertyRemovalCompiled = new ResponseBodyRule({
+  ...responsePropertyRemovalRule,
+  matches: (specification, ruleContext) =>
+    responsePropertyRemovalRule.matches(specification, ruleContext) &&
+    !isCompiledOperationSunsetAllowed(ruleContext),
 });
 
 const requiredRequestProperties = new RequestRule({
@@ -430,13 +455,39 @@ const collectionTypeValidResponse = new ResponseBodyRule({
   },
 });
 
-export const propertyRules = new Ruleset({
-  name: "property rules",
+export const propertyRulesResource = new Ruleset({
+  name: "property rules for resource OpenAPI",
   rules: [
     requestPropertyCasing,
     responsePropertyCasing,
-    requestPropertyRemoval,
-    responsePropertyRemoval,
+    requestPropertyRemovalResource,
+    responsePropertyRemovalResource,
+    requiredRequestProperties,
+    enumOrExample,
+    requestDateFormatting,
+    responseDateFormatting,
+    arrayWithItemsInRequest,
+    arrayWithItemsInResponse,
+    preventChangingRequestFormat,
+    preventChangingResponseFormat,
+    preventChangingRequestPattern,
+    preventChangingResponsePattern,
+    preventChangingRequestType,
+    preventChangingResponseType,
+    collectionTypeValidRequest,
+    collectionTypeValidResponse,
+    requiredPropertiesDeclaredInRequestBody,
+    requiredPropertiesDeclaredInResponse,
+  ],
+});
+
+export const propertyRulesCompiled = new Ruleset({
+  name: "property rules for resource OpenAPI",
+  rules: [
+    requestPropertyCasing,
+    responsePropertyCasing,
+    requestPropertyRemovalCompiled,
+    responsePropertyRemovalCompiled,
     requiredRequestProperties,
     enumOrExample,
     requestDateFormatting,

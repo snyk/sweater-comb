@@ -9,12 +9,18 @@ import {
 } from "@useoptic/rulesets-base";
 import { camelCase, snakeCase } from "change-case";
 import { links } from "../../../docs";
-import { isBreakingChangeAllowed } from "./utils";
+import {
+  isBreakingChangeAllowed,
+  isCompiledOperationSunsetAllowed,
+} from "./utils";
 
 const operationId = new OperationRule({
   name: "operation id",
   docsLink: links.standards.operationIds,
   matches: (operation, ruleContext) => {
+    if (operation.path.startsWith("/openapi")) {
+      return false;
+    }
     const changeDate = new Date(ruleContext.custom.changeVersion.date);
     const effectiveOnDate = new Date("2021-07-01");
     return changeDate > effectiveOnDate;
@@ -83,6 +89,7 @@ const tags = new OperationRule({
 const summary = new OperationRule({
   name: "operation summary",
   docsLink: links.standards.operationSummary,
+  matches: (operation) => !operation.path.startsWith("/openapi"),
   rule: (operationAssertions) => {
     operationAssertions.requirement.matches(
       {
@@ -157,7 +164,7 @@ const noPutHttpMethod = new OperationRule({
   ],
 });
 
-const preventOperationRemoval = new OperationRule({
+const preventOperationRemovalRule = {
   name: "prevent operation removal",
   docsLink: links.versioning.breakingChanges,
   matches: (operation, ruleContext) =>
@@ -169,11 +176,23 @@ const preventOperationRemoval = new OperationRule({
       });
     });
   },
+};
+
+const preventOperationRemovalResource = new OperationRule(
+  preventOperationRemovalRule,
+);
+
+const preventOperationRemovalCompiled = new OperationRule({
+  ...preventOperationRemovalRule,
+  matches: (operation, ruleContext) =>
+    preventOperationRemovalRule.matches(operation, ruleContext) &&
+    !isCompiledOperationSunsetAllowed(ruleContext),
 });
 
 const requireVersionParameter = new OperationRule({
   name: "require version parameter",
   docsLink: links.versioning.versionParameter,
+  matches: (operation) => !operation.path.startsWith("/openapi"),
   rule: (operationAssertions) => {
     operationAssertions.requirement.hasQueryParameterMatching({
       name: "version",
@@ -284,10 +303,9 @@ const preventChangingOptionalToRequiredQueryParameters = new OperationRule({
   },
 });
 
-const preventRemovingStatusCodes = new ResponseRule({
+const preventRemovingStatusCodesRule = {
   name: "prevent removing status codes",
   docsLink: links.versioning.breakingChanges,
-
   matches: (operation, ruleContext) =>
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (responseAssertions) => {
@@ -297,6 +315,17 @@ const preventRemovingStatusCodes = new ResponseRule({
       });
     });
   },
+};
+
+const preventRemovingStatusCodesResource = new ResponseRule(
+  preventRemovingStatusCodesRule,
+);
+
+const preventRemovingStatusCodesCompiled = new ResponseRule({
+  ...preventRemovingStatusCodesRule,
+  matches: (operation, ruleContext) =>
+    preventRemovingStatusCodesRule.matches(operation, ruleContext) &&
+    !isCompiledOperationSunsetAllowed(ruleContext),
 });
 
 const preventChangingParameterDefaultValue = new OperationRule({
@@ -419,7 +448,7 @@ const preventChangingParameterSchemaType = new OperationRule({
   },
 });
 
-export const operationRules = new Ruleset({
+export const operationRulesResource = new Ruleset({
   name: "operation rules",
   rules: [
     operationId,
@@ -429,13 +458,38 @@ export const operationRules = new Ruleset({
     consistentOperationIds,
     parameterCase,
     noPutHttpMethod,
-    preventOperationRemoval,
+    preventOperationRemovalResource,
     requireVersionParameter,
     tenantFormatting,
     pathElementCasing,
     preventAddingRequiredQueryParameters,
     preventChangingOptionalToRequiredQueryParameters,
-    preventRemovingStatusCodes,
+    preventRemovingStatusCodesResource,
+    preventChangingParameterDefaultValue,
+    preventChangingParameterSchemaFormat,
+    preventChangingParameterSchemaPattern,
+    preventChangingParameterSchemaType,
+    resourceRootParamter,
+  ],
+});
+
+export const operationRulesCompiled = new Ruleset({
+  name: "operation rules",
+  rules: [
+    operationId,
+    operationIdSet,
+    tags,
+    summary,
+    consistentOperationIds,
+    parameterCase,
+    noPutHttpMethod,
+    preventOperationRemovalCompiled,
+    requireVersionParameter,
+    tenantFormatting,
+    pathElementCasing,
+    preventAddingRequiredQueryParameters,
+    preventChangingOptionalToRequiredQueryParameters,
+    preventRemovingStatusCodesCompiled,
     preventChangingParameterDefaultValue,
     preventChangingParameterSchemaFormat,
     preventChangingParameterSchemaPattern,

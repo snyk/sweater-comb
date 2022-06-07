@@ -2,7 +2,7 @@ import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "./fixtures";
 
-import { operationRules } from "../operation-rules";
+import { operationRulesResource as operationRules } from "../operation-rules";
 
 const baseJson = TestHelpers.createEmptySpec();
 

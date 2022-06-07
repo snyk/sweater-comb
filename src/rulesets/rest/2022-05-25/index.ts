@@ -1,7 +1,10 @@
 import { responseHeaderRules } from "./header-rules";
 import { lifecycleRuleset } from "./lifecycle-rules";
-import { operationRules } from "./operation-rules";
-import { propertyRules } from "./property-rules";
+import {
+  operationRulesCompiled,
+  operationRulesResource,
+} from "./operation-rules";
+import { propertyRulesCompiled, propertyRulesResource } from "./property-rules";
 import { specificationRules } from "./specification-rules";
 import {
   statusCodesRules,
@@ -16,8 +19,8 @@ import {
 export const resourceRules = [
   responseHeaderRules,
   lifecycleRuleset,
-  operationRules,
-  propertyRules,
+  operationRulesResource,
+  propertyRulesResource,
   specificationRules,
   statusCodesRules,
   jsonApiContentTypeRule,
@@ -29,11 +32,9 @@ export const resourceRules = [
 
 export const compiledRules = [
   responseHeaderRules,
-  // TODO: fix these or provide alternatives for compiled aggregate specs
-  //lifecycleRuleset,
-  //operationRules,
-  //propertyRules,
-  //specificationRules,
+  operationRulesCompiled,
+  propertyRulesCompiled,
+  specificationRules,
   statusCodesRules,
   jsonApiContentTypeRule,
   resourceObjectRules,
