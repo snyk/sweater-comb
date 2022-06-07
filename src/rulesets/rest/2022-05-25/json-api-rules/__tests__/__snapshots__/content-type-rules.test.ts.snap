@@ -31,6 +31,7 @@ Array [
     "condition": "use the JSON:API content type",
     "docsLink": "https://jsonapi.org/format/#content-negotiation-clients",
     "error": "expected response to support application/vnd.api+json",
+    "exempted": false,
     "expected": undefined,
     "isMust": true,
     "isShould": false,

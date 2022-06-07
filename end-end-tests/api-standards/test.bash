@@ -49,6 +49,12 @@ assert_ok
 
 ## breaking changes allowed at experimental
 
+### Can sunset experimental
+${COMPARE} \
+    --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \
+    --context "${CONTEXT}"
+assert_ok
+
 ### Can make a breaking parameter change in experimental
 ${COMPARE} \
     --from $HERE/resources/thing/2021-11-10/000-baseline.yaml \

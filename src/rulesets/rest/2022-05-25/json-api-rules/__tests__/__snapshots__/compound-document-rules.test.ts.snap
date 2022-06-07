@@ -35,6 +35,7 @@ Array [
     "condition": "not match expected shape",
     "docsLink": undefined,
     "error": "Expected to not find a partial match",
+    "exempted": false,
     "expected": "{\\"schema\\":{\\"properties\\":{\\"included\\":{}}}}",
     "isMust": true,
     "isShould": false,
