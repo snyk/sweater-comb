@@ -25,7 +25,6 @@ const defaultSpecJson = JSON.parse(
     .readFileSync(
       path.join(
         __dirname,
-        "static_readiness_ok",
         "fake-service",
         "versions",
         "2022-05-23~beta",

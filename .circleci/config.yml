@@ -104,7 +104,15 @@ jobs:
           command: docker load < /tmp/workspace/images/woollypully.tar.gz
       - run:
           name: Push container to image registry
-          command: docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
+          command: |-
+            docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
+            if [ "$CIRCLE_BRANCH" = "main" ]; then
+              docker tag ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} ${WOOLLYPULLY_IMAGE}:latest
+              docker push ${WOOLLYPULLY_IMAGE}:latest
+            elif [ -n "$CIRCLE_TAG" ]; then
+              docker tag ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} ${WOOLLYPULLY_IMAGE}:${CIRCLE_TAG}
+              docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_TAG}
+            fi
 
 workflows:
   version: 2
@@ -118,9 +126,11 @@ workflows:
           requires:
             - Test
           context: nodejs-app-release
-          filters:
+          filters: &publish_filters
             branches:
               only: 'main'
+            tags:
+              only: /^v.*/
 
       - woollypully-build:
           name: Woollypully image build
@@ -133,9 +143,7 @@ workflows:
             - Woollypully image build
           context:
             - snyk-apps
-          filters:
-            branches:
-              only: 'main'
+          filters: *publish_filters
 
       - woollypully-publish:
           name: Woollypully image release
@@ -144,6 +152,4 @@ workflows:
             - Test
           context:
             - snyk-docker-build
-          filters:
-            branches:
-              only: 'main'
+          filters: *publish_filters
