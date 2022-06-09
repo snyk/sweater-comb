@@ -115,7 +115,35 @@ headers:
 
 [Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
 
-## <a id="request-parameters"></a>Request Parameters
+## <a id="user-request-parameters"></a>User-defined Request Parameters
+
+### <a id="filters">Filters
+
+Resource attribute property names may be used as a query parameter name on a resource collection to filter paginated results, so long as these requirements are satisfied:
+
+- The filter parameter name must match the corresponding resource attribute property name.
+- The filter parameter must not conflict with [reserved parameters](#reserved-request-parameters).
+
+#### Multiple filter values
+
+A filter parameter may support a single value to match, or a set of multiple values. When a filter supports a set of multiple values, these must be expressed using the form `?property_name=value_1,value_2,...,value_n`. To define such a parameter, in its properties:
+
+- Use `schema: {type: array, items: {type: string}}` (the schema and/or item types may be referenced). Whenever possible, the item type should use an `enum` set of allowed values, a `format` or a `pattern` regex to validate it.
+- Use `style: form, explode: false` to indicate a comma-separated representation of multiple values. Refer to the [Parameter object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameter-object) OpenAPI specification for more information.
+
+Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multple values to a single value) is a breaking API change.
+
+## <a id="reserved-request-parameters"></a>Reserved Request Parameters
+
+The following parameters are reserved for specific purposes in our API. These names should be avoided in resource attribute properties so that they are not misinterpreted as filters.
+
+### <a id="version-parameter"></a>Version
+
+The `version` URL query parameter, `?version=version_string` is reserved for selecting the API version when making a request.
+
+### <a id="pagination-parameters"></a>Pagination
+
+`starting_after`, `ending_before`, and `limit` are reserved for cursor pagination on resource collections, as defined in [JSON API Pagination Parameters](../../principles/jsonapi/#pagination-parameters).
 
 ### <a id="formats"></a>Formats
 

@@ -31,3 +31,7 @@ Read more about how [the Snyk API is versioned](principles/version.md).
 ## The Snyk REST API Standard
 
 Dive into the details of the [Snyk REST API Standard](standards/rest.md).
+
+## About this documentation
+
+This documentation is developed for [mkdocs](https://www.mkdocs.org/) and specifically [Backstage TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview). While it is viewable and navigable directly out of Github for the most part, some links and formatting may only work properly when rendered with mkdocs.
