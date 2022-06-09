@@ -135,13 +135,14 @@ const enumOrExample = new RequestRule({
 
 const requestDateFormatting = new RequestRule({
   name: "request property date formatting",
-  docsLink: links.standards.formats,
+  docsLink: links.standards.timestampProperties,
   rule: (requestAssertions) => {
     requestAssertions.property.added("use date-time for dates", (property) => {
       if (property.value.key.endsWith("_at")) {
         if (property.value.flatSchema.format !== "date-time") {
           throw new RuleError({
-            message: "expected property to have format date-time",
+            message:
+              "expected property name ending in '_at' to have format date-time",
           });
         }
       }

@@ -415,12 +415,13 @@ describe("body properties", () => {
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
-      expect(results).toEqual(
+      expect(results.filter((r) => !r.passed)).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
             where:
               "added property: data/attributes/tested_at request body: application/json in operation: POST /example",
-            error: "expected property to have format date-time",
+            error:
+              "expected property name ending in '_at' to have format date-time",
           }),
         ]),
       );
