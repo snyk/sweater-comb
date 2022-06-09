@@ -317,6 +317,207 @@ describe("body properties", () => {
     });
   });
 
+  describe("timestamp properties", () => {
+    test("passes when timestamp property formatted correctly in request", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        tested_at: { type: "string", format: "date-time" },
+                      },
+                    },
+                  },
+                },
+              },
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {},
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails when timestamp property not formatted correctly in request", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            attributes: {
+                              type: "object",
+                              properties: {
+                                tested_at: { type: "string", format: "uuid" },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {},
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            where:
+              "added property: data/attributes/tested_at request body: application/json in operation: POST /example",
+            error: "expected property to have format date-time",
+          }),
+        ]),
+      );
+      console.log(results.filter((r) => !r.passed));
+      expect(results.every((result) => result.passed)).toBe(false);
+    });
+
+    test("passes when timestamp property formatted correctly in response", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          tested_at: { type: "string", format: "date-time" },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails when timestamp property not formatted correctly in response", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "object",
+                            properties: {
+                              attributes: {
+                                type: "object",
+                                properties: {
+                                  tested_at: { type: "string", format: "uuid" },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            where:
+              "added property: data/attributes/tested_at in response status code: 200 with content-type: application/json in operation: GET /example",
+            error: "expected property to have format date-time",
+          }),
+        ]),
+      );
+      expect(results.every((result) => result.passed)).toBe(false);
+    });
+  });
+
   describe("required properties", () => {
     const requiredOk: OpenAPIV3.SchemaObject = {
       type: "object",

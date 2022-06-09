@@ -14,19 +14,27 @@ Resources addressed by Group begin with `/v3/groups/{group_id}/...`.
 
 Additional resource properties that must be used in resource attributes, where applicable.
 
+### Timestamp properties
+
+Attribute property names with an `_at` suffix must be timestamps. Timestamp properties must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
+
+To declare this format on a timestamp attribute property, use:
+
+`type: string, format: date-time`
+
 ### Resource lifecycle timestamps
 
-These properties are optional on a resource, but should be used when applicable. These properties must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
+These properties are optional on a resource, but should be used when applicable. These properties must be formatted as timestamps, due to the suffix.
 
-#### `created`
+#### `created_at`
 
 When the resource was created (POST).
 
-#### `updated`
+#### `updated_at`
 
 When the resource was last updated (PATCH).
 
-#### `deleted`
+#### `deleted_at`
 
 When the resource was deleted (DELETE), if the DELETE operation marks the
 resource for deletion, or removes part of its content without actually removing

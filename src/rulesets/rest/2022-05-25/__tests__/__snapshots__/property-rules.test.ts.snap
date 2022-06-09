@@ -929,6 +929,55 @@ Array [
   },
   Object {
     "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
       "location": Object {
         "conceptualLocation": Object {
           "inResponse": Object {
@@ -1118,6 +1167,55 @@ Array [
     "isShould": false,
     "name": "response property casing",
     "passed": false,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
     "received": undefined,
     "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
   },
@@ -1363,6 +1461,106 @@ Array [
     "isShould": false,
     "name": "response property casing",
     "passed": false,
+    "received": undefined,
+    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
     "received": undefined,
     "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
   },
@@ -1663,6 +1861,55 @@ Array [
   },
   Object {
     "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
       "location": Object {
         "conceptualLocation": Object {
           "inResponse": Object {
@@ -1851,6 +2098,55 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_allowed_after_30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_allowed_after_30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_allowed_after_30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
     "passed": true,
     "received": undefined,
     "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
@@ -2051,6 +2347,55 @@ Array [
   },
   Object {
     "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
       "location": Object {
         "conceptualLocation": Object {
           "inResponse": Object {
@@ -2239,6 +2584,55 @@ Array [
     "isMust": true,
     "isShould": false,
     "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "technicallysnakecase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "technicallysnakecase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "technicallysnakecase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
     "passed": true,
     "received": undefined,
     "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
