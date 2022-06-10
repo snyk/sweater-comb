@@ -23,3 +23,31 @@ export const isBatchPostOperation = (requests) => {
 export const isBreakingChangeAllowed = (stability: string): boolean => {
   return stability === "wip" || stability === "experimental";
 };
+
+/**
+ * isCompiledOperationSunsetAllowed returns whether the operation in the rule
+ * context has a sunset eligibility date compiled in, and whether the change
+ * date is on or after the sunset eligibility date.
+ */
+export const isCompiledOperationSunsetAllowed = (
+  ruleContext: RuleContext,
+): boolean => {
+  const {
+    changeDate,
+    changeVersion: { stability },
+  } = ruleContext.custom;
+  if (!stability) {
+    return false;
+  }
+  if (isBreakingChangeAllowed(stability)) {
+    return true;
+  }
+  const sunsetEligible = ruleContext.operation.raw["x-snyk-sunset-eligible"];
+  if (!changeDate || !sunsetEligible) {
+    return false;
+  }
+  if (changeDate === sunsetEligible) {
+    return true;
+  }
+  return changeDate > sunsetEligible ? true : false;
+};

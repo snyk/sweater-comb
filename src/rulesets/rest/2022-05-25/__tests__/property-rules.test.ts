@@ -1,6 +1,6 @@
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "./fixtures";
-import { propertyRules } from "../property-rules";
+import { propertyRulesResource as propertyRules } from "../property-rules";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
 const baseOpenAPI = {
