@@ -233,6 +233,10 @@ A not found status code & error response must be returned if the requested resou
 
 A conflict status code & error response must be returned if a requested _write_ action cannot be performed because it collides with some constraint (e.g. a unique constraint violation). This status code is also useful when processing idempotent requests which currently are not supported as a part of the Snyk API.
 
+### 422 - Unprocessable Entity
+
+The server understands the content type of the request entity (hence a `415 Unsupported Media Type` status code is inappropriate), and the syntax of the request entity is correct (thus a `400 Bad Request` status code is inappropriate) but was unable to process the contained instructions. For example, if a user attempts to create a new user with a duplicate username, the server should return a `422 Unprocessable Entity` error.
+
 ### 429 - Too Many Requests
 
 A too many requests status code & error response must be returned if the requester has exceeded their request quota for some given time period.
