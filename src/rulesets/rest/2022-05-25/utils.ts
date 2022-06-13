@@ -1,4 +1,4 @@
-import { RuleContext } from "@useoptic/rulesets-base";
+import { Field, RuleContext } from "@useoptic/rulesets-base";
 
 export const isOpenApiPath = (path: string) => /\/openapi/.test(path);
 export const isSingletonPath = (rulesContext: RuleContext) =>
@@ -50,4 +50,14 @@ export const isCompiledOperationSunsetAllowed = (
     return true;
   }
   return changeDate > sunsetEligible ? true : false;
+};
+
+export const isResourceMetaProperty = (property: Field): boolean => {
+  return (
+    property.location.jsonPath.match(
+      new RegExp(
+        ".*/schema/properties/data/properties/meta/properties/[a-z]+(?:_[a-zd]+)*/properties/",
+      ),
+    ) !== null
+  );
 };

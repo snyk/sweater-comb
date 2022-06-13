@@ -74,7 +74,45 @@ Entities will be commonly represented as types or classes when generating code. 
 
 ### Schema properties
 
-Schema properties use **snake case** names.
+Schema properties for JSON API resource attributes use **snake case** names.
+
+### Meta objects
+
+The top-level keys in a [meta object](https://jsonapi.org/format/#document-meta) must use **snake case** names. However, their values may contain an object without such restrictions.
+
+For example, the meta object in the following resource is valid:
+
+```
+{
+  "data": {
+    "id": "3be7761e-eaa2-4548-8167-fffe29fb4c1b",
+    "type": "thing",
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "some_attribute": {
+          "type": "string"
+        }
+      }
+    }
+    "meta": {
+      "type": "object",
+      "properties": {
+        "external_content": {
+          "PascalCase": {
+            description: "it's fine to use PascalCase in here",
+            type: "string"
+          },
+          "camelCaseToo": {
+            type: "boolean"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
+```
 
 ### Operation IDs
 
@@ -122,6 +160,16 @@ headers:
 ```
 
 [Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
+
+## <a id="content-conventions"></a>Content Conventions
+
+### Meta objects
+
+Meta objects should be used sparingly. Snyk's data model representation of a resource must be represented in JSON API data attributes. Alternative representations of that resource in other formats should use format and content type negotiation instead.
+
+Meta objects may only be used when out-of-band information needs to be provided along with the resource in a request or response, and this information is not part of Snyk's data model, but the data model of an external system.
+
+For example, an external integration may need to work with objects which represent a remote SCM repository or CVE information. The Snyk resource will store Snyk's interpretation and representation of that external entity, but additional information may need to be stored for the specific purpose of sychronizing or managing the entity in the external system. This external information may be appropriately stored in a meta object.
 
 ## <a id="user-request-parameters"></a>User-defined Request Parameters
 

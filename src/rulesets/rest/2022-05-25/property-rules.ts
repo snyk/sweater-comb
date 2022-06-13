@@ -9,6 +9,7 @@ import { links } from "../../../docs";
 import {
   isBreakingChangeAllowed,
   isCompiledOperationSunsetAllowed,
+  isResourceMetaProperty,
 } from "./utils";
 
 const snakeCase = /^[a-z]+(?:_[a-z\d]+)*$/;
@@ -17,6 +18,9 @@ const requestPropertyCasing = new RequestRule({
   name: "request property casing",
   rule: (requestAssertions) => {
     requestAssertions.property.added("have snake case keys", (property) => {
+      if (isResourceMetaProperty(property)) {
+        return;
+      }
       if (!snakeCase.test(property.value.key)) {
         throw new RuleError({
           message: `expected ${property.value.key} to be snake case`,
@@ -30,6 +34,9 @@ const responsePropertyCasing = new ResponseBodyRule({
   name: "response property casing",
   rule: (responseAssertions) => {
     responseAssertions.property.added("have snake case keys", (property) => {
+      if (isResourceMetaProperty(property)) {
+        return;
+      }
       if (!snakeCase.test(property.value.key)) {
         throw new RuleError({
           message: `expected ${property.value.key} to be snake case`,
