@@ -2,6 +2,8 @@ import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "./fixtures";
 import { propertyRulesResource as propertyRules } from "../property-rules";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
+import { string } from "yargs";
+import { SchemaObject } from "@useoptic/openapi-cli/build/shapes";
 
 const baseOpenAPI = {
   ...TestHelpers.createEmptySpec(),
@@ -314,6 +316,132 @@ describe("body properties", () => {
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
+    });
+
+    const jsonapiMeta = {
+      type: "object",
+      properties: {
+        data: {
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              format: "uuid",
+            },
+            type: {
+              type: "string",
+            },
+            attributes: {
+              type: "object",
+              properties: {
+                something: {
+                  type: "string",
+                },
+              },
+            },
+            meta: {},
+          },
+        },
+      },
+    };
+
+    test("passes when meta values do not use snake case", () => {
+      const bodySchema = {
+        ...jsonapiMeta,
+      };
+      bodySchema.properties.data.properties.meta = {
+        type: "object",
+        properties: {
+          external_data: {
+            type: "object",
+            properties: {
+              PascalCase: {
+                type: string,
+              },
+              camelCase: {
+                type: string,
+              },
+            },
+          },
+        },
+      };
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/vnd.api+json": {
+                      schema: bodySchema as unknown as SchemaObject,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails when meta keys are not snake case", () => {
+      const bodySchema = {
+        ...jsonapiMeta,
+      };
+      bodySchema.properties.data.properties.meta = {
+        type: "object",
+        properties: {
+          externalData: {
+            type: "object",
+            properties: {},
+          },
+        },
+      };
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: bodySchema as unknown as SchemaObject,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      console.log(results.filter((r) => !r.passed));
+      expect(results.filter((r) => !r.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            where:
+              "added property: data/meta/externalData in response status code: 200 with content-type: application/json in operation: GET /example",
+            error: "expected externalData to be snake case",
+          }),
+        ]),
+      );
+      expect(results.every((result) => result.passed)).toBe(false);
     });
   });
 
