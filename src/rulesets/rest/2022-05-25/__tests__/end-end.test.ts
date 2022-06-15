@@ -175,6 +175,24 @@ describe("end-end-tests", () => {
     expect(results).toMatchSnapshot();
   });
 
+  it("passes valid meta with free-form sub-properties", async () => {
+    const results = await snapshotScenario(
+      undefined,
+      "000-baseline-meta.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "experimental",
+        },
+        resourceVersions: {},
+      },
+    );
+    expect(results.every((result) => result.passed)).toBe(true);
+  });
+
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../../../"));
 
   async function snapshotScenario(

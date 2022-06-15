@@ -53,11 +53,11 @@ export const isCompiledOperationSunsetAllowed = (
 };
 
 export const isResourceMetaProperty = (property: Field): boolean => {
-  return (
+  const isResourceMetaProperty =
     property.location.jsonPath.match(
       new RegExp(
-        ".*/schema/properties/data/properties/meta/properties/[a-z]+(?:_[a-zd]+)*/properties/",
+        ".*/schema/properties/data/(.*)properties/meta/(.*)properties/[a-z]+(?:_[a-zd]+)*/(.*)properties/.*",
       ),
-    ) !== null
-  );
+    ) !== null;
+  return isResourceMetaProperty;
 };
