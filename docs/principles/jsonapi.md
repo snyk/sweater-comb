@@ -211,3 +211,9 @@ Only `related` links are allowed in relationships.
 As discussed above in *relationships*, related objects are linked, but not included in our responses. This also applies to compound documents in JSON API.
 
 Aside from strategic differences — we're building GraphQL on top of simple resources — we found the implementation of compound documents to be a problem for generating code from OpenAPI descriptions that allow them. JSON API compound documents store all related data objects in an `included` array together, mixing types. An array of polymorphic `anyOf:` objects can certainly be expressed in JSON Schema, but in practice, OpenAPI code generators struggle with processing such schema — especially statically-typed compiled languages.
+
+### <a id="rough-square-brackets"></a>Square-brackets in query parameters
+
+In sections describing [sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) and [pagination](https://jsonapi.org/format/#fetching-pagination), the JSON API specification suggests the use of square-brackets to parameterize a small set of reserved query parameters.
+
+In our API we found square-brackets made URLs harder to read and write, since they need to be URL-escaped. We also found limited support for this encoding (known as `style: deepObject` in [OpenAPI 3](https://spec.openapis.org/oas/v3.0.3.html#style-values)) in various tooling and libraries.
