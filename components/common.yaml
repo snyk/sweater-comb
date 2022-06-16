@@ -176,6 +176,9 @@ schemas:
         example:
           key: value
         properties: {}
+      links: 
+        type: array
+        items: { $ref: "#/schemas/RelatedLink" }
     required: ["status", "detail"]
     additionalProperties: false
     example:
