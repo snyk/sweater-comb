@@ -40,6 +40,15 @@ schemas:
     example:
       related: "https://example.com/api/other_resource"
 
+  ErrorLink:
+    type: object
+    description: A link that leads to further details about this particular occurrance of the problem.
+    properties:
+      about: { $ref: "#/schemas/LinkProperty" }
+    additionalProperties: false
+    example:
+      about: "https://example.com/about_this_error"
+
   PaginatedLinks:
     type: object
     properties:
@@ -139,6 +148,7 @@ schemas:
         format: uuid
         description: "A unique identifier for this particular occurrence of the problem."
         example: f16c31b5-6129-4571-add8-d589da9be524
+      links: { $ref: "#/schemas/ErrorLink" }
       status:
         type: string
         pattern: '^[45]\d\d$'
