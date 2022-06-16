@@ -201,6 +201,33 @@ The `version` URL query parameter, `?version=version_string` is reserved for sel
 
 `starting_after`, `ending_before`, and `limit` are reserved for cursor pagination on resource collections, as defined in [JSON API Pagination Parameters](../../principles/jsonapi/#pagination-parameters).
 
+### <a id="attributes"></a>Attributes
+
+The `attributes` URL query parameter is reserved for expressing [sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) on resource data in responses. Resources are not required to support this parameter. However when a resource supports sparse fieldsets, it must declare the `attributes` parameter as an array of enums, represented as a comma-separated list. This may be expressed in OpenAPI as:
+
+```
+{
+  "name": "attributes",
+  "description": "Only include these resource attribute properties in the response",
+  "in": "query",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "string",
+      "enum": [ /* list of all resource data attribute property names */ ]
+    }
+  },
+  "style": "form",
+  "explode": false
+}
+```
+
+The enum value set must be equal to the set of top-level resource data attribute properties.
+
+When the `attributes` parameter is not specified, the assumed default behavior is that all attributes will be provided in the response. If a service chooses to implement a different default behavior, this must be documented in the parameter description.
+
+Aside from the [difference in parameter naming](../principles/jsonapi.md#rough-square-brackets), all other [JSON API requirements and restrictions on sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) apply.
+
 ### <a id="formats"></a>Formats
 
 Some resource types may be expressed with a media content-type format other than JSON API. Alternative media content-type formats may be requested using either the format query parameter or the Accept header, as further described below:
