@@ -47,6 +47,8 @@ paths:
               }
             sunset:
               { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+            location:
+              { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -92,6 +94,8 @@ paths:
               }
             sunset:
               { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+            location:
+              { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -110,6 +114,9 @@ paths:
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
         - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/x-rest-common/parameters/StartingAfter" }
+        - { $ref: "#/components/x-rest-common/parameters/EndingBefore" }
+        - { $ref: "#/components/x-rest-common/parameters/Limit" }
       responses:
         "200":
           description: Returns a list of thing instances

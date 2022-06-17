@@ -15,7 +15,6 @@ RUN yarn install --production
 FROM node:14-alpine
 ENV NODE_ENV production
 COPY --from=clean-env /sweater-comb/ /sweater-comb/
-COPY --from=build-env /sweater-comb/schemas/ /schemas/
 WORKDIR /sweater-comb
 USER 1000
 ENTRYPOINT ["/usr/local/bin/node", "index.js"]

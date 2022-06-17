@@ -1,38 +1,40 @@
 export const links = {
   versioning: {
-    main: "https://github.com/snyk/sweater-comb/blob/main/docs/version.md",
+    main: "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md",
     promotingStability:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#promoting-stability-of-a-resource-over-time",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     stabilityLevels:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#stability-levels",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     responseHeaders:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#versioning-response-headers",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     breakingChanges:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#breaking-changes",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
     versionParameter:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/version.md#how-are-versions-accessed-and-resolved-by-consumers",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#how-are-versions-accessed-and-resolved-by-consumers",
   },
   standards: {
     statusCodes:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#status-codes",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     headers: {
-      case: "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#header-field-names",
+      case: "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     },
     referencedEntities:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#referenced-entities",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#referenced-entities",
     openApiVersions:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#making-the-openapi-specification-available",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#making-the-openapi-specification-available",
     orgAndGroupTenantResources:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#organization-and-group-tenants-for-resources",
-    tags: "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#tags",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#organization-and-group-tenants-for-resources",
+    tags: "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#tags",
     formats:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#formats",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     operationIds:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-ids",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#operation-ids",
     operationSummary:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#operation-summary",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#operation-summary",
     parameterNamesPathComponents:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards.md#parameter-names-and-path-components",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#parameter-names-and-path-components",
+    timestampProperties:
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
   },
   jsonApi: {
     contentType: "https://jsonapi.org/format/#content-negotiation-clients",
@@ -40,8 +42,8 @@ export const links = {
     resourceObjectLinks:
       "https://jsonapi.org/format/#document-resource-object-links",
     pagination:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#pagination-parameters",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/jsonapi.md#pagination-parameters",
     compoundDocuments:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/jsonapi.md#compound-documents",
+      "https://github.com/snyk/sweater-comb/blob/main/docs/principles/jsonapi.md#compound-documents",
   },
 };

@@ -1,17 +1,13 @@
-import {
-  parseOpenAPIWithSourcemap,
-  sourcemapReader,
-} from "@useoptic/openapi-io";
+import { parseOpenAPIWithSourcemap } from "@useoptic/openapi-io";
 import type { JsonSchemaSourcemap } from "@useoptic/openapi-io";
 import {
   factsToChangelog,
   IChange,
-  OpenApiFact,
   OpenAPITraverser,
   OpenAPIV3,
 } from "@useoptic/openapi-utilities";
 
-const yargs = require("yargs");
+import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 
 export type ParseOpenAPIResult = {
@@ -26,7 +22,7 @@ const parseOpenAPI = async (path: string): Promise<ParseOpenAPIResult> => {
 export async function changeLogBetween(
   from: OpenAPIV3.Document,
   to: OpenAPIV3.Document,
-): Promise<IChange<OpenApiFact>[]> {
+): Promise<IChange[]> {
   const currentTraverser = new OpenAPITraverser();
   currentTraverser.traverse(from);
   const currentFacts = [...currentTraverser.facts()];
@@ -39,7 +35,7 @@ export async function changeLogBetween(
 }
 
 export const main = async () => {
-  const argv = yargs(hideBin(process.argv)).argv;
+  const argv = yargs(hideBin(process.argv)).argv as { [x: string]: string };
   if (!argv.from || !argv.to) {
     throw new Error("usage: --from <from> --to <to>");
   }

@@ -1,0 +1,9 @@
+allow_k8s_contexts(['docker-desktop', 'kind-kind'])
+
+docker_build('gcr.io/snyk-main/woollypully-sidecar', '../../../..', dockerfile='../../../../Dockerfile.woollypully')
+local('kind load docker-image gcr.io/snyk-main/cerberus-sidecar:1.6.0')
+docker_build('fake-service', '../fake-service', dockerfile='../fake-service/Dockerfile')
+k8s_yaml([
+  'k8s/cerberus-configmap.yaml',
+  'k8s/deployment.yaml',
+])

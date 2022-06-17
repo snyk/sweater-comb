@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cerberus-config
+data:
+  authorization-service-secret: AAAAAAAAAAAAAAAAAAAAAA==
+  cerberus.yaml: |-
+    filters:
+      request:
+        authn:
+          strategies:
+            InternalJwt:
+              issuers:
+                "http://localhost":
+                  keys: {}
+        audit:
+          client:
+            address: "mock:8082"
+        authz:
+          client:
+            baseUrl: "http://mock:8081"
+            tokenPath: "/config/authorization-service-secret"
+            tokenType: "Bearer"
+            version: "2021-10-27"
+        test_filter:
+          str: "test req string"
+          boolean: true
+          int: 1234
+      response:
+        test_filter:
+          str: "test res string"
+          boolean: false
+          int: 456
+
+    envoy:
+      grpc:
+        port: 1234
+        termination_grace_period: "5s"
+        access_log_service:
+          ignored_paths:
+            - "/healthcheck"
+
+    upstream:
+      address: http://localhost:8080

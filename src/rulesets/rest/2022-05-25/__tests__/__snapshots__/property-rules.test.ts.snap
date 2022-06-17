@@ -1,0 +1,2781 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`body properties breaking changes fails if a property is removed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "changeType": "removed",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+      "removed": Object {
+        "before": Object {
+          "flatSchema": Object {
+            "type": "number",
+          },
+          "key": "count",
+          "required": false,
+        },
+      },
+    },
+    "condition": "not be removed",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
+    "error": "Expected property count to not be removed",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property removal",
+    "passed": false,
+    "received": undefined,
+    "where": "removed property: count in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties breaking changes fails if a required property is added 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "not add required request property",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
+    "error": "cannot add a required request property to an existing operation",
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent adding a required request property",
+    "passed": false,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "have enum or example",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property enum or example",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in request property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for request with content-type: application/json in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties breaking changes passes if a property is removed in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties breaking changes passes if a required property is added in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "have enum or example",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property enum or example",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "number",
+        },
+        "key": "count",
+        "required": true,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "jsonSchemaTrail": Array [
+            "count",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+          "count",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in request property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: count request body: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "request schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for request with content-type: application/json in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key allows non-snake case if already in spec 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key fails when not snake case 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": "expected not-snake-case to be snake case",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": false,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key fails when not snake case in experimental 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": "expected not-snake-case to be snake case",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": false,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "not-snake-case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "not-snake-case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "not-snake-case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key fails when not snake case in nested field 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": "expected notSNAKEcase to be snake case",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": false,
+    "received": undefined,
+    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "object",
+        },
+        "key": "snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "notSNAKEcase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "snake_case",
+            "notSNAKEcase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "snake_case",
+          "notSNAKEcase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key fails when number in n=1 snake case component 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": "expected 30_days to be snake case",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": false,
+    "received": undefined,
+    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "30_days",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key passes when snake case with a number as an n+1 component 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_allowed_after_30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_allowed_after_30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_allowed_after_30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_allowed_after_30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_allowed_after_30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_allowed_after_30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_allowed_after_30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_allowed_after_30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_allowed_after_30_days",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_allowed_after_30_days",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_allowed_after_30_days",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_allowed_after_30_days",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key passes when snake case with more than one component 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_snake_case",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "is_snake_case",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "is_snake_case",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "is_snake_case",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;
+
+exports[`body properties key passes when snake case with one component 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "technicallysnakecase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "technicallysnakecase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "technicallysnakecase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
+        "kind": "field",
+      },
+    },
+    "condition": "have snake case keys",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property casing",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "technicallysnakecase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "technicallysnakecase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "technicallysnakecase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
+        "kind": "field",
+      },
+    },
+    "condition": "use date-time for dates",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response property date formatting",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "technicallysnakecase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "technicallysnakecase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
+        "kind": "field",
+      },
+      "value": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "technicallysnakecase",
+        "required": false,
+      },
+    },
+    "condition": "have type for array items",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response array with items",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "flatSchema": Object {
+          "type": "string",
+        },
+        "key": "technicallysnakecase",
+        "required": false,
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "jsonSchemaTrail": Array [
+            "technicallysnakecase",
+          ],
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+          "technicallysnakecase",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
+        "kind": "field",
+      },
+    },
+    "condition": "not change the property type",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid collection type in response property",
+    "passed": true,
+    "received": undefined,
+    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+  },
+  Object {
+    "change": Object {
+      "location": Object {
+        "conceptualLocation": Object {
+          "inResponse": Object {
+            "body": Object {
+              "contentType": "application/json",
+            },
+            "statusCode": "200",
+          },
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+          "responses",
+          "200",
+          "application/json",
+        ],
+        "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
+        "kind": "body",
+      },
+      "value": Object {
+        "contentType": "application/json",
+        "flatSchema": Object {
+          "type": "object",
+        },
+      },
+    },
+    "condition": "declare required properties in objects",
+    "docsLink": undefined,
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "response schema properties",
+    "passed": true,
+    "received": undefined,
+    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+  },
+]
+`;

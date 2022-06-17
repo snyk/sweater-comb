@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-service
+  labels:
+    app: fake-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fake-service
+  template:
+    metadata:
+      labels:
+        app: fake-service
+    spec:
+      volumes:
+        - name: cerberus-config
+          configMap:
+            name: cerberus-config
+      containers:
+        # A fake service onto which woollypully will perform API validation.
+        - name: fake-service
+          image: fake-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+        # Add Cerberus with just enough config to not crash and for woollypully
+        # to find the upstream.
+        - name: cerberus-sidecar
+          image: gcr.io/snyk-main/cerberus-sidecar:1.6.0
+          imagePullPolicy: Never
+          args:
+            - -config
+            - /config/cerberus.yaml
+          command:
+            - ./cerberus-sidecar
+          env:
+            - name: CER_ENV
+              value: test
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 2112
+          ports:
+            - containerPort: 50051
+              name: cerberus-grpc
+              protocol: TCP
+            - containerPort: 2112
+              name: cerberus-http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 2112
+          volumeMounts:
+            - mountPath: /config/
+              name: cerberus-config
+          
+        # Simulate the admission webhook injecting the woollypully sidecar.
+        - name: woollypully-sidecar
+          image: gcr.io/snyk-main/woollypully-sidecar
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 30576
+          env:
+            - name: PORT
+              value: "30576"
+          volumeMounts:
+            - mountPath: /cerberus/config
+              name: cerberus-config
+
+          # Simulate the admission webhook injecting the woollypully readiness probe.
+          # Pod is not considered Ready until the probe gets a 200 OK.
+          #
+          # woollypully doesn't respond 200 OK until governance check on the
+          # service container passes.
+          readinessProbe:
+            httpGet:
+              port: 30576

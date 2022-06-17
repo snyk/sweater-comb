@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-service
+  labels:
+    app: fake-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fake-service
+  template:
+    metadata:
+      labels:
+        app: fake-service
+    spec:
+      volumes:
+        - name: cerberus-config
+          configMap:
+            name: cerberus-config
+      containers:
+        # A fake service onto which woollypully will perform API validation.
+        - name: fake-service
+          image: fake-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+        # Add Cerberus with just enough config to not crash and for woollypully
+        # to find the upstream.
+        - name: cerberus-sidecar
+          image: gcr.io/snyk-main/cerberus-sidecar:1.6.0
+          imagePullPolicy: Never
+          args:
+            - -config
+            - /config/cerberus.yaml
+          command:
+            - ./cerberus-sidecar
+          env:
+            - name: CER_ENV
+              value: test
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 2112
+          ports:
+            - containerPort: 50051
+              name: cerberus-grpc
+              protocol: TCP
+            - containerPort: 2112
+              name: cerberus-http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 2112
+          volumeMounts:
+            - mountPath: /config/
+              name: cerberus-config

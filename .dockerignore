@@ -1,3 +1,6 @@
 /node_modules
 /.[a-z]*
-Dockerfile
+__tests__
+*.md
+Dockerfile*
+*.log
