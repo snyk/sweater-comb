@@ -45,6 +45,12 @@ schemas:
     description: A link that leads to further details about this particular occurrance of the problem.
     properties:
       about: { $ref: "#/schemas/LinkProperty" }
+      self: { $ref: "#/schemas/LinkProperty" }
+      related: { $ref: "#/schemas/LinkProperty" }
+      first: { $ref: "#/schemas/LinkProperty" }
+      last: { $ref: "#/schemas/LinkProperty" }
+      prev: { $ref: "#/schemas/LinkProperty" }
+      next: { $ref: "#/schemas/LinkProperty" }
     additionalProperties: false
     example:
       about: "https://example.com/about_this_error"
