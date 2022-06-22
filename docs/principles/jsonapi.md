@@ -115,7 +115,28 @@ Data objects may declare relationships to other resources — "links with struct
 
 `relationships` is a mapping of "relation name" ⇒ "relation object". That relation object must conform to the structure shown above; it should provide `links.related`, and must provide `data.id` and `data.type`.
 
-Relationships must not provide the actual content of the related resource — it may only link to related resources. Links must also declare a [version]() in the URL to the related resource. This should be the *resolved-version* of the requested resource (not the requested version).
+### <a id="relationships-and-expansion"></a>Relationships and Expansion
+
+Snyk REST APIs support expansion of related resources by enriching relationship [resource identifier objects](https://jsonapi.org/format/#document-resource-identifier-objects) with attributes. Snyk APIs use relationship expansion as an alternative to JSON API [Compound Documents](#rough-compound-documents). This is a Snyk extension to the JSON API specification.
+
+```json
+{
+    "id": "7d1bae82-346a-4f7b-a8cb-37c8f159e415", // unique resource uuid
+    "type": "some-resource", // resource type
+    "attributes": { /* some-resource's attributes */ },
+    "relationships": {
+        "other-resource": {
+            "links": { /* ... */ },
+            "data": {
+                "id": "9f14199e-6330-4b01-a52d-4aaa0ffd29ef", // related entity's ID
+                "type": "other-resource", // related entity's type
+                "attributes": { /* other-resource's attributes */ }
+            },
+        },
+        /* ... */
+    }
+}
+```
 
 ### Pagination and Links
 
@@ -198,19 +219,13 @@ Cursor position identifiers are determined by the links given in a paginated res
 
 ## <a id="the-rough-parts"></a>The Rough Parts
 
-Other parts of the JSON API specification we avoided.
+Parts of the JSON API specification we avoided or intentionally depart from.
 
-### Locating resources through any relationship
+### <a id="rough-compound-documents"></a>Compound documents
 
-JSON API describes how resources may be requested or even modified through their relationships. For example, you might request `resource2/id2` alternatively with `/path/to/resource1/id1/relationships/resource2/id2` if they are related. We don't support or allow this. This is one area where we've intentionally departed from JSON API. We want to provide the links among our resources to form a graph — but leave the actual navigation and traversal of that graph to GraphQL!
+JSON API [compound documents](https://jsonapi.org/format/#document-compound-documents) store all related data objects in an `included` array together, mixing types. An array of `anyOf:` objects can certainly be expressed in JSON Schema, but in practice, this is an awkward data structure to work with, and an unnecessary layer of indirection.
 
-Only `related` links are allowed in relationships.
-
-### Compound documents
-
-As discussed above in *relationships*, related objects are linked, but not included in our responses. This also applies to compound documents in JSON API.
-
-Aside from strategic differences — we're building GraphQL on top of simple resources — we found the implementation of compound documents to be a problem for generating code from OpenAPI descriptions that allow them. JSON API compound documents store all related data objects in an `included` array together, mixing types. An array of polymorphic `anyOf:` objects can certainly be expressed in JSON Schema, but in practice, OpenAPI code generators struggle with processing such schema — especially statically-typed compiled languages.
+Snyk APIs represent expansion more directly by enriching relationship data with attributes.
 
 ### <a id="rough-square-brackets"></a>Square-brackets in query parameters
 
