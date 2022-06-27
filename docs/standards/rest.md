@@ -201,6 +201,128 @@ The `version` URL query parameter, `?version=version_string` is reserved for sel
 
 `starting_after`, `ending_before`, and `limit` are reserved for cursor pagination on resource collections, as defined in [JSON API Pagination Parameters](../../principles/jsonapi/#pagination-parameters).
 
+### <a id="expansion"></a>Expansion
+
+A resource's relationships may inline the related resource's attributes to conserve API requests and provide a richer response. This inline enrichment of related data attributes is called _expansion_.
+
+#### `expand` query parameter
+
+The `expand` URL query parameter is reserved for expressing expansion of relationships. Resource endpoints are not required to support this parameter, but when they do, they must declare the `expand` parameter schema as an array of enum values. The enum values must match the relationship names provided in the resource data `relationships` map.
+
+Multiple related resources may be expanded in a single request.
+
+The parameter should be declared in OpenAPI with the same representation as other array parameters, `{"style": "form", "explode": false}`.
+
+The default behavior when `expand` is not specified is "no expansion". If the default behavior differs, this must be documented in the parameter's description.
+
+#### Constraints
+
+Nested relationships are not expanded. To expand a relation-of-a-relation, declare a direct relationship to the resource in the response.
+
+Expansion is only allowed for "to-one" relationships. If the related relationship is "to-many", this cannot be expanded as a collection (array). Collections are paginated in the Snyk API, which becomes difficult and complicated to represent through expansions.
+
+To expand related resources in a one-to-many relationship, the outermost resource may be a collection. Then the "to-one" related resource may be expanded within each item.
+
+#### Examples
+
+To illustrate this, consider a resource API of `books`, `series` and `authors`, where one author is related to many books, and books may be part of a series. (A real books API would have to deal with books having multiple authors but we'll simplify things here for sake of example.)
+
+The author and series relationships for each book in a resource collection response may be expanded, as these are "to-one" with each book:
+
+```
+GET /books?expand=author,series
+{
+  "data": [{
+    "id": "cd4f014a-0aff-4fe9-8cd1-0c66550e2461",
+    "type": "book",
+    "attributes": {
+      "title": "Consider Phlebas",
+      "isbn": "031600538X"
+    },
+    "relationships": {
+      "author": {
+        "data": {
+          "id": "5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea",
+          "type": "author",
+          "attributes": {
+            "name": "Iain M. Banks"
+          }
+        }
+      },
+      "series": {
+        "data": {
+          "id": "fc35a72f-bb43-47c9-910b-efd495da4fc9",
+          "type": "series",
+          "attributes": {
+            "name": "The Culture"
+          }
+        }
+      }
+    }
+  },{
+    "id": "73fea654-e7f1-40b8-819c-708cabaea537",
+    "type": "book",
+    "attributes": {
+      "title": "The Player of Games",
+      "isbn": "0708883095"
+    },
+    "relationships": {
+      "author": {
+        "data": {
+          "id": "5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea",
+          "type": "author",
+          "attributes": {
+            "name": "Iain M. Banks"
+          }
+        }
+      },
+      "series": {
+        "data": {
+          "id": "fc35a72f-bb43-47c9-910b-efd495da4fc9",
+          "type": "series",
+          "attributes": {
+            "name": "The Culture"
+          }
+        }
+      }
+    }
+  }, /* ... */],
+  "links": { /* pagination links */ }
+}
+```
+
+Relationship links to a resource collection may still be used to express and navigate a "to-many" relation -- these just can't be expanded inline:
+
+```
+GET /authors/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea
+{
+  "data": {
+    "id": "5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea",
+    "type": "author",
+    "attributes": {
+      "name": "Iain M. Banks"
+    }
+    "relationships": {
+      "books": {
+        "links": {
+          "related": "/books?author_id=5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea"
+        }
+      }
+    }
+  }
+}
+```
+
+```
+GET /authors/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea?expand=books
+
+HTTP 400 Bad Request
+Content-Type: application/vnd.api+json
+{
+  "errors": [{ /* can't do this */ }]
+}
+```
+
 ### <a id="attributes"></a>Attributes
 
 The `attributes` URL query parameter is reserved for expressing [sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) on resource data in responses. Resources are not required to support this parameter. However when a resource supports sparse fieldsets, it must declare the `attributes` parameter as an array of enums, represented as a comma-separated list. This may be expressed in OpenAPI as:
@@ -227,6 +349,12 @@ The enum value set must be equal to the set of top-level resource data attribute
 When the `attributes` parameter is not specified, the assumed default behavior is that all attributes will be provided in the response. If a service chooses to implement a different default behavior, this must be documented in the parameter description.
 
 Aside from the [difference in parameter naming](../principles/jsonapi.md#rough-square-brackets), all other [JSON API requirements and restrictions on sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) apply.
+
+#### Sparse fieldsets and expansion
+
+Sparse fieldsets may be expressed on related expansions by prefixing the parameter with the relationship name and a dot `.`, _relationship_`.attributes`.
+
+For example: `/orgs/{org_id}/projects?expand=target&attributes=name&target.attributes=name` would expand the projects response with related target resources, and only include the `name` attribute in each. 
 
 ### <a id="formats"></a>Formats
 
