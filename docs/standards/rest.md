@@ -165,7 +165,55 @@ headers:
 
 ### Meta objects
 
-Meta objects should be used sparingly. Snyk's data model representation of a resource must be represented in JSON API data attributes. Alternative representations of that resource in other formats should use format and content type negotiation instead.
+#### <a id="meta-collection-counts"></a>Collection counts
+
+Resource collection responses may express summary statistics in a `meta` object, using the following optional properties:
+
+```yaml
+type: object
+properties:
+  count:
+    type: number
+    minimum: 0
+  count_by:
+    type: object
+    properties: {}
+    additionalProperties:
+      type: object
+      properties: {}
+      additionalProperties:
+        type: number
+        minimum: 0
+```
+
+What this might look like by example (a total count, and counts grouped by two different attributes):
+
+```
+{
+  "meta": {
+    "count": 10,
+    "count_by": {
+      "color": {
+        "red":  2,
+        "blue": 3,
+        "green": 5
+      },
+      "t_shirt_size": {
+        "S": 2,
+        "M": 3,
+        "L": 3,
+        "XL": 2
+      }
+    }
+  }
+}
+```
+
+Collection counts may be added to the top-level `meta` object in a resource collection response, or in a relationship `meta` object, when the relationship is "to-many".
+
+#### Custom metadata
+
+Custom metadata should be used sparingly. Snyk's data model representation of a resource must be represented in JSON API data attributes. Alternative representations of that resource in other formats should use format and content type negotiation instead.
 
 Meta objects may only be used when out-of-band information needs to be provided along with the resource in a request or response, and this information is not part of Snyk's data model, but the data model of an external system.
 
@@ -196,6 +244,38 @@ The following parameters are reserved for specific purposes in our API. These na
 ### <a id="version-parameter"></a>Version
 
 The `version` URL query parameter, `?version=version_string` is reserved for selecting the API version when making a request.
+
+### <a id="collection-counts-parameters"></a>Collection counts
+
+Resource collections may provide summary counts in the response top-level `meta` object when requested, using the [collection counts metadata schema](#meta-collection-counts) defined above.
+
+This parameter is only relevant for resource collection endpoints.
+
+#### `meta_count` query parameter
+
+May support the following enumerated values:
+
+- `only`: The collection response must contain collection counts in the top-level `meta` object property. Response must not contain a `data` array of resources.
+- `with`: The collection response must contain collection counts in the top-level `meta` property, as well as paginated resources in the `data` property.
+
+A resource collection may choose to support only one of these options. For example, it may only allow counts with `only`, or `with`. This may be expressed by declaring the enum with only one of these values.
+
+#### `meta_count_by` query parameter
+
+Collections may use the `meta_count_by` query parameter to include counts grouped by one or more resource attributes in the response. The parameter must be declared in OpenAPI as an array of enumerated values using the same representation as other array parameters, `{"style": "form", "explode": false}`. Each enumerated value supported must match a resource attribute property name.
+
+#### Default behavior and interactions
+
+Unless specifically requested, the default behavior when these parameters are not provided is to _not_ include counts in the response.
+
+If `meta_count` is not specified but `meta_count_by` is specified, `meta_count=only` must be assumed. The following table represents the default behaviors of different combinations of these parameters and their resulting affect on the response contents:
+
+| `meta_count` value | `meta_count_by` value | Response has `.meta.count` | Response has `.meta.count_by` | Response has `.data[]` |
+|------------|---------------|--------|-|-|
+| _not set_ | _not set_ | ❌ | ❌ | ✅ |
+| _not set_ | _one or more group(s)_ | ✅ | ✅  | ❌ |
+| `only` | _*_ | ✅ | _*_ | ❌ |
+| `with` | _*_ |  ✅ | _*_ | ✅ |
 
 ### <a id="pagination-parameters"></a>Pagination
 
@@ -346,7 +426,7 @@ The `attributes` URL query parameter is reserved for expressing [sparse fieldset
 
 The enum value set must be equal to the set of top-level resource data attribute properties.
 
-When the `attributes` parameter is not specified, the assumed default behavior is that all attributes will be provided in the response. If a service chooses to implement a different default behavior, this must be documented in the parameter description.
+When the `attributes` parameter is not specified, all attributes must be provided in the response.
 
 Aside from the [difference in parameter naming](../principles/jsonapi.md#rough-square-brackets), all other [JSON API requirements and restrictions on sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) apply.
 
@@ -355,6 +435,12 @@ Aside from the [difference in parameter naming](../principles/jsonapi.md#rough-s
 Sparse fieldsets may be expressed on related expansions by prefixing the parameter with the relationship name and a dot `.`, _relationship_`.attributes`.
 
 For example: `/orgs/{org_id}/projects?expand=target&attributes=name&target.attributes=name` would expand the projects response with related target resources, and only include the `name` attribute in each. 
+
+#### Interaction with `required` JSON schema object properties
+
+OpenAPI validation will require all `required` attribute properties to be present in a response. Sparse fieldsets do not take precedence over such structural requirements.
+
+In order for a property to be eligible for sparse fieldsets, the property must not be declared as `required`.
 
 ### <a id="formats"></a>Formats
 
