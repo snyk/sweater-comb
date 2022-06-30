@@ -10,6 +10,7 @@ import {
   isBreakingChangeAllowed,
   isCompiledOperationSunsetAllowed,
   isResourceMetaProperty,
+  specIsRemoved,
 } from "./utils";
 
 const snakeCase = /^[a-z]+(?:_[a-z\d]+)*$/;
@@ -51,6 +52,7 @@ const requestPropertyRemovalRule = {
   docsLink: links.versioning.breakingChanges,
   matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (requestAssertions) => {
     requestAssertions.property.removed("not be removed", (property) => {
@@ -77,6 +79,7 @@ const responsePropertyRemovalRule = {
   docsLink: links.versioning.breakingChanges,
   matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (responseAssertions) => {
     responseAssertions.property.removed("not be removed", (property) => {

@@ -730,6 +730,8 @@ Array [
 ]
 `;
 
+exports[`body properties breaking changes passes if spec is removed 1`] = `Array []`;
+
 exports[`body properties key allows non-snake case if already in spec 1`] = `
 Array [
   Object {

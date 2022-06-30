@@ -205,6 +205,38 @@ describe("operationId", () => {
       expect(results).toMatchSnapshot();
     });
 
+    test("passes if removed with a spec being removed", () => {
+      const ruleRunner = new RuleRunner([operationRules]);
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(
+          {
+            ...baseJson,
+            paths: {
+              "/example": {
+                get: {
+                  summary: "this is an example",
+                  tags: ["example"],
+                  parameters: [
+                    {
+                      name: "version",
+                      in: "query",
+                    },
+                  ],
+                  operationId: "getExample",
+                  responses: {},
+                },
+              },
+            },
+          } as OpenAPIV3.Document,
+          baseJson,
+        ),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results).toMatchSnapshot();
+    });
+
     test("fails if changed", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {

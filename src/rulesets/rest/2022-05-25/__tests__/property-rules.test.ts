@@ -925,6 +925,37 @@ describe("body properties", () => {
       expect(results).toMatchSnapshot();
     });
 
+    test("passes if spec is removed", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {},
+                    },
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, baseOpenAPI),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
     test("fails if a required property is added", () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
