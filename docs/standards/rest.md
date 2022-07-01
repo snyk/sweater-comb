@@ -237,6 +237,10 @@ A filter parameter may support a single value to match, or a set of multiple val
 
 Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multple values to a single value) is a breaking API change.
 
+#### Filtering through relationships
+
+A filter parameter may support a value in an [expanded relationship](#expansion). When filtering on values in expanded relationships, the filter is expressed in the form `?relationship_name.property_name=property_value`. For example, if a query were filtering on a resource, `book`, which had a relationship to `author`, the query could filter on the author's name with `?author.name=some_name`.
+
 ## <a id="reserved-request-parameters"></a>Reserved Request Parameters
 
 The following parameters are reserved for specific purposes in our API. These names should be avoided in resource attribute properties so that they are not misinterpreted as filters.
