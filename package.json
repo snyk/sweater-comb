@@ -49,7 +49,7 @@
     "@babel/runtime": "^7.17.9",
     "@useoptic/json-pointer-helpers": "0.25.20",
     "@useoptic/openapi-cli": "0.25.20",
-    "@useoptic/openapi-io": "0.25.20",
+    "@useoptic/openapi-io": "0.25.21",
     "@useoptic/openapi-utilities": "0.25.20",
     "@useoptic/optic-ci": "0.25.20",
     "@useoptic/rulesets-base": "0.25.20",
