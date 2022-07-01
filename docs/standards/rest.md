@@ -239,7 +239,7 @@ Changing a parameter's schema from a single value to multiple values is a non-br
 
 #### Filtering through relationships
 
-A filter parameter may support a value in an [expanded relationship](#expansion). When filtering on values in expanded relationships, the filter is expressed in the form `?relationship_name.property_name=property_value`. For example, if a query were filtering on a resource, `book`, which had a relationship to `author`, the query could filter on the author's name with `?author.name=some_name`.
+A resource's relationships' properties may be used to filter a query as well. When filtering on values in a resource's relationships, the filter is expressed in the form `?relationship_name.property_name=property_value`. For example, if a query were filtering on a resource, `book`, which had a relationship to `author`, the query could filter on the author's name with `?author.name=some_name`.
 
 ## <a id="reserved-request-parameters"></a>Reserved Request Parameters
 
