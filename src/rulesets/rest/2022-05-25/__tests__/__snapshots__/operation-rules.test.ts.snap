@@ -7610,6 +7610,51 @@ Array [
 ]
 `;
 
+exports[`operationId when set passes if removed with a spec being removed 1`] = `
+Array [
+  Object {
+    "change": Object {
+      "changeType": "removed",
+      "location": Object {
+        "conceptualLocation": Object {
+          "method": "get",
+          "path": "/example",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example",
+          "get",
+        ],
+        "jsonPath": "/paths/~1example/get",
+        "kind": "operation",
+      },
+      "removed": Object {
+        "before": Object {
+          "method": "get",
+          "operationId": "getExample",
+          "pathPattern": "/example",
+          "summary": "this is an example",
+          "tags": Array [
+            "example",
+          ],
+        },
+      },
+    },
+    "condition": "not be allowed",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
+    "error": "expected operation to be present",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "prevent operation removal",
+    "passed": false,
+    "received": undefined,
+    "where": "removed operation: GET /example",
+  },
+]
+`;
+
 exports[`operationId when set passes when camel case and has a hump 1`] = `
 Array [
   Object {

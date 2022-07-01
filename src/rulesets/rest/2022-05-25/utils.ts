@@ -61,3 +61,7 @@ export const isResourceMetaProperty = (property: Field): boolean => {
     ) !== null;
   return isResourceMetaProperty;
 };
+
+export const specIsRemoved = (spec): boolean => {
+  return spec.change === "removed";
+};
