@@ -1,6 +1,9 @@
 import path from "path";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
-import { ResultWithSourcemap, sourcemapReader } from "@useoptic/openapi-utilities";
+import {
+  ResultWithSourcemap,
+  sourcemapReader,
+} from "@useoptic/openapi-utilities";
 import { parseOpenAPIWithSourcemap } from "@useoptic/openapi-io";
 import { resourceRules as rules } from "../index";
 
