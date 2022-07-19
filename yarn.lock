@@ -3093,23 +3093,23 @@
     "@typescript-eslint/types" "5.18.0"
     eslint-visitor-keys "^3.0.0"
 
-"@useoptic/json-pointer-helpers@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.26.19.tgz#897ecc6a9b44b5d1d8bfadcc5ab85ac81146a51b"
-  integrity sha512-fv5feEtIotay/42Q2DnXzB6AT+Bw588nWiOLlUTOSq/xQyUJad+maqcJuscD67Na5L7ZsMPwtI9/lcOQSnaM0w==
+"@useoptic/json-pointer-helpers@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.26.20.tgz#a3da261b41526981e389aeffc1bde3c6ea71c573"
+  integrity sha512-H0tyQvXTnMBBtL026+vG1fLM/UofPS3uUtidCuCqmx4AOoFwUHC2gQ6luhJ+Cg2Ebt/vEobIf8o1AQjCvox1bA==
   dependencies:
     jsonpointer "^5.0.0"
 
-"@useoptic/openapi-cli@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.26.19.tgz#200b6952c55b5aecb155b9506272a89cb73810de"
-  integrity sha512-IiYZTgPWUMFfSE3zTdRwgTT4zk5//Pn6g3LmHoOqoIgYXECAIVA5qEPr0sN8zugX626/bS8S8twenn892F0LKg==
+"@useoptic/openapi-cli@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.26.20.tgz#e282db72a08bd197389d0bc7e6746fe39b315f1f"
+  integrity sha512-RgytYTaWgG5+hl0fBKPGhQwZmhSZEtO87hzavWxLnPeTVHJAnzOAbEixic5m5BhfrW2/La82tEIn+uXLZJ35Aw==
   dependencies:
     "@jsdevtools/ono" "^7.1.3"
     "@sentry/node" "^7.3.1"
-    "@useoptic/json-pointer-helpers" "0.26.19"
-    "@useoptic/openapi-io" "0.26.19"
-    "@useoptic/openapi-utilities" "0.26.19"
+    "@useoptic/json-pointer-helpers" "0.26.20"
+    "@useoptic/openapi-io" "0.26.20"
+    "@useoptic/openapi-utilities" "0.26.20"
     ajv-formats "^2.1.1"
     analytics-node "^6.0.0"
     axax "^0.2.2"
@@ -3122,6 +3122,7 @@
     mockttp "^3.0.0"
     node-abort-controller "^3.0.1"
     node-machine-id "^1.1.12"
+    semver "^7.3.7"
     slice-ansi "^4.0.0"
     stream-chain "^2.2.5"
     stream-json "^1.7.4"
@@ -3130,15 +3131,15 @@
     ts-results "^3.3.0"
     whatwg-mimetype "^3.0.0"
 
-"@useoptic/openapi-io@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.26.19.tgz#371fc643ea810d7559d41be6c58317d4cc49a4a4"
-  integrity sha512-u2VPud/Tbl7wk0whxX398aHjaNvoIzzoiSjtnjTTTRBf2omyaMlwO6NYUgeKZc9Smb66t6M4L77XbmqtH51Qwg==
+"@useoptic/openapi-io@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.26.20.tgz#5b6c0c400b2a5179a1f0aa514915c450524d88cb"
+  integrity sha512-573HifB3vJUauqJVt3jFLATxP9JjOqwRrWBr4yMILzyYEGONZFDzt/DaLabUOO42PNid7ceifi22IK/lUs+W8w==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.26.19"
-    "@useoptic/openapi-utilities" "0.26.19"
+    "@useoptic/json-pointer-helpers" "0.26.20"
+    "@useoptic/openapi-utilities" "0.26.20"
     copyfiles "^2.4.1"
     crypto-js "^4.1.1"
     fast-deep-equal "^3.1.3"
@@ -3154,13 +3155,15 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.26.19.tgz#d7532d089588cf0c2cc11cd75148e9e99720677f"
-  integrity sha512-EYTNFtfzsqWlK6j2EJQqEDPGKMEHFPyuIr4qMm5DzeZXl2PKvb7LJUbp8CcIGGt/S0lhDJOfoKBKcy79oBx8DA==
+"@useoptic/openapi-utilities@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.26.20.tgz#618519a3c5d4e73d9f68d2455236b17928b26c80"
+  integrity sha512-Hvs+ZSNEvTlIIq9CCX26L2aQibCjU+jtdXqpHGEvfxgiTyapIznrWXLJLxjCXSZ/gzWFfMq7lIy3xuWpNckK8A==
   dependencies:
     "@octokit/rest" "^18.12.0"
-    "@useoptic/json-pointer-helpers" "0.26.19"
+    "@useoptic/json-pointer-helpers" "0.26.20"
+    ajv "^8.11.0"
+    ajv-formats "^2.1.1"
     analytics-node "^6.0.0"
     chalk "^4.1.2"
     fast-deep-equal "^3.1.3"
@@ -3170,25 +3173,26 @@
     lodash.groupby "^4.6.0"
     lodash.isequal "^4.5.0"
     lodash.sortby "^4.7.0"
-    openapi-schema-validator "^10.0.0"
     openapi-types "^9.3.0"
+    semver "^7.3.7"
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/optic-ci@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/optic-ci/-/optic-ci-0.26.19.tgz#4e778b66a30dddd686275549b3bd59f2253cd6a1"
-  integrity sha512-GfB2zHrFS5gYqTogLtviPoOzDlw0QfbAcAhxrSgr0V++V14Y8xtaPM7wiLOP7+OAJex9UK+Eh0ZRgoZmx9K9kA==
+"@useoptic/optic-ci@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/optic-ci/-/optic-ci-0.26.20.tgz#eced9d70fe1154a6be74529dd8b6a05bb1a11979"
+  integrity sha512-tAh2MutUmnJ4idZFQGpGj7j8O+0VB+Caoe05XQ81WzGqqypEqtz3hic4MohJyO8ynKKzExYou0+NrVlI++etlg==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@octokit/rest" "^18.12.0"
     "@sentry/node" "^6.17.6"
     "@stoplight/spectral-core" "^1.8.1"
-    "@useoptic/openapi-io" "0.26.19"
-    "@useoptic/openapi-utilities" "0.26.19"
-    "@useoptic/rulesets-base" "0.26.19"
+    "@useoptic/openapi-io" "0.26.20"
+    "@useoptic/openapi-utilities" "0.26.20"
+    "@useoptic/rulesets-base" "0.26.20"
     ajv "^8.11.0"
     bottleneck "^2.19.5"
+    brotli "^1.3.3"
     chalk "^4.1.2"
     commander "^9.0.0"
     is-url "^1.2.4"
@@ -3196,19 +3200,20 @@
     json-stable-stringify "^1.0.1"
     loglevel "^1.8.0"
     node-fetch "^2.6.7"
+    open "^8.4.0"
     picomatch "^2.3.1"
     url-join "^4.0.1"
     uuid "^8.3.2"
 
-"@useoptic/rulesets-base@0.26.19":
-  version "0.26.19"
-  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.26.19.tgz#434fcc5c75aceca08d514e8db8d224346a12104e"
-  integrity sha512-0LFN6Fiy/k87pivRa3U91giFv7oesKGhpl9c029VbevmSGorZUbxiHXhdRVc40Y+4lzLPUCeh0C3at482eI6tg==
+"@useoptic/rulesets-base@0.26.20":
+  version "0.26.20"
+  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.26.20.tgz#1ed27cddbaa73c35332b283cce72775b65269bc2"
+  integrity sha512-w6zJ6Qo/ThYOmJTcOIUps4WbUiG3+9+rAQg+XZJ2Mn39yb4w+pD29eQavZ6rEgNz0OC3rAmfF+zz7nPrNeTeJw==
   dependencies:
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.3.2"
-    "@useoptic/json-pointer-helpers" "0.26.19"
-    "@useoptic/openapi-utilities" "0.26.19"
+    "@useoptic/json-pointer-helpers" "0.26.20"
+    "@useoptic/openapi-utilities" "0.26.20"
     lodash.pick "^4.4.0"
 
 JSONStream@^1.0.4:
@@ -3308,7 +3313,7 @@ ajv-errors@~3.0.0:
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-3.0.0.tgz#e54f299f3a3d30fe144161e5f0d8d51196c527bc"
   integrity sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==
 
-ajv-formats@^2.0.2, ajv-formats@^2.1.1, ajv-formats@~2.1.0:
+ajv-formats@^2.1.1, ajv-formats@~2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-formats/-/ajv-formats-2.1.1.tgz#6e669400659eb74973bbf2e33327180a0996b520"
   integrity sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==
@@ -3330,7 +3335,7 @@ ajv@^6.10.0, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.6:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.0.0, ajv@^8.1.0:
+ajv@^8.0.0:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.2.tgz#01b4fef2007a28bf75f0b7fc009f62679de4abbb"
   integrity sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw==
@@ -3779,7 +3784,7 @@ base64-arraybuffer@^0.1.5:
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz#73926771923b5a19747ad666aa5cd4bf9c6e9ce8"
   integrity sha512-437oANT9tP582zZMwSvZGy2nmSeAb8DW2me3y+Uv1Wp2Rulr8Mqlyrv3E7MLxmsiaPSMMDmiDVzgE+e8zlMx9g==
 
-base64-js@^1.0.2, base64-js@^1.3.0, base64-js@^1.3.1:
+base64-js@^1.0.2, base64-js@^1.1.2, base64-js@^1.3.0, base64-js@^1.3.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
@@ -3928,6 +3933,13 @@ brotli-wasm@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/brotli-wasm/-/brotli-wasm-1.2.0.tgz#0f99b97b0020c8152308c277388aecf2a06b6e32"
   integrity sha512-PdDi7awF36zFujZyFJb9UNrP1l+If7iCgXhLKE1SpwqFQSK2yc7w2dysOmME7p325yQaZNvae7ruzypB3YhFxA==
+
+brotli@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/brotli/-/brotli-1.3.3.tgz#7365d8cc00f12cf765d2b2c898716bcf4b604d48"
+  integrity sha512-oTKjJdShmDuGW94SyyaoQvAjf30dZaHnjJ8uAF+u2/vGJkJbJPJAT1gDiOJP5v1Zb6f9KEyW/1HpuaWIXtGHPg==
+  dependencies:
+    base64-js "^1.1.2"
 
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
@@ -7754,7 +7766,7 @@ lodash.isstring@^4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
   integrity sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=
 
-lodash.merge@^4.6.1, lodash.merge@^4.6.2:
+lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
@@ -8528,21 +8540,6 @@ open@^8.0.0, open@^8.4.0:
     define-lazy-prop "^2.0.0"
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
-
-openapi-schema-validator@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/openapi-schema-validator/-/openapi-schema-validator-10.0.0.tgz#c2e9a8cffc75fcb6e323b30a29a4f2a340d02be1"
-  integrity sha512-tfXR7kLhI2f7QgArfJn5imkFJ1dvLOO5r4b1JZQoW3PgPb3caOiaWZ+H1iLzFj3IG1gmM3BrYZD1sAvWtDwUCA==
-  dependencies:
-    ajv "^8.1.0"
-    ajv-formats "^2.0.2"
-    lodash.merge "^4.6.1"
-    openapi-types "^10.0.0"
-
-openapi-types@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-10.0.0.tgz#0debbf663b2feed0322030b5b7c9080804076934"
-  integrity sha512-Y8xOCT2eiKGYDzMW9R4x5cmfc3vGaaI4EL2pwhDmodWw1HlK18YcZ4uJxc7Rdp7/gGzAygzH9SXr6GKYIXbRcQ==
 
 openapi-types@^11.0.0:
   version "11.0.0"
@@ -9594,6 +9591,13 @@ semver@^7.3.5:
   integrity sha512-HZWqcgwLsjaX1HBD31msI/rXktuIhS+lWvdE4kN9z+8IVT4Itc7vqU2WvYsyD6/sjYCt4dEKH/m1M3dwI9CC5w==
   dependencies:
     lru-cache "^7.4.0"
+
+semver@^7.3.7:
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
+  integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
+  dependencies:
+    lru-cache "^6.0.0"
 
 send@0.18.0:
   version "0.18.0"
