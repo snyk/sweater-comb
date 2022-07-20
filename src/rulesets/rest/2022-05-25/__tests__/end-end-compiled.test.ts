@@ -1,10 +1,10 @@
 import path from "path";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
-import { ResultWithSourcemap } from "@useoptic/openapi-utilities";
 import {
+  ResultWithSourcemap,
   sourcemapReader,
-  parseOpenAPIWithSourcemap,
-} from "@useoptic/openapi-io";
+} from "@useoptic/openapi-utilities";
+import { parseOpenAPIWithSourcemap } from "@useoptic/openapi-io";
 import { compiledRules as rules } from "../index";
 
 const ruleRunner = new RuleRunner(rules);

@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+import * as fs from "fs";
+import * as path from "path";
+import * as yaml from "yaml";
+
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
 import { resourceRules, compiledRules } from "./rulesets/rest/2022-05-25";
 import { Command } from "commander";
@@ -19,6 +23,27 @@ const rulesets = {
   compiled: compiledRules,
 };
 
+/**
+ * readContextFrom returns a rule context object for an OpenAPI spec filename.
+ *
+ * @param fileName Full path to the OpenAPI spec file.
+ * @returns Rule context object suitable for use with sweater-comb API lifecycle rules.
+ */
+const readContextFrom = (
+  fileName: string,
+): { date: string; resource: string; stability: string } => {
+  const datePath = path.dirname(fileName);
+  const date = path.basename(datePath);
+
+  const rcPath = path.dirname(datePath);
+  const resource = path.basename(rcPath);
+
+  const specYAML = fs.readFileSync(fileName);
+  const spec = yaml.parse(specYAML.toString());
+  const stability = spec["x-snyk-api-stability"];
+  return { date, resource, stability };
+};
+
 (async () => {
   const cli = await initializeCli({
     token: process.env.OPTIC_TOKEN || "",
@@ -34,6 +59,18 @@ const rulesets = {
       "info-license": "off",
       "license-url": "off",
       "oas3-unused-component": "off",
+    },
+    generateContext: ({ fileName }) => {
+      const { resource, date, stability } = readContextFrom(fileName);
+      return {
+        changeDate: new Date().toISOString().split("T")[0],
+        changeResource: resource,
+        changeVersion: {
+          date: date,
+          stability: stability,
+        },
+        resourceVersionReleases: {},
+      };
     },
   });
 
