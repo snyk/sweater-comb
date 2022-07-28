@@ -209,9 +209,14 @@ const arrayWithItemsInRequest = new RequestRule({
       (property) => {
         if (property.raw.type === "array") {
           if (!property.raw.items || !("type" in property.raw.items)) {
-            throw new RuleError({
-              message: "type was not found array items",
-            });
+            const oneOf = property.raw.items["oneOf"];
+            const allOf = property.raw.items["allOf"];
+            const anyOf = property.raw.items["anyOf"];
+            if (!oneOf && !allOf && !anyOf) {
+              throw new RuleError({
+                message: "type was not found array items",
+              });
+            }
           }
         }
       },
@@ -227,9 +232,14 @@ const arrayWithItemsInResponse = new ResponseBodyRule({
       (property) => {
         if (property.raw.type === "array") {
           if (!property.raw.items || !("type" in property.raw.items)) {
-            throw new RuleError({
-              message: "type was not found array items",
-            });
+            const oneOf = property.raw.items["oneOf"];
+            const allOf = property.raw.items["allOf"];
+            const anyOf = property.raw.items["anyOf"];
+            if (!oneOf && !allOf && !anyOf) {
+              throw new RuleError({
+                message: "type was not found array items",
+              });
+            }
           }
         }
       },
