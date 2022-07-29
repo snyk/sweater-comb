@@ -70,22 +70,44 @@ export const specIsRemoved = (spec): boolean => {
 export const isFullyTypedArray = (
   array: OpenAPIV3.ArraySchemaObject,
 ): boolean => {
-  if (!array.items || !("type" in array.items)) {
-    for (const key of ["oneOf", "allOf", "anyOf"]) {
-      const composite = array.items[key];
-      if (composite) {
-        if (composite.length === 0) {
-          return false;
-        }
-        for (const obj of composite) {
-          if (!("type" in obj)) {
-            return false;
-          }
-        }
-        return true;
-      }
+  return isFullyTypedType(array.items as OpenAPIV3.SchemaObject);
+};
+
+export const isFullyTypedType = (type: OpenAPIV3.SchemaObject): boolean => {
+  const types: OpenAPIV3.SchemaObject[] = [type];
+  while (types.length > 0) {
+    const type = types.pop();
+    if (!type) {
+      // shouldn't happen; eslint doesn't like while(true)
+      break;
     }
-    return false;
+    if (type.type) {
+      // simple type: ok
+      continue;
+    } else if (type.oneOf) {
+      if (type.oneOf.length === 0) {
+        // empty composite not allowed
+        return false;
+      }
+      types.push(...type.oneOf.map((v) => v as OpenAPIV3.SchemaObject));
+    } else if (type.allOf) {
+      if (type.allOf.length === 0) {
+        // empty composite not allowed
+        return false;
+      }
+      types.push(...type.allOf.map((v) => v as OpenAPIV3.SchemaObject));
+    } else if (type.anyOf) {
+      if (type.anyOf.length === 0) {
+        // empty composite not allowed
+        return false;
+      }
+      types.push(...type.anyOf.map((v) => v as OpenAPIV3.SchemaObject));
+    } else {
+      // must be a simple or composite -- this type looks empty
+      return false;
+    }
   }
+  // must be valid as we've not found any invalid types, and we've processed at
+  // least the top-level type
   return true;
 };
