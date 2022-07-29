@@ -929,7 +929,7 @@ describe("body properties", () => {
                           things: {
                             type: "array",
                             items: {
-                              type: string,
+                              type: "string",
                             },
                           },
                         },
