@@ -10,6 +10,7 @@ import {
   isBreakingChangeAllowed,
   isCompiledOperationSunsetAllowed,
   isResourceMetaProperty,
+  isFullyTypedArray,
   specIsRemoved,
 } from "./utils";
 
@@ -208,7 +209,7 @@ const arrayWithItemsInRequest = new RequestRule({
       "have type for array items",
       (property) => {
         if (property.raw.type === "array") {
-          if (!property.raw.items || !("type" in property.raw.items)) {
+          if (!isFullyTypedArray(property.raw)) {
             throw new RuleError({
               message: "type was not found array items",
             });
@@ -226,7 +227,7 @@ const arrayWithItemsInResponse = new ResponseBodyRule({
       "have type for array items",
       (property) => {
         if (property.raw.type === "array") {
-          if (!property.raw.items || !("type" in property.raw.items)) {
+          if (!isFullyTypedArray(property.raw)) {
             throw new RuleError({
               message: "type was not found array items",
             });

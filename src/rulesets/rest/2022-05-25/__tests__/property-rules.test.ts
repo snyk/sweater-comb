@@ -867,6 +867,253 @@ describe("body properties", () => {
     });
   });
 
+  describe("array properties", () => {
+    test("fails if items have no type information", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {},
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "type was not found array items",
+          }),
+        ]),
+      );
+    });
+    test("succeeds if items have type", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              type: "string",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("succeeds if items have oneOf schema", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              oneOf: [{ type: "string" }],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("succeeds if items have allOf schema", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              allOf: [{ type: "string" }],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("succeeds if items have anyOf schema", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              anyOf: [{ type: "string" }],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails if composite in items has no type", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              anyOf: [],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "type was not found array items",
+          }),
+        ]),
+      );
+    });
+  });
+
   describe("breaking changes", () => {
     test("fails if a property is removed", () => {
       const ruleRunner = new RuleRunner([propertyRules]);

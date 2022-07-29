@@ -1,4 +1,5 @@
 import { Field, RuleContext } from "@useoptic/rulesets-base";
+import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
 export const isOpenApiPath = (path: string) => /\/openapi/.test(path);
 export const isSingletonPath = (rulesContext: RuleContext) =>
@@ -64,4 +65,27 @@ export const isResourceMetaProperty = (property: Field): boolean => {
 
 export const specIsRemoved = (spec): boolean => {
   return spec.change === "removed";
+};
+
+export const isFullyTypedArray = (
+  array: OpenAPIV3.ArraySchemaObject,
+): boolean => {
+  if (!array.items || !("type" in array.items)) {
+    for (const key of ["oneOf", "allOf", "anyOf"]) {
+      const composite = array.items[key];
+      if (composite) {
+        if (composite.length === 0) {
+          return false;
+        }
+        for (const obj of composite) {
+          if (!("type" in obj)) {
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  return true;
 };
