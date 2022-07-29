@@ -1112,6 +1112,92 @@ describe("body properties", () => {
         ]),
       );
     });
+
+    test("succeeds if items have fully-defined nested composite array type", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              anyOf: [
+                                { type: "string" },
+                                {
+                                  allOf: [
+                                    { type: "number" },
+                                    { anyOf: [{ type: "boolean" }] },
+                                  ],
+                                },
+                              ],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails if items have incomplete-defined nested composite array type", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              anyOf: [{ type: "string" }, { allOf: [] }],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+    });
   });
 
   describe("breaking changes", () => {
