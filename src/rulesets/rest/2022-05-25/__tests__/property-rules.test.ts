@@ -968,7 +968,7 @@ describe("body properties", () => {
                           things: {
                             type: "array",
                             items: {
-                              oneOf: [],
+                              oneOf: [{ type: "string" }],
                             },
                           },
                         },
@@ -1007,7 +1007,7 @@ describe("body properties", () => {
                           things: {
                             type: "array",
                             items: {
-                              allOf: [],
+                              allOf: [{ type: "string" }],
                             },
                           },
                         },
@@ -1046,7 +1046,7 @@ describe("body properties", () => {
                           things: {
                             type: "array",
                             items: {
-                              anyOf: [],
+                              anyOf: [{ type: "string" }],
                             },
                           },
                         },
@@ -1065,6 +1065,52 @@ describe("body properties", () => {
       };
       const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("fails if composite in items has no type", () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          things: {
+                            type: "array",
+                            items: {
+                              anyOf: [],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results.filter((result) => !result.passed)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            error: "type was not found array items",
+          }),
+        ]),
+      );
     });
   });
 
