@@ -51,7 +51,7 @@
     "@useoptic/openapi-cli": "0.26.20",
     "@useoptic/openapi-io": "0.26.20",
     "@useoptic/openapi-utilities": "0.26.20",
-    "@useoptic/optic-ci": "0.26.20",
+    "@useoptic/optic-ci": "0.26.25",
     "@useoptic/rulesets-base": "0.26.20",
     "chai": "^4.3.4",
     "chalk": "^4.0.0",
