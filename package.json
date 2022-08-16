@@ -50,7 +50,7 @@
     "@useoptic/json-pointer-helpers": "0.26.20",
     "@useoptic/openapi-cli": "0.26.20",
     "@useoptic/openapi-io": "0.26.20",
-    "@useoptic/openapi-utilities": "0.26.20",
+    "@useoptic/openapi-utilities": "0.26.25",
     "@useoptic/optic-ci": "0.26.20",
     "@useoptic/rulesets-base": "0.26.20",
     "chai": "^4.3.4",
