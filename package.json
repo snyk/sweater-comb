@@ -61,7 +61,7 @@
     "fs-extra": "^10.0.0",
     "lodash.isequal": "^4.5.0",
     "nice-try": "^3.0.0",
-    "parse-url": "^6.0.5",
+    "parse-url": "^7.0.0",
     "yaml": "^2.1.1",
     "yargs": "~17.5.1"
   },
