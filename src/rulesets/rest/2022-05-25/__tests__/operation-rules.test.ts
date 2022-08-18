@@ -3,8 +3,28 @@ import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "./fixtures";
 
 import { operationRulesResource as operationRules } from "../operation-rules";
+import { validDottedName } from "../operation-rules";
 
 const baseJson = TestHelpers.createEmptySpec();
+
+describe("valid dot notation names", () => {
+  test("leading dots are not valid", () => {
+    const name = ".bad.wolf";
+    expect(validDottedName(name)).toBe(false);
+  });
+  test("trailing dots are not valid", () => {
+    const name = "bad.wolf.";
+    expect(validDottedName(name)).toBe(false);
+  });
+  test("consecutive dots are not valid", () => {
+    const name = "bad..wolf";
+    expect(validDottedName(name)).toBe(false);
+  });
+  test("standard dot notation is valid", () => {
+    const name = "bad.wolf";
+    expect(validDottedName(name)).toBe(true);
+  });
+});
 
 test.each(["experimental", "beta", "ga"])(
   "passes when operation is set correctly, stability %s",
@@ -428,6 +448,10 @@ describe("operation parameters", () => {
                     {
                       name: "path_parameter",
                       in: "path",
+                    },
+                    {
+                      name: "prop.sub_prop",
+                      in: "query",
                     },
                   ],
                   operationId: "getExample",
