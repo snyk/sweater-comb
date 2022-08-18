@@ -3787,6 +3787,45 @@ Array [
   Object {
     "change": Object {
       "added": Object {
+        "in": "query",
+        "name": "prop.sub_prop",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "prop.sub_prop",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "query",
+          "prop.sub_prop",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/2",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#parameter-names-and-path-components",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: prop.sub_prop in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
         "method": "get",
         "operationId": "getExample",
         "pathPattern": "/example/{path_parameter}",
@@ -4206,6 +4245,45 @@ Array [
   Object {
     "change": Object {
       "added": Object {
+        "in": "query",
+        "name": "prop.sub_prop",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "prop.sub_prop",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "query",
+          "prop.sub_prop",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/2",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#parameter-names-and-path-components",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: prop.sub_prop in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
         "method": "get",
         "operationId": "getExample",
         "pathPattern": "/example/{path_parameter}",
@@ -4621,6 +4699,45 @@ Array [
     "passed": true,
     "received": undefined,
     "where": "added query parameter: version in operation: GET /example/{path_parameter}",
+  },
+  Object {
+    "change": Object {
+      "added": Object {
+        "in": "query",
+        "name": "prop.sub_prop",
+      },
+      "changeType": "added",
+      "location": Object {
+        "conceptualLocation": Object {
+          "inRequest": Object {
+            "query": "prop.sub_prop",
+          },
+          "method": "get",
+          "path": "/example/{path_parameter}",
+        },
+        "conceptualPath": Array [
+          "operations",
+          "/example/{}",
+          "get",
+          "parameters",
+          "query",
+          "prop.sub_prop",
+        ],
+        "jsonPath": "/paths/~1example~1{path_parameter}/get/parameters/2",
+        "kind": "query-parameter",
+      },
+    },
+    "condition": "use the correct case",
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#parameter-names-and-path-components",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "operation parameters snake case",
+    "passed": true,
+    "received": undefined,
+    "where": "added query parameter: prop.sub_prop in operation: GET /example/{path_parameter}",
   },
   Object {
     "change": Object {

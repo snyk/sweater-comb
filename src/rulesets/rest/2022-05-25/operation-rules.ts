@@ -14,6 +14,16 @@ import {
   isCompiledOperationSunsetAllowed,
 } from "./utils";
 
+export const validDottedName = (name) => {
+  return (
+    !name.startsWith(".") &&
+    !name.endsWith(".") &&
+    name.split(".").every((n) => {
+      return n !== "" && snakeCase(n) === n;
+    })
+  );
+};
+
 const operationId = new OperationRule({
   name: "operation id",
   docsLink: links.standards.operationIds,
@@ -141,7 +151,7 @@ const parameterCase = new OperationRule({
       "use the correct case",
       (queryParameter) => {
         const name = queryParameter.value.name;
-        if (snakeCase(name) !== name) {
+        if (!validDottedName(name)) {
           throw new RuleError({
             message: `expected parameter name ${name} to be snake case`,
           });

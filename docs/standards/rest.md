@@ -237,6 +237,10 @@ A filter parameter may support a single value to match, or a set of multiple val
 
 Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multple values to a single value) is a breaking API change.
 
+#### Filtering through sub properties
+
+Sub properties may also be used for filtering; when filtering on sub properties, filters are expressed as ?property_name.sub_property_name=sub_property_value.
+
 #### Filtering through relationships
 
 A resource's relationships' properties may be used to filter a query as well. When filtering on values in a resource's relationships, the filter is expressed in the form `?relationship_name.property_name=property_value`. For example, if a query were filtering on a resource, `book`, which had a relationship to `author`, the query could filter on the author's name with `?author.name=some_name`.
