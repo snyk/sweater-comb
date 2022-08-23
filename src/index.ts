@@ -17,6 +17,7 @@ import {
   createVersionCommand,
   createUpdateCommand,
 } from "./workflows/commands";
+import { createLintCommand } from "./lint";
 
 const rulesets = {
   resource: resourceRules,
@@ -97,6 +98,7 @@ const readContextFrom = (
 
   workflowCommand.addCommand(operationCommand);
   cli.addCommand(workflowCommand);
+  cli.addCommand(createLintCommand());
 
   cli.parse(process.argv);
 })();

@@ -1,0 +1,8 @@
+linters:
+  some-linter:
+    original: main
+apis:
+  some-api:
+    resources:
+      - path: resources
+        linter: some-linter
