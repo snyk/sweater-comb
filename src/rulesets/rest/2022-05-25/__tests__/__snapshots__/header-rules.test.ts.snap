@@ -33,7 +33,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -43,7 +43,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: good-header in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: good-header",
   },
   Object {
     "change": Object {
@@ -70,7 +71,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name snyk-request-id. Value to match: {}",
     "exempted": false,
@@ -80,7 +81,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -107,7 +109,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name deprecation. Value to match: {}",
     "exempted": false,
@@ -117,7 +119,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -144,7 +147,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name snyk-version-lifecycle-stage. Value to match: {}",
     "exempted": false,
@@ -154,7 +157,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -181,7 +185,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name snyk-version-requested. Value to match: {}",
     "exempted": false,
@@ -191,7 +195,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -218,7 +223,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name snyk-version-served. Value to match: {}",
     "exempted": false,
@@ -228,7 +233,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -255,7 +261,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": "Could not find a partial match in header parameters with name sunset. Value to match: {}",
     "exempted": false,
@@ -265,7 +271,8 @@ Array [
     "name": "standard headers",
     "passed": false,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
 ]
 `;
@@ -300,7 +307,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -310,7 +317,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-request-id in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-request-id",
   },
   Object {
     "change": Object {
@@ -340,7 +348,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -350,7 +358,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-lifecycle-stage in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
   Object {
     "change": Object {
@@ -380,7 +389,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -390,7 +399,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-requested in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
   Object {
     "change": Object {
@@ -420,7 +430,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -430,7 +440,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-served in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-served",
   },
   Object {
     "change": Object {
@@ -460,7 +471,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -470,7 +481,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: sunset in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: sunset",
   },
   Object {
     "change": Object {
@@ -500,7 +512,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -510,7 +522,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: deprecation in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: deprecation",
   },
   Object {
     "change": Object {
@@ -537,7 +550,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -547,7 +560,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -574,7 +588,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -584,7 +598,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -611,7 +626,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -621,7 +636,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -648,7 +664,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -658,7 +674,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -685,7 +702,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -695,7 +712,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -722,7 +740,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -732,7 +750,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
 ]
 `;
@@ -767,7 +786,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -777,7 +796,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-request-id in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-request-id",
   },
   Object {
     "change": Object {
@@ -807,7 +827,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -817,7 +837,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-lifecycle-stage in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
   Object {
     "change": Object {
@@ -847,7 +868,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -857,7 +878,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-requested in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
   Object {
     "change": Object {
@@ -887,7 +909,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -897,7 +919,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-served in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-served",
   },
   Object {
     "change": Object {
@@ -927,7 +950,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -937,7 +960,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: sunset in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: sunset",
   },
   Object {
     "change": Object {
@@ -967,7 +991,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -977,7 +1001,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: deprecation in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: deprecation",
   },
   Object {
     "change": Object {
@@ -1010,7 +1035,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": "badHeader is not kebab-case",
     "exempted": false,
@@ -1020,7 +1045,8 @@ Array [
     "name": "header case",
     "passed": false,
     "received": undefined,
-    "where": "added response header: badHeader in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: badHeader",
   },
   Object {
     "change": Object {
@@ -1047,7 +1073,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1057,7 +1083,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1084,7 +1111,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1094,7 +1121,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1121,7 +1149,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1131,7 +1159,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1158,7 +1187,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1168,7 +1197,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1195,7 +1225,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1205,7 +1235,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1232,7 +1263,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1242,7 +1273,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
 ]
 `;
@@ -1277,7 +1309,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1287,7 +1319,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-request-id in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-request-id",
   },
   Object {
     "change": Object {
@@ -1317,7 +1350,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1327,7 +1360,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-lifecycle-stage in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
   Object {
     "change": Object {
@@ -1357,7 +1391,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1367,7 +1401,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-requested in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
   Object {
     "change": Object {
@@ -1397,7 +1432,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1407,7 +1442,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: snyk-version-served in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: snyk-version-served",
   },
   Object {
     "change": Object {
@@ -1437,7 +1473,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1447,7 +1483,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: sunset in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: sunset",
   },
   Object {
     "change": Object {
@@ -1477,7 +1514,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1487,7 +1524,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: deprecation in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: deprecation",
   },
   Object {
     "change": Object {
@@ -1520,7 +1558,7 @@ Array [
         "kind": "response-header",
       },
     },
-    "condition": "be kebab-case",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     "error": undefined,
     "exempted": false,
@@ -1530,7 +1568,8 @@ Array [
     "name": "header case",
     "passed": true,
     "received": undefined,
-    "where": "added response header: good-header in response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response header: good-header",
   },
   Object {
     "change": Object {
@@ -1557,7 +1596,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1567,7 +1606,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1594,7 +1634,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1604,7 +1644,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1631,7 +1672,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1641,7 +1682,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1668,7 +1710,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1678,7 +1720,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1705,7 +1748,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1715,7 +1758,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
   Object {
     "change": Object {
@@ -1742,7 +1786,7 @@ Array [
         "statusCode": "200",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#versioning-response-headers",
     "error": undefined,
     "exempted": false,
@@ -1752,7 +1796,8 @@ Array [
     "name": "standard headers",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 in operation: GET /api/example",
+    "type": "requirement",
+    "where": "GET /api/example response 200",
   },
 ]
 `;

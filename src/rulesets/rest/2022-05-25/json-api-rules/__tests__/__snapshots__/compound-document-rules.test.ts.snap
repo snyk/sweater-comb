@@ -32,7 +32,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "not match expected shape",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "Expected to not find a partial match",
     "exempted": false,
@@ -42,7 +42,8 @@ Array [
     "name": "disallow compound documents",
     "passed": false,
     "received": "{\\"schema\\":{\\"properties\\":{\\"included\\":{\\"type\\":\\"object\\",\\"properties\\":{}}}}}",
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
 ]
 `;
