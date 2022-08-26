@@ -28,7 +28,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "not include content for 204 status codes",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": "expected response to not have content",
     "exempted": false,
@@ -38,7 +38,8 @@ Array [
     "name": "empty content for 204 status codes",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 204 in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 204",
   },
 ]
 `;
@@ -77,7 +78,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -87,7 +88,8 @@ Array [
     "name": "include JSON:API data property for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -121,7 +123,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -131,7 +133,8 @@ Array [
     "name": "self links",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -165,7 +168,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -175,7 +178,8 @@ Array [
     "name": "valid get / post response data schema",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -203,7 +207,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "include content for 2xx status codes other than 204",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -213,7 +217,8 @@ Array [
     "name": "content for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200",
   },
 ]
 `;
@@ -252,7 +257,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -262,7 +267,8 @@ Array [
     "name": "include JSON:API type property for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: DELETE /api/example",
+    "type": "added",
+    "where": "DELETE /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -296,7 +302,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -306,7 +312,8 @@ Array [
     "name": "valid patch response data schema",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: DELETE /api/example",
+    "type": "added",
+    "where": "DELETE /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -334,7 +341,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "include content for 2xx status codes other than 204",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -344,7 +351,8 @@ Array [
     "name": "content for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 in operation: DELETE /api/example",
+    "type": "added",
+    "where": "DELETE /api/example response 200",
   },
 ]
 `;
@@ -383,7 +391,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -393,7 +401,8 @@ Array [
     "name": "response data for patch",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -427,7 +436,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -437,7 +446,8 @@ Array [
     "name": "include JSON:API type property for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -471,7 +481,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -481,7 +491,8 @@ Array [
     "name": "self links",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -515,7 +526,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -525,7 +536,8 @@ Array [
     "name": "valid patch response data schema",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 with content-type: application/vnd.api+json  in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -553,7 +565,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "include content for 2xx status codes other than 204",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -563,7 +575,8 @@ Array [
     "name": "content for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 200 in operation: PATCH /api/example",
+    "type": "added",
+    "where": "PATCH /api/example response 200",
   },
 ]
 `;
@@ -602,7 +615,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -612,7 +625,8 @@ Array [
     "name": "include JSON:API data property for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+    "type": "added",
+    "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -646,7 +660,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -656,7 +670,8 @@ Array [
     "name": "self links",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+    "type": "added",
+    "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -690,7 +705,7 @@ Array [
         "kind": "body",
       },
     },
-    "condition": "match expected shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -700,7 +715,8 @@ Array [
     "name": "valid get / post response data schema",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 201 with content-type: application/vnd.api+json  in operation: POST /api/example",
+    "type": "added",
+    "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
   Object {
     "change": Object {
@@ -728,7 +744,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "include content for 2xx status codes other than 204",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -738,7 +754,8 @@ Array [
     "name": "content for 2xx status codes",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 201 in operation: POST /api/example",
+    "type": "added",
+    "where": "POST /api/example response 201",
   },
   Object {
     "change": Object {
@@ -766,7 +783,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "have response header matching shape",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#document-resource-objects",
     "error": undefined,
     "exempted": false,
@@ -776,7 +793,8 @@ Array [
     "name": "location header",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 201 in operation: POST /api/example",
+    "type": "added",
+    "where": "POST /api/example response 201",
   },
 ]
 `;

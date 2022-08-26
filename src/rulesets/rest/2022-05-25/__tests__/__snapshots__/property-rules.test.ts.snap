@@ -41,7 +41,7 @@ Array [
         },
       },
     },
-    "condition": "not be removed",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
     "error": "Expected property count to not be removed",
     "exempted": false,
@@ -51,7 +51,8 @@ Array [
     "name": "response property removal",
     "passed": false,
     "received": undefined,
-    "where": "removed property: count in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "removed",
+    "where": "GET /example response 200 response body: application/json property count",
   },
   Object {
     "change": Object {
@@ -84,7 +85,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -94,7 +95,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -135,7 +137,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -144,7 +146,8 @@ Array [
     "name": "request property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -180,7 +183,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not add required request property",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#breaking-changes",
     "error": "cannot add a required request property to an existing operation",
     "expected": undefined,
@@ -189,7 +192,8 @@ Array [
     "name": "prevent adding a required request property",
     "passed": false,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -225,7 +229,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have enum or example",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "expected": undefined,
@@ -234,7 +238,8 @@ Array [
     "name": "request property enum or example",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -270,7 +275,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
     "error": undefined,
     "expected": undefined,
@@ -279,7 +284,8 @@ Array [
     "name": "request property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -314,7 +320,7 @@ Array [
         "required": true,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -323,7 +329,8 @@ Array [
     "name": "request array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: count request body: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -359,7 +366,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -368,7 +375,8 @@ Array [
     "name": "valid collection type in request property",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -398,7 +406,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -408,7 +416,8 @@ Array [
     "name": "request schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for request with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example request body: application/json",
   },
 ]
 `;
@@ -446,7 +455,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -456,7 +465,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -497,7 +507,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -506,7 +516,8 @@ Array [
     "name": "request property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -542,7 +553,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have enum or example",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "expected": undefined,
@@ -551,7 +562,8 @@ Array [
     "name": "request property enum or example",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -587,7 +599,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
     "error": undefined,
     "expected": undefined,
@@ -596,7 +608,8 @@ Array [
     "name": "request property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -631,7 +644,7 @@ Array [
         "required": true,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -640,7 +653,8 @@ Array [
     "name": "request array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: count request body: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -676,7 +690,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "expected": undefined,
@@ -685,7 +699,8 @@ Array [
     "name": "valid collection type in request property",
     "passed": true,
     "received": undefined,
-    "where": "added property: count request body: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example request body: application/json property: count",
   },
   Object {
     "change": Object {
@@ -715,7 +730,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -725,7 +740,8 @@ Array [
     "name": "request schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for request with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example request body: application/json",
   },
 ]
 `;
@@ -770,7 +786,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -780,7 +796,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property snake_case",
   },
   Object {
     "change": Object {
@@ -820,7 +837,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -830,7 +847,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
   Object {
     "change": Object {
@@ -863,7 +881,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -873,7 +891,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -917,7 +936,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected not-snake-case to be snake case",
     "exempted": false,
@@ -927,7 +946,8 @@ Array [
     "name": "response property casing",
     "passed": false,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -966,7 +986,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -976,7 +996,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1014,7 +1035,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1024,7 +1045,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1063,7 +1085,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1073,7 +1095,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1106,7 +1129,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1116,7 +1139,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -1160,7 +1184,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected not-snake-case to be snake case",
     "exempted": false,
@@ -1170,7 +1194,8 @@ Array [
     "name": "response property casing",
     "passed": false,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1209,7 +1234,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -1219,7 +1244,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1257,7 +1283,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1267,7 +1293,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1306,7 +1333,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1316,7 +1343,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: not-snake-case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
   Object {
     "change": Object {
@@ -1349,7 +1377,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1359,7 +1387,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -1403,7 +1432,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1413,7 +1442,8 @@ Array [
     "name": "response property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case",
   },
   Object {
     "change": Object {
@@ -1454,7 +1484,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected notSNAKEcase to be snake case",
     "exempted": false,
@@ -1464,7 +1494,8 @@ Array [
     "name": "response property casing",
     "passed": false,
     "received": undefined,
-    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
   Object {
     "change": Object {
@@ -1503,7 +1534,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -1513,7 +1544,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case",
   },
   Object {
     "change": Object {
@@ -1554,7 +1586,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -1564,7 +1596,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
   Object {
     "change": Object {
@@ -1602,7 +1635,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1612,7 +1645,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property snake_case",
   },
   Object {
     "change": Object {
@@ -1652,7 +1686,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1662,7 +1696,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
   Object {
     "change": Object {
@@ -1701,7 +1736,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1711,7 +1746,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case",
   },
   Object {
     "change": Object {
@@ -1752,7 +1788,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1762,7 +1798,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: snake_case/notSNAKEcase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
   Object {
     "change": Object {
@@ -1795,7 +1832,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1805,7 +1842,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -1849,7 +1887,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected 30_days to be snake case",
     "exempted": false,
@@ -1859,7 +1897,8 @@ Array [
     "name": "response property casing",
     "passed": false,
     "received": undefined,
-    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property 30_days",
   },
   Object {
     "change": Object {
@@ -1898,7 +1937,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -1908,7 +1947,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property 30_days",
   },
   Object {
     "change": Object {
@@ -1946,7 +1986,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -1956,7 +1996,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property 30_days",
   },
   Object {
     "change": Object {
@@ -1995,7 +2036,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2005,7 +2046,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: 30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property 30_days",
   },
   Object {
     "change": Object {
@@ -2038,7 +2080,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2048,7 +2090,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -2092,7 +2135,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2102,7 +2145,8 @@ Array [
     "name": "response property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
   Object {
     "change": Object {
@@ -2141,7 +2185,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -2151,7 +2195,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
   Object {
     "change": Object {
@@ -2189,7 +2234,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2199,7 +2244,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
   Object {
     "change": Object {
@@ -2238,7 +2284,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2248,7 +2294,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_allowed_after_30_days in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
   Object {
     "change": Object {
@@ -2281,7 +2328,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2291,7 +2338,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -2335,7 +2383,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2345,7 +2393,8 @@ Array [
     "name": "response property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
   Object {
     "change": Object {
@@ -2384,7 +2433,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -2394,7 +2443,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
   Object {
     "change": Object {
@@ -2432,7 +2482,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2442,7 +2492,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
   Object {
     "change": Object {
@@ -2481,7 +2532,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2491,7 +2542,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: is_snake_case in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
   Object {
     "change": Object {
@@ -2524,7 +2576,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2534,7 +2586,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;
@@ -2578,7 +2631,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "have snake case keys",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2588,7 +2641,8 @@ Array [
     "name": "response property casing",
     "passed": true,
     "received": undefined,
-    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
   Object {
     "change": Object {
@@ -2627,7 +2681,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "use date-time for dates",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#formats",
     "error": undefined,
     "exempted": false,
@@ -2637,7 +2691,8 @@ Array [
     "name": "response property date formatting",
     "passed": true,
     "received": undefined,
-    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
   Object {
     "change": Object {
@@ -2675,7 +2730,7 @@ Array [
         "required": false,
       },
     },
-    "condition": "have type for array items",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2685,7 +2740,8 @@ Array [
     "name": "response array with items",
     "passed": true,
     "received": undefined,
-    "where": "requirement for property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
   Object {
     "change": Object {
@@ -2724,7 +2780,7 @@ Array [
         "kind": "field",
       },
     },
-    "condition": "not change the property type",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2734,7 +2790,8 @@ Array [
     "name": "valid collection type in response property",
     "passed": true,
     "received": undefined,
-    "where": "added property: technicallysnakecase in response status code: 200 with content-type: application/json in operation: GET /example",
+    "type": "added",
+    "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
   Object {
     "change": Object {
@@ -2767,7 +2824,7 @@ Array [
         },
       },
     },
-    "condition": "declare required properties in objects",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -2777,7 +2834,8 @@ Array [
     "name": "response schema properties",
     "passed": true,
     "received": undefined,
-    "where": "requirement for response status code: 200 with content-type: application/json  in operation: GET /example",
+    "type": "requirement",
+    "where": "GET /example response 200 response body: application/json",
   },
 ]
 `;

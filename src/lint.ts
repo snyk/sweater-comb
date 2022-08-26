@@ -62,16 +62,13 @@ export const lintAction = async (resourceDir?: string, branchName?: string) => {
         console.log(`skipping API ${apiKey}: no linter`);
         continue;
       }
-      if (resource.excludes) {
-        throw new Error("vervet resource exclude paths are not supported");
-      }
       const linter = vervetConf.linters[resource.linter];
       if (!linter || !linter["optic-ci"]) {
         console.log(`skipping API ${apiKey}: not linted with optic-ci`);
         continue;
       }
       const base = linter["optic-ci"]?.original ?? defaultBranchName;
-      await bulkCompare(resource.path, base);
+      await bulkCompare(resource.path, base, resource.excludes);
     }
   }
 };
@@ -89,8 +86,16 @@ export const createLintCommand = () => {
   return command;
 };
 
-const bulkCompare = async (resourceDir: string, base: string) => {
+const bulkCompare = async (
+  resourceDir: string,
+  base: string,
+  ignorePatterns: string[] = [],
+) => {
   const opticScript = await resolveOpticScript();
+  const extraArgs: string[] = [];
+  if (ignorePatterns.length > 0) {
+    extraArgs.push("--ignore", ignorePatterns.join(","));
+  }
   await new Promise<void>((resolve, reject) => {
     const child = child_process.spawn(
       process.argv0,
@@ -101,6 +106,7 @@ const bulkCompare = async (resourceDir: string, base: string) => {
         `${resourceDir}/**/[2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/spec.yaml`,
         "--base",
         base,
+        ...extraArgs,
       ],
       {
         env: {

@@ -22,7 +22,7 @@ Array [
         "pathPattern": "/api/example",
       },
     },
-    "condition": "delete and post are not allowed for singletons",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "delete is not allowed in JSON:API singletons",
     "exempted": false,
@@ -32,7 +32,8 @@ Array [
     "name": "disallow singletons for delete or post",
     "passed": false,
     "received": undefined,
-    "where": "requirement for operation: DELETE /api/example",
+    "type": "requirement",
+    "where": "DELETE /api/example",
   },
 ]
 `;
@@ -59,7 +60,7 @@ Array [
         "pathPattern": "/api/example",
       },
     },
-    "condition": "delete and post are not allowed for singletons",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "post is not allowed in JSON:API singletons",
     "exempted": false,
@@ -69,7 +70,8 @@ Array [
     "name": "disallow singletons for delete or post",
     "passed": false,
     "received": undefined,
-    "where": "requirement for operation: POST /api/example",
+    "type": "requirement",
+    "where": "POST /api/example",
   },
 ]
 `;
