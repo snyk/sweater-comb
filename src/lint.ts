@@ -33,7 +33,10 @@ type VervetConfig = {
 
 const defaultBranchName = "main";
 
-export const lintAction = async (resourceDir?: string, branchName?: string) => {
+export const lintAction = async (
+  resourceDir?: string,
+  branchName?: string,
+): Promise<void> => {
   if (resourceDir) {
     await bulkCompare(resourceDir, branchName ?? defaultBranchName);
     return;
@@ -47,6 +50,7 @@ export const lintAction = async (resourceDir?: string, branchName?: string) => {
     ".vervet.yaml",
   );
   if (!vervetConfDir) {
+    console.log("no vervet conf");
     throw new Error(
       "cannot find .vervet.yaml -- is this a Vervet-managed API project?",
     );
@@ -54,6 +58,13 @@ export const lintAction = async (resourceDir?: string, branchName?: string) => {
   const vervetConfFile = path.join(vervetConfDir, ".vervet.yaml");
   const vervetConfContents = await fs.readFile(vervetConfFile);
   const vervetConf = loadYaml(vervetConfContents.toString()) as VervetConfig;
+
+  const topDir = await findParentDirAsync(vervetConfDir, ".git");
+  if (!topDir) {
+    console.log("not in a git repository");
+    throw new Error("cannot find .git -- is this a cloned git repository?");
+  }
+  process.chdir(topDir);
 
   for (const [apiKey, apiValue] of Object.entries(vervetConf.apis)) {
     console.log(`Linting API ${apiKey}`);
@@ -68,7 +79,11 @@ export const lintAction = async (resourceDir?: string, branchName?: string) => {
         continue;
       }
       const base = linter["optic-ci"]?.original ?? defaultBranchName;
-      await bulkCompare(resource.path, base, resource.excludes);
+      await bulkCompare(
+        path.join(path.relative(topDir, vervetConfDir), resource.path),
+        base,
+        resource.excludes,
+      );
     }
   }
 };
@@ -90,31 +105,28 @@ const bulkCompare = async (
   resourceDir: string,
   base: string,
   ignorePatterns: string[] = [],
-) => {
+): Promise<void> => {
   const opticScript = await resolveOpticScript();
   const extraArgs: string[] = [];
   if (ignorePatterns.length > 0) {
     extraArgs.push("--ignore", ignorePatterns.join(","));
   }
-  await new Promise<void>((resolve, reject) => {
-    const child = child_process.spawn(
-      process.argv0,
-      [
-        opticScript,
-        "bulk-compare",
-        "--glob",
-        `${resourceDir}/**/[2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/spec.yaml`,
-        "--base",
-        base,
-        ...extraArgs,
-      ],
-      {
-        env: {
-          ...process.env,
-        },
-        stdio: "inherit",
+  const args = [
+    opticScript,
+    "bulk-compare",
+    "--glob",
+    `${resourceDir}/**/[2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/spec.yaml`,
+    "--base",
+    base,
+    ...extraArgs,
+  ];
+  return new Promise<void>((resolve, reject) => {
+    const child = child_process.spawn(process.argv0, args, {
+      env: {
+        ...process.env,
       },
-    );
+      stdio: "inherit",
+    });
     child.on("error", (err) => {
       reject(err);
     });
