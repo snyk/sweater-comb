@@ -28,7 +28,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 4xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": "expected response to not support status code 405",
     "exempted": false,
@@ -38,7 +38,8 @@ Array [
     "name": "valid 4xx status codes",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 405 in operation: GET /api/users/{user_id}",
+    "type": "added",
+    "where": "GET /api/users/{user_id} response 405",
   },
 ]
 `;
@@ -71,7 +72,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 2xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": "expected POST response for batches to only support 204, not 200",
     "exempted": false,
@@ -81,7 +82,8 @@ Array [
     "name": "valid 2xx status codes for post",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 200 in operation: POST /api/users",
+    "type": "added",
+    "where": "POST /api/users response 200",
   },
 ]
 `;
@@ -114,7 +116,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 2xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": "expected POST response to only support 201, not 204",
     "exempted": false,
@@ -124,7 +126,8 @@ Array [
     "name": "valid 2xx status codes for post",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 204 in operation: POST /api/users/{user_id}",
+    "type": "added",
+    "where": "POST /api/users/{user_id} response 204",
   },
 ]
 `;
@@ -157,7 +160,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 2xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": "expected response to not support status code 201",
     "exempted": false,
@@ -167,7 +170,8 @@ Array [
     "name": "valid 2xx status codes for delete",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 201 in operation: DELETE /api/users/{user_id}",
+    "type": "added",
+    "where": "DELETE /api/users/{user_id} response 201",
   },
 ]
 `;
@@ -200,7 +204,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 2xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": "expected POST response to only support 201, not 200",
     "exempted": false,
@@ -210,7 +214,8 @@ Array [
     "name": "valid 2xx status codes for post",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 200 in operation: POST /api/users/{user_id}",
+    "type": "added",
+    "where": "POST /api/users/{user_id} response 200",
   },
 ]
 `;
@@ -243,7 +248,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "support the correct 2xx status codes",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
     "error": undefined,
     "exempted": false,
@@ -253,7 +258,8 @@ Array [
     "name": "valid 2xx status codes for post",
     "passed": true,
     "received": undefined,
-    "where": "added response status code: 204 in operation: POST /api/users",
+    "type": "added",
+    "where": "POST /api/users response 204",
   },
 ]
 `;

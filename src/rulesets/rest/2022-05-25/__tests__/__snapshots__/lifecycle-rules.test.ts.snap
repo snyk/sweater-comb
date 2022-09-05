@@ -19,7 +19,7 @@ Array [
         "x-snyk-api-stability": "beta",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -29,7 +29,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -58,7 +59,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -68,7 +69,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -92,7 +94,7 @@ Array [
         "x-snyk-api-stability": "experimental",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -102,7 +104,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -131,7 +134,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -141,7 +144,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -165,7 +169,7 @@ Array [
         "x-snyk-api-stability": "ga",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -175,7 +179,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -204,7 +209,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -214,7 +219,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -238,7 +244,7 @@ Array [
         "x-snyk-api-stability": "wip",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -248,7 +254,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -277,7 +284,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -287,7 +294,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -311,7 +319,7 @@ Array [
         "x-snyk-api-stability": "published",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": "published must be one of allowed values wip, experimental, beta, ga",
     "exempted": false,
@@ -321,7 +329,8 @@ Array [
     "name": "resource stability",
     "passed": false,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -350,7 +359,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -360,7 +369,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -384,7 +394,7 @@ Array [
         "x-snyk-api-stability": "beta",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -394,7 +404,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -424,7 +435,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": "stability transition from '[object Object]' to '[object Object]' not allowed",
     "exempted": false,
@@ -434,7 +445,8 @@ Array [
     "name": "resource stability transitions",
     "passed": false,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -458,7 +470,7 @@ Array [
         "x-snyk-api-stability": "ga",
       },
     },
-    "condition": "be provided for every resource document",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
     "error": undefined,
     "exempted": false,
@@ -468,7 +480,8 @@ Array [
     "name": "resource stability",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -498,7 +511,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -508,7 +521,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
 ]
 `;
@@ -542,7 +556,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -552,7 +566,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -571,7 +586,7 @@ Array [
         "x-optic-ci-empty-spec": true,
       },
     },
-    "condition": "follow sunset rules",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected Example to be deprecated before removing",
     "exempted": false,
@@ -581,7 +596,8 @@ Array [
     "name": "sunset rules",
     "passed": false,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
 ]
 `;
@@ -615,7 +631,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -625,7 +641,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -644,7 +661,7 @@ Array [
         "x-optic-ci-empty-spec": true,
       },
     },
-    "condition": "follow sunset rules",
+    "condition": undefined,
     "docsLink": undefined,
     "error": "expected beta resource Example to be deprecated 90 days",
     "exempted": false,
@@ -654,7 +671,8 @@ Array [
     "name": "sunset rules",
     "passed": false,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
 ]
 `;
@@ -688,7 +706,7 @@ Array [
         "kind": "specification",
       },
     },
-    "condition": "not change unless it was wip",
+    "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
     "error": undefined,
     "exempted": false,
@@ -698,7 +716,8 @@ Array [
     "name": "resource stability transitions",
     "passed": true,
     "received": undefined,
-    "where": "changed specification",
+    "type": "changed",
+    "where": "specification",
   },
   Object {
     "change": Object {
@@ -717,7 +736,7 @@ Array [
         "x-optic-ci-empty-spec": true,
       },
     },
-    "condition": "follow sunset rules",
+    "condition": undefined,
     "docsLink": undefined,
     "error": undefined,
     "exempted": false,
@@ -727,7 +746,8 @@ Array [
     "name": "sunset rules",
     "passed": true,
     "received": undefined,
-    "where": "requirement for specification",
+    "type": "requirement",
+    "where": "specification",
   },
 ]
 `;

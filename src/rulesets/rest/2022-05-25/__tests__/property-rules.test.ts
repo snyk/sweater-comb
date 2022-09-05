@@ -436,7 +436,7 @@ describe("body properties", () => {
         expect.arrayContaining([
           expect.objectContaining({
             where:
-              "added property: data/meta/externalData in response status code: 200 with content-type: application/json in operation: GET /example",
+              "GET /example response 200 response body: application/json property data/meta/externalData",
             error: "expected externalData to be snake case",
           }),
         ]),
@@ -547,7 +547,7 @@ describe("body properties", () => {
         expect.arrayContaining([
           expect.objectContaining({
             where:
-              "added property: data/attributes/tested_at request body: application/json in operation: POST /example",
+              "POST /example request body: application/json property: data/attributes/tested_at",
             error:
               "expected property name ending in '_at' to have format date-time",
           }),
@@ -638,7 +638,7 @@ describe("body properties", () => {
         expect.arrayContaining([
           expect.objectContaining({
             where:
-              "added property: data/attributes/tested_at in response status code: 200 with content-type: application/json in operation: GET /example",
+              "GET /example response 200 response body: application/json property data/attributes/tested_at",
             error: "expected property to have format date-time",
           }),
         ]),

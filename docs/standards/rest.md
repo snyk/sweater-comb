@@ -48,9 +48,9 @@ Casing conventions referenced below are defined in [Spectral's casing function d
 
 API paths locate resources and collections of resources. These are always nouns. Collections should use the plural form of the noun. For example:
 
-* `/things` (collection of things)
-* `/things/{thing_id}` (a specific thing, located in a collection of them)
-* `/orgs/{org_id}/other_things` (a collection located in a specific org, located in a collection of orgs)
+- `/things` (collection of things)
+- `/things/{thing_id}` (a specific thing, located in a collection of them)
+- `/orgs/{org_id}/other_things` (a collection located in a specific org, located in a collection of orgs)
 
 ### Mixed case and acronyms
 
@@ -114,6 +114,8 @@ For example, the meta object in the following resource is valid:
 }
 ```
 
+However, [custom metadata](#custom-metadata) must be used appropriately. `meta` should not be used to avoid naming conventions or JSON API structural requirements.
+
 ### Operation IDs
 
 When naming an operation, think carefully about how it will look and feel in generated code. Operations generally map to method or function names.
@@ -139,6 +141,7 @@ operationId: getFoo
 Use the singular form if the operation operates on a single resource, plural if it operates on a collection operation.
 
 Examples:
+
 - `getFoo` (get one)
 - `listFoos` (get many)
 - `createThing` (create one)
@@ -211,13 +214,9 @@ What this might look like by example (a total count, and counts grouped by two d
 
 Collection counts may be added to the top-level `meta` object in a resource collection response, or in a relationship `meta` object, when the relationship is "to-many".
 
-#### Custom metadata
+#### <a id="custom-metadata"></a>Custom metadata
 
-Custom metadata should be used sparingly. Snyk's data model representation of a resource must be represented in JSON API data attributes. Alternative representations of that resource in other formats should use format and content type negotiation instead.
-
-Meta objects may only be used when out-of-band information needs to be provided along with the resource in a request or response, and this information is not part of Snyk's data model, but the data model of an external system.
-
-For example, an external integration may need to work with objects which represent a remote SCM repository or CVE information. The Snyk resource will store Snyk's interpretation and representation of that external entity, but additional information may need to be stored for the specific purpose of sychronizing or managing the entity in the external system. This external information may be appropriately stored in a meta object.
+Custom metadata should be used sparingly. Snyk's data model representation of a resource must be represented in JSON API data attributes. Meta objects must not be used to represent formats used in external systems. Alternative representations of that resource in other formats should use a media content type other than `application/vnd.api+json`.
 
 ## <a id="user-request-parameters"></a>User-defined Request Parameters
 
@@ -236,6 +235,10 @@ A filter parameter may support a single value to match, or a set of multiple val
 - Use `style: form, explode: false` to indicate a comma-separated representation of multiple values. Refer to the [Parameter object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameter-object) OpenAPI specification for more information.
 
 Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multple values to a single value) is a breaking API change.
+
+#### Filtering through sub properties
+
+Sub properties may also be used for filtering; when filtering on sub properties, filters are expressed as ?property_name.sub_property_name=sub_property_value.
 
 #### Filtering through relationships
 
@@ -274,12 +277,12 @@ Unless specifically requested, the default behavior when these parameters are no
 
 If `meta_count` is not specified but `meta_count_by` is specified, `meta_count=only` must be assumed. The following table represents the default behaviors of different combinations of these parameters and their resulting affect on the response contents:
 
-| `meta_count` value | `meta_count_by` value | Response has `.meta.count` | Response has `.meta.count_by` | Response has `.data[]` |
-|------------|---------------|--------|-|-|
-| _not set_ | _not set_ | ❌ | ❌ | ✅ |
-| _not set_ | _one or more group(s)_ | ✅ | ✅  | ❌ |
-| `only` | _*_ | ✅ | _*_ | ❌ |
-| `with` | _*_ |  ✅ | _*_ | ✅ |
+| `meta_count` value | `meta_count_by` value  | Response has `.meta.count` | Response has `.meta.count_by` | Response has `.data[]` |
+| ------------------ | ---------------------- | -------------------------- | ----------------------------- | ---------------------- |
+| _not set_          | _not set_              | ❌                         | ❌                            | ✅                     |
+| _not set_          | _one or more group(s)_ | ✅                         | ✅                            | ❌                     |
+| `only`             | _\*_                   | ✅                         | _\*_                          | ❌                     |
+| `with`             | _\*_                   | ✅                         | _\*_                          | ✅                     |
 
 ### <a id="pagination-parameters"></a>Pagination
 
@@ -438,7 +441,7 @@ Aside from the [difference in parameter naming](../principles/jsonapi.md#rough-s
 
 Sparse fieldsets may be expressed on related expansions by prefixing the parameter with the relationship name and a dot `.`, _relationship_`.attributes`.
 
-For example: `/orgs/{org_id}/projects?expand=target&attributes=name&target.attributes=name` would expand the projects response with related target resources, and only include the `name` attribute in each. 
+For example: `/orgs/{org_id}/projects?expand=target&attributes=name&target.attributes=name` would expand the projects response with related target resources, and only include the `name` attribute in each.
 
 #### Interaction with `required` JSON schema object properties
 
@@ -466,7 +469,7 @@ Continuing with the above example, `Accept: application/sarif+json`.
 
 The response to a requested format may be:
 
-__200 OK__: The `Content-Type` response header indicates the requested format. The response body contains content in the requested format.
+**200 OK**: The `Content-Type` response header indicates the requested format. The response body contains content in the requested format.
 
 Public REST API endpoints must provide a JSON API response, unless another response format is explicitly requested.
 
@@ -477,9 +480,9 @@ In such cases where this is not possible, a JSON API response must still be prov
 - JSON API `data` properties: `id` and `type`.
 - Relationship links to obtain the resource in other formats, using the `?format=` query parameter.
 
-__400 Bad Request__: The error should indicate an unknown or unsupported format, and may indicate which formats are supported.
+**400 Bad Request**: The error should indicate an unknown or unsupported format, and may indicate which formats are supported.
 
-__406 Not Acceptable__: The format is supported but this particular resource cannot be represented in the requested format for some application-specific reason. This is not common.
+**406 Not Acceptable**: The format is supported but this particular resource cannot be represented in the requested format for some application-specific reason. This is not common.
 
 #### Constraints
 
@@ -520,7 +523,7 @@ A forbidden status code & error response must be returned if the requester has p
 
 ### 404 - Not Found
 
-A not found status code & error response must be returned if the requested resource does not exist _or_ if the requester *does not* have access to the underlying resource. For example, if an org named `pineapple` exists but the user `joe` is not a member of the organization, then Joe should receive a `404 Not Found` when requesting any information related to the `pineapple` organization.
+A not found status code & error response must be returned if the requested resource does not exist _or_ if the requester _does not_ have access to the underlying resource. For example, if an org named `pineapple` exists but the user `joe` is not a member of the organization, then Joe should receive a `404 Not Found` when requesting any information related to the `pineapple` organization.
 
 ### 409 - Conflict
 

@@ -17,6 +17,7 @@ import {
   createVersionCommand,
   createUpdateCommand,
 } from "./workflows/commands";
+import { createLintCommand } from "./lint";
 
 const rulesets = {
   resource: resourceRules,
@@ -44,7 +45,7 @@ const readContextFrom = (
   return { date, resource, stability };
 };
 
-(async () => {
+const main = async (): Promise<void> => {
   const cli = await initializeCli({
     token: process.env.OPTIC_TOKEN || "",
     gitProvider: {
@@ -97,6 +98,16 @@ const readContextFrom = (
 
   workflowCommand.addCommand(operationCommand);
   cli.addCommand(workflowCommand);
+  cli.addCommand(createLintCommand());
 
-  cli.parse(process.argv);
-})();
+  await cli.exitOverride().parseAsync(process.argv);
+};
+
+process.exitCode = 1;
+main()
+  .then(() => {
+    process.exitCode = 0;
+  })
+  .catch((err) => {
+    console.log("exit on error:", err);
+  });

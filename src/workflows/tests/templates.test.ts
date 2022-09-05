@@ -1,13 +1,15 @@
 import { buildNewResourceSpec } from "../templates/new-resource-spec";
 import { addCreateOperationTemplate } from "../templates/operations/create";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
-import { dereferenceOpenAPI } from "@useoptic/openapi-io";
+import { loadSpecFromFile } from "@useoptic/openapi-io";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { addUpdateOperationTemplate } from "../templates/operations/update";
 import { addDeleteOperationTemplate } from "../templates/operations/delete";
 import { addGetOperationTemplate } from "../templates/operations/get";
 import { addListOperationTemplate } from "../templates/operations/list";
 import { resourceRules as rules } from "../../rulesets/rest/2022-05-25";
+import * as fs from "fs";
+import * as path from "path";
 
 describe("workflow templates", () => {
   describe("operations", () => {
@@ -63,13 +65,24 @@ const context = {
 
 async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
   const ruleRunner = new RuleRunner(rules);
-
-  const { jsonLike: parsedFrom } = await dereferenceOpenAPI(from);
-  const { jsonLike: parsedTo } = await dereferenceOpenAPI(to);
-  const ruleInputs = {
-    ...TestHelpers.createRuleInputs(parsedFrom, parsedTo),
-    context,
-  };
-  const results = ruleRunner.runRulesWithFacts(ruleInputs);
-  return results;
+  const tmp = fs.mkdtempSync("workflow-check");
+  try {
+    const fromFile = path.join(tmp, "from.yaml");
+    const toFile = path.join(tmp, "to.yaml");
+    fs.writeFileSync(fromFile, JSON.stringify(from));
+    fs.writeFileSync(toFile, JSON.stringify(to));
+    const { flattened: parsedFrom } = await loadSpecFromFile(fromFile);
+    const { flattened: parsedTo } = await loadSpecFromFile(toFile);
+    if (!parsedFrom || !parsedTo) {
+      throw new Error("failed to read OpenAPI files");
+    }
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(parsedFrom, parsedTo),
+      context,
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    return results;
+  } finally {
+    fs.rmdirSync(tmp, { recursive: true });
+  }
 }

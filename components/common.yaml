@@ -340,6 +340,17 @@ parameters:
     example: "2021-06-04"
     schema: { $ref: "#/schemas/QueryVersion" }
 
+  MetaCount:
+    name: meta_count
+    in: query
+    description: State the number of objects in a collection
+    example: only
+    schema:
+      type: string
+      enum:
+        - only
+        - with
+
 responses:
 
   '204':

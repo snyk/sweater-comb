@@ -28,7 +28,7 @@ Array [
         "kind": "response",
       },
     },
-    "condition": "use the JSON:API content type",
+    "condition": undefined,
     "docsLink": "https://jsonapi.org/format/#content-negotiation-clients",
     "error": "expected response to support application/vnd.api+json",
     "exempted": false,
@@ -38,7 +38,8 @@ Array [
     "name": "JSON:API content type",
     "passed": false,
     "received": undefined,
-    "where": "added response status code: 200 in operation: GET /api/example",
+    "type": "added",
+    "where": "GET /api/example response 200",
   },
 ]
 `;
