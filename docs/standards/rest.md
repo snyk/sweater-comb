@@ -571,6 +571,11 @@ With examples, it's clear what to expect. One could even run a mock API server w
 
 Without examples, as an end-user I don't have much context here to know what these fields' values are going to look like! Links are most likely URLs, not just strings!
 
+## PATCHing data - Optional/Null values
+
+- If fields, objects and/or relationships are not supplied in the request they are not modified.
+- To unset an existing attribute supply a value of `null`.
+
 ## Making the OpenAPI specification available
 
 Every service in the v3 API must publish endpoints that list available versions and fetch specific published versions of the OpenAPI spec for all resources provided by that service to v3. These paths may be prefixed if needed (some services may provide other APIs in addition to v3).
