@@ -14,15 +14,15 @@ paths:
     x-snyk-resource-singleton: true
     get:
       summary: Singleton
-      description: Get a thing
-      operationId: getThing
+      description: Create a new thing
+      operationId: createThing
       tags:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
       responses:
-        "200":
-          description: Retrieved a thing successfully
+        "201":
+          description: Created thing successfully
           headers:
             snyk-version-requested:
               {
@@ -57,6 +57,23 @@ paths:
 components:
   x-rest-common:
     $ref: "../../../../../components/common.yaml"
+  parameters:
+    OrgId:
+      name: org_id
+      in: path
+      required: true
+      description: Org ID
+      schema:
+        type: string
+        format: uuid
+    ThingId:
+      name: thing_id
+      in: path
+      required: true
+      description: Unique identifier for thing instances
+      schema:
+        type: string
+        format: uuid
   schemas:
     ThingResourceResponse:
       type: object
@@ -65,6 +82,14 @@ components:
         jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingResource" }
         links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
+
+    ThingCollectionResponse:
+      type: object
+      description: Response containing a collection of thing resource objects
+      properties:
+        jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
+        data: { $ref: "#/components/schemas/ThingCollection" }
+        links: { $ref: "#/components/x-rest-common/schemas/PaginatedLinks" }
 
     ThingResource:
       type: object
@@ -80,6 +105,10 @@ components:
       properties:
         example: { $ref: "#/components/x-rest-common/schemas/Relationship" }
       additionalProperties: false
+
+    ThingCollection:
+      type: array
+      items: { $ref: "#/components/schemas/ThingResource" }
 
     ThingAttributes:
       type: object

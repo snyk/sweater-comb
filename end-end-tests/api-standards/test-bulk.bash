@@ -14,15 +14,17 @@ trap "rm -rf $tempdir" EXIT
 set +e
 
 function assert_ok {
-    if [ "$?" != "0" ]; then
-        echo "unexpected rc=$?"
+    rc=$?
+    if [ "$rc" != "0" ]; then
+        echo "unexpected rc=$rc"
         exit 1
     fi
 }
 
 function assert_err {
-    if [ "$?" == "0" ]; then
-        echo "unexpected rc=$?"
+    rc=$?
+    if [ "$rc" == "0" ]; then
+        echo "unexpected rc=$rc"
         exit 1
     fi
 }

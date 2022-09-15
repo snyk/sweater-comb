@@ -111,6 +111,48 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
+  test("fails when an invalid get 2xx code is specified", () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users/{user_id}": {
+          get: {
+            responses: {
+              "203": {
+                description: "i am not valid",
+                content: {
+                  "application/vnd.api+json": {
+                    schema: {
+                      type: "object",
+                      properties: {},
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([statusCodesRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "valid 2xx status codes for get",
+          error: "expected GET response to only support 200, not 203",
+        }),
+      ]),
+    );
+  });
+
   test("fails when an invalid batch post 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,

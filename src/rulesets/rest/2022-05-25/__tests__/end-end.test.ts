@@ -193,6 +193,42 @@ describe("end-end-tests", () => {
     expect(results.every((result) => result.passed)).toBe(true);
   });
 
+  it("passes new valid singleton", async () => {
+    const results = await snapshotScenario(
+      undefined,
+      "001-singleton.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "experimental",
+        },
+        resourceVersions: {},
+      },
+    );
+    expect(results.every((result) => result.passed)).toBe(true);
+  });
+
+  it("fails new invalid singleton", async () => {
+    const results = await snapshotScenario(
+      undefined,
+      "001-fail-singleton-get-201.yaml",
+      resourceDate("thing", "2021-11-10"),
+      {
+        changeDate: "2021-11-11",
+        changeResource: "thing",
+        changeVersion: {
+          date: "2021-11-10",
+          stability: "experimental",
+        },
+        resourceVersions: {},
+      },
+    );
+    expect(results.every((result) => result.passed)).toBe(false);
+  });
+
   const rootOfRepo = path.resolve(path.join(__dirname, "../../../../../"));
 
   async function snapshotScenario(
