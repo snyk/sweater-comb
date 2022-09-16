@@ -45,5 +45,11 @@ export const links = {
       "https://github.com/snyk/sweater-comb/blob/main/docs/principles/jsonapi.md#pagination-parameters",
     compoundDocuments:
       "https://github.com/snyk/sweater-comb/blob/main/docs/principles/jsonapi.md#compound-documents",
+    postRequests: "https://jsonapi.org/format/#crud-creating",
+    postResponses: "https://jsonapi.org/format/#crud-creating-responses-201",
+    patchRequests: "https://jsonapi.org/format/#crud-updating",
+    patchResponses: "https://jsonapi.org/format/#crud-updating-responses",
+    bulkOperations:
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#bulk-operations",
   },
 };

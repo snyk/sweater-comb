@@ -3,13 +3,132 @@ import {
   RuleError,
   ResponseRule,
   ResponseBodyRule,
+  RequestRule,
   Matchers,
 } from "@useoptic/rulesets-base";
 import { links } from "../../../../docs";
 import { isOpenApiPath, isSingletonPath } from "../utils";
 
+const matchPatchRequest = {
+  data: {
+    type: "object",
+    properties: {
+      id: {
+        type: "string",
+        format: "uuid",
+      },
+      type: {
+        type: Matchers.string,
+      },
+      attributes: {
+        type: "object",
+      },
+    },
+  },
+};
+
+const requestDataForPatch = new RequestRule({
+  name: "request body for patch",
+  docsLink: links.jsonApi.patchRequests,
+  matches: (request, rulesContext) =>
+    rulesContext.operation.method === "patch" &&
+    request.contentType === "application/vnd.api+json",
+  rule: (requestAssertions) => {
+    requestAssertions.body.added.matches({
+      schema: {
+        type: "object",
+        properties: matchPatchRequest,
+      },
+    });
+    requestAssertions.body.changed.matches({
+      schema: {
+        type: "object",
+        properties: matchPatchRequest,
+      },
+    });
+  },
+});
+
+const matchPostRequest = {
+  data: {
+    type: "object",
+    properties: {
+      type: {
+        type: Matchers.string,
+      },
+      attributes: {
+        type: "object",
+      },
+    },
+  },
+};
+
+const requestDataForPost = new RequestRule({
+  name: "request body for post",
+  docsLink: links.jsonApi.postRequests,
+  matches: (request, rulesContext) =>
+    request.contentType === "application/vnd.api+json" &&
+    rulesContext.operation.method === "post" &&
+    !rulesContext.operation.responses.has("204"),
+  rule: (requestAssertions) => {
+    requestAssertions.body.added.matches({
+      schema: {
+        type: "object",
+        properties: matchPostRequest,
+      },
+    });
+    requestAssertions.body.changed.matches({
+      schema: {
+        type: "object",
+        properties: matchPostRequest,
+      },
+    });
+  },
+});
+
+const matchBulkPostRequest = {
+  data: {
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        type: {
+          type: Matchers.string,
+        },
+        attributes: {
+          type: "object",
+        },
+      },
+    },
+  },
+};
+
+const requestDataForBulkPost = new RequestRule({
+  name: "request body for bulk post",
+  docsLink: links.jsonApi.patchRequests,
+  matches: (request, rulesContext) =>
+    rulesContext.operation.method === "post" &&
+    rulesContext.operation.responses.has("204") &&
+    request.contentType === "application/vnd.api+json",
+  rule: (requestAssertions) => {
+    requestAssertions.body.added.matches({
+      schema: {
+        type: "object",
+        properties: matchBulkPostRequest,
+      },
+    });
+    requestAssertions.body.changed.matches({
+      schema: {
+        type: "object",
+        properties: matchBulkPostRequest,
+      },
+    });
+  },
+});
+
 const responseDataForPatch = new ResponseBodyRule({
   name: "response data for patch",
+  docsLink: links.jsonApi.patchResponses,
   matches: (responseBody, rulesContext) =>
     rulesContext.operation.method === "patch" &&
     responseBody.statusCode === "200" &&
@@ -61,7 +180,7 @@ const empty204Content = new ResponseRule({
 });
 
 const contentFor2xxStatusCodes = new ResponseRule({
-  name: "content for 2xx status codes",
+  name: "content for non-204 status codes",
   matches: (response) => response.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added(
@@ -397,6 +516,9 @@ export const resourceObjectRules = new Ruleset({
   docsLink: links.jsonApi.resourceObjects,
   matches: (ruleContext) => !isOpenApiPath(ruleContext.operation.path),
   rules: [
+    requestDataForPatch,
+    requestDataForPost,
+    requestDataForBulkPost,
     responseDataForPatch,
     empty204Content,
     contentFor2xxStatusCodes,

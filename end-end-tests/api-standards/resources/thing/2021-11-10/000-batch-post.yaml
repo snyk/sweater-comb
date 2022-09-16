@@ -19,7 +19,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
       requestBody:
         required: true
         content:
@@ -47,11 +47,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             location:
               { $ref: "#/components/x-rest-common/headers/LocationHeader" }
         "400": { $ref: "#/components/x-rest-common/responses/400" }
@@ -62,7 +59,7 @@ paths:
         "500": { $ref: "#/components/x-rest-common/responses/500" }
 components:
   x-rest-common:
-    $ref: '../../../../../components/common.yaml'
+    $ref: "../../../../../components/common.yaml"
   parameters:
     OrgId:
       name: org_id
@@ -72,32 +69,18 @@ components:
       schema:
         type: string
         format: uuid
-    ThingId:
-      name: thing_id
-      in: path
-      required: true
-      description: Unique identifier for thing instances
-      schema:
-        type: string
-        format: uuid
   schemas:
     ThingResourceRequest:
       type: object
       description: Request containing a single thing resource object
       properties:
-        jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data:
           type: array
-          items:  { $ref: "#/components/schemas/ThingResource" }
-        links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
-    ThingResource:
+          items: { $ref: "#/components/schemas/ThingResourceItem" }
+    ThingResourceItem:
       type: object
       description: thing resource object
       properties:
-        id:
-          type: string
-          format: uuid
-          example: d5b640e5-d88c-4c17-9bf0-93597b7a1ce2
         type: { $ref: "#/components/x-rest-common/schemas/Types" }
         attributes: { $ref: "#/components/schemas/ThingAttributes" }
         relationships: { $ref: "#/components/schemas/ThingRelationships" }
@@ -108,10 +91,6 @@ components:
       properties:
         example: { $ref: "#/components/x-rest-common/schemas/Relationship" }
       additionalProperties: false
-
-    ThingCollection:
-      type: array
-      items: { $ref: "#/components/schemas/ThingResource" }
 
     ThingAttributes:
       type: object
