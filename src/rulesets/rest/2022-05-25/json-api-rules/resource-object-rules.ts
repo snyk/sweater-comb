@@ -242,6 +242,38 @@ const getPostResponseDataSchema = new ResponseBodyRule({
   },
 });
 
+const getSingletonResponseDataSchema = new ResponseBodyRule({
+  name: "valid get singleton response data schema",
+  matches: (responseBody, rulesContext) => {
+    const { method } = rulesContext.operation;
+    const { statusCode, contentType } = responseBody;
+
+    return (
+      isSingletonPath(rulesContext) &&
+      method === "get" &&
+      statusCode === "200" &&
+      contentType === "application/vnd.api+json"
+    );
+  },
+  rule: (responseAssertions) => {
+    const validSchemaShape = {
+      schema: {
+        properties: {
+          data: {
+            properties: {
+              type: {
+                type: "string",
+              },
+            },
+          },
+        },
+      },
+    };
+
+    responseAssertions.body.added.matches(validSchemaShape);
+  },
+});
+
 const patchResponseDataSchema = new ResponseBodyRule({
   name: "valid patch response data schema",
   matches: (responseBody, rulesContext) => {
@@ -268,7 +300,61 @@ const patchResponseDataSchema = new ResponseBodyRule({
       {
         schema: {
           properties: {
-            data: {},
+            data: {
+              properties: {
+                id: {
+                  type: "string",
+                  format: "uuid",
+                },
+                type: {
+                  type: "string",
+                },
+              },
+            },
+            jsonapi: {},
+            links: {},
+          },
+        },
+      },
+    ];
+    responseAssertions.body.added.matchesOneOf(validSchemaShapes);
+    responseAssertions.body.changed.matchesOneOf(validSchemaShapes);
+  },
+});
+
+const patchSingletonResponseDataSchema = new ResponseBodyRule({
+  name: "valid patch singleton response data schema",
+  matches: (responseBody, rulesContext) => {
+    const { method } = rulesContext.operation;
+    const { statusCode, contentType } = responseBody;
+
+    return (
+      isSingletonPath(rulesContext) &&
+      method === "patch" &&
+      statusCode === "200" &&
+      contentType === "application/vnd.api+json"
+    );
+  },
+  rule: (responseAssertions) => {
+    const validSchemaShapes = [
+      {
+        schema: {
+          properties: {
+            meta: {},
+            links: {},
+          },
+        },
+      },
+      {
+        schema: {
+          properties: {
+            data: {
+              properties: {
+                type: {
+                  type: "string",
+                },
+              },
+            },
             jsonapi: {},
             links: {},
           },
@@ -319,7 +405,9 @@ export const resourceObjectRules = new Ruleset({
     locationHeader,
     selfLinks,
     getPostResponseDataSchema,
+    getSingletonResponseDataSchema,
     patchResponseDataSchema,
+    patchSingletonResponseDataSchema,
     deleteResponseDataSchema,
   ],
 });
