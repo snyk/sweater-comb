@@ -503,11 +503,63 @@ Certain headers are required in all v3 API responses.
 - `snyk-request-id` - Relays a provided request UUID, or generates a new one, which is used to correlate the request to logs and downstream requests to other services.
 - [Versioning response headers](../principles/version.md#response-headers).
 
+## <a id="bulk-operations"></a>Bulk Operations
+
+A POST or PATCH endpoint may create or update multiple resources as a bulk operation. A bulk operation must:
+
+- Respond with `204 No Content` indicating the bulk operation was completed.
+- Respond with an error status if the operation was not completed.
+
+The request body for a bulk POST or PATCH specifies an array for the `data` top-level document property.
+
+In order to locate the resources created, a client making a bulk POST request must either:
+
+- Specify resource IDs in the bulk request
+- Know how to locate resources by some other attributes when IDs are server assigned
+
+```
+POST /things
+Content-Type: application/vnd.api+json
+
+{
+  "data": [
+    {"type": "thing", "id": "thing1", "attributes": {"employer": "cat-in-the-hat"}},
+    {"type": "thing", "id": "thing2", "attributes": {"employer": "cat-in-the-hat"}}
+  ]
+}
+
+HTTP 204 No Content
+```
+
+PATCH requests are similar. The response may be a 200 or 204, using the same JSON API guidance given for [patching single resources](https://jsonapi.org/format/#crud-updating-responses).
+
+```
+PATCH /things
+Content-Type: application/vnd.api+json
+
+{
+  "data": [
+    {"type": "thing", "id": "thing1", "attributes": {"likes": ["kite-flying"}},
+    {"type": "thing", "id": "thing2", "attributes": {"likes": ["painting"]}}
+  ]
+}
+
+HTTP 204 No Content
+```
+
+Partial failure must be avoided; it pushes a lot of complexity onto the API consumer to "pick up the pieces" from an operation to figure out what happened and what to do next. A service implementing bulk REST operations must take responsibility for resource state and provide strong transactional "all or nothing" guarantees.
+
+This may be an overly strict and simplistic view. Some bulk operations may actually require this level of nuance at a certain scale, so this decision may be appealed if/when there is a clearer use case.
+
 ## <a id="status-codes"></a>Status Codes
 
 In addition to the status codes specified in [JSON-API#Responses](https://jsonapi.org/format/#fetching-resources-responses), we have standardized on additional situations across our surface area, specifically, for dealing with error cases.
 
 All status codes must be listed in this section or as a part of the [JSON-API Specification](https://jsonapi.org). As a general guiding principle, we strive to limit the number of status codes we return into large categorically distinct areas to make working with the Snyk API easier for end-users.
+
+### 204 - No Content
+
+In addition to DELETE, our services may respond to a collection POST or PATCH request with a 204 as a response to bulk resource creation or modification. This is an extension to the JSON API standard.
 
 ### 400 - Bad Request
 
