@@ -427,6 +427,19 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
+        
+  '422':
+    description: 'Unprocessable Entity: The request was well-formed but was unable to be followed due to semantic errors'
+    headers:
+      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
+      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
+      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
+      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
+      deprecation: { $ref: '#/headers/DeprecationHeader' }
+      sunset: { $ref: '#/headers/SunsetHeader' }
+    content:
+      application/vnd.api+json:
+        schema: { $ref: '#/schemas/ErrorDocument' }
   
   '500':
     description: 'Internal Server Error: An error was encountered while attempting to process the request.'
