@@ -286,7 +286,7 @@ If `meta_count` is not specified but `meta_count_by` is specified, `meta_count=o
 
 ### <a id="pagination-parameters"></a>Pagination
 
-`starting_after`, `ending_before`, and `limit` are reserved for cursor pagination on resource collections, as defined in [JSON API Pagination Parameters](../../principles/jsonapi/#pagination-parameters).
+`starting_after`, `ending_before`, and `limit` are reserved for cursor pagination on resource collections, as defined in [JSON API Pagination Parameters](../principles/jsonapi.md/#pagination-parameters).
 
 ### <a id="expansion"></a>Expansion
 
