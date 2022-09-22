@@ -25,7 +25,7 @@ export function buildItemResponseSchema(
         },
         additionalProperties: false,
       },
-      links: refs.schemas.paginationLinks,
+      links: refs.schemas.selfLink,
     },
   };
 }
