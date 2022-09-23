@@ -5,9 +5,14 @@ import {
   ResponseBodyRule,
   RequestRule,
   Matchers,
+  Matcher,
 } from "@useoptic/rulesets-base";
 import { links } from "../../../../docs";
 import { isOpenApiPath, isSingletonPath } from "../utils";
+
+const resourceIDFormat = new Matcher((value: any): boolean => {
+  return value === "uuid" || value === "uri";
+});
 
 const matchPatchRequest = {
   data: {
@@ -15,7 +20,7 @@ const matchPatchRequest = {
     properties: {
       id: {
         type: "string",
-        format: "uuid",
+        format: resourceIDFormat,
       },
       type: {
         type: Matchers.string,
@@ -326,7 +331,7 @@ const getPostResponseDataSchema = new ResponseBodyRule({
                 properties: {
                   id: {
                     type: "string",
-                    format: "uuid",
+                    format: resourceIDFormat,
                   },
                   type: {
                     type: "string",
@@ -344,7 +349,7 @@ const getPostResponseDataSchema = new ResponseBodyRule({
               properties: {
                 id: {
                   type: "string",
-                  format: "uuid",
+                  format: resourceIDFormat,
                 },
                 type: {
                   type: "string",
@@ -423,7 +428,7 @@ const patchResponseDataSchema = new ResponseBodyRule({
               properties: {
                 id: {
                   type: "string",
-                  format: "uuid",
+                  format: resourceIDFormat,
                 },
                 type: {
                   type: "string",

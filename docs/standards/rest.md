@@ -2,7 +2,21 @@
 
 In order to provide a consistent [API as a platform](../principles/api_program.md), Snyk APIs have additional requirements, building on [JSON API](../principles/jsonapi.md) and [Versioning](../principles/version.md) standards.
 
-## Organization and group tenants for resources
+# Resource IDs
+
+[Resource IDs] must be defined with one of the following JSON Schema formats:
+
+- `format: uuid`
+- `format: uri`
+
+UUIDs are most useful when the resource is already located by a unique UUID primary key.
+
+URIs may be better when:
+
+- The resource identity is best located by a URI. For example: [Package URLs (pURLs)](https://github.com/package-url/purl-spec).
+- Other instances where a structured, semantically-meaningful identifier provides a better experience. Vulnerabilities or issues might fall into this category.
+
+# Organization and group tenants for resources
 
 Resources in the Snyk v3 API are located under an Organization and possibly a Group tenant, specified as a path prefix.
 
@@ -603,7 +617,7 @@ The [operation](https://swagger.io/specification/#operation-object) `summary` fi
 
 ### Formats
 
-`format: uuid` and `format: date-time` are essential for indicating a field is not just a string, but actually a UUID or an RFC3339 date string. This format is relied upon by request and response validation middleware.
+`format: uri`, `format: uuid` and `format: date-time` are essential for indicating a field is not just a string, but actually a UUID or an RFC3339 date string. This format is relied upon by request and response validation middleware.
 
 Enum types (`{type: string, enum: [...]}`) should be used wherever it is possible to enumerate a closed set of valid values a field might have. This includes the set of resource types in our API.
 

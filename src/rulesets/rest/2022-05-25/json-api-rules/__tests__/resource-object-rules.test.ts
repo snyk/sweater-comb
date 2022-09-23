@@ -7,34 +7,37 @@ const baseJson = TestHelpers.createEmptySpec();
 
 describe("resource object rules", () => {
   describe("valid PATCH requests", () => {
-    test("passes when PATCH request body is of the correct form", () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example/{example_id}": {
-            patch: {
-              responses: {}, // not tested here
-              requestBody: {
-                content: {
-                  "application/vnd.api+json": {
-                    schema: {
-                      type: "object",
-                      properties: {
-                        data: {
-                          type: "object",
-                          properties: {
-                            id: {
-                              type: "string",
-                              format: "uuid",
-                            },
-                            type: {
-                              type: "string",
-                            },
-                            attributes: {
-                              type: "object",
-                              properties: {
-                                something: {
-                                  type: "string",
+    test.each(["uuid", "uri"])(
+      "passes when PATCH request body is of the correct form identified by %s",
+      (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example/{example_id}": {
+              patch: {
+                responses: {}, // not tested here
+                requestBody: {
+                  content: {
+                    "application/vnd.api+json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "object",
+                            properties: {
+                              id: {
+                                type: "string",
+                                format: format,
+                              },
+                              type: {
+                                type: "string",
+                              },
+                              attributes: {
+                                type: "object",
+                                properties: {
+                                  something: {
+                                    type: "string",
+                                  },
                                 },
                               },
                             },
@@ -47,18 +50,18 @@ describe("resource object rules", () => {
               },
             },
           },
-        },
-      } as OpenAPIV3.Document;
+        } as OpenAPIV3.Document;
 
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-    });
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+      },
+    );
   });
 
   describe("valid POST requests", () => {
@@ -432,36 +435,39 @@ describe("resource object rules", () => {
   });
 
   describe("valid GET responses", () => {
-    test("passes when status code 200 has the correct JSON body", () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example": {
-            get: {
-              responses: {
-                "200": {
-                  description: "",
-                  content: {
-                    "application/vnd.api+json": {
-                      schema: {
-                        type: "object",
-                        properties: {
-                          data: {
-                            type: "object",
-                            properties: {
-                              id: {
-                                type: "string",
-                                format: "uuid",
-                              },
-                              type: {
-                                type: "string",
+    test.each(["uuid", "uri"])(
+      "passes when status code 200 has the correct JSON body identified by %s",
+      (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example": {
+              get: {
+                responses: {
+                  "200": {
+                    description: "",
+                    content: {
+                      "application/vnd.api+json": {
+                        schema: {
+                          type: "object",
+                          properties: {
+                            data: {
+                              type: "object",
+                              properties: {
+                                id: {
+                                  type: "string",
+                                  format: format,
+                                },
+                                type: {
+                                  type: "string",
+                                },
                               },
                             },
-                          },
-                          links: {
-                            properties: {
-                              self: {
-                                type: "string",
+                            links: {
+                              properties: {
+                                self: {
+                                  type: "string",
+                                },
                               },
                             },
                           },
@@ -473,56 +479,59 @@ describe("resource object rules", () => {
               },
             },
           },
-        },
-      } as OpenAPIV3.Document;
+        } as OpenAPIV3.Document;
 
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    });
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+        expect(results).toMatchSnapshot();
+      },
+    );
   });
 
   describe("valid POST responses", () => {
-    test("passes when status code 201 has the correct headers and body", () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example": {
-            post: {
-              responses: {
-                "201": {
-                  description: "",
-                  headers: {
-                    location: {},
-                  },
-                  content: {
-                    "application/vnd.api+json": {
-                      schema: {
-                        type: "object",
-                        properties: {
-                          data: {
-                            type: "object",
-                            properties: {
-                              id: {
-                                type: "string",
-                                format: "uuid",
-                              },
-                              type: {
-                                type: "string",
+    test.each(["uuid", "uri"])(
+      "passes when status code 201 has the correct headers and body identified by %s",
+      (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example": {
+              post: {
+                responses: {
+                  "201": {
+                    description: "",
+                    headers: {
+                      location: {},
+                    },
+                    content: {
+                      "application/vnd.api+json": {
+                        schema: {
+                          type: "object",
+                          properties: {
+                            data: {
+                              type: "object",
+                              properties: {
+                                id: {
+                                  type: "string",
+                                  format: format,
+                                },
+                                type: {
+                                  type: "string",
+                                },
                               },
                             },
-                          },
 
-                          links: {
-                            properties: {
-                              self: {
-                                type: "string",
+                            links: {
+                              properties: {
+                                self: {
+                                  type: "string",
+                                },
                               },
                             },
                           },
@@ -534,55 +543,58 @@ describe("resource object rules", () => {
               },
             },
           },
-        },
-      } as OpenAPIV3.Document;
+        } as OpenAPIV3.Document;
 
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    });
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+        expect(results).toMatchSnapshot();
+      },
+    );
   });
 
   describe("valid PATCH responses", () => {
-    test("passes when status code 200 has the correct body", () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example": {
-            patch: {
-              responses: {
-                "200": {
-                  description: "",
-                  content: {
-                    "application/vnd.api+json": {
-                      schema: {
-                        type: "object",
-                        properties: {
-                          data: {
-                            type: "object",
-                            properties: {
-                              id: {
-                                type: "string",
-                                format: "uuid",
-                              },
-                              type: {
-                                type: "string",
+    test.each(["uuid", "uri"])(
+      "passes when status code 200 has the correct body identified by %s",
+      (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example": {
+              patch: {
+                responses: {
+                  "200": {
+                    description: "",
+                    content: {
+                      "application/vnd.api+json": {
+                        schema: {
+                          type: "object",
+                          properties: {
+                            data: {
+                              type: "object",
+                              properties: {
+                                id: {
+                                  type: "string",
+                                  format: format,
+                                },
+                                type: {
+                                  type: "string",
+                                },
                               },
                             },
-                          },
-                          jsonapi: {
-                            type: "string",
-                          },
-                          links: {
-                            properties: {
-                              self: {
-                                type: "string",
+                            jsonapi: {
+                              type: "string",
+                            },
+                            links: {
+                              properties: {
+                                self: {
+                                  type: "string",
+                                },
                               },
                             },
                           },
@@ -594,19 +606,19 @@ describe("resource object rules", () => {
               },
             },
           },
-        },
-      } as OpenAPIV3.Document;
+        } as OpenAPIV3.Document;
 
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
-      expect(results.length).toBeGreaterThan(0);
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    });
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+        expect(results).toMatchSnapshot();
+      },
+    );
 
     test.each([true, false])(
       "passes when status code 200 has the correct body, meta only, singleton=%s",
