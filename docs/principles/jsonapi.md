@@ -213,7 +213,7 @@ Our API uses these reserved parameters for pagination:
 
 - `starting_after` - Return `limit` records after the record identified by cursor position `starting_after`.
 - `ending_before` - Return `limit` records before the record identified by cursor position `ending_before`.
-- `limit` - Size of page, in increments of 10, up to 100
+- `limit` - Number of records to return, up to 100
 
 Cursor position identifiers are determined by the links given in a paginated response.
 
