@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`pagination rules fails when non-paginated endpoint specifies any pagination parameter 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -36,19 +36,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -70,19 +70,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -108,20 +108,20 @@ Array [
 `;
 
 exports[`pagination rules fails when paginated endpoints do not specify links 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -143,19 +143,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -177,19 +177,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -211,17 +211,17 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {},
+        "flatSchema": {},
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -229,7 +229,7 @@ Array [
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -245,12 +245,12 @@ Array [
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/jsonapi.md#pagination-parameters",
     "error": "Expected a partial match",
     "exempted": false,
-    "expected": "{\\"schema\\":{\\"properties\\":{\\"links\\":{}}}}",
+    "expected": "{"schema":{"properties":{"links":{}}}}",
     "isMust": true,
     "isShould": false,
     "name": "pagination links",
     "passed": false,
-    "received": "{\\"schema\\":{\\"properties\\":{\\"nolinks\\":{\\"type\\":\\"object\\",\\"properties\\":{}}}}}",
+    "received": "{"schema":{"properties":{"nolinks":{"type":"object","properties":{}}}}}",
     "type": "added",
     "where": "GET /api/users response 200 response body: application/vnd.api+json",
   },
@@ -258,20 +258,20 @@ Array [
 `;
 
 exports[`pagination rules fails when pagination endpoint does not specify all pagination parameters 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -293,19 +293,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",
@@ -327,19 +327,19 @@ Array [
     "type": "added",
     "where": "GET /api/users",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "method": "get",
         "pathPattern": "/api/users",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
+      "location": {
+        "conceptualLocation": {
           "method": "get",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "get",

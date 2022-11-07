@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`singleton disallowed methods fails when adding delete method to singleton 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
           "method": "delete",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "delete",
@@ -17,7 +17,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/delete",
         "kind": "operation",
       },
-      "value": Object {
+      "value": {
         "method": "delete",
         "pathPattern": "/api/example",
       },
@@ -39,15 +39,15 @@ Array [
 `;
 
 exports[`singleton disallowed methods fails when adding post method to singleton 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -55,7 +55,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/post",
         "kind": "operation",
       },
-      "value": Object {
+      "value": {
         "method": "post",
         "pathPattern": "/api/example",
       },

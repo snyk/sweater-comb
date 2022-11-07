@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`status code rules fails when an invalid 4xx status code is specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "i am not valid",
         "statusCode": "405",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "405",
           },
           "method": "get",
           "path": "/api/users/{user_id}",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users/{}",
           "get",
@@ -45,23 +45,23 @@ Array [
 `;
 
 exports[`status code rules fails when an invalid batch post 2xx code is specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "i am not valid",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "post",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "post",
@@ -89,23 +89,23 @@ Array [
 `;
 
 exports[`status code rules fails when an invalid batch post request is specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "i am not valid",
         "statusCode": "204",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "204",
           },
           "method": "post",
           "path": "/api/users/{user_id}",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users/{}",
           "post",
@@ -133,23 +133,23 @@ Array [
 `;
 
 exports[`status code rules fails when an invalid delete 2xx code is specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "i am not valid",
         "statusCode": "201",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "201",
           },
           "method": "delete",
           "path": "/api/users/{user_id}",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users/{}",
           "delete",
@@ -177,23 +177,23 @@ Array [
 `;
 
 exports[`status code rules fails when an invalid post 2xx code is specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "i am not valid",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "post",
           "path": "/api/users/{user_id}",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users/{}",
           "post",
@@ -221,23 +221,23 @@ Array [
 `;
 
 exports[`status code rules passes for a valid batch post 204 code 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "got it",
         "statusCode": "204",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "204",
           },
           "method": "post",
           "path": "/api/users",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/users",
           "post",

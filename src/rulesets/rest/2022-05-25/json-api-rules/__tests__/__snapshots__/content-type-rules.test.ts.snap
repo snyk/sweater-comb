@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`content type rules fails when response does not have json:api content type 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",

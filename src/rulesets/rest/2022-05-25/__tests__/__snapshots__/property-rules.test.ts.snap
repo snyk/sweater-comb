@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`body properties breaking changes fails if a property is removed 1`] = `
-Array [
-  Object {
-    "change": Object {
+[
+  {
+    "change": {
       "changeType": "removed",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -31,9 +31,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/count",
         "kind": "field",
       },
-      "removed": Object {
-        "before": Object {
-          "flatSchema": Object {
+      "removed": {
+        "before": {
+          "flatSchema": {
             "type": "number",
           },
           "key": "count",
@@ -54,12 +54,12 @@ Array [
     "type": "removed",
     "where": "GET /example response 200 response body: application/json property count",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -67,7 +67,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -78,9 +78,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -102,31 +102,31 @@ Array [
 `;
 
 exports[`body properties breaking changes fails if a required property is added 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -149,30 +149,30 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -195,30 +195,30 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -241,30 +241,30 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -287,22 +287,22 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -312,8 +312,8 @@ Array [
         "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
@@ -332,30 +332,30 @@ Array [
     "type": "requirement",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -378,19 +378,19 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -399,9 +399,9 @@ Array [
         "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -423,13 +423,13 @@ Array [
 `;
 
 exports[`body properties breaking changes passes if a property is removed in experimental 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -437,7 +437,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -448,9 +448,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -472,31 +472,31 @@ Array [
 `;
 
 exports[`body properties breaking changes passes if a required property is added in experimental 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -519,30 +519,30 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -565,30 +565,30 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -611,22 +611,22 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -636,8 +636,8 @@ Array [
         "jsonPath": "/paths/~1example/get/requestBody/content/application~1json/schema/properties/count",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
@@ -656,30 +656,30 @@ Array [
     "type": "requirement",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "number",
         },
         "key": "count",
         "required": true,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "count",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -702,19 +702,19 @@ Array [
     "type": "added",
     "where": "GET /example request body: application/json property: count",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inRequest": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inRequest": {
+            "body": {
               "contentType": "application/json",
             },
           },
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -723,9 +723,9 @@ Array [
         "jsonPath": "/paths/~1example/get/requestBody/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -746,27 +746,27 @@ Array [
 ]
 `;
 
-exports[`body properties breaking changes passes if spec is removed 1`] = `Array []`;
+exports[`body properties breaking changes passes if spec is removed 1`] = `[]`;
 
 exports[`body properties key allows non-snake case if already in spec 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -778,8 +778,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "object",
         },
         "key": "snake_case",
@@ -799,24 +799,24 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property snake_case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
             "notSNAKEcase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -829,8 +829,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "notSNAKEcase",
@@ -850,12 +850,12 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -863,7 +863,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -874,9 +874,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -898,32 +898,32 @@ Array [
 `;
 
 exports[`body properties key fails when not snake case 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -949,31 +949,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -999,23 +999,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1027,8 +1027,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
@@ -1048,31 +1048,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1098,12 +1098,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -1111,7 +1111,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1122,9 +1122,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -1146,32 +1146,32 @@ Array [
 `;
 
 exports[`body properties key fails when not snake case in experimental 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1197,31 +1197,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1247,23 +1247,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1275,8 +1275,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/not-snake-case",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
@@ -1296,31 +1296,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "not-snake-case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "not-snake-case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1346,12 +1346,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property not-snake-case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -1359,7 +1359,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1370,9 +1370,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -1394,32 +1394,32 @@ Array [
 `;
 
 exports[`body properties key fails when not snake case in nested field 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "object",
         },
         "key": "snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1445,32 +1445,32 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "notSNAKEcase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
             "notSNAKEcase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1497,31 +1497,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "object",
         },
         "key": "snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1547,32 +1547,32 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "notSNAKEcase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
             "notSNAKEcase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1599,23 +1599,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1627,8 +1627,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "object",
         },
         "key": "snake_case",
@@ -1648,24 +1648,24 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property snake_case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
             "notSNAKEcase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1678,8 +1678,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/snake_case/properties/notSNAKEcase",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "notSNAKEcase",
@@ -1699,31 +1699,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "object",
         },
         "key": "snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1749,32 +1749,32 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "notSNAKEcase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "snake_case",
             "notSNAKEcase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1801,12 +1801,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property snake_case/notSNAKEcase",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -1814,7 +1814,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1825,9 +1825,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -1849,32 +1849,32 @@ Array [
 `;
 
 exports[`body properties key fails when number in n=1 snake case component 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1900,31 +1900,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property 30_days",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1950,23 +1950,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property 30_days",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -1978,8 +1978,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/30_days",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "30_days",
@@ -1999,31 +1999,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property 30_days",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2049,12 +2049,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property 30_days",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -2062,7 +2062,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2073,9 +2073,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -2097,32 +2097,32 @@ Array [
 `;
 
 exports[`body properties key passes when snake case with a number as an n+1 component 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_allowed_after_30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_allowed_after_30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2148,31 +2148,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_allowed_after_30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_allowed_after_30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2198,23 +2198,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_allowed_after_30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2226,8 +2226,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_allowed_after_30_days",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_allowed_after_30_days",
@@ -2247,31 +2247,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_allowed_after_30_days",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_allowed_after_30_days",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2297,12 +2297,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_allowed_after_30_days",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -2310,7 +2310,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2321,9 +2321,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -2345,32 +2345,32 @@ Array [
 `;
 
 exports[`body properties key passes when snake case with more than one component 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2396,31 +2396,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2446,23 +2446,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2474,8 +2474,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/is_snake_case",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_snake_case",
@@ -2495,31 +2495,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "is_snake_case",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "is_snake_case",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2545,12 +2545,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property is_snake_case",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -2558,7 +2558,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2569,9 +2569,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
@@ -2593,32 +2593,32 @@ Array [
 `;
 
 exports[`body properties key passes when snake case with one component 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+[
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "technicallysnakecase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "technicallysnakecase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2644,31 +2644,31 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "technicallysnakecase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "technicallysnakecase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2694,23 +2694,23 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "technicallysnakecase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2722,8 +2722,8 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json/schema/properties/technicallysnakecase",
         "kind": "field",
       },
-      "value": Object {
-        "flatSchema": Object {
+      "value": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "technicallysnakecase",
@@ -2743,31 +2743,31 @@ Array [
     "type": "requirement",
     "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
-  Object {
-    "change": Object {
-      "added": Object {
-        "flatSchema": Object {
+  {
+    "change": {
+      "added": {
+        "flatSchema": {
           "type": "string",
         },
         "key": "technicallysnakecase",
         "required": false,
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
           },
-          "jsonSchemaTrail": Array [
+          "jsonSchemaTrail": [
             "technicallysnakecase",
           ],
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2793,12 +2793,12 @@ Array [
     "type": "added",
     "where": "GET /example response 200 response body: application/json property technicallysnakecase",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/json",
             },
             "statusCode": "200",
@@ -2806,7 +2806,7 @@ Array [
           "method": "get",
           "path": "/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/example",
           "get",
@@ -2817,9 +2817,9 @@ Array [
         "jsonPath": "/paths/~1example/get/responses/200/content/application~1json",
         "kind": "body",
       },
-      "value": Object {
+      "value": {
         "contentType": "application/json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
