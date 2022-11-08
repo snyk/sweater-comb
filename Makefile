@@ -29,3 +29,4 @@ test: node_modules
 .PHONY: clean
 clean:
 	$(RM) -r node_modules
+	$(RM) -r build

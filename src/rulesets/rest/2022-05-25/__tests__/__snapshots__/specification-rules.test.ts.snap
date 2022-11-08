@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`specification rules compiled specs fails when /openapi endpoint isn't specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -31,16 +31,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -60,16 +60,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -89,16 +89,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -122,17 +122,17 @@ Array [
 `;
 
 exports[`specification rules compiled specs fails when /openapi/{versions} endpoint isn't specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -152,16 +152,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -181,16 +181,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -210,16 +210,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -243,17 +243,17 @@ Array [
 `;
 
 exports[`specification rules fails when components are not PascalCase 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -274,16 +274,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -308,17 +308,17 @@ Array [
 `;
 
 exports[`specification rules uncompiled specs passes when /openapi endpoint isn't specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -339,16 +339,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -373,17 +373,17 @@ Array [
 `;
 
 exports[`specification rules uncompiled specs passes when /openapi/{versions} endpoint isn't specified 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -404,16 +404,16 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },

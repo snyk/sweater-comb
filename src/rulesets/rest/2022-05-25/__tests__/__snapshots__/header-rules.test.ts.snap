@@ -1,26 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`response headers headers fails if it's missing headers 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "name": "good-header",
-        "schema": Object {
+        "schema": {
           "type": "string",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "good-header",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -46,17 +46,17 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: good-header",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -66,7 +66,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -84,17 +84,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -104,7 +104,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -122,17 +122,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -142,7 +142,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -160,17 +160,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -180,7 +180,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -198,17 +198,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -218,7 +218,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -236,17 +236,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -256,7 +256,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "No headers",
         "statusCode": "200",
       },
@@ -278,23 +278,23 @@ Array [
 `;
 
 exports[`response headers headers passes if it has all the headers 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "name": "snyk-request-id",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-request-id",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -320,22 +320,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-request-id",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-lifecycle-stage",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-lifecycle-stage",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -361,22 +361,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-requested",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-requested",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -402,22 +402,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-served",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-served",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -443,22 +443,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-served",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "sunset",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "sunset",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -484,22 +484,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: sunset",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "deprecation",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "deprecation",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -525,17 +525,17 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: deprecation",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -545,7 +545,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -563,17 +563,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -583,7 +583,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -601,17 +601,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -621,7 +621,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -639,17 +639,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -659,7 +659,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -677,17 +677,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -697,7 +697,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -715,17 +715,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -735,7 +735,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -757,23 +757,23 @@ Array [
 `;
 
 exports[`response headers name fails if not kebab case 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "name": "snyk-request-id",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-request-id",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -799,22 +799,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-request-id",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-lifecycle-stage",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-lifecycle-stage",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -840,22 +840,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-requested",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-requested",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -881,22 +881,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-served",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-served",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -922,22 +922,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-served",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "sunset",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "sunset",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -963,22 +963,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: sunset",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "deprecation",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "deprecation",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1004,25 +1004,25 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: deprecation",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "badHeader",
-        "schema": Object {
+        "schema": {
           "type": "string",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "badHeader",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1048,17 +1048,17 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: badHeader",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1068,7 +1068,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1086,17 +1086,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1106,7 +1106,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1124,17 +1124,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1144,7 +1144,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1162,17 +1162,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1182,7 +1182,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1200,17 +1200,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1220,7 +1220,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1238,17 +1238,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1258,7 +1258,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1280,23 +1280,23 @@ Array [
 `;
 
 exports[`response headers name passes if kebab case 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "name": "snyk-request-id",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-request-id",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1322,22 +1322,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-request-id",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-lifecycle-stage",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-lifecycle-stage",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1363,22 +1363,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-lifecycle-stage",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-requested",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-requested",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1404,22 +1404,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-requested",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "snyk-version-served",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "snyk-version-served",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1445,22 +1445,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: snyk-version-served",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "sunset",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "sunset",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1486,22 +1486,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: sunset",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "deprecation",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "deprecation",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1527,25 +1527,25 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: deprecation",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "name": "good-header",
-        "schema": Object {
+        "schema": {
           "type": "string",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "header": "good-header",
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1571,17 +1571,17 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response header: good-header",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1591,7 +1591,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1609,17 +1609,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1629,7 +1629,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1647,17 +1647,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1667,7 +1667,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1685,17 +1685,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1705,7 +1705,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1723,17 +1723,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1743,7 +1743,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },
@@ -1761,17 +1761,17 @@ Array [
     "type": "requirement",
     "where": "GET /api/example response 200",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -1781,7 +1781,7 @@ Array [
         "jsonPath": "/paths/~1api~1example/get/responses/200",
         "kind": "response",
       },
-      "value": Object {
+      "value": {
         "description": "",
         "statusCode": "200",
       },

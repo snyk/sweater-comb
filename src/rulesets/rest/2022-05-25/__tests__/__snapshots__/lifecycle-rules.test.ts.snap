@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`lifecycle rules stability a valid stability is provided - beta 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -32,29 +32,29 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "beta",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -76,17 +76,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability a valid stability is provided - experimental 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -107,29 +107,29 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "experimental",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -151,17 +151,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability a valid stability is provided - ga 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -182,29 +182,29 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "ga",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -226,17 +226,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability a valid stability is provided - wip 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -257,29 +257,29 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "wip",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -301,17 +301,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability an invalid stability is provided 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -332,29 +332,29 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "published",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -376,17 +376,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability can not change from any stability but wip 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -407,20 +407,20 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "beta",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
@@ -428,9 +428,9 @@ Array [
           "x-snyk-api-stability": "ga",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -452,17 +452,17 @@ Array [
 `;
 
 exports[`lifecycle rules stability wip can be changed to another maturity 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -483,20 +483,20 @@ Array [
     "type": "requirement",
     "where": "specification",
   },
-  Object {
-    "change": Object {
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-snyk-api-stability": "ga",
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
@@ -504,9 +504,9 @@ Array [
           "x-snyk-api-stability": "wip",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -528,30 +528,30 @@ Array [
 `;
 
 exports[`lifecycle rules sunset fails when the file was removed and not deprecated 1`] = `
-Array [
-  Object {
-    "change": Object {
+[
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-optic-ci-empty-spec": true,
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -569,16 +569,16 @@ Array [
     "type": "changed",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -603,30 +603,30 @@ Array [
 `;
 
 exports[`lifecycle rules sunset schedule fails when the schedule isn't met 1`] = `
-Array [
-  Object {
-    "change": Object {
+[
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-optic-ci-empty-spec": true,
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -644,16 +644,16 @@ Array [
     "type": "changed",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },
@@ -678,30 +678,30 @@ Array [
 `;
 
 exports[`lifecycle rules sunset schedule passes when the schedule is met 1`] = `
-Array [
-  Object {
-    "change": Object {
+[
+  {
+    "change": {
       "changeType": "changed",
-      "changed": Object {
-        "after": Object {
-          "info": Object {
+      "changed": {
+        "after": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
           "x-optic-ci-empty-spec": true,
         },
-        "before": Object {
-          "info": Object {
+        "before": {
+          "info": {
             "title": "Empty",
             "version": "0.0.0",
           },
           "openapi": "3.1.0",
         },
       },
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
@@ -719,16 +719,16 @@ Array [
     "type": "changed",
     "where": "specification",
   },
-  Object {
-    "change": Object {
-      "location": Object {
-        "conceptualLocation": Object {},
-        "conceptualPath": Array [],
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
         "jsonPath": "",
         "kind": "specification",
       },
-      "value": Object {
-        "info": Object {
+      "value": {
+        "info": {
           "title": "Empty",
           "version": "0.0.0",
         },

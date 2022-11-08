@@ -1,3 +1,4 @@
 module.exports = {
-  "preset": "babel-jest"
+  "preset": "ts-jest",
+  "testEnvironment": "node"
 };

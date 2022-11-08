@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`resource object rules invalid PATCH responses fails when content is specified for 204 status codes 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "204",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "204",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -45,20 +45,20 @@ Array [
 `;
 
 exports[`resource object rules valid DELETE responses passes when status code 200 has the correct body 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -66,7 +66,7 @@ Array [
           "method": "delete",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "delete",
@@ -91,19 +91,19 @@ Array [
     "type": "added",
     "where": "DELETE /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -111,7 +111,7 @@ Array [
           "method": "delete",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "delete",
@@ -136,22 +136,22 @@ Array [
     "type": "added",
     "where": "DELETE /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "delete",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "delete",
@@ -179,20 +179,20 @@ Array [
 `;
 
 exports[`resource object rules valid GET responses passes when status code 200 has the correct JSON body identified by uri 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -200,7 +200,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -225,19 +225,19 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -245,7 +245,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -270,19 +270,19 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -290,7 +290,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -315,22 +315,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -358,20 +358,20 @@ Array [
 `;
 
 exports[`resource object rules valid GET responses passes when status code 200 has the correct JSON body identified by uuid 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -379,7 +379,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -404,19 +404,19 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -424,7 +424,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -449,19 +449,19 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -469,7 +469,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -494,22 +494,22 @@ Array [
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -537,20 +537,20 @@ Array [
 `;
 
 exports[`resource object rules valid PATCH responses passes when singleton status code 200 has the correct body 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -558,7 +558,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -583,19 +583,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -603,7 +603,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -628,19 +628,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -648,7 +648,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -673,19 +673,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -693,7 +693,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -718,22 +718,22 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -761,20 +761,20 @@ Array [
 `;
 
 exports[`resource object rules valid PATCH responses passes when status code 200 has the correct body identified by uri 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -782,7 +782,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -807,19 +807,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -827,7 +827,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -852,19 +852,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -872,7 +872,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -897,19 +897,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -917,7 +917,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -942,22 +942,22 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -985,20 +985,20 @@ Array [
 `;
 
 exports[`resource object rules valid PATCH responses passes when status code 200 has the correct body identified by uuid 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1006,7 +1006,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1031,19 +1031,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1051,7 +1051,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1076,19 +1076,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1096,7 +1096,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1121,19 +1121,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1141,7 +1141,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1166,22 +1166,22 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1209,20 +1209,20 @@ Array [
 `;
 
 exports[`resource object rules valid PATCH responses passes when status code 200 has the correct body, meta only, singleton=false 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1230,7 +1230,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1255,19 +1255,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1275,7 +1275,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1300,19 +1300,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1320,7 +1320,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1345,19 +1345,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1365,7 +1365,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1390,22 +1390,22 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1433,20 +1433,20 @@ Array [
 `;
 
 exports[`resource object rules valid PATCH responses passes when status code 200 has the correct body, meta only, singleton=true 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1454,7 +1454,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1479,19 +1479,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1499,7 +1499,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1524,19 +1524,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1544,7 +1544,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1569,19 +1569,19 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -1589,7 +1589,7 @@ Array [
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1614,22 +1614,22 @@ Array [
     "type": "added",
     "where": "PATCH /api/example response 200 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "200",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "200",
           },
           "method": "patch",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "patch",
@@ -1657,20 +1657,20 @@ Array [
 `;
 
 exports[`resource object rules valid POST responses passes when status code 201 has the correct headers and body identified by uri 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1678,7 +1678,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1703,19 +1703,19 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1723,7 +1723,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1748,19 +1748,19 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1768,7 +1768,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1793,22 +1793,22 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "201",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "201",
           },
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1832,22 +1832,22 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "201",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "201",
           },
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1875,20 +1875,20 @@ Array [
 `;
 
 exports[`resource object rules valid POST responses passes when status code 201 has the correct headers and body identified by uuid 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1896,7 +1896,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1921,19 +1921,19 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1941,7 +1941,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -1966,19 +1966,19 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {
+        "flatSchema": {
           "type": "object",
         },
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "201",
@@ -1986,7 +1986,7 @@ Array [
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -2011,22 +2011,22 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201 response body: application/vnd.api+json",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "201",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "201",
           },
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",
@@ -2050,22 +2050,22 @@ Array [
     "type": "added",
     "where": "POST /api/example response 201",
   },
-  Object {
-    "change": Object {
-      "added": Object {
+  {
+    "change": {
+      "added": {
         "description": "",
         "statusCode": "201",
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
             "statusCode": "201",
           },
           "method": "post",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "post",

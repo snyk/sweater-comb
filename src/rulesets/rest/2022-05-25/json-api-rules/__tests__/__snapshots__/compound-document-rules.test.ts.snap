@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`compoundDocuments fails when specifying compound documents 1`] = `
-Array [
-  Object {
-    "change": Object {
-      "added": Object {
+[
+  {
+    "change": {
+      "added": {
         "contentType": "application/vnd.api+json",
-        "flatSchema": Object {},
+        "flatSchema": {},
       },
       "changeType": "added",
-      "location": Object {
-        "conceptualLocation": Object {
-          "inResponse": Object {
-            "body": Object {
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "body": {
               "contentType": "application/vnd.api+json",
             },
             "statusCode": "200",
@@ -20,7 +20,7 @@ Array [
           "method": "get",
           "path": "/api/example",
         },
-        "conceptualPath": Array [
+        "conceptualPath": [
           "operations",
           "/api/example",
           "get",
@@ -36,12 +36,12 @@ Array [
     "docsLink": undefined,
     "error": "Expected to not find a partial match",
     "exempted": false,
-    "expected": "{\\"schema\\":{\\"properties\\":{\\"included\\":{}}}}",
+    "expected": "{"schema":{"properties":{"included":{}}}}",
     "isMust": true,
     "isShould": false,
     "name": "disallow compound documents",
     "passed": false,
-    "received": "{\\"schema\\":{\\"properties\\":{\\"included\\":{\\"type\\":\\"object\\",\\"properties\\":{}}}}}",
+    "received": "{"schema":{"properties":{"included":{"type":"object","properties":{}}}}}",
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
