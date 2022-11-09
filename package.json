@@ -64,7 +64,7 @@
     "nice-try": "^3.0.0",
     "parse-url": "8.1.0",
     "yaml": "^2.1.1",
-    "yargs": "~17.5.1"
+    "yargs": "~17.6.0"
   },
   "bundledDependencies": [
     "@useoptic/json-pointer-helpers",
