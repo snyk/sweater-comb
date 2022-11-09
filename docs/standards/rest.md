@@ -14,15 +14,15 @@ UUIDs are most useful when the resource is already located by a unique UUID prim
 URIs may be better when:
 
 - The resource identity is best located by a URI. For example: [Package URLs (pURLs)](https://github.com/package-url/purl-spec).
-- Other instances where a structured, semantically-meaningful identifier provides a better experience. Vulnerabilities or issues might fall into this category.
+- Other instances where a structured, semantically meaningful identifier provides a better experience. Vulnerabilities or issues might fall into this category.
 
 # Organization and group tenants for resources
 
-Resources in the Snyk v3 API are located under an Organization and possibly a Group tenant, specified as a path prefix.
+Resources in the Snyk REST API are located under an Organization and possibly a Group tenant, specified as a path prefix.
 
-Resources addressed by Organization begin with `/v3/orgs/{org_id}/...`.
+Resources addressed by Organization begin with `/rest/orgs/{org_id}/...`.
 
-Resources addressed by Group begin with `/v3/groups/{group_id}/...`.
+Resources addressed by Group begin with `/rest/groups/{group_id}/...`.
 
 ## Standard property conventions
 
@@ -176,7 +176,7 @@ headers:
     snyk-resolved-version: "2021-08-12~beta"
 ```
 
-[Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk v3 API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
+[Header field names are case insensitive](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2). Snyk REST API specs must use kebab case for consistency. All non-standard headers that are unique to Snyk must begin with `snyk-` (e.g. `snyk-requested-version`).
 
 ## <a id="content-conventions"></a>Content Conventions
 
@@ -240,6 +240,14 @@ Resource attribute property names may be used as a query parameter name on a res
 
 - The filter parameter name must match the corresponding resource attribute property name.
 - The filter parameter must not conflict with [reserved parameters](#reserved-request-parameters).
+
+#### Timestamp filters
+
+Timestamp properties may optionally be filtered on with `_before` and `_after` parameters for non inclusive ranges or `_at_or_before` and `_at_or_after` for inclusive ranges. For example, the `created_at` property can also be used as a filtering value via `created_before` or `created_after` for `created_at` values before or after the provided filter value. Timestamp filters, like timestamp properties, must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
+
+To declare this format on a timestamp filter, use `type: string, format: date-time`.
+
+The `_before` and `_at_or_before` filters cannot be used together, nor can `_after` and `_at_or_after`. Otherwise filters can be mixed (e.g. `_before` can be used with either `_after` or `_at_or_after`). Doing so implies searching within a range, requiring the `_before` (or its inclusive version) to be an earlier time than `_after` (or its inclusive version).
 
 #### Multiple filter values
 
@@ -512,7 +520,7 @@ In such cases where this is not possible, a JSON API response must still be prov
 
 ## <a id="response-headers"></a>Response Headers
 
-Certain headers are required in all v3 API responses.
+Certain headers are required in all REST API responses.
 
 - `snyk-request-id` - Relays a provided request UUID, or generates a new one, which is used to correlate the request to logs and downstream requests to other services.
 - [Versioning response headers](../principles/version.md#response-headers).
@@ -644,7 +652,7 @@ Without examples, as an end-user I don't have much context here to know what the
 
 ## Making the OpenAPI specification available
 
-Every service in the v3 API must publish endpoints that list available versions and fetch specific published versions of the OpenAPI spec for all resources provided by that service to v3. These paths may be prefixed if needed (some services may provide other APIs in addition to v3).
+Every service in the REST API must publish endpoints that list available versions and fetch specific published versions of the OpenAPI spec for all resources provided by that service to REST. These paths may be prefixed if needed (some services may provide other APIs in addition to REST).
 
 These endpoints need to be defined in the OpenAPI spec at all versions. They are not JSON API resources, and are not themselves versioned. Response type is `application/json`.
 
