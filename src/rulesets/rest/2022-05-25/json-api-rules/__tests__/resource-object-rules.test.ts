@@ -2,11 +2,70 @@ import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "../../__tests__/fixtures";
 import { resourceObjectRules } from "../resource-object-rules";
-
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("resource object rules", () => {
   describe("valid PATCH requests", () => {
+    test("passes when bulk PATCH request body is of the correct form with id format uuid and response status code 204", () => {
+      const afterJson = {
+        ...baseJson,
+        paths: {
+          "/api/example": {
+            patch: {
+              responses: {
+                "204": {
+                  description: "It's a bulk PATCH. Nothing to see here.",
+                },
+              },
+              requestBody: {
+                content: {
+                  "application/vnd.api+json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "array",
+                          items: {
+                            type: "object",
+                            properties: {
+                              id: {
+                                type: "string",
+                                format: "uuid",
+                              },
+                              type: {
+                                type: "string",
+                              },
+                              attributes: {
+                                type: "object",
+                                properties: {
+                                  something: {
+                                    type: "string",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      } as OpenAPIV3.Document;
+
+      const ruleRunner = new RuleRunner([resourceObjectRules]);
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseJson, afterJson),
+        context,
+      };
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
     test.each(["uuid", "uri"])(
       "passes when PATCH request body is of the correct form identified by %s",
       (format) => {
@@ -212,7 +271,7 @@ describe("resource object rules", () => {
             where:
               "PATCH /api/example/{example_id} request body: application/vnd.api+json",
             name: "request body for patch",
-            error: "Expected a partial match",
+            error: "Expected at least one partial match",
           }),
         ]),
       );
