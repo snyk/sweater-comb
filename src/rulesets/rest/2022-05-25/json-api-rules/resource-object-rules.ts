@@ -32,6 +32,27 @@ const matchPatchRequest = {
   },
 };
 
+const matchBulkPatchRequest = {
+  data: {
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        id: {
+          type: "string",
+          format: resourceIDFormat,
+        },
+        type: {
+          type: Matchers.string,
+        },
+        attributes: {
+          type: "object",
+        },
+      },
+    },
+  },
+};
+
 const requestDataForPatch = new RequestRule({
   name: "request body for patch",
   docsLink: links.jsonApi.patchRequests,
@@ -39,18 +60,22 @@ const requestDataForPatch = new RequestRule({
     rulesContext.operation.method === "patch" &&
     request.contentType === "application/vnd.api+json",
   rule: (requestAssertions) => {
-    requestAssertions.body.added.matches({
-      schema: {
-        type: "object",
-        properties: matchPatchRequest,
+    const validSchemas = [
+      {
+        schema: {
+          type: "object",
+          properties: matchPatchRequest,
+        },
       },
-    });
-    requestAssertions.body.changed.matches({
-      schema: {
-        type: "object",
-        properties: matchPatchRequest,
+      {
+        schema: {
+          type: "object",
+          properties: matchBulkPatchRequest,
+        },
       },
-    });
+    ];
+    requestAssertions.body.added.matchesOneOf(validSchemas);
+    requestAssertions.body.changed.matchesOneOf(validSchemas);
   },
 });
 
