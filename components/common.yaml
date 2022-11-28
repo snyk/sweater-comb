@@ -223,19 +223,19 @@ schemas:
 headers:
 
   VersionRequestedResponseHeader:
-    description: A header containing the version of the endpoint requested by the caller.
+    description: The version of the endpoint requested by the caller.
     schema: { $ref: "#/schemas/QueryVersion" }
     example: "2021-06-04"
 
   VersionServedResponseHeader:
-    description: A header containing the version of the endpoint that was served by the API.
+    description: The version of the endpoint that was served by the API.
     schema: { $ref: "#/schemas/ActualVersion" }
     example: "2021-06-04"
 
   VersionStageResponseHeader:
     description: >
-      A header containing the version stage of the endpoint. This stage describes
-      the guarantees snyk provides surrounding stability of the endpoint.
+      The version stage of the endpoint. This stage describes the guarantees
+      snyk provides surrounding stability of the endpoint.
     schema:
       type: string
       enum:
@@ -249,8 +249,8 @@ headers:
 
   DeprecationHeader:
     description: >
-      A header containing the deprecation date of the underlying endpoint. For
-      more information, please refer to the deprecation header RFC:
+      The deprecation date of the underlying endpoint. For more information,
+      please refer to the deprecation header RFC:
 
       https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html
     schema:
@@ -260,9 +260,9 @@ headers:
 
   SunsetHeader:
     description: >
-      A header containing the date of when the underlying endpoint will be
-      removed. This header is only present if the endpoint has been deprecated.
-      Please refer to the RFC for more information:
+      The date of when the underlying endpoint will be removed. This header is
+      only present if the endpoint has been deprecated.  Please refer to the
+      RFC for more information:
 
       https://datatracker.ietf.org/doc/html/rfc8594
     schema:
@@ -272,8 +272,8 @@ headers:
 
   RequestIdResponseHeader:
     description: >
-      A header containing a unique id used for tracking this request. If you
-      are reporting an issue to Snyk it's very helpful to provide this ID.
+      A unique id used for tracking this request. If you are reporting an
+      issue to Snyk it's very helpful to provide this ID.
     schema:
       type: string
       format: uuid
