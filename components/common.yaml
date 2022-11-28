@@ -235,7 +235,7 @@ headers:
   VersionStageResponseHeader:
     description: >
       The version stage of the endpoint. This stage describes the guarantees
-      snyk provides surrounding stability of the endpoint.
+      Snyk provides surrounding stability of the endpoint.
     schema:
       type: string
       enum:
