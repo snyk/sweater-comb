@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "@useoptic/json-pointer-helpers": "0.34.6",
+    "@useoptic/json-pointer-helpers": "0.34.7",
     "@useoptic/openapi-cli": "0.34.6",
     "@useoptic/openapi-io": "0.34.6",
     "@useoptic/openapi-utilities": "0.34.6",
