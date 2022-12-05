@@ -51,7 +51,7 @@
     "@useoptic/json-pointer-helpers": "0.34.6",
     "@useoptic/openapi-cli": "0.34.6",
     "@useoptic/openapi-io": "0.34.6",
-    "@useoptic/openapi-utilities": "0.34.6",
+    "@useoptic/openapi-utilities": "0.34.7",
     "@useoptic/optic-ci": "0.34.6",
     "@useoptic/rulesets-base": "0.34.6",
     "chai": "^4.3.4",
