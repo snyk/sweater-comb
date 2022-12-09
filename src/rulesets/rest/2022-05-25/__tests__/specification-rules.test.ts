@@ -8,7 +8,7 @@ import { stabilityKey } from "../constants";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("specification rules", () => {
-  test("fails when components are not PascalCase", () => {
+  test("fails when components are not PascalCase", async () => {
     const afterJson = {
       ...baseJson,
       [stabilityKey]: "wip",
@@ -38,7 +38,7 @@ describe("specification rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
@@ -46,7 +46,7 @@ describe("specification rules", () => {
   });
 
   describe("compiled specs", () => {
-    test("fails when /openapi endpoint isn't specified", () => {
+    test("fails when /openapi endpoint isn't specified", async () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -58,14 +58,14 @@ describe("specification rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when /openapi/{versions} endpoint isn't specified", () => {
+    test("fails when /openapi/{versions} endpoint isn't specified", async () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -77,7 +77,7 @@ describe("specification rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
@@ -86,7 +86,7 @@ describe("specification rules", () => {
   });
 
   describe("uncompiled specs", () => {
-    test("passes when /openapi endpoint isn't specified", () => {
+    test("passes when /openapi endpoint isn't specified", async () => {
       const afterJson = {
         ...baseJson,
         [stabilityKey]: "wip",
@@ -99,14 +99,14 @@ describe("specification rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes when /openapi/{versions} endpoint isn't specified", () => {
+    test("passes when /openapi/{versions} endpoint isn't specified", async () => {
       const afterJson = {
         ...baseJson,
         [stabilityKey]: "wip",
@@ -119,7 +119,7 @@ describe("specification rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);

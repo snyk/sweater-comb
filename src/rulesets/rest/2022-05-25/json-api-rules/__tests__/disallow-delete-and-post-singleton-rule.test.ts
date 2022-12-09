@@ -8,7 +8,7 @@ const baseJson = TestHelpers.createEmptySpec();
 describe("singleton disallowed methods", () => {
   test.each([["post"], ["delete"]])(
     "fails when adding %s method to singleton",
-    (method) => {
+    async (method) => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -38,7 +38,7 @@ describe("singleton disallowed methods", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
