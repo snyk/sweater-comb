@@ -6,7 +6,7 @@ import { jsonApiContentTypeRule } from "../content-type-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("content type rules", () => {
-  test("fails when response does not have json:api content type", () => {
+  test("fails when response does not have json:api content type", async () => {
     const beforeJson: OpenAPIV3.Document = {
       ...baseJson,
       paths: {
@@ -46,7 +46,7 @@ describe("content type rules", () => {
       ...TestHelpers.createRuleInputs(beforeJson, afterJson),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
