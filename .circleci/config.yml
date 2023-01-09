@@ -87,7 +87,7 @@ jobs:
           command: container test
           fail-on-issues: true
           severity-threshold: high
-          monitor-on-build: false
+          monitor-on-build: true
           docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
           token-variable: MONITOR_SNYK_TOKEN
 
