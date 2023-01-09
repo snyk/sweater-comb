@@ -6,7 +6,7 @@ const baseJson = TestHelpers.createEmptySpec();
 
 describe("resource object rules", () => {
   describe("valid PATCH requests", () => {
-    test("passes when bulk PATCH request body is of the correct form with id format uuid and response status code 204", async () => {
+    test("passes when bulk PATCH request body is of the correct form with id format uuid and response status code 204", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -61,14 +61,14 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
     test.each(["uuid", "uri"])(
       "passes when PATCH request body is of the correct form identified by %s",
-      async (format) => {
+      (format) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -116,7 +116,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
       },
@@ -124,7 +124,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid POST requests", () => {
-    test("passes when POST request body is of the correct form", async () => {
+    test("passes when POST request body is of the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -168,12 +168,12 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("passes when bulk POST request body is of the correct form", async () => {
+    test("passes when bulk POST request body is of the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -224,14 +224,14 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
   });
 
   describe("invalid PATCH requests", () => {
-    test("fails when PATCH request body is not of the correct form", async () => {
+    test("fails when PATCH request body is not of the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -262,7 +262,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -279,7 +279,7 @@ describe("resource object rules", () => {
   });
 
   describe("invalid POST requests", () => {
-    test("fails when POST request body is not of the correct form", async () => {
+    test("fails when POST request body is not of the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -310,7 +310,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -324,7 +324,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("fails when bulk POST request body is not the correct form", async () => {
+    test("fails when bulk POST request body is not the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -359,7 +359,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -373,7 +373,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("fails when bulk POST request array elements are not of the correct form", async () => {
+    test("fails when bulk POST request array elements are not of the correct form", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -416,7 +416,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -430,7 +430,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("fails when bulk POST request body is a resource object instead of a collection", async () => {
+    test("fails when bulk POST request body is a resource object instead of a collection", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -478,7 +478,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -496,7 +496,7 @@ describe("resource object rules", () => {
   describe("valid GET responses", () => {
     test.each(["uuid", "uri"])(
       "passes when status code 200 has the correct JSON body identified by %s",
-      async (format) => {
+      (format) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -545,7 +545,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
@@ -556,7 +556,7 @@ describe("resource object rules", () => {
   describe("valid POST responses", () => {
     test.each(["uuid", "uri"])(
       "passes when status code 201 has the correct headers and body identified by %s",
-      async (format) => {
+      (format) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -609,7 +609,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
@@ -620,7 +620,7 @@ describe("resource object rules", () => {
   describe("valid PATCH responses", () => {
     test.each(["uuid", "uri"])(
       "passes when status code 200 has the correct body identified by %s",
-      async (format) => {
+      (format) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -672,7 +672,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
@@ -681,7 +681,7 @@ describe("resource object rules", () => {
 
     test.each([true, false])(
       "passes when status code 200 has the correct body, meta only, singleton=%s",
-      async (isSingleton) => {
+      (isSingleton) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -725,14 +725,14 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
       },
     );
 
-    test("passes when singleton status code 200 has the correct body", async () => {
+    test("passes when singleton status code 200 has the correct body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -781,7 +781,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
@@ -789,7 +789,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid DELETE responses", () => {
-    test("passes when status code 200 has the correct body", async () => {
+    test("passes when status code 200 has the correct body", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -825,7 +825,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
@@ -861,7 +861,7 @@ describe("resource object rules", () => {
 
     test.each(["/api/example", "/api/example/{example_id}"])(
       "fails when GET %s response has an empty data object",
-      async (path) => {
+      (path) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -878,7 +878,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(false);
         expect(results).toEqual(
@@ -891,7 +891,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test("fails when GET singleton has an empty data object", async () => {
+    test("fails when GET singleton has an empty data object", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -909,7 +909,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -924,7 +924,7 @@ describe("resource object rules", () => {
   });
 
   describe("invalid PATCH responses", () => {
-    test("fails when content is specified for 204 status codes", async () => {
+    test("fails when content is specified for 204 status codes", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -952,13 +952,13 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when status code 200 missing resource id", async () => {
+    test("fails when status code 200 missing resource id", () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -1006,7 +1006,7 @@ describe("resource object rules", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toEqual(
@@ -1023,7 +1023,7 @@ describe("resource object rules", () => {
 
     test.each([true, false])(
       "fails when status code 200 is empty, singleton=%s",
-      async (isSingleton) => {
+      (isSingleton) => {
         const afterJson = {
           ...baseJson,
           paths: {
@@ -1057,7 +1057,7 @@ describe("resource object rules", () => {
           ...TestHelpers.createRuleInputs(baseJson, afterJson),
           context,
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(false);
         expect(results).toEqual(

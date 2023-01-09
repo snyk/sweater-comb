@@ -80,7 +80,7 @@ async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
       ...TestHelpers.createRuleInputs(parsedFrom, parsedTo),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     return results;
   } finally {
     fs.rmdirSync(tmp, { recursive: true });
