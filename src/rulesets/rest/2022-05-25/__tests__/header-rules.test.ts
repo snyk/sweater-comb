@@ -7,7 +7,7 @@ const baseJson = TestHelpers.createEmptySpec();
 
 describe("response headers", () => {
   describe("name", () => {
-    test("passes if kebab case", async () => {
+    test("passes if kebab case", () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -39,13 +39,13 @@ describe("response headers", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length > 0).toBe(true);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
-    test("fails if not kebab case", async () => {
+    test("fails if not kebab case", () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -76,7 +76,7 @@ describe("response headers", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length > 0).toBe(true);
       expect(results.every((result) => result.passed)).toBe(false);
@@ -85,7 +85,7 @@ describe("response headers", () => {
   });
 
   describe("headers", () => {
-    test("fails if it's missing headers", async () => {
+    test("fails if it's missing headers", () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -111,13 +111,13 @@ describe("response headers", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length > 0).toBe(true);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
-    test("passes if it has all the headers", async () => {
+    test("passes if it has all the headers", () => {
       const afterJson: OpenAPIV3.Document = {
         ...baseJson,
         paths: {
@@ -145,7 +145,7 @@ describe("response headers", () => {
         ...TestHelpers.createRuleInputs(baseJson, afterJson),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length > 0).toBe(true);
       expect(results.every((result) => result.passed)).toBe(true);

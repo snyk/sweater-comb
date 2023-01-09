@@ -6,7 +6,7 @@ import { statusCodesRules } from "../status-code-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("status code rules", () => {
-  test("fails when an invalid 4xx status code is specified", async () => {
+  test("fails when an invalid 4xx status code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -35,13 +35,13 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when an invalid delete 2xx code is specified", async () => {
+  test("fails when an invalid delete 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -70,13 +70,13 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when an invalid post 2xx code is specified", async () => {
+  test("fails when an invalid post 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -105,13 +105,13 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when an invalid get 2xx code is specified", async () => {
+  test("fails when an invalid get 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -140,7 +140,7 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toEqual(
@@ -153,7 +153,7 @@ describe("status code rules", () => {
     );
   });
 
-  test("fails when an invalid batch post 2xx code is specified", async () => {
+  test("fails when an invalid batch post 2xx code is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -197,7 +197,7 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results.filter((result) => !result.passed)).toEqual(
@@ -211,7 +211,7 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when an invalid batch post request is specified", async () => {
+  test("fails when an invalid batch post request is specified", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -242,7 +242,7 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results.filter((result) => !result.passed)).toEqual(
@@ -256,7 +256,7 @@ describe("status code rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("passes for a valid batch post 204 code", async () => {
+  test("passes for a valid batch post 204 code", () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -298,7 +298,7 @@ describe("status code rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();

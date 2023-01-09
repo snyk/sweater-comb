@@ -28,7 +28,7 @@ describe("valid dot notation names", () => {
 
 test.each(["experimental", "beta", "ga"])(
   "passes when operation is set correctly, stability %s",
-  async (stability) => {
+  (stability) => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -58,7 +58,7 @@ test.each(["experimental", "beta", "ga"])(
         },
       },
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(true);
@@ -68,7 +68,7 @@ test.each(["experimental", "beta", "ga"])(
 
 describe("operationId", () => {
   describe("missing", () => {
-    test("fails if empty string", async () => {
+    test("fails if empty string", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(baseJson, {
@@ -92,14 +92,14 @@ describe("operationId", () => {
         } as OpenAPIV3.Document),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails if undefined", async () => {
+    test("fails if undefined", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(baseJson, {
@@ -122,7 +122,7 @@ describe("operationId", () => {
         } as OpenAPIV3.Document),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
@@ -136,7 +136,7 @@ describe("operationId", () => {
       ["fails if not camel case", "get-hello-world", false],
       ["fails when camel case and valid prefix but no suffix", "get", false],
       ["passes when camel case and has a hump", "getYesHump", true],
-    ])("%s", async (_, operationId, shouldPass) => {
+    ])("%s", (_, operationId, shouldPass) => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(baseJson, {
@@ -166,14 +166,14 @@ describe("operationId", () => {
           },
         },
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(shouldPass);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails if removed", async () => {
+    test("fails if removed", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(
@@ -217,7 +217,7 @@ describe("operationId", () => {
         ),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
 
@@ -225,7 +225,7 @@ describe("operationId", () => {
       expect(results).toMatchSnapshot();
     });
 
-    test("passes if removed with a spec being removed", async () => {
+    test("passes if removed with a spec being removed", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(
@@ -252,12 +252,12 @@ describe("operationId", () => {
         ),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails if changed", async () => {
+    test("fails if changed", () => {
       const ruleRunner = new RuleRunner([operationRules]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(
@@ -302,7 +302,7 @@ describe("operationId", () => {
         ),
         context,
       };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
 
@@ -313,7 +313,7 @@ describe("operationId", () => {
 });
 
 describe("operation metadata", () => {
-  test("fails if summary is missing", async () => {
+  test("fails if summary is missing", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -342,7 +342,7 @@ describe("operation metadata", () => {
         },
       },
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
 
@@ -350,7 +350,7 @@ describe("operation metadata", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("fails if tags is not supplied", async () => {
+  test("fails if tags is not supplied", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -374,7 +374,7 @@ describe("operation metadata", () => {
       } as OpenAPIV3.Document),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
 
@@ -387,7 +387,7 @@ describe("operation parameters", () => {
   describe("names", () => {
     test.each(["experimental", "beta", "ga"])(
       "fails if the case is not correct, stability %s",
-      async (stability) => {
+      (stability) => {
         const ruleRunner = new RuleRunner([operationRules]);
         const ruleInputs = {
           ...TestHelpers.createRuleInputs(baseJson, {
@@ -421,7 +421,7 @@ describe("operation parameters", () => {
             },
           },
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(false);
         expect(results).toMatchSnapshot();
@@ -430,7 +430,7 @@ describe("operation parameters", () => {
 
     test.each(["experimental", "beta", "ga"])(
       "passes if the case is correct, stability %s",
-      async (stability) => {
+      (stability) => {
         const ruleRunner = new RuleRunner([operationRules]);
         const ruleInputs = {
           ...TestHelpers.createRuleInputs(baseJson, {
@@ -468,14 +468,14 @@ describe("operation parameters", () => {
             },
           },
         };
-        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();
       },
     );
   });
-  test("fails when adding a required query parameter", async () => {
+  test("fails when adding a required query parameter", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(
@@ -525,13 +525,13 @@ describe("operation parameters", () => {
       ),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("allows adding a required query parameter to a new operation", async () => {
+  test("allows adding a required query parameter to a new operation", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -560,7 +560,7 @@ describe("operation parameters", () => {
       } as OpenAPIV3.Document),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();
@@ -573,7 +573,7 @@ describe("operation parameters", () => {
       true,
     ],
     ["fails when changing optional to required query parameter", "ga", false],
-  ])("%s", async (_, stability, shouldPass) => {
+  ])("%s", (_, stability, shouldPass) => {
     const beforeJson = {
       ...baseJson,
       paths: {
@@ -631,7 +631,7 @@ describe("operation parameters", () => {
         changeVersion: { ...context.changeVersion, stability },
       },
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(shouldPass);
     expect(results).toMatchSnapshot();
@@ -644,7 +644,7 @@ describe("operation parameters", () => {
       true,
     ],
     ["fails if the default value is changed", "ga", false],
-  ])("%s", async (_, stability, shouldPass) => {
+  ])("%s", (_, stability, shouldPass) => {
     const beforeJson = {
       ...baseJson,
       paths: {
@@ -709,7 +709,7 @@ describe("operation parameters", () => {
         changeVersion: { ...context.changeVersion, stability },
       },
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(shouldPass);
     expect(results).toMatchSnapshot();
@@ -717,7 +717,7 @@ describe("operation parameters", () => {
 });
 
 describe("path requirements", () => {
-  test("fails if the path root is a parameter", async () => {
+  test("fails if the path root is a parameter", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -755,7 +755,7 @@ describe("path requirements", () => {
         },
       },
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results.filter((result) => !result.passed)).toEqual(
@@ -771,7 +771,7 @@ describe("path requirements", () => {
 });
 
 describe("status codes", () => {
-  test("fails when status code is removed", async () => {
+  test("fails when status code is removed", () => {
     const beforeJson = {
       ...baseJson,
       paths: {
@@ -820,7 +820,7 @@ describe("status codes", () => {
       ...TestHelpers.createRuleInputs(beforeJson, afterJson),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
@@ -829,7 +829,7 @@ describe("status codes", () => {
 });
 
 describe("version parameter", () => {
-  test("fails when there is no version parameter", async () => {
+  test("fails when there is no version parameter", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -847,7 +847,7 @@ describe("version parameter", () => {
       } as OpenAPIV3.Document),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
@@ -856,7 +856,7 @@ describe("version parameter", () => {
 });
 
 describe("put method", () => {
-  test("fails adding put method", async () => {
+  test("fails adding put method", () => {
     const ruleRunner = new RuleRunner([operationRules]);
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(baseJson, {
@@ -880,7 +880,7 @@ describe("put method", () => {
       } as OpenAPIV3.Document),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);

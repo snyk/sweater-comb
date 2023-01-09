@@ -251,7 +251,7 @@ describe("end-end-tests", () => {
       ),
       context,
     };
-    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = ruleRunner.runRulesWithFacts(ruleInputs);
 
     if (!parsedTo) {
       return results;
