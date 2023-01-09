@@ -85,11 +85,11 @@ jobs:
           command: docker load < /tmp/workspace/images/woollypully.tar.gz
       - snyk/scan:
           command: container test
-          organization: snyk-apps
           fail-on-issues: true
           severity-threshold: high
-          monitor-on-build: true
+          monitor-on-build: false
           docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
+          token-variable: MONITOR_SNYK_TOKEN
 
   woollypully-publish:
     <<: *defaults
@@ -142,7 +142,7 @@ workflows:
           requires:
             - Woollypully image build
           context:
-            - snyk-apps
+            - snyk-monitor
           filters: *publish_filters
 
       - woollypully-publish:
