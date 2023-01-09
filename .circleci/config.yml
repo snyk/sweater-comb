@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  snyk: snyk/snyk@1.1.2
+  snyk: snyk/snyk@1.4.0
 
 defaults: &defaults
   resource_class: small
@@ -63,12 +63,12 @@ jobs:
       - setup_build_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -f Dockerfile.woollypully -t ${WOOLLYPULLY_IMAGE:-woollypully-sidecar}:${CIRCLE_SHA1} .
+          command: docker build -f Dockerfile.woollypully -t ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} .
       - run:
           name: Save Docker image to workspace
           command: |
             mkdir -p /tmp/workspace/images
-            docker save ${WOOLLYPULLY_IMAGE:-woollypully-sidecar}:${CIRCLE_SHA1} | gzip > /tmp/workspace/images/woollypully.tar.gz
+            docker save ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} | gzip > /tmp/workspace/images/woollypully.tar.gz
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -143,7 +143,6 @@ workflows:
             - Woollypully image build
           context:
             - snyk-monitor
-          filters: *publish_filters
 
       - woollypully-publish:
           name: Woollypully image release
