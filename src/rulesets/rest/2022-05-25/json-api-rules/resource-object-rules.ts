@@ -8,7 +8,7 @@ import {
   Matcher,
 } from "@useoptic/rulesets-base";
 import { links } from "../../../../docs";
-import { isOpenApiPath, isSingletonPath } from "../utils";
+import { isOpenApiPath, isSingletonPath, validPost2xxCodes } from "../utils";
 
 const resourceIDFormat = new Matcher((value: any): boolean => {
   return value === "uuid" || value === "uri";
@@ -298,7 +298,7 @@ const locationHeader = new ResponseRule({
   name: "location header",
   matches: (responseBody, rulesContext) =>
     rulesContext.operation.method === "post" &&
-    responseBody.statusCode === "201",
+    validPost2xxCodes.includes(responseBody.statusCode),
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});
     responseAssertions.changed.hasResponseHeaderMatching("location", {});

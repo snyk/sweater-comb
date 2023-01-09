@@ -111,3 +111,5 @@ export const isFullyTypedType = (type: OpenAPIV3.SchemaObject): boolean => {
   // least the top-level type
   return true;
 };
+
+export const validPost2xxCodes = ["200", "201"];

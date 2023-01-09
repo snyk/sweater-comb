@@ -118,7 +118,7 @@ exports[`status code rules fails when an invalid batch post request is specified
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected POST response to only support 201, not 204",
+    "error": "expected POST response to only support status code(s) {200,201}, not 204",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -182,13 +182,13 @@ exports[`status code rules fails when an invalid post 2xx code is specified 1`] 
     "change": {
       "added": {
         "description": "i am not valid",
-        "statusCode": "200",
+        "statusCode": "204",
       },
       "changeType": "added",
       "location": {
         "conceptualLocation": {
           "inResponse": {
-            "statusCode": "200",
+            "statusCode": "204",
           },
           "method": "post",
           "path": "/api/users/{user_id}",
@@ -198,15 +198,15 @@ exports[`status code rules fails when an invalid post 2xx code is specified 1`] 
           "/api/users/{}",
           "post",
           "responses",
-          "200",
+          "204",
         ],
-        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/200",
+        "jsonPath": "/paths/~1api~1users~1{user_id}/post/responses/204",
         "kind": "response",
       },
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected POST response to only support 201, not 200",
+    "error": "expected POST response to only support status code(s) {200,201}, not 204",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -215,7 +215,7 @@ exports[`status code rules fails when an invalid post 2xx code is specified 1`] 
     "passed": false,
     "received": undefined,
     "type": "added",
-    "where": "POST /api/users/{user_id} response 200",
+    "where": "POST /api/users/{user_id} response 204",
   },
 ]
 `;
