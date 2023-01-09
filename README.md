@@ -26,4 +26,4 @@ If you are contributing to Sweater Comb, read the [contributing guidelines](CONT
 
 Licensed under the [Apache 2.0 License](LICENSE)
 
-Copyright (c) 2021-present, Snyk Ltd.
+Copyright (c) 2021-present, Snyk Ltd
