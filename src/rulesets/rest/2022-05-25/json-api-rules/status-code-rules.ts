@@ -1,6 +1,10 @@
 import { Ruleset, RuleError, ResponseRule } from "@useoptic/rulesets-base";
 import { links } from "../../../../docs";
-import { isOpenApiPath, isBatchPostOperation } from "../utils";
+import {
+  isOpenApiPath,
+  isBatchPostOperation,
+  validPost2xxCodes,
+} from "../utils";
 
 const valid4xxCodes = new ResponseRule({
   name: "valid 4xx status codes",
@@ -69,13 +73,14 @@ const post2xxCodes = new ResponseRule({
     response.statusCode.startsWith("2") &&
     rulesContext.operation.method === "post",
   rule: (responseAssertions) => {
-    const validPost2xxCodes = ["201"];
     responseAssertions.added(
       "support the correct 2xx status codes",
       (response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response to only support 201, not ${response.statusCode}`,
+            message: `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },
@@ -86,7 +91,9 @@ const post2xxCodes = new ResponseRule({
       (beforeResponse, response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response to only support 201, not ${response.statusCode}`,
+            message: `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },
