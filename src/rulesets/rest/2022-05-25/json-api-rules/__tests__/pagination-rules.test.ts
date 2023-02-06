@@ -6,7 +6,7 @@ import { paginationRules } from "../pagination-rules";
 const baseJson = TestHelpers.createEmptySpec();
 
 describe("pagination rules", () => {
-  test("fails when pagination endpoint does not specify all pagination parameters", () => {
+  test("fails when pagination endpoint does not specify all pagination parameters", async () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -33,13 +33,13 @@ describe("pagination rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when non-paginated endpoint specifies any pagination parameter", () => {
+  test("fails when non-paginated endpoint specifies any pagination parameter", async () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -63,13 +63,13 @@ describe("pagination rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
-  test("fails when paginated endpoints do not specify links", () => {
+  test("fails when paginated endpoints do not specify links", async () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -116,7 +116,7 @@ describe("pagination rules", () => {
       ...TestHelpers.createRuleInputs(baseJson, afterJson),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();

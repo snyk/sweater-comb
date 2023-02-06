@@ -123,7 +123,7 @@ describe("end-end-compiled-tests", () => {
       ),
       context,
     };
-    const results = ruleRunner.runRulesWithFacts(ruleInputs);
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
     if (!parsedTo) {
       return results;
