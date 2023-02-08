@@ -11,7 +11,7 @@ describe("lifecycle rules", () => {
   describe("stability", () => {
     test.each(["wip", "experimental", "beta", "ga"])(
       "a valid stability is provided - %s",
-      (stability) => {
+      async (stability) => {
         const ruleRunner = new RuleRunner([lifecycleRuleset]);
         const ruleInputs = {
           ...TestHelpers.createRuleInputs(baseJson, {
@@ -20,7 +20,7 @@ describe("lifecycle rules", () => {
           } as OpenAPIV3.Document),
           context,
         };
-        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
@@ -28,7 +28,7 @@ describe("lifecycle rules", () => {
       },
     );
 
-    test("an invalid stability is provided", () => {
+    test("an invalid stability is provided", async () => {
       const ruleRunner = new RuleRunner([lifecycleRuleset]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(baseJson, {
@@ -37,14 +37,14 @@ describe("lifecycle rules", () => {
         } as OpenAPIV3.Document),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("wip can be changed to another maturity", () => {
+    test("wip can be changed to another maturity", async () => {
       const ruleRunner = new RuleRunner([lifecycleRuleset]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(
@@ -59,14 +59,14 @@ describe("lifecycle rules", () => {
         ),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("can not change from any stability but wip", () => {
+    test("can not change from any stability but wip", async () => {
       const ruleRunner = new RuleRunner([lifecycleRuleset]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(
@@ -81,7 +81,7 @@ describe("lifecycle rules", () => {
         ),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
 
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
@@ -90,7 +90,7 @@ describe("lifecycle rules", () => {
   });
 
   describe("sunset", () => {
-    test("fails when the file was removed and not deprecated", () => {
+    test("fails when the file was removed and not deprecated", async () => {
       const ruleRunner = new RuleRunner([lifecycleRuleset]);
       const ruleInputs = {
         ...TestHelpers.createRuleInputs(baseJson, {
@@ -99,7 +99,7 @@ describe("lifecycle rules", () => {
         } as OpenAPIV3.Document),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
@@ -127,7 +127,7 @@ describe("lifecycle rules", () => {
         },
       };
 
-      test("fails when the schedule isn't met", () => {
+      test("fails when the schedule isn't met", async () => {
         const ruleRunner = new RuleRunner([lifecycleRuleset]);
         const ruleInputs = {
           ...TestHelpers.createRuleInputs(baseJson, {
@@ -136,13 +136,13 @@ describe("lifecycle rules", () => {
           } as OpenAPIV3.Document),
           context: sunsetContext,
         };
-        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(false);
         expect(results).toMatchSnapshot();
       });
 
-      test("passes when the schedule is met", () => {
+      test("passes when the schedule is met", async () => {
         const ruleRunner = new RuleRunner([lifecycleRuleset]);
         const ruleInputs = {
           ...TestHelpers.createRuleInputs(baseJson, {
@@ -151,7 +151,7 @@ describe("lifecycle rules", () => {
           } as OpenAPIV3.Document),
           context: { ...sunsetContext, changeDate: "2022-02-01" },
         };
-        const results = ruleRunner.runRulesWithFacts(ruleInputs);
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
         expect(results.length).toBeGreaterThan(0);
         expect(results.every((result) => result.passed)).toBe(true);
         expect(results).toMatchSnapshot();

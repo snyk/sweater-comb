@@ -18,7 +18,7 @@ const baseOpenAPI = {
 
 describe("body properties", () => {
   describe("key", () => {
-    test("passes when snake case with more than one component", () => {
+    test("passes when snake case with more than one component", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -48,13 +48,13 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes when snake case with a number as an n+1 component", () => {
+    test("passes when snake case with a number as an n+1 component", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -84,13 +84,13 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when number in n=1 snake case component", () => {
+    test("fails when number in n=1 snake case component", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -120,12 +120,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes when snake case with one component", () => {
+    test("passes when snake case with one component", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -155,13 +155,13 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when not snake case", () => {
+    test("fails when not snake case", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -191,12 +191,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when not snake case in experimental", () => {
+    test("fails when not snake case in experimental", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -232,12 +232,12 @@ describe("body properties", () => {
           },
         },
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails when not snake case in nested field", () => {
+    test("fails when not snake case in nested field", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -272,12 +272,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("allows non-snake case if already in spec", () => {
+    test("allows non-snake case if already in spec", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -312,7 +312,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
@@ -345,7 +345,7 @@ describe("body properties", () => {
       },
     };
 
-    test("passes when meta values do not use snake case", () => {
+    test("passes when meta values do not use snake case", async () => {
       const bodySchema = {
         ...jsonapiMeta,
       };
@@ -389,11 +389,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("fails when meta keys are not snake case", () => {
+    test("fails when meta keys are not snake case", async () => {
       const bodySchema = {
         ...jsonapiMeta,
       };
@@ -430,7 +430,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       console.log(results.filter((r) => !r.passed));
       expect(results.filter((r) => !r.passed)).toEqual(
         expect.arrayContaining([
@@ -446,7 +446,7 @@ describe("body properties", () => {
   });
 
   describe("timestamp properties", () => {
-    test("passes when timestamp property formatted correctly in request", () => {
+    test("passes when timestamp property formatted correctly in request", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -486,12 +486,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("fails when timestamp property not formatted correctly in request", () => {
+    test("fails when timestamp property not formatted correctly in request", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -541,7 +541,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.filter((r) => !r.passed)).toEqual(
         expect.arrayContaining([
@@ -557,7 +557,7 @@ describe("body properties", () => {
       expect(results.every((result) => result.passed)).toBe(false);
     });
 
-    test("passes when timestamp property formatted correctly in response", () => {
+    test("passes when timestamp property formatted correctly in response", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -587,12 +587,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("fails when timestamp property not formatted correctly in response", () => {
+    test("fails when timestamp property not formatted correctly in response", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -632,7 +632,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results).toEqual(
         expect.arrayContaining([
@@ -669,7 +669,7 @@ describe("body properties", () => {
       },
       required: ["data"],
     };
-    test("passes when required properties are declared", () => {
+    test("passes when required properties are declared", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -701,7 +701,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
     });
@@ -729,7 +729,7 @@ describe("body properties", () => {
         },
       },
     };
-    test("fails when required properties are missing in request body, top-level", () => {
+    test("fails when required properties are missing in request body, top-level", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -752,7 +752,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -762,7 +762,7 @@ describe("body properties", () => {
         ]),
       );
     });
-    test("fails when required properties are missing in request body, nested", () => {
+    test("fails when required properties are missing in request body, nested", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -785,7 +785,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -795,7 +795,7 @@ describe("body properties", () => {
         ]),
       );
     });
-    test("fails when required properties are missing in response, top-level", () => {
+    test("fails when required properties are missing in response, top-level", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -820,7 +820,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -830,7 +830,7 @@ describe("body properties", () => {
         ]),
       );
     });
-    test("fails when required properties are missing in response, nested", () => {
+    test("fails when required properties are missing in response, nested", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -855,7 +855,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -868,7 +868,7 @@ describe("body properties", () => {
   });
 
   describe("array properties", () => {
-    test("fails if items have no type information", () => {
+    test("fails if items have no type information", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -901,7 +901,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -911,7 +911,7 @@ describe("body properties", () => {
         ]),
       );
     });
-    test("succeeds if items have type", () => {
+    test("succeeds if items have type", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -946,11 +946,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("succeeds if items have oneOf schema", () => {
+    test("succeeds if items have oneOf schema", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -985,11 +985,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("succeeds if items have allOf schema", () => {
+    test("succeeds if items have allOf schema", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1024,11 +1024,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("succeeds if items have anyOf schema", () => {
+    test("succeeds if items have anyOf schema", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1063,11 +1063,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("fails if composite in items has no type", () => {
+    test("fails if composite in items has no type", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1102,7 +1102,7 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results.filter((result) => !result.passed)).toEqual(
         expect.arrayContaining([
@@ -1113,7 +1113,7 @@ describe("body properties", () => {
       );
     });
 
-    test("succeeds if items have fully-defined nested composite array type", () => {
+    test("succeeds if items have fully-defined nested composite array type", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1156,11 +1156,11 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test("fails if items have incomplete-defined nested composite array type", () => {
+    test("fails if items have incomplete-defined nested composite array type", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const afterSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1195,13 +1195,13 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(afterSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
     });
   });
 
   describe("breaking changes", () => {
-    test("fails if a property is removed", () => {
+    test("fails if a property is removed", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1253,12 +1253,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes if spec is removed", () => {
+    test("passes if spec is removed", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1284,12 +1284,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(beforeSpec, baseOpenAPI),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("fails if a required property is added", () => {
+    test("fails if a required property is added", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1338,12 +1338,12 @@ describe("body properties", () => {
         ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
         context,
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.every((result) => result.passed)).toBe(false);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes if a property is removed in experimental", () => {
+    test("passes if a property is removed in experimental", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1401,13 +1401,13 @@ describe("body properties", () => {
           },
         },
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
     });
 
-    test("passes if a required property is added in experimental", () => {
+    test("passes if a required property is added in experimental", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
       const beforeSpec: OpenAPIV3.Document = {
         ...baseOpenAPI,
@@ -1462,7 +1462,7 @@ describe("body properties", () => {
           },
         },
       };
-      const results = ruleRunner.runRulesWithFacts(ruleInputs);
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
