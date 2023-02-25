@@ -19,16 +19,30 @@ commands:
   setup_build_remote_docker:
     steps:
       - setup_remote_docker:
-          version: 20.10.11
           docker_layer_caching: true
 
 jobs:
+  scan:
+    <<: *defaults
+    resource_class: medium
+    steps:
+      - checkout
+      - snyk/scan:
+          fail-on-issues: true
+          severity-threshold: high
+          monitor-on-build: true
+          token-variable: MONITOR_SNYK_TOKEN
+      - snyk/scan:
+          command: code test
+          fail-on-issues: true
+          severity-threshold: high
+          monitor-on-build: true
+          token-variable: MONITOR_SNYK_TOKEN
+
   test:
     <<: *defaults
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/sweater-comb
       - run:
           name: Install
           command: yarn install
@@ -87,7 +101,7 @@ jobs:
           command: container test
           fail-on-issues: true
           severity-threshold: high
-          monitor-on-build: false
+          monitor-on-build: true
           docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
           token-variable: MONITOR_SNYK_TOKEN
 
@@ -118,6 +132,11 @@ workflows:
   version: 2
   test_and_publish:
     jobs:
+      - scan:
+          name: Snyk Vuln Scan
+          context:
+            - snyk-access-monitor
+
       - test:
           name: Test
 
@@ -134,15 +153,13 @@ workflows:
 
       - woollypully-build:
           name: Woollypully image build
-          context:
-            - snyk-docker-build
 
       - woollypully-scan:
           name: Woollypully image scan
           requires:
             - Woollypully image build
           context:
-            - snyk-monitor
+            - snyk-access-monitor
 
       - woollypully-publish:
           name: Woollypully image release
