@@ -31,12 +31,14 @@ jobs:
           fail-on-issues: true
           severity-threshold: high
           monitor-on-build: true
+          organization: platform-extensibility
           token-variable: MONITOR_SNYK_TOKEN
       - snyk/scan:
           command: code test
           fail-on-issues: true
           severity-threshold: high
           monitor-on-build: true
+          organization: platform-extensibility
           token-variable: MONITOR_SNYK_TOKEN
 
   test:
@@ -102,6 +104,7 @@ jobs:
           fail-on-issues: true
           severity-threshold: high
           monitor-on-build: true
+          organization: platform-extensibility
           docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
           token-variable: MONITOR_SNYK_TOKEN
 
@@ -135,7 +138,7 @@ workflows:
       - scan:
           name: Snyk Vuln Scan
           context:
-            - snyk-access-monitor
+            - team-extensibility
 
       - test:
           name: Test
@@ -159,7 +162,7 @@ workflows:
           requires:
             - Woollypully image build
           context:
-            - snyk-access-monitor
+            - team-extensibility
 
       - woollypully-publish:
           name: Woollypully image release
