@@ -1,7 +1,7 @@
 import { buildNewResourceSpec } from "../templates/new-resource-spec";
 import { addCreateOperationTemplate } from "../templates/operations/create";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
-import { loadSpecFromFile } from "@useoptic/openapi-io";
+import { parseOpenAPIWithSourcemap } from "@useoptic/openapi-io";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { addUpdateOperationTemplate } from "../templates/operations/update";
 import { addDeleteOperationTemplate } from "../templates/operations/delete";
@@ -71,8 +71,8 @@ async function check(from: OpenAPIV3.Document, to: OpenAPIV3.Document) {
     const toFile = path.join(tmp, "to.yaml");
     fs.writeFileSync(fromFile, JSON.stringify(from));
     fs.writeFileSync(toFile, JSON.stringify(to));
-    const { flattened: parsedFrom } = await loadSpecFromFile(fromFile);
-    const { flattened: parsedTo } = await loadSpecFromFile(toFile);
+    const { jsonLike: parsedFrom } = await parseOpenAPIWithSourcemap(fromFile);
+    const { jsonLike: parsedTo } = await parseOpenAPIWithSourcemap(toFile);
     if (!parsedFrom || !parsedTo) {
       throw new Error("failed to read OpenAPI files");
     }
