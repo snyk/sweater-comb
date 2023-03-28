@@ -1,4 +1,5 @@
 openapi: 3.0.3
+x-optic-url: https://app.useoptic.com/organizations/orgid/apis/apiId
 x-snyk-api-stability: experimental
 info:
   title: v3
