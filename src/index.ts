@@ -76,7 +76,7 @@ const main = async (): Promise<void> => {
   setRulesets(ruleset);
   setGenerateContext(readContextFrom);
 
-  await cli.exitOverride().parseAsync(process.argv);
+  cli.exitOverride().parse(process.argv);
 };
 
 process.exitCode = 1;
