@@ -16,9 +16,10 @@ spectral.setRuleset({
     "info-license": "off",
     "license-url": "off",
     "oas3-unused-component": "off",
-  },
+},
 });
 
 export const spectralRuleset = new SpectralRule({
-  spectral,
+  name: 'spectral-rules',
+  spectral: spectral
 });
