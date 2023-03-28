@@ -3005,26 +3005,26 @@
     "@typescript-eslint/types" "5.42.1"
     eslint-visitor-keys "^3.3.0"
 
-"@useoptic/json-pointer-helpers@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.41.2.tgz#ebd789bc6467fe4edac5a6121014a3fd853975d3"
-  integrity sha512-u+uogi5j0A5W5oU+D4sjnXt5jpbQXJJNRP0pJjd1yMsrFMwvS0kRUYpvV4Q/K8c45JLafBlOJnaJlmB+LU048g==
+"@useoptic/json-pointer-helpers@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.41.3.tgz#81fc8bb429928644fc995cbe188c0f8d3db81f65"
+  integrity sha512-bM3JTU4nl54dyn0u6BIoCZa9tiJGxsFWQ7X830q0GY3PMLfRJ+fkHTYTrDq4LPOkGvI/tynalGpYIfZMGb7v5A==
   dependencies:
     jsonpointer "^5.0.1"
     minimatch "7.4.3"
 
-"@useoptic/openapi-cli@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.41.2.tgz#f150d489ac777d514691b8ce1f88efcc6b8c2df9"
-  integrity sha512-+F858+XRW7L+0MHm45kQ4AYkmGjgp6Rv7XO/3iQn0/YPrhgq6YsY/cKMIkr88SAsTpm8nuzClkHmeV/Dsk19dw==
+"@useoptic/openapi-cli@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-cli/-/openapi-cli-0.41.3.tgz#1a7c10137678f531dd1bafc383244391ce26c178"
+  integrity sha512-TLK4yx0LQ4sLPWyq5RziPWa6x2L+eC6g6TYp0atDvpbtg9BGa/9J2z2a5HcRd9pvJLMaInezeuHYPuxr3EKZOA==
   dependencies:
     "@httptoolkit/httpolyglot" "^2.0.1"
     "@jsdevtools/ono" "^7.1.3"
     "@sentry/node" "^7.10.0"
     "@types/node-forge" "^1.0.4"
-    "@useoptic/json-pointer-helpers" "0.41.2"
-    "@useoptic/openapi-io" "0.41.2"
-    "@useoptic/openapi-utilities" "0.41.2"
+    "@useoptic/json-pointer-helpers" "0.41.3"
+    "@useoptic/openapi-io" "0.41.3"
+    "@useoptic/openapi-utilities" "0.41.3"
     ajv-formats "~2.1.0"
     analytics-node "^6.2.0"
     async-exit-hook "^2.0.1"
@@ -3059,15 +3059,15 @@
     update-notifier "^6.0.2"
     whatwg-mimetype "^3.0.0"
 
-"@useoptic/openapi-io@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.41.2.tgz#f40c8a3953df9fd94ba7a08efb5e31163e0ede13"
-  integrity sha512-OoPcl2kLt38rwh3TTpktAorA0k0qEB/MKqvT9B/cakbh2Lz9R7NeVPXobdWDY7fdM0ODv+0lEFM6we7meWM7iA==
+"@useoptic/openapi-io@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.41.3.tgz#010c7fef471554aed6194948ce39239ab64878f5"
+  integrity sha512-6xjPge/2LDiFT1ggeCYSS8ugdBJq3mJc6PvLkKCxcVJ8STgTz4KsGeVNKKNdN+oS+UudoFSqNuHpRQKXftHl0A==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.41.2"
-    "@useoptic/openapi-utilities" "0.41.2"
+    "@useoptic/json-pointer-helpers" "0.41.3"
+    "@useoptic/openapi-utilities" "0.41.3"
     ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -3090,14 +3090,14 @@
     yaml "^2.2.0"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.41.2.tgz#227e8a312a10be0054ff33ed8cd818cb639e3b5b"
-  integrity sha512-QKRhY2J+SQ1LezY+nTHi34RRFtNjHS8HTtV4PtkkEA+mIYaZD0il0wJMWx6ItDrTugI8wV14p7Q23HySG4NxDg==
+"@useoptic/openapi-utilities@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.41.3.tgz#2b7063e38a38018a59c4b6e55c3948fe51af75ac"
+  integrity sha512-QsJlVL95by3dMXSjWzAq91eGsHbycCbW3FZ4AiCuJh1aujukz0O/9t7kXu9JUwKDxv33gmGlsGjsMQT5gvLpLg==
   dependencies:
     "@octokit/rest" "^19.0.0"
     "@sentry/node" "^7.10.0"
-    "@useoptic/json-pointer-helpers" "0.41.2"
+    "@useoptic/json-pointer-helpers" "0.41.3"
     ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -3116,10 +3116,10 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/optic@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/optic/-/optic-0.41.2.tgz#785b0d9fd235ccd0f723e73e9a0273bb33686687"
-  integrity sha512-Zjsf+xd636CFQxUn2G3BYCoy8+/dSqa3U/pJaID68Koxey/gGfwX5xpyoD1lFfdSeZba9wNhpD0S0yuyOfNxwQ==
+"@useoptic/optic@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/optic/-/optic-0.41.3.tgz#d044b571a93b4ec094a87665e586ed999debb8a0"
+  integrity sha512-Aa8tVYpewNN6PbJBIzLhb3f8tzr9t5O3e1piFx638E2qxCzWoyvmDVm16pvsZG8vr8pKR8MZOI3drbyjjyO4eQ==
   dependencies:
     "@babel/runtime" "^7.20.6"
     "@httptoolkit/httpolyglot" "^2.0.1"
@@ -3127,10 +3127,10 @@
     "@octokit/rest" "^19.0.0"
     "@sentry/node" "^7.10.0"
     "@stoplight/spectral-core" "^1.8.1"
-    "@useoptic/openapi-io" "0.41.2"
-    "@useoptic/openapi-utilities" "0.41.2"
-    "@useoptic/rulesets-base" "0.41.2"
-    "@useoptic/standard-rulesets" "0.41.2"
+    "@useoptic/openapi-io" "0.41.3"
+    "@useoptic/openapi-utilities" "0.41.3"
+    "@useoptic/rulesets-base" "0.41.3"
+    "@useoptic/standard-rulesets" "0.41.3"
     ajv "^8.6.0"
     ajv-formats "~2.1.0"
     async-exit-hook "^2.0.1"
@@ -3176,26 +3176,26 @@
     url-join "^4.0.1"
     whatwg-mimetype "^3.0.0"
 
-"@useoptic/rulesets-base@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.41.2.tgz#1406d2650ff74d3411687eae89109fea1c53e33c"
-  integrity sha512-6Qrq/IAsfktvR6nbv813DJPNMrQiBkt+nFB57IzFgMv0aFPItCexANmlG2wmD79xzNNGM1DTNKccJPfGN6N+tw==
+"@useoptic/rulesets-base@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.41.3.tgz#196856413d52830a16d0e394930e3af19ceb5b8f"
+  integrity sha512-NeZbwwqL/JWcwurOQvqMRGWkPOLYmJXzxIapX4VJh7YyxGV+6DKfTaJrVoErKzUtJlj1IK/PI0jq0sdFXMKrPQ==
   dependencies:
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.14.1"
-    "@useoptic/json-pointer-helpers" "0.41.2"
-    "@useoptic/openapi-utilities" "0.41.2"
+    "@useoptic/json-pointer-helpers" "0.41.3"
+    "@useoptic/openapi-utilities" "0.41.3"
     lodash.pick "^4.4.0"
     node-fetch "^2.6.7"
     semver "^7.3.8"
 
-"@useoptic/standard-rulesets@0.41.2":
-  version "0.41.2"
-  resolved "https://registry.yarnpkg.com/@useoptic/standard-rulesets/-/standard-rulesets-0.41.2.tgz#9719e5791271d0d30c4b0e76aaa4ff953cd0390f"
-  integrity sha512-ZNBkg9uv5xFIRpmdRhgaIESc2vrRJGgnbJXthGxtkR9vkRUb4CFxPUusn4IvXKZ6MZbPMya32D3sdS7b53RkJw==
+"@useoptic/standard-rulesets@0.41.3":
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/@useoptic/standard-rulesets/-/standard-rulesets-0.41.3.tgz#447a5c45b39a3a08c549120ae410f58b24dacd25"
+  integrity sha512-F6eyUXp+a2qIGaLoSPkSUgwOtS72yYjG+nebJjMiTr91EugREC6vOPxz9oj9AQ6WlZZTs21zx8UYzysKZWG+8g==
   dependencies:
-    "@useoptic/openapi-utilities" "0.41.2"
-    "@useoptic/rulesets-base" "0.41.2"
+    "@useoptic/openapi-utilities" "0.41.3"
+    "@useoptic/rulesets-base" "0.41.3"
     ajv "^8.6.0"
     ajv-formats "~2.1.0"
     whatwg-mimetype "^3.0.0"
