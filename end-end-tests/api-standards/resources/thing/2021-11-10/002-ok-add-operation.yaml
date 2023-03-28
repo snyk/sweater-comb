@@ -1,6 +1,7 @@
 # 002-ok-add-operation.yaml
 # Adding a new operation to an existing release is also allowed.
 openapi: 3.0.3
+x-optic-url: https://app.useoptic.com/organizations/orgid/apis/apiId
 x-snyk-api-stability: experimental
 info:
   title: v3
