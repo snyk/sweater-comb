@@ -110,7 +110,7 @@ const main = async (): Promise<void> => {
   workflowCommand.addCommand(operationCommand);
   cli.addCommand(workflowCommand);
 
-  await cli.exitOverride().parseAsync(process.argv);
+  cli.exitOverride().parse(process.argv)
 };
 
 process.exitCode = 1;
