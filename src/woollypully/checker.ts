@@ -93,9 +93,9 @@ export class Checker {
     try {
       const args = [
         "diff",
-        currentSpecPath ? currentSpecPath : 'null:',
+        currentSpecPath ? currentSpecPath : "null:",
         proposedSpecPath,
-        "--check"
+        "--check",
       ];
       const opticScript = await resolveOpticScript();
       await new Promise<void>((resolve, reject) => {
@@ -111,7 +111,7 @@ export class Checker {
                   date: versionDate,
                   stability: versionStability ?? "ga",
                 },
-              })
+              }),
             },
             stdio: "inherit",
           },
