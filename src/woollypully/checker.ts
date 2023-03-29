@@ -91,19 +91,10 @@ export class Checker {
       `${api.path}/openapi/${version}`,
     );
     try {
-      const fromArgs = currentSpecPath ? ["--from", currentSpecPath] : [];
       const args = [
-        "compare",
-        ...fromArgs,
-        "--to",
-        proposedSpecPath,
-        "--context",
-        JSON.stringify({
-          changeVersion: {
-            date: versionDate,
-            stability: versionStability ?? "ga",
-          },
-        }),
+        "diff",
+        currentSpecPath ? currentSpecPath : 'null:',
+        proposedSpecPath
       ];
       const opticScript = await resolveOpticScript();
       await new Promise<void>((resolve, reject) => {
@@ -114,6 +105,12 @@ export class Checker {
             env: {
               ...process.env,
               SWEATER_COMB_RULESET: "compiled",
+              OPTIC_DIFF_CONTEXT: JSON.stringify({
+                changeVersion: {
+                  date: versionDate,
+                  stability: versionStability ?? "ga",
+                },
+              })
             },
             stdio: "inherit",
           },
