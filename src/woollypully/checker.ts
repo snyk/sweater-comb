@@ -94,7 +94,8 @@ export class Checker {
       const args = [
         "diff",
         currentSpecPath ? currentSpecPath : 'null:',
-        proposedSpecPath
+        proposedSpecPath,
+        "--check"
       ];
       const opticScript = await resolveOpticScript();
       await new Promise<void>((resolve, reject) => {
