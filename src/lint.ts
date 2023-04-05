@@ -113,10 +113,11 @@ const bulkCompare = async (
   }
   const args = [
     opticScript,
-    "bulk-compare",
-    "--glob",
+    "diff-all",
+    "--check",
+    "--match",
     `${resourceDir}/**/[2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/spec.yaml`,
-    "--base",
+    "--compare-from",
     base,
     ...extraArgs,
   ];
@@ -156,5 +157,5 @@ const resolveOpticScript = async (): Promise<string> => {
       continue;
     }
   }
-  throw new Error("failed to locate optic-ci script");
+  throw new Error("failed to locate optic script");
 };

@@ -14,6 +14,7 @@ import {
   doNotAllowDeleteOrPostIdForSingleton,
   compoundDocuments,
 } from "./json-api-rules";
+import { spectralRuleset } from "./spectral";
 
 //
 export const resourceRules = [
@@ -28,6 +29,7 @@ export const resourceRules = [
   paginationRules,
   doNotAllowDeleteOrPostIdForSingleton,
   compoundDocuments,
+  spectralRuleset,
 ];
 
 export const compiledRules = [
@@ -41,4 +43,5 @@ export const compiledRules = [
   paginationRules,
   doNotAllowDeleteOrPostIdForSingleton,
   compoundDocuments,
+  spectralRuleset,
 ];
