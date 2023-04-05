@@ -6,17 +6,6 @@ import * as yaml from "yaml";
 
 import { initializeCli } from "@useoptic/optic-ci/build/initialize";
 import { resourceRules, compiledRules } from "./rulesets/rest/2022-05-25";
-import { Command } from "commander";
-import {
-  createResourceCommand,
-  addCreateOperationCommand,
-  addUpdateOperationCommand,
-  addDeleteOperationCommand,
-  addGetOperationCommand,
-  addListOperationCommand,
-  createVersionCommand,
-  createUpdateCommand,
-} from "./workflows/commands";
 import { createLintCommand } from "./lint";
 
 const rulesets = {
@@ -75,29 +64,6 @@ const main = async (): Promise<void> => {
     },
   });
 
-  const workflowCommand = new Command("workflow").description(
-    "workflows for designing and building APIs",
-  );
-  workflowCommand.addCommand(createResourceCommand());
-
-  workflowCommand.addCommand(createVersionCommand());
-
-  workflowCommand.addCommand(createUpdateCommand());
-
-  const operationCommand = new Command("operation").description(
-    "add common operations to an OpenAPI file",
-  );
-  const operationCommands = [
-    addCreateOperationCommand,
-    addDeleteOperationCommand,
-    addGetOperationCommand,
-    addListOperationCommand,
-    addUpdateOperationCommand,
-  ];
-  operationCommands.forEach((command) => operationCommand.addCommand(command));
-
-  workflowCommand.addCommand(operationCommand);
-  cli.addCommand(workflowCommand);
   cli.addCommand(createLintCommand());
 
   await cli.exitOverride().parseAsync(process.argv);
