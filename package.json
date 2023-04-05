@@ -51,7 +51,6 @@
     "@stoplight/spectral-core": "^1.8.1",
     "@stoplight/spectral-rulesets": "^1.14.1",
     "@useoptic/json-pointer-helpers": "0.41.4",
-    "@useoptic/openapi-cli": "0.41.4",
     "@useoptic/openapi-io": "0.41.4",
     "@useoptic/openapi-utilities": "0.41.4",
     "@useoptic/optic": "0.41.4",
@@ -65,10 +64,11 @@
     "yargs": "~17.6.0"
   },
   "bundledDependencies": [
+    "@stoplight/spectral-core",
+    "@stoplight/spectral-rulesets",
     "@useoptic/json-pointer-helpers",
-    "@useoptic/openapi-cli",
     "@useoptic/openapi-io",
-    "@useoptic/optic-ci",
+    "@useoptic/optic",
     "@useoptic/openapi-utilities",
     "@useoptic/rulesets-base"
   ],
