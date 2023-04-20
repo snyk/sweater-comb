@@ -38,6 +38,7 @@ exports[`content type rules fails when response does not have json:api content t
     "name": "JSON:API content type",
     "passed": false,
     "received": undefined,
+    "severity": 2,
     "type": "added",
     "where": "GET /api/example response 200",
   },

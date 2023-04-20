@@ -42,6 +42,7 @@ exports[`compoundDocuments fails when specifying compound documents 1`] = `
     "name": "disallow compound documents",
     "passed": false,
     "received": "{"schema":{"properties":{"included":{"type":"object","properties":{}}}}}",
+    "severity": 2,
     "type": "added",
     "where": "GET /api/example response 200 response body: application/vnd.api+json",
   },
