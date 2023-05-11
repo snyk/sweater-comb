@@ -1609,10 +1609,17 @@
   dependencies:
     tslib "^2.4.0"
 
-"@httptoolkit/httpolyglot@^2.0.1", "@httptoolkit/httpolyglot@^2.1.0":
+"@httptoolkit/httpolyglot@^2.0.1":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@httptoolkit/httpolyglot/-/httpolyglot-2.1.0.tgz#61eaf272bad880e8d61a1e32d58127ba46045e4f"
   integrity sha512-IkTpczmtH8XM/vAL5SL2/aLJYVD1m9KOMZEfl5AaI+xve7EBrj7NRPztk4YKC364tes3cnzCFg5JMjVpVqzWUw==
+  dependencies:
+    "@types/node" "^16.7.10"
+
+"@httptoolkit/httpolyglot@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@httptoolkit/httpolyglot/-/httpolyglot-2.1.1.tgz#c48737e68bc61a7bc8fa3a38f6bb7878921df850"
+  integrity sha512-TvJOb/9dYmOD1U8sErFKCy5BxQc7kbLuvvRLfsTr+NN9kQGNGRNyenC00mJxUn2ld/WtxPMNup3JICHPUOPXDg==
   dependencies:
     "@types/node" "^16.7.10"
 
@@ -2971,23 +2978,23 @@
     "@typescript-eslint/types" "5.42.1"
     eslint-visitor-keys "^3.3.0"
 
-"@useoptic/json-pointer-helpers@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.42.11.tgz#e33c5ae980456e7c10078ead3e503b4938c055af"
-  integrity sha512-4cbZGw3PHU/NItVF8Atsn+fNotTvhoQw8BKfySJKMZtoMVIuJpC5XWC8dJZ5XeXwAP2sz72YrT+iYBTacbkbzg==
+"@useoptic/json-pointer-helpers@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.43.0.tgz#ec426bc1adb5b90cf85d76e918a3a03d25024d45"
+  integrity sha512-bzt8V+StHAqliJ6ClL3B25OS8lMCiVSDKwL5WjvKgG6BI6tXUEgC6v4/kONeQw7UUKlscxsQsrBI5oTgiJ6gbA==
   dependencies:
     jsonpointer "^5.0.1"
     minimatch "9.0.0"
 
-"@useoptic/openapi-io@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.42.11.tgz#5877beca5e34fd75f5edddcbfabad06af0730c9c"
-  integrity sha512-74lXdfC4/EGAAzx9yCuxoqlOG/LVHE7u4Aq2zId6asoNfztrHnR23C1fOtd5BtZJOt+/0jhx3Aacjf9h5fAWcw==
+"@useoptic/openapi-io@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.43.0.tgz#0a001b5e027e2d039fdafc8f22a1a5fef65dbed0"
+  integrity sha512-PwVU+lZepJfKnpHJNQaaG03zM68NZwLsuvqiy+wIZ9uBgJ/w6fyY6rYfF/IaeaR5FgPj36o+V6405cj7PUhQaw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "9.0.9"
     "@jsdevtools/ono" "^7.1.3"
-    "@useoptic/json-pointer-helpers" "0.42.11"
-    "@useoptic/openapi-utilities" "0.42.11"
+    "@useoptic/json-pointer-helpers" "0.43.0"
+    "@useoptic/openapi-utilities" "0.43.0"
     ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -3006,14 +3013,14 @@
     yaml "^2.2.0"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/openapi-utilities@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.42.11.tgz#8d795ba1c655f398caf45888dbb079a91d01347d"
-  integrity sha512-7za6ZjYpKL5k8KHPmME+hszsxvDM6gHAXDCfx1yLsRJecMOiZC4AbGU02t1pucLylOhD2eVZ1lSkFO5c++dqgg==
+"@useoptic/openapi-utilities@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.43.0.tgz#0721ee4f57b883b72b3888aa194346d0c4b384ad"
+  integrity sha512-DgLbsmXGZdud4XJnZe180ZS1xp7d+XOPa+4+/K2qDbGaVSTTYSYTCWGeyko64Artjb1AxZMNjM+RLO4/Znjgng==
   dependencies:
     "@octokit/rest" "^19.0.0"
     "@sentry/node" "^7.10.0"
-    "@useoptic/json-pointer-helpers" "0.42.11"
+    "@useoptic/json-pointer-helpers" "0.43.0"
     ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -3031,10 +3038,10 @@
     ts-invariant "^0.9.3"
     yaml-ast-parser "^0.0.43"
 
-"@useoptic/optic@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/optic/-/optic-0.42.11.tgz#3a5ab8b0eea85fed63ed7cd4acc62d6801d90e6a"
-  integrity sha512-6QAbQ8xvOkPOs5SJL4oDuLPmolSUY9xAKM4v1JsrqJvgL0QUFqOGuIX3mvxh6AF/bpVplBdfjhYp+xul7BsMQg==
+"@useoptic/optic@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/optic/-/optic-0.43.0.tgz#11d9e9927c27df0a67e6429dce5d8b456db6ae0f"
+  integrity sha512-F3CtiuCjXR86ES1LCuIAsZM48vsoYD6otX7s4LgzMijMUB+ZxdEzhVmbevXsqluOHmoSlYy4/CC1EaeQaK18Ig==
   dependencies:
     "@babel/runtime" "^7.20.6"
     "@httptoolkit/httpolyglot" "^2.0.1"
@@ -3042,10 +3049,10 @@
     "@octokit/rest" "^19.0.0"
     "@sentry/node" "^7.10.0"
     "@stoplight/spectral-core" "^1.8.1"
-    "@useoptic/openapi-io" "0.42.11"
-    "@useoptic/openapi-utilities" "0.42.11"
-    "@useoptic/rulesets-base" "0.42.11"
-    "@useoptic/standard-rulesets" "0.42.11"
+    "@useoptic/openapi-io" "0.43.0"
+    "@useoptic/openapi-utilities" "0.43.0"
+    "@useoptic/rulesets-base" "0.43.0"
+    "@useoptic/standard-rulesets" "0.43.0"
     ajv "^8.6.0"
     ajv-formats "~2.1.0"
     async-exit-hook "^2.0.1"
@@ -3070,7 +3077,7 @@
     log-node "^8.0.3"
     loglevel "^1.8.0"
     minimatch "9.0.0"
-    mockttp "^3.3.1"
+    mockttp "^3.7.4"
     node-fetch "^2.6.7"
     node-forge "^1.2.1"
     node-machine-id "^1.1.12"
@@ -3094,26 +3101,26 @@
     url-join "^4.0.1"
     whatwg-mimetype "^3.0.0"
 
-"@useoptic/rulesets-base@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.42.11.tgz#36867df0245c9e1ec269ba202429aadb51b029e9"
-  integrity sha512-r4Sbf5J4QEmbnIj85Cv0j9vHVqQFcXOIxdGaGvN+zWZBMZQgwJyALdCgziAhGefW90Ufi2DC0lIA4u0TKMEwng==
+"@useoptic/rulesets-base@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/rulesets-base/-/rulesets-base-0.43.0.tgz#611e94f1cbbabe73668d3dc933c5dd0359de292c"
+  integrity sha512-e1C03WuPZIib7CiWPojLkGvlm1x4s5vTrkllt7n1wJHhZHFWkaF6FYSj9qMwrZ3HLRCKflX6ru+Z83Vw+/cAGg==
   dependencies:
     "@stoplight/spectral-core" "^1.8.1"
     "@stoplight/spectral-rulesets" "^1.14.1"
-    "@useoptic/json-pointer-helpers" "0.42.11"
-    "@useoptic/openapi-utilities" "0.42.11"
+    "@useoptic/json-pointer-helpers" "0.43.0"
+    "@useoptic/openapi-utilities" "0.43.0"
     lodash.pick "^4.4.0"
     node-fetch "^2.6.7"
     semver "^7.3.8"
 
-"@useoptic/standard-rulesets@0.42.11":
-  version "0.42.11"
-  resolved "https://registry.yarnpkg.com/@useoptic/standard-rulesets/-/standard-rulesets-0.42.11.tgz#7245fb130ed67282703dc662778eecf643a9fd5f"
-  integrity sha512-v369VGuZihhT6UsaFfPyVOoHM3nBX463chN5Yj6ZZNXTB4aj7spgnWNwhDXCXMvwyNdUGJbL+4SbU7sFMQ0lXg==
+"@useoptic/standard-rulesets@0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@useoptic/standard-rulesets/-/standard-rulesets-0.43.0.tgz#db5f8f3cdd71ed687d6b4803dd365c41d98111bc"
+  integrity sha512-fm/OhVMakmJs89vifEqVx+3TXbFBXMRKBpBLyQuM2TIl/ym6jblw2qioQuQi0E2zlOB2vYKTmEF7kBEZxQ0QDA==
   dependencies:
-    "@useoptic/openapi-utilities" "0.42.11"
-    "@useoptic/rulesets-base" "0.42.11"
+    "@useoptic/openapi-utilities" "0.43.0"
+    "@useoptic/rulesets-base" "0.43.0"
     ajv "^8.6.0"
     ajv-formats "~2.1.0"
     whatwg-mimetype "^3.0.0"
@@ -6411,13 +6418,13 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-http2-wrapper@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/http2-wrapper/-/http2-wrapper-2.0.5.tgz#d4464509df69b6f82125b6cb337dbb80101f406c"
-  integrity sha512-W8+pfYl0iQ27NjvhDrbuQKaMBjBAWIZRHdKvmctV2c8a/naI7SsZgU3e04lCYrgxqnJ2sNPsBBrVI8kBeE/Pig==
+http2-wrapper@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/http2-wrapper/-/http2-wrapper-2.2.0.tgz#b80ad199d216b7d3680195077bd7b9060fa9d7f3"
+  integrity sha512-kZB0wxMo0sh1PehyjJUWRFEd99KC5TLjZ2cULC4f9iqJBAmKQQXEICjxl5iPJRwP40dpeHFqqhm7tYCvODpqpQ==
   dependencies:
     quick-lru "^5.1.1"
-    resolve-alpn "^1.1.1"
+    resolve-alpn "^1.2.0"
 
 https-proxy-agent@5, https-proxy-agent@^5.0.0, https-proxy-agent@^5.0.1:
   version "5.0.1"
@@ -8429,14 +8436,14 @@ mock-fs@^5.1.0:
   resolved "https://registry.yarnpkg.com/mock-fs/-/mock-fs-5.2.0.tgz#3502a9499c84c0a1218ee4bf92ae5bf2ea9b2b5e"
   integrity sha512-2dF2R6YMSZbpip1V1WHKGLNjr/k48uQClqMVb5H3MOvwc9qhYis3/IWbj02qIg/Y8MDXKFF4c5v0rxx2o6xTZw==
 
-mockttp@^3.3.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/mockttp/-/mockttp-3.5.1.tgz#17053836adf977d54ad8fff3fdfb84bb2b618a7e"
-  integrity sha512-2+EmRpwskHHUzpN6/9XSepBM553trTOj7birv9/z4oYJUACOtlqXhKGzjT4R/otS4h1SYOrn5SsB7sJoH3m9xw==
+mockttp@^3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/mockttp/-/mockttp-3.7.4.tgz#3b66cccda41d196d1d4bca5cd9cf539f552284ca"
+  integrity sha512-TBy9oMbjZMolLjD+57E8gagkTuTaRFD1sig9a8UW2J9BzPL6MnRP+1vgLuX497EWqWCaRKuiTy887hL+YdMxhw==
   dependencies:
     "@graphql-tools/schema" "^8.5.0"
     "@graphql-tools/utils" "^8.8.0"
-    "@httptoolkit/httpolyglot" "^2.1.0"
+    "@httptoolkit/httpolyglot" "^2.1.1"
     "@httptoolkit/subscriptions-transport-ws" "^0.11.2"
     "@httptoolkit/websocket-stream" "^6.0.1"
     "@types/cors" "^2.8.6"
@@ -8456,7 +8463,7 @@ mockttp@^3.3.1:
     graphql-subscriptions "^1.1.0"
     graphql-tag "^2.12.6"
     http-encoding "^1.5.1"
-    http2-wrapper "2.0.5"
+    http2-wrapper "^2.2.0"
     https-proxy-agent "^5.0.1"
     isomorphic-ws "^4.0.1"
     lodash "^4.16.4"
@@ -8468,6 +8475,7 @@ mockttp@^3.3.1:
     performance-now "^2.1.0"
     portfinder "1.0.28"
     read-tls-client-hello "^1.0.0"
+    semver "^5.7.1"
     socks-proxy-agent "^7.0.0"
     typed-error "^3.0.2"
     uuid "^8.3.2"
@@ -9783,7 +9791,7 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
-resolve-alpn@^1.1.1:
+resolve-alpn@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.2.1.tgz#b7adbdac3546aaaec20b45e7d8265927072726f9"
   integrity sha512-0a1F4l73/ZFZOakJnQ3FvkJ2+gSTQWz/r2KE5OdDY0TxPm5h4GkqkWWfM47T7HsbnOtcJVEF4epCVy6u7Q3K+g==
@@ -9982,7 +9990,7 @@ semver-diff@^3.1.1:
   dependencies:
     semver "^6.3.0"
 
-"semver@2 || 3 || 4 || 5", semver@^5.5.0, semver@^5.6.0:
+"semver@2 || 3 || 4 || 5", semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
@@ -11541,7 +11549,7 @@ yaml@^1.10.0, yaml@^1.7.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-yaml@^2.0.0, yaml@^2.1.1:
+yaml@^2.0.0:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.1.3.tgz#9b3a4c8aff9821b696275c79a8bee8399d945207"
   integrity sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==
@@ -11550,6 +11558,11 @@ yaml@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.2.1.tgz#3014bf0482dcd15147aa8e56109ce8632cd60ce4"
   integrity sha512-e0WHiYql7+9wr4cWMx3TVQrNwejKaEe7/rHNmQmqRjazfOP5W8PB6Jpebb5o6fIapbz9o9+2ipcaTM2ZwDI6lw==
+
+yaml@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.2.2.tgz#ec551ef37326e6d42872dad1970300f8eb83a073"
+  integrity sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==
 
 yargs-parser@^20.2.3:
   version "20.2.9"
