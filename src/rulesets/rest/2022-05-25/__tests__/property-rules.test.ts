@@ -3,7 +3,6 @@ import { context } from "./fixtures";
 import { propertyRulesResource as propertyRules } from "../property-rules";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { string } from "yargs";
-import { SchemaObject } from "@useoptic/openapi-cli/build/shapes";
 
 const baseOpenAPI = {
   ...TestHelpers.createEmptySpec(),
@@ -376,7 +375,7 @@ describe("body properties", () => {
                   description: "",
                   content: {
                     "application/vnd.api+json": {
-                      schema: bodySchema as unknown as SchemaObject,
+                      schema: bodySchema as unknown as OpenAPIV3.SchemaObject,
                     },
                   },
                 },
@@ -417,7 +416,7 @@ describe("body properties", () => {
                   description: "",
                   content: {
                     "application/json": {
-                      schema: bodySchema as unknown as SchemaObject,
+                      schema: bodySchema as unknown as OpenAPIV3.SchemaObject,
                     },
                   },
                 },

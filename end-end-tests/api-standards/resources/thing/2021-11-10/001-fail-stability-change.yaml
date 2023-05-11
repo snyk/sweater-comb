@@ -1,6 +1,7 @@
 # 001-fail-stability-change.yaml
 # Changing the stability of a release version is not allowed
 openapi: 3.0.3
+x-optic-url: https://app.useoptic.com/organizations/orgid/apis/apiId
 x-snyk-api-stability: beta
 info:
   title: v3

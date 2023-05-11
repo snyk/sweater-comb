@@ -1,6 +1,7 @@
 # 001-fail-operation-removed.yaml
 # Removing an operation should fail linting, since this also breaks compatibility.
 openapi: 3.0.3
+x-optic-url: https://app.useoptic.com/organizations/orgid/apis/apiId
 x-snyk-api-stability: beta
 info:
   title: v3
