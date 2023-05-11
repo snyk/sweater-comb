@@ -62,9 +62,8 @@ describe("lint command", () => {
       );
       fail("should have thrown an error");
     } catch (err: any) {
-      expect(err.message).toContain(
-        "bulk-compare end-end-tests/api-standards/resources failed with exit code 1",
-      );
+      console.log(err);
+      expect(err.message).toContain("fatal: Not a valid object name");
     }
   });
 

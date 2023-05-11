@@ -70,7 +70,7 @@ const readContextFrom = (
 
 const main = async (): Promise<void> => {
   program.addCommand(createLintCommand());
-  const cli = await initCli(program);
+  const cli = await initCli(program, { hideNotifier: true });
   const ruleset =
     rulesets[process.env.SWEATER_COMB_RULESET || ""] ?? resourceRules;
   setRulesets(ruleset);

@@ -33,11 +33,27 @@ type VervetConfig = {
 
 const defaultBranchName = "main";
 
+const expectGitBranch = (branchName: string) => {
+  return new Promise((resolve, reject) => {
+    child_process.exec(
+      `git cat-file -t ${branchName}`,
+      (err, stdout, stderr) => {
+        if (err) {
+          reject(new Error(stderr));
+          return;
+        }
+        resolve(stdout);
+      },
+    );
+  });
+};
+
 export const lintAction = async (
   resourceDir?: string,
   branchName?: string,
 ): Promise<void> => {
   if (resourceDir) {
+    await expectGitBranch(branchName ?? defaultBranchName);
     await bulkCompare(resourceDir, branchName ?? defaultBranchName);
     return;
   }
@@ -79,6 +95,7 @@ export const lintAction = async (
         continue;
       }
       const base = linter["optic-ci"]?.original ?? defaultBranchName;
+      await expectGitBranch(base);
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
         base,
