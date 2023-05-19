@@ -581,7 +581,7 @@ All status codes must be listed in this section or as a part of the [JSON-API Sp
 
 ### 204 - No Content
 
-In addition to DELETE, our services may respond to a collection POST or PATCH request with a 204 as a response to bulk resource creation or modification. This is an extension to the JSON API standard.
+In addition to POST and DELETE, our services may respond to a collection POST or PATCH request with a 204 as a response to bulk resource creation or modification. This is an extension to the JSON API standard.
 
 ### 400 - Bad Request
 
