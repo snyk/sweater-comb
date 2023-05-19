@@ -226,6 +226,8 @@ describe("resource object rules", () => {
       };
       const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
+
+      console.log(results.filter((r) => !r.passed));
       expect(results.every((result) => result.passed)).toBe(true);
     });
   });

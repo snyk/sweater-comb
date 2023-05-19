@@ -75,7 +75,8 @@
     "@useoptic/rulesets-base"
   ],
   "resolutions": {
-    "urijs": "^1.19.11"
+    "urijs": "^1.19.11",
+    "vm2": "3.9.18"
   },
   "jest": {
     "maxWorkers": 5,
