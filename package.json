@@ -1,6 +1,6 @@
 {
   "name": "@snyk/sweater-comb",
-  "version": "2.0.0",
+  "version": "v1.24.5",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "bin": "build/index.js",
