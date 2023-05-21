@@ -227,7 +227,6 @@ describe("resource object rules", () => {
       const results = await ruleRunner.runRulesWithFacts(ruleInputs);
       expect(results.length).toBeGreaterThan(0);
 
-      console.log(results.filter((r) => !r.passed));
       expect(results.every((result) => result.passed)).toBe(true);
     });
   });
@@ -599,6 +598,10 @@ describe("resource object rules", () => {
                         },
                       },
                     },
+                  },
+                  // No location header required for a 204 response.
+                  "204": {
+                    description: "success",
                   },
                 },
               },

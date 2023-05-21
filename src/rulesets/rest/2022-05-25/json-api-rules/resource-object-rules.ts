@@ -299,7 +299,9 @@ const locationHeader = new ResponseRule({
   matches: (responseBody, rulesContext) =>
     rulesContext.operation.method === "post" &&
     validPost2xxCodes.includes(responseBody.statusCode) &&
-    responseBody.statusCode != "204", // 204 is allowed as a POST response but does not need a Location header.
+    // 204 is allowed as a POST response but does not need a location header.
+    // See https://jsonapi.org/format/#crud-creating-responses-204
+    responseBody.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});
     responseAssertions.changed.hasResponseHeaderMatching("location", {});
