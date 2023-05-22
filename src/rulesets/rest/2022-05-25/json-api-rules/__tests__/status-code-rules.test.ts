@@ -83,7 +83,7 @@ describe("status code rules", () => {
         "/api/users/{user_id}": {
           post: {
             responses: {
-              "204": {
+              "206": {
                 description: "i am not valid",
                 content: {
                   "application/vnd.api+json": {
@@ -228,7 +228,7 @@ describe("status code rules", () => {
               },
             },
             responses: {
-              "204": {
+              "206": {
                 description: "i am not valid",
               },
             },
@@ -244,12 +244,13 @@ describe("status code rules", () => {
     };
     const results = await ruleRunner.runRulesWithFacts(ruleInputs);
     expect(results.length).toBeGreaterThan(0);
+
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results.filter((result) => !result.passed)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           error:
-            "expected POST response to only support status code(s) {200,201}, not 204",
+            "expected POST response to only support status code(s) {200,201,204}, not 206",
         }),
       ]),
     );
