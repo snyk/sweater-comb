@@ -132,7 +132,7 @@ exports[`resource object rules valid DELETE responses passes when status code 20
     "expected": undefined,
     "isMust": true,
     "isShould": false,
-    "name": "valid patch response data schema",
+    "name": "valid delete response data schema",
     "passed": true,
     "received": undefined,
     "severity": 2,

@@ -1,6 +1,12 @@
 import { Field, RuleContext } from "@useoptic/rulesets-base";
 import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 
+/**
+ * isRelationshipPath evaluates whether the given path is a JSONAPI relationships path,
+ * either containing /relationships/ or ending with /relationships.
+ */
+export const isRelationshipPath = (path: string) =>
+  /\/relationships\/|\/relationships$/.test(path);
 export const isOpenApiPath = (path: string) => /\/openapi/.test(path);
 export const isSingletonPath = (rulesContext: RuleContext) =>
   !!rulesContext.specification.raw.paths[rulesContext.operation.path]?.[
