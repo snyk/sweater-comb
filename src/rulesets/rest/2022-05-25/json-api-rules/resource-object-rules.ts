@@ -99,7 +99,8 @@ const requestDataForPost = new RequestRule({
   matches: (request, rulesContext) =>
     request.contentType === "application/vnd.api+json" &&
     rulesContext.operation.method === "post" &&
-    !rulesContext.operation.responses.has("204"),
+    !rulesContext.operation.responses.has("204") &&
+    !rulesContext.operation.path.includes("relationships"), // does NOT HAVE relationships in the path
   rule: (requestAssertions) => {
     requestAssertions.body.added.matches({
       schema: {
@@ -111,6 +112,43 @@ const requestDataForPost = new RequestRule({
       schema: {
         type: "object",
         properties: matchPostRequest,
+      },
+    });
+  },
+});
+
+// Relationships have different rules to other parts of JSON:API
+// POST requests don’t need the attributes object, for instance.
+const matchPostRelationshipRequest = {
+  data: {
+    type: "object",
+    properties: {
+      type: {
+        type: Matchers.string,
+      },
+    },
+  },
+};
+
+const requestDataForRelationshipPost = new RequestRule({
+  name: "request body for post",
+  docsLink: links.jsonApi.postRequests,
+  matches: (request, rulesContext) =>
+    request.contentType === "application/vnd.api+json" &&
+    rulesContext.operation.method === "post" &&
+    !rulesContext.operation.responses.has("204") &&
+    rulesContext.operation.path.includes("relationships"), // DOES HAVE relationships in the path
+  rule: (requestAssertions) => {
+    requestAssertions.body.added.matches({
+      schema: {
+        type: "object",
+        properties: matchPostRelationshipRequest,
+      },
+    });
+    requestAssertions.body.changed.matches({
+      schema: {
+        type: "object",
+        properties: matchPostRelationshipRequest,
       },
     });
   },
@@ -551,6 +589,7 @@ export const resourceObjectRules = new Ruleset({
   rules: [
     requestDataForPatch,
     requestDataForPost,
+    requestDataForRelationshipPost,
     requestDataForBulkPost,
     responseDataForPatch,
     empty204Content,

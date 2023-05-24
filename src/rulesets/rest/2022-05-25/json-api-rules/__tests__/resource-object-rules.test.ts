@@ -173,6 +173,47 @@ describe("resource object rules", () => {
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
+    test("passes when POST request body for a relationship is of the correct form", async () => {
+      const afterJson = {
+        ...baseJson,
+        paths: {
+          "/api/example/relationships/example": {
+            post: {
+              responses: {}, // not tested here
+              requestBody: {
+                content: {
+                  "application/vnd.api+json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            type: {
+                              type: "string",
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      } as OpenAPIV3.Document;
+
+      const ruleRunner = new RuleRunner([resourceObjectRules]);
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseJson, afterJson),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
     test("passes when bulk POST request body is of the correct form", async () => {
       const afterJson = {
         ...baseJson,
