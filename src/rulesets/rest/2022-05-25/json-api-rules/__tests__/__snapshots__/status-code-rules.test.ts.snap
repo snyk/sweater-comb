@@ -225,6 +225,51 @@ exports[`status code rules fails when an invalid post 2xx code is specified 1`] 
 ]
 `;
 
+exports[`status code rules fails when an invalid relationship post request is specified 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "invalid :'(",
+        "statusCode": "206",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "206",
+          },
+          "method": "post",
+          "path": "/api/users/{user_id}/relationships",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/users/{}/relationships",
+          "post",
+          "responses",
+          "206",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}~1relationships/post/responses/206",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
+    "error": "expected relationship POST response to only support status code(s) {200,201,204}, not 206",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for relationship post",
+    "passed": false,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "POST /api/users/{user_id}/relationships response 206",
+  },
+]
+`;
+
 exports[`status code rules passes for a valid batch post 204 code 1`] = `
 [
   {
@@ -266,6 +311,51 @@ exports[`status code rules passes for a valid batch post 204 code 1`] = `
     "severity": 2,
     "type": "added",
     "where": "POST /api/users response 204",
+  },
+]
+`;
+
+exports[`status code rules passes for a valid relationship post 200 code 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "got it",
+        "statusCode": "200",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "200",
+          },
+          "method": "post",
+          "path": "/api/users/{user_id}/relationships/somethings",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/users/{}/relationships/somethings",
+          "post",
+          "responses",
+          "200",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}~1relationships~1somethings/post/responses/200",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for relationship post",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "POST /api/users/{user_id}/relationships/somethings response 200",
   },
 ]
 `;

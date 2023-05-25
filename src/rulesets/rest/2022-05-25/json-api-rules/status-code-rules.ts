@@ -4,6 +4,7 @@ import {
   isOpenApiPath,
   isBatchPostOperation,
   validPost2xxCodes,
+  isRelationshipPath,
 } from "../utils";
 
 const valid4xxCodes = new ResponseRule({
@@ -69,7 +70,9 @@ const delete2xxCodes = new ResponseRule({
 const post2xxCodes = new ResponseRule({
   name: "valid 2xx status codes for post",
   matches: (response, rulesContext) =>
+    // Batch and relationship POST requests have different rules.
     !isBatchPostOperation(rulesContext.operation.requests) &&
+    !isRelationshipPath(rulesContext.operation.path) &&
     response.statusCode.startsWith("2") &&
     rulesContext.operation.method === "post",
   rule: (responseAssertions) => {
@@ -92,6 +95,43 @@ const post2xxCodes = new ResponseRule({
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
             message: `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
+          });
+        }
+      },
+    );
+  },
+});
+
+const relationshipPost2xxCodes = new ResponseRule({
+  name: "valid 2xx status codes for relationship post",
+  matches: (response, rulesContext) =>
+    isRelationshipPath(rulesContext.operation.path) &&
+    // Relationship POST requests must also be batch requests.
+    isBatchPostOperation(rulesContext.operation.requests) &&
+    response.statusCode.startsWith("2") &&
+    rulesContext.operation.method === "post",
+  rule: (responseAssertions) => {
+    responseAssertions.added(
+      "support the correct 2xx status codes",
+      (response) => {
+        if (!validPost2xxCodes.includes(response.statusCode)) {
+          throw new RuleError({
+            message: `expected relationship POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
+          });
+        }
+      },
+    );
+
+    responseAssertions.changed(
+      "support the correct 2xx status codes",
+      (beforeResponse, response) => {
+        if (!validPost2xxCodes.includes(response.statusCode)) {
+          throw new RuleError({
+            message: `expected relationship POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not ${
               response.statusCode
             }`,
           });
@@ -134,6 +174,8 @@ const get2xxCodes = new ResponseRule({
 const batchPost2xxCodes = new ResponseRule({
   name: "valid 2xx status codes for post",
   matches: (response, rulesContext) =>
+    // Relationship POST requests have specific rules.
+    !isRelationshipPath(rulesContext.operation.path) &&
     isBatchPostOperation(rulesContext.operation.requests) &&
     response.statusCode.startsWith("2") &&
     rulesContext.operation.method === "post",
@@ -171,6 +213,7 @@ export const statusCodesRules = new Ruleset({
     valid4xxCodes,
     delete2xxCodes,
     post2xxCodes,
+    relationshipPost2xxCodes,
     get2xxCodes,
     batchPost2xxCodes,
   ],

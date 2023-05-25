@@ -8,7 +8,12 @@ import {
   Matcher,
 } from "@useoptic/rulesets-base";
 import { links } from "../../../../docs";
-import { isOpenApiPath, isSingletonPath, validPost2xxCodes } from "../utils";
+import {
+  isOpenApiPath,
+  isSingletonPath,
+  validPost2xxCodes,
+  isRelationshipPath,
+} from "../utils";
 
 const resourceIDFormat = new Matcher((value: any): boolean => {
   return value === "uuid" || value === "uri";
@@ -57,6 +62,8 @@ const requestDataForPatch = new RequestRule({
   name: "request body for patch",
   docsLink: links.jsonApi.patchRequests,
   matches: (request, rulesContext) =>
+    // Relationship PATCH requests have different rules.
+    !isRelationshipPath(rulesContext.operation.path) &&
     rulesContext.operation.method === "patch" &&
     request.contentType === "application/vnd.api+json",
   rule: (requestAssertions) => {
@@ -97,6 +104,7 @@ const requestDataForPost = new RequestRule({
   name: "request body for post",
   docsLink: links.jsonApi.postRequests,
   matches: (request, rulesContext) =>
+    !isRelationshipPath(rulesContext.operation.path) &&
     request.contentType === "application/vnd.api+json" &&
     rulesContext.operation.method === "post" &&
     !rulesContext.operation.responses.has("204"),
@@ -111,6 +119,50 @@ const requestDataForPost = new RequestRule({
       schema: {
         type: "object",
         properties: matchPostRequest,
+      },
+    });
+  },
+});
+
+// Relationship POST, PATCH, and DELETE requests must have
+// a request body with resource objects for the relationships
+// to be added/patched/deleted.
+const matchRelationshipModificationRequestData = {
+  data: {
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        type: {
+          type: Matchers.string,
+        },
+        id: {
+          type: "string",
+          format: resourceIDFormat,
+        },
+      },
+    },
+  },
+};
+
+const requestDataForRelationshipModification = new RequestRule({
+  name: "request body for relationship post/patch/delete",
+  docsLink: links.jsonApi.postRequests,
+  matches: (request, rulesContext) =>
+    isRelationshipPath(rulesContext.operation.path) &&
+    request.contentType === "application/vnd.api+json" &&
+    ["patch", "delete", "post"].includes(rulesContext.operation.method),
+  rule: (requestAssertions) => {
+    requestAssertions.body.added.matches({
+      schema: {
+        type: "object",
+        properties: matchRelationshipModificationRequestData,
+      },
+    });
+    requestAssertions.body.changed.matches({
+      schema: {
+        type: "object",
+        properties: matchRelationshipModificationRequestData,
       },
     });
   },
@@ -137,6 +189,7 @@ const requestDataForBulkPost = new RequestRule({
   name: "request body for bulk post",
   docsLink: links.jsonApi.patchRequests,
   matches: (request, rulesContext) =>
+    !isRelationshipPath(rulesContext.operation.path) &&
     rulesContext.operation.method === "post" &&
     rulesContext.operation.responses.has("204") &&
     request.contentType === "application/vnd.api+json",
@@ -519,7 +572,7 @@ const patchSingletonResponseDataSchema = new ResponseBodyRule({
 });
 
 const deleteResponseDataSchema = new ResponseBodyRule({
-  name: "valid patch response data schema",
+  name: "valid delete response data schema",
   matches: (responseBody, rulesContext) => {
     const { method } = rulesContext.operation;
     const { statusCode, contentType } = responseBody;
@@ -551,6 +604,7 @@ export const resourceObjectRules = new Ruleset({
   rules: [
     requestDataForPatch,
     requestDataForPost,
+    requestDataForRelationshipModification,
     requestDataForBulkPost,
     responseDataForPatch,
     empty204Content,
