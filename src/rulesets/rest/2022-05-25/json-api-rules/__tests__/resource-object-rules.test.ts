@@ -123,7 +123,7 @@ describe("resource object rules", () => {
     );
 
     test.each(["uuid", "uri"])(
-      "passes when PATCH request body for a relationship is of the correct form",
+      "passes when PATCH request body for a relationship is of the correct form (data is an collection of resource objects with id and type)",
       async (format) => {
         const afterJson = {
           ...baseJson,
@@ -173,7 +173,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test("fails when PATCH request body for a relationship is of incorrect form", async () => {
+    test("fails when PATCH request body for a relationship is of incorrect form (missing id from collection of resource objects in data)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -229,7 +229,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid POST requests", () => {
-    test("passes when POST request body is of the correct form", async () => {
+    test("passes when POST request body is of the correct form (data is a single object with type, attributes)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -279,7 +279,7 @@ describe("resource object rules", () => {
     });
 
     test.each(["uuid", "uri"])(
-      "passes when POST request body for a relationship is of the correct form",
+      "passes when POST request body for a relationship is of the correct form (data is collection of resource objects with type and id)",
       async (format) => {
         const afterJson = {
           ...baseJson,
@@ -329,7 +329,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test("fails when POST request body for a relationship is of incorrect form", async () => {
+    test("fails when POST request body for a relationship is of incorrect form (missing id from resource objects in data array)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -383,7 +383,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("passes when bulk POST request body is of the correct form", async () => {
+    test("passes when bulk POST request body is of the correct form (data is an collection of resource objects with type and attributes)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -442,7 +442,7 @@ describe("resource object rules", () => {
   });
 
   describe("invalid PATCH requests", () => {
-    test("fails when PATCH request body is not of the correct form", async () => {
+    test("fails when PATCH request body is not of the correct form (data is missing required fields attributes/type)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -490,7 +490,7 @@ describe("resource object rules", () => {
   });
 
   describe("invalid POST requests", () => {
-    test("fails when POST request body is not of the correct form", async () => {
+    test("fails when POST request body is not of the correct form (missing required fields attributes/type)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -535,7 +535,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("fails when bulk POST request body is not the correct form", async () => {
+    test("fails when bulk POST request body is not the correct form (bulk post data should be collection of resource objects)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -584,7 +584,7 @@ describe("resource object rules", () => {
       );
     });
 
-    test("fails when bulk POST request array elements are not of the correct form", async () => {
+    test("fails when bulk POST request array elements are not of the correct form (missing required fields type/attributes)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -947,7 +947,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test("passes when singleton status code 200 has the correct body", async () => {
+    test("passes when singleton status code 200 has the correct body (data is a single resource object)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -1004,7 +1004,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid DELETE responses", () => {
-    test("passes when status code 200 has the correct body", async () => {
+    test("passes when status code 200 has the correct body (jsonapi/meta fields in content)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {
@@ -1047,7 +1047,7 @@ describe("resource object rules", () => {
     });
 
     test.each(["uuid", "uri"])(
-      "passes when DELETE request body for a relationship is of the correct form",
+      "passes when DELETE request body for a relationship is of the correct form (data is collection of resource objects)",
       async (format) => {
         const afterJson = {
           ...baseJson,
@@ -1097,7 +1097,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test("fails when DELETE request body for a relationship is of incorrect form", async () => {
+    test("fails when DELETE request body for a relationship is of incorrect form (resource objects in collection missing id)", async () => {
       const afterJson = {
         ...baseJson,
         paths: {

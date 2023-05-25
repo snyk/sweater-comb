@@ -45,7 +45,7 @@ exports[`resource object rules invalid PATCH responses fails when content is spe
 ]
 `;
 
-exports[`resource object rules valid DELETE responses passes when status code 200 has the correct body 1`] = `
+exports[`resource object rules valid DELETE responses passes when status code 200 has the correct body (jsonapi/meta fields in content) 1`] = `
 [
   {
     "change": {
@@ -548,7 +548,7 @@ exports[`resource object rules valid GET responses passes when status code 200 h
 ]
 `;
 
-exports[`resource object rules valid PATCH responses passes when singleton status code 200 has the correct body 1`] = `
+exports[`resource object rules valid PATCH responses passes when singleton status code 200 has the correct body (data is a single resource object) 1`] = `
 [
   {
     "change": {
