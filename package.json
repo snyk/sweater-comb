@@ -54,7 +54,7 @@
     "@useoptic/openapi-io": "0.43.0",
     "@useoptic/openapi-utilities": "0.43.0",
     "@useoptic/optic": "0.43.0",
-    "@useoptic/rulesets-base": "0.43.0",
+    "@useoptic/rulesets-base": "0.43.1",
     "chalk": "^4.0.0",
     "change-case": "^4.1.2",
     "commander": "10.0.0",
