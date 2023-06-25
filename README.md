@@ -2,7 +2,7 @@
 
 “Sweats the small stuff, so you don’t have to. OpenAPI linting rules for Snyk APIs.”
 
-## What is Sweater Comb?
+## What is Sweater Comb? test
 
 At Snyk, we’re starting an API Program whose goal it is to create a beautiful garden of repeatable & concise APIs that empower Snyk customers, partners, and Snyk’ers alike to easily and quickly build new experiences and products.
 
