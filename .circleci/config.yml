@@ -6,7 +6,7 @@ orbs:
 defaults: &defaults
   resource_class: small
   docker:
-    - image: cimg/node:18.0.0
+    - image: cimg/node:18.16.1
   working_directory: ~/sweater-comb
 
 commands:
@@ -15,7 +15,9 @@ commands:
     steps:
       - run:
           name: GCR auth
-          command: echo $GCLOUD_GCR_BUILDER | docker login -u _json_key --password-stdin ${GCR_PREFIX}
+          command:
+            echo $GCLOUD_GCR_BUILDER | docker login -u _json_key
+            --password-stdin https://gcr.io/snyk-main
   setup_build_remote_docker:
     steps:
       - setup_remote_docker:
@@ -77,6 +79,7 @@ jobs:
     steps:
       - checkout
       - setup_build_remote_docker
+      - gcr_auth
       - run:
           name: Build Docker image
           command: docker build -f Dockerfile.woollypully -t ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} .
@@ -156,6 +159,8 @@ workflows:
 
       - woollypully-build:
           name: Woollypully image build
+          context:
+            - snyk-docker-build
 
       - woollypully-scan:
           name: Woollypully image scan
