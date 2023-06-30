@@ -2986,6 +2986,14 @@
     jsonpointer "^5.0.1"
     minimatch "9.0.0"
 
+"@useoptic/json-pointer-helpers@0.45.1":
+  version "0.45.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.45.1.tgz#fec72807147152e9e031b9c3434be302a416e72b"
+  integrity sha512-ecM14nax8Hk1IFweMKzb9LmICx9hAWk9+fkmqcdb1UviqRj7I+qXvUY5cQhEdQ+EyR5BTR0wnDxZ3RmPqarDWg==
+  dependencies:
+    jsonpointer "^5.0.1"
+    minimatch "9.0.1"
+
 "@useoptic/openapi-io@0.43.0":
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.43.0.tgz#0a001b5e027e2d039fdafc8f22a1a5fef65dbed0"
@@ -3013,6 +3021,33 @@
     yaml "^2.2.0"
     yaml-ast-parser "^0.0.43"
 
+"@useoptic/openapi-io@0.45.1":
+  version "0.45.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.45.1.tgz#d0e1e8dab648ab46fc66df274cbc5790b2f11393"
+  integrity sha512-W6i7aZ7vvaaH97x5alGHbpLlz2p63f0xS6HLP9Rs9dTvASsLx8knYNDYoJjVawHNb7g/65c72cjepPwB0pbgCQ==
+  dependencies:
+    "@apidevtools/json-schema-ref-parser" "9.0.9"
+    "@jsdevtools/ono" "^7.1.3"
+    "@useoptic/json-pointer-helpers" "0.45.1"
+    "@useoptic/openapi-utilities" "0.45.1"
+    ajv "^8.6.0"
+    ajv-errors "~3.0.0"
+    ajv-formats "~2.1.0"
+    bottleneck "^2.19.5"
+    chalk "^4.1.2"
+    fast-deep-equal "^3.1.3"
+    fast-json-patch "^3.1.1"
+    is-url "^1.2.4"
+    json-stable-stringify "^1.0.1"
+    lodash.clonedeep "^4.5.0"
+    lodash.sortby "^4.7.0"
+    node-fetch "^2.6.7"
+    openapi-types "^12.0.2"
+    semver "^7.3.8"
+    upath "^2.0.1"
+    yaml "^2.2.2"
+    yaml-ast-parser "^0.0.43"
+
 "@useoptic/openapi-utilities@0.43.0":
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.43.0.tgz#0721ee4f57b883b72b3888aa194346d0c4b384ad"
@@ -3021,6 +3056,31 @@
     "@octokit/rest" "^19.0.0"
     "@sentry/node" "^7.10.0"
     "@useoptic/json-pointer-helpers" "0.43.0"
+    ajv "^8.6.0"
+    ajv-errors "~3.0.0"
+    ajv-formats "~2.1.0"
+    analytics-node "^6.2.0"
+    chalk "^4.1.2"
+    fast-deep-equal "^3.1.3"
+    is-url "^1.2.4"
+    js-yaml "^4.1.0"
+    json-stable-stringify "^1.0.1"
+    lodash.groupby "^4.6.0"
+    lodash.isequal "^4.5.0"
+    lodash.omit "^4.5.0"
+    node-machine-id "^1.1.12"
+    openapi-types "^12.0.2"
+    ts-invariant "^0.9.3"
+    yaml-ast-parser "^0.0.43"
+
+"@useoptic/openapi-utilities@0.45.1":
+  version "0.45.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/openapi-utilities/-/openapi-utilities-0.45.1.tgz#34cc8c59acfb8bb2672d08af2a5976b8a5581093"
+  integrity sha512-FU7AJ0toFuhbEyW9afsaPZZMX1qHDKbcI6xLGxSszoMA73D5Q5ujHIvtXffzrdobp+vWhIl4OIPb3YfhMzk8DA==
+  dependencies:
+    "@octokit/rest" "^19.0.0"
+    "@sentry/node" "^7.10.0"
+    "@useoptic/json-pointer-helpers" "0.45.1"
     ajv "^8.6.0"
     ajv-errors "~3.0.0"
     ajv-formats "~2.1.0"
@@ -8360,6 +8420,13 @@ minimatch@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.0.tgz#bfc8e88a1c40ffd40c172ddac3decb8451503b56"
   integrity sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.1.tgz#8a555f541cf976c622daf078bb28f29fb927c253"
+  integrity sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==
   dependencies:
     brace-expansion "^2.0.1"
 
