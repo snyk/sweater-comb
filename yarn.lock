@@ -2986,6 +2986,14 @@
     jsonpointer "^5.0.1"
     minimatch "9.0.0"
 
+"@useoptic/json-pointer-helpers@0.45.1":
+  version "0.45.1"
+  resolved "https://registry.yarnpkg.com/@useoptic/json-pointer-helpers/-/json-pointer-helpers-0.45.1.tgz#fec72807147152e9e031b9c3434be302a416e72b"
+  integrity sha512-ecM14nax8Hk1IFweMKzb9LmICx9hAWk9+fkmqcdb1UviqRj7I+qXvUY5cQhEdQ+EyR5BTR0wnDxZ3RmPqarDWg==
+  dependencies:
+    jsonpointer "^5.0.1"
+    minimatch "9.0.1"
+
 "@useoptic/openapi-io@0.43.0":
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/@useoptic/openapi-io/-/openapi-io-0.43.0.tgz#0a001b5e027e2d039fdafc8f22a1a5fef65dbed0"
@@ -8360,6 +8368,13 @@ minimatch@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.0.tgz#bfc8e88a1c40ffd40c172ddac3decb8451503b56"
   integrity sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.1.tgz#8a555f541cf976c622daf078bb28f29fb927c253"
+  integrity sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==
   dependencies:
     brace-expansion "^2.0.1"
 
