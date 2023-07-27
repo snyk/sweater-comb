@@ -47,7 +47,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
+    "@babel/runtime": "^7.22.6",
     "@stoplight/spectral-core": "^1.8.1",
     "@stoplight/spectral-rulesets": "^1.14.1",
     "@useoptic/json-pointer-helpers": "0.43.0",
