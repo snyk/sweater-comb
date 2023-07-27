@@ -74,66 +74,6 @@ jobs:
           name: Build and release
           command: ./scripts/build-npm.bash
 
-  woollypully-build:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_build_remote_docker
-      - gcr_auth
-      - run:
-          name: Build Docker image
-          command: docker build -f Dockerfile.woollypully -t ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} .
-      - run:
-          name: Save Docker image to workspace
-          command: |
-            mkdir -p /tmp/workspace/images
-            docker save ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} | gzip > /tmp/workspace/images/woollypully.tar.gz
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - images
-
-  woollypully-scan:
-    <<: *defaults
-    steps:
-      - setup_remote_docker
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Load Docker image
-          command: docker load < /tmp/workspace/images/woollypully.tar.gz
-      - snyk/scan:
-          command: container test
-          fail-on-issues: true
-          severity-threshold: high
-          monitor-on-build: true
-          organization: platform-extensibility
-          docker-image-name: ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
-          token-variable: MONITOR_SNYK_TOKEN
-
-  woollypully-publish:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - gcr_auth
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Load Docker image
-          command: docker load < /tmp/workspace/images/woollypully.tar.gz
-      - run:
-          name: Push container to image registry
-          command: |-
-            docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1}
-            if [ "$CIRCLE_BRANCH" = "main" ]; then
-              docker tag ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} ${WOOLLYPULLY_IMAGE}:latest
-              docker push ${WOOLLYPULLY_IMAGE}:latest
-            elif [ -n "$CIRCLE_TAG" ]; then
-              docker tag ${WOOLLYPULLY_IMAGE}:${CIRCLE_SHA1} ${WOOLLYPULLY_IMAGE}:${CIRCLE_TAG}
-              docker push ${WOOLLYPULLY_IMAGE}:${CIRCLE_TAG}
-            fi
-
 workflows:
   version: 2
   test_and_publish:
@@ -156,24 +96,3 @@ workflows:
               only: 'main'
             tags:
               only: /^v.*/
-
-      - woollypully-build:
-          name: Woollypully image build
-          context:
-            - snyk-docker-build
-
-      - woollypully-scan:
-          name: Woollypully image scan
-          requires:
-            - Woollypully image build
-          context:
-            - team-extensibility
-
-      - woollypully-publish:
-          name: Woollypully image release
-          requires:
-            - Woollypully image scan
-            - Test
-          context:
-            - snyk-docker-build
-          filters: *publish_filters
