@@ -76,13 +76,7 @@
     "@useoptic/rulesets-base"
   ],
   "resolutions": {
-    "urijs": "^1.19.11",
-    "@useoptic/optic/conf/semver": "7.5.2",
-    "@useoptic/optic/postman-collection/semver": "7.5.2",
-    "@useoptic/optic/latest-version/**/semver": "6.3.1",
-    "@useoptic/optic/update-notifier/semver-diff/semver": "6.3.1",
-    "@useoptic/optic/update-notifier/configstore/**/semver": "6.3.1",
-    "@useoptic/optic/is-elevated/**/semver": "5.7.2"
+    "urijs": "^1.19.11"
   },
   "jest": {
     "maxWorkers": 5,
