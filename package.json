@@ -8,6 +8,9 @@
     "/build",
     "/schemas"
   ],
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "test": "jest --colors",
     "build": "yarn tsc --build --verbose",
