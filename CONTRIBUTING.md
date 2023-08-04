@@ -1,6 +1,6 @@
 ### 1. Prerequisites
 
-NodeJS Version 14.x.x
+NodeJS Version 16.x.x
 
 yarn - `npm install -g yarn`
 
