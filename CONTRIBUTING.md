@@ -2,7 +2,7 @@
 
 NodeJS Version 16.x.x
 
-yarn - `npm install -g yarn`
+NPM Version 9.8
 
 ### 2. Clone this repository
 
@@ -12,10 +12,10 @@ then `cd` into your local copy.
 
 ### 3. Install
 ```
-yarn
+npm ci
 ```
 
 ### 4. Running tests
 ``` 
-yarn test
+npm test
 ``` 
