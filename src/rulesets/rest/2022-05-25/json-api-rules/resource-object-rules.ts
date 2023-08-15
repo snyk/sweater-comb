@@ -93,9 +93,6 @@ const matchPostRequest = {
       type: {
         type: Matchers.string,
       },
-      attributes: {
-        type: "object",
-      },
     },
   },
 };
@@ -176,9 +173,6 @@ const matchBulkPostRequest = {
       properties: {
         type: {
           type: Matchers.string,
-        },
-        attributes: {
-          type: "object",
         },
       },
     },
