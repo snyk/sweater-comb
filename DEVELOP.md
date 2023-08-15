@@ -1,7 +1,7 @@
 ## Running CLI in development mode
 
 ```bash
-yarn install
+npm install
 source sourceme.sh
 ```
 

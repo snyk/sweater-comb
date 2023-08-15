@@ -15,8 +15,7 @@ commands:
     steps:
       - run:
           name: GCR auth
-          command:
-            echo $GCLOUD_GCR_BUILDER | docker login -u _json_key
+          command: echo $GCLOUD_GCR_BUILDER | docker login -u _json_key
             --password-stdin https://gcr.io/snyk-main
   setup_build_remote_docker:
     steps:
@@ -49,16 +48,16 @@ jobs:
       - checkout
       - run:
           name: Install
-          command: yarn install
+          command: npm ci
       - run:
           name: Lint
-          command: yarn lint
+          command: npm run lint
       - run:
           name: Build
-          command: yarn tsc
+          command: npm run build
       - run:
           name: Test
-          command: yarn test
+          command: npm test
       - run:
           name: E2E Test - Bulk Compare
           command: ./end-end-tests/api-standards/test-bulk.bash
@@ -93,6 +92,6 @@ workflows:
           context: nodejs-app-release
           filters: &publish_filters
             branches:
-              only: 'main'
+              only: "main"
             tags:
               only: /^v.*/
