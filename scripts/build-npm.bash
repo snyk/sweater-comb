@@ -4,6 +4,7 @@ cd $(dirname $0)/..
 
 # Stage 1: clean install of dev dependencies, build TS
 npm ci
+npm run build
 npm pack
 
 # Use GH_TOKEN as a fallback if GITHUB_TOKEN is not set
