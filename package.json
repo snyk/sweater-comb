@@ -56,7 +56,7 @@
     "@useoptic/json-pointer-helpers": "^0.48.4",
     "@useoptic/openapi-io": "^0.48.4",
     "@useoptic/openapi-utilities": "^0.48.9",
-    "@useoptic/optic": "^0.48.4",
+    "@useoptic/optic": "^0.43.0",
     "@useoptic/rulesets-base": "^0.48.4",
     "ajv": "^8.12.0",
     "chalk": "^4.0.0",
@@ -92,5 +92,14 @@
       "^nimma/fallbacks$": "<rootDir>/node_modules/nimma/dist/cjs/fallbacks/index.js",
       "^nimma/legacy$": "<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js"
     }
-  }
+  },
+  "bundleDependencies": [
+    "@stoplight/spectral-core",
+    "@stoplight/spectral-rulesets",
+    "@useoptic/json-pointer-helpers",
+    "@useoptic/openapi-io",
+    "@useoptic/optic",
+    "@useoptic/openapi-utilities",
+    "@useoptic/rulesets-base"
+  ]
 }
