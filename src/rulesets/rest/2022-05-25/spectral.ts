@@ -43,8 +43,19 @@ spectral.setRuleset({
     "oas3-parameter-description": "error",
     "oas3-server-not-example.com": "error",
     "oas3-server-trailing-slash": "error",
-    "oas3-valid-media-example": "error",
-    "oas3-valid-schema-example": "error",
+
+    // Spectral false-positives on oas3-valid-*-example with discriminators,
+    // downgrading these to "warn".
+    //
+    // Spectral open issues on this:
+    // https://github.com/stoplightio/spectral/issues/2528
+    // https://github.com/stoplightio/spectral/issues/2509
+    //
+    // Example spec which triggers the false-positive:
+    // https://github.com/snyk/issue-policies/pull/968
+    "oas3-valid-media-example": "warn",
+    "oas3-valid-schema-example": "warn",
+
     "oas3-schema": "error",
   },
 });
