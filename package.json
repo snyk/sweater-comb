@@ -67,15 +67,6 @@
     "yaml": "^2.2.2",
     "yargs": "~17.6.0"
   },
-  "bundledDependencies": [
-    "@stoplight/spectral-core",
-    "@stoplight/spectral-rulesets",
-    "@useoptic/json-pointer-helpers",
-    "@useoptic/openapi-io",
-    "@useoptic/optic",
-    "@useoptic/openapi-utilities",
-    "@useoptic/rulesets-base"
-  ],
   "overrides": {
     "postman-collection": "4.2.0"
   },
@@ -92,14 +83,5 @@
       "^nimma/fallbacks$": "<rootDir>/node_modules/nimma/dist/cjs/fallbacks/index.js",
       "^nimma/legacy$": "<rootDir>/node_modules/nimma/dist/legacy/cjs/index.js"
     }
-  },
-  "bundleDependencies": [
-    "@stoplight/spectral-core",
-    "@stoplight/spectral-rulesets",
-    "@useoptic/json-pointer-helpers",
-    "@useoptic/openapi-io",
-    "@useoptic/optic",
-    "@useoptic/openapi-utilities",
-    "@useoptic/rulesets-base"
-  ]
+  }
 }

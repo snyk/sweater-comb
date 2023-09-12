@@ -15,7 +15,7 @@
           pname = "sweater-comb";
           version = builtins.substring 0 8 lastMod;
           src = ./.;
-          npmDepsHash = "sha256-JVaL/N3hcTLc8kJZXZ9eKGxvgPuUO6VuJN4ZanOdApc=";
+          npmDepsHash = "sha256-ljVq4otWSn7oRlUrSqzIXDKDDNGBrG1oMnz+Uf+pzeE=";
           nativeBuildInputs = [ pkgs.nodePackages.node-gyp pkgs.python3 ];
           npmBuildScript = "build";
           meta = { 
