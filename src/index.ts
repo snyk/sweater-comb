@@ -85,5 +85,9 @@ main()
     process.exitCode = 0;
   })
   .catch((err) => {
+    if (["commander.helpDisplayed", "commander.version"].includes(err.code)) {
+      process.exitCode = 0;
+      return;
+    }
     console.log("exit on error:", err);
   });
