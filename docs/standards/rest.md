@@ -205,7 +205,7 @@ properties:
 
 What this might look like by example (a total count, and counts grouped by two different attributes):
 
-```
+```json
 {
   "meta": {
     "count": 10,
