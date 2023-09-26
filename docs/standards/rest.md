@@ -96,7 +96,7 @@ The top-level keys in a [meta object](https://jsonapi.org/format/#document-meta)
 
 For example, the meta object in the following resource is valid:
 
-```
+```json
 {
   "data": {
     "id": "3be7761e-eaa2-4548-8167-fffe29fb4c1b",
@@ -156,8 +156,8 @@ Use the singular form if the operation operates on a single resource, plural if 
 
 Examples:
 
-- `getFoo` (get one)
-- `listFoos` (get many)
+- `getThing` (get one)
+- `listThings` (get many)
 - `createThing` (create one)
 - `updateOtherThing` (update one)
 - `deleteThings` (bulk delete)
@@ -205,7 +205,7 @@ properties:
 
 What this might look like by example (a total count, and counts grouped by two different attributes):
 
-```
+```json
 {
   "meta": {
     "count": 10,
@@ -256,7 +256,7 @@ A filter parameter may support a single value to match, or a set of multiple val
 - Use `schema: {type: array, items: {type: string}}` (the schema and/or item types may be referenced). Whenever possible, the item type should use an `enum` set of allowed values, a `format` or a `pattern` regex to validate it.
 - Use `style: form, explode: false` to indicate a comma-separated representation of multiple values. Refer to the [Parameter object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameter-object) OpenAPI specification for more information.
 
-Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multple values to a single value) is a breaking API change.
+Changing a parameter's schema from a single value to multiple values is a non-breaking API change. The inverse however (changing from supporting multiple values to a single value) is a breaking API change.
 
 #### Filtering through sub properties
 
@@ -338,7 +338,7 @@ To illustrate this, consider a resource API of `books`, `series` and `authors`, 
 
 The author and series relationships for each book in a resource collection response may be expanded, as these are "to-one" with each book:
 
-```
+```json
 GET /books?expand=author,series
 {
   "data": [{
@@ -402,7 +402,7 @@ GET /books?expand=author,series
 
 Relationship links to a resource collection may still be used to express and navigate a "to-many" relation -- these just can't be expanded inline:
 
-```
+```json
 GET /authors/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea
 {
   "data": {
@@ -422,7 +422,7 @@ GET /authors/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea
 }
 ```
 
-```
+```json
 GET /authors/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea?expand=books
 
 HTTP 400 Bad Request
@@ -436,7 +436,7 @@ Content-Type: application/vnd.api+json
 
 The `attributes` URL query parameter is reserved for expressing [sparse fieldsets](https://jsonapi.org/format/#fetching-sparse-fieldsets) on resource data in responses. Resources are not required to support this parameter. However when a resource supports sparse fieldsets, it must declare the `attributes` parameter as an array of enums, represented as a comma-separated list. This may be expressed in OpenAPI as:
 
-```
+```json
 {
   "name": "attributes",
   "description": "Only include these resource attribute properties in the response",
@@ -539,7 +539,7 @@ In order to locate the resources created, a client making a bulk POST request mu
 - Specify resource IDs in the bulk request
 - Know how to locate resources by some other attributes when IDs are server assigned
 
-```
+```json
 POST /things
 Content-Type: application/vnd.api+json
 
@@ -555,7 +555,7 @@ HTTP 204 No Content
 
 PATCH requests are similar. The response may be a 200 or 204, using the same JSON API guidance given for [patching single resources](https://jsonapi.org/format/#crud-updating-responses).
 
-```
+```json
 PATCH /things
 Content-Type: application/vnd.api+json
 
@@ -645,9 +645,15 @@ With examples, it's clear what to expect. One could even run a mock API server w
 
 Without examples, as an end-user I don't have much context here to know what these fields' values are going to look like! Links are most likely URLs, not just strings!
 
-## PATCHing data - Optional/Null values
+## Optional/Null values
 
-- If fields, objects and/or relationships are not supplied in the request they are not modified.
+### Fetching data
+
+- Fields, objects, and/or relationships that have no value (`null`) should not be present in a response at all, including to GET, POST, etc.
+
+### PATCHing data
+
+- If fields, objects, and/or relationships are not supplied in the request they are not modified.
 - To unset an existing attribute supply a value of `null`.
 
 ## Making the OpenAPI specification available
