@@ -10,6 +10,6 @@ metadata:
     snyk.io/visibility: public
   name: sweater-comb
 spec:
+  type: external-tooling
   lifecycle: "-"
   owner: extensibility
-  type: tool
