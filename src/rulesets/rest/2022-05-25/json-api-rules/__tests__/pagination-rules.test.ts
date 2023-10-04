@@ -121,4 +121,31 @@ describe("pagination rules", () => {
     expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
+
+  test("skips when path is a singular item", async () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users/{user_id}": {
+          get: {
+            responses: {},
+          },
+        },
+        // Ensure multiple underscores are supported
+        "/api/users/{foo_user_id}": {
+          get: {
+            responses: {},
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([paginationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toEqual(0);
+  });
 });

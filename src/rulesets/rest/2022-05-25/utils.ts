@@ -12,7 +12,7 @@ export const isSingletonPath = (rulesContext: RuleContext) =>
   !!rulesContext.specification.raw.paths[rulesContext.operation.path]?.[
     "x-snyk-resource-singleton"
   ];
-export const isItemOperation = (path: string) => /\{[a-z]*?_?id\}$/.test(path);
+export const isItemOperation = (path: string) => /\{[a-z_]*?id\}$/.test(path);
 export const isBatchPostOperation = (requests) => {
   const request = requests.find(
     (request) => request.contentType === "application/vnd.api+json",
