@@ -214,23 +214,22 @@ schemas:
     type: "string"
     description: "Requested API version"
     pattern: "^(wip|work-in-progress|experimental|beta|((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?))$"
+    example: "2021-06-04"
 
   ActualVersion:
     type: string
     description: Resolved API version
     pattern: "^((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?)$"
+    example: "2021-06-04"
 
 headers:
-
   VersionRequestedResponseHeader:
     description: The version of the endpoint requested by the caller.
     schema: { $ref: "#/schemas/QueryVersion" }
-    example: "2021-06-04"
 
   VersionServedResponseHeader:
     description: The version of the endpoint that was served by the API.
     schema: { $ref: "#/schemas/ActualVersion" }
-    example: "2021-06-04"
 
   VersionStageResponseHeader:
     description: >
@@ -256,7 +255,7 @@ headers:
     schema:
       type: string
       format: date-time
-    example: "2021-07-01T00:00:00Z"
+      example: "2021-07-01T00:00:00Z"
 
   SunsetHeader:
     description: >
@@ -268,7 +267,7 @@ headers:
     schema:
       type: string
       format: date-time
-    example: "2021-08-02T00:00:00Z"
+      example: "2021-08-02T00:00:00Z"
 
   RequestIdResponseHeader:
     description: >
@@ -277,7 +276,7 @@ headers:
     schema:
       type: string
       format: uuid
-    example: 4b58e274-ec62-4fab-917b-1d2c48d6bdef
+      example: 4b58e274-ec62-4fab-917b-1d2c48d6bdef
 
   InternalGlooNormalizedPathHeader:
     x-snyk-internal: true
