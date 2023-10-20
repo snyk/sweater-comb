@@ -252,6 +252,12 @@ The `_before` and `_at_or_before` filters cannot be used together, nor can `_aft
 #### Numerical filters
 For numerical range filters properties may optionally be filtered on with `_lt` (less than) and `_gt` (greater than) parameters for non inclusive ranges or `_lte` (less than or equal) and `_gte` (greater than or equal) for inclusive ranges. For example, the `count` property can also be used as a range filtering value via `count_gt` or `count_lt` for `count` values greater than or less than the provided filter values. Numerical filters must be formatted as [JSON Schema numbers](https://json-schema.org/understanding-json-schema/reference/numeric.html#numbers).
 
+An example request with a numerical filter:
+
+```
+GET https://example.com/foos?count_gt=10
+```
+
 #### Multiple filter values
 
 A filter parameter may support a single value to match, or a set of multiple values. When a filter supports a set of multiple values, these must be expressed using the form `?property_name=value_1,value_2,...,value_n`. To define such a parameter, in its properties:
