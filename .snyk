@@ -1,0 +1,9 @@
+version: v1.25.0
+
+ignore:
+  SNYK-JS-AXIOS-6032459:
+    - '*':
+        reason: No upstream fix from OpticCI
+        expires: 2023-11-24T13:26:07.013Z
+        created: 2023-10-25T13:26:07.015Z
+patch: {}
