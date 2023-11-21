@@ -36,6 +36,21 @@ To declare this format on a timestamp attribute property, use:
 
 `type: string, format: date-time`
 
+### Links
+
+All links should:
+
+* be relative, including `/rest` (customers will need to prepend their instance domain)
+* _not_ include a version parameter (to avoid feature mismatch betwen versions, so a customer will need to include this parameter)
+
+Therefore, a `next` link to an org's project listing might be:
+
+```json
+"links": {
+    "next": "/rest/orgs/5c4b6ec5-9ca0-4b14-8ab1-23ee26684cea/projects?limit=10&starting_after=v1.eyJpZCI6Mz1zODQyMH0%3D"
+}
+```
+
 ### Resource lifecycle timestamps
 
 These properties are optional on a resource, but should be used when applicable. These properties must be formatted as timestamps, due to the suffix.
