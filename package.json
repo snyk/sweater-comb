@@ -55,7 +55,7 @@
     "@stoplight/spectral-rulesets": "^1.18.0",
     "@useoptic/optic": "^0.43.0",
     "@useoptic/json-pointer-helpers": "^0.53.11",
-    "@useoptic/openapi-io": "^0.53.11",
+    "@useoptic/openapi-io": "^0.53.12",
     "@useoptic/openapi-utilities": "^0.53.11",
     "@useoptic/rulesets-base": "^0.53.11",
     "chalk": "^4.0.0",
