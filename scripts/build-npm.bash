@@ -11,5 +11,5 @@ npm pack
 export GITHUB_TOKEN=${GITHUB_TOKEN:-$GH_TOKEN}
 
 if [[ -n "$GITHUB_TOKEN" && -n "$NPM_TOKEN" ]]; then
-  npx semantic-release
+  npx "semantic-release@23"
 fi
