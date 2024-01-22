@@ -17,7 +17,7 @@
           version = builtins.substring 0 8 lastMod;
           src = ./.;
 
-          npmDepsHash = "sha256-ljVq4otWSn7oRlUrSqzIXDKDDNGBrG1oMnz+Uf+pzeE=";
+          npmDepsHash = "sha256-IMHX8KqW8kGdFxHgU0JcBwKByVw9U78pNDug12x63r0=";
           npmBuildScript = "build";
 
           nativeBuildInputs = [ pkgs.nodePackages.node-gyp pkgs.python3 ];
