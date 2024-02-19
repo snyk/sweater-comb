@@ -32,15 +32,15 @@ jobs:
           fail-on-issues: true
           severity-threshold: high
           monitor-on-build: true
-          organization: platform-api
-          token-variable: MONITOR_SNYK_TOKEN
+          organization: platformeng_api
+          token-variable: SNYK_TOKEN
       - snyk/scan:
           command: code test
           fail-on-issues: true
           severity-threshold: high
           monitor-on-build: true
-          organization: platform-api
-          token-variable: MONITOR_SNYK_TOKEN
+          organization: platformeng_api
+          token-variable: SNYK_TOKEN
 
   test:
     <<: *defaults
@@ -80,7 +80,7 @@ workflows:
       - scan:
           name: Snyk Vuln Scan
           context:
-            - team-api
+            - platformeng_api
 
       - test:
           name: Test
