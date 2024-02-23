@@ -3,7 +3,9 @@ import * as uuid from "uuid";
 import { lintAction } from "../lint";
 
 // Tests which spawn subprocesses seem to take longer to execute in CircleCI
-const testTimeout = 30000;
+const testTimeout = 60000;
+
+jest.useRealTimers();
 
 describe("lint command", () => {
   let pushd: string;

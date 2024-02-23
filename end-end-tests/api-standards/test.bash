@@ -6,6 +6,7 @@ cd $HERE/../..
 
 CONTEXT=$(awk NF=NF RS= OFS= <$HERE/context.json)
 CONTEXT_BETA=$(awk NF=NF RS= OFS= <$HERE/context-beta.json)
+CONTEXT_GA=$(awk NF=NF RS= OFS= <$HERE/context-ga.json)
 
 COMPARE=${COMPARE:-./node_modules/.bin/ts-node src/index.ts diff}
 
@@ -149,3 +150,51 @@ for fc in ${BETA_FAILING_CHANGES}; do
         --check
     assert_err
 done
+
+
+### 004 Tests delta mechanism for PRs
+
+### Test invalid API getting another valid change - experimental
+OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error-and-no-new-error.yaml \
+    --check
+assert_ok
+
+
+### Test invalid API getting another invalid change - experimental
+OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error-and-new-error.yaml \
+    --check
+assert_err
+
+
+# ### Test invalid API getting another valid change - beta
+OPTIC_DIFF_CONTEXT=$CONTEXT_BETA ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-beta-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-beta-with-error-and-no-new-error.yaml \
+    --check
+assert_ok
+
+# ### Test invalid API getting another invalid change - beta
+OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-with-error-and-new-error.yaml \
+    --check
+assert_err
+
+### Test invalid API getting another valid change -v2
+OPTIC_DIFF_CONTEXT=$CONTEXT_GA ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-ga-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-ga-with-error-and-no-new-error.yaml \
+    --check
+assert_ok
+
+### Test invalid API getting another invalid change -v2
+OPTIC_DIFF_CONTEXT=$CONTEXT_GA ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/004-baseline-ga-with-error.yaml \
+    $HERE/resources/thing/2021-11-10/004-baseline-ga-with-error-and-new-error.yaml \
+    --check
+assert_err
+
