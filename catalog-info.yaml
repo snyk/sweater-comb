@@ -12,4 +12,4 @@ metadata:
 spec:
   type: external-tooling
   lifecycle: "-"
-  owner: extensibility
+  owner: api
