@@ -8,7 +8,9 @@ import { Checker } from "../checker";
 import { getConfig } from "../config";
 
 // Tests which spawn subprocesses seem to take longer to execute in CircleCI
-const testTimeout = 30000;
+const testTimeout = 60000;
+
+jest.useRealTimers();
 
 jest.mock("axios");
 jest.mock("@useoptic/openapi-io");
