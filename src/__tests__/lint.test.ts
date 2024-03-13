@@ -69,7 +69,6 @@ describe("lint command", () => {
     testTimeout,
   );
 
-
   it("errors with invalid branch given", async () => {
     try {
       await lintAction(
