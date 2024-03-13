@@ -114,7 +114,7 @@ cp $REPO/$SPECS_PATH/005-baseline-no-optic-url.yaml ./$SPECS_PATH/comparison-1.y
 git add .
 git commit -m 'first commit'
 
-cp $REPO/$SPECS_PATH/005-fail-breaking-param-change-beta ./$SPECS_PATH/comparison-1.yaml
+cp $REPO/$SPECS_PATH/005-fail-breaking-param-change-beta.yaml ./$SPECS_PATH/comparison-1.yaml
 git add .
 git commit -m 'second commit'
 
