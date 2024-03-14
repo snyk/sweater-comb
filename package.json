@@ -54,7 +54,7 @@
     "@stoplight/spectral-core": "^1.8.1",
     "@stoplight/spectral-rulesets": "^1.18.1",
     "@useoptic/optic": "^0.54.4",
-    "@useoptic/json-pointer-helpers": "^0.54.4",
+    "@useoptic/json-pointer-helpers": "^0.54.5",
     "@useoptic/openapi-io": "^0.54.5",
     "@useoptic/openapi-utilities": "^0.54.5",
     "@useoptic/rulesets-base": "^0.54.5",
