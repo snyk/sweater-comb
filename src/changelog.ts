@@ -16,7 +16,7 @@ export type ParseOpenAPIResult = {
 };
 
 const parseOpenAPI = async (path: string): Promise<ParseOpenAPIResult> => {
-  return await parseOpenAPIWithSourcemap(path);
+  return parseOpenAPIWithSourcemap(path) as Promise<ParseOpenAPIResult>;
 };
 
 export async function changeLogBetween(
