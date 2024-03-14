@@ -99,10 +99,75 @@ export const lintAction = async (
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
         base,
+        undefined,
         resource.excludes,
       );
     }
   }
+};
+
+export const lintPRAction = async (
+  from?: string,
+  to?: string,
+): Promise<void> => {
+  console.log("Using Vervet API project configuration:");
+  const vervetConfDir = await findParentDirAsync(
+    path.resolve(process.cwd()),
+    ".vervet.yaml",
+  );
+  if (!vervetConfDir) {
+    console.log("no vervet conf");
+    throw new Error(
+      "cannot find .vervet.yaml -- is this a Vervet-managed API project?",
+    );
+  }
+  const vervetConfFile = path.join(vervetConfDir, ".vervet.yaml");
+  const vervetConfContents = await fs.readFile(vervetConfFile);
+  const vervetConf = loadYaml(vervetConfContents.toString()) as VervetConfig;
+
+  const topDir = await findParentDirAsync(vervetConfDir, ".git");
+  if (!topDir) {
+    console.log("not in a git repository");
+    throw new Error("cannot find .git -- is this a cloned git repository?");
+  }
+  process.chdir(topDir);
+
+  for (const [apiKey, apiValue] of Object.entries(vervetConf.apis)) {
+    console.log(`Linting API ${apiKey}`);
+    for (const resource of apiValue.resources) {
+      if (!resource.linter) {
+        console.log(`skipping API ${apiKey}: no linter`);
+        continue;
+      }
+      const linter = vervetConf.linters[resource.linter];
+      if (!linter || !linter["optic-ci"]) {
+        console.log(`skipping API ${apiKey}: not linted with optic-ci`);
+        continue;
+      }
+      const base = from ?? linter["optic-ci"]?.original ?? defaultBranchName;
+
+      await expectGitBranch(base);
+      await bulkCompare(
+        path.join(path.relative(topDir, vervetConfDir), resource.path),
+        base,
+        to,
+        resource.excludes,
+      );
+    }
+  }
+};
+
+export const createLintPRCommand = () => {
+  const command = new Command("lint-pr")
+    .addArgument(
+      new Argument("base", "base git branch for comparison").argRequired(),
+    )
+    .addArgument(
+      new Argument("to", "base git branch for comparison").argRequired(),
+    )
+    .action(lintPRAction);
+  command.description("lint APIs in current project");
+  return command;
 };
 
 export const createLintCommand = () => {
@@ -121,6 +186,7 @@ export const createLintCommand = () => {
 const bulkCompare = async (
   resourceDir: string,
   base: string,
+  to?: string,
   ignorePatterns: string[] = [],
 ): Promise<void> => {
   const opticScript = await resolveOpticScript();
@@ -128,6 +194,11 @@ const bulkCompare = async (
   if (ignorePatterns.length > 0) {
     extraArgs.push("--ignore", ignorePatterns.join(","));
   }
+
+  if (to) {
+    extraArgs.push("--compare-to", to);
+  }
+
   const args = [
     opticScript,
     "diff-all",
