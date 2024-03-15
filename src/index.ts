@@ -11,7 +11,7 @@ import {
 } from "@useoptic/optic/build/lib";
 import { resourceRules, compiledRules } from "./rulesets/rest/2022-05-25";
 import { program } from "commander";
-import { createLintCommand, createLintPRCommand } from "./lint";
+import { createLintCommand } from "./lint";
 
 const rulesets = {
   resource: resourceRules,
@@ -70,7 +70,6 @@ const readContextFrom = (
 
 const main = async (): Promise<void> => {
   program.addCommand(createLintCommand());
-  program.addCommand(createLintPRCommand());
 
   const cli = await initCli(program, { hideNotifier: true });
   const ruleset =

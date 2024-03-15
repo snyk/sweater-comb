@@ -51,6 +51,7 @@ const expectGitBranch = (branchName: string) => {
 export const lintAction = async (
   resourceDir?: string,
   branchName?: string,
+  options?: any,
 ): Promise<void> => {
   if (resourceDir) {
     await expectGitBranch(branchName ?? defaultBranchName);
@@ -94,80 +95,19 @@ export const lintAction = async (
         console.log(`skipping API ${apiKey}: not linted with optic-ci`);
         continue;
       }
-      const base = linter["optic-ci"]?.original ?? defaultBranchName;
+      const base =
+        options?.compareFrom ??
+        linter["optic-ci"]?.original ??
+        defaultBranchName;
       await expectGitBranch(base);
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
         base,
-        undefined,
+        options?.compareTo,
         resource.excludes,
       );
     }
   }
-};
-
-export const lintPRAction = async (
-  from?: string,
-  to?: string,
-): Promise<void> => {
-  console.log("Using Vervet API project configuration:");
-  const vervetConfDir = await findParentDirAsync(
-    path.resolve(process.cwd()),
-    ".vervet.yaml",
-  );
-  if (!vervetConfDir) {
-    console.log("no vervet conf");
-    throw new Error(
-      "cannot find .vervet.yaml -- is this a Vervet-managed API project?",
-    );
-  }
-  const vervetConfFile = path.join(vervetConfDir, ".vervet.yaml");
-  const vervetConfContents = await fs.readFile(vervetConfFile);
-  const vervetConf = loadYaml(vervetConfContents.toString()) as VervetConfig;
-
-  const topDir = await findParentDirAsync(vervetConfDir, ".git");
-  if (!topDir) {
-    console.log("not in a git repository");
-    throw new Error("cannot find .git -- is this a cloned git repository?");
-  }
-  process.chdir(topDir);
-
-  for (const [apiKey, apiValue] of Object.entries(vervetConf.apis)) {
-    console.log(`Linting API ${apiKey}`);
-    for (const resource of apiValue.resources) {
-      if (!resource.linter) {
-        console.log(`skipping API ${apiKey}: no linter`);
-        continue;
-      }
-      const linter = vervetConf.linters[resource.linter];
-      if (!linter || !linter["optic-ci"]) {
-        console.log(`skipping API ${apiKey}: not linted with optic-ci`);
-        continue;
-      }
-      const base = from ?? linter["optic-ci"]?.original ?? defaultBranchName;
-
-      await expectGitBranch(base);
-      await bulkCompare(
-        path.join(path.relative(topDir, vervetConfDir), resource.path),
-        base,
-        to,
-        resource.excludes,
-      );
-    }
-  }
-};
-
-export const createLintPRCommand = () => {
-  const command = new Command("lint-pr")
-    .addArgument(
-      new Argument("base", "base git branch for comparison").argRequired(),
-    )
-    .addArgument(
-      new Argument("to", "base git branch for comparison").argRequired(),
-    )
-    .action(lintPRAction);
-  command.description("lint APIs in current project");
-  return command;
 };
 
 export const createLintCommand = () => {
@@ -177,6 +117,15 @@ export const createLintCommand = () => {
       new Argument("base", "base git branch for comparison")
         .argOptional()
         .default(defaultBranchName),
+    )
+    .option(
+      "--compare-to <compare-to>",
+      "the head ref to compare against. Defaults to the current working directory",
+    )
+    .option(
+      "--compare-from <compare-from>",
+      "the base ref to compare against. Defaults to HEAD~1",
+      "HEAD~1",
     )
     .action(lintAction);
   command.description("lint APIs in current project");
