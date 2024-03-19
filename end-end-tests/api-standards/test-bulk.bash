@@ -100,4 +100,25 @@ git commit -m 'second commit'
 ${COMPARE} --check
 assert_err
 
+
+echo "*** TEST: diff-all expect failure on invalid api even if no x-optic-url specified if not --upload option ***"
+
+init_git_repo
+mkdir ./components
+cp $REPO/components/common.yaml ./components/common.yaml
+
+mkdir -p ./$SPECS_PATH
+
+cp $REPO/$SPECS_PATH/005-baseline-no-optic-url.yaml ./$SPECS_PATH/comparison-1.yaml
+
+git add .
+git commit -m 'first commit'
+
+cp $REPO/$SPECS_PATH/005-fail-breaking-param-change-beta.yaml ./$SPECS_PATH/comparison-1.yaml
+git add .
+git commit -m 'second commit'
+
+${COMPARE} --check
+assert_err
+
 echo "ALL TESTS OK"

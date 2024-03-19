@@ -51,6 +51,7 @@ const expectGitBranch = (branchName: string) => {
 export const lintAction = async (
   resourceDir?: string,
   branchName?: string,
+  options?: any,
 ): Promise<void> => {
   if (resourceDir) {
     await expectGitBranch(branchName ?? defaultBranchName);
@@ -94,11 +95,15 @@ export const lintAction = async (
         console.log(`skipping API ${apiKey}: not linted with optic-ci`);
         continue;
       }
-      const base = linter["optic-ci"]?.original ?? defaultBranchName;
+      const base =
+        options?.compareFrom ??
+        linter["optic-ci"]?.original ??
+        defaultBranchName;
       await expectGitBranch(base);
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
         base,
+        options?.compareTo,
         resource.excludes,
       );
     }
@@ -113,6 +118,15 @@ export const createLintCommand = () => {
         .argOptional()
         .default(defaultBranchName),
     )
+    .option(
+      "--compare-to <compare-to>",
+      "the head ref to compare against. Defaults to the current working directory",
+    )
+    .option(
+      "--compare-from <compare-from>",
+      "the base ref to compare against. Defaults to MAIN",
+      "main",
+    )
     .action(lintAction);
   command.description("lint APIs in current project");
   return command;
@@ -121,6 +135,7 @@ export const createLintCommand = () => {
 const bulkCompare = async (
   resourceDir: string,
   base: string,
+  to?: string,
   ignorePatterns: string[] = [],
 ): Promise<void> => {
   const opticScript = await resolveOpticScript();
@@ -128,6 +143,11 @@ const bulkCompare = async (
   if (ignorePatterns.length > 0) {
     extraArgs.push("--ignore", ignorePatterns.join(","));
   }
+
+  if (to) {
+    extraArgs.push("--compare-to", to);
+  }
+
   const args = [
     opticScript,
     "diff-all",
