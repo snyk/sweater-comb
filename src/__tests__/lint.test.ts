@@ -42,6 +42,22 @@ describe("lint command", () => {
   );
 
   it(
+    "can lint with with --compare-to and --compare-from",
+    async () => {
+      try {
+        process.chdir("end-end-tests/api-standards");
+        await lintAction(undefined, undefined, {
+          compareTo: "HEAD",
+          compareFrom: "main",
+        });
+      } catch (err) {
+        fail(err);
+      }
+    },
+    testTimeout,
+  );
+
+  it(
     "can lint with .vervet.yaml",
     async () => {
       // cd to location where a .vervet.yaml will be found

@@ -124,8 +124,8 @@ export const createLintCommand = () => {
     )
     .option(
       "--compare-from <compare-from>",
-      "the base ref to compare against. Defaults to HEAD~1",
-      "HEAD~1",
+      "the base ref to compare against. Defaults to MAIN",
+      "main",
     )
     .action(lintAction);
   command.description("lint APIs in current project");
