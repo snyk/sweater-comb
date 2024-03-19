@@ -1,6 +1,7 @@
 import path from "path";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import {
+  OpenAPIV3,
   ResultWithSourcemap,
   sourcemapReader,
 } from "@useoptic/openapi-utilities";
@@ -246,8 +247,10 @@ describe("end-end-tests", () => {
 
     const ruleInputs = {
       ...TestHelpers.createRuleInputs(
-        parsedFrom?.jsonLike || TestHelpers.createEmptySpec(),
-        parsedTo?.jsonLike || TestHelpers.createEmptySpec(),
+        (parsedFrom?.jsonLike ||
+          TestHelpers.createEmptySpec()) as OpenAPIV3.Document,
+        (parsedTo?.jsonLike ||
+          TestHelpers.createEmptySpec()) as OpenAPIV3.Document,
       ),
       context,
     };
