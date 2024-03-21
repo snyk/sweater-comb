@@ -87,12 +87,12 @@ export const lintAction = async (
     console.log(`Linting API ${apiKey}`);
     for (const resource of apiValue.resources) {
       if (!resource.linter) {
-        console.log(`skipping API ${apiKey}: no linter`);
+        console.log(`skipping API ${apiKey} - ${resource.path}: no linter`);
         continue;
       }
       const linter = vervetConf.linters[resource.linter];
       if (!linter || !linter["optic-ci"]) {
-        console.log(`skipping API ${apiKey}: not linted with optic-ci`);
+        console.log(`skipping API ${apiKey} - ${resource.path}: not linted with optic-ci`);
         continue;
       }
       const base =
