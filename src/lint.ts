@@ -92,7 +92,9 @@ export const lintAction = async (
       }
       const linter = vervetConf.linters[resource.linter];
       if (!linter || !linter["optic-ci"]) {
-        console.log(`skipping API ${apiKey} - ${resource.path}: not linted with optic-ci`);
+        console.log(
+          `skipping API ${apiKey} - ${resource.path}: not linted with optic-ci`,
+        );
         continue;
       }
       const base =
