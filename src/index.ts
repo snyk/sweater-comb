@@ -77,18 +77,14 @@ const main = async (): Promise<void> => {
   setRulesets(ruleset);
   setGenerateContext(readContextFrom);
 
-  cli.exitOverride().parse(process.argv);
+  await cli.exitOverride().parseAsync(process.argv);
 };
 
-process.exitCode = 1;
-main()
-  .then(() => {
+main().catch((err) => {
+  if (["commander.helpDisplayed", "commander.version"].includes(err.code)) {
     process.exitCode = 0;
-  })
-  .catch((err) => {
-    if (["commander.helpDisplayed", "commander.version"].includes(err.code)) {
-      process.exitCode = 0;
-      return;
-    }
-    console.log("exit on error:", err);
-  });
+    return;
+  }
+  process.exitCode = 1;
+  console.log("exit on error:", err);
+});
