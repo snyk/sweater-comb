@@ -11,5 +11,6 @@ npm pack
 export GITHUB_TOKEN=${GITHUB_TOKEN:-$GH_TOKEN}
 
 if [[ -n "$GITHUB_TOKEN" && -n "$NPM_TOKEN" ]]; then
-  npx "semantic-release@23"
+  # fix dependency at 22.0.12 untill we find workaround for node20 requirement
+  npx "semantic-release@22.0.12"
 fi
