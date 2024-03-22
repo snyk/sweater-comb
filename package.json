@@ -9,7 +9,7 @@
     "/schemas"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "test": "jest --colors",
