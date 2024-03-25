@@ -2,6 +2,13 @@ version: 2.1
 
 orbs:
   snyk: snyk/snyk@1.4.0
+  prodsec: snyk/prodsec-orb@1
+
+ignore_main_branch_filter: &ignore_main_branch_filter
+  filters:
+    branches:
+      ignore:
+        - main
 
 defaults: &defaults
   resource_class: small
@@ -77,6 +84,14 @@ workflows:
   version: 2
   test_and_publish:
     jobs:
+      - prodsec/secrets-scan:
+          <<: *ignore_main_branch_filter
+          name: Scan repository for secrets
+          trusted-branch: main
+          context:
+            - snyk-bot-slack
+          channel: alerts-api
+
       - scan:
           name: Snyk Vuln Scan
           context:
