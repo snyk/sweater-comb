@@ -97,10 +97,17 @@ export const lintAction = async (
         );
         continue;
       }
+
+      /*
+       * base can be override by compareFrom
+       * if neither base nor compareFrom are given use defaultBranchName
+       */
       const base =
         options?.compareFrom ??
+        branchName ??
         linter["optic-ci"]?.original ??
         defaultBranchName;
+
       await expectGitBranch(base);
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
