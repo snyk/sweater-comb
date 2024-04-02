@@ -168,10 +168,13 @@ const bulkCompare = async (
     ...extraArgs,
   ];
   return new Promise<void>((resolve, reject) => {
+    const env = { ...process.env };
+    if (!process.env.CI) {
+      env.OPTIC_TELEMETRY_LEVEL = "off";
+    }
+
     const child = child_process.spawn(process.argv0, args, {
-      env: {
-        ...process.env,
-      },
+      env: env,
       stdio: "inherit",
     });
     child.on("error", (err) => {
