@@ -98,8 +98,7 @@ export const lintAction = async (
         continue;
       }
 
-      const base =
-        branchName ?? linter["optic-ci"]?.original ?? defaultBranchName;
+      const base = linter["optic-ci"]?.original ?? defaultBranchName;
 
       await expectGitBranch(base);
       await bulkCompare(
@@ -115,7 +114,11 @@ export const lintAction = async (
 export const createLintCommand = () => {
   const command = new Command("lint")
     .addArgument(new Argument("path", "API resource path").argOptional())
-    .addArgument(new Argument("base", "base git branch for comparison"))
+    .addArgument(
+      new Argument("base", "base git branch for comparison")
+        .argOptional()
+        .default(defaultBranchName),
+    )
     .option(
       "--compare-to <compare-to>",
       "the head ref to compare against. Defaults to the current working directory",
