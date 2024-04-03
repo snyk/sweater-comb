@@ -97,10 +97,9 @@ export const lintAction = async (
         );
         continue;
       }
-      const base =
-        options?.compareFrom ??
-        linter["optic-ci"]?.original ??
-        defaultBranchName;
+
+      const base = linter["optic-ci"]?.original ?? defaultBranchName;
+
       await expectGitBranch(base);
       await bulkCompare(
         path.join(path.relative(topDir, vervetConfDir), resource.path),
@@ -123,11 +122,6 @@ export const createLintCommand = () => {
     .option(
       "--compare-to <compare-to>",
       "the head ref to compare against. Defaults to the current working directory",
-    )
-    .option(
-      "--compare-from <compare-from>",
-      "the base ref to compare against. Defaults to MAIN",
-      "main",
     )
     .action(lintAction);
   command.description("lint APIs in current project");
@@ -161,10 +155,13 @@ const bulkCompare = async (
     ...extraArgs,
   ];
   return new Promise<void>((resolve, reject) => {
+    const env = { ...process.env };
+    if (!process.env.CI) {
+      env.OPTIC_TELEMETRY_LEVEL = "off";
+    }
+
     const child = child_process.spawn(process.argv0, args, {
-      env: {
-        ...process.env,
-      },
+      env: env,
       stdio: "inherit",
     });
     child.on("error", (err) => {
