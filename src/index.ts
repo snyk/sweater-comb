@@ -33,6 +33,7 @@ const readContextFrom = (
     date: string;
     stability: string;
   };
+  isSpecDeleted: boolean;
   resourceVersionReleases: Record<string, any>;
 } => {
   const datePath = path.dirname(fileName);
@@ -41,7 +42,12 @@ const readContextFrom = (
   const rcPath = path.dirname(datePath);
   const resource = path.basename(rcPath);
 
+  let isSpecDeleted = false;
+
   try {
+
+    isSpecDeleted = !fs.existsSync(fileName);
+
     const specYAML = fs.readFileSync(fileName);
     const spec = yaml.parse(specYAML.toString());
     const stability = spec["x-snyk-api-stability"];
@@ -53,9 +59,11 @@ const readContextFrom = (
         date: date,
         stability: stability,
       },
+      isSpecDeleted,
       resourceVersionReleases: {},
     };
   } catch (e) {
+    console.log(e);
     return {
       changeDate: new Date().toISOString().split("T")[0],
       changeResource: resource,
@@ -63,6 +71,7 @@ const readContextFrom = (
         date: date,
         stability: "",
       },
+      isSpecDeleted,
       resourceVersionReleases: {},
     };
   }

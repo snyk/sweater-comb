@@ -54,6 +54,7 @@ const requestPropertyRemovalRule = {
   matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
     !specIsRemoved(specification) &&
+    !ruleContext.custom.isSpecDeleted &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (requestAssertions) => {
     requestAssertions.property.removed("not be removed", (property) => {
@@ -81,6 +82,7 @@ const responsePropertyRemovalRule = {
   matches: (specification, ruleContext) =>
     ruleContext.operation.change !== "added" &&
     !specIsRemoved(specification) &&
+    !ruleContext.custom.isSpecDeleted &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (responseAssertions) => {
     responseAssertions.property.removed("not be removed", (property) => {

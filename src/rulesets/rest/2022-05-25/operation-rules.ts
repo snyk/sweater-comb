@@ -178,6 +178,7 @@ const preventOperationRemovalRule = {
   name: "prevent operation removal",
   docsLink: links.versioning.breakingChanges,
   matches: (operation, ruleContext) =>
+    !ruleContext.custom.isSpecDeleted &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (operationAssertions) => {
     operationAssertions.removed("not be allowed", () => {
@@ -317,6 +318,7 @@ const preventRemovingStatusCodesRule = {
   name: "prevent removing status codes",
   docsLink: links.versioning.breakingChanges,
   matches: (operation, ruleContext) =>
+    !ruleContext.custom.isSpecDeleted &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
   rule: (responseAssertions) => {
     responseAssertions.removed("not be removed", () => {
