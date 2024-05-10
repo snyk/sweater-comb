@@ -30,7 +30,7 @@ Additional resource properties that must be used in resource attributes, where a
 
 ### Timestamp properties
 
-Attribute property names with an `_at` suffix must be timestamps. Timestamp properties must be formatted as [ISO-8601 date-time strings](https://json-schema.org/understanding-json-schema/reference/string.html#dates-and-times).
+Attribute property names with an `_at` suffix must be timestamps. Timestamp properties must be formatted as [date-time defined in RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6).
 
 To declare this format on a timestamp attribute property, use:
 
@@ -211,7 +211,7 @@ What this might look like by example (a total count, and counts grouped by two d
     "count": 10,
     "count_by": {
       "color": {
-        "red":  2,
+        "red": 2,
         "blue": 3,
         "green": 5
       },
@@ -250,6 +250,7 @@ To declare this format on a timestamp filter, use `type: string, format: date-ti
 The `_before` and `_at_or_before` filters cannot be used together, nor can `_after` and `_at_or_after`. Otherwise filters can be mixed (e.g. `_before` can be used with either `_after` or `_at_or_after`). Doing so implies searching within a range, requiring the `_before` (or its inclusive version) to be an earlier time than `_after` (or its inclusive version).
 
 #### Numerical filters
+
 For numerical range filters properties may optionally be filtered on with `_lt` (less than) and `_gt` (greater than) parameters for non inclusive ranges or `_lte` (less than or equal) and `_gte` (greater than or equal) for inclusive ranges. For example, the `count` property can also be used as a range filtering value via `count_gt` or `count_lt` for `count` values greater than or less than the provided filter values. Numerical filters must be formatted as [JSON Schema numbers](https://json-schema.org/understanding-json-schema/reference/numeric.html#numbers).
 
 An example request with a numerical filter:
@@ -454,7 +455,9 @@ The `attributes` URL query parameter is reserved for expressing [sparse fieldset
     "type": "array",
     "items": {
       "type": "string",
-      "enum": [ /* list of all resource data attribute property names */ ]
+      "enum": [
+        /* list of all resource data attribute property names */
+      ]
     }
   },
   "style": "form",
