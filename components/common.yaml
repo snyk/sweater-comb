@@ -425,6 +425,19 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
+
+  '410':
+    description: 'Gone: The requested resource has been discontinued and is no longer available.'
+    headers:
+      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
+      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
+      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
+      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
+      deprecation: { $ref: '#/headers/DeprecationHeader' }
+      sunset: { $ref: '#/headers/SunsetHeader' }
+    content:
+      application/vnd.api+json:
+        schema: { $ref: '#/schemas/ErrorDocument' }
   
   '500':
     description: 'Internal Server Error: An error was encountered while attempting to process the request.'

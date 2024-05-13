@@ -93,7 +93,7 @@ describe("checker", () => {
     testTimeout,
   );
 
-  test.each([400, 404, 500])(
+  test.each([400, 404, 410, 500])(
     "fails if apis request responds with %s",
     async (status) => {
       (axios.default.create as jest.Mock).mockImplementation(() => ({
@@ -114,7 +114,7 @@ describe("checker", () => {
     testTimeout,
   );
 
-  test.each([400, 404, 500])(
+  test.each([400, 404, 410, 500])(
     "fails if versions request responds with %s",
     async (status) => {
       (axios.default.create as jest.Mock).mockImplementation(() => ({
