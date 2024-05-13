@@ -11,7 +11,7 @@ const valid4xxCodes = new ResponseRule({
   name: "valid 4xx status codes",
   matches: (response) => response.statusCode.startsWith("4"),
   rule: (responseAssertions) => {
-    const allowed4xxStatusCodes = ["400", "401", "403", "404", "409", "429"];
+    const allowed4xxStatusCodes = ["400", "401", "403", "404","410", "409", "429"];
     responseAssertions.added(
       "support the correct 4xx status codes",
       (response) => {

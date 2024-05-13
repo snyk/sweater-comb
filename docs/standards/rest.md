@@ -615,6 +615,10 @@ A not found status code & error response must be returned if the requested resou
 
 A conflict status code & error response must be returned if a requested _write_ action cannot be performed because it collides with some constraint (e.g. a unique constraint violation). This status code is also useful when processing idempotent requests which currently are not supported as a part of the Snyk API.
 
+### 410 - Gone
+
+A Gone status code and error response should be sent when a resource that used to be available on the server no longer exists and there's no redirection provided. This tells the user that the server used to have this resource, but it has been permanently removed and isn't coming back. For example, if an old version of an API is phased out and removed, any attempt to access it should result in a 410 Gone response, clearly indicating that the resource is no longer available.
+
 ### 429 - Too Many Requests
 
 A too many requests status code & error response must be returned if the requester has exceeded their request quota for some given time period.
