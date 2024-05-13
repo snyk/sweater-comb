@@ -16,8 +16,8 @@ const valid4xxCodes = new ResponseRule({
       "401",
       "403",
       "404",
-      "410",
       "409",
+      "410",
       "429",
     ];
     responseAssertions.added(
