@@ -35,19 +35,9 @@ jobs:
     resource_class: medium
     steps:
       - checkout
-      - snyk/scan:
-          fail-on-issues: true
-          severity-threshold: high
-          monitor-on-build: true
-          organization: platformeng_api
-          token-variable: SNYK_TOKEN
-      - snyk/scan:
-          command: code test
-          fail-on-issues: true
-          severity-threshold: high
-          monitor-on-build: true
-          organization: platformeng_api
-          token-variable: SNYK_TOKEN
+      - prodsec/security_scans:
+          mode: auto
+          org: platformeng_api
 
   test:
     <<: *defaults
