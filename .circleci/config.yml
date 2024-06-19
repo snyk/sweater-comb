@@ -37,7 +37,6 @@ jobs:
       - checkout
       - prodsec/security_scans:
           mode: auto
-          org: platformeng_api
 
   test:
     <<: *defaults
