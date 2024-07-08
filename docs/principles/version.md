@@ -6,10 +6,6 @@ Fundamental to building an incredible API is the ability to evolve resources ove
 
 At its core, versioning is about defining a lifecycle for versions of resources. This lifecycle impacts how we implement resources, how those resources are consumed, and forms the guarantees we provide our customers.
 
-![versions.png](media/versions.png)
-
-Resources start out as work-in-progress (wip) and evolve from one stage to another as they increase in stability over time.
-
 Evolving resources, releasing them with the appropriate stability level and ensuring they meet the appropriate criteria is the responsibility of the owning team.
 
 ### Breaking changes
@@ -30,8 +26,8 @@ The specification for how a resource behaves and what it contains is expressed w
 
 A version consists of:
 
-- A **date** (*YYYY-mm-dd*)
-- A **stability level**, one of: `wip`, `experimental`, `beta`, or `ga`
+- A **date** (_YYYY-mm-dd_)
+- A **stability level**, one of: `beta`, or `ga`
 
 The version date must be the day that the resource version is made available.
 
@@ -43,20 +39,11 @@ Version dates must always be interpreted assuming a UTC timezone.
 
 Stability levels guarantee a certain level of consistency in the API contract, as well as its availability and potential expiration. They also define the **lifecycle stage** of a resource version up until deprecation.
 
-In increasing order of stability, from least to most stable, these are:
-
-- `wip`
-  - The resource is just getting started and may be in a broken or incomplete state with regard to its OpenAPI spec. WIP-versioned resources are not made publicly accessible.
-- `experimental`
-  - The resource version is a functionally complete implementation of its OpenAPI spec. Experimental versions may be publicly accessible.
-  - There are NO guarantees on the stability or future availability of the API version.
-    - Breaking changes in the API may be introduced at any time.
-    - The API version may sunset at any time.
-  - May be distributed as a limited tech preview.
+These are:
 
 - `beta`
   - The resource version is being evaluated as a candidate for general availability by partners and customers.
-  - It will be available for at least **90 days** after a subsequent resource version *of equal or greater stability* (`beta` or `ga`) is published, after which it may be removed.
+  - It will be available for at least **90 days** after a subsequent resource version _of equal or greater stability_ (`beta` or `ga`) is published, after which it may be removed.
   - During its availability, it must not be revised with incompatible and breaking changes.
   - It may be revised with backwards-compatible, additive changes.
 - `ga`
@@ -65,9 +52,11 @@ In increasing order of stability, from least to most stable, these are:
   - During its availability, it must not be revised with incompatible and breaking changes.
   - It may be revised with backwards-compatible, additive changes.
 
-`experimental` is where new API features are incubated. Experiments are unlisted in official product documentation, though they may be publicly routed. They're a place to try new things, stress test, invite early feedback, and iterate. Experiments are a temporary draft of an API, so they are considered deprecated upon release. After 90 days, experimental versions automatically sunset. To keep an experiment going, iterate with a new release version or promote it to `beta`.
-
-`beta` and `ga` are held to stricter requirements, with SLA guarantees on API stability, availability and maintenance.
+Historically there have been `experimental` and `wip` endpoints, however these
+are no longer supported due to the large amount of endpoints not being promoted
+out of those stabilities. Existing endpoints may carry these stabilities but
+any new endpoints must be created as either `beta` or `ga`. We encourage teams
+to promote any old endpoints out of these stabilities.
 
 ### Promoting stability of a resource over time
 
@@ -85,15 +74,15 @@ A version's stability cannot be modified in-place because this effectively rewri
 
 An example of how this can cause problems:
 
-- A version is released at 2021-06-04~experimental
+- A version is released at 2021-06-04~beta
 - It gets modified in-place to increase stability, eventually becoming 2021-06-04~ga.
-- Another version starts at 2021-08-12~experimental.
+- Another version starts at 2021-08-12~beta.
 - A client evaluates the API at version 2021-10-01~ga. This resolves to
   2021-06-04~ga. It works well so the client pins on this version (2021-10-01).
-- 2021-08-12~experimental gets modified in-place to 2021-08-12~ga on 2021-10-15.
+- 2021-08-12~beta gets modified in-place to 2021-08-12~ga on 2021-10-15.
 - The above client requests for 2021-10-01~ga now suddenly resolve to a surprise GA version that wasn't there before: 2021-08-12~ga. Unfortunately, it's a breaking change...
 
-If the 2021-08-12~experimental promotion to GA was dated when it actually took place (2021-10-15), the client would not have been broken by the newer change.
+If the 2021-08-12~beta promotion to GA was dated when it actually took place (2021-10-15), the client would not have been broken by the newer change.
 
 ### <a id="deprecation-sunset"></a>Deprecation and Sunset
 
@@ -121,7 +110,7 @@ A version's stability level is expressed in each OpenAPI `spec.yaml` with a top-
 
 These versions may then be published, used to generate documentation, client SDKs, etc.
 
-Versions for the entire API are expressed in the form *`{version date}~{stability level}`*, assuming GA was not specified.
+Versions for the entire API are expressed in the form _`{version date}~{stability level}`_, assuming GA was not specified.
 
 ### <a id="resolving-versions"></a>How are versions accessed and resolved by consumers?
 
