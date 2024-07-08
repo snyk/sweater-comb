@@ -1,5 +1,5 @@
 openapi: 3.0.3
-x-snyk-api-stability: experimental
+x-snyk-api-stability: beta
 info:
   title: v3
   version: 3.0.0
