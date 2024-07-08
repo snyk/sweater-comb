@@ -158,4 +158,25 @@ describe("lifecycle rules", () => {
       });
     });
   });
+
+  describe("experimental", () => {
+    test("no new experimental endpoints", async () => {
+      const ruleRunner = new RuleRunner([lifecycleRuleset]);
+      // The types for createRuleInputs are wrong, null is perfectly valid when
+      // this is a newly created spec
+      const before = null as unknown as OpenAPIV3.Document;
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(before, {
+          ...baseJson,
+          [stabilityKey]: "experimental",
+        } as OpenAPIV3.Document),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(results).toMatchSnapshot();
+    });
+  });
 });

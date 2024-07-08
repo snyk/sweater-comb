@@ -1,5 +1,5 @@
 openapi: 3.0.3
-x-snyk-api-stability: experimental
+x-snyk-api-stability: beta
 info:
   title: v3
   version: 3.0.0
@@ -19,7 +19,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
       responses:
         "201":
           description: Created thing successfully
@@ -41,11 +41,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             location:
               { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
@@ -65,7 +62,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/x-rest-common/parameters/StartingAfter" }
         - { $ref: "#/components/x-rest-common/parameters/EndingBefore" }
         - { $ref: "#/components/x-rest-common/parameters/Limit" }
@@ -90,11 +87,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingCollectionResponse" }
@@ -112,7 +106,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -135,11 +129,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -156,7 +147,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -179,11 +170,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -202,7 +190,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "204": { $ref: "#/components/x-rest-common/responses/204" }
@@ -214,7 +202,7 @@ paths:
         "500": { $ref: "#/components/x-rest-common/responses/500" }
 components:
   x-rest-common:
-    $ref: '../../../../../components/common.yaml'
+    $ref: "../../../../../components/common.yaml"
   parameters:
     OrgId:
       name: org_id
