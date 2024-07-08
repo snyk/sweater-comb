@@ -20,7 +20,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
       responses:
         # Should fail: 200 not supported for POST methods
         "200":
@@ -43,11 +43,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             # Should fail: needs to support application/vnd.api+json
             application/json:
@@ -72,11 +69,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             location:
               { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
@@ -96,7 +90,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/x-rest-common/parameters/StartingAfter" }
         - { $ref: "#/components/x-rest-common/parameters/EndingBefore" }
         - { $ref: "#/components/x-rest-common/parameters/Limit" }
@@ -121,11 +115,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingCollectionResponse" }
@@ -136,17 +127,31 @@ paths:
         "500": { $ref: "#/components/x-rest-common/responses/500" }
         # Should fail: 499 is not a valid 4xx status code
         "499":
-          description: '499 error response'
+          description: "499 error response"
           headers:
-            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
-            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
-            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
-            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
-            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
-            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+            snyk-version-requested:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
+              }
+            snyk-version-served:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
+              }
+            snyk-request-id:
+              {
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
+              }
+            snyk-version-lifecycle-stage:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
+              }
+            deprecation:
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
-              schema: { $ref: '#/components/x-rest-common/schemas/ErrorDocument' }
+              schema:
+                { $ref: "#/components/x-rest-common/schemas/ErrorDocument" }
   /orgs/{org_id}/thing/{thing_id}:
     get:
       summary: Get an instance of thing
@@ -156,7 +161,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -179,11 +184,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -200,7 +202,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -223,11 +225,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -246,7 +245,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "204": { $ref: "#/components/x-rest-common/responses/204" }
@@ -271,11 +270,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             location:
               { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
@@ -296,7 +292,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
       responses:
         "201":
           description: Created thing successfully
@@ -318,11 +314,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             # Should fail: missing location header
             # location: { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
@@ -342,7 +335,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         # Should fail: missing pagination params
         # - { $ref: "#/components/x-rest-common/parameters/StartingAfter" }
         # - { $ref: "#/components/x-rest-common/parameters/EndingBefore" }
@@ -368,11 +361,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           # Should fail: no content for non-204 response
           # content:
           #  application/vnd.api+json:
@@ -391,7 +381,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -414,11 +404,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               # Should fail: (mentioned below in component section) does not have a jsonapi property
@@ -437,7 +424,7 @@ paths:
         - Thing
       parameters:
         - { $ref: "#/components/x-rest-common/parameters/Version" }
-        - { $ref: '#/components/parameters/OrgId' }
+        - { $ref: "#/components/parameters/OrgId" }
         - { $ref: "#/components/parameters/ThingId" }
       responses:
         "200":
@@ -460,24 +447,34 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           # Should fail: no schema
           content:
             application/vnd.api+json:
               schema: {}
         "204":
-          description: 'The operation completed successfully with no content'
+          description: "The operation completed successfully with no content"
           headers:
-            snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
-            snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }
-            snyk-request-id: { $ref: '#/components/x-rest-common/headers/RequestIdResponseHeader' }
-            snyk-version-lifecycle-stage: { $ref: '#/components/x-rest-common/headers/VersionStageResponseHeader' }
-            deprecation: { $ref: '#/components/x-rest-common/headers/DeprecationHeader' }
-            sunset: { $ref: '#/components/x-rest-common/headers/SunsetHeader' }
+            snyk-version-requested:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionRequestedResponseHeader",
+              }
+            snyk-version-served:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionServedResponseHeader",
+              }
+            snyk-request-id:
+              {
+                $ref: "#/components/x-rest-common/headers/RequestIdResponseHeader",
+              }
+            snyk-version-lifecycle-stage:
+              {
+                $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
+              }
+            deprecation:
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
           content:
             application/vnd.api+json:
               schema: { $ref: "#/components/schemas/ThingResourceResponse" }
@@ -488,10 +485,9 @@ paths:
         "409": { $ref: "#/components/x-rest-common/responses/409" }
         "500": { $ref: "#/components/x-rest-common/responses/500" }
 
-
 components:
   x-rest-common:
-    $ref: '../../../../../components/common.yaml'
+    $ref: "../../../../../components/common.yaml"
   parameters:
     OrgId:
       name: org_id
