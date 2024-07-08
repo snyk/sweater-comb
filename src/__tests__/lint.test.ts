@@ -20,11 +20,7 @@ describe("lint command", () => {
   it(
     "can lint with path given",
     async () => {
-      try {
-        await lintAction("end-end-tests/api-standards/resources");
-      } catch (err) {
-        fail(err);
-      }
+      await lintAction("end-end-tests/api-standards/resources");
     },
     testTimeout,
   );
@@ -32,11 +28,7 @@ describe("lint command", () => {
   it(
     "can lint with path and branch given",
     async () => {
-      try {
-        await lintAction("end-end-tests/api-standards/resources", "main");
-      } catch (err) {
-        fail(err);
-      }
+      await lintAction("end-end-tests/api-standards/resources", "main");
     },
     testTimeout,
   );
@@ -44,14 +36,10 @@ describe("lint command", () => {
   it(
     "can lint with with --compare-to",
     async () => {
-      try {
-        process.chdir("end-end-tests/api-standards");
-        await lintAction(undefined, undefined, {
-          compareTo: "HEAD",
-        });
-      } catch (err) {
-        fail(err);
-      }
+      process.chdir("end-end-tests/api-standards");
+      await lintAction(undefined, undefined, {
+        compareTo: "HEAD",
+      });
     },
     testTimeout,
   );
@@ -61,11 +49,7 @@ describe("lint command", () => {
     async () => {
       // cd to location where a .vervet.yaml will be found
       process.chdir("end-end-tests/api-standards");
-      try {
-        await lintAction();
-      } catch (err) {
-        fail(err);
-      }
+      await lintAction();
     },
     testTimeout,
   );
@@ -75,11 +59,7 @@ describe("lint command", () => {
     async () => {
       // cd to location where a .vervet.yaml will be found
       process.chdir("end-end-tests/exclusions");
-      try {
-        await lintAction();
-      } catch (err) {
-        fail(err);
-      }
+      await lintAction();
     },
     testTimeout,
   );
@@ -91,9 +71,8 @@ describe("lint command", () => {
         // a branch that should not exist
         "no-such-branch-" + uuid.v4(),
       );
-      fail("should have thrown an error");
+      throw new Error("should have thrown an error");
     } catch (err: any) {
-      console.log(err);
       expect(err.message).toContain("fatal: Not a valid object name");
     }
   });
@@ -103,7 +82,7 @@ describe("lint command", () => {
     process.chdir(os.tmpdir());
     try {
       await lintAction();
-      fail("should have thrown an error");
+      throw new Error("should have thrown an error");
     } catch (err: any) {
       expect(err.message).toContain(
         "cannot find .vervet.yaml -- is this a Vervet-managed API project?",
