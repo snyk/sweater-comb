@@ -139,14 +139,6 @@ GET /path/to/resource?version=2021-09-21
 
 would match only resource versions released as GA, as of 2021-09-21.
 
-As a shortcut, you can also request "today's latest experimental" with:
-
-```json
-GET /path/to/resource?version=experimental
-```
-
-Developing against a "floating version" like this would not be recommended, but it can be a useful way to discover new development.
-
 ## Versioning in requests and responses
 
 With the concept of versioning established, requests and responses must support certain parameters and headers related to versioning.
@@ -156,11 +148,11 @@ With the concept of versioning established, requests and responses must support 
 All requests must provide a `?version=YYYY-mm-dd~stability` parameter:
 
 - `~stability` may be omitted when the date is provided, to assume GA stability
-- `YYYY-mm-dd~` may be omitted when the stability is provided, to assume "today"
+- `YYYY-mm-dd` is always required and must not be set to after todays date
 
 Services are responsible for routing requests at the given `version` to the appropriate matching resource version implementation — or response with `HTTP 404` if no version of the resource exists.
 
-If a request does not provide a version query parameter or the format of the parameter is misformed a 400 Bad Request *must* be returned. This is to prevent our customer's implementations from breaking as we release new versions of a resource.
+If a request does not provide a version query parameter or the format of the parameter is misformed a 400 Bad Request _must_ be returned. This is to prevent our customer's implementations from breaking as we release new versions of a resource.
 
 ### <a id="response-headers"></a>Versioning response headers
 
@@ -179,8 +171,6 @@ Using the `?version=` parameter, clients may choose to interact with any release
 To release a stable application, choose an announced GA release date, and be assured that the API will not change for at least 180 days past the following GA release.
 
 To evaluate a recent beta feature, you might pin your version date at "yesterday" and use that with `~beta`. Keep that version date pinned at the date you started with, until you're ready to evaluate or support a newer release of the API.
-
-To browse the latest experimental changes, you might request the OpenAPI specification for `?version=experimental`. However, floating versions should never be used in client code.
 
 Clients must be developed against (or generated from) a pinned version of the API declaring a fixed _YYYY-mm-dd_ release date. Otherwise the client may fail in unexpected ways, possibly with undefined behavior when new versions of the API are released.
 
