@@ -42,11 +42,8 @@ paths:
                 $ref: "#/components/x-rest-common/headers/VersionStageResponseHeader",
               }
             deprecation:
-              {
-                $ref: "#/components/x-rest-common/headers/DeprecationHeader",
-              }
-            sunset:
-              { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
+              { $ref: "#/components/x-rest-common/headers/DeprecationHeader" }
+            sunset: { $ref: "#/components/x-rest-common/headers/SunsetHeader" }
             location:
               { $ref: "#/components/x-rest-common/headers/LocationHeader" }
           content:
@@ -60,7 +57,7 @@ paths:
         "500": { $ref: "#/components/x-rest-common/responses/500" }
 components:
   x-rest-common:
-    $ref: '../../../../../components/common.yaml'
+    $ref: "../../../../../components/common.yaml"
   parameters:
     OrgId:
       name: org_id
