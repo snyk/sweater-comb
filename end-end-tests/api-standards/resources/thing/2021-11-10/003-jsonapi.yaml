@@ -134,9 +134,9 @@ paths:
         "403": { $ref: "#/components/x-rest-common/responses/403" }
         "404": { $ref: "#/components/x-rest-common/responses/404" }
         "500": { $ref: "#/components/x-rest-common/responses/500" }
-        # Should fail: 422 is not a valid 4xx status code
-        "422":
-          description: '422 error response'
+        # Should fail: 499 is not a valid 4xx status code
+        "499":
+          description: '499 error response'
           headers:
             snyk-version-requested: { $ref: '#/components/x-rest-common/headers/VersionRequestedResponseHeader' }
             snyk-version-served: { $ref: '#/components/x-rest-common/headers/VersionServedResponseHeader' }

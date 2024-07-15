@@ -19,6 +19,7 @@ const valid4xxCodes = new ResponseRule({
       "409",
       "410",
       "429",
+      "422",
     ];
     responseAssertions.added(
       "support the correct 4xx status codes",
