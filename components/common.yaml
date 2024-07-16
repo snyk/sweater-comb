@@ -360,7 +360,7 @@ responses:
       snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
       deprecation: { $ref: '#/headers/DeprecationHeader' }
       sunset: { $ref: '#/headers/SunsetHeader' }
-  
+
   '400':
     description: 'Bad Request: A parameter provided as a part of the request was invalid.'
     headers:
@@ -373,7 +373,7 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+
   '401':
     description: 'Unauthorized: the request requires an authentication token.'
     headers:
@@ -386,7 +386,7 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+
   '403':
     description: 'Forbidden: the request requires an authentication token with more or different permissions.'
     headers:
@@ -399,7 +399,7 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+
   '404':
     description: 'Not Found: The resource being operated on could not be found.'
     headers:
@@ -412,7 +412,7 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+
   '409':
     description: 'Conflict: The requested operation conflicts with the current state of the resource in some way.'
     headers:
@@ -438,7 +438,20 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+
+  '422':
+    description: 'Unprocessable Entity: The requested operation failed processing, but request syntax and content are correct.'
+    headers:
+      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
+      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
+      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
+      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
+      deprecation: { $ref: '#/headers/DeprecationHeader' }
+      sunset: { $ref: '#/headers/SunsetHeader' }
+    content:
+      application/vnd.api+json:
+        schema: { $ref: '#/schemas/ErrorDocument' }
+
   '500':
     description: 'Internal Server Error: An error was encountered while attempting to process the request.'
     headers:
@@ -451,4 +464,4 @@ responses:
     content:
       application/vnd.api+json:
         schema: { $ref: '#/schemas/ErrorDocument' }
-  
+

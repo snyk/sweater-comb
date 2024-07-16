@@ -619,6 +619,10 @@ A conflict status code & error response must be returned if a requested _write_ 
 
 A Gone status code and error response should be sent when a resource that used to be available on the server no longer exists and there's no redirection provided. This tells the user that the server used to have this resource, but it has been permanently removed and isn't coming back. For example, if an old version of an API is phased out and removed, any attempt to access it should result in a 410 Gone response, clearly indicating that the resource is no longer available.
 
+### 422 - Unprocessable Entity
+
+An Unprocessable Entity status code and error response should be sent when API understands the content type of the request and the syntax of the requested content is correct, but it was unable to process operation due to a client error error. For example, when a resource cannot be processed due to processing logic requiring changes from the client side (e.g. resource processing pre-requisites not satisfied).
+
 ### 429 - Too Many Requests
 
 A too many requests status code & error response must be returned if the requester has exceeded their request quota for some given time period.
