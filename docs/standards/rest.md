@@ -8,6 +8,7 @@ In order to provide a consistent [API as a platform](../principles/api_program.m
 
 - `format: uuid`
 - `format: uri`
+- `format: ulid`
 
 UUIDs are most useful when the resource is already located by a unique UUID primary key.
 
@@ -15,6 +16,8 @@ URIs may be better when:
 
 - The resource identity is best located by a URI. For example: [Package URLs (pURLs)](https://github.com/package-url/purl-spec).
 - Other instances where a structured, semantically meaningful identifier provides a better experience. Vulnerabilities or issues might fall into this category.
+
+ULIDs (Universally Unique Lexicographically Sortable Identifiers) are advantageous for systems that require globally unique identifiers that are also sortable by time. They combine the benefits of UUIDs with the ability to order them chronologically.
 
 # Organization and group tenants for resources
 

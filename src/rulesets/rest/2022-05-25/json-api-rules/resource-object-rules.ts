@@ -16,7 +16,7 @@ import {
 } from "../utils";
 
 const resourceIDFormat = new Matcher((value: any): boolean => {
-  return value === "uuid" || value === "uri";
+  return value === "uuid" || value === "uri" || value === "ulid";
 });
 
 const matchPatchRequest = {

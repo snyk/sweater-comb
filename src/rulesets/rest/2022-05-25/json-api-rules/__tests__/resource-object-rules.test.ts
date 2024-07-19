@@ -66,7 +66,7 @@ describe("resource object rules", () => {
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when PATCH request body is of the correct form identified by %s",
       async (format) => {
         const afterJson = {
@@ -122,7 +122,7 @@ describe("resource object rules", () => {
       },
     );
 
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when PATCH request body for a relationship is of the correct form (data is an collection of resource objects with id and type)",
       async (format) => {
         const afterJson = {
@@ -278,7 +278,7 @@ describe("resource object rules", () => {
       expect(results.every((result) => result.passed)).toBe(true);
     });
 
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when POST request body for a relationship is of the correct form (data is collection of resource objects with type and id)",
       async (format) => {
         const afterJson = {
@@ -705,7 +705,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid GET responses", () => {
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when status code 200 has the correct JSON body identified by %s",
       async (format) => {
         const afterJson = {
@@ -765,7 +765,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid POST responses", () => {
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when status code 201 has the correct headers and body identified by %s",
       async (format) => {
         const afterJson = {
@@ -833,7 +833,7 @@ describe("resource object rules", () => {
   });
 
   describe("valid PATCH responses", () => {
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when status code 200 has the correct body identified by %s",
       async (format) => {
         const afterJson = {
@@ -1046,7 +1046,7 @@ describe("resource object rules", () => {
       expect(results).toMatchSnapshot();
     });
 
-    test.each(["uuid", "uri"])(
+    test.each(["uuid", "uri", "ulid"])(
       "passes when DELETE request body for a relationship is of the correct form (data is collection of resource objects)",
       async (format) => {
         const afterJson = {
