@@ -351,6 +351,17 @@ parameters:
 
 responses:
 
+  '202':
+    description: 'The operation was accepted but a result is not available at this time'
+    headers:
+      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
+      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
+      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
+      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
+      deprecation: { $ref: '#/headers/DeprecationHeader' }
+      sunset: { $ref: '#/headers/SunsetHeader' }
+      
+
   '204':
     description: 'The operation completed successfully with no content'
     headers:

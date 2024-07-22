@@ -118,4 +118,4 @@ export const isFullyTypedType = (type: OpenAPIV3.SchemaObject): boolean => {
   return true;
 };
 
-export const validPost2xxCodes = ["200", "201", "204"];
+export const validPost2xxCodes = ["200", "201", "202", "204"];

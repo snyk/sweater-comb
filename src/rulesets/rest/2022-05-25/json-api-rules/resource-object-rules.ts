@@ -258,10 +258,10 @@ const empty204Content = new ResponseRule({
 
 const contentFor2xxStatusCodes = new ResponseRule({
   name: "content for non-204 status codes",
-  matches: (response) => response.statusCode !== "204",
+  matches: (response) => response.statusCode !== "202" && response.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added(
-      "include content for 2xx status codes other than 204",
+      "include content for 2xx status codes other than 202, 204",
       (response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -271,7 +271,7 @@ const contentFor2xxStatusCodes = new ResponseRule({
       },
     );
     responseAssertions.changed(
-      "include content for 2xx status codes other than 204",
+      "include content for 2xx status codes other than 202, 204",
       (beforeResponse, response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -346,8 +346,9 @@ const locationHeader = new ResponseRule({
   matches: (responseBody, rulesContext) =>
     rulesContext.operation.method === "post" &&
     validPost2xxCodes.includes(responseBody.statusCode) &&
-    // 204 is allowed as a POST response but does not need a location header.
+    // 202, 204 is allowed as a POST response but does not need a location header.
     // See https://jsonapi.org/format/#crud-creating-responses-204
+    responseBody.statusCode !== "202" &&
     responseBody.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});

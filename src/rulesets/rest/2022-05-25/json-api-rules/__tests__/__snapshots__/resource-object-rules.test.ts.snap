@@ -45,6 +45,8 @@ exports[`resource object rules invalid PATCH responses fails when content is spe
 ]
 `;
 
+exports[`resource object rules passes when status code 202 has no body 1`] = `[]`;
+
 exports[`resource object rules valid DELETE responses passes when status code 200 has the correct body (jsonapi/meta fields in content) 1`] = `
 [
   {

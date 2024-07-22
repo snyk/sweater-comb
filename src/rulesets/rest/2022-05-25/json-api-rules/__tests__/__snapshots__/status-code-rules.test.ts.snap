@@ -75,7 +75,7 @@ exports[`status code rules fails when an invalid batch post 2xx code is specifie
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected POST response for batches to only support 204, not 200",
+    "error": "expected POST response for batches to only support {202,204}, not 200",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -120,7 +120,7 @@ exports[`status code rules fails when an invalid batch post request is specified
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected POST response to only support status code(s) {200,201,204}, not 206",
+    "error": "expected POST response to only support status code(s) {200,201,202,204}, not 206",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -210,7 +210,7 @@ exports[`status code rules fails when an invalid post 2xx code is specified 1`] 
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected POST response to only support status code(s) {200,201,204}, not 206",
+    "error": "expected POST response to only support status code(s) {200,201,202,204}, not 206",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -255,7 +255,7 @@ exports[`status code rules fails when an invalid relationship post request is sp
     },
     "condition": undefined,
     "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
-    "error": "expected relationship POST response to only support status code(s) {200,201,204}, not 206",
+    "error": "expected relationship POST response to only support status code(s) {200,201,202,204}, not 206",
     "exempted": false,
     "expected": undefined,
     "isMust": true,
@@ -266,6 +266,51 @@ exports[`status code rules fails when an invalid relationship post request is sp
     "severity": 2,
     "type": "added",
     "where": "POST /api/users/{user_id}/relationships response 206",
+  },
+]
+`;
+
+exports[`status code rules passes for a valid batch post 202 code 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "request accepted",
+        "statusCode": "202",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "202",
+          },
+          "method": "post",
+          "path": "/api/users",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/users",
+          "post",
+          "responses",
+          "202",
+        ],
+        "jsonPath": "/paths/~1api~1users/post/responses/202",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for post",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "POST /api/users response 202",
   },
 ]
 `;
@@ -311,6 +356,51 @@ exports[`status code rules passes for a valid batch post 204 code 1`] = `
     "severity": 2,
     "type": "added",
     "where": "POST /api/users response 204",
+  },
+]
+`;
+
+exports[`status code rules passes for a valid delete 202 code 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "request accepted",
+        "statusCode": "202",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "202",
+          },
+          "method": "delete",
+          "path": "/api/users/{user_id}",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/users/{}",
+          "delete",
+          "responses",
+          "202",
+        ],
+        "jsonPath": "/paths/~1api~1users~1{user_id}/delete/responses/202",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#status-codes",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "valid 2xx status codes for delete",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "DELETE /api/users/{user_id} response 202",
   },
 ]
 `;
