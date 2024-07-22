@@ -17,7 +17,8 @@ describe("resource object rules", () => {
                   description: "It's a bulk PATCH. Nothing to see here.",
                 },
                 "202": {
-                  description: "It's a bulk PATCH. 202 as well. Nothing to see here",
+                  description:
+                    "It's a bulk PATCH. 202 as well. Nothing to see here",
                 },
               },
               requestBody: {
@@ -838,38 +839,34 @@ describe("resource object rules", () => {
     );
   });
 
-  test("passes when status code 202 has no body",
-    async () => {
-      const afterJson = {
-        ...baseJson,
-        paths: {
-          "/api/example": {
-            post: {
-              responses: {
-                // No location header required for a 204 response.
-                "202": {
-                  description: "success",
-                },
+  test("passes when status code 202 has no body", async () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/example": {
+          post: {
+            responses: {
+              // No location header required for a 204 response.
+              "202": {
+                description: "success",
               },
             },
           },
         },
-      } as OpenAPIV3.Document;
+      },
+    } as OpenAPIV3.Document;
 
-
-      const ruleRunner = new RuleRunner([resourceObjectRules]);
-      const ruleInputs = {
-        ...TestHelpers.createRuleInputs(baseJson, afterJson),
-        context,
-      };
-      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
-      console.log(JSON.stringify(results));
-      expect(results.length).toBe(0); //no rules applied
-      expect(results.every((result) => result.passed)).toBe(true);
-      expect(results).toMatchSnapshot();
-    },
-  );
-
+    const ruleRunner = new RuleRunner([resourceObjectRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    console.log(JSON.stringify(results));
+    expect(results.length).toBe(0); //no rules applied
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
 
   describe("valid PATCH responses", () => {
     test.each(["uuid", "uri", "ulid"])(

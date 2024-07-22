@@ -258,7 +258,8 @@ const empty204Content = new ResponseRule({
 
 const contentFor2xxStatusCodes = new ResponseRule({
   name: "content for non-204 status codes",
-  matches: (response) => response.statusCode !== "202" && response.statusCode !== "204",
+  matches: (response) =>
+    response.statusCode !== "202" && response.statusCode !== "204",
   rule: (responseAssertions) => {
     responseAssertions.added(
       "include content for 2xx status codes other than 202, 204",

@@ -2,7 +2,7 @@ import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "../../__tests__/fixtures";
 import { statusCodesRules } from "../status-code-rules";
-import {validPost2xxCodes} from "../../../2022-05-25/utils";
+import { validPost2xxCodes } from "../../../2022-05-25/utils";
 
 const baseJson = TestHelpers.createEmptySpec();
 
@@ -250,8 +250,7 @@ describe("status code rules", () => {
     expect(results.filter((result) => !result.passed)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          error:
-            `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
+          error: `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
         }),
       ]),
     );
@@ -364,8 +363,8 @@ describe("status code rules", () => {
               "202": {
                 description: "request accepted",
                 headers: {
-                  location: "test"
-                }
+                  location: "test",
+                },
               },
             },
           },
@@ -433,8 +432,7 @@ describe("status code rules", () => {
     expect(results.filter((result) => !result.passed)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          error:
-            `expected relationship POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
+          error: `expected relationship POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
         }),
       ]),
     );

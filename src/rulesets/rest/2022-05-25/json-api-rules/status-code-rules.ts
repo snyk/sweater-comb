@@ -195,7 +195,9 @@ const batchPost2xxCodes = new ResponseRule({
       (response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${response.statusCode}`,
+            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },
@@ -206,7 +208,9 @@ const batchPost2xxCodes = new ResponseRule({
       (beforeResponse, response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${response.statusCode}`,
+            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },
