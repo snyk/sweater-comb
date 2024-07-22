@@ -347,10 +347,40 @@ const locationHeader = new ResponseRule({
   matches: (responseBody, rulesContext) =>
     rulesContext.operation.method === "post" &&
     validPost2xxCodes.includes(responseBody.statusCode) &&
-    // 202, 204 is allowed as a POST response but does not need a location header.
+    // 204 is allowed as a POST response but does not need a location header.
     // See https://jsonapi.org/format/#crud-creating-responses-204
-    responseBody.statusCode !== "202" &&
-    responseBody.statusCode !== "204",
+    responseBody.statusCode !== "204" &&
+    responseBody.statusCode !== "202",
+  rule: (responseAssertions) => {
+    responseAssertions.added.hasResponseHeaderMatching("location", {});
+    responseAssertions.changed.hasResponseHeaderMatching("location", {});
+  },
+});
+
+const contentLocationHeaderFor202 = new ResponseRule({
+  name: "content-location header for 202",
+  matches: (responseBody, rulesContext) =>
+    ["post", "patch", "delete"].indexOf(rulesContext.operation.method) >= 0 &&
+    // 202 is allowed as a POST, PATCH, DELETE response and needs a Content-Location header.
+    // See https://jsonapi.org/recommendations/#asynchronous-processing
+    responseBody.statusCode == "202",
+  rule: (responseAssertions) => {
+    responseAssertions.added.hasResponseHeaderMatching("content-location", {});
+    responseAssertions.changed.hasResponseHeaderMatching(
+      "content-location",
+      {},
+    );
+  },
+});
+
+const locationHeaderFor303 = new ResponseRule({
+  name: "location header for 303",
+  matches: (responseBody, rulesContext) =>
+    ["post", "patch", "delete"].indexOf(rulesContext.operation.method) >= 0 &&
+    validPost2xxCodes.includes(responseBody.statusCode) &&
+    // 303 is allowed as a POST, PATCH, DELETE response and needs a Location header.
+    // See https://jsonapi.org/recommendations/#asynchronous-processing
+    responseBody.statusCode == "303",
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});
     responseAssertions.changed.hasResponseHeaderMatching("location", {});
@@ -608,6 +638,8 @@ export const resourceObjectRules = new Ruleset({
     dataProperty,
     jsonApiProperty,
     locationHeader,
+    contentLocationHeaderFor202,
+    locationHeaderFor303,
     selfLinks,
     getPostResponseDataSchema,
     getSingletonResponseDataSchema,

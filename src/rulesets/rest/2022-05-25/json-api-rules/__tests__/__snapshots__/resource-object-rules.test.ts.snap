@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`resource object rules fails when status code 303 does not have Location header 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "success",
+        "statusCode": "303",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "303",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "303",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/303",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": "expected response to have content",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content for non-204 status codes",
+    "passed": false,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "POST /api/example response 303",
+  },
+]
+`;
+
 exports[`resource object rules invalid PATCH responses fails when content is specified for 204 status codes 1`] = `
 [
   {
@@ -45,7 +90,50 @@ exports[`resource object rules invalid PATCH responses fails when content is spe
 ]
 `;
 
-exports[`resource object rules passes when status code 202 has no body 1`] = `[]`;
+exports[`resource object rules passes when status code 202 has a Content-Location header 1`] = `
+[
+  {
+    "change": {
+      "added": {
+        "description": "success",
+        "statusCode": "202",
+      },
+      "changeType": "added",
+      "location": {
+        "conceptualLocation": {
+          "inResponse": {
+            "statusCode": "202",
+          },
+          "method": "post",
+          "path": "/api/example",
+        },
+        "conceptualPath": [
+          "operations",
+          "/api/example",
+          "post",
+          "responses",
+          "202",
+        ],
+        "jsonPath": "/paths/~1api~1example/post/responses/202",
+        "kind": "response",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://jsonapi.org/format/#document-resource-objects",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "content-location header for 202",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "added",
+    "where": "POST /api/example response 202",
+  },
+]
+`;
 
 exports[`resource object rules valid DELETE responses passes when status code 200 has the correct body (jsonapi/meta fields in content) 1`] = `
 [

@@ -222,6 +222,34 @@ schemas:
     pattern: "^((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?)$"
     example: "2021-06-04"
 
+  JobAttributes:
+    type: object
+    description: async job attributes
+    properties:
+      status:
+        type: string
+    additionalProperties: false
+    required:
+      - status
+
+  JobResponse:
+    type: object
+    description: async job response
+    required:
+      - type
+      - id
+    properties:
+      id:
+        type: string
+        format: uuid
+      type:
+        type: string
+        value: "jobs"
+      attributes:
+        $ref: '#/schemas/JobAttributes'
+      links:
+        $ref: '#/schemas/SelfLink'
+
 headers:
   VersionRequestedResponseHeader:
     description: The version of the endpoint requested by the caller.

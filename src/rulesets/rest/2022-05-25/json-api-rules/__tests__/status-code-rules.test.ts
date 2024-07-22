@@ -335,6 +335,9 @@ describe("status code rules", () => {
             responses: {
               "202": {
                 description: "request accepted",
+                headers: {
+                  "content-location": "test",
+                },
               },
             },
           },
@@ -363,7 +366,7 @@ describe("status code rules", () => {
               "202": {
                 description: "request accepted",
                 headers: {
-                  location: "test",
+                  "content-location": "test",
                 },
               },
             },

@@ -601,7 +601,8 @@ In addition to POST and DELETE for individual resources, our services may respon
 
 ### 202 - Accepted
 
-A request has been accepted for processing, but the processing has not been finished yet. Used for Async Actions. It is recommended to return a Location header as a way of letting the client know where to query for the status. Response Body is not mandatory. Available both for POST, PATCH and DELETE
+A request has been accepted for processing, but the processing has not been finished yet. Used for Async Actions. It is mandatory to return a location header as a way of letting the client know where to query for the status. Response Body is not mandatory. Available for POST, PATCH and DELETE.
+The recommendation is to follow the standard as per: [JSON-API#Async-Processing](https://jsonapi.org/recommendations/#asynchronous-processing)
 
 ### 400 - Bad Request
 

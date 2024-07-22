@@ -17,8 +17,10 @@ describe("resource object rules", () => {
                   description: "It's a bulk PATCH. Nothing to see here.",
                 },
                 "202": {
-                  description:
-                    "It's a bulk PATCH. 202 as well. Nothing to see here",
+                  description: "It's a bulk PATCH. 202 as well.",
+                  headers: {
+                    "content-location": {},
+                  },
                 },
               },
               requestBody: {
@@ -399,6 +401,9 @@ describe("resource object rules", () => {
                 },
                 "202": {
                   description: "it's a bulk POST y'all. 202 accepted as well",
+                  headers: {
+                    "content-location": {},
+                  },
                 },
               },
               requestBody: {
@@ -839,7 +844,7 @@ describe("resource object rules", () => {
     );
   });
 
-  test("passes when status code 202 has no body", async () => {
+  test("passes when status code 202 has a Content-Location header", async () => {
     const afterJson = {
       ...baseJson,
       paths: {
@@ -848,6 +853,37 @@ describe("resource object rules", () => {
             responses: {
               // No location header required for a 204 response.
               "202": {
+                description: "success",
+                headers: {
+                  "content-location": {},
+                },
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([resourceObjectRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("fails when status code 303 does not have Location header", async () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/example": {
+          post: {
+            responses: {
+              // No location header required for a 204 response.
+              "303": {
                 description: "success",
               },
             },
@@ -862,9 +898,8 @@ describe("resource object rules", () => {
       context,
     };
     const results = await ruleRunner.runRulesWithFacts(ruleInputs);
-    console.log(JSON.stringify(results));
-    expect(results.length).toBe(0); //no rules applied
-    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(false);
     expect(results).toMatchSnapshot();
   });
 
