@@ -31,6 +31,14 @@ function assert_err {
 ### Baseline OK from scratch
 OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
     "null:" \
+    $HERE/resources/async/2024-07-22/baseline.yaml \
+    --check
+assert_ok
+
+
+### Baseline OK from scratch
+OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
+    "null:" \
     $HERE/resources/thing/2021-11-10/000-baseline.yaml \
     --check
 assert_ok
