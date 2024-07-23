@@ -7,7 +7,8 @@ export const jsonApiContentTypeRule = new ResponseRule({
   docsLink: links.jsonApi.contentType,
   matches: (response, rulesContext) =>
     !isOpenApiPath(rulesContext.operation.path) &&
-    response.statusCode !== "204",
+    response.statusCode !== "204" &&
+    response.statusCode !== "303",
   rule: (responseAssertions) => {
     responseAssertions.added("use the JSON:API content type", (response) => {
       const responseWithJsonApiContentType = response.bodies.find(

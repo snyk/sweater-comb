@@ -257,12 +257,11 @@ const empty204Content = new ResponseRule({
 });
 
 const contentFor2xxStatusCodes = new ResponseRule({
-  name: "content for non-204 status codes",
-  matches: (response) =>
-    response.statusCode !== "202" && response.statusCode !== "204",
+  name: "body is required for status!=[202,204,303]",
+  matches: (response) => !["202", "204", "303"].includes(response.statusCode),
   rule: (responseAssertions) => {
     responseAssertions.added(
-      "include content for 2xx status codes other than 202, 204",
+      "include content for 2xx status codes other than 202, 204, 303",
       (response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -272,7 +271,7 @@ const contentFor2xxStatusCodes = new ResponseRule({
       },
     );
     responseAssertions.changed(
-      "include content for 2xx status codes other than 202, 204",
+      "include content for 2xx status codes other than 202, 204, 303",
       (beforeResponse, response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -375,10 +374,8 @@ const contentLocationHeaderFor202 = new ResponseRule({
 
 const locationHeaderFor303 = new ResponseRule({
   name: "location header for 303",
-  matches: (responseBody, rulesContext) =>
-    ["post", "patch", "delete"].indexOf(rulesContext.operation.method) >= 0 &&
-    validPost2xxCodes.includes(responseBody.statusCode) &&
-    // 303 is allowed as a POST, PATCH, DELETE response and needs a Location header.
+  matches: (responseBody) =>
+    // 303 needs a Location header.
     // See https://jsonapi.org/recommendations/#asynchronous-processing
     responseBody.statusCode == "303",
   rule: (responseAssertions) => {
