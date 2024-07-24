@@ -264,7 +264,7 @@ schemas:
       data:
         $ref: "#/schemas/JobResource"
       links:
-        $ref: "#/schemas/RelatedLink"
+        $ref: "#/schemas/SelfLink"
     additionalProperties: false
     example:
       jsonapi:
@@ -277,7 +277,7 @@ schemas:
         links:
           self: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
       links:
-        related: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
+        self: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
 
 headers:
   VersionRequestedResponseHeader:
