@@ -237,6 +237,8 @@ schemas:
     required:
       - type
       - id
+      - attributes
+      - links
     properties:
       id:
         type: string
