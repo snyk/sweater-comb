@@ -223,17 +223,17 @@ schemas:
 
   JobAttributes:
     type: object
-    description: async job attributes
     properties:
       status:
         type: string
     additionalProperties: false
     required:
       - status
+    example:
+      status: "Pending request, waiting other process"
 
   JobResource:
     type: object
-    description: async job resource
     required:
       - type
       - id
@@ -243,21 +243,41 @@ schemas:
         format: uuid
       type:
         type: string
-        enum: ["jobs"]
+        enum: ["job"]
       attributes:
         $ref: "#/schemas/JobAttributes"
+      links:
+        $ref: "#/schemas/SelfLink"
+    example:
+      id: 2e31dbe3-2f5f-432c-aab8-d7d51e1078cd
+      type: "job"
+      attributes:
+        status: "Pending request, waiting other process"
+      links:
+        self: "/photos/jobs/2e31dbe3-2f5f-432c-aab8-d7d51e1078cd"
 
   JobResponse:
     type: object
-    description: async job response
     properties:
       jsonapi:
         $ref: "#/schemas/JsonApi"
       data:
         $ref: "#/schemas/JobResource"
       links:
-        $ref: "#/schemas/SelfLink"
+        $ref: "#/schemas/RelatedLink"
     additionalProperties: false
+    example:
+      jsonapi:
+        version: "1.0"
+      data:
+        id: 6d5ac645-9309-4ac8-9808-9bd5251785bb
+        type: "job"
+        attributes:
+          status: "Pending request, waiting other process"
+        links:
+          self: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
+      links:
+        related: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
 
 headers:
   VersionRequestedResponseHeader:
@@ -403,24 +423,6 @@ responses:
         schema:
           $ref: "#/schemas/JobResponse"
 
-  "303":
-    description: Returns a list of thing instances
-    headers:
-      snyk-version-requested:
-        { $ref: "#/headers/VersionRequestedResponseHeader" }
-      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
-      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
-      snyk-version-lifecycle-stage:
-        { $ref: "#/headers/VersionStageResponseHeader" }
-      deprecation: { $ref: "#/headers/DeprecationHeader" }
-      sunset: { $ref: "#/headers/SunsetHeader" }
-      location: { $ref: "#/headers/LocationHeader" }
-    content:
-       application/vnd.api+json:
-        schema:
-          type: object
-          nullable: true
-
   "204":
     description: "The operation completed successfully with no content"
     headers:
@@ -432,6 +434,24 @@ responses:
         { $ref: "#/headers/VersionStageResponseHeader" }
       deprecation: { $ref: "#/headers/DeprecationHeader" }
       sunset: { $ref: "#/headers/SunsetHeader" }
+
+  "303":
+    description: Data is available at the location specified in the "location" header
+    headers:
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+      location: { $ref: "#/headers/LocationHeader" }
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          nullable: true
 
   "400":
     description: "Bad Request: A parameter provided as a part of the request was invalid."
