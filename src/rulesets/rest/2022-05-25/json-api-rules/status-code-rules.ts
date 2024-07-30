@@ -51,7 +51,7 @@ const delete2xxCodes = new ResponseRule({
     response.statusCode.startsWith("2") &&
     rulesContext.operation.method === "delete",
   rule: (responseAssertions) => {
-    const validDelete2xxCodes = ["200", "204"];
+    const validDelete2xxCodes = ["200", "202", "204"];
     responseAssertions.added(
       "support the correct 2xx status codes",
       (response) => {
@@ -189,13 +189,15 @@ const batchPost2xxCodes = new ResponseRule({
     response.statusCode.startsWith("2") &&
     rulesContext.operation.method === "post",
   rule: (responseAssertions) => {
-    const validPost2xxCodes = ["204"];
+    const validPost2xxCodes = ["202", "204"];
     responseAssertions.added(
       "support the correct 2xx status codes",
       (response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response for batches to only support 204, not ${response.statusCode}`,
+            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },
@@ -206,7 +208,9 @@ const batchPost2xxCodes = new ResponseRule({
       (beforeResponse, response) => {
         if (!validPost2xxCodes.includes(response.statusCode)) {
           throw new RuleError({
-            message: `expected POST response for batches to only support 204, not ${response.statusCode}`,
+            message: `expected POST response for batches to only support {${validPost2xxCodes.toString()}}, not ${
+              response.statusCode
+            }`,
           });
         }
       },

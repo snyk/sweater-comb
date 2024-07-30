@@ -2,6 +2,7 @@ import { OpenAPIV3 } from "@useoptic/openapi-utilities";
 import { RuleRunner, TestHelpers } from "@useoptic/rulesets-base";
 import { context } from "../../__tests__/fixtures";
 import { statusCodesRules } from "../status-code-rules";
+import { validPost2xxCodes } from "../../../2022-05-25/utils";
 
 const baseJson = TestHelpers.createEmptySpec();
 
@@ -204,7 +205,7 @@ describe("status code rules", () => {
       expect.arrayContaining([
         expect.objectContaining({
           error:
-            "expected POST response for batches to only support 204, not 200",
+            "expected POST response for batches to only support {202,204}, not 200",
         }),
       ]),
     );
@@ -249,8 +250,7 @@ describe("status code rules", () => {
     expect(results.filter((result) => !result.passed)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          error:
-            "expected POST response to only support status code(s) {200,201,204}, not 206",
+          error: `expected POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
         }),
       ]),
     );
@@ -287,6 +287,87 @@ describe("status code rules", () => {
             responses: {
               "204": {
                 description: "got it",
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([statusCodesRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("passes for a valid batch post 202 code", async () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users": {
+          post: {
+            requestBody: {
+              content: {
+                "application/vnd.api+json": {
+                  schema: {
+                    type: "object",
+                    properties: {
+                      data: {
+                        type: "array",
+                        items: {
+                          type: "object",
+                          properties: {
+                            id: "some-id",
+                            type: "some-type",
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            responses: {
+              "202": {
+                description: "request accepted",
+                headers: {
+                  "content-location": "test",
+                },
+              },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+
+    const ruleRunner = new RuleRunner([statusCodesRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("passes for a valid delete 202 code", async () => {
+    const afterJson = {
+      ...baseJson,
+      paths: {
+        "/api/users/{user_id}": {
+          delete: {
+            responses: {
+              "202": {
+                description: "request accepted",
+                headers: {
+                  "content-location": "test",
+                },
               },
             },
           },
@@ -354,8 +435,7 @@ describe("status code rules", () => {
     expect(results.filter((result) => !result.passed)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          error:
-            "expected relationship POST response to only support status code(s) {200,201,204}, not 206",
+          error: `expected relationship POST response to only support status code(s) {${validPost2xxCodes.toString()}}, not 206`,
         }),
       ]),
     );

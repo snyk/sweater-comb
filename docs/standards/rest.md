@@ -598,6 +598,16 @@ All status codes must be listed in this section or as a part of the [JSON-API Sp
 
 In addition to POST and DELETE for individual resources, our services may respond to a _collection_ POST or PATCH request with a 204 as a response to bulk resource creation or modification. This is an extension to the JSON API standard.
 
+
+### 202 - Accepted
+
+A request has been accepted for processing, but the processing has not been finished yet. Used for Async Actions. It is mandatory to return a location header as a way of letting the client know where to query for the status. Response Body is not mandatory. Available for POST, PATCH and DELETE.
+The recommendation is to follow the standard as per: [JSON-API#Async-Processing](https://jsonapi.org/recommendations/#asynchronous-processing)
+
+
+### 303 - See Other
+It is mandatory to return a location header as a way of letting the client know where the resource requested is located.
+
 ### 400 - Bad Request
 
 A bad request status code & error response must be returned when the user provided an syntactically invalid request header, query parameters, path parameters, or request body. For example, if an `Authorization` header was malformed, then we'd return a `400 Bad Request` where as if we were provided an expired credential (e.g. JWT), we'd want to return a `401 Unauthorized`.

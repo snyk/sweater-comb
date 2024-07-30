@@ -257,11 +257,11 @@ const empty204Content = new ResponseRule({
 });
 
 const contentFor2xxStatusCodes = new ResponseRule({
-  name: "content for non-204 status codes",
-  matches: (response) => response.statusCode !== "204",
+  name: "body is required for status!=[202,204,303]",
+  matches: (response) => !["202", "204", "303"].includes(response.statusCode),
   rule: (responseAssertions) => {
     responseAssertions.added(
-      "include content for 2xx status codes other than 204",
+      "include content for 2xx status codes other than 202, 204, 303",
       (response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -271,7 +271,7 @@ const contentFor2xxStatusCodes = new ResponseRule({
       },
     );
     responseAssertions.changed(
-      "include content for 2xx status codes other than 204",
+      "include content for 2xx status codes other than 202, 204, 303",
       (beforeResponse, response) => {
         if (response.bodies.length === 0) {
           throw new RuleError({
@@ -348,7 +348,36 @@ const locationHeader = new ResponseRule({
     validPost2xxCodes.includes(responseBody.statusCode) &&
     // 204 is allowed as a POST response but does not need a location header.
     // See https://jsonapi.org/format/#crud-creating-responses-204
-    responseBody.statusCode !== "204",
+    responseBody.statusCode !== "204" &&
+    responseBody.statusCode !== "202",
+  rule: (responseAssertions) => {
+    responseAssertions.added.hasResponseHeaderMatching("location", {});
+    responseAssertions.changed.hasResponseHeaderMatching("location", {});
+  },
+});
+
+const contentLocationHeaderFor202 = new ResponseRule({
+  name: "content-location header for 202",
+  matches: (responseBody, rulesContext) =>
+    ["post", "patch", "delete"].indexOf(rulesContext.operation.method) >= 0 &&
+    // 202 is allowed as a POST, PATCH, DELETE response and needs a Content-Location header.
+    // See https://jsonapi.org/recommendations/#asynchronous-processing
+    responseBody.statusCode == "202",
+  rule: (responseAssertions) => {
+    responseAssertions.added.hasResponseHeaderMatching("content-location", {});
+    responseAssertions.changed.hasResponseHeaderMatching(
+      "content-location",
+      {},
+    );
+  },
+});
+
+const locationHeaderFor303 = new ResponseRule({
+  name: "location header for 303",
+  matches: (responseBody) =>
+    // 303 needs a Location header.
+    // See https://jsonapi.org/recommendations/#asynchronous-processing
+    responseBody.statusCode == "303",
   rule: (responseAssertions) => {
     responseAssertions.added.hasResponseHeaderMatching("location", {});
     responseAssertions.changed.hasResponseHeaderMatching("location", {});
@@ -606,6 +635,8 @@ export const resourceObjectRules = new Ruleset({
     dataProperty,
     jsonApiProperty,
     locationHeader,
+    contentLocationHeaderFor202,
+    locationHeaderFor303,
     selfLinks,
     getPostResponseDataSchema,
     getSingletonResponseDataSchema,

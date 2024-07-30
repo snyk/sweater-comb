@@ -1,5 +1,4 @@
 schemas:
-
   JsonApi:
     type: object
     properties:
@@ -222,6 +221,66 @@ schemas:
     pattern: "^((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?)$"
     example: "2021-06-04"
 
+  JobAttributes:
+    type: object
+    properties:
+      status:
+        type: string
+    additionalProperties: false
+    required:
+      - status
+    example:
+      status: "Pending request, waiting other process"
+
+  JobResource:
+    type: object
+    required:
+      - type
+      - id
+      - attributes
+      - links
+    properties:
+      id:
+        type: string
+        format: uuid
+      type:
+        type: string
+        enum: ["job"]
+      attributes:
+        $ref: "#/schemas/JobAttributes"
+      links:
+        $ref: "#/schemas/SelfLink"
+    example:
+      id: 2e31dbe3-2f5f-432c-aab8-d7d51e1078cd
+      type: "job"
+      attributes:
+        status: "Pending request, waiting other process"
+      links:
+        self: "/photos/jobs/2e31dbe3-2f5f-432c-aab8-d7d51e1078cd"
+
+  JobResponse:
+    type: object
+    properties:
+      jsonapi:
+        $ref: "#/schemas/JsonApi"
+      data:
+        $ref: "#/schemas/JobResource"
+      links:
+        $ref: "#/schemas/SelfLink"
+    additionalProperties: false
+    example:
+      jsonapi:
+        version: "1.0"
+      data:
+        id: 6d5ac645-9309-4ac8-9808-9bd5251785bb
+        type: "job"
+        attributes:
+          status: "Pending request, waiting other process"
+        links:
+          self: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
+      links:
+        self: "/photos/jobs/6d5ac645-9309-4ac8-9808-9bd5251785bb"
+
 headers:
   VersionRequestedResponseHeader:
     description: The version of the endpoint requested by the caller.
@@ -302,7 +361,6 @@ headers:
     example: https://example.com/resource/4
 
 parameters:
-
   StartingAfter:
     name: starting_after
     in: query
@@ -350,118 +408,169 @@ parameters:
         - with
 
 responses:
-
-  '204':
-    description: 'The operation completed successfully with no content'
+  "202":
+    description: "The operation was accepted but a result is not available at this time"
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
-
-  '400':
-    description: 'Bad Request: A parameter provided as a part of the request was invalid.'
-    headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+      content-location: { $ref: "#/headers/LocationHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema:
+          $ref: "#/schemas/JobResponse"
 
-  '401':
-    description: 'Unauthorized: the request requires an authentication token.'
+  "204":
+    description: "The operation completed successfully with no content"
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+
+  "303":
+    description: Data is available at the location specified in the "location" header
+    headers:
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+      location: { $ref: "#/headers/LocationHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema:
+          type: object
+          nullable: true
 
-  '403':
-    description: 'Forbidden: the request requires an authentication token with more or different permissions.'
+  "400":
+    description: "Bad Request: A parameter provided as a part of the request was invalid."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
-  '404':
-    description: 'Not Found: The resource being operated on could not be found.'
+  "401":
+    description: "Unauthorized: the request requires an authentication token."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
-  '409':
-    description: 'Conflict: The requested operation conflicts with the current state of the resource in some way.'
+  "403":
+    description: "Forbidden: the request requires an authentication token with more or different permissions."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
-  '410':
-    description: 'Gone: The requested resource has been discontinued and is no longer available.'
+  "404":
+    description: "Not Found: The resource being operated on could not be found."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
-  '422':
-    description: 'Unprocessable Entity: The requested operation failed processing, but request syntax and content are correct.'
+  "409":
+    description: "Conflict: The requested operation conflicts with the current state of the resource in some way."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
-  '500':
-    description: 'Internal Server Error: An error was encountered while attempting to process the request.'
+  "410":
+    description: "Gone: The requested resource has been discontinued and is no longer available."
     headers:
-      snyk-version-requested: { $ref: '#/headers/VersionRequestedResponseHeader' }
-      snyk-version-served: { $ref: '#/headers/VersionServedResponseHeader' }
-      snyk-request-id: { $ref: '#/headers/RequestIdResponseHeader' }
-      snyk-version-lifecycle-stage: { $ref: '#/headers/VersionStageResponseHeader' }
-      deprecation: { $ref: '#/headers/DeprecationHeader' }
-      sunset: { $ref: '#/headers/SunsetHeader' }
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
     content:
       application/vnd.api+json:
-        schema: { $ref: '#/schemas/ErrorDocument' }
+        schema: { $ref: "#/schemas/ErrorDocument" }
 
+  "422":
+    description: "Unprocessable Entity: The requested operation failed processing, but request syntax and content are correct."
+    headers:
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+    content:
+      application/vnd.api+json:
+        schema: { $ref: "#/schemas/ErrorDocument" }
+
+  "500":
+    description: "Internal Server Error: An error was encountered while attempting to process the request."
+    headers:
+      snyk-version-requested:
+        { $ref: "#/headers/VersionRequestedResponseHeader" }
+      snyk-version-served: { $ref: "#/headers/VersionServedResponseHeader" }
+      snyk-request-id: { $ref: "#/headers/RequestIdResponseHeader" }
+      snyk-version-lifecycle-stage:
+        { $ref: "#/headers/VersionStageResponseHeader" }
+      deprecation: { $ref: "#/headers/DeprecationHeader" }
+      sunset: { $ref: "#/headers/SunsetHeader" }
+    content:
+      application/vnd.api+json:
+        schema: { $ref: "#/schemas/ErrorDocument" }
