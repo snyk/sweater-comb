@@ -153,6 +153,20 @@ links: {
 
 If some links are unavailable (no previous page at the first page, no next at the last page, etc.) then the value is `null`. Some links such as `last` may be `null` when providing them would be prohibitively resource-intensive. These links contain [pagination parameters, as defined below](#pagination-parameters).
 
+### Metadata
+
+[JSONAPI document-meta](https://jsonapi.org/format/#document-meta)
+
+The `meta` property bag can be used for additional data that doesn't fit into other parts of the JSON API.
+
+An example of this is a total number of records:
+
+```json
+"meta": {
+  "count": 10
+}
+```
+
 ## Errors
 
 Errors have a certain minimum required structure as well.
