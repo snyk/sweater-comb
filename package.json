@@ -57,7 +57,7 @@
     "@useoptic/json-pointer-helpers": "^0.54.13",
     "@useoptic/openapi-io": "^0.54.13",
     "@useoptic/openapi-utilities": "^0.54.13",
-    "@useoptic/rulesets-base": "^0.54.13",
+    "@useoptic/rulesets-base": "^0.55.0",
     "chalk": "^4.0.0",
     "change-case": "^4.1.2",
     "commander": "11.1.0",
