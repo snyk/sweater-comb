@@ -318,15 +318,13 @@ headers:
 
   SunsetHeader:
     description: >
-      The date of when the underlying endpoint will be removed. This header is
-      only present if the endpoint has been deprecated.  Please refer to the
-      RFC for more information:
-
-      https://datatracker.ietf.org/doc/html/rfc8594
+      A header containing the date of when the underlying endpoint will be removed.
+      This header is only present if the endpoint has been deprecated.
+      For information purposes only. Returned as a date in the format: YYYY-MM-DD.
     schema:
       type: string
-      format: date-time
-      example: "2021-08-02T00:00:00Z"
+      format: date
+      example: "2021-08-02"
 
   RequestIdResponseHeader:
     description: >
