@@ -516,6 +516,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
           description: OpenAPI specification matching requested version is returned
           headers:
             snyk-request-id:

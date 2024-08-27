@@ -66,6 +66,7 @@ components:
         jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingResource" }
         links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
+      additionalProperties: false
 
     ThingResource:
       type: object

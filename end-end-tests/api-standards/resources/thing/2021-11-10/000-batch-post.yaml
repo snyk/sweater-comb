@@ -78,6 +78,8 @@ components:
         data:
           type: array
           items: { $ref: "#/components/schemas/ThingResourceItem" }
+      additionalProperties: false
+
     ThingResourceItem:
       type: object
       description: thing resource object

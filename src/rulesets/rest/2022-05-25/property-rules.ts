@@ -110,10 +110,11 @@ const disallowAdditionalPropertiesResponse = new ResponseBodyRule({
       "set additionalProperties to false",
       (body) => {
         const schema = body.raw.schema as OpenAPIV3.SchemaObject;
-        if (schema.type === "object" && schema.additionalProperties !== false) {
-          console.log(
-            "Failing due to additionalProperties not being set to false",
-          );
+        if (
+          schema.type === "object" &&
+          schema.additionalProperties !== false &&
+          schema.additionalProperties !== true
+        ) {
           throw new RuleError({
             message:
               "New endpoints must set additionalProperties to false in response schemas",
