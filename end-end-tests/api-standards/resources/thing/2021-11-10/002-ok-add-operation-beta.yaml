@@ -199,6 +199,7 @@ components:
     ThingResourceResponse:
       type: object
       description: Response containing a single thing resource object
+      additionalProperties: false
       properties:
         jsonapi: { $ref: '#/components/x-rest-common/schemas/JsonApi' }
         data: { $ref: '#/components/schemas/ThingResource' }
@@ -207,6 +208,7 @@ components:
     ThingCollectionResponse:
       type: object
       description: Response containing a collection of thing resource objects
+      additionalProperties: false
       properties:
         jsonapi: { $ref: '#/components/x-rest-common/schemas/JsonApi' }
         data: { $ref: '#/components/schemas/ThingCollection' }
