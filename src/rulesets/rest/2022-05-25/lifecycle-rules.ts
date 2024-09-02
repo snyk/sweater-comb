@@ -106,7 +106,35 @@ const followSunsetRules = new SpecificationRule({
   },
 });
 
+const noNewExperimental = new SpecificationRule({
+  name: "no new experimental versions",
+  docsLink: links.versioning.stabilityLevels,
+  matches: (specification, rulesContext) =>
+    rulesContext.specification.change === "added",
+  rule: (specificationAssertions) => {
+    specificationAssertions.requirement(
+      "be provided for every resource document",
+      (specification) => {
+        const stability: string | undefined = specification.value[stabilityKey];
+        if (!stability) {
+          return;
+        }
+        if (stability === "wip" || stability === "experimental") {
+          throw new RuleError({
+            message: `new endpoints cannot use ${stability} stability`,
+          });
+        }
+      },
+    );
+  },
+});
+
 export const lifecycleRuleset = new Ruleset({
   name: "api lifecycle ruleset",
-  rules: [stabilityRequirement, stabilityTransitions, followSunsetRules],
+  rules: [
+    stabilityRequirement,
+    stabilityTransitions,
+    followSunsetRules,
+    noNewExperimental,
+  ],
 });
