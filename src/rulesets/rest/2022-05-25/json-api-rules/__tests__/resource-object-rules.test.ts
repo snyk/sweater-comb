@@ -129,6 +129,56 @@ describe("resource object rules", () => {
     );
 
     test.each(["uuid", "uri", "ulid"])(
+      "passes when PATCH request body for a relationship is of the correct form (data is an collection of resource objects with id and type)",
+      async (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example/relationships/example": {
+              patch: {
+                responses: {}, // not tested here
+                requestBody: {
+                  content: {
+                    "application/vnd.api+json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "array",
+                            items: {
+                              type: "object",
+                              properties: {
+                                type: {
+                                  type: "string",
+                                },
+                                id: {
+                                  type: "string",
+                                  format: format,
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        } as OpenAPIV3.Document;
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+      },
+    );
+
+    test.each(["uuid", "uri", "ulid"])(
       "passes when PATCH request body for a relationship is of the correct form (data is a single resource object with id and type)",
       async (format) => {
         const afterJson = {

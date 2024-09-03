@@ -121,7 +121,7 @@ const requestDataForPost = new RequestRule({
   },
 });
 
-// Relationship POST, PATCH, and DELETE requests must have
+// Relationship POST, PATCH, and DELETE requests can have
 // a request body with resource objects for the relationships
 // to be added/patched/deleted.
 const matchRelationshipModificationRequestArrayData = {
@@ -142,9 +142,9 @@ const matchRelationshipModificationRequestArrayData = {
   },
 };
 
-// Relationship POST, PATCH, and DELETE requests must have
-// a request body with resource objects for the relationships
-// to be added/patched/deleted.
+// Relationship POST, PATCH, and DELETE requests can have
+// a request body with a resource object for the single relationship
+// to be added (set)/patched/deleted.
 const matchRelationshipModificationRequestSingleData = {
   data: {
     type: "object",
