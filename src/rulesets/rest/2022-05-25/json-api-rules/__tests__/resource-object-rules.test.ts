@@ -129,7 +129,7 @@ describe("resource object rules", () => {
     );
 
     test.each(["uuid", "uri", "ulid"])(
-      "passes when PATCH request body for a relationship is of the correct form (data is an collection of resource objects with id and type)",
+      "passes when PATCH request body for a relationship is of the correct form (data is a single resource object with id and type)",
       async (format) => {
         const afterJson = {
           ...baseJson,
@@ -144,17 +144,14 @@ describe("resource object rules", () => {
                         type: "object",
                         properties: {
                           data: {
-                            type: "array",
-                            items: {
-                              type: "object",
-                              properties: {
-                                type: {
-                                  type: "string",
-                                },
-                                id: {
-                                  type: "string",
-                                  format: format,
-                                },
+                            type: "object",
+                            properties: {
+                              type: {
+                                type: "string",
+                              },
+                              id: {
+                                type: "string",
+                                format: format,
                               },
                             },
                           },
@@ -227,7 +224,7 @@ describe("resource object rules", () => {
             where:
               "PATCH /api/example/relationships/example request body: application/vnd.api+json",
             name: "request body for relationship post/patch/delete",
-            error: "Expected a partial match",
+            error: "Expected at least one partial match",
           }),
         ]),
       );
@@ -335,6 +332,54 @@ describe("resource object rules", () => {
       },
     );
 
+    test.each(["uuid", "uri", "ulid"])(
+      "passes when POST request body for a relationship is of the correct form (data is a single resource object with type and id)",
+      async (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example/relationships/example": {
+              post: {
+                responses: {}, // not tested here
+                requestBody: {
+                  content: {
+                    "application/vnd.api+json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "object",
+                            properties: {
+                              type: {
+                                type: "string",
+                              },
+                              id: {
+                                type: "string",
+                                format: format,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        } as OpenAPIV3.Document;
+
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+      },
+    );
+
     test("fails when POST request body for a relationship is of incorrect form (missing id from resource objects in data array)", async () => {
       const afterJson = {
         ...baseJson,
@@ -383,7 +428,7 @@ describe("resource object rules", () => {
             where:
               "POST /api/example/relationships/example request body: application/vnd.api+json",
             name: "request body for relationship post/patch/delete",
-            error: "Expected a partial match",
+            error: "Expected at least one partial match",
           }),
         ]),
       );
@@ -1168,6 +1213,54 @@ describe("resource object rules", () => {
       },
     );
 
+    test.each(["uuid", "uri", "ulid"])(
+      "passes when DELETE request body for a relationship is of the correct form (data is a resource object)",
+      async (format) => {
+        const afterJson = {
+          ...baseJson,
+          paths: {
+            "/api/example/relationships/example": {
+              delete: {
+                responses: {}, // not tested here
+                requestBody: {
+                  content: {
+                    "application/vnd.api+json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "object",
+                            properties: {
+                              type: {
+                                type: "string",
+                              },
+                              id: {
+                                type: "string",
+                                format: format,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        } as OpenAPIV3.Document;
+
+        const ruleRunner = new RuleRunner([resourceObjectRules]);
+        const ruleInputs = {
+          ...TestHelpers.createRuleInputs(baseJson, afterJson),
+          context,
+        };
+        const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.every((result) => result.passed)).toBe(true);
+      },
+    );
+
     test("fails when DELETE request body for a relationship is of incorrect form (resource objects in collection missing id)", async () => {
       const afterJson = {
         ...baseJson,
@@ -1216,7 +1309,7 @@ describe("resource object rules", () => {
             where:
               "DELETE /api/example/relationships/example request body: application/vnd.api+json",
             name: "request body for relationship post/patch/delete",
-            error: "Expected a partial match",
+            error: "Expected at least one partial match",
           }),
         ]),
       );
