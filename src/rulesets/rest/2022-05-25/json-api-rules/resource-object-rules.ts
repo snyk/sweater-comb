@@ -121,10 +121,10 @@ const requestDataForPost = new RequestRule({
   },
 });
 
-// Relationship POST, PATCH, and DELETE requests must have
+// Relationship POST, PATCH, and DELETE requests can have
 // a request body with resource objects for the relationships
 // to be added/patched/deleted.
-const matchRelationshipModificationRequestData = {
+const matchRelationshipModificationRequestArrayData = {
   data: {
     type: "array",
     items: {
@@ -142,6 +142,24 @@ const matchRelationshipModificationRequestData = {
   },
 };
 
+// Relationship POST, PATCH, and DELETE requests can have
+// a request body with a resource object for the single relationship
+// to be added (set)/patched/deleted.
+const matchRelationshipModificationRequestSingleData = {
+  data: {
+    type: "object",
+    properties: {
+      type: {
+        type: Matchers.string,
+      },
+      id: {
+        type: "string",
+        format: resourceIDFormat,
+      },
+    },
+  },
+};
+
 const requestDataForRelationshipModification = new RequestRule({
   name: "request body for relationship post/patch/delete",
   docsLink: links.jsonApi.postRequests,
@@ -150,18 +168,34 @@ const requestDataForRelationshipModification = new RequestRule({
     request.contentType === "application/vnd.api+json" &&
     ["patch", "delete", "post"].includes(rulesContext.operation.method),
   rule: (requestAssertions) => {
-    requestAssertions.body.added.matches({
-      schema: {
-        type: "object",
-        properties: matchRelationshipModificationRequestData,
+    requestAssertions.body.added.matchesOneOf([
+      {
+        schema: {
+          type: "object",
+          properties: matchRelationshipModificationRequestArrayData,
+        },
       },
-    });
-    requestAssertions.body.changed.matches({
-      schema: {
-        type: "object",
-        properties: matchRelationshipModificationRequestData,
+      {
+        schema: {
+          type: "object",
+          properties: matchRelationshipModificationRequestSingleData,
+        },
       },
-    });
+    ]);
+    requestAssertions.body.changed.matchesOneOf([
+      {
+        schema: {
+          type: "object",
+          properties: matchRelationshipModificationRequestArrayData,
+        },
+      },
+      {
+        schema: {
+          type: "object",
+          properties: matchRelationshipModificationRequestSingleData,
+        },
+      },
+    ]);
   },
 });
 
