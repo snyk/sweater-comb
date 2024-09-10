@@ -274,6 +274,7 @@ components:
         jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingResource" }
         links: { $ref: "#/components/x-rest-common/schemas/SelfLink" }
+      additionalProperties: false
 
     ThingCollectionResponse:
       type: object
@@ -282,6 +283,7 @@ components:
         jsonapi: { $ref: "#/components/x-rest-common/schemas/JsonApi" }
         data: { $ref: "#/components/schemas/ThingCollection" }
         links: { $ref: "#/components/x-rest-common/schemas/PaginatedLinks" }
+      additionalProperties: false
 
     ThingResource:
       type: object

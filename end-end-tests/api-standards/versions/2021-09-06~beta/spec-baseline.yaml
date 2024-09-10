@@ -239,6 +239,7 @@ components:
       description: Resolved API version
       pattern: ^((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?)$
       type: string
+      additionalProperties: false
     Error:
       additionalProperties: false
       example:
@@ -340,22 +341,23 @@ components:
     LinkProperty:
       example: https://example.com/api/resource
       oneOf:
-        - description: A string containing the link’s URL.
-          example: https://example.com/api/resource
-          type: string
-        - additionalProperties: false
-          example:
-            href: https://example.com/api/resource
-          properties:
-            href:
-              description: A string containing the link’s URL.
-              example: https://example.com/api/resource
-              type: string
-            meta:
-              $ref: "#/components/schemas/Meta"
-          required:
-            - href
-          type: object
+      - description: A string containing the link’s URL.
+        example: https://example.com/api/resource
+        type: string
+      - additionalProperties: false
+        example:
+          href: https://example.com/api/resource
+        properties:
+          href:
+            description: A string containing the link’s URL.
+            example: https://example.com/api/resource
+            type: string
+          meta:
+            $ref: '#/components/schemas/Meta'
+        required:
+        - href
+        type: object
+      additionalProperties: false
     Links:
       additionalProperties: false
       properties:
@@ -387,6 +389,7 @@ components:
       description: Requested API version
       pattern: ^(wip|work-in-progress|experimental|beta|((([0-9]{4})-([0-1][0-9]))-((3[01])|(0[1-9])|([12][0-9]))(~(wip|work-in-progress|experimental|beta))?))$
       type: string
+      additionalProperties: false
     SelfLink:
       additionalProperties: false
       example:
@@ -528,6 +531,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
           description: OpenAPI specification matching requested version is returned
           headers:
             snyk-request-id:

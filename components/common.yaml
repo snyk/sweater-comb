@@ -452,6 +452,8 @@ responses:
         schema:
           type: object
           nullable: true
+          additionalProperties: false
+
 
   "400":
     description: "Bad Request: A parameter provided as a part of the request was invalid."

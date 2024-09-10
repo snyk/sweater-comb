@@ -457,6 +457,7 @@ describe("body properties", () => {
                   "application/json": {
                     schema: {
                       type: "object",
+                      additionalProperties: false,
                       properties: {
                         tested_at: { type: "string", format: "date-time" },
                       },
@@ -471,6 +472,7 @@ describe("body properties", () => {
                     "application/json": {
                       schema: {
                         type: "object",
+                        additionalProperties: false,
                         properties: {},
                       },
                     },
@@ -1465,6 +1467,151 @@ describe("body properties", () => {
       expect(results.length).toBeGreaterThan(0);
       expect(results.every((result) => result.passed)).toBe(true);
       expect(results).toMatchSnapshot();
+    });
+  });
+
+  describe("disallowAdditionalPropertiesResponse", () => {
+    test("fails when additionalProperties is not set to false for new endpoints", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {},
+      };
+
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "A response from a new endpoint",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          invalid_property: { type: "string" },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context: {
+          ...context,
+          operation: {
+            change: "added",
+          },
+          custom: {
+            changeVersion: {
+              stability: "stable",
+            },
+          },
+        },
+      };
+
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+      const hasError = results.some((result) =>
+        result.error?.includes(
+          "New endpoints must set additionalProperties to false in response schemas",
+        ),
+      );
+
+      expect(hasError).toBe(true);
+    });
+
+    test("passes when additionalProperties is set to false for new endpoints", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          valid_property: { type: "string" },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context: {
+          ...context,
+          operation: {
+            change: "added",
+          },
+        },
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+    });
+
+    test("does nothing when additionalProperties is set to false for existing endpoints", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        additionalProperties: false,
+                        properties: {
+                          valid_property: { type: "string" },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(baseOpenAPI, afterSpec),
+        context,
+      };
+
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
     });
   });
 });

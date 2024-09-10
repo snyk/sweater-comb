@@ -102,6 +102,29 @@ const responsePropertyRemovalCompiled = new ResponseBodyRule({
     !isCompiledOperationSunsetAllowed(ruleContext),
 });
 
+const disallowAdditionalPropertiesResponse = new ResponseBodyRule({
+  name: "additional properties",
+  matches: (_, ruleContext) => ruleContext.operation.change === "added",
+  rule: (responseAssertions) => {
+    responseAssertions.body.requirement(
+      "set additionalProperties to false",
+      (body) => {
+        const schema = body.raw.schema as OpenAPIV3.SchemaObject;
+        if (
+          schema.type === "object" &&
+          schema.additionalProperties !== false &&
+          schema.additionalProperties !== true
+        ) {
+          throw new RuleError({
+            message:
+              "New endpoints must set additionalProperties to false in response schemas",
+          });
+        }
+      },
+    );
+  },
+});
+
 const requiredRequestProperties = new RequestRule({
   name: "prevent adding a required request property",
   docsLink: links.versioning.breakingChanges,
@@ -489,6 +512,7 @@ export const propertyRulesResource = new Ruleset({
     collectionTypeValidResponse,
     requiredPropertiesDeclaredInRequestBody,
     requiredPropertiesDeclaredInResponse,
+    disallowAdditionalPropertiesResponse,
   ],
 });
 
@@ -515,5 +539,6 @@ export const propertyRulesCompiled = new Ruleset({
     collectionTypeValidResponse,
     requiredPropertiesDeclaredInRequestBody,
     requiredPropertiesDeclaredInResponse,
+    disallowAdditionalPropertiesResponse,
   ],
 });
