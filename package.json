@@ -50,7 +50,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.8",
+    "@babel/runtime": "^7.25.4",
     "@stoplight/spectral-core": "^1.8.1",
     "@stoplight/spectral-rulesets": "^1.19.1",
     "@useoptic/optic": "^1.0.0",
