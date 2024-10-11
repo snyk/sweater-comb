@@ -12,12 +12,34 @@ In order to provide a consistent [API as a platform](../principles/api_program.m
 
 UUIDs are most useful when the resource is already located by a unique UUID primary key.
 
+ULIDs (Universally Unique Lexicographically Sortable Identifiers) are advantageous for systems that require globally unique identifiers that are also sortable by time, however this feature has been available with UUIDv7. This format is only available for backwards compatibility reasons and usage is discouraged.
+
 URIs may be better when:
 
 - The resource identity is best located by a URI. For example: [Package URLs (pURLs)](https://github.com/package-url/purl-spec).
 - Other instances where a structured, semantically meaningful identifier provides a better experience. Vulnerabilities or issues might fall into this category.
 
-ULIDs (Universally Unique Lexicographically Sortable Identifiers) are advantageous for systems that require globally unique identifiers that are also sortable by time. They combine the benefits of UUIDs with the ability to order them chronologically.
+In rare occasions it may be desirable to have arbitrary data inside an ID field. In this case a URI should be used with a descriptive schema, some examples of this are:
+- Slack Channel IDs:
+```yaml
+id:
+  type: string
+  format: uri
+  pattern: '^slack:\/\/channel\?team=[A-Z0-9]+&id=[A-Z0-9]+$'
+  example: slack://channel?team=T123456&id=C123456
+```
+- SHA256 hashs
+```yaml
+id:
+  type: string
+  format: uri
+  pattern: '^sha256(:|%3A)[a-f0-9]{64}$'
+  example: 'sha256:2bd864580926b790a22c8b96fd74496fe87b3c59c0774fe144bab2788e78e676'
+```
+
+In these cases both a pattern and example should be provided.
+
+For consistency within our entire API platform, UUIDs are the preferred format. Take special care when using another format as it will impact usability. Every ID must be treated as an opaque string.
 
 # Organization and group tenants for resources
 
