@@ -114,7 +114,7 @@ Versions for the entire API are expressed in the form _`{version date}~{stabilit
 
 ## Introducing Simplified Versioning (as of 2024-10-15)
 
-As of **2024-10-15**, we have introduced a "simplified versioning" model to further streamline API version management. This change introduces a "synthetic" version, which impacts both the developer and consumer sides of the API in a few important ways:
+As of **2024-10-15**,  "simplified versioning" model was introduced to further streamline API version management. This change introduces a "synthetic" version, which impacts both the developer and consumer sides of the API in a few important ways:
 
 - **Stability at Path Level**: This is the first version where stability has been dropped from the specification level to the individual path level. This means that each API path can now be either `beta` or `ga`, simplifying how stability is managed.
 - **No More Experimental Stability**: The `experimental` stability level has been completely removed, so paths can only be marked as `beta` or `ga`.
