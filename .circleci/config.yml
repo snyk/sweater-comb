@@ -69,6 +69,15 @@ jobs:
           name: Build and release
           command: ./scripts/build-npm.bash
 
+  rebuild-tools:
+    <<: *defaults
+    steps:
+      - run: |-
+          curl -X POST https://circleci.com/api/v2/project/github/snyk/api-tooling/pipeline \
+              --header "Circle-Token: $CIRCLE_TOKEN" \
+              --header "content-type: application/json" \
+              --data '{"branch":"main"}'
+
 workflows:
   version: 2
   test_and_publish:
@@ -99,3 +108,10 @@ workflows:
               only: "main"
             tags:
               only: /^v.*/
+
+      - rebuild-tools:
+          name: Rebuild api-tooling
+          context:
+            - manage-api-tooling
+          requires:
+            - NPM Release - Tag
