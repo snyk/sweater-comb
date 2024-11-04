@@ -112,21 +112,26 @@ These versions may then be published, used to generate documentation, client SDK
 
 Versions for the entire API are expressed in the form _`{version date}~{stability level}`_, assuming GA was not specified.
 
+## Introducing Simplified Versioning (as of 2024-10-15)
+
+As of **2024-10-15**,  "simplified versioning" model was introduced to further streamline API version management. This change introduces a "synthetic" version, which impacts both the developer and consumer sides of the API in a few important ways:
+
+- **Stability at Path Level**: This is the first version where stability has been dropped from the specification level to the individual path level. This means that each API path can now be either `beta` or `ga`, simplifying how stability is managed.
+- **No More Experimental Stability**: The `experimental` stability level has been completely removed, so paths can only be marked as `beta` or `ga`.
+- **No Change to Developer Process**: Developers will continue to define their APIs in the same way, using OpenAPI `spec.yaml` files. The way versions are collated and the final versioned specs are built has changed internally, but this does not impact the development process.
+- **Simplified Consumer Access**: For end users of the API, the main difference is that they no longer need to specify stability when making a request. Consumers can simply call with a date, and the system will resolve whether the requested path is `ga` or `beta`. For example:
+  - `GET /path/to/resource?version=2024-10-16` will automatically match the latest version available as of the specified date, resolving the stability level internally.
+- **One-way Promotion**: Once a path is promoted to `ga`, a subsequent `beta` version can no longer be published for that path. This ensures a consistent forward progression in stability without regressions.
+
 ### <a id="resolving-versions"></a>How are versions accessed and resolved by consumers?
 
-Consumers of the API can request a version of the API at any point in time, at any stability level. These dates and versions do not need to exactly match the resolved versions — they are resolved by a search. For example a request like:
+Consumers of the API can request a version of the API at any point in time. With simplified versioning, the stability level no longer needs to be explicitly specified. These dates and versions do not need to exactly match the resolved versions — they are resolved by a search. For example a request like:
 
 ```json
-GET /path/to/resource?version=2021-09-21~beta
+GET /path/to/resource?version=2024-10-16
 ```
 
-will match the most recent OpenAPI specification containing resources of **beta** stability or greater, as of 2021-09-21. If stability is not specified, the default is GA, so:
-
-```json
-GET /path/to/resource?version=2021-09-21
-```
-
-would match only resource versions released as GA, as of 2021-09-21.
+will match the most recent OpenAPI specification containing the resource as of the specified date. If the specified path is available as `beta` or `ga`, it will be automatically resolved by the system.
 
 ## Versioning in requests and responses
 
@@ -134,12 +139,12 @@ With the concept of versioning established, requests and responses must support 
 
 ### `version` query parameter
 
-All requests must provide a `?version=YYYY-mm-dd~stability` parameter:
+All requests must provide a `?version=YYYY-mm-dd` parameter (for requests to versions before 2024-10-15 `~stability` must also be included):
 
-- `~stability` may be omitted when the date is provided, to assume GA stability
-- `YYYY-mm-dd` is always required and must not be set to after todays date
+- `YYYY-mm-dd` is always required and must not be set to after today's date.
+- Stability no longer needs to be specified as of 2024-10-15. The system will resolve if the requested path is `beta` or `ga` automatically.
 
-Services are responsible for routing requests at the given `version` to the appropriate matching resource version implementation — or response with `HTTP 404` if no version of the resource exists.
+Services are responsible for routing requests at the given `version` to the appropriate matching resource version implementation — or responding with `HTTP 404` if no version of the resource exists.
 
 If a request does not provide a version query parameter or the format of the parameter is misformed a 400 Bad Request _must_ be returned. This is to prevent our customer's implementations from breaking as we release new versions of a resource.
 
