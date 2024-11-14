@@ -52,7 +52,7 @@
   "dependencies": {
     "@babel/runtime": "^7.25.9",
     "@stoplight/spectral-core": "^1.19.2",
-    "@stoplight/spectral-rulesets": "^1.20.0",
+    "@stoplight/spectral-rulesets": "^1.21.2",
     "@useoptic/optic": "^1.0.4",
     "@useoptic/json-pointer-helpers": "^1.0.4",
     "@useoptic/openapi-io": "^1.0.4",
