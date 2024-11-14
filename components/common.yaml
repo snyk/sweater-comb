@@ -456,7 +456,9 @@ responses:
 
 
   "400":
-    description: "Bad Request: A parameter provided as a part of the request was invalid."
+    description: >-
+      Bad Request: one or more parameters are invalid. Check the input to match the expected format. 
+      See [Snyk API](https://docs.snyk.io/snyk-api)
     headers:
       snyk-version-requested:
         { $ref: "#/headers/VersionRequestedResponseHeader" }
@@ -471,7 +473,9 @@ responses:
         schema: { $ref: "#/schemas/ErrorDocument" }
 
   "401":
-    description: "Unauthorized: the request requires an authentication token."
+    description: >-
+      Unauthorized: the request requires an authentication token. 
+      See [Revoke and regenerate a Snyk API token](https://docs.snyk.io/snyk-api/rest-api/authentication-for-api/revoke-and-regenerate-a-snyk-api-token).
     headers:
       snyk-version-requested:
         { $ref: "#/headers/VersionRequestedResponseHeader" }
@@ -486,7 +490,10 @@ responses:
         schema: { $ref: "#/schemas/ErrorDocument" }
 
   "403":
-    description: "Forbidden: the request requires an authentication token with more or different permissions."
+    description: >-
+      Forbidden: the request requires an authentication token with more or different permissions. 
+      Review token permissions and try again. 
+      See [PAT permissions](https://support.snyk.io/hc/en-us/articles/4410967220765-How-to-check-if-a-personal-access-token-has-the-correct-permissions).
     headers:
       snyk-version-requested:
         { $ref: "#/headers/VersionRequestedResponseHeader" }
@@ -501,7 +508,8 @@ responses:
         schema: { $ref: "#/schemas/ErrorDocument" }
 
   "404":
-    description: "Not Found: The resource being operated on could not be found."
+    description: >-
+      Not Found: The resource you are trying to access could not be found. Review the request and try again.
     headers:
       snyk-version-requested:
         { $ref: "#/headers/VersionRequestedResponseHeader" }
@@ -561,7 +569,9 @@ responses:
         schema: { $ref: "#/schemas/ErrorDocument" }
 
   "500":
-    description: "Internal Server Error: An error was encountered while attempting to process the request."
+    description: >-
+      Internal Server Error: An unexpected error was encountered while attempting to process the request. 
+      Try again. If the error still occurs, contact support.
     headers:
       snyk-version-requested:
         { $ref: "#/headers/VersionRequestedResponseHeader" }
