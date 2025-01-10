@@ -99,7 +99,55 @@ const tags = new SpecificationRule({
   },
 });
 
+const noDiscriminatorMapping = new SpecificationRule({
+  name: "no mapping objects in discriminators",
+  docsLink: links.standards.polymorphicObjects,
+  rule: (specificationAssertions) => {
+    specificationAssertions.addedOrChanged(
+      "no mapping objects in discriminators",
+      (specification) => {
+        // propertyName is the only required field on a discriminator object,
+        // plus we only care about the objects with mappings
+        const discriminators = findObjectsWithFields([
+          "propertyName",
+          "mapping",
+        ])(specification.raw);
+
+        if (discriminators.length != 0) {
+          throw new RuleError({
+            message: "Mapping object is not permitted in discriminators",
+          });
+        }
+      },
+    );
+  },
+});
+
+const findObjectsWithFields = (fields: string[]) => (from: unknown) => {
+  if (typeof from !== "object" || from == null) {
+    return [];
+  }
+  return Object.values(from).flatMap((v) => {
+    if (typeof v !== "object" || v == null) {
+      return [];
+    }
+    if (Array.isArray(v)) {
+      return v.flatMap(findObjectsWithFields(fields));
+    }
+    if (fields.every((field) => field in v)) {
+      return [v];
+    }
+    return findObjectsWithFields(fields)(v);
+  });
+};
+
 export const specificationRules = new Ruleset({
   name: "specification rules",
-  rules: [componentNameCase, tags, getOpenApiVersions, listOpenApiVersions],
+  rules: [
+    componentNameCase,
+    tags,
+    getOpenApiVersions,
+    listOpenApiVersions,
+    noDiscriminatorMapping,
+  ],
 });

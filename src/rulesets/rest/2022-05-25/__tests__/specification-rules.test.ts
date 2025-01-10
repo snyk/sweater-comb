@@ -45,6 +45,45 @@ describe("specification rules", () => {
     expect(results).toMatchSnapshot();
   });
 
+  test("fails if a discriminator is added with a mapping object", async () => {
+    const afterJson = {
+      ...baseJson,
+      [stabilityKey]: "wip",
+      paths: {},
+      components: {
+        parameters: {
+          OrgId: {
+            name: "orgId",
+            in: "path",
+          },
+          ThingId: {
+            name: "thingId",
+            in: "path",
+          },
+        },
+        schemas: {
+          OneOfSchema: {
+            type: "object",
+            description: "Response containing a single thing resource object",
+            oneOf: [],
+            discriminator: {
+              propertyName: "foo",
+              mapping: {},
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+    const ruleRunner = new RuleRunner([specificationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results).toMatchSnapshot();
+  });
+
   describe("compiled specs", () => {
     test("fails when /openapi endpoint isn't specified", async () => {
       const afterJson: OpenAPIV3.Document = {

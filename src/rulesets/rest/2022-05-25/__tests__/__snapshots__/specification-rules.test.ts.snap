@@ -250,6 +250,114 @@ exports[`specification rules compiled specs fails when /openapi/{versions} endpo
 ]
 `;
 
+exports[`specification rules fails if a discriminator is added with a mapping object 1`] = `
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": {
+        "info": {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.0",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#referenced-entities",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "component names",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "requirement",
+    "where": "specification",
+  },
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": {
+        "info": {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.0",
+        "x-snyk-api-stability": "wip",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#tags",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "open api version names",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "requirement",
+    "where": "specification",
+  },
+  {
+    "change": {
+      "changeType": "changed",
+      "changed": {
+        "after": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "wip",
+        },
+        "before": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+        },
+      },
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#polymorphic-objects",
+    "error": "Mapping object is not permitted in discriminators",
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no mapping objects in discriminators",
+    "passed": false,
+    "received": undefined,
+    "severity": 2,
+    "type": "changed",
+    "where": "specification",
+  },
+]
+`;
+
 exports[`specification rules fails when components are not PascalCase 1`] = `
 [
   {
@@ -312,6 +420,47 @@ exports[`specification rules fails when components are not PascalCase 1`] = `
     "received": undefined,
     "severity": 2,
     "type": "requirement",
+    "where": "specification",
+  },
+  {
+    "change": {
+      "changeType": "changed",
+      "changed": {
+        "after": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "wip",
+        },
+        "before": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+        },
+      },
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#polymorphic-objects",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no mapping objects in discriminators",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "changed",
     "where": "specification",
   },
 ]
@@ -381,6 +530,47 @@ exports[`specification rules uncompiled specs passes when /openapi endpoint isn'
     "type": "requirement",
     "where": "specification",
   },
+  {
+    "change": {
+      "changeType": "changed",
+      "changed": {
+        "after": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "wip",
+        },
+        "before": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+        },
+      },
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#polymorphic-objects",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no mapping objects in discriminators",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "changed",
+    "where": "specification",
+  },
 ]
 `;
 
@@ -446,6 +636,47 @@ exports[`specification rules uncompiled specs passes when /openapi/{versions} en
     "received": undefined,
     "severity": 2,
     "type": "requirement",
+    "where": "specification",
+  },
+  {
+    "change": {
+      "changeType": "changed",
+      "changed": {
+        "after": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "wip",
+        },
+        "before": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+        },
+      },
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#polymorphic-objects",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "no mapping objects in discriminators",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "changed",
     "where": "specification",
   },
 ]
