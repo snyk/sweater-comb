@@ -711,6 +711,19 @@ Without examples, as an end-user I don't have much context here to know what the
 - If fields, objects, and/or relationships are not supplied in the request they are not modified.
 - To unset an existing attribute supply a value of `null`.
 
+
+## Polymorphic Objects
+
+While OpenAPI provides mechanisms for alternative schemas with the `oneOf` and
+`anyOf` keywords, their use is discouraged. Typically the reach for one of
+these indicates the endpoint is overloaded and as such would be better modeled
+as several more atomic endpoints.
+
+We do not prevent the use of these constructs, however due to a bug in our
+tooling we cannot handle mapping objects in discriminators. As such the use of
+these is currently prevented with a linting rule.
+
+
 ## Making the OpenAPI specification available
 
 Every service in the REST API must publish endpoints that list available versions and fetch specific published versions of the OpenAPI spec for all resources provided by that service to REST. These paths may be prefixed if needed (some services may provide other APIs in addition to REST).

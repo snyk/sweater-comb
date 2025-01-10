@@ -35,6 +35,8 @@ export const links = {
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#parameter-names-and-path-components",
     timestampProperties:
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#timestamp-properties",
+    polymorphicObjects:
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#polymorphic-objects",
   },
   jsonApi: {
     contentType: "https://jsonapi.org/format/#content-negotiation-clients",
