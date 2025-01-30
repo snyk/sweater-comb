@@ -30,6 +30,11 @@ describe("specification rules", () => {
             description: "Response containing a single thing resource object",
             properties: {},
           },
+          "IO.SNYK.SOMETHING.ThingResourceResponse": {
+            type: "object",
+            description: "Response containing a single thing resource object",
+            properties: {},
+          },
         },
       },
     } as OpenAPIV3.Document;
@@ -42,6 +47,45 @@ describe("specification rules", () => {
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.passed)).toBe(false);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("passes when components are namespaced PascalCase", async () => {
+    const afterJson = {
+      ...baseJson,
+      [stabilityKey]: "wip",
+      paths: {},
+      components: {
+        schemas: {
+          "something.ThingResourceResponse": {
+            type: "object",
+            description: "Response containing a single thing resource object",
+            properties: {},
+          },
+          "io.snyk.something.ThingResourceResponse": {
+            type: "object",
+            description: "Response containing a single thing resource object",
+            properties: {},
+          },
+        },
+        parameters: {
+          "io.snyk.something.SomeApiRequest.some_param": {
+            description: "Response containing a single thing resource object",
+            in: "path",
+            name: "some_param",
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+    const ruleRunner = new RuleRunner([specificationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.passed)).toBe(true);
     expect(results).toMatchSnapshot();
   });
 
