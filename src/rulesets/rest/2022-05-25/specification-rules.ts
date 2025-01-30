@@ -1,7 +1,44 @@
 import { RuleError, Ruleset, SpecificationRule } from "@useoptic/rulesets-base";
-import { pascalCase } from "change-case";
+import { dotCase, pascalCase, snakeCase } from "change-case";
 import { links } from "../../../docs";
 import { stabilityKey } from "./constants";
+
+interface componentName {
+  localName: string;
+  localProp?: string;
+  ns?: string;
+}
+
+/**
+ * Decode the component name from a possibly namespace and property-qualified OpenAPI component name.
+ *
+ * @param name An OpenAPI component name
+ * @returns Tuple containing the local name (without namespace) and its namespace prefix (undefined if not namespaced).
+ */
+const decodeComponentName = (name: string): componentName => {
+  const parts = name.split(".");
+  if (parts.length > 1) {
+    const lastPart = parts[parts.length - 1];
+    if (lastPart === snakeCase(lastPart)) {
+      // Component is derived from a Typespec model property, of the form namespace.ModelName.property_name.
+      // This is the case for shared parameter or header components, for example.
+      return {
+        localName: parts[parts.length - 2],
+        localProp: lastPart,
+        ns: parts.slice(0, parts.length - 2).join("."),
+      };
+    } else {
+      // Component is derived from a Typespec model, of the form namespace.ModelName.
+      // This is the case for schema components.
+      return {
+        localName: parts[parts.length - 1],
+        ns: parts.slice(0, parts.length - 1).join("."),
+      };
+    }
+  } else {
+    return { localName: name };
+  }
+};
 
 const componentNameCase = new SpecificationRule({
   name: "component names",
@@ -22,9 +59,21 @@ const componentNameCase = new SpecificationRule({
             specification.raw.components?.[componentType] || {},
           );
           for (const componentName of componentNames) {
-            if (pascalCase(componentName) !== componentName) {
+            const { localName, localProp, ns } =
+              decodeComponentName(componentName);
+            if (pascalCase(localName) !== localName) {
               throw new RuleError({
-                message: `Expected ${componentName} to be pascal case`,
+                message: `Expected ${localName} to be pascal case in component ${componentName}`,
+              });
+            }
+            if (localProp && snakeCase(localProp) !== localProp) {
+              throw new RuleError({
+                message: `Expected ${localProp} to be snake case in component ${componentName}`,
+              });
+            }
+            if (ns && dotCase(ns) !== ns) {
+              throw new RuleError({
+                message: `Expected ${ns} to be dot case in component ${componentName}`,
               });
             }
           }

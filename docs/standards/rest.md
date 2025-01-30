@@ -105,11 +105,38 @@ Resource collection names, parameters and path variables must use **snake case**
 
 Because these variables are represented in URLs, uppercase letters may cause problems on some client platforms; RFCs recommend that URLs are treated as case-sensitive, but it is a "should", not a "must". Dashes might cause problems for some code generators, ruling out kebab case.
 
-### Referenced Entities
+### Component naming
 
-Entities referenced in other documents (using `$ref`) must use **pascal case** names.
+[OpenAPI components](https://spec.openapis.org/oas/v3.1.0#components-object) must use **pascal case** names.
 
-Entities will be commonly represented as types or classes when generating code. Pascal case names are conventionally used for such symbols in most targeted languages.
+When generating OpenAPI with [TypeSpec](https://typespec.io/)'s [OpenAPI emitter](https://typespec.io/docs/emitters/openapi3/reference/emitter/),
+these names may be prefixed by a dot-separated lower-case namespace. Components derived from a model property may be suffixed by a snake-cased property name.
+
+To illustrate,
+
+```typespec
+namespace io.snyk.api.common;
+
+model SnykApiRequest {
+  @header("snyk-request-id")
+  @format("uuid")
+  request_id?: string;
+}
+```
+
+might produce an OpenAPI component:
+
+```yaml
+components:
+  parameters:
+    "io.snyk.api.common.SnykApiRequest.request_id":
+      name: snyk-request-id
+      in: header
+      required: false
+      schema:
+        type: string
+        format: uuid
+```
 
 ### Schema properties
 
