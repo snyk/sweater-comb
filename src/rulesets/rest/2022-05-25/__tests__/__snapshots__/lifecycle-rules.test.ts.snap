@@ -452,6 +452,84 @@ exports[`lifecycle rules stability an invalid stability is provided 1`] = `
 ]
 `;
 
+exports[`lifecycle rules stability beta can be promoted to ga in place 1`] = `
+[
+  {
+    "change": {
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+      "value": {
+        "info": {
+          "title": "Empty",
+          "version": "0.0.0",
+        },
+        "openapi": "3.1.0",
+        "x-snyk-api-stability": "ga",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#stability-levels",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource stability",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "requirement",
+    "where": "specification",
+  },
+  {
+    "change": {
+      "changeType": "changed",
+      "changed": {
+        "after": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "ga",
+        },
+        "before": {
+          "info": {
+            "title": "Empty",
+            "version": "0.0.0",
+          },
+          "openapi": "3.1.0",
+          "x-snyk-api-stability": "beta",
+        },
+      },
+      "location": {
+        "conceptualLocation": {},
+        "conceptualPath": [],
+        "jsonPath": "",
+        "kind": "specification",
+      },
+    },
+    "condition": undefined,
+    "docsLink": "https://github.com/snyk/sweater-comb/blob/main/docs/principles/version.md#promoting-stability-of-a-resource-over-time",
+    "error": undefined,
+    "exempted": false,
+    "expected": undefined,
+    "isMust": true,
+    "isShould": false,
+    "name": "resource stability transitions",
+    "passed": true,
+    "received": undefined,
+    "severity": 2,
+    "type": "changed",
+    "where": "specification",
+  },
+]
+`;
+
 exports[`lifecycle rules stability can not change from any stability but wip 1`] = `
 [
   {

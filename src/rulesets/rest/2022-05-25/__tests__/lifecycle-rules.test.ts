@@ -66,6 +66,28 @@ describe("lifecycle rules", () => {
       expect(results).toMatchSnapshot();
     });
 
+    test("beta can be promoted to ga in place", async () => {
+      const ruleRunner = new RuleRunner([lifecycleRuleset]);
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(
+          {
+            ...baseJson,
+            [stabilityKey]: "beta",
+          } as OpenAPIV3.Document,
+          {
+            ...baseJson,
+            [stabilityKey]: "ga",
+          } as OpenAPIV3.Document,
+        ),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
     test("can not change from any stability but wip", async () => {
       const ruleRunner = new RuleRunner([lifecycleRuleset]);
       const ruleInputs = {
