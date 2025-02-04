@@ -741,15 +741,14 @@ Without examples, as an end-user I don't have much context here to know what the
 
 ## Polymorphic Objects
 
-While OpenAPI provides mechanisms for alternative schemas with the `oneOf` and
-`anyOf` keywords, their use is discouraged. Typically the reach for one of
-these indicates the endpoint is overloaded and as such would be better modeled
-as several more atomic endpoints.
+OpenAPI can express polymorphism with composite types, using the `oneOf` or
+`anyOf` keywords.
 
-We do not prevent the use of these constructs, however due to a bug in our
-tooling we cannot handle mapping objects in discriminators. As such the use of
-these is currently prevented with a linting rule.
+`oneOf` should be preferred, and used with a `discriminator` property to express
+polymorphic type unions.
 
+Such polymorphic types are supported by OpenAPI code generation tools such as
+[oapi-codegen](https://github.com/oapi-codegen/oapi-codegen).
 
 ## Making the OpenAPI specification available
 
