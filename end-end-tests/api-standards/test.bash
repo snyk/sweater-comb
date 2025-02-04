@@ -85,6 +85,14 @@ OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
     --check
 assert_ok
 
+### Can move from beta to ga in place
+OPTIC_DIFF_CONTEXT=$CONTEXT ${COMPARE} \
+    $HERE/resources/thing/2021-11-10/000-baseline.yaml \
+    $HERE/resources/thing/2021-11-10/001-stability-change.yaml \
+    --check
+assert_ok
+
+
 # These should fail
 
 ### Invalid naming convention
@@ -134,7 +142,6 @@ OPTIC_DIFF_CONTEXT=$CONTEXT_BETA ${COMPARE} \
 assert_err
 
 FAILING_CHANGES="\
-    $HERE/resources/thing/2021-11-10/001-fail-stability-change.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-singleton-no-pagination.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-singleton.yaml \
     $HERE/resources/thing/2021-11-10/002-fail-paginated-post.yaml \

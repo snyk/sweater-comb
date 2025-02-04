@@ -40,6 +40,9 @@ const stabilityTransitions = new SpecificationRule({
         // A resource can go from wip to anything, so no need to check.
         if (beforeStability === "wip") return;
 
+        // in place upgrades from beta to ga are allowed
+        if (beforeStability === "beta" && afterStability === "ga") return;
+
         if (beforeStability !== afterStability) {
           throw new RuleError({
             message: `stability transition from '${before}' to '${after}' not allowed`,
