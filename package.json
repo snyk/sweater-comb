@@ -67,7 +67,8 @@
     "yargs": "~17.6.0"
   },
   "overrides": {
-    "postman-collection": "4.2.0"
+    "postman-collection": "4.2.0",
+    "jsonpath-plus": "^10.3.0"
   },
   "jest": {
     "maxWorkers": 5,
