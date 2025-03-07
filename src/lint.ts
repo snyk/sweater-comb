@@ -25,6 +25,7 @@ type VervetConfig = {
       resources: Array<{
         path: string;
         linter?: string;
+        linterExcludes?: string[];
         excludes?: string[];
       }>;
     };
@@ -105,7 +106,7 @@ export const lintAction = async (
         path.join(path.relative(topDir, vervetConfDir), resource.path),
         base,
         options?.compareTo,
-        resource.excludes,
+        [...(resource.excludes ?? []), ...(resource.linterExcludes ?? [])],
       );
     }
   }

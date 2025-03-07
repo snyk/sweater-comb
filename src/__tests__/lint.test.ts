@@ -64,6 +64,16 @@ describe("lint command", () => {
     testTimeout,
   );
 
+  it(
+    "can lint with .vervet.yaml linterExclusions - no files detected",
+    async () => {
+      // cd to location where a .vervet.yaml will be found
+      process.chdir("end-end-tests/linting-exclusions");
+      await lintAction();
+    },
+    testTimeout,
+  );
+
   it("errors with invalid branch given", async () => {
     try {
       await lintAction(

@@ -1,0 +1,14 @@
+linters:
+  api-resource:
+    description: Lint rules for individual API resource version specs
+    optic-ci:
+      script: node_modules/.bin/sweater-comb
+      original: main
+
+apis:
+  some-api:
+    resources:
+      - path: "resources"
+        linter: "api-resource"
+        linterExcludes:
+          - "**/thing/2022-04-04/spec.yaml"
