@@ -210,15 +210,15 @@ const requireVersionParameter = new OperationRule({
   },
 });
 
-const tenantFormatting = new OperationRule({
-  name: "tenant formatting",
+const tenancyFormatting = new OperationRule({
+  name: "tenancy formatting",
   docsLink: links.standards.orgAndGroupTenantResources,
   rule: (operationAssertions) => {
     operationAssertions.pathParameter.requirement(
-      "use UUID for org_id or group_id",
+      "use UUID for tenant_id, group_id or org_id",
       (parameter) => {
         const name = parameter.value.name;
-        if (name === "group_id" || name === "org_id") {
+        if (name === "tenant_id" || name === "group_id" || name === "org_id") {
           if (!parameter.value.schema) {
             throw new RuleError({
               message: "expected parameter to have a schema",
@@ -470,7 +470,7 @@ export const operationRulesResource = new Ruleset({
     noPutHttpMethod,
     preventOperationRemovalResource,
     requireVersionParameter,
-    tenantFormatting,
+    tenancyFormatting,
     pathElementCasing,
     preventAddingRequiredQueryParameters,
     preventChangingOptionalToRequiredQueryParameters,
@@ -495,7 +495,7 @@ export const operationRulesCompiled = new Ruleset({
     noPutHttpMethod,
     preventOperationRemovalCompiled,
     requireVersionParameter,
-    tenantFormatting,
+    tenancyFormatting,
     pathElementCasing,
     preventAddingRequiredQueryParameters,
     preventChangingOptionalToRequiredQueryParameters,
