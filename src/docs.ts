@@ -18,8 +18,8 @@ export const links = {
     headers: {
       case: "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#header-field-names",
     },
-    referencedEntities:
-      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#referenced-entities",
+    componentNaming:
+      "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#component-naming",
     openApiVersions:
       "https://github.com/snyk/sweater-comb/blob/main/docs/standards/rest.md#making-the-openapi-specification-available",
     orgAndGroupTenantResources:
