@@ -42,7 +42,7 @@ const decodeComponentName = (name: string): componentName => {
 
 const componentNameCase = new SpecificationRule({
   name: "component names",
-  docsLink: links.standards.referencedEntities,
+  docsLink: links.standards.componentNaming,
   rule: (specificationAssertions) => {
     specificationAssertions.requirement(
       "use pascal case for component names",
