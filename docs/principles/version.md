@@ -74,15 +74,15 @@ A version's stability cannot be modified in-place because this effectively rewri
 
 An example of how this can cause problems:
 
-- A version is released at 2021-06-04~beta
-- It gets modified in-place to increase stability, eventually becoming 2021-06-04~ga.
-- Another version starts at 2021-08-12~beta.
-- A client evaluates the API at version 2021-10-01~ga. This resolves to
-  2021-06-04~ga. It works well so the client pins on this version (2021-10-01).
-- 2021-08-12~beta gets modified in-place to 2021-08-12~ga on 2021-10-15.
-- The above client requests for 2021-10-01~ga now suddenly resolve to a surprise GA version that wasn't there before: 2021-08-12~ga. Unfortunately, it's a breaking change...
+- A version is released at `2021-06-04~beta`
+- It gets modified in-place to increase stability, eventually becoming `2021-06-04~ga`.
+- Another version starts at `2021-08-12~beta`.
+- A client evaluates the API at version `2021-10-01~ga`. This resolves to
+  `2021-06-04~ga`. It works well so the client pins on this version (`2021-10-01`).
+- `2021-08-12~beta` gets modified in-place to `2021-08-12~ga` on `2021-10-15`.
+- The above client requests for `2021-10-01~ga` now suddenly resolve to a surprise GA version that wasn't there before: `2021-08-12~ga`. Unfortunately, it's a breaking change...
 
-If the 2021-08-12~beta promotion to GA was dated when it actually took place (2021-10-15), the client would not have been broken by the newer change.
+If the `2021-08-12~beta` promotion to GA was dated when it actually took place (`2021-10-15`), the client would not have been broken by the newer change.
 
 ### <a id="deprecation-sunset"></a>Deprecation and Sunset
 
