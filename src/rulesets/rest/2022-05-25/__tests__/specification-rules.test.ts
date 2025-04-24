@@ -92,7 +92,7 @@ describe("specification rules", () => {
     expect(results).toMatchSnapshot();
   });
 
-  test("fails if a discriminator is added with a mapping object", async () => {
+  test("fails if a discriminator with mapping is used without oneOf", async () => {
     const afterJson = {
       ...baseJson,
       [stabilityKey]: "wip",
@@ -109,15 +109,124 @@ describe("specification rules", () => {
           },
         },
         schemas: {
-          OneOfSchema: {
+          SchemaWithoutOneOf: {
             type: "object",
-            description: "Response containing a single thing resource object",
-            oneOf: [],
+            description: "An object with discriminator but no oneOf",
+            // No oneOf property here
             discriminator: {
-              propertyName: "foo",
-              mapping: {},
+              propertyName: "type",
+              mapping: {
+                dog: "#/components/schemas/Dog",
+                cat: "#/components/schemas/Cat",
+              },
             },
           },
+        },
+      },
+    } as OpenAPIV3.Document;
+    const ruleRunner = new RuleRunner([specificationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.every((result) => result.passed)).toBe(false);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("passes if a discriminator with mapping is used with oneOf", async () => {
+    const afterJson = {
+      ...baseJson,
+      [stabilityKey]: "wip",
+      paths: {},
+      components: {
+        schemas: {
+          Pet: {
+            type: "object",
+            description: "A valid oneOf schema with discriminator",
+            oneOf: [
+              { $ref: "#/components/schemas/Dog" },
+              { $ref: "#/components/schemas/Cat" },
+            ],
+            discriminator: {
+              propertyName: "type",
+              mapping: {
+                dog: "#/components/schemas/Dog",
+                cat: "#/components/schemas/Cat",
+              },
+            },
+          },
+          Dog: {
+            type: "object",
+            properties: {
+              type: { type: "string", enum: ["dog"] },
+              bark: { type: "boolean" },
+            },
+          },
+          Cat: {
+            type: "object",
+            properties: {
+              type: { type: "string", enum: ["cat"] },
+              purr: { type: "boolean" },
+            },
+          },
+        },
+      },
+    } as OpenAPIV3.Document;
+    const ruleRunner = new RuleRunner([specificationRules]);
+    const ruleInputs = {
+      ...TestHelpers.createRuleInputs(baseJson, afterJson),
+      context,
+    };
+    const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+    expect(results.every((result) => result.passed)).toBe(true);
+    expect(results).toMatchSnapshot();
+  });
+
+  test("fails if there is a nested discriminator", async () => {
+    const afterJson = {
+      ...baseJson,
+      [stabilityKey]: "wip",
+      paths: {},
+      components: {
+        schemas: {
+          Parent: {
+            type: "object",
+            description: "A schema with nested discriminators (invalid)",
+            oneOf: [
+              { $ref: "#/components/schemas/ChildWithDiscriminator" },
+              { $ref: "#/components/schemas/OtherChild" },
+            ],
+            discriminator: {
+              propertyName: "type",
+              mapping: {
+                nested: "#/components/schemas/ChildWithDiscriminator",
+                other: "#/components/schemas/OtherChild",
+              },
+            },
+          },
+          ChildWithDiscriminator: {
+            type: "object",
+            oneOf: [
+              { $ref: "#/components/schemas/Grandchild1" },
+              { $ref: "#/components/schemas/Grandchild2" },
+            ],
+            discriminator: {
+              propertyName: "subtype",
+              mapping: {
+                one: "#/components/schemas/Grandchild1",
+                two: "#/components/schemas/Grandchild2",
+              },
+            },
+          },
+          OtherChild: {
+            type: "object",
+            properties: {
+              type: { type: "string", enum: ["other"] },
+            },
+          },
+          Grandchild1: { type: "object" },
+          Grandchild2: { type: "object" },
         },
       },
     } as OpenAPIV3.Document;
