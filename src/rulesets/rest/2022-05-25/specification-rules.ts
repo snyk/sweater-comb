@@ -148,24 +148,51 @@ const tags = new SpecificationRule({
   },
 });
 
-const noDiscriminatorMapping = new SpecificationRule({
-  name: "no mapping objects in discriminators",
+const discriminatorRules = new SpecificationRule({
+  name: "discriminator usage rules",
   docsLink: links.standards.polymorphicObjects,
   rule: (specificationAssertions) => {
     specificationAssertions.addedOrChanged(
-      "no mapping objects in discriminators",
+      "discriminator usage rules",
       (specification) => {
-        // propertyName is the only required field on a discriminator object,
-        // plus we only care about the objects with mappings
-        const discriminators = findObjectsWithFields([
-          "propertyName",
-          "mapping",
+        // Find all objects with discriminators that have mappings
+        const objectsWithDiscriminators = findObjectsWithFields([
+          "discriminator",
         ])(specification.raw);
 
-        if (discriminators.length != 0) {
-          throw new RuleError({
-            message: "Mapping object is not permitted in discriminators",
-          });
+        // Check each object with a discriminator
+        for (const obj of objectsWithDiscriminators) {
+          const discriminator = obj.discriminator;
+
+          // Skip if no mapping (we only care about objects with mappings)
+          if (!discriminator.mapping) {
+            continue;
+          }
+
+          // Allow discriminators when oneOf is specified
+          if (!obj.oneOf) {
+            throw new RuleError({
+              message:
+                "Discriminator with mapping is only permitted when used with oneOf",
+            });
+          }
+
+          // Check for nested discriminators (a discriminator within a discriminated struct)
+          // This requires examining the oneOf schemas to see if they have discriminators
+          if (obj.oneOf && Array.isArray(obj.oneOf)) {
+            for (const schema of obj.oneOf) {
+              if (
+                schema &&
+                typeof schema === "object" &&
+                "discriminator" in schema
+              ) {
+                throw new RuleError({
+                  message:
+                    "Nested discriminators are not permitted (discriminator within a discriminated struct)",
+                });
+              }
+            }
+          }
         }
       },
     );
@@ -197,6 +224,6 @@ export const specificationRules = new Ruleset({
     tags,
     getOpenApiVersions,
     listOpenApiVersions,
-    noDiscriminatorMapping,
+    discriminatorRules,
   ],
 });
