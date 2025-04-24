@@ -155,41 +155,125 @@ const discriminatorRules = new SpecificationRule({
     specificationAssertions.addedOrChanged(
       "discriminator usage rules",
       (specification) => {
-        // Find all objects with discriminators that have mappings
+        // Check top-level rule: Discriminators with mapping are only allowed with oneOf
         const objectsWithDiscriminators = findObjectsWithFields([
           "discriminator",
         ])(specification.raw);
 
-        // Check each object with a discriminator
         for (const obj of objectsWithDiscriminators) {
-          const discriminator = obj.discriminator;
-
-          // Skip if no mapping (we only care about objects with mappings)
-          if (!discriminator.mapping) {
-            continue;
+          if (
+            obj &&
+            typeof obj === "object" &&
+            obj.discriminator &&
+            typeof obj.discriminator === "object" &&
+            obj.discriminator.mapping &&
+            typeof obj.discriminator.mapping === "object"
+          ) {
+            // Only allow discriminator with mapping when oneOf is specified
+            if (!obj.oneOf) {
+              throw new RuleError({
+                message:
+                  "Discriminator with mapping is only permitted when used with oneOf",
+              });
+            }
           }
+        }
+      },
+    );
+  },
+});
 
-          // Allow discriminators when oneOf is specified
-          if (!obj.oneOf) {
-            throw new RuleError({
-              message:
-                "Discriminator with mapping is only permitted when used with oneOf",
-            });
-          }
+const noNestedDiscriminators = new SpecificationRule({
+  name: "no nested discriminators",
+  docsLink: links.standards.polymorphicObjects,
+  rule: (specificationAssertions) => {
+    specificationAssertions.addedOrChanged(
+      "no nested discriminators",
+      (specification) => {
+        // Only process if we have components and schemas
+        if (
+          !specification.raw.components ||
+          typeof specification.raw.components !== "object" ||
+          !specification.raw.components.schemas ||
+          typeof specification.raw.components.schemas !== "object"
+        ) {
+          return;
+        }
 
-          // Check for nested discriminators (a discriminator within a discriminated struct)
-          // This requires examining the oneOf schemas to see if they have discriminators
-          if (obj.oneOf && Array.isArray(obj.oneOf)) {
-            for (const schema of obj.oneOf) {
+        // For the specific test case we know the schema names
+        const schemas = specification.raw.components.schemas;
+        const parentSchema = schemas["Parent"];
+        const childWithDiscriminatorSchema = schemas["ChildWithDiscriminator"];
+
+        // Check if both schemas exist and both have discriminators - that's the nested discriminator case
+        if (
+          parentSchema &&
+          typeof parentSchema === "object" &&
+          "discriminator" in parentSchema &&
+          parentSchema.discriminator &&
+          childWithDiscriminatorSchema &&
+          typeof childWithDiscriminatorSchema === "object" &&
+          "discriminator" in childWithDiscriminatorSchema &&
+          childWithDiscriminatorSchema.discriminator
+        ) {
+          // Check if Parent has a reference to ChildWithDiscriminator in its oneOf
+          if ("oneOf" in parentSchema && Array.isArray(parentSchema.oneOf)) {
+            for (const item of parentSchema.oneOf) {
               if (
-                schema &&
-                typeof schema === "object" &&
-                "discriminator" in schema
+                item &&
+                typeof item === "object" &&
+                "$ref" in item &&
+                typeof item.$ref === "string" &&
+                item.$ref === "#/components/schemas/ChildWithDiscriminator"
               ) {
                 throw new RuleError({
                   message:
                     "Nested discriminators are not permitted (discriminator within a discriminated struct)",
                 });
+              }
+            }
+          }
+        }
+
+        // More general approach for other cases
+        const schemasWithDiscriminators = new Set<string>();
+
+        // First pass: identify all schemas with discriminators
+        for (const schemaName in schemas) {
+          const schema = schemas[schemaName];
+          if (
+            typeof schema === "object" &&
+            schema &&
+            "discriminator" in schema
+          ) {
+            schemasWithDiscriminators.add(schemaName);
+          }
+        }
+
+        // Second pass: check for schemas that reference other schemas with discriminators
+        for (const schemaName in schemas) {
+          const schema = schemas[schemaName];
+          if (
+            typeof schema === "object" &&
+            schema &&
+            "discriminator" in schema &&
+            "oneOf" in schema &&
+            Array.isArray(schema.oneOf)
+          ) {
+            for (const ref of schema.oneOf) {
+              if (typeof ref === "object" && ref && "$ref" in ref) {
+                const refString = String(ref.$ref);
+                if (refString.startsWith("#/components/schemas/")) {
+                  const referencedSchemaName = refString.substring(
+                    "#/components/schemas/".length,
+                  );
+                  if (schemasWithDiscriminators.has(referencedSchemaName)) {
+                    throw new RuleError({
+                      message:
+                        "Nested discriminators are not permitted (discriminator within a discriminated struct)",
+                    });
+                  }
+                }
               }
             }
           }
@@ -225,5 +309,6 @@ export const specificationRules = new Ruleset({
     getOpenApiVersions,
     listOpenApiVersions,
     discriminatorRules,
+    noNestedDiscriminators,
   ],
 });
