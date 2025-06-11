@@ -6,3 +6,8 @@ bcb88b2efeb56fabf49ccf4223d26cee3ec740e5:docs/standards/rest.md:generic-api-key:
 2b0351e5da078cf03863cb925e4493cd8d6da2e9:src/rulesets-new/__tests__/__snapshots__/property-rules.test.ts.snap:generic-api-key:1508
 8a2b8ab2e093291735418a8e8bee856dc8ce537c:src/rulesets/tests/__snapshots__/properties.test.ts.snap:generic-api-key:1077
 8a2b8ab2e093291735418a8e8bee856dc8ce537c:src/rulesets/tests/__snapshots__/properties.test.ts.snap:generic-api-key:1171
+02916330e08247afcb2ac40b69e0bb50351b1c0d:src/rulesets/rest/2022-05-25/__tests__/__snapshots__/property-rules.test.ts.snap:generic-api-key:6875
+02916330e08247afcb2ac40b69e0bb50351b1c0d:src/rulesets/rest/2022-05-25/__tests__/__snapshots__/property-rules.test.ts.snap:generic-api-key:6926
+02916330e08247afcb2ac40b69e0bb50351b1c0d:src/rulesets/rest/2022-05-25/__tests__/__snapshots__/property-rules.test.ts.snap:generic-api-key:7003
+02916330e08247afcb2ac40b69e0bb50351b1c0d:src/rulesets/rest/2022-05-25/__tests__/__snapshots__/property-rules.test.ts.snap:generic-api-key:7027
+
