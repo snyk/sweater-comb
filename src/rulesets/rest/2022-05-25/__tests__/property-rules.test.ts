@@ -1470,6 +1470,1115 @@ describe("body properties", () => {
     });
   });
 
+  describe("enum value changes", () => {
+    const requestBodyWithEnum = (
+      enumVals: string[],
+    ): OpenAPIV3.OperationObject => ({
+      requestBody: {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                data: {
+                  type: "object",
+                  properties: {
+                    attributes: {
+                      type: "object",
+                      properties: {
+                        test_enum_prop: {
+                          type: "string",
+                          enum: enumVals,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      responses: {}, // Default responses object for an operation
+    });
+
+    const responseBodyWithEnum = (
+      enumVals: string[],
+    ): OpenAPIV3.OperationObject => ({
+      responses: {
+        "200": {
+          description: "",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  data: {
+                    type: "object",
+                    properties: {
+                      attributes: {
+                        type: "object",
+                        properties: {
+                          test_enum_prop: {
+                            type: "string",
+                            enum: enumVals,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    test("fails if an enum value is removed from a request property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request enum value removal",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if an enum value is removed from a response property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValA", "ValB"]),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValB"]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response enum value removal",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if an enum value is changed in a request property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValC", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request enum value removal",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if an enum value is changed in a response property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValA", "ValB"]),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValC", "ValB"]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response enum value removal",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if an enum value is added to a request property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const enumRemovalResults = results.filter(
+        (r) =>
+          r.name === "request enum value removal" ||
+          r.name === "response enum value removal",
+      );
+      expect(enumRemovalResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if an enum value is added to a response property", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValA"]),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithEnum(["ValA", "ValB"]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const enumRemovalResults = results.filter(
+        (r) =>
+          r.name === "request enum value removal" ||
+          r.name === "response enum value removal",
+      );
+      expect(enumRemovalResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if enum values are not changed", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithEnum(["ValA", "ValB"]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const enumRemovalResults = results.filter(
+        (r) =>
+          r.name === "request enum value removal" ||
+          r.name === "response enum value removal",
+      );
+      expect(enumRemovalResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if a non-enum property is changed", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            attributes: {
+                              type: "object",
+                              properties: {
+                                test_string_prop: { type: "string" },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            attributes: {
+                              type: "object",
+                              properties: {
+                                test_string_prop: {
+                                  type: "string",
+                                  default: "abc",
+                                }, // changed by adding default
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const enumRemovalResults = results.filter(
+        (r) =>
+          r.name === "request enum value removal" ||
+          r.name === "response enum value removal",
+      );
+      expect(enumRemovalResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+  });
+
+  describe("string to enum changes", () => {
+    const requestBodyWithPropertyTypeAndOptionalEnum = (
+      propertyType: OpenAPIV3.SchemaObject["type"],
+      enumVals?: string[] | number[] | boolean[],
+    ): OpenAPIV3.OperationObject => {
+      const propertySchema: OpenAPIV3.SchemaObject = {
+        type: propertyType as OpenAPIV3.NonArraySchemaObjectType,
+      };
+      if (enumVals) {
+        propertySchema.enum = enumVals;
+      }
+      return {
+        requestBody: {
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  data: {
+                    type: "object",
+                    properties: {
+                      attributes: {
+                        type: "object",
+                        properties: {
+                          test_prop: propertySchema,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        responses: {},
+      };
+    };
+
+    const responseBodyWithPropertyTypeAndOptionalEnum = (
+      propertyType: OpenAPIV3.SchemaObject["type"],
+      enumVals?: string[] | number[] | boolean[],
+    ): OpenAPIV3.OperationObject => {
+      const propertySchema: OpenAPIV3.SchemaObject = {
+        type: propertyType as OpenAPIV3.NonArraySchemaObjectType,
+      };
+      if (enumVals) {
+        propertySchema.enum = enumVals;
+      }
+      return {
+        responses: {
+          "200": {
+            description: "",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    data: {
+                      type: "object",
+                      properties: {
+                        attributes: {
+                          type: "object",
+                          properties: {
+                            test_prop: propertySchema,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+    };
+
+    test("fails if a request property changes from string to string+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string"), // No enum initially
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]), // Enum added
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if a response property changes from string to string+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string"), // No enum initially
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]), // Enum added
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results.every((result) => result.passed)).toBe(false);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if string to string+enum in request is experimental", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context: {
+          ...context,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        },
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "request property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if string to string+enum in response is experimental", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string"),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context: {
+          ...context,
+          changeVersion: {
+            date: "2021-10-10",
+            stability: "experimental",
+          },
+        },
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "response property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if request property added as string+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              requestBody: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            attributes: { type: "object", properties: {} },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "request property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if response property added as string+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              responses: {
+                "200": {
+                  description: "",
+                  content: {
+                    "application/json": {
+                      schema: {
+                        type: "object",
+                        properties: {
+                          data: {
+                            type: "object",
+                            properties: {
+                              attributes: { type: "object", properties: {} },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string", [
+                "ValA",
+                "ValB",
+              ]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "response property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if request property string to string (no enum)", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("string"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "request property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if response property string to string (no enum)", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string"),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("string"),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      const targetRuleResults = results.filter(
+        (r) => r.name === "response property type to enum",
+      );
+      expect(targetRuleResults.every((result) => result.passed)).toBe(true);
+      expect(results).toMatchSnapshot();
+    });
+
+    // INTEGER to ENUM tests
+    test("fails if a request property changes from integer to integer+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("integer"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("integer", [1, 2]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if a response property changes from integer to integer+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("integer"),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("integer", [1, 2]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("passes if integer to integer+enum in request is experimental", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("integer"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("integer", [1, 2]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context: {
+          ...context,
+          changeVersion: { date: "2021-10-10", stability: "experimental" },
+        },
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => r.name === "request property type to enum" && !r.passed,
+        ).length,
+      ).toBe(0);
+      expect(results).toMatchSnapshot();
+    });
+
+    // NUMBER to ENUM tests
+    test("fails if a request property changes from number to number+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("number"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum(
+                "number",
+                [1.1, 2.2],
+              ),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if a response property changes from number to number+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("number"),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum(
+                "number",
+                [1.1, 2.2],
+              ),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    // BOOLEAN to ENUM tests
+    test("fails if a request property changes from boolean to boolean+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("boolean"),
+              responses: {},
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            post: {
+              ...requestBodyWithPropertyTypeAndOptionalEnum("boolean", [true]),
+              responses: {},
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "request property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+
+    test("fails if a response property changes from boolean to boolean+enum", async () => {
+      const ruleRunner = new RuleRunner([propertyRules]);
+      const beforeSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("boolean"),
+            },
+          },
+        },
+      };
+      const afterSpec: OpenAPIV3.Document = {
+        ...baseOpenAPI,
+        paths: {
+          "/example": {
+            get: {
+              ...responseBodyWithPropertyTypeAndOptionalEnum("boolean", [
+                false,
+              ]),
+            },
+          },
+        },
+      };
+      const ruleInputs = {
+        ...TestHelpers.createRuleInputs(beforeSpec, afterSpec),
+        context,
+      };
+      const results = await ruleRunner.runRulesWithFacts(ruleInputs);
+      expect(
+        results.filter(
+          (r) => !r.passed && r.name === "response property type to enum",
+        ).length,
+      ).toBe(1);
+      expect(results).toMatchSnapshot();
+    });
+  });
+
   describe("disallowAdditionalPropertiesResponse", () => {
     test("fails when additionalProperties is not set to false for new endpoints", async () => {
       const ruleRunner = new RuleRunner([propertyRules]);
