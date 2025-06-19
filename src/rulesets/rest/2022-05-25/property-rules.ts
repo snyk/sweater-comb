@@ -461,6 +461,134 @@ const propertyAssertion = (property) => {
     }
   }
 };
+const requestEnumValueRemoval = new RequestRule({
+  name: "request enum value removal",
+  docsLink: links.versioning.breakingChanges,
+  matches: (specification, ruleContext) =>
+    ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
+    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
+  rule: (requestAssertions) => {
+    requestAssertions.property.changed(
+      "not remove enum values from request",
+      (before, after) => {
+        // Ensure flatSchema exists and has an enum property
+        const beforeEnum =
+          before.value.flatSchema && before.value.flatSchema.enum;
+        const afterEnum = after.value.flatSchema && after.value.flatSchema.enum;
+
+        if (
+          beforeEnum &&
+          Array.isArray(beforeEnum) &&
+          afterEnum &&
+          Array.isArray(afterEnum)
+        ) {
+          for (const enumValue of beforeEnum) {
+            if (!afterEnum.includes(enumValue)) {
+              throw new RuleError({
+                message: `Cannot remove or change enum value '${enumValue}' from request property '${after.value.key}'. This is a breaking change.`,
+              });
+            }
+          }
+        }
+      },
+    );
+  },
+});
+
+const responseEnumValueRemoval = new ResponseBodyRule({
+  name: "response enum value removal",
+  docsLink: links.versioning.breakingChanges,
+  matches: (specification, ruleContext) =>
+    ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
+    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
+  rule: (responseAssertions) => {
+    responseAssertions.property.changed(
+      "not remove enum values from response",
+      (before, after) => {
+        // Ensure flatSchema exists and has an enum property
+        const beforeEnum =
+          before.value.flatSchema && before.value.flatSchema.enum;
+        const afterEnum = after.value.flatSchema && after.value.flatSchema.enum;
+
+        if (
+          beforeEnum &&
+          Array.isArray(beforeEnum) &&
+          afterEnum &&
+          Array.isArray(afterEnum)
+        ) {
+          for (const enumValue of beforeEnum) {
+            if (!afterEnum.includes(enumValue)) {
+              throw new RuleError({
+                message: `Cannot remove or change enum value '${enumValue}' from response property '${after.value.key}'. This is a breaking change.`,
+              });
+            }
+          }
+        }
+      },
+    );
+  },
+});
+
+const requestPropertyTypeToEnum = new RequestRule({
+  name: "request property type to enum",
+  docsLink: links.versioning.breakingChanges,
+  matches: (specification, ruleContext) =>
+    ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
+    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
+  rule: (requestAssertions) => {
+    requestAssertions.property.changed(
+      "not add enum restriction to property",
+      (before, after) => {
+        const beforeEnum = before.value.flatSchema?.enum;
+        const afterEnum = after.value.flatSchema?.enum;
+        const afterType = after.value.flatSchema?.type;
+
+        if (
+          (!beforeEnum || beforeEnum.length === 0) &&
+          afterEnum &&
+          afterEnum.length > 0
+        ) {
+          throw new RuleError({
+            message: `Changing property '${after.value.key}' from a type without an enum to a type with an enum (new type: ${afterType}) is a breaking change.`,
+          });
+        }
+      },
+    );
+  },
+});
+
+const responsePropertyTypeToEnum = new ResponseBodyRule({
+  name: "response property type to enum",
+  docsLink: links.versioning.breakingChanges,
+  matches: (specification, ruleContext) =>
+    ruleContext.operation.change !== "added" &&
+    !specIsRemoved(specification) &&
+    !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
+  rule: (responseAssertions) => {
+    responseAssertions.property.changed(
+      "not add enum restriction to property",
+      (before, after) => {
+        const beforeEnum = before.value.flatSchema?.enum;
+        const afterEnum = after.value.flatSchema?.enum;
+        const afterType = after.value.flatSchema?.type;
+
+        if (
+          (!beforeEnum || beforeEnum.length === 0) &&
+          afterEnum &&
+          afterEnum.length > 0
+        ) {
+          throw new RuleError({
+            message: `Changing property '${after.value.key}' from a type without an enum to a type with an enum (new type: ${afterType}) is a breaking change.`,
+          });
+        }
+      },
+    );
+  },
+});
+
 const collectionTypeValidRequest = new RequestRule({
   name: "valid collection type in request property",
   rule: (requestAssertions) => {
@@ -513,6 +641,10 @@ export const propertyRulesResource = new Ruleset({
     requiredPropertiesDeclaredInRequestBody,
     requiredPropertiesDeclaredInResponse,
     disallowAdditionalPropertiesResponse,
+    requestEnumValueRemoval,
+    responseEnumValueRemoval,
+    requestPropertyTypeToEnum,
+    responsePropertyTypeToEnum,
   ],
 });
 
@@ -540,5 +672,9 @@ export const propertyRulesCompiled = new Ruleset({
     requiredPropertiesDeclaredInRequestBody,
     requiredPropertiesDeclaredInResponse,
     disallowAdditionalPropertiesResponse,
+    requestEnumValueRemoval,
+    responseEnumValueRemoval,
+    requestPropertyTypeToEnum,
+    responsePropertyTypeToEnum,
   ],
 });
