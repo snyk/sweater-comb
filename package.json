@@ -68,7 +68,8 @@
   },
   "overrides": {
     "postman-collection": "4.2.0",
-    "jsonpath-plus": "^10.3.0"
+    "jsonpath-plus": "^10.3.0",
+    "form-data": "^4.0.4"
   },
   "jest": {
     "maxWorkers": 5,
