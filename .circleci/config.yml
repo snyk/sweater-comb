@@ -13,7 +13,7 @@ ignore_main_branch_filter: &ignore_main_branch_filter
 defaults: &defaults
   resource_class: small
   docker:
-    - image: cimg/node:18.18
+    - image: cimg/node:22.16.0
   working_directory: ~/sweater-comb
 
 commands:
