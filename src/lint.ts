@@ -49,6 +49,35 @@ const expectGitBranch = (branchName: string) => {
   });
 };
 
+const getGitTopDir = async (startDir: string): Promise<string> => {
+  // Resolve symlinks in the starting directory first
+  const resolvedStartDir = await fs.realpath(startDir).catch(() => startDir);
+
+  // Find the directory containing .git (works for both regular repos and worktrees)
+  const gitDir = await findParentDirAsync(resolvedStartDir, ".git");
+  if (!gitDir) {
+    throw new Error("cannot find .git -- is this a cloned git repository?");
+  }
+
+  // Check if .git is a file (worktree) or directory (regular repo)
+  const gitPath = path.join(gitDir, ".git");
+  try {
+    await fs.stat(gitPath);
+  } catch {
+    throw new Error("cannot access .git -- is this a cloned git repository?");
+  }
+
+  // In both cases (regular repo or worktree), the directory containing .git is the repo root
+  // Resolve symlinks to get the canonical path
+  try {
+    const resolvedPath = await fs.realpath(gitDir);
+    return resolvedPath;
+  } catch {
+    // If realpath fails, use the path as-is
+    return gitDir;
+  }
+};
+
 export const lintAction = async (
   resourceDir?: string,
   branchName?: string,
@@ -77,10 +106,14 @@ export const lintAction = async (
   const vervetConfContents = await fs.readFile(vervetConfFile);
   const vervetConf = loadYaml(vervetConfContents.toString()) as VervetConfig;
 
-  const topDir = await findParentDirAsync(vervetConfDir, ".git");
-  if (!topDir) {
+  let topDir: string;
+  try {
+    topDir = await getGitTopDir(vervetConfDir);
+  } catch (err) {
     console.log("not in a git repository");
-    throw new Error("cannot find .git -- is this a cloned git repository?");
+    throw new Error(
+      "cannot find git repository root -- is this a cloned git repository?",
+    );
   }
   process.chdir(topDir);
 
