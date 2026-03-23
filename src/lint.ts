@@ -168,7 +168,7 @@ const bulkCompare = async (
   to?: string,
   ignorePatterns: string[] = [],
 ): Promise<void> => {
-  const opticScript = await resolveOpticScript();
+  const { script: opticScript, nodeArgs } = await resolveOpticScript();
   const extraArgs: string[] = [];
   if (ignorePatterns.length > 0) {
     extraArgs.push("--ignore", ignorePatterns.join(","));
@@ -179,6 +179,7 @@ const bulkCompare = async (
   }
 
   const args = [
+    ...nodeArgs,
     opticScript,
     "diff-all",
     "--check",
@@ -215,17 +216,31 @@ const bulkCompare = async (
   });
 };
 
-const resolveOpticScript = async (): Promise<string> => {
+type ResolvedScript = {
+  script: string;
+  nodeArgs: string[];
+};
+
+const resolveOpticScript = async (): Promise<ResolvedScript> => {
+  // Compiled JS entry points (production builds)
   for (const script of [
     path.join(__dirname, "../build/index.js"),
     path.join(__dirname, "index.js"),
   ]) {
     try {
       await fs.stat(script);
-      return script;
+      return { script, nodeArgs: [] };
     } catch (err) {
       continue;
     }
+  }
+  // TypeScript source fallback (development/test with ts-node)
+  const tsScript = path.join(__dirname, "index.ts");
+  try {
+    await fs.stat(tsScript);
+    return { script: tsScript, nodeArgs: ["-r", "ts-node/register"] };
+  } catch (err) {
+    // fall through
   }
   throw new Error("failed to locate optic script");
 };
