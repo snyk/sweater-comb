@@ -73,7 +73,24 @@
     "node-forge": "^1.3.2",
     "tar": "^7.5.11",
     "minimatch": "^10.2.3",
-    "ajv": "^8.18.0",
+    "@stoplight/spectral-core": {
+      "ajv": "^8.18.0"
+    },
+    "@stoplight/spectral-rulesets": {
+      "ajv": "^8.18.0"
+    },
+    "@useoptic/openapi-io": {
+      "ajv": "^8.18.0"
+    },
+    "@useoptic/openapi-utilities": {
+      "ajv": "^8.18.0"
+    },
+    "@useoptic/optic": {
+      "ajv": "^8.18.0"
+    },
+    "@useoptic/rulesets-base": {
+      "ajv": "^8.18.0"
+    },
     "basic-ftp": "^5.2.0"
   },
   "jest": {
