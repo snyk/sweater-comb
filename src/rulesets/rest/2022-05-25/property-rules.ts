@@ -11,6 +11,7 @@ import {
   isCompiledOperationSunsetAllowed,
   isResourceMetaProperty,
   isFullyTypedArray,
+  isPropertyMovedToPolymorphicBranch,
   specIsRemoved,
 } from "./utils";
 
@@ -55,8 +56,16 @@ const requestPropertyRemovalRule = {
     ruleContext.operation.change !== "added" &&
     !specIsRemoved(specification) &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
-  rule: (requestAssertions) => {
+  rule: (requestAssertions, ruleContext) => {
     requestAssertions.property.removed("not be removed", (property) => {
+      if (
+        isPropertyMovedToPolymorphicBranch(
+          property.location.jsonPath,
+          ruleContext.operation.polymorphicSchemas,
+        )
+      ) {
+        return;
+      }
       throw new RuleError({
         message: `Expected property ${property.value.key} to not be removed`,
       });
@@ -82,8 +91,16 @@ const responsePropertyRemovalRule = {
     ruleContext.operation.change !== "added" &&
     !specIsRemoved(specification) &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
-  rule: (responseAssertions) => {
+  rule: (responseAssertions, ruleContext) => {
     responseAssertions.property.removed("not be removed", (property) => {
+      if (
+        isPropertyMovedToPolymorphicBranch(
+          property.location.jsonPath,
+          ruleContext.operation.polymorphicSchemas,
+        )
+      ) {
+        return;
+      }
       throw new RuleError({
         message: `Expected property ${property.value.key} to not be removed`,
       });
@@ -131,10 +148,18 @@ const requiredRequestProperties = new RequestRule({
   matches: (_, ruleContext) =>
     ruleContext.operation.change !== "added" &&
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
-  rule: (requestAssertions) => {
+  rule: (requestAssertions, ruleContext) => {
     requestAssertions.property.added(
       "not add required request property",
       (property) => {
+        if (
+          isPropertyMovedToPolymorphicBranch(
+            property.location.jsonPath,
+            ruleContext.operation.polymorphicSchemas,
+          )
+        ) {
+          return;
+        }
         if (property.value.required) {
           throw new RuleError({
             message:
@@ -405,10 +430,18 @@ const preventChangingRequestType = new RequestRule({
   name: "prevent changing type in request property",
   matches: (_, ruleContext) =>
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
-  rule: (requestAssertions) => {
+  rule: (requestAssertions, ruleContext) => {
     requestAssertions.property.changed(
       "not change the property type",
       (before, after) => {
+        if (
+          isPropertyMovedToPolymorphicBranch(
+            after.location.jsonPath,
+            ruleContext.operation.polymorphicSchemas,
+          )
+        ) {
+          return;
+        }
         const beforeSchema = (before.value.flatSchema ||
           {}) as OpenAPIV3.SchemaObject;
         const afterSchema = (after.value.flatSchema ||
@@ -428,10 +461,18 @@ const preventChangingResponseType = new ResponseBodyRule({
   name: "prevent changing type in request property",
   matches: (_, ruleContext) =>
     !isBreakingChangeAllowed(ruleContext.custom.changeVersion.stability),
-  rule: (responseAssertions) => {
+  rule: (responseAssertions, ruleContext) => {
     responseAssertions.property.changed(
       "not change the property type",
       (before, after) => {
+        if (
+          isPropertyMovedToPolymorphicBranch(
+            after.location.jsonPath,
+            ruleContext.operation.polymorphicSchemas,
+          )
+        ) {
+          return;
+        }
         const beforeSchema = (before.value.flatSchema ||
           {}) as OpenAPIV3.SchemaObject;
         const afterSchema = (after.value.flatSchema ||

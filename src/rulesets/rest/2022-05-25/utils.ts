@@ -73,6 +73,38 @@ export const specIsRemoved = (spec): boolean => {
   return spec.change === "removed";
 };
 
+/**
+ * isPropertyMovedToPolymorphicBranch checks whether a property that appears
+ * "removed" actually still exists inside a newly introduced oneOf/anyOf branch.
+ *
+ * When a schema changes from a direct $ref to a oneOf that includes the
+ * original schema, Optic's differ sees the original properties as "removed"
+ * because their JSON paths changed (e.g. from .../attributes/properties/foo
+ * to .../attributes/oneOf/0/properties/foo). This is a false positive.
+ *
+ * We detect this by checking whether any ancestor of the property's path
+ * gained a oneOf/anyOf in the "after" spec that wasn't there in "before".
+ * This covers deeply nested properties too (e.g. attributes/properties/
+ * added_findings/properties/count is still a descendant of attributes).
+ */
+export const isPropertyMovedToPolymorphicBranch = (
+  propertyJsonPath: string,
+  polymorphicSchemas: { before: Set<string>; after: Set<string> },
+): boolean => {
+  for (const afterPath of polymorphicSchemas.after) {
+    if (polymorphicSchemas.before.has(afterPath)) {
+      continue;
+    }
+    if (
+      propertyJsonPath === afterPath ||
+      propertyJsonPath.startsWith(afterPath + "/")
+    ) {
+      return true;
+    }
+  }
+  return false;
+};
+
 export const isFullyTypedArray = (
   array: OpenAPIV3.ArraySchemaObject,
 ): boolean => {
