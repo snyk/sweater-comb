@@ -21,7 +21,7 @@
     "lint": "run-p lint:*",
     "lint:code": "eslint --color --cache 'src/**/*.{js,ts}'",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
-    "lint:commits": "commitlint --from=ccbdd18876ab01a2be0801211a13a8609012425e -V",
+    "lint:commits": "commitlint --from=origin/main --to=HEAD -V",
     "format": "prettier --write 'src/**/*.{js,ts}'",
     "serve:docs": "techdocs-cli serve:mkdocs -v"
   },
