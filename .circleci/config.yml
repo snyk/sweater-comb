@@ -75,6 +75,7 @@ jobs:
       # auth check; the actual publish then uses OIDC (NPM_ID_TOKEN) below.
       - setup_npm_auth
       - node/install-packages:
+          app-dir: ~/sweater-comb
           override-ci: true
           cache-key: package.json
       - run:
