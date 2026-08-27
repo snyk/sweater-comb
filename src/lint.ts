@@ -36,8 +36,13 @@ const defaultBranchName = "main";
 
 const expectGitBranch = (branchName: string) => {
   return new Promise((resolve, reject) => {
-    child_process.exec(
-      `git cat-file -t ${branchName}`,
+    if (branchName.startsWith("-")) {
+      reject(new Error(`invalid git ref: ${branchName}`));
+      return;
+    }
+    child_process.execFile(
+      "git",
+      ["cat-file", "-t", branchName],
       (err, stdout, stderr) => {
         if (err) {
           reject(new Error(stderr));

@@ -21,7 +21,7 @@
     "lint": "run-p lint:*",
     "lint:code": "eslint --color --cache 'src/**/*.{js,ts}'",
     "lint:formatting": "prettier --check 'src/**/*.{js,ts}'",
-    "lint:commits": "commitlint --from=ccbdd18876ab01a2be0801211a13a8609012425e -V",
+    "lint:commits": "commitlint --from=origin/main --to=HEAD -V",
     "format": "prettier --write 'src/**/*.{js,ts}'",
     "serve:docs": "techdocs-cli serve:mkdocs -v"
   },
@@ -51,12 +51,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.28.4",
-    "@stoplight/spectral-core": "^1.19.4",
-    "@stoplight/spectral-rulesets": "^1.21.3",
-    "@useoptic/optic": "^1.0.8",
+    "@stoplight/spectral-core": "^1.23.1",
+    "@stoplight/spectral-rulesets": "^1.22.7",
     "@useoptic/json-pointer-helpers": "^1.0.6",
     "@useoptic/openapi-io": "^1.0.6",
     "@useoptic/openapi-utilities": "^1.0.6",
+    "@useoptic/optic": "^1.0.8",
     "@useoptic/rulesets-base": "^1.0.6",
     "chalk": "^4.0.0",
     "change-case": "^4.1.2",
@@ -70,8 +70,8 @@
     "postman-collection": "4.2.0",
     "jsonpath-plus": "^10.3.0",
     "qs": "^6.14.2",
-    "node-forge": "^1.3.2",
-    "tar": "^7.5.11",
+    "node-forge": "^1.4.0",
+    "tar": "^7.5.22",
     "minimatch": "^10.2.3",
     "@stoplight/spectral-core": {
       "ajv": "^8.18.0"
@@ -91,7 +91,14 @@
     "@useoptic/rulesets-base": {
       "ajv": "^8.18.0"
     },
-    "basic-ftp": "^5.2.0"
+    "basic-ftp": "^5.3.1",
+    "brace-expansion": "^5.0.9",
+    "fast-uri": "^3.1.6",
+    "handlebars": "^4.7.9",
+    "js-yaml": "^4.3.1",
+    "lodash": "^4.18.1",
+    "picomatch": "^2.3.2",
+    "ws": "^8.21.3"
   },
   "jest": {
     "maxWorkers": 5,
