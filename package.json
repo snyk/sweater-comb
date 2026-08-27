@@ -1,6 +1,10 @@
 {
   "name": "@snyk/sweater-comb",
   "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snyk/sweater-comb"
+  },
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "bin": "build/index.js",

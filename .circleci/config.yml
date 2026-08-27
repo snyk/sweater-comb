@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  node: circleci/node@2.1.1
   snyk: snyk/snyk@1.4.0
   prodsec: snyk/prodsec-orb@1
 
@@ -13,10 +14,15 @@ ignore_main_branch_filter: &ignore_main_branch_filter
 defaults: &defaults
   resource_class: small
   docker:
-    - image: cimg/node:22.16.0
+    - image: cimg/node:24.10.0
   working_directory: ~/sweater-comb
 
 commands:
+  setup_npm_auth:
+    steps:
+      - run:
+          name: Setup NPM auth
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   gcr_auth:
     description: Auth GCR
     steps:
@@ -65,9 +71,20 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      # The read-only nodejs-install token satisfies @semantic-release/npm's
+      # auth check; the actual publish then uses OIDC (NPM_ID_TOKEN) below.
+      - setup_npm_auth
+      - node/install-packages:
+          override-ci: true
+          cache-key: package.json
       - run:
-          name: Build and release
-          command: ./scripts/build-npm.bash
+          name: Build package
+          command: npm run build
+      - run:
+          name: Release
+          command: |
+            export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+            npx semantic-release@25
 
   rebuild-tools:
     <<: *defaults
@@ -104,7 +121,9 @@ workflows:
           name: NPM Release - Tag
           requires:
             - Test
-          context: nodejs-app-release
+          context:
+            - nodejs-install
+            - github-release
           filters: &publish_filters
             branches:
               only: "main"
