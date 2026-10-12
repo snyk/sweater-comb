@@ -307,14 +307,17 @@ headers:
 
   DeprecationHeader:
     description: >
-      The deprecation date of the underlying endpoint. For more information,
-      please refer to the deprecation header RFC:
+      Indicates a newer version of the resource that deprecates the one that
+      was matched, for example `2024-10-15~beta`. Some services return the
+      deprecation date as an HTTP-date instead, for example
+      `Tue, 15 Oct 2024 00:00:00 GMT`. Clients must treat the value as an
+      opaque string and must not assume a single format. For more
+      information, please refer to the deprecation header RFC:
 
       https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html
     schema:
       type: string
-      format: date-time
-      example: "2021-07-01T00:00:00Z"
+      example: "2024-10-15~beta"
 
   SunsetHeader:
     description: >
