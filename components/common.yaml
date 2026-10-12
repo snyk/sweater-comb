@@ -249,26 +249,31 @@ headers:
 
   DeprecationHeader:
     description: >
-      A header containing the deprecation date of the underlying endpoint. For
-      more information, please refer to the deprecation header RFC:
+      Indicates a newer version of the resource that deprecates the one that
+      was matched, for example `2024-10-15~beta`. Some services return the
+      deprecation date as an HTTP-date instead, for example
+      `Tue, 15 Oct 2024 00:00:00 GMT`. Clients must treat the value as an
+      opaque string and must not assume a single format. For more
+      information, please refer to the deprecation header RFC:
 
       https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html
     schema:
       type: string
-      format: date-time
-    example: "2021-07-01T00:00:00Z"
+    example: "2024-10-15~beta"
 
   SunsetHeader:
     description: >
       A header containing the date of when the underlying endpoint will be
       removed. This header is only present if the endpoint has been deprecated.
+      Usually returned as a date in the format YYYY-MM-DD. Some services return
+      an HTTP-date as described in RFC 8594 instead, for example
+      `Fri, 31 Dec 2027 00:00:00 GMT`. Clients must not assume a single format.
       Please refer to the RFC for more information:
 
       https://datatracker.ietf.org/doc/html/rfc8594
     schema:
       type: string
-      format: date-time
-    example: "2021-08-02T00:00:00Z"
+    example: "2021-08-02"
 
   RequestIdResponseHeader:
     description: >
